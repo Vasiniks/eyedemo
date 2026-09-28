@@ -21,10 +21,32 @@ jobs:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
+
       - uses: actions/configure-pages@v5
-      - uses: actions/upload-pages-artifact@v3
+        id: pages
+
+      # Vite (or any npm) project: install, build with the Pages base path, publish dist/
+      - if: hashFiles('package.json') != ''
+        uses: actions/setup-node@v5
         with:
-          path: .
+          node-version: 22
+
+      - if: hashFiles('package.json') != ''
+        name: Build
+        run: |
+          if [ -f pnpm-lock.yaml ]; then corepack enable && pnpm install --frozen-lockfile && PM=pnpm
+          elif [ -f yarn.lock ]; then corepack enable && yarn install --frozen-lockfile && PM=yarn
+          elif [ -f package-lock.json ]; then npm ci && PM=npm
+          else npm install && PM=npm
+          fi
+          # Serve from https://<user>.github.io/<repo>/ so asset URLs resolve
+          $PM run build -- --base="${{ steps.pages.outputs.base_path }}/"
+          touch dist/.nojekyll
+
+      - uses: actions/upload-pages-artifact@v4
+        with:
+          path: ${{ hashFiles('package.json') != '' && 'dist' || '.' }}
+
       - id: deployment
         uses: actions/deploy-pages@v4
