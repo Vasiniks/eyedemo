@@ -1,0 +1,2 @@
+LANE D — round 2 (fixes). Same files as before (src/canvas/SceneStage.tsx, SponsorField.tsx, src/canvas/stage/*, dev-D.html, src/__dev__/D/*).
+Read and fix every item in `docs/phase4/feedback/D-round1.md`, obeying brief §4J–4L (sponsors fly in from VERY far away, fast, decelerate, settle, accumulate; two distinct waves; original look — not Star Wars) and brief §6d. Screenshots as listed in the feedback; write `docs/phase4/qa/D/ROUND2.md` mapping each item → fixed (screenshot) or why not.

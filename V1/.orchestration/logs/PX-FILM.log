@@ -1,0 +1,692 @@
+[0m
+> build · muse-spark-1.3-contributor
+[0m
+[0m→ [0mSkill "review-animations"
+[0m→ [0mSkill "design-motion-principles"
+[0m→ [0mSkill "improve-animations"
+[0m→ [0mSkill "cinematic-gsap-lenis-motion-system"
+[0m→ [0mSkill "no-ai-design-slop"
+[0m→ [0mSkill "animation-vocabulary"
+[0m→ [0mSkill "emil-design-eng"
+[0m→ [0mSkill "fixing-motion-performance"
+[0m→ [0mSkill "awwwards-playbook"
+[0m
+[0m# [0mTodos
+[•] Load skills + recon V1 film files
+[ ] Polish preloader→intro + Lenis + frame interpolation
+[ ] Add grain, vignette, letterbox, progress rail, handoff, velocity response
+[ ] Validate GSAP, verify vite + screenshots + recording
+[0m
+[0m→ [0mRead .
+[0m→ [0mRead package.json
+[0m→ [0mRead v1.html
+[0m→ [0mRead vite.config.ts
+[0m→ [0mRead src/v1/main.tsx
+[0m→ [0mRead docs/phase4/PLAN-MASTER.md
+[0m✱ [0mGlob "**/*"[90m in src/v1 · 11 matches[0m
+[0m→ [0mRead src/v1/progress.ts
+[0m→ [0mRead src/v1/FilmSequence.tsx
+[0m→ [0mRead src/v1/v1.css
+[0m→ [0mRead src/v1/App.tsx
+[0m→ [0mRead src/styles/film.css
+[0m→ [0mRead src/styles/tokens.css
+[0m→ [0mRead src/v1/FilmCaptions.tsx
+[0m→ [0mRead src/v1/BrandWaves.tsx
+[0m→ [0mRead src/v1/waves.css
+[0m→ [0mRead src/v1/captions.css
+[0m
+[0m$ [0mrtk ls public/v1film/ 2>/dev/null | head -20; rtk read public/v1film/manifest.json 2>/dev/null; echo ---; rtk ls docs/phase4/qa/polish/ 2>/dev/null || echo "no polish dir"; rtk ls src/components/dom/ 2>/dev/null
+0001.jpg  7.8K
+0002.jpg  8.4K
+0003.jpg  8.3K
+0004.jpg  8.4K
+0005.jpg  8.5K
+0006.jpg  8.7K
+0007.jpg  8.8K
+0008.jpg  9.1K
+0009.jpg  9.1K
+0010.jpg  9.2K
+0011.jpg  9.3K
+0012.jpg  9.5K
+0013.jpg  9.6K
+0014.jpg  9.5K
+0015.jpg  9.6K
+0016.jpg  9.7K
+0017.jpg  10.1K
+0018.jpg  10.5K
+0019.jpg  10.9K
+0020.jpg  11.3K
+{"count": 240, "width": 640, "height": 360, "pad": 4, "ext": "jpg"}
+---
+(empty)
+BookingCTA.tsx  1.7K
+ChapterOverlay.tsx  7.8K
+Footer.tsx  2.4K
+Header.tsx  6.4K
+LogoRails.tsx  12.7K
+Scrims.tsx  590B
+Sections.tsx  11.9K
+SkipLinks.tsx  1.6K
+StoreBits.tsx  2.4K
+WhiteSection.tsx  1.6K
+index.ts  820B
+lane-e.css  30.7K
+[0m
+[0m→ [0mRead src/components/dom/Header.tsx
+[0m→ [0mRead src/components/dom/WhiteSection.tsx
+[0m
+[0m$ [0mls "public/v1film/" | wc -l; python3 -c "from PIL import Image; im=Image.open('public/v1film/0240.jpg'); print(im.size, im.getpixel((320,180)))" 2>&1 || sips -g pixelWidth -g pixelHeight "public/v1film/0240.jpg" 2>&1 | head; echo ---first---; python3 -c "from PIL import Image; im=Image.open('public/v1film/0001.jpg'); print(im.size, im.getpixel((320,180)))" 2>&1 | head
+241
+(640, 360) (230, 230, 228)
+---first---
+(640, 360) (98, 0, 23)
+[0m
+[0m$ [0mrtk grep -n "eyeq-white__h1\|eyeq-white" src/components/dom/lane-e.css | head -20; echo ---; rtk grep -n "eyeq-header__progress\|eyeq-skipfilm" src/components/dom/lane-e.css | head
+33 matches in 1 files:
+
+506:.eyeq-white {
+511:.eyeq-white__grid {
+518:.eyeq-white__col {
+526:.eyeq-white__logo {
+532:.eyeq-white__h1 {
+536:.eyeq-white__cta {
+539:.eyeq-white__ledger {
+547:.eyeq-white__ledger li {
+555:.eyeq-white__ledger dt,
+556:.eyeq-white__ledger .eyeq-ledger__k {
+565:.eyeq-white__ledger dd,
+566:.eyeq-white__ledger .eyeq-ledger__v {
+571:.eyeq-white__ledger a {
+574:.eyeq-white__map {
+579:.eyeq-white__grid {
+1360:.eyeq-white__h1 {
+1363:.eyeq-white__h1 .wline-mask {
+1369:.eyeq-white__h1 .wline {
+---
+200:.eyeq-header__progress {
+211:.eyeq-skipfilm {
+231:.eyeq-skipfilm:hover {
+236:.eyeq-skipfilm.is-hidden {
+[0m
+[0m→ [0mRead src/components/dom/lane-e.css[90m [limit=120, offset=500][0m
+[0m→ [0mRead src/components/dom/lane-e.css[90m [limit=60, offset=1350][0m
+[0m
+[0m$ [0mrtk rg -n "is-in|is-settled|eyeq-white-act|IntersectionObserver|useInView" src --glob '!node_modules' | head -30
+rtk: search failed: Failed to execute command: No such file or directory (os error 2)
+[0m
+[0m$ [0mrtk rg -n "is-in|is-settled|eyeq-white-act|IntersectionObserver" src 2>/dev/null | head -30; echo DONE
+DONE
+[0m
+[0m$ [0mrtk rg -n "is-in|is-settled|eyeq-white-act|IntersectionObserver" src | head -30; echo DONE
+rtk: search failed: Failed to execute command: No such file or directory (os error 2)
+DONE
+[0m
+[0m✱ [0mGrep "is-in|is-settled|IntersectionObserver"[90m in src · 61 matches[0m
+[0m→ [0mRead src/components/dom/WhiteSection.tsx
+[0m
+[0m# [0mTodos
+[✓] Load skills + recon V1 film files
+[•] Polish preloader→intro + Lenis + frame interpolation
+[ ] Add grain, vignette, letterbox, progress rail, handoff, velocity response
+[ ] Validate GSAP, verify vite + screenshots + recording
+[0m
+[0m← [0mWrite src/v1/FilmSequence.tsx
+Wrote file successfully.
+[0m
+[0m← [0mEdit src/v1/progress.ts
+Index: /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/v1/progress.ts
+===================================================================
+--- /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/v1/progress.ts
++++ /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/v1/progress.ts
+@@ -28,4 +28,11 @@
+ }
+ 
+ // Alias required by the brief.
+ export const subscribe = subscribeFilmProgress;
++
++// POLISH-FILM — ordinal chapter ticks for the film progress rail.
++// Fractions only (no labels, no text); kept beside the store so the rail
++// and any future chapter logic share one source of truth.
++export const FILM_CHAPTERS: readonly number[] = [
++  0, 0.24, 0.4, 0.55, 0.675, 0.87, 1,
++];
+
+[0m
+[0m✱ [0mGrep "--eyeq-ease-out|--ease-out"[90m in src · 38 matches[0m
+[0m
+[0m← [0mEdit src/v1/v1.css
+Index: /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/v1/v1.css
+===================================================================
+--- /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/v1/v1.css
++++ /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/v1/v1.css
+@@ -31,9 +31,17 @@
+   inset: 0;
+   width: 100%;
+   height: 100%;
+   display: block;
++  will-change: transform;
++  transform-origin: 50% 50%;
++  /* Intro iris: closed on Void, opens when the stage goes .is-intro. */
++  clip-path: circle(38% at 50% 46%);
++  transition: clip-path 1.6s cubic-bezier(0.16, 1, 0.3, 1);
+ }
++.v1-film__stage.is-intro .v1-film__canvas {
++  clip-path: circle(75% at 50% 46%);
++}
+ 
+ .v1-film__error {
+   position: absolute;
+   inset: 0;
+
+[0m
+[0m← [0mEdit src/v1/v1.css
+Index: /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/v1/v1.css
+===================================================================
+--- /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/v1/v1.css
++++ /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/v1/v1.css
+@@ -65,9 +65,9 @@
+   position: absolute;
+   inset: 0;
+ }
+ 
+-/* ---- Preloader: minimal counter 0–100 on Void, then fade ---- */
++/* ---- Preloader: 000→100 tabular counter on Void, then slow fade ---- */
+ .v1-preloader {
+   position: absolute;
+   inset: 0;
+   z-index: 5;
+@@ -76,21 +76,142 @@
+   align-items: center;
+   justify-content: center;
+   gap: 12px;
+   background: var(--eyeq-void);
+-  transition: opacity 0.6s ease-out;
++  transition: opacity 0.9s cubic-bezier(0.16, 1, 0.3, 1);
+ }
+ .v1-preloader.is-done {
+   opacity: 0;
+   pointer-events: none;
+ }
+ .v1-preloader__count {
++  font-family: var(--eyeq-font-ui);
+   font-size: clamp(48px, 6vw, 96px);
+   line-height: 1;
++  letter-spacing: 0.02em;
+   color: var(--eyeq-bone);
+   margin: 0;
++  font-variant-numeric: tabular-nums;
++  font-feature-settings: "tnum" 1;
+ }
+ 
++/* ---- Cinematic finish over the canvas (GPU-only overlays) ---- */
++.v1-finish {
++  position: absolute;
++  inset: 0;
++  z-index: 2;
++  pointer-events: none;
++}
++/* Animated grain, ≤4% opacity: tiny turbulence tile, transform jitter only. */
++.v1-finish--grain {
++  opacity: 0.035;
++  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");
++  background-size: 140px 140px;
++  will-change: transform;
++  animation: v1-grain 0.9s steps(3) infinite;
++}
++@keyframes v1-grain {
++  0% { transform: translate3d(0, 0, 0); }
++  33% { transform: translate3d(-18px, 10px, 0); }
++  66% { transform: translate3d(12px, -14px, 0); }
++  100% { transform: translate3d(0, 0, 0); }
++}
++/* Soft vignette: darkens edges so captions hold contrast. */
++.v1-finish--vignette {
++  background: radial-gradient(
++    ellipse 120% 105% at 50% 46%,
++    transparent 58%,
++    rgba(5, 6, 7, 0.28) 100%
++  );
++}
++
++/* ---- Letterbox: subtle bars that ease open during the first beat ---- */
++.v1-letterbox {
++  position: absolute;
++  left: 0;
++  right: 0;
++  height: 6vh;
++  z-index: 3;
++  pointer-events: none;
++  overflow: hidden;
++}
++.v1-letterbox--top { top: 0; }
++.v1-letterbox--bot { bottom: 0; }
++.v1-letterbox__bar {
++  position: absolute;
++  inset: 0;
++  background: var(--eyeq-void);
++  will-change: transform;
++}
++.v1-letterbox--top .v1-letterbox__bar { transform-origin: 50% 0; }
++.v1-letterbox--bot .v1-letterbox__bar { transform-origin: 50% 100%; }
++
++/* ---- Paper veil: last ~3% crossfades to Paper for a seamless handoff ---- */
++.v1-veil {
++  position: absolute;
++  inset: 0;
++  z-index: 3;
++  background: var(--eyeq-paper);
++  opacity: 0;
++  visibility: hidden;
++  pointer-events: none;
++}
++/* Tail state: stage sits on Paper so no Void edge can flash at the cut. */
++.v1-film__stage.is-tail {
++  background: var(--eyeq-paper);
++}
++.v1-film__stage.is-tail .v1-finish,
++.v1-film__stage.is-tail .v1-letterbox,
++.v1-film__stage.is-tail .v1-progress {
++  opacity: 0;
++  transition: opacity 0.4s ease-out;
++}
++
++/* ---- Thin scroll progress rail with ordinal chapter ticks (no text) ---- */
++.v1-progress {
++  position: absolute;
++  right: 14px;
++  top: 50%;
++  transform: translateY(-50%);
++  height: 38vh;
++  width: 18px;
++  z-index: 4;
++  pointer-events: none;
++}
++.v1-progress__track {
++  position: absolute;
++  right: 8px;
++  top: 0;
++  bottom: 0;
++  width: 2px;
++  background: rgba(233, 226, 211, 0.18);
++}
++.v1-progress__fill {
++  position: absolute;
++  inset: 0;
++  background: var(--eyeq-bone-dim);
++  transform: scaleY(0);
++  transform-origin: 50% 0;
++  will-change: transform;
++}
++.v1-progress__tick {
++  position: absolute;
++  right: 4px;
++  width: 10px;
++  height: 2px;
++  margin-top: -1px;
++  background: rgba(233, 226, 211, 0.42);
++}
++.v1-progress__tick:first-child,
++.v1-progress__tick:last-child {
++  background: var(--eyeq-lamp-amber);
++}
++
++@media (max-width: 767px) {
++  .v1-letterbox { height: 4vh; }
++  .v1-progress { right: 8px; height: 30vh; }
++}
++
+ /* ---- Seamless handoff: white act on the same Paper, no gap ---- */
+ .v1-whitewrap {
+   background: var(--eyeq-paper);
+   display: grid;
+
+[0m
+[0m← [0mEdit src/v1/v1.css
+Index: /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/v1/v1.css
+===================================================================
+--- /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/v1/v1.css
++++ /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/v1/v1.css
+@@ -93,13 +93,15 @@
+   font-variant-numeric: tabular-nums;
+   font-feature-settings: "tnum" 1;
+ }
+ 
+-/* ---- Cinematic finish over the canvas (GPU-only overlays) ---- */
++/* ---- Cinematic finish over the canvas (GPU-only overlays) ----
++ * Grain sits above waves/captions so the whole frame shares one finish;
++ * the tail state hides it before the Paper handoff. */
+ .v1-finish {
+   position: absolute;
+   inset: 0;
+-  z-index: 2;
++  z-index: 4;
+   pointer-events: none;
+ }
+ /* Animated grain, ≤4% opacity: tiny turbulence tile, transform jitter only. */
+ .v1-finish--grain {
+
+[0m
+[0m← [0mEdit src/v1/v1.css
+Index: /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/v1/v1.css
+===================================================================
+--- /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/v1/v1.css
++++ /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/v1/v1.css
+@@ -212,8 +212,15 @@
+   .v1-letterbox { height: 4vh; }
+   .v1-progress { right: 8px; height: 30vh; }
+ }
+ 
++/* Reduced motion: static finish, no grain loop, no letterbox. */
++@media (prefers-reduced-motion: reduce) {
++  .v1-finish--grain { animation: none; }
++  .v1-letterbox { display: none; }
++  .v1-film__canvas { clip-path: none; transition: none; }
++}
++
+ /* ---- Seamless handoff: white act on the same Paper, no gap ---- */
+ .v1-whitewrap {
+   background: var(--eyeq-paper);
+   display: grid;
+
+[0m
+[0m← [0mEdit src/v1/App.tsx
+Index: /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/v1/App.tsx
+===================================================================
+--- /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/v1/App.tsx
++++ /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/v1/App.tsx
+@@ -37,8 +37,26 @@
+     unsub();
+   };
+ }, []);
+ 
++// POLISH-FILM handoff: the film's final frame is paper-white, so the
++// moment scrub progress reaches the tail, force the white-act H1 reveal
++// open exactly at the cut (add-only; WhiteSection's own IO is idempotent
++// with these classes, and this covers the case where the act hasn't yet
++// hit its 0.35 intersection threshold).
++useEffect(
++  () =>
++    subscribeFilmProgress(() => {
++      if (getFilmProgress() < 0.985) return;
++      const section = document.querySelector('#white-act');
++      const h1 = section?.querySelector('.eyeq-white__h1');
++      section?.classList.add('is-in');
++      h1?.classList.add('is-in');
++      window.setTimeout(() => h1?.classList.add('is-settled'), 1200);
++    }),
++  [],
++);
++
+ const skipToWhite = () => {
+   document.querySelector('#white-act')?.scrollIntoView({ behavior: 'auto' });
+ };
+ 
+
+[0m
+[0m← [0mEdit src/v1/App.tsx
+Index: /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/v1/App.tsx
+===================================================================
+--- /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/v1/App.tsx
++++ /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/v1/App.tsx
+@@ -42,20 +42,20 @@
+ // moment scrub progress reaches the tail, force the white-act H1 reveal
+ // open exactly at the cut (add-only; WhiteSection's own IO is idempotent
+ // with these classes, and this covers the case where the act hasn't yet
+ // hit its 0.35 intersection threshold).
+-useEffect(
+-  () =>
+-    subscribeFilmProgress(() => {
+-      if (getFilmProgress() < 0.985) return;
+-      const section = document.querySelector('#white-act');
+-      const h1 = section?.querySelector('.eyeq-white__h1');
+-      section?.classList.add('is-in');
+-      h1?.classList.add('is-in');
+-      window.setTimeout(() => h1?.classList.add('is-settled'), 1200);
+-    }),
+-  [],
+-);
++useEffect(() => {
++  let handedOff = false;
++  return subscribeFilmProgress(() => {
++    if (handedOff || getFilmProgress() < 0.985) return;
++    handedOff = true;
++    const section = document.querySelector('#white-act');
++    const h1 = section?.querySelector('.eyeq-white__h1');
++    section?.classList.add('is-in');
++    h1?.classList.add('is-in');
++    window.setTimeout(() => h1?.classList.add('is-settled'), 1200);
++  });
++}, []);
+ 
+ const skipToWhite = () => {
+   document.querySelector('#white-act')?.scrollIntoView({ behavior: 'auto' });
+ };
+
+[0m
+[0m← [0mEdit v1.html
+Index: /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/v1.html
+===================================================================
+--- /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/v1.html
++++ /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/v1.html
+@@ -3,8 +3,10 @@
+ <head>
+   <meta charset="UTF-8" />
+   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+   <meta name="description" content="EyeQ Vision Care — 2-227 Vodden St East, Brampton, ON. Eye exams, prescription fittings, high-definition lenses." />
++  <meta name="theme-color" content="#050607" />
++  <style>html{background:#050607}</style>
+   <link rel="preload" href="/fonts/fraunces-var.woff2" as="font" type="font/woff2" crossorigin />
+   <title>EyeQ Vision Care — Brampton, ON</title>
+ </head>
+ <body>
+
+[0m
+[0m← [0mEdit src/v1/FilmSequence.tsx
+Index: /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/v1/FilmSequence.tsx
+===================================================================
+--- /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/v1/FilmSequence.tsx
++++ /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/v1/FilmSequence.tsx
+@@ -101,8 +101,9 @@
+ const boxBotRef = useRef<HTMLDivElement>(null);
+ const [loadPct, setLoadPct] = useState(0);
+ const [ready, setReady] = useState(false);
+ const [failed, setFailed] = useState(false);
++const railProgress = useFilmProgress();
+ 
+ useEffect(() => {
+   const section = sectionRef.current;
+   const stage = stageRef.current;
+
+[0m
+[0m← [0mEdit src/v1/FilmSequence.tsx
+Index: /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/v1/FilmSequence.tsx
+===================================================================
+--- /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/v1/FilmSequence.tsx
++++ /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/v1/FilmSequence.tsx
+@@ -406,9 +406,9 @@
+   role="progressbar"
+   aria-label="Film progress"
+   aria-valuemin={0}
+   aria-valuemax={100}
+-  aria-valuenow={Math.round(useFilmProgress() * 100)}
++  aria-valuenow={Math.round(railProgress * 100)}
+   aria-hidden="true"
+ >
+   <div className="v1-progress__track">
+     <div ref={railFillRef} className="v1-progress__fill" />
+
+[0m
+[0m$ [0mnpx tsc --noEmit -p tsconfig.app.json 2>&1 | head -20; echo TSC-DONE
+npm notice run eyeq-vision-care@0.1.0 npx
+npm notice run 'tsc' --noEmit -p tsconfig.app.json
+TSC-DONE
+[0m
+[0m⚙ [0mgsap_validate_gsap_code {"code":"import gsap from 'gsap';\nimport { ScrollTrigger } from 'gsap/ScrollTrigger';\nimport Lenis from 'lenis';\ngsap.registerPlugin(ScrollTrigger);\nconst lenis = new Lenis({ lerp: 0.08, smoothWheel: true });\nlenis.on('scroll', ScrollTrigger.update);\nconst rafLenis = (time: number) => { lenis.raf(time * 1000); };\ngsap.ticker.add(rafLenis);\ngsap.ticker.lagSmoothing(0);\nconst st = ScrollTrigger.create({ trigger: '.v1-film', start: 'top top', end: 'bottom bottom', scrub: true, onUpdate: (self) => { target = self.progress; } });\ngsap.ticker.add(tick);","framework":"react"}
+[0m
+[0m# [0mTodos
+[✓] Load skills + recon V1 film files
+[✓] Polish preloader→intro + Lenis + frame interpolation
+[✓] Add grain, vignette, letterbox, progress rail, handoff, velocity response
+[•] Validate GSAP, verify vite + screenshots + recording
+[0m
+[0m$ [0mrtk ls docs/phase4/qa/polish/ 2>/dev/null || mkdir -p docs/phase4/qa/polish && rtk ls docs/phase4/qa/polish/
+CAPS-beatA-p002.png  13.5K
+CAPS-lenses-p030.png  26.9K
+CAPS-lenses-p036.png  37.0K
+CAPS-beatA-p002.png  13.5K
+CAPS-lenses-p030.png  26.9K
+CAPS-lenses-p036.png  37.0K
+[0m
+[0m$ [0mnohup npx vite --port 5303 --strictPort > /tmp/vite-film-5303.log 2>&1 & echo "server started"; sleep 6; curl -s -o /dev/null -w "%{http_code}" http://localhost:5303/v1.html
+server started
+200
+[0m
+[0m← [0mWrite /tmp/capture-film.mjs
+Wrote file successfully.
+[0m
+[0m$ [0mnode /tmp/capture-film.mjs 2>&1 | tail -5; ls -la docs/phase4/qa/polish/ | rtk grep FILM
+at ModuleJob.syncLink (node:internal/modules/esm/module_job:163:33) {
+  code: 'ERR_MODULE_NOT_FOUND'
+}
+
+Node.js v24.18.0
+[0m
+[0m$ [0mcp /tmp/capture-film.mjs ./capture-film.tmp.mjs && node ./capture-film.tmp.mjs 2>&1 | tail -5; rtk ls docs/phase4/qa/polish/
+ERRORS: none
+CAPS-beatA-p002.png  13.5K
+CAPS-lenses-p030.png  26.9K
+CAPS-lenses-p036.png  37.0K
+CAPS-lenses-velvet.png  48.8K
+FILM-frame1-intro.png  184.2K
+FILM-late.png  137.3K
+FILM-mid-insurers.png  521.5K
+FILM-mid-waves.png  523.0K
+FILM-preloader.png  194.5K
+FILM-tail-handoff.png  175.9K
+FILM-white-act.png  120.2K
+page@11ad01c41c508ab9167d65d5265dcc68.webm  2.4M
+page@57a95e77a6c8d7c5183a4197184cacf9.webm  173.0K
+[0m
+[0m$ [0mrtk ls -lt docs/phase4/qa/polish/*.webm && mv "docs/phase4/qa/polish/page@11ad01c41c508ab9167d65d5265dcc68.webm" docs/phase4/qa/polish/FILM-scroll.webm && rm -f ./capture-film.tmp.mjs && rtk ls docs/phase4/qa/polish/
+644  docs/phase4/qa/polish/page@11ad01c41c508ab9167d65d5265dcc68.webm  2.4M
+644  docs/phase4/qa/polish/CAPS-scrub.webm  173.0K
+CAPS-beatA-p002.png  13.5K
+CAPS-lenses-p030.png  26.9K
+CAPS-lenses-p036.png  37.0K
+CAPS-lenses-velvet.png  48.8K
+CAPS-scrub.webm  173.0K
+FILM-frame1-intro.png  184.2K
+FILM-late.png  137.3K
+FILM-mid-insurers.png  521.5K
+FILM-mid-waves.png  523.0K
+FILM-preloader.png  194.5K
+FILM-scroll.webm  2.4M
+FILM-tail-handoff.png  175.9K
+FILM-white-act.png  120.2K
+[0m
+[0m→ [0mRead docs/phase4/qa/polish/FILM-preloader.png
+[0m→ [0mRead docs/phase4/qa/polish/FILM-frame1-intro.png
+[0m→ [0mRead docs/phase4/qa/polish/FILM-mid-waves.png
+[0m→ [0mRead docs/phase4/qa/polish/FILM-tail-handoff.png
+[0m→ [0mRead docs/phase4/qa/polish/FILM-white-act.png
+[0m
+[0m← [0mEdit src/v1/FilmSequence.tsx
+Index: /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/v1/FilmSequence.tsx
+===================================================================
+--- /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/v1/FilmSequence.tsx
++++ /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/v1/FilmSequence.tsx
+@@ -206,9 +206,9 @@
+ if (railFillRef.current) {
+   railFillRef.current.style.transform = `scaleY(${smooth.toFixed(4)})`;
+ }
+ if (veilRef.current) {
+-  const v = smooth01((smooth - 0.962) / 0.038);
++  const v = smooth01((smooth - 0.975) / 0.025);
+   veilRef.current.style.opacity = v.toFixed(3);
+   veilRef.current.style.visibility = v > 0.001 ? 'visible' : 'hidden';
+ }
+ const open = smooth01(smooth / 0.08);
+
+[0m
+[0m← [0mEdit src/v1/FilmSequence.tsx
+Index: /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/v1/FilmSequence.tsx
+===================================================================
+--- /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/v1/FilmSequence.tsx
++++ /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/v1/FilmSequence.tsx
+@@ -168,9 +168,9 @@
+ const a = frames[i0];
+ if (!a) return;
+ // Opaque base: clear with Void early, Paper at the tail so any
+ // sub-pixel edge matches the incoming act (seamless handoff).
+-ctx.fillStyle = clamped / maxI >= 0.965 ? PAPER : VOID;
++ctx.fillStyle = clamped / maxI >= 0.978 ? PAPER : VOID;
+ ctx.fillRect(0, 0, cw, ch);
+ blit(a, 1);
+ const b = frames[i1];
+ if (b && alpha > 0.001 && i1 !== i0) blit(b, alpha);
+
+[0m
+[0m← [0mEdit src/v1/FilmSequence.tsx
+Index: /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/v1/FilmSequence.tsx
+===================================================================
+--- /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/v1/FilmSequence.tsx
++++ /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/v1/FilmSequence.tsx
+@@ -214,9 +214,9 @@
+   const open = smooth01(smooth / 0.08);
+   const lb = (1 - open).toFixed(3);
+   if (boxTopRef.current) boxTopRef.current.style.transform = `scaleY(${lb})`;
+   if (boxBotRef.current) boxBotRef.current.style.transform = `scaleY(${lb})`;
+-  stage.classList.toggle('is-tail', smooth >= 0.965);
++  stage.classList.toggle('is-tail', smooth >= 0.978);
+   setFilmProgress(smooth);
+ };
+ 
+ const onVis = () => {
+
+[0m
+[0m← [0mEdit src/v1/FilmSequence.tsx
+Index: /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/v1/FilmSequence.tsx
+===================================================================
+--- /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/v1/FilmSequence.tsx
++++ /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/v1/FilmSequence.tsx
+@@ -390,9 +390,9 @@
+ </div>
+ <div className="v1-letterbox v1-letterbox--bot" aria-hidden="true">
+   <div ref={boxBotRef} className="v1-letterbox__bar" />
+ </div>
+-{/* Paper veil: the last ~3% crossfades to Paper so the white act
++{/* Paper veil: the last ~2.5% crossfades to Paper so the white act
+     lands with no colour jump. */}
+ <div ref={veilRef} className="v1-veil" aria-hidden="true" />
+ <div className="v1-overlay v1-overlay--waves">
+   <OverlayWaves />
+
+[0m
+[0m$ [0mnpx tsc --noEmit -p tsconfig.app.json 2>&1 | head -5; echo TSC-OK
+npm notice run eyeq-vision-care@0.1.0 npx
+npm notice run 'tsc' --noEmit -p tsconfig.app.json
+TSC-OK
+[0m
+[0m← [0mWrite capture-tail.tmp.mjs
+Wrote file successfully.
+[0m
+[0m$ [0mnode ./capture-tail.tmp.mjs 2>&1 | tail -2; rm -f ./capture-tail.tmp.mjs
+ERRORS: none
+[0m
+[0m→ [0mRead docs/phase4/qa/polish/FILM-tail-handoff.png
+[0m
+[0m$ [0mpkill -f "vite --port 5303" 2>/dev/null; sleep 1; echo "server stopped"; rtk git status --short 2>/dev/null | head -12 || echo "not a git repo"
+server stopped
+[0m
+[0m# [0mTodos
+[✓] Load skills + recon V1 film files
+[✓] Polish preloader→intro + Lenis + frame interpolation
+[✓] Add grain, vignette, letterbox, progress rail, handoff, velocity response
+[✓] Validate GSAP, verify vite + screenshots + recording
+[0m
+POLISH-FILM-DONE
+- Preloader is now a padded 000→100 tabular-Inter counter with a 0.9s expo fade plus a 1.6s iris (clip-path circle 38%→75%) from Void into frame 1; scrubbing runs on Lenis lerp 0.08 with fractional cross-blended frames decoded via createImageBitmap, DPR capped at 2.
+- Finish stack over the canvas: 3.5% animated grain (transform-only tile jitter), soft radial vignette, 6vh letterbox easing open across the first beat, ordinal-tick progress rail (7 fractions, no text), Paper veil over the last 2.5% with stage bg swap, and velocity-driven scale 1.0→1.01 eased back — all transforms/opacity, RM-gated.
+- Handoff is seamless: end card stays crisp to p=0.97, veils to Paper #F5F1E8 by p=1.0, and App forces the white-act H1 `.is-in` exactly at p≥0.985 (idempotent with WhiteSection's IO).
+- Verified: `tsc` clean, GSAP validation clean, zero page/console errors on :5303; screenshots + full-scroll recording in `docs/phase4/qa/polish/FILM-*` inspected (mid-film waves, crisp tail card, H1 reveal firing), server stopped.
+EXIT 0 model=meta/muse-spark-1.3-contributor

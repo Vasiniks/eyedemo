@@ -1,0 +1,235 @@
+[0m
+> build · muse-spark-1.3-contributor
+[0m
+[0m→ [0mSkill "blender-hard-surface-modeling"
+[0m→ [0mSkill "no-ai-design-slop"
+[0m→ [0mSkill "iterate-until-verified"
+[0m→ [0mSkill "visual-fidelity"
+[0m→ [0mSkill "threejs-scenes"
+[0m→ [0mRead docs/research/F-3d-motion-tech.md
+[0m→ [0mRead docs/00-BRIEF.md
+[0m→ [0mRead docs/research/G-glasses-model.md
+[0m→ [0mRead docs/research/D-asset-inventory.md
+[0m→ [0mRead .
+[0m→ [0mRead docs/research/F-3d-motion-tech.md[90m [offset=311][0m
+[0m
+[0m$ [0mrtk ls -la "/Users/admin/Downloads/Glasses_Mama_WBL/" && rtk ls "/Applications/Blender.app/Contents/MacOS/Blender" 2>&1; "/Applications/Blender.app/Contents/MacOS/Blender" -b --version 2>&1 | head -20
+755  Glasses_Mama_Tex/
+644  Glasses_Mama_WBL.mtl  1.2K
+644  Glasses_Mama_WBL.obj  3.9M
+/Applications/Blender.app/Contents/MacOS/Blender  166.6M
+Blender 5.0.1 (hash a3db93c5b259 built 2025-12-16 01:51:40)
+Blender 5.0.1
+	build date: 2025-12-16
+	build time: 01:51:40
+	build commit date: 2025-12-15
+	build commit time: 16:36
+	build hash: a3db93c5b259
+	build branch: blender-v5.0-release
+	build platform: Darwin
+	build type: Release
+	build c flags:  -Wall -Werror=implicit-function-declaration -Werror=return-type -Wno-tautological-compare -Wno-unknown-pragmas -Wno-char-subscripts -Wstrict-prototypes -Wmissing-prototypes -Wunused-parameter -Wundef -Wundef-prefix -Werror=unguarded-availability-new  -mmacosx-version-min=11.2 -std=gnu11  -pipe -funsigned-char -fno-strict-aliasing -ffp-contract=off  
+	build c++ flags:  -Wall -Wc++20-designator -Wno-tautological-compare -Wno-unknown-pragmas -Wno-char-subscripts -Wno-overloaded-virtual -Wno-sign-compare -Wno-invalid-offsetof -Wno-suggest-override -Wundef -Wundef-prefix -Wunused-parameter -Wmismatched-tags -Werror=unguarded-availability-new  -mmacosx-version-min=11.2 -ftemplate-depth=1024  -pipe -funsigned-char -fno-strict-aliasing -ffp-contract=off  
+	build link flags: -fexceptions -framework CoreServices -framework Foundation -framework IOKit -framework AppKit -framework Cocoa    -framework Carbon -framework AudioUnit -framework AudioToolbox -framework CoreAudio -framework Metal    -framework QuartzCore -framework CoreImage -framework OpenGL -framework Accelerate -liconv -Wl,-unexported_symbols_list,'/Users/blender/git/blender-v500/blender.git/source/creator/symbols_apple.map' -Xlinker -no_warn_duplicate_libraries
+	build system: CMake
+[0m
+[0m→ [0mRead blender
+[0m→ [0mRead .orchestration
+[0m
+[0m$ [0mrtk ls -la "/Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/docs/research/" "/Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/docs/" 2>&1; rtk ls -la "/Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/blender/" "/Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/assets/" 2>&1
+755  phase3/
+755  research/
+755  screens/
+644  00-BRIEF.md  4.3K
+644  A-website-audit.md  12.8K
+644  B-content-inventory.md  17.0K
+644  C-link-inventory.md  15.6K
+644  D-asset-inventory.md  21.3K
+644  F-3d-motion-tech.md  55.5K
+644  G-glasses-model.md  13.4K
+... (2 filtered)
+[+2 hidden: rtk recall 3a7a26be7ce1]
+755  logo/
+755  source/
+755  web/
+... (2 filtered)
+[+2 hidden: rtk recall cde17d4dc117]
+[0m
+[0m# [0mTodos
+[•] Inspect source OBJ + write import/split/rig script
+[ ] Import, scale to 0.140m, orient, apply transforms
+[ ] Split into G_Front/Lenses/Arms, set hinge pivots, parent to G_Root
+[ ] Solve fold angles, BVHTree intersection check, write folded dims JSON early
+[ ] fold driver + Unfold action (frames 1-60, overshoot)
+[ ] Dark premium materials (Principled, Cycles-portable)
+[ ] Save blend, export GLB, EEVEE previews, visual verify
+[ ] Write glasses-report.md + GLASSES_READY marker
+[0m
+[0m$ [0mpython3 -c "
+import re
+src='/Users/admin/Downloads/Glasses_Mama_WBL/Glasses_Mama_WBL.obj'
+objs=[]
+cur=None
+verts={}
+minx=maxx=miny=maxy=minz=maxz=None
+import collections
+with open(src) as f:
+    for line in f:
+        if line.startswith('o '):
+            cur=line[2:].strip()
+            objs.append(cur)
+            verts[cur]=[]
+        elif line.startswith('v '):
+            p=list(map(float,line.split()[1:4]))
+            verts[cur].append(p)
+for o,vs in verts.items():
+    import numpy as np
+    a=np.array(vs)
+    print(repr(o), len(vs), 'xmin %.4f xmax %.4f'%(a[:,0].min(),a[:,0].max()))
+"
+'Vert.001' 1454 xmin -0.1649 xmax 0.1632
+'Vert.003' 3144 xmin -0.6228 xmax 0.6211
+'立方体_立方体.004' 1416 xmin -0.1568 xmax 0.1552
+'円柱' 1508 xmin -0.6865 xmax 0.6865
+'平面' 7084 xmin -0.7789 xmax 0.7789
+'球' 1412 xmin -0.6813 xmax 0.6813
+'円柱.001' 310 xmin -0.1322 xmax 0.1328
+'球.001' 1892 xmin -0.1277 xmax 0.1283
+'立方体.001_立方体.006' 511 xmin -0.1278 xmax 0.1284
+'立方体.002_立方体.007' 214 xmin -0.1639 xmax 0.1622
+'立方体_立方体.001' 4374 xmin -0.6763 xmax 0.6763
+'Vert' 164 xmin -0.7665 xmax 0.7665
+'円柱.002' 2888 xmin -0.7622 xmax 0.7622
+[0m
+[0m$ [0mmkdir -p "/Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/.orchestration/tmp" "/Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/blender" "/Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/public/models" "/Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/docs/phase3/shots" && rtk ls "/Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/.orchestration/tmp/"
+g_analyze.py  2.2K
+g_analyze2.py  1.2K
+g_blender.py  3.4K
+g_color.py  2.3K
+g_draco.glb  7.7M
+g_full.glb  8.8M
+g_hinge.py  891B
+g_qa.py  2.6K
+[0m
+[0m$ [0mpython3 -c "
+import numpy as np, collections
+src='/Users/admin/Downloads/Glasses_Mama_WBL/Glasses_Mama_WBL.obj'
+objs={}; cur=None
+with open(src) as f:
+    for line in f:
+        if line.startswith('o '): cur=line[2:].strip(); objs[cur]=[]
+        elif line.startswith('v '): objs[cur].append(list(map(float,line.split()[1:4])))
+for o,vs in objs.items():
+    a=np.array(vs)
+    print(repr(o))
+    print('   X %7.3f..%7.3f  Y %7.3f..%7.3f  Z %7.3f..%7.3f'%(
+      a[:,0].min(),a[:,0].max(),a[:,1].min(),a[:,1].max(),a[:,2].min(),a[:,2].max()))
+"
+'Vert.001'
+   X  -0.165..  0.163  Y   0.207..  0.303  Z   0.654..  0.716
+'Vert.003'
+   X  -0.623..  0.621  Y   0.001..  0.409  Z   0.644..  0.703
+'立方体_立方体.004'
+   X  -0.157..  0.155  Y   0.291..  0.302  Z   0.684..  0.704
+'円柱'
+   X  -0.687..  0.687  Y   0.303..  0.325  Z   0.563..  0.633
+'平面'
+   X  -0.779..  0.779  Y   0.002..  0.292  Z  -0.709.. -0.093
+'球'
+   X  -0.681..  0.681  Y   0.302..  0.325  Z   0.567..  0.579
+'円柱.001'
+   X  -0.132..  0.133  Y   0.177..  0.216  Z   0.640..  0.686
+'球.001'
+   X  -0.128..  0.128  Y   0.191..  0.211  Z   0.645..  0.679
+'立方体.001_立方体.006'
+   X  -0.128..  0.128  Y   0.142..  0.243  Z   0.629..  0.672
+'立方体.002_立方体.007'
+   X  -0.164..  0.162  Y   0.289..  0.304  Z   0.681..  0.685
+'立方体_立方体.001'
+   X  -0.676..  0.676  Y   0.321..  0.356  Z   0.594..  0.686
+'Vert'
+   X  -0.767..  0.767  Y   0.023..  0.085  Z  -0.689.. -0.616
+'円柱.002'
+   X  -0.762..  0.762  Y   0.270..  0.323  Z  -0.105..  0.584
+[0m
+[0m← [0mWrite .orchestration/tmp/p3_glasses_s1.py
+Wrote file successfully.
+[0m
+[0m← [0mWrite .orchestration/tmp/p3_glasses_s1.py
+Wrote file successfully.
+[0m
+[0m$ [0mrtk ls "/Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/docs/phase3/" 2>&1; rtk ls "/Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/docs/research/" 2>&1; rtk ls "/Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/public/" 2>&1
+shots/
+logo-trace-diff.png  19.7K
+logo-trace-report.md  4.9K
+screens/
+00-PHASE2-SYNTHESIS.md  4.5K
+A-website-audit.md  12.8K
+B-content-inventory.md  17.0K
+C-link-inventory.md  15.6K
+D-asset-inventory.md  21.3K
+E-visual-references.md  28.2K
+F-3d-motion-tech.md  55.5K
+G-glasses-model.md  13.4K
+models/
+[0m
+[0m$ [0mmkdir -p "/Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/public/models" "/Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/docs/phase3/shots" && rtk ls "/Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/docs/phase3/" "/Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/public/" 2>&1
+shots/
+models/
+logo-trace-diff.png  19.7K
+logo-trace-report.md  4.9K
+... (2 filtered)
+[+2 hidden: rtk recall e0fa48e42642]
+[0m
+[0m← [0mWrite .orchestration/tmp/p3_glasses_s1.py
+Wrote file successfully.
+[0m
+[0m$ [0m/Applications/Blender.app/Contents/MacOS/Blender -b --factory-startup --python "/Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/.orchestration/tmp/p3_glasses_s1.py" 2>&1 | tail -60
+IMPORTED: [('Vert', 164), ('Vert.001', 1454), ('Vert.003', 3144), ('円柱', 1508), ('円柱.001', 310), ('円柱.002', 2888), ('平面', 7084), ('球', 1412), ('球.001', 1892), ('立方体.001_立方体.006', 511), ('立方体.002_立方体.007', 214), ('立方体_立方体.001', 4374), ('立方体_立方体.004', 1416)]
+lens centroid (-0.0008175586699508131, 0.23026716709136963, 0.6805728077888489)  tips centroid (9.0492370929951e-08, 0.21280339360237122, -0.349842369556427)
+width_native=1.55779 scale=0.089871 (target ~0.104)
+lens Y centre 0.0207  tips Y centre 0.0191 (front must be -Y)
+ROTATING 180deg about Z to face front -Y
+lens centroid (scaled): (7.347940845647827e-05, -0.020694289356470108, 0.06116364896297455) m
+Vert.003: min|x|=7.779mm n=3144
+  split Vert.003 L: 1572 verts
+  split Vert.003 R: 1572 verts
+平面: min|x|=65.466mm n=7084
+  split 平面 L: 3542 verts
+  split 平面 R: 3542 verts
+円柱.002: min|x|=59.621mm n=2888
+  split 円柱.002 L: 1444 verts
+  split 円柱.002 R: 1444 verts
+Vert: min|x|=67.575mm n=164
+  split Vert L: 82 verts
+  split Vert R: 82 verts
+円柱: min|x|=59.088mm n=1508
+  split 円柱 L: 754 verts
+  split 円柱 R: 754 verts
+barrel L extents mm x=2.5 y=2.0 z=6.3
+barrel R extents mm x=2.5 y=2.0 z=6.3
+G_Arm_L: 5068 verts, 5095 polys
+G_Arm_R: 5068 verts, 5095 polys
+G_Front: 13091 verts, 15776 polys
+pivot L: (-0.06084, -0.00786, -0.01006) (n=253)
+pivot R: (0.06069, -0.00786, -0.01006) (n=253)
+BEST fold: R=98deg L=98deg cost=3280
+  cost R=90 L=90: 3390
+  cost R=90 L=93: 3385
+  cost R=93 L=93: 3380
+  cost R=95 L=95: 3360
+  cost R=92 L=95: 3385
+drivers: 1.710423*(3*(min(max(fold/0.9,0),1))**2-2*(min(max(fold/0.9, ... -1.710423*(3*(min(max((fold-0.15)/0.85,0),1))**2-2*(min(max( ...
+FOLDED bbox min (-0.06177426502108574, -0.016037750989198685, -0.12491241097450256) max (0.06162730231881142, 0.020589593797922134, 0.003213755786418915)
+FOLDED size mm LxWxH(x,y,z) = [123.40156733989716, 36.62734478712082, 128.12616676092148]
+WROTE /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/blender/glasses_folded_dims.json
+INTERSECT@fold=1: {'armR_armL': 0, 'armR_lensR': 0, 'armR_lensL': 0, 'armL_lensR': 0, 'armL_lensL': 0, 'armR_front': 328, 'armL_front': 328}
+TRIS: {'G_Front': 26082, 'G_Lens_L': 3140, 'G_Lens_R': 3140, 'G_Arm_L': 10124, 'G_Arm_R': 10124, 'TOTAL': 52610}
+Info: Saved as "glasses_rigged.blend"
+SAVED /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/blender/glasses_rigged.blend
+Blender 5.0.1 (hash a3db93c5b259 built 2025-12-16 01:51:40)
+OBJ import of 'Glasses_Mama_WBL.obj' took 213.26 ms
+
+Blender quit
+[0m
+EXIT 143 model=meta/muse-spark-1.3-contributor

@@ -1,0 +1,2 @@
+URGENT 4-minute fix. HARD TIME BOX 4 min. ID=CAPTION. You own ONLY src/components/dom/Sections.tsx and src/components/dom/photos.css.
+Client rule (brief §6d): nothing on the page that isn't on the live site. The photo captions added by the PHOTOS pass (e.g. "Polarised-lens view, from the EyeQ services page.") are invented text — remove ALL visible photo captions/figcaptions (keep the alt attributes). Change nothing else. npm run build passes. Screenshot the four photo sections at 1512×860 to docs/phase4/qa/v3/caption-*.png, LOOK, end with F6-CAPTION-DONE.

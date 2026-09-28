@@ -1,0 +1,381 @@
+[0m
+> build · muse-spark-1.3-contributor-free
+[0m
+Polish QA sweep — loading the motion and performance skills, then reading the current build.
+[0m→ [0mSkill "emil-design-eng"
+[0m→ [0mSkill "design-motion-principles"
+[0m→ [0mSkill "improve-animations"
+[0m→ [0mSkill "animation-vocabulary"
+[0m→ [0mSkill "fixing-motion-performance"
+[0m→ [0mSkill "review-animations"
+[0m→ [0mSkill "optimize-web-animations"
+[0m→ [0mSkill "no-ai-design-slop"
+[0m→ [0mSkill "web-perf"
+Using improve-animations, review-animations, web-perf, optimize-web-animations, fixing-motion-performance, no-ai-design-slop, emil-design-eng, and design-motion-principles to run a read-only QA audit.
+[0m→ [0mRead .
+[0m→ [0mRead docs/00-BRIEF.md
+[0m✱ [0mGlob "docs/phase4/qa/v2/*.md"[90m in . · 6 matches[0m
+[0m✱ [0mGlob "docs/phase4/qa/v3/*.md"[90m in . · 5 matches[0m
+[0m
+[0m$ [0mrtk ls src/v1/ src/components/dom/ public/v1film/ 2>&1 | head -80; echo ---; cat public/v1film/manifest.json 2>/dev/null | head -c 2000; echo; echo ---PORT---; lsof -i :5505 2>/dev/null | head; echo ---PKG---; cat package.json | head -60
+full/
+mobile/
+web/
+manifest.json  205B
+BookingCTA.tsx  2.8K
+ChapterOverlay.tsx  7.8K
+Footer.tsx  3.1K
+Header.tsx  7.9K
+LogoRails.tsx  15.3K
+Scrims.tsx  590B
+Sections.tsx  14.9K
+SkipLinks.tsx  1.6K
+StoreBits.tsx  3.2K
+WhiteSection.tsx  3.2K
+index.ts  820B
+lane-e.css  42.6K
+App.tsx  3.2K
+BrandWaves.tsx  11.1K
+FilmCaptions.tsx  1.8K
+FilmSequence.tsx  15.4K
+SidePanels.tsx  8.1K
+captions.css  1.7K
+dev-text.tsx  1.7K
+dev-waves.tsx  2.4K
+dev-words.tsx  3.4K
+filmCurve.ts  12.9K
+frameLoader.ts  11.8K
+lenis.ts  1.5K
+main.tsx  620B
+progress.ts  1.1K
+side.css  5.0K
+sideCopy.ts  4.7K
+snap.ts  6.0K
+v1.css  6.6K
+waves.css  3.7K
+... (3 filtered)
+[+3 hidden: rtk recall 1e16ee31f615]
+---
+{"count":3588,"sourceFrames":615,"fpsMult":5.8333,"tiers":{"full":{"w":3024,"h":1720,"dir":"full"},"web":{"w":1512,"h":860,"dir":"web"},"mobile":{"w":1024,"h":582,"dir":"mobile"}},"pattern":"f_%05d.webp"}
+
+---PORT---
+---PKG---
+{
+  "name": "eyeq-vision-care",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc -b && vite build",
+    "postbuild": "cp dist/index.html dist/404.html",
+    "preview": "vite preview",
+    "lint": "eslint src --max-warnings 0",
+    "test:e2e": "playwright test"
+  },
+  "dependencies": {
+    "@gsap/react": "2.1.2",
+    "@react-three/drei": "10.7.9",
+    "@react-three/fiber": "9.8.1",
+    "@react-three/postprocessing": "3.1.3",
+    "gsap": "3.15.0",
+    "lenis": "1.3.26",
+    "maath": "0.10.8",
+    "postprocessing": "6.39.5",
+    "react": "19.3.0",
+    "react-dom": "19.3.0",
+    "react-router-dom": "7.18.4",
+    "three": "0.186.1",
+    "zustand": "5.0.15"
+  },
+  "devDependencies": {
+    "@eslint/js": "9.39.1",
+    "@gltf-transform/cli": "4.5.0",
+    "@playwright/test": "1.63.0",
+    "@types/react": "19.3.0",
+    "@types/react-dom": "19.3.0",
+    "@types/three": "0.186.0",
+    "@vitejs/plugin-react": "6.1.1",
+    "eslint": "9.39.1",
+    "eslint-plugin-react-hooks": "7.0.1",
+    "eslint-plugin-react-refresh": "0.4.24",
+    "globals": "16.5.0",
+    "typescript": "5.9.2",
+    "typescript-eslint": "8.50.0",
+    "vite": "8.3.1"
+  }
+}
+[0m
+[0m→ [0mRead v1.html
+[0m→ [0mRead docs/phase4/qa/v3/ORCHESTRATOR-NOTES.md
+[0m→ [0mRead docs/phase4/qa/v2/QA.md
+[0m→ [0mRead docs/phase4/qa/v3/MPAGE.md
+[0m→ [0mRead docs/phase4/qa/v3/SCROLL.md
+[0m→ [0mRead docs/phase4/qa/v3/PERF.md
+[0m→ [0mRead docs/phase4/qa/v3/mfilm.md
+[0m→ [0mRead docs/phase4/qa/v2/words.md
+[0m→ [0mRead docs/phase4/qa/v2/film.md
+[0m→ [0mRead docs/phase4/qa/v2/waves.md
+[0m→ [0mRead docs/phase4/qa/v2/SNAP.md
+QA sweep underway — starting the 5505 server and reading the current V3 code in parallel.
+[0m→ [0mRead src/v1/App.tsx
+[0m→ [0mRead src/v1/FilmSequence.tsx
+[0m
+[0m$ [0mPORT=5505 npx vite --port 5505 --strictPort > /tmp/v3-qa-5505.log 2>&1 &
+echo started; sleep 6; curl -s -o /dev/null -w "%{http_code}" http://localhost:5505/v1.html; echo; tail -5 /tmp/v3-qa-5505.log
+started
+200
+
+  VITE v8.3.1  ready in 528 ms
+
+  ➜  Local:   http://localhost:5505/
+  ➜  Network: use --host to expose
+[0m
+[0m$ [0mrtk read playwright.config.ts; echo ---; rtk ls /tmp/v3-perf-shots 2>/dev/null | head; echo ---; rtk grep -n "snapKeyScrolls\|SNAP_SOURCE_KEYS\|snapSourceToScroll" src/v1/filmCurve.ts | head; echo ---; rtk grep -n "is-tail\|is-intro\|v1-film\b\|800vh\|560vh\|620vh" src/v1/v1.css | head -20
+import { defineConfig, devices } from '@playwright/test'
+
+// Lane A scaffold baseline. Lane B owns scripts/qa/beats.spec.ts (the full
+// 12-stop film harness, PLAN-MASTER §11.1). Lane A captures live in
+// docs/phase4/qa/A/ via a one-off script — not in scripts/qa/.
+export default defineConfig({
+  testDir: './scripts/qa',
+  fullyParallel: true,
+  reporter: 'list',
+  use: {
+    baseURL: 'http://localhost:5173',
+    trace: 'on-first-retry',
+  },
+  projects: [
+    { name: 'chromium', use: { ...devices['Desktop Chrome'] } },
+  ],
+  webServer: {
+    command: 'npm run dev -- --port 5173 --strictPort',
+    url: 'http://localhost:5173',
+    reuseExistingServer: true,
+  },
+})
+---
+mid-1024x768.png  228.7K
+mid-1512x860.png  300.8K
+mid-1920x1080.png  512.9K
+mid-390x844.png  200.7K
+tail-1024x768.png  394.8K
+tail-1512x860.png  569.9K
+tail-1920x1080.png  797.1K
+tail-390x844.png  255.6K
+top-1024x768.png  353.2K
+top-1512x860.png  420.2K
+---
+300:export const SNAP_SOURCE_KEYS: readonly number[] = [1, 70, 145, 215, 280, 368, 440, 500, 600];
+303:export function snapSourceToScroll(source: number): number {
+308:export function snapKeyScrolls(): number[] {
+309:  return SNAP_SOURCE_KEYS.map(snapSourceToScroll);
+318:  const keys = snapKeyScrolls();
+---
+8:/* ---- Film: pinned canvas section, 800vh desktop / 560vh mobile ---- */
+9:.v1-film {
+11:  height: 800vh;
+16:  .v1-film {
+17:    height: 560vh;
+37:  /* Intro iris: closed on Void, opens when the stage goes .is-intro. */
+41:.v1-film__stage.is-intro .v1-film__canvas {
+161:.v1-film__stage.is-tail {
+164:.v1-film__stage.is-tail .v1-finish,
+165:.v1-film__stage.is-tail .v1-letterbox,
+166:.v1-film__stage.is-tail .v1-progress {
+[0m
+[0m← [0mWrite /tmp/v3-qa-capture.mjs
+Wrote file successfully.
+[0m
+[0m$ [0mnode /tmp/v3-qa-capture.mjs 2>&1 | tail -60
+node:internal/modules/package_json_reader:301
+  throw new ERR_MODULE_NOT_FOUND(packageName, fileURLToPath(base), null);
+        ^
+
+Error [ERR_MODULE_NOT_FOUND]: Cannot find package 'playwright' imported from /private/tmp/v3-qa-capture.mjs
+    at Object.getPackageJSONURL (node:internal/modules/package_json_reader:301:9)
+    at packageResolve (node:internal/modules/esm/resolve:768:81)
+    at moduleResolve (node:internal/modules/esm/resolve:859:18)
+    at defaultResolve (node:internal/modules/esm/resolve:992:11)
+    at #cachedDefaultResolve (node:internal/modules/esm/loader:701:20)
+    at #resolveAndMaybeBlockOnLoaderThread (node:internal/modules/esm/loader:721:38)
+    at ModuleLoader.resolveSync (node:internal/modules/esm/loader:759:56)
+    at #resolve (node:internal/modules/esm/loader:683:17)
+    at ModuleLoader.getOrCreateModuleJob (node:internal/modules/esm/loader:603:35)
+    at ModuleJob.syncLink (node:internal/modules/esm/module_job:163:33) {
+  code: 'ERR_MODULE_NOT_FOUND'
+}
+
+Node.js v24.18.0
+[0m
+[0m$ [0mcp /tmp/v3-qa-capture.mjs ./qa-v3-capture.mjs && node ./qa-v3-capture.mjs 2>&1 | tail -60; rm -f ./qa-v3-capture.mjs
+== 1512 ready=true preloader={"count":"100","done":true} tiers=web errors=0 cls=0.00041102834531206965 lcp=14800 longtasks=1
+   key 1: mean=24 sd=0.7 blank=true
+   key 70: mean=26.5 sd=0.8 blank=true
+   key 145: mean=13.4 sd=0.2 blank=true
+   key 215: mean=46.6 sd=2.6 blank=false
+   key 280: mean=0 sd=0 blank=true
+   key 368: mean=0.8 sd=9.8 blank=false
+   key 440: mean=0 sd=0 blank=true
+   key 500: mean=0 sd=0 blank=true
+   key 600: mean=231.5 sd=0.3 blank=true
+== 1920 ready=true preloader={"count":"100","done":true} tiers=web errors=0 cls=0.00024449835883246526 lcp=14812 longtasks=1
+   key 1: mean=24 sd=0.7 blank=true
+   key 70: mean=26.3 sd=0.8 blank=true
+   key 145: mean=13.3 sd=0.3 blank=true
+   key 215: mean=46.2 sd=1.9 blank=false
+   key 280: mean=0 sd=0 blank=true
+   key 368: mean=0 sd=0 blank=true
+   key 440: mean=0 sd=0 blank=true
+   key 500: mean=6.5 sd=0.9 blank=true
+   key 600: mean=231.7 sd=0.4 blank=true
+== 1024 ready=true preloader={"count":"100","done":true} tiers=web errors=0 cls=0.00009374599903821945 lcp=14592 longtasks=1
+   key 1: mean=24 sd=0.7 blank=true
+   key 70: mean=26.4 sd=0.7 blank=true
+   key 145: mean=13 sd=0.2 blank=true
+   key 215: mean=46.1 sd=2.9 blank=false
+   key 280: mean=0 sd=0 blank=true
+   key 368: mean=2.6 sd=17.3 blank=false
+   key 440: mean=0 sd=0 blank=true
+   key 500: mean=33.8 sd=2.4 blank=false
+   key 600: mean=231.7 sd=0.2 blank=true
+== 390 ready=true preloader={"count":"100","done":true} tiers=mobile errors=0 cls=0.087052158838792 lcp=13712 longtasks=0
+   key 1: mean=23.9 sd=0.8 blank=true
+   key 70: mean=26.3 sd=0.9 blank=true
+   key 145: mean=13 sd=0.1 blank=true
+   key 215: mean=45.7 sd=2.9 blank=false
+   key 280: mean=45.7 sd=2.9 blank=false
+   key 368: mean=45.7 sd=2.9 blank=false
+   key 440: mean=45.7 sd=2.9 blank=false
+   key 500: mean=49.9 sd=0.8 blank=true
+   key 600: mean=232 sd=0.1 blank=true
+SUMMARY WRITTEN
+[0m
+[0m→ [0mRead /tmp/v3-qa-shots/qa-key-215-1512.png
+[0m→ [0mRead /tmp/v3-qa-shots/qa-key-280-1512.png
+[0m→ [0mRead /tmp/v3-qa-shots/qa-key-1-1512.png
+[0m→ [0mRead /tmp/v3-qa-shots/qa-key-70-1512.png
+[0m→ [0mRead /tmp/v3-qa-shots/qa-key-368-1512.png
+[0m→ [0mRead /tmp/v3-qa-shots/qa-key-145-1512.png
+Keys 70, 145, and 368 are clean. Checking the remaining keys and white act.
+[0m→ [0mRead /tmp/v3-qa-shots/qa-key-440-1512.png
+[0m→ [0mRead /tmp/v3-qa-shots/qa-key-600-1512.png
+[0m→ [0mRead /tmp/v3-qa-shots/qa-key-500-1512.png
+[0m→ [0mRead /tmp/v3-qa-shots/qa-white-390.png
+[0m→ [0mRead /tmp/v3-qa-shots/qa-key-215-390.png
+[0m→ [0mRead /tmp/v3-qa-shots/qa-white-1512.png
+[0m✗ [0mRead /tmp/v3-qa-shots/qa-key-100-390.png failed
+[91m[1mError: [0mFile not found: /tmp/v3-qa-shots/qa-key-100-390.png
+[0m→ [0mRead /tmp/v3-qa-shots/qa-foot-1512.png
+[0m
+[0m$ [0mpython3 -c "
+import json
+s=json.load(open('/tmp/v3-qa-shots/qa-summary.json'))
+for tag,v in s.items():
+    print(tag,'longtasks=',v['metrics'].get('longtasks'),'lcp=',v['metrics'].get('lcp'),'cls=',round(v['metrics'].get('cls',0),5),'docH=',v['metrics'].get('docH'),'filmDist=',v.get('filmDist'),'draftEls=',v.get('draftEls'),'draftHits=',v.get('draftHits'),'errors=',v.get('errors'))
+"
+390 longtasks= [] lcp= 13712 cls= 0.08705 docH= 13138 filmDist= 3882 draftEls= 0 draftHits= [] errors= []
+1024 longtasks= [343] lcp= 14592 cls= 9e-05 docH= 13364 filmDist= 5376 draftEls= 0 draftHits= [] errors= []
+1512 longtasks= [64] lcp= 14800 cls= 0.00041 docH= 14502 filmDist= 6020 draftEls= 0 draftHits= [] errors= []
+1920 longtasks= [160] lcp= 14812 cls= 0.00024 docH= 16261 filmDist= 7560 draftEls= 0 draftHits= [] errors= []
+[0m
+[0m← [0mWrite qa-v3-probe.mjs
+Wrote file successfully.
+[0m
+[0m$ [0mnode ./qa-v3-probe.mjs 2>&1 | tail -12
+1512 w1hold: target=3004 settled=3004 final=3004 drift=0
+1512 w2hold: target=4497 settled=4497 final=4497 drift=0
+1512 s500: target=4925 settled=4925 final=4925 drift=0
+390 s100: target=660 settled=660 final=660 drift=0
+390 s185: target=1114 settled=1114 final=1114 drift=0
+390 hero: target=1332 settled=1332 final=1332 drift=0
+390 w2hold: target=2900 settled=2900 final=2900 drift=0
+PROBE DONE
+[0m
+Scroll lands exact — earlier duplicates were stale-frame fallback. Viewing the settled captures.
+[0m→ [0mRead /tmp/v3-qa-shots/qa2-w2hold-1512.png
+[0m→ [0mRead /tmp/v3-qa-shots/qa2-w1hold-1512.png
+[0m→ [0mRead /tmp/v3-qa-shots/qa2-s500-1512.png
+[0m
+[0m$ [0mrtk grep -n "export function scrollToFilm\|export function buildSegments\|filmToScroll\|sourceTo\|function invert\|export const" src/v1/filmCurve.ts | head -20
+63:export const SOURCE_TOTAL = 615;
+65:export const BEAT_TABLE: BeatRow[] = [
+110:export const LEGACY_SOURCE_FRAMES = 480;
+133:export function sourceToFilm(source: number, space: FilmSpace): number {
+152:export function buildSegments(space: FilmSpace): CurveSegment[] {
+161:      film0: sourceToFilm(row.s0, space),
+162:      film1: sourceToFilm(row.s1, space),
+175:export function scrollToFilm(scrollP: number, manifest: FilmManifest): number {
+195:export function filmToScroll(filmP: number, manifest: FilmManifest): number {
+240:  return [sourceToFilm(row.s0, CANONICAL), sourceToFilm(row.s1, CANONICAL)];
+245:export const OVERLAY_MARKS = {
+268:export const CHAPTER_TICKS: readonly number[] = [
+298:export const V2_FILM_MANIFEST: FilmManifest = { count: 3588, sourceFrames: 615 };
+300:export const SNAP_SOURCE_KEYS: readonly number[] = [1, 70, 145, 215, 280, 368, 440, 500, 600];
+304:  return filmToScroll(sourceToFilm(source, resolveFilmSpace(V2_FILM_MANIFEST)), V2_FILM_MANIFEST);
+[0m
+`filmToScroll` is the exact inverse — using it in-page for precise hold positions.
+[0m← [0mWrite qa-v3-probe3.mjs
+Wrote file successfully.
+[0m
+[0m$ [0mnode ./qa-v3-probe3.mjs 2>&1 | tail -8
+1512 s312: frac=0.4694 y=2826
+1512 s460: frac=0.7269 y=4376
+390 s100: frac=0.1590 y=617
+390 s185: frac=0.2912 y=1130
+390 s312: frac=0.4694 y=1822
+390 s460: frac=0.7269 y=2822
+PROBE3 DONE
+[0m
+[0m→ [0mRead /tmp/v3-qa-shots/qa3-s460-1512.png
+[0m→ [0mRead /tmp/v3-qa-shots/qa3-s312-1512.png
+[0m→ [0mRead /tmp/v3-qa-shots/qa3-s460-390.png
+[0m→ [0mRead /tmp/v3-qa-shots/qa3-s100-390.png
+[0m→ [0mRead /tmp/v3-qa-shots/qa3-s185-390.png
+[0m
+[0m← [0mWrite qa-v3-video.mjs
+Wrote file successfully.
+[0m
+[0m✱ [0mGrep "award|best-|#1|%|years|Burlington|2018|testimonial|promotion|discount|sale\b|free |guarantee|leading|top-rated|5-star"[90m in src · 100 matches[0m
+[0m
+[0m$ [0mnode ./qa-v3-video.mjs 2>&1 | tail -6
+VIDEO 1512 done total=13662
+VIDEO 1920 done total=15201
+VIDEO 1024 done total=12616
+VIDEO 390 done total=12314
+[0m
+[0m→ [0mRead /tmp/v3-qa-shots/qa3-s312-390.png
+[0m→ [0mRead /tmp/v3-qa-shots/qa-white-1024.png
+[0m→ [0mRead /tmp/v3-qa-shots/qa-key-215-1920.png
+[0m
+[0m← [0mWrite qa-v3-snaprm.mjs
+Wrote file successfully.
+[0m
+[0m% [0mWebFetch https://eyeqoptical.ca/
+[0m
+[0m$ [0mnode ./qa-v3-snaprm.mjs 2>&1 | tail -6; rtk ls -la /tmp/v3-qa-shots/vid-*/ 2>/dev/null | head -12
+SNAP off-key: hero=2065 parked=1965 afterIdle=2065 nudged=100
+SNAP cancel: mid=2065 after=2065 hero=2065
+RM: {"n":5,"imgs":["/v1film/web/f_00001.webp","/v1film/web/f_00718.webp","/v1film/web/f_01615.webp","/v1film/web/f_02512.webp","/v1film/web/f_03409.webp"],"canvas":false}
+SNAPRM DONE
+644  page@a2de4f059ef3268c728312263fa5a5ec.webm  2.8M
+644  page@2c2877b2e63d5ffc79937976a572e2ee.webm  3.0M
+644  page@b47ba24c07d379925f39e81b4c2ae4ba.webm  3.2M
+644  page@eb88b89401767a9f064e7fb3d9db46f0.webm  1.9M
+... (4 filtered)
+[+4 hidden: rtk recall 3f4f56bcdfee]
+[0m
+[0m• [0mVisual critique of V3 film page[90m Visual-Critic Agent[0m
+[0m
+[0m$ [0mwhich ffmpeg && for v in 1512 390; do f=$(rtk ls /tmp/v3-qa-shots/vid-$v/ | head -1); ffmpeg -y -loglevel error -i /tmp/v3-qa-shots/vid-$v/$f -vf "select='eq(n\,50)+eq(n\,300)+eq(n\,600)+eq(n\,900)',scale=768:-1" -vsync 0 /tmp/v3-qa-shots/vidframe-$v-%d.png && rtk ls /tmp/v3-qa-shots/vidframe-$v-*.png; done
+/opt/homebrew/bin/ffmpeg
+dyld[68626]: Library not loaded: /opt/homebrew/opt/x265/lib/libx265.215.dylib
+  Referenced from: <77C37471-F3FC-37DD-A9AE-8F2BDB0573CA> /opt/homebrew/Cellar/ffmpeg/8.0.1_1/bin/ffmpeg
+  Reason: tried: '/opt/homebrew/opt/x265/lib/libx265.215.dylib' (no such file), '/System/Volumes/Preboot/Cryptexes/OS/opt/homebrew/opt/x265/lib/libx265.215.dylib' (no such file), '/opt/homebrew/opt/x265/lib/libx265.215.dylib' (no such file), '/opt/homebrew/Cellar/x265/4.2/lib/libx265.215.dylib' (no such file), '/System/Volumes/Preboot/Cryptexes/OS/opt/homebrew/Cellar/x265/4.2/lib/libx265.215.dylib' (no such file), '/opt/homebrew/Cellar/x265/4.2/lib/libx265.215.dylib' (no such file)
+dyld[68665]: Library not loaded: /opt/homebrew/opt/x265/lib/libx265.215.dylib
+  Referenced from: <77C37471-F3FC-37DD-A9AE-8F2BDB0573CA> /opt/homebrew/Cellar/ffmpeg/8.0.1_1/bin/ffmpeg
+  Reason: tried: '/opt/homebrew/opt/x265/lib/libx265.215.dylib' (no such file), '/System/Volumes/Preboot/Cryptexes/OS/opt/homebrew/opt/x265/lib/libx265.215.dylib' (no such file), '/opt/homebrew/opt/x265/lib/libx265.215.dylib' (no such file), '/opt/homebrew/Cellar/x265/4.2/lib/libx265.215.dylib' (no such file), '/System/Volumes/Preboot/Cryptexes/OS/opt/homebrew/Cellar/x265/4.2/lib/libx265.215.dylib' (no such file), '/opt/homebrew/Cellar/x265/4.2/lib/libx265.215.dylib' (no such file)
+[0m
+[0m✗ [0mVisual critique of V3 film page failed[90m Visual-Critic Agent[0m
+[91m[1mError: [0mSubagent failed (task_id: ses_f178dca86ffe8ZI4c4ANIiO7RN): Error from provider (Console): Rate limit exceeded. Please try again later.
+EXIT 143 model=opencode/muse-spark-1.3-contributor-free

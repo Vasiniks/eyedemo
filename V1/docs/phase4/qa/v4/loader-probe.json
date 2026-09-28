@@ -1,0 +1,103 @@
+{
+  "hdProbe": {
+    "ok": false,
+    "reason": "not-json",
+    "status": 200
+  },
+  "results": [
+    {
+      "stop": 1,
+      "frac": 0.07,
+      "shot": "docs/phase4/qa/v4/loader-stop-1.png",
+      "ok": true,
+      "lenA": 288430,
+      "lenB": 309258,
+      "identical": false,
+      "px": 5224
+    },
+    {
+      "stop": 2,
+      "frac": 0.19,
+      "shot": "docs/phase4/qa/v4/loader-stop-2.png",
+      "ok": true,
+      "lenA": 288606,
+      "lenB": 288606,
+      "identical": true,
+      "px": 5220
+    },
+    {
+      "stop": 3,
+      "frac": 0.31,
+      "shot": "docs/phase4/qa/v4/loader-stop-3.png",
+      "ok": true,
+      "lenA": 133798,
+      "lenB": 128014,
+      "identical": false,
+      "px": 9008
+    },
+    {
+      "stop": 4,
+      "frac": 0.43,
+      "shot": "docs/phase4/qa/v4/loader-stop-4.png",
+      "ok": true,
+      "lenA": 120342,
+      "lenB": 120342,
+      "identical": true,
+      "px": 9216
+    },
+    {
+      "stop": 5,
+      "frac": 0.55,
+      "shot": "docs/phase4/qa/v4/loader-stop-5.png",
+      "ok": true,
+      "lenA": 341150,
+      "lenB": 351838,
+      "identical": false,
+      "px": 46
+    },
+    {
+      "stop": 6,
+      "frac": 0.67,
+      "shot": "docs/phase4/qa/v4/loader-stop-6.png",
+      "ok": true,
+      "lenA": 312818,
+      "lenB": 312818,
+      "identical": true,
+      "px": 2466
+    },
+    {
+      "stop": 7,
+      "frac": 0.81,
+      "shot": "docs/phase4/qa/v4/loader-stop-7.png",
+      "ok": true,
+      "lenA": 215314,
+      "lenB": 240038,
+      "identical": false,
+      "px": 9664
+    },
+    {
+      "stop": 8,
+      "frac": 0.93,
+      "shot": "docs/phase4/qa/v4/loader-stop-8.png",
+      "ok": true,
+      "lenA": 212786,
+      "lenB": 212786,
+      "identical": true,
+      "px": 9664
+    }
+  ],
+  "perf": {
+    "n": 410,
+    "p50": 16.7,
+    "p95": 16.8,
+    "max": 33.3
+  },
+  "hdCheck": {
+    "canvas": true,
+    "w": 1512,
+    "h": 860,
+    "pxTop": 0,
+    "pxMid": 0
+  },
+  "errors": []
+}

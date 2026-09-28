@@ -1,0 +1,297 @@
+{
+ "stack": {
+  "libs": {
+   "gsap": "3.12.2",
+   "gsap_animated_elements": 44,
+   "scrolltrigger": {
+    "pins": 0,
+    "triggers": []
+   },
+   "split_text_blocks": 6
+  },
+  "canvases": [],
+  "videos": [],
+  "fonts": [
+   "Google Sans 500 normal",
+   "Roslindale Display 300 normal",
+   "Monument Extended 400 normal"
+  ],
+  "bodyCursor": "auto",
+  "docHeight": 900,
+  "title": "Realevate | Exceptional Real Estate Investments in Cyprus, Montenegro & Georgia",
+  "rafCallsSoFar": 11426,
+  "raf_calls_per_sec": 184
+ },
+ "gl_renderer": "ANGLE (Apple, ANGLE Metal Renderer: Apple M2 Pro, Unspecified Version)",
+ "phases_done": [
+  "scroll motion map",
+  "hover + cursor",
+  "pointer probe",
+  "states"
+ ],
+ "phases_cut": [],
+ "bundles": {
+  "keyword_hits": {
+   "gsap": 1008,
+   "ScrollTrigger": 174,
+   "SplitText": 28,
+   "Flip": 7,
+   "Observer": 88,
+   "ScrollSmoother": 6,
+   "barba": 1,
+   "ogl": 276,
+   "rive": 28,
+   "fbm": 2,
+   "Points": 4,
+   "requestAnimationFrame": 134,
+   "IntersectionObserver": 7,
+   "clip-path": 100,
+   "mix-blend-mode": 10
+  },
+  "gsap_eases": [
+   [
+    "none",
+    22
+   ],
+   [
+    "power2.out",
+    16
+   ],
+   [
+    "expo.inOut",
+    16
+   ],
+   [
+    "power2.inOut",
+    14
+   ],
+   [
+    "power4.out",
+    6
+   ],
+   [
+    "power2.in",
+    6
+   ],
+   [
+    "power3.out",
+    4
+   ],
+   [
+    "expo",
+    2
+   ],
+   [
+    "power4",
+    2
+   ]
+  ],
+  "durations": [
+   [
+    ".5",
+    14
+   ],
+   [
+    "1",
+    10
+   ],
+   [
+    ".8",
+    10
+   ],
+   [
+    ".75",
+    8
+   ],
+   [
+    ".2",
+    8
+   ],
+   [
+    ".6",
+    8
+   ],
+   [
+    "1.6",
+    8
+   ],
+   [
+    "1.4",
+    8
+   ],
+   [
+    ".7",
+    6
+   ],
+   [
+    "0",
+    4
+   ],
+   [
+    ".65",
+    4
+   ],
+   [
+    ".35",
+    4
+   ],
+   [
+    ".22",
+    4
+   ],
+   [
+    "1.2",
+    4
+   ],
+   [
+    ".55",
+    2
+   ]
+  ],
+  "staggers": [
+   [
+    "0",
+    6
+   ],
+   [
+    ".025",
+    4
+   ],
+   [
+    "{each:o.cardStagger,from:\"end\"}",
+    4
+   ],
+   [
+    ".08",
+    2
+   ],
+   [
+    "{each:Jt.stagger,from:\"end\"}",
+    2
+   ],
+   [
+    ".045",
+    2
+   ],
+   [
+    ".01",
+    2
+   ],
+   [
+    ".008",
+    2
+   ],
+   [
+    ".02",
+    2
+   ]
+  ],
+  "scroll_starts": [
+   [
+    "top bottom",
+    6
+   ],
+   [
+    "bottom bottom",
+    6
+   ],
+   [
+    "top top",
+    4
+   ],
+   [
+    "top 90%",
+    2
+   ]
+  ],
+  "scroll_ends": [
+   [
+    "bottom top",
+    12
+   ],
+   [
+    "bottom bottom",
+    4
+   ],
+   [
+    "bottom 0%",
+    2
+   ]
+  ],
+  "scrub_values": [
+   [
+    "!0",
+    8
+   ],
+   [
+    "0",
+    2
+   ]
+  ],
+  "css_eases": [
+   [
+    "cubic-bezier(.7, .6, 0, 1)",
+    4
+   ],
+   [
+    "cubic-bezier(.18, .13, 0, .99)",
+    2
+   ],
+   [
+    "cubic-bezier(.16,1,.3,1)",
+    2
+   ],
+   [
+    "cubic-bezier(.15, .32, .2, .99)",
+    2
+   ],
+   [
+    "cubic-bezier(.15,.32,.2,.99)",
+    2
+   ]
+  ],
+  "lenis_options": [],
+  "scrolltrigger_snippets": [
+   "scrollTrigger:{trigger:h,start:kr.start,end:kr.end,invalidateOnRefresh:!1}",
+   "scrollTrigger:{trigger:se,scroller:h,start:kr.start,end:kr.end,invalidateOnRefresh:!1}",
+   "scrollTrigger:{id:ya,trigger:e,start:\"top top\",end:\"bottom top\",scrub:!0,invalidateOnRefresh:!0}",
+   "scrollTrigger:{id:ce.exitId,trigger:e,start:\"bottom bottom\",end:\"bottom top\",scrub:!0,onUpdate(r){t&&De(r.progress>0)}",
+   "scrollTrigger:{id:ce.exitId,trigger:e,start:\"bottom bottom\",end:\"bottom top\",scrub:!0,onUpdate(o){t&&De(o.progress>0)}",
+   "scrollTrigger:{id:n,trigger:t,start:\"top bottom\",end:\"bottom top\",scrub:s,invalidateOnRefresh:!0}",
+   "scrollTrigger:{id:t,trigger:e,start:\"top bottom\",end:\"bottom top\",scrub:Qg,invalidateOnRefresh:!0}",
+   "scrollTrigger:{trigger:h,start:kr.start,end:kr.end,invalidateOnRefresh:!1}",
+   "scrollTrigger:{trigger:se,scroller:h,start:kr.start,end:kr.end,invalidateOnRefresh:!1}",
+   "scrollTrigger:{id:ya,trigger:e,start:\"top top\",end:\"bottom top\",scrub:!0,invalidateOnRefresh:!0}",
+   "scrollTrigger:{id:ce.exitId,trigger:e,start:\"bottom bottom\",end:\"bottom top\",scrub:!0,onUpdate(r){t&&De(r.progress>0)}",
+   "scrollTrigger:{id:ce.exitId,trigger:e,start:\"bottom bottom\",end:\"bottom top\",scrub:!0,onUpdate(o){t&&De(o.progress>0)}"
+  ]
+ },
+ "cursor": {
+  "custom_cursor": false,
+  "css_cursor": "auto"
+ },
+ "pointer": [
+  {
+   "at": "top",
+   "reactive_cells": [
+    "left",
+    "right"
+   ],
+   "ambient_cells": [
+    "bottom-left",
+    "bottom",
+    "bottom-right"
+   ],
+   "moved_elements": [
+    "img \"\" .",
+    "div \"Elevating Life Elevating\" .marquee-scroll"
+   ]
+  }
+ ],
+ "pages": [],
+ "pages_found": 1,
+ "transitions": [],
+ "transition": null,
+ "intro_ready_ms": 0,
+ "virtual_scroll": false
+}

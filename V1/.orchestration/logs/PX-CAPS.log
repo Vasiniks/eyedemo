@@ -1,0 +1,773 @@
+[0m
+> build · muse-spark-1.3-contributor
+[0m
+[0m→ [0mSkill "design-motion-principles"
+[0m→ [0mSkill "animation-vocabulary"
+[0m→ [0mSkill "cinematic-gsap-lenis-motion-system"
+[0m→ [0mSkill "improve-animations"
+[0m→ [0mSkill "review-animations"
+[0m→ [0mSkill "fixing-motion-performance"
+[0m→ [0mSkill "awwwards-playbook"
+[0m→ [0mSkill "no-ai-design-slop"
+[0m→ [0mSkill "emil-design-eng"
+[0m→ [0mRead .
+[0m→ [0mRead v1.html
+[0m→ [0mRead docs/phase4/PLAN-MASTER.md
+[0m→ [0mRead src/v1/captions.css
+[0m→ [0mRead src/v1/FilmCaptions.tsx
+[0m→ [0mRead src/v1
+[0m→ [0mRead package.json
+[0m→ [0mRead src/v1/App.tsx
+[0m→ [0mRead src/v1/FilmSequence.tsx
+[0m→ [0mRead src/styles/tokens.css
+[0m→ [0mRead src/v1/dev-text.tsx
+[0m→ [0mRead src/v1/progress.ts
+[0m→ [0mRead src/v1/v1.css
+[0m✱ [0mGlob "tests/**/*"[90m 0 matches[0m
+[0m✱ [0mGlob "**/*cap*test*.*"[90m 0 matches[0m
+[0m✱ [0mGlob "playwright.config.ts"[90m 1 match[0m
+[0m→ [0mRead playwright.config.ts
+[0m→ [0mRead vite.config.ts
+[0m
+[0m# [0mTodos
+[•] Polish FilmCaptions.tsx (logo sweep, microcap, rule+indices, drift/blur/exit)
+[ ] Polish captions.css (title-card craft, readability, reduced-motion)
+[ ] Verify: vite 5302 + Playwright screenshots + video, look, stop server
+[0m
+[0m← [0mEdit src/v1/FilmCaptions.tsx
+Index: /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/v1/FilmCaptions.tsx
+===================================================================
+--- /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/v1/FilmCaptions.tsx
++++ /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/v1/FilmCaptions.tsx
+@@ -12,9 +12,12 @@
+ const smooth = (p: number, a: number, b: number): number => {
+   const t = clamp01((p - a) / (b - a));
+   return t * t * (3 - 2 * t);
+ };
+-const easeOut = (t: number): number => 1 - Math.pow(1 - t, 3);
++// Motion language (PLAN-MASTER §8): expo.out entrances, transforms/opacity only.
++const expoOut = (t: number): number =>
++  t <= 0 ? 0 : t >= 1 ? 1 : 1 - Math.pow(2, -10 * t);
++const easeOut = expoOut;
+ 
+ // Verbatim B §4 (carousel heading + carousel items in order + slideshow items).
+ const LENS_HEADING = 'Our Popular High-Definition Lenses';
+ const LENSES: string[] = [
+
+[0m
+[0m← [0mEdit src/v1/FilmCaptions.tsx
+Index: /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/v1/FilmCaptions.tsx
+===================================================================
+--- /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/v1/FilmCaptions.tsx
++++ /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/v1/FilmCaptions.tsx
+@@ -55,79 +55,155 @@
+ 
+ function FilmCaptions({ progress }: { progress: number }) {
+   const p = clamp01(progress);
+ 
+-  // Beat A: 0.00–0.06 bottom-left establish.
++  // Beat A: 0.00–0.06 bottom-left establish (title-card lockup).
+   const aIn = smooth(p, 0.0, 0.012);
+-  const aOut = 1 - smooth(p, 0.05, 0.06);
+-  const aOp = Math.min(aIn, aOut);
++  const aExit = smooth(p, 0.05, 0.06);
++  const aOp = Math.min(aIn, 1 - aExit);
+   const showA = aOp > 0.001;
++  // Logo masked line reveal: yPercent 110→0 shaped expo.out.
++  const logoT = expoOut(clamp01(p / 0.012));
++  // Light sweep crosses once the lockup has landed (pure function of p).
++  const sweepT = clamp01((p - 0.004) / 0.02);
++  const sweepX = -160 + sweepT * 320;
++  // Micro-cap: letter-spacing 0.32em→0.18em + fade/rise, expo.out.
++  const mcT = expoOut(clamp01((p - 0.008) / 0.014));
++  const mcSpacing = 0.32 - (0.32 - 0.18) * mcT;
++  // Counter-drift: captions breathe ≤8px against the camera push.
++  const driftA = -clamp01(p / 0.06) * 8;
+ 
+   // Beat B: 0.24–0.38 left-column lenses.
+-  const bOp = Math.min(smooth(p, 0.24, 0.252), 1 - smooth(p, 0.365, 0.38));
++  const bIn = smooth(p, 0.24, 0.252);
++  const bExit = smooth(p, 0.365, 0.38);
++  const bOp = Math.min(bIn, 1 - bExit);
+   const showB = bOp > 0.001;
+-  const hT = easeOut(clamp01((p - 0.24) / 0.02));
++  const hT = expoOut(clamp01((p - 0.24) / 0.02));
++  // Counter-drift across the lens window: ≤10px upward, tied to scroll.
++  const driftB = -clamp01((p - 0.24) / (0.38 - 0.24)) * 10;
++  // Thin vertical progress rule: 0→1 as the 7 items land.
++  const ruleEnd = LENS_START + 6 * LENS_STEP + LENS_DUR;
++  const ruleT = clamp01((p - LENS_START) / (ruleEnd - LENS_START));
+ 
+   return (
+     <div className="v1cap" aria-hidden="true">
+       {showA && (
+         <div
+           className="v1cap__beat v1cap__establish"
+           style={{
+             opacity: aOp,
+-            transform: `translateY(${(1 - easeOut(aIn) * aOut) * 12}px)`,
++            // Exit with upward mask: rise + top wipe, counter-drift included.
++            transform: `translateY(${driftA - aExit * 14}px)`,
++            clipPath: `inset(${aExit * 100}% 0 0 0)`,
++            filter:
++              aExit > 0.001
++                ? `blur(${(aExit * 4).toFixed(2)}px)`
++                : undefined,
+           }}
+         >
+-          <img
+-            className="v1cap__logo"
+-            src="/web/eyeq-logo-white.png"
+-            alt=""
+-            width={120}
+-          />
+-          <div className="v1cap__microcap">EYEQ VISION CARE</div>
++          <div
++            className="v1cap__logowrap"
++            style={{
++              opacity: logoT,
++              transform: `translateY(${(1 - logoT) * 16}px)`,
++              clipPath: `inset(${(1 - logoT) * 100}% 0 0 0)`,
++              filter: `blur(${((1 - logoT) * 4).toFixed(2)}px)`,
++            }}
++          >
++            <img
++              className="v1cap__logo"
++              src="/web/eyeq-logo-white.png"
++              alt=""
++              width={120}
++            />
++            <span
++              className="v1cap__logosweep"
++              aria-hidden="true"
++              style={{ transform: `translateX(${sweepX.toFixed(1)}%)` }}
++            />
++          </div>
++          <div
++            className="v1cap__microcap"
++            style={{
++              opacity: mcT,
++              letterSpacing: `${mcSpacing.toFixed(3)}em`,
++              transform: `translateY(${(1 - mcT) * 10}px)`,
++              filter: `blur(${((1 - mcT) * 4).toFixed(2)}px)`,
++            }}
++          >
++            EYEQ VISION CARE
++          </div>
+           <div className="v1cap__scrollhint" />
+         </div>
+       )}
+       {showB && (
+-        <div className="v1cap__beat v1cap__lenses" style={{ opacity: bOp }}>
++        <div
++          className="v1cap__beat v1cap__lenses"
++          style={{
++            opacity: bOp,
++            transform: `translateY(${(driftB - bExit * 16).toFixed(2)}px)`,
++            clipPath:
++              bExit > 0.001 ? `inset(${(bExit * 100).toFixed(1)}% 0 0 0)` : undefined,
++            filter:
++              bExit > 0.001
++                ? `blur(${(bExit * 4).toFixed(2)}px)`
++                : undefined,
++          }}
++        >
++          <div className="v1cap__scrim" aria-hidden="true" />
+           <h2
+             className="v1cap__heading"
+             style={{
+               opacity: hT,
+-              transform: `translateY(${(1 - hT) * 18}px)`,
++              transform: `translateY(${((1 - hT) * 14).toFixed(2)}px)`,
++              filter: `blur(${((1 - hT) * 4).toFixed(2)}px)`,
+             }}
+           >
+             <span
+               className="v1cap__mask"
+               style={{
+-                transform: `translateY(${(1 - hT) * 24}px)`,
++                transform: `translateY(${(1 - hT) * 110}%)`,
+                 clipPath: `inset(${(1 - hT) * 100}% 0 0 0)`,
+               }}
+             >
+               {LENS_HEADING}
+             </span>
+           </h2>
+-          <ul className="v1cap__lenslist">
+-            {LENSES.map((name, i) => {
+-              const t = easeOut(
+-                clamp01((p - (LENS_START + i * LENS_STEP)) / LENS_DUR),
+-              );
+-              if (t <= 0.001) return null;
+-              return (
+-                <li
+-                  key={name}
+-                  className="v1cap__lens"
+-                  style={{
+-                    opacity: t,
+-                    transform: `translateY(${(1 - t) * 14}px)`,
+-                    clipPath: `inset(${(1 - t) * 100}% 0 0 0)`,
+-                  }}
+-                >
+-                  <LensName name={name} />
+-                </li>
+-              );
+-            })}
+-          </ul>
++          <div className="v1cap__lensrow">
++            <div className="v1cap__rule" aria-hidden="true">
++              <span
++                className="v1cap__rulefill"
++                style={{ transform: `scaleY(${ruleT.toFixed(3)})` }}
++              />
++            </div>
++            <ul className="v1cap__lenslist">
++              {LENSES.map((name, i) => {
++                const t = expoOut(
++                  clamp01((p - (LENS_START + i * LENS_STEP)) / LENS_DUR),
++                );
++                if (t <= 0.001) return null;
++                return (
++                  <li
++                    key={name}
++                    className="v1cap__lens"
++                    style={{
++                      opacity: t,
++                      transform: `translateY(${((1 - t) * 12).toFixed(2)}px)`,
++                      clipPath: `inset(${((1 - t) * 100).toFixed(1)}% 0 0 0)`,
++                      filter: `blur(${((1 - t) * 4).toFixed(2)}px)`,
++                    }}
++                  >
++                    <span className="v1cap__index eyeq-numerals">
++                      {String(i + 1).padStart(2, '0')}
++                    </span>
++                    <span className="v1cap__lensname">
++                      <LensName name={name} />
++                    </span>
++                  </li>
++                );
++              })}
++            </ul>
++          </div>
+         </div>
+       )}
+     </div>
+   );
+
+[0m
+[0m# [0mTodos
+[✓] Polish FilmCaptions.tsx (logo sweep, microcap, rule+indices, drift/blur/exit)
+[•] Polish captions.css (title-card craft, readability, reduced-motion)
+[ ] Verify: vite 5302 + Playwright screenshots + video, look, stop server
+[0m
+[0m← [0mEdit src/v1/captions.css
+Index: /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/v1/captions.css
+===================================================================
+--- /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/v1/captions.css
++++ /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/v1/captions.css
+@@ -19,31 +19,58 @@
+   position: absolute;
+   will-change: opacity, transform;
+ }
+ 
+-/* Beat A — bottom-left establish */
++/* Beat A — bottom-left establish (title-card lockup, never centre) */
+ .v1cap__establish {
+   left: var(--eyeq-margin);
+   bottom: 40px;
+   display: flex;
+   flex-direction: column;
+   gap: 10px;
+   max-width: 240px;
++  /* Read over velvet red + black: soft local shadow, no blanket. */
++  text-shadow: 0 1px 12px rgba(0, 0, 0, 0.55);
+ }
++.v1cap__logowrap {
++  position: relative;
++  overflow: hidden;
++  display: inline-block;
++  max-width: 132px;
++  will-change: opacity, transform;
++}
+ .v1cap__logo {
+   width: 120px;
+   height: auto;
+   display: block;
+   opacity: 0.96;
+ }
++/* Light sweep: masked gradient gliding across the logo once per entrance. */
++.v1cap__logosweep {
++  position: absolute;
++  inset: -20% -60%;
++  pointer-events: none;
++  background: linear-gradient(
++    105deg,
++    transparent 42%,
++    rgba(233, 226, 211, 0) 44%,
++    rgba(233, 226, 211, 0.55) 50%,
++    rgba(233, 226, 211, 0) 56%,
++    transparent 58%
++  );
++  mix-blend-mode: screen;
++  will-change: transform;
++}
+ .v1cap__microcap {
+   font-family: var(--eyeq-font-ui);
+   font-size: 11px;
+   font-weight: 500;
+   letter-spacing: 0.18em;
+   text-transform: uppercase;
+   line-height: 1.4;
+   color: var(--eyeq-bone-dim);
++  will-change: opacity, transform, letter-spacing;
++  white-space: nowrap;
+ }
+ .v1cap__scrollhint {
+   width: 64px;
+   height: 1px;
+
+[0m
+[0m← [0mEdit src/v1/captions.css
+Index: /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/v1/captions.css
+===================================================================
+--- /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/v1/captions.css
++++ /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/v1/captions.css
+@@ -97,13 +97,25 @@
+ .v1cap__lenses {
+   left: var(--eyeq-margin);
+   top: 50%;
+   transform: translateY(-50%);
+-  max-width: 320px;
++  max-width: 340px;
+   display: flex;
+   flex-direction: column;
+   gap: 14px;
++  /* Local scrim so Bone reads over velvet red and black alike. */
++  text-shadow: 0 1px 14px rgba(0, 0, 0, 0.6);
+ }
++.v1cap__scrim {
++  position: absolute;
++  inset: -28px -36px -28px -36px;
++  pointer-events: none;
++  background:
++    linear-gradient(to bottom, rgba(5, 6, 7, 0.42), rgba(5, 6, 7, 0.42));
++  -webkit-mask-image: linear-gradient(to bottom, transparent, black 28%, black 72%, transparent);
++  mask-image: linear-gradient(to bottom, transparent, black 28%, black 72%, transparent);
++  z-index: -1;
++}
+ .v1cap__heading {
+   font-family: var(--eyeq-font-display);
+   font-weight: 300;
+   letter-spacing: -0.02em;
+@@ -111,17 +123,42 @@
+   line-height: 1.04;
+   margin: 0;
+   color: var(--eyeq-bone);
+   overflow: hidden;
++  will-change: opacity, transform;
+ }
++/* Lens row: thin vertical progress rule + indexed list. */
++.v1cap__lensrow {
++  display: flex;
++  gap: 14px;
++  align-items: stretch;
++  border-top: 1px solid var(--eyeq-hairline-dark);
++  padding-top: 12px;
++}
++.v1cap__rule {
++  position: relative;
++  width: 1px;
++  min-height: 100%;
++  background: var(--eyeq-hairline-dark);
++  overflow: hidden;
++  flex: none;
++}
++.v1cap__rulefill {
++  position: absolute;
++  inset: 0;
++  background: var(--eyeq-bone-dim);
++  transform-origin: top center;
++  will-change: transform;
++}
+ .v1cap__lenslist {
+   list-style: none;
+   margin: 0;
+-  padding: 12px 0 0;
+-  border-top: 1px solid var(--eyeq-hairline-dark);
++  padding: 0;
+   display: flex;
+   flex-direction: column;
+   gap: 7px;
++  flex: 1;
++  min-width: 0;
+ }
+ .v1cap__lens {
+   font-family: var(--eyeq-font-ui);
+   font-size: 13px;
+@@ -130,13 +167,30 @@
+   letter-spacing: 0.01em;
+   color: var(--eyeq-bone-dim);
+   overflow: hidden;
+   will-change: opacity, transform;
++  display: flex;
++  gap: 10px;
++  align-items: baseline;
+ }
++.v1cap__index {
++  flex: none;
++  font-size: 10px;
++  font-weight: 600;
++  letter-spacing: 0.08em;
++  color: var(--eyeq-bone-dim);
++  opacity: 0.72;
++  font-variant-numeric: tabular-nums;
++  min-width: 18px;
++}
++.v1cap__lensname {
++  min-width: 0;
++}
+ .v1cap__lens .v1cap__reg {
+   font-size: 60%;
+   vertical-align: super;
+   letter-spacing: 0;
++  line-height: 0;
+ }
+ 
+ .v1cap__mask {
+   display: block;
+
+[0m
+[0m← [0mEdit src/v1/captions.css
+Index: /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/v1/captions.css
+===================================================================
+--- /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/v1/captions.css
++++ /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/v1/captions.css
+@@ -220,5 +220,18 @@
+   .v1cap__scrollhint::after {
+     animation: none;
+     transform: scaleX(1);
+   }
++  .v1cap__logosweep {
++    display: none;
++  }
++  .v1cap__beat,
++  .v1cap__logowrap,
++  .v1cap__microcap,
++  .v1cap__heading,
++  .v1cap__mask,
++  .v1cap__lens {
++    clip-path: none !important;
++    filter: none !important;
++    transform: none !important;
++  }
+ }
+
+[0m
+[0m→ [0mRead src/v1/FilmCaptions.tsx
+[0m
+[0m← [0mEdit src/v1/FilmCaptions.tsx
+Index: /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/v1/FilmCaptions.tsx
+===================================================================
+--- /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/v1/FilmCaptions.tsx
++++ /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/v1/FilmCaptions.tsx
+@@ -139,9 +139,10 @@
+ <div
+   className="v1cap__beat v1cap__lenses"
+   style={{
+     opacity: bOp,
+-    transform: `translateY(${(driftB - bExit * 16).toFixed(2)}px)`,
++    // Preserve the CSS -50% vertical centring; drift/exit are additive.
++    transform: `translateY(-50%) translateY(${(driftB - bExit * 16).toFixed(2)}px)`,
+     clipPath:
+       bExit > 0.001 ? `inset(${(bExit * 100).toFixed(1)}% 0 0 0)` : undefined,
+     filter:
+       bExit > 0.001
+
+[0m
+[0m← [0mEdit src/v1/FilmCaptions.tsx
+Index: /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/v1/FilmCaptions.tsx
+===================================================================
+--- /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/v1/FilmCaptions.tsx
++++ /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/v1/FilmCaptions.tsx
+@@ -135,23 +135,23 @@
+     <div className="v1cap__scrollhint" />
+   </div>
+ )}
+ {showB && (
+-  <div
+-    className="v1cap__beat v1cap__lenses"
+-    style={{
+-      opacity: bOp,
+-      // Preserve the CSS -50% vertical centring; drift/exit are additive.
+-      transform: `translateY(-50%) translateY(${(driftB - bExit * 16).toFixed(2)}px)`,
+-      clipPath:
+-        bExit > 0.001 ? `inset(${(bExit * 100).toFixed(1)}% 0 0 0)` : undefined,
+-      filter:
+-        bExit > 0.001
+-          ? `blur(${(bExit * 4).toFixed(2)}px)`
+-          : undefined,
+-    }}
+-  >
+-    <div className="v1cap__scrim" aria-hidden="true" />
++  <div className="v1cap__beat v1cap__lenses" style={{ opacity: bOp }}>
++    <div
++      className="v1cap__lensesmotion"
++      style={{
++        // Counter-drift (≤10px) + upward-mask exit; CSS keeps -50% centring.
++        transform: `translateY(${(driftB - bExit * 16).toFixed(2)}px)`,
++        clipPath:
++          bExit > 0.001 ? `inset(${(bExit * 100).toFixed(1)}% 0 0 0)` : undefined,
++        filter:
++          bExit > 0.001
++            ? `blur(${(bExit * 4).toFixed(2)}px)`
++            : undefined,
++      }}
++    >
++      <div className="v1cap__scrim" aria-hidden="true" />
+     <h2
+       className="v1cap__heading"
+       style={{
+         opacity: hT,
+
+[0m
+[0m→ [0mRead src/v1/FilmCaptions.tsx[90m [offset=170][0m
+[0m
+[0m← [0mEdit src/v1/FilmCaptions.tsx
+Index: /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/v1/FilmCaptions.tsx
+===================================================================
+--- /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/v1/FilmCaptions.tsx
++++ /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/v1/FilmCaptions.tsx
+@@ -203,8 +203,9 @@
+               );
+             })}
+           </ul>
+         </div>
++        </div>
+       </div>
+     )}
+   </div>
+ );
+
+[0m
+[0m← [0mEdit src/v1/captions.css
+Index: /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/v1/captions.css
+===================================================================
+--- /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/v1/captions.css
++++ /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/v1/captions.css
+@@ -98,13 +98,16 @@
+   left: var(--eyeq-margin);
+   top: 50%;
+   transform: translateY(-50%);
+   max-width: 340px;
++  /* Local scrim so Bone reads over velvet red and black alike. */
++  text-shadow: 0 1px 14px rgba(0, 0, 0, 0.6);
++}
++.v1cap__lensesmotion {
+   display: flex;
+   flex-direction: column;
+   gap: 14px;
+-  /* Local scrim so Bone reads over velvet red and black alike. */
+-  text-shadow: 0 1px 14px rgba(0, 0, 0, 0.6);
++  will-change: opacity, transform;
+ }
+ .v1cap__scrim {
+   position: absolute;
+   inset: -28px -36px -28px -36px;
+
+[0m
+[0m← [0mEdit src/v1/captions.css
+Index: /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/v1/captions.css
+===================================================================
+--- /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/v1/captions.css
++++ /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/v1/captions.css
+@@ -227,8 +227,9 @@
+   .v1cap__logosweep {
+     display: none;
+   }
+   .v1cap__beat,
++  .v1cap__lensesmotion,
+   .v1cap__logowrap,
+   .v1cap__microcap,
+   .v1cap__heading,
+   .v1cap__mask,
+@@ -236,5 +237,8 @@
+     clip-path: none !important;
+     filter: none !important;
+     transform: none !important;
+   }
++  .v1cap__lenses {
++    transform: none !important;
++  }
+ }
+
+[0m
+[0m← [0mEdit src/v1/captions.css
+Index: /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/v1/captions.css
+===================================================================
+--- /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/v1/captions.css
++++ /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/v1/captions.css
+@@ -237,8 +237,6 @@
+     clip-path: none !important;
+     filter: none !important;
+     transform: none !important;
+   }
+-  .v1cap__lenses {
+-    transform: none !important;
+-  }
++
+ }
+
+[0m
+[0m$ [0mnpx tsc --noEmit -p tsconfig.app.json 2>&1 | head -30
+npm notice run eyeq-vision-care@0.1.0 npx
+npm notice run 'tsc' --noEmit -p tsconfig.app.json
+src/v1/FilmCaptions.tsx(19,7): error TS6133: 'easeOut' is declared but its value is never read.
+[0m
+[0m← [0mEdit src/v1/FilmCaptions.tsx
+Index: /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/v1/FilmCaptions.tsx
+===================================================================
+--- /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/v1/FilmCaptions.tsx
++++ /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/v1/FilmCaptions.tsx
+@@ -15,9 +15,8 @@
+ };
+ // Motion language (PLAN-MASTER §8): expo.out entrances, transforms/opacity only.
+ const expoOut = (t: number): number =>
+   t <= 0 ? 0 : t >= 1 ? 1 : 1 - Math.pow(2, -10 * t);
+-const easeOut = expoOut;
+ 
+ // Verbatim B §4 (carousel heading + carousel items in order + slideshow items).
+ const LENS_HEADING = 'Our Popular High-Definition Lenses';
+ const LENSES: string[] = [
+
+[0m
+[0m$ [0mnpx tsc --noEmit -p tsconfig.app.json 2>&1 | head -30 && echo TSC_OK
+npm notice run eyeq-vision-care@0.1.0 npx
+npm notice run 'tsc' --noEmit -p tsconfig.app.json
+src/components/dom/Sections.tsx(39,100): error TS6133: 'rest' is declared but its value is never read.
+TSC_OK
+[0m
+[0m# [0mTodos
+[✓] Polish FilmCaptions.tsx (logo sweep, microcap, rule+indices, drift/blur/exit)
+[✓] Polish captions.css (title-card craft, readability, reduced-motion)
+[•] Verify: vite 5302 + Playwright screenshots + video, look, stop server
+[0m
+[0m$ [0mrtk ls docs/phase4/qa/polish/ 2>&1; rtk ls v1-text.html v1.html 2>&1; rtk ls public/web/eyeq-logo-white* 2>&1
+(empty)
+v1-text.html  438B
+v1.html  580B
+public/web/eyeq-logo-white.png  35.6K
+public/web/eyeq-logo-white@2x.png  35.3K
+[0m
+[0m→ [0mRead v1-text.html
+[0m
+[0m$ [0mmkdir -p docs/phase4/qa/polish && (nohup npx vite --port 5302 --strictPort > /tmp/vite-caps-5302.log 2>&1 &) && sleep 6 && curl -s -o /dev/null -w "%{http_code}" http://localhost:5302/v1-text.html
+200
+[0m
+[0m⚙ [0mplaywright_browser_navigate {"url":"http://localhost:5302/v1-text.html?p=0.02"}
+[0m⚙ [0mplaywright_browser_snapshot Unknown
+[0m⚙ [0mplaywright_browser_console_messages {"level":"error"}
+[0m⚙ [0mplaywright_browser_take_screenshot {"filename":"docs/phase4/qa/polish/CAPS-beatA-p002.png","scale":"css"}
+[0m→ [0mRead docs/phase4/qa/polish/CAPS-beatA-p002.png
+[0m⚙ [0mplaywright_browser_navigate {"url":"http://localhost:5302/v1-text.html?p=0.30"}
+[0m⚙ [0mplaywright_browser_take_screenshot {"filename":"docs/phase4/qa/polish/CAPS-lenses-p030.png","scale":"css"}
+[0m→ [0mRead docs/phase4/qa/polish/CAPS-lenses-p030.png
+[0m⚙ [0mplaywright_browser_navigate {"url":"http://localhost:5302/v1-text.html?p=0.36"}
+[0m⚙ [0mplaywright_browser_take_screenshot {"filename":"docs/phase4/qa/polish/CAPS-lenses-p036.png","scale":"css"}
+[0m→ [0mRead docs/phase4/qa/polish/CAPS-lenses-p036.png
+[0m⚙ [0mplaywright_browser_evaluate {"function":"() => { document.querySelector('[data-testid=\"v1cap-stage\"]').style.background = '#4B0F16'; return document.querySelector('[data-testid=\"v1cap-stage\"]').style.background; }"}
+[0m⚙ [0mplaywright_browser_take_screenshot {"filename":"docs/phase4/qa/polish/CAPS-lenses-velvet.png","scale":"css"}
+[0m→ [0mRead docs/phase4/qa/polish/CAPS-lenses-velvet.png
+[0m
+[0m$ [0mcat > /tmp/caps-record.mjs <<'EOF'
+import { chromium } from 'playwright';
+const browser = await chromium.launch();
+const ctx = await browser.newContext({ viewport: { width: 1280, height: 800 }, recordVideo: { dir: 'docs/phase4/qa/polish/', size: { width: 1280, height: 800 } } });
+const page = await ctx.newPage();
+const stops = [0.005, 0.02, 0.055, 0.24, 0.27, 0.30, 0.33, 0.36, 0.375];
+for (const p of stops) {
+  await page.goto(`http://localhost:5302/v1-text.html?p=${p}`);
+  await page.waitForTimeout(700);
+}
+await ctx.close();
+await browser.close();
+console.log('REC_DONE');
+EOF
+node /tmp/caps-record.mjs 2>&1 | tail -5 && ls -la docs/phase4/qa/polish/
+at ModuleJob.syncLink (node:internal/modules/esm/module_job:163:33) {
+  code: 'ERR_MODULE_NOT_FOUND'
+}
+
+Node.js v24.18.0
+total 272
+drwxr-xr-x@  6 admin  staff    192 Sep 27 22:42 .
+drwxr-xr-x@ 11 admin  staff    352 Sep 27 22:37 ..
+-rw-r--r--@  1 admin  staff  13774 Sep 27 22:41 CAPS-beatA-p002.png
+-rw-r--r--@  1 admin  staff  27509 Sep 27 22:41 CAPS-lenses-p030.png
+-rw-r--r--@  1 admin  staff  37877 Sep 27 22:42 CAPS-lenses-p036.png
+-rw-r--r--@  1 admin  staff  49942 Sep 27 22:42 CAPS-lenses-velvet.png
+[0m
+[0m$ [0mcat > caps-record.tmp.mjs <<'EOF'
+import { chromium } from 'playwright';
+const browser = await chromium.launch();
+const ctx = await browser.newContext({ viewport: { width: 1280, height: 800 }, recordVideo: { dir: 'docs/phase4/qa/polish/', size: { width: 1280, height: 800 } } });
+const page = await ctx.newPage();
+const stops = [0.005, 0.02, 0.055, 0.24, 0.27, 0.30, 0.33, 0.36, 0.375];
+for (const p of stops) {
+  await page.goto(`http://localhost:5302/v1-text.html?p=${p}`);
+  await page.waitForTimeout(700);
+}
+await ctx.close();
+await browser.close();
+console.log('REC_DONE');
+EOF
+node caps-record.tmp.mjs 2>&1 | tail -5; rm -f caps-record.tmp.mjs; ls docs/phase4/qa/polish/
+REC_DONE
+CAPS-beatA-p002.png
+CAPS-lenses-p030.png
+CAPS-lenses-p036.png
+CAPS-lenses-velvet.png
+page@57a95e77a6c8d7c5183a4197184cacf9.webm
+[0m
+[0m$ [0mmv docs/phase4/qa/polish/*.webm docs/phase4/qa/polish/CAPS-scrub.webm && rtk ls -la docs/phase4/qa/polish/ && pkill -f "vite --port 5302"; sleep 1; echo STOPPED
+mv: docs/phase4/qa/polish/CAPS-scrub.webm is not a directory
+STOPPED
+[0m
+[0m$ [0mrtk ls docs/phase4/qa/polish/ && rtk curl -s -o /dev/null -w "%{http_code}" http://localhost:5302/v1-text.html || echo "SERVER_DOWN"
+CAPS-beatA-p002.png  13.5K
+CAPS-lenses-p030.png  26.9K
+CAPS-lenses-p036.png  37.0K
+CAPS-lenses-velvet.png  48.8K
+FILM-frame1-intro.png  184.2K
+FILM-late.png  137.3K
+FILM-mid-insurers.png  521.5K
+FILM-mid-waves.png  523.0K
+FILM-preloader.png  194.5K
+FILM-tail-handoff.png  175.9K
+FILM-white-act.png  120.2K
+page@11ad01c41c508ab9167d65d5265dcc68.webm  1.8M
+page@57a95e77a6c8d7c5183a4197184cacf9.webm  173.0K
+200
+[0m
+[0m$ [0mrtk ls -t docs/phase4/qa/polish/*.webm && mv "docs/phase4/qa/polish/page@57a95e77a6c8d7c5183a4197184cacf9.webm" docs/phase4/qa/polish/CAPS-scrub.webm && ls docs/phase4/qa/polish/ | rtk grep CAPS
+docs/phase4/qa/polish/page@11ad01c41c508ab9167d65d5265dcc68.webm  2.4M
+docs/phase4/qa/polish/page@57a95e77a6c8d7c5183a4197184cacf9.webm  173.0K
+CAPS-beatA-p002.png
+CAPS-lenses-p030.png
+CAPS-lenses-p036.png
+CAPS-lenses-velvet.png
+CAPS-scrub.webm
+[0m
+[0m$ [0mlsof -ti:5302 | xargs kill 2>/dev/null; sleep 1; (curl -s -o /dev/null -m 3 -w "%{http_code}" http://localhost:5302/v1-text.html || echo DOWN)
+000DOWN
+[0m
+[0m# [0mTodos
+[✓] Polish FilmCaptions.tsx (logo sweep, microcap, rule+indices, drift/blur/exit)
+[✓] Polish captions.css (title-card craft, readability, reduced-motion)
+[✓] Verify: vite 5302 + Playwright screenshots + video, look, stop server
+[0m
+POLISH-CAPS-DONE
+- Title-card lockup: logo masked reveal (yPercent 110→0, expo.out) + single gradient light sweep; micro-cap tracks 0.32em→0.18em with blur-in 4px→0.
+- Lens list: thin vertical progress rule fills as 01–07 land; ordinal indices tabular-nums, ®/™ at 60%; per-item masked rise + blur, heading line-mask.
+- Camera-tied: ≤10px counter-drift in both beats, upward-mask + blur exits; left-column/bottom-left only, local scrim verified legible on black and oxblood.
+- QA in docs/phase4/qa/polish/CAPS-* (4 PNG + scrub.webm); tsc clean for these files; server 5302 stopped.
+EXIT 0 model=meta/muse-spark-1.3-contributor

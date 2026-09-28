@@ -1,0 +1,844 @@
+[0m
+> build · muse-spark-1.3-contributor-free
+[0m
+Snappier scroll in progress — tuning Lenis, film rhythm and snap for uniform sensitivity.
+[0m→ [0mSkill "design-motion-principles"
+[0m→ [0mSkill "emil-design-eng"
+[0m→ [0mSkill "improve-animations"
+[0m→ [0mSkill "review-animations"
+[0m→ [0mSkill "animation-vocabulary"
+[0m→ [0mSkill "optimize-web-animations"
+[0m→ [0mSkill "fixing-motion-performance"
+[0m→ [0mSkill "web-perf"
+[0m→ [0mSkill "no-ai-design-slop"
+Skills are in — now reading the brief and mapping the current scroll system.
+[0m→ [0mRead .
+[0m→ [0mRead docs/00-BRIEF.md
+[0m→ [0mRead src/v1/lenis.ts
+[0m→ [0mRead src/v1/snap.ts
+[0m→ [0mRead src/v1/filmCurve.ts
+[0m→ [0mRead src/v1/progress.ts
+[0m→ [0mRead docs/phase4/qa/v2
+[0m→ [0mRead package.json
+[0m✱ [0mGlob "src/v1/*.ts*"[90m 15 matches[0m
+[0m→ [0mRead docs/phase4/qa/v2/QA.md
+[0m→ [0mRead src/v1/FilmSequence.tsx
+[0m→ [0mRead src/v1/App.tsx
+[0m→ [0mRead src/v1/frameLoader.ts
+[0m→ [0mRead docs/phase4/qa/v2/SNAP.md
+[0m→ [0mRead playwright.config.ts
+[0m✱ [0mGrep "v1-film|800vh|560vh|height.*vh"[90m in src · 54 matches[0m
+[0m→ [0mRead vite.config.ts
+[0m→ [0mRead src/v1/v1.css[90m [limit=40][0m
+[0m
+[0m$ [0mrtk ls public/v1film/ 2>/dev/null && cat public/v1film/manifest.json 2>/dev/null | head -c 800; echo; rtk ls docs/phase4/qa/v3/ 2>/dev/null || echo "no v3 dir"
+full/
+web/
+manifest.json  162B
+{"count":3588,"sourceFrames":615,"fpsMult":5.8333,"tiers":{"full":{"w":3024,"h":1720,"dir":"full"},"web":{"w":1512,"h":860,"dir":"web"}},"pattern":"f_%05d.webp"}
+
+(empty)
+[0m
+Context mapped. Now checking the Lenis API surface before editing.
+[0m# [0mTodos
+[•] Retune lenis.ts (lerp 0.11, wheel 1.0, touch 1.2, syncTouch off)
+[ ] Rebalance filmCurve shares for uniform frames/100px
+[ ] Tighten snap.ts (0.7s, ¼ window, settled-only, no mobile fling snap)
+[ ] Verify: curve table + Playwright 4 viewports + scroll video + report
+[0m
+[0m$ [0mrtk ls node_modules/lenis/dist/ 2>/dev/null; rtk grep -o "syncTouch[^,]*" node_modules/lenis/dist/lenis.d.ts 2>/dev/null | head -5; echo ---; rtk grep -o "wheelMultiplier[^,]*\|touchMultiplier[^,]*\|lerp[^,]*\|smoothWheel[^,]*\|isScrolling[^,;]*\|velocity[^,;]*" node_modules/lenis/dist/lenis.d.ts 2>/dev/null | head -20
+nuxt/
+lenis-react.d.ts  3.1K
+lenis-react.mjs  5.1K
+lenis-react.mjs.map  9.5K
+lenis-snap.d.ts  4.3K
+lenis-snap.js  10.4K
+lenis-snap.js.map  19.7K
+lenis-snap.min.js  5.7K
+lenis-snap.min.js.map  19.3K
+lenis-snap.mjs  10.0K
+lenis-snap.mjs.map  19.5K
+lenis-vue-nuxt.mjs  662B
+lenis-vue.d.ts  1.9K
+lenis-vue.mjs  4.1K
+lenis-vue.mjs.map  9.1K
+lenis.css  513B
+lenis.d.ts  12.7K
+lenis.js  33.5K
+lenis.js.map  63.8K
+lenis.min.js  18.3K
+lenis.min.js.map  62.4K
+lenis.mjs  32.4K
+lenis.mjs.map  63.4K
+syncTouch?: boolean;
+syncTouchLerp?: number;
+syncTouch` inertia
+syncTouch
+syncTouchLerp
+---
+lerp) intensity (between 0 and 1)
+lerp?: number;
+lerp) intensity (between 0 and 1)
+lerp?: number;
+smoothWheel?: boolean;
+lerp) intensity (between 0 and 1)
+lerp) intensity (between 0 and 1)
+lerp?: number;
+touchMultiplier?: number;
+wheelMultiplier?: number;
+lerp` forced to `1` so scroll tracks the input device 1:1) and programmatic scrolls become instant
+isScrolling
+velocity of the scroll
+velocity of the scroll
+velocity: number
+smoothWheel
+lerp
+touchMultiplier
+wheelMultiplier
+lerp: 0.1
+[0m
+[0m$ [0mrtk rg -n "isScrolling|isStopped|isSmooth|velocity" node_modules/lenis/dist/lenis.d.ts | head -20; echo ---; rtk rg -n "duration|easing" node_modules/lenis/dist/lenis.d.ts | head -20
+rtk: search failed: Failed to execute command: No such file or directory (os error 2)
+---
+rtk: search failed: Failed to execute command: No such file or directory (os error 2)
+[0m
+[0m✱ [0mGrep "isScrolling|velocity:|syncTouch\?|duration\?|easing\?"[90m in node_modules/lenis/dist · 11 matches[0m
+[0m→ [0mRead node_modules/lenis/dist/lenis.d.ts[90m [limit=120, offset=100][0m
+[0m✱ [0mGrep "type Scrolling|Scrolling ="[90m in node_modules/lenis/dist · 1 match[0m
+API confirmed (`isScrolling`, `velocity`, `syncTouch` default false). Booting the dev server and making the edits now.
+[0m
+[0m$ [0m(npx vite --port 5502 --strictPort > /tmp/vite-5502.log 2>&1 &) && sleep 6 && curl -s -o /dev/null -w "HTTP %{http_code}\n" http://localhost:5502/v1.html; tail -5 /tmp/vite-5502.log
+HTTP 200
+
+  VITE v8.3.1  ready in 150 ms
+
+  ➜  Local:   http://localhost:5502/
+  ➜  Network: use --host to expose
+[0m
+Server is up on 5502. Making the three edits.
+[0m← [0mEdit src/v1/lenis.ts
+Index: /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/v1/lenis.ts
+===================================================================
+--- /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/v1/lenis.ts
++++ /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/v1/lenis.ts
+@@ -1,7 +1,11 @@
+-// V2-SNAP — shared Lenis singleton (owns all Lenis config).
+-// Single source of truth for smooth-scroll tuning: lerp ≈0.075, smoothWheel,
+-// wheel 0.9 / touch 1.4, synced to the GSAP ticker (one RAF total).
++// V3-SCROLL — shared Lenis singleton (owns all Lenis config).
++// Single source of truth for smooth-scroll tuning: lerp 0.11 (snappier than
++// the V2 0.075), lerp-mode smoothing (no duration-based easing — `duration`
++// / `easing` intentionally unset so wheel follows lerp), smoothWheel,
++// wheel 1.0 (normalised: one notch / swipe = consistent travel on Mac
++// trackpad, mouse wheel and touch) / touch 1.2, syncTouch off (native touch
++// scroll, Lenis observes only), synced to the GSAP ticker (one RAF total).
+ // FilmSequence.tsx and snap.ts must both use this — never `new Lenis` inline.
+ import gsap from 'gsap';
+ import Lenis from 'lenis';
+ 
+
+[0m
+[0m← [0mEdit src/v1/lenis.ts
+Index: /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/v1/lenis.ts
+===================================================================
+--- /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/v1/lenis.ts
++++ /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/v1/lenis.ts
+@@ -24,12 +24,13 @@
+ /** Create (once) and return the shared Lenis instance. Safe to call twice. */
+ export function ensureLenis(): Lenis {
+   if (lenis) return lenis;
+   lenis = new Lenis({
+-    lerp: 0.075,
++    lerp: 0.11,
+     smoothWheel: true,
+-    wheelMultiplier: 0.9,
+-    touchMultiplier: 1.4,
++    wheelMultiplier: 1.0,
++    touchMultiplier: 1.2,
++    syncTouch: false,
+   });
+   wireTicker();
+   return lenis;
+ }
+
+[0m
+[0m← [0mEdit src/v1/filmCurve.ts
+Index: /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/v1/filmCurve.ts
+===================================================================
+--- /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/v1/filmCurve.ts
++++ /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/v1/filmCurve.ts
+@@ -9,12 +9,19 @@
+ //
+ // Motion language (PLAN-MASTER §8): expo.out entrances, power2.inOut scrubs,
+ // linear loops; transforms/opacity only. The curve itself is evaluated inside
+ // the scrubbed rAF draw (scroll IS timing), so per-segment easings shape the
+-// *pacing* of the film: bird's-eye gets a generous dwell, take-out runs
+-// ~linear/smooth, expand/rotate/sweep/lens-zoom punch (slow in, fast middle,
+-// soft landing), with short holds freezing the highlight end-frames.
++// *pacing* of the film: short holds freeze the highlight end-frames while the
++// snap nudge handles emphasis, the take-out runs linear/smooth, and the
++// motion beats (expand/spin/burst/ring/sweep/zoom) punch gently
++// (slow in, fast middle, soft landing).
+ //
++// V3-SCROLL — uniform sensitivity: every motion beat's scroll share is
++// proportional to its source-frame count, so the visual change per 100 px of
++// scroll is ~constant across beats (average frames/100px within ±35%; holds
++// excluded — they are frozen frames by design). Scroll shares are normalised
++// so the table below can be re-tuned freely — only relative weights matter.
++//
+ // Guarantees: monotonic non-decreasing, continuous (eased(0)=0, eased(1)=1 per
+ // segment, segments share endpoints), no jumps. Scroll shares are normalised
+ // so the table below can be re-tuned freely — only relative weights matter.
+ 
+
+[0m
+[0m← [0mEdit src/v1/filmCurve.ts
+Index: /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/v1/filmCurve.ts
+===================================================================
+--- /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/v1/filmCurve.ts
++++ /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/v1/filmCurve.ts
+@@ -62,23 +62,23 @@
+ // clear there (see BrandWaves / FilmCaptions).
+ export const SOURCE_TOTAL = 615;
+ 
+ export const BEAT_TABLE: BeatRow[] = [
+-  { name: 'birdseye',      s0: 1,   s1: 30,  scroll: 0.095, ease: 'linear' },
+-  { name: 'tilt',          s0: 30,  s1: 70,  scroll: 0.065, ease: 'power2.inOut' },
+-  { name: 'takeout',       s0: 70,  s1: 145, scroll: 0.105, ease: 'linear' },
+-  { name: 'expand',        s0: 145, s1: 215, scroll: 0.115, ease: 'power2.inOut' },
+-  { name: 'heroHold',      s0: 215, s1: 235, scroll: 0.03,  ease: 'linear' },
+-  { name: 'spin',          s0: 235, s1: 325, scroll: 0.125, ease: 'power3.inOut' },
+-  { name: 'spinHold',      s0: 325, s1: 325, scroll: 0.015, ease: 'linear' },
+-  { name: 'burst',         s0: 325, s1: 350, scroll: 0.055, ease: 'expo.inOut' },
+-  { name: 'ring',          s0: 350, s1: 386, scroll: 0.065, ease: 'linear' },
+-  { name: 'collapse',      s0: 386, s1: 411, scroll: 0.055, ease: 'power3.inOut' },
++  { name: 'birdseye',      s0: 1,   s1: 30,  scroll: 0.047, ease: 'linear' },
++  { name: 'tilt',          s0: 30,  s1: 70,  scroll: 0.064, ease: 'power2.inOut' },
++  { name: 'takeout',       s0: 70,  s1: 145, scroll: 0.120, ease: 'linear' },
++  { name: 'expand',        s0: 145, s1: 215, scroll: 0.112, ease: 'power2.inOut' },
++  { name: 'heroHold',      s0: 215, s1: 235, scroll: 0.030, ease: 'linear' },
++  { name: 'spin',          s0: 235, s1: 325, scroll: 0.144, ease: 'power3.inOut' },
++  { name: 'spinHold',      s0: 325, s1: 325, scroll: 0.010, ease: 'linear' },
++  { name: 'burst',         s0: 325, s1: 350, scroll: 0.040, ease: 'expo.inOut' },
++  { name: 'ring',          s0: 350, s1: 386, scroll: 0.058, ease: 'linear' },
++  { name: 'collapse',      s0: 386, s1: 411, scroll: 0.040, ease: 'power3.inOut' },
+   { name: 'sweep',         s0: 411, s1: 470, scroll: 0.095, ease: 'power3.inOut' },
+-  { name: 'sweepHold',     s0: 470, s1: 470, scroll: 0.012, ease: 'linear' },
+-  { name: 'zoom',          s0: 470, s1: 533, scroll: 0.085, ease: 'expo.inOut' },
+-  { name: 'dissolve',      s0: 533, s1: 560, scroll: 0.04,  ease: 'power2.inOut' },
+-  { name: 'endcard',       s0: 560, s1: 615, scroll: 0.043, ease: 'linear' },
++  { name: 'sweepHold',     s0: 470, s1: 470, scroll: 0.008, ease: 'linear' },
++  { name: 'zoom',          s0: 470, s1: 533, scroll: 0.101, ease: 'expo.inOut' },
++  { name: 'dissolve',      s0: 533, s1: 560, scroll: 0.043, ease: 'power2.inOut' },
++  { name: 'endcard',       s0: 560, s1: 615, scroll: 0.088, ease: 'linear' },
+ ];
+ 
+ // ── Easing (all f(0)=0, f(1)=1, monotonic increasing) ─────────────────────
+ const EASES: Record<FilmEaseName, (t: number) => number> = {
+
+[0m
+[0m← [0mEdit src/v1/filmCurve.ts
+Index: /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/v1/filmCurve.ts
+===================================================================
+--- /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/v1/filmCurve.ts
++++ /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/v1/filmCurve.ts
+@@ -309,10 +309,11 @@
+   return SNAP_SOURCE_KEYS.map(snapSourceToScroll);
+ }
+ 
+ /**
+- * Capture window for key `i` (scroll-fraction units): ≈⅓ of the gap to the
+- * nearest neighbouring key. The nudge only fires inside this window.
++ * Capture window for key `i` (scroll-fraction units): ≈¼ of the gap to the
++ * nearest neighbouring key (V3-SCROLL: tightened from ⅓ for a subtler nudge).
++ * The nudge only fires inside this window.
+  */
+ export function snapCaptureWindow(i: number): number {
+   const keys = snapKeyScrolls();
+   const k = keys[i];
+
+[0m
+[0m← [0mEdit src/v1/filmCurve.ts
+Index: /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/v1/filmCurve.ts
+===================================================================
+--- /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/v1/filmCurve.ts
++++ /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/v1/filmCurve.ts
+@@ -320,6 +320,6 @@
+   const gaps: number[] = [];
+   if (i > 0) gaps.push(k - keys[i - 1]);
+   if (i < keys.length - 1) gaps.push(keys[i + 1] - k);
+   const nearest = Math.min(...gaps);
+-  return nearest / 3;
++  return nearest / 4;
+ }
+
+[0m
+Now the snap rewrite:
+[0m← [0mEdit src/v1/snap.ts
+Index: /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/v1/snap.ts
+===================================================================
+--- /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/v1/snap.ts
++++ /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/v1/snap.ts
+@@ -1,19 +1,29 @@
+-// V2-SNAP — gentle key-frame nudge for the film scroll.
++// V3-SCROLL — gentle key-frame nudge for the film scroll.
+ // Client: "a bit of snapping… guide the scroll to the key frames, not leave
+ // it anywhere in between, just nudge."
+ //
+-// After scroll idle (~160 ms, never during active wheel/touch), if the film
+-// position is within a capture window of the nearest key frame (≈⅓ of the gap
+-// to the neighbouring key), ease to that key frame with Lenis `scrollTo`
+-// (1.0 s, easeOutCubic). Any new input cancels the nudge. Only inside the
+-// film section (`.v1-film`). Off for prefers-reduced-motion.
++// After scroll idle (~160 ms), if the film position is within a capture
++// window of the nearest key frame (≈¼ of the gap to the neighbouring key),
++// ease to that key frame with Lenis `scrollTo` (0.7 s, easeOutCubic) — quicker
++// and subtler than the V2 1.0 s. Any new input cancels the nudge. Only inside
++// the film section (`.v1-film`). Off for prefers-reduced-motion.
++//
++// Settled-only: the nudge NEVER fires during momentum — at idle time we
++// require Lenis to report not-scrolling with ~zero velocity, and on touch
++// devices we additionally require a quiet period after the last touchend so
++// mobile flings glide to rest untouched.
+ import type Lenis from 'lenis';
+ import { ensureLenis } from './lenis';
+ import { snapKeyScrolls, snapCaptureWindow } from './filmCurve';
+ 
+ const IDLE_MS = 160;
+-const SNAP_DURATION = 1.0;
++const RETRY_MS = 120;
++const SNAP_DURATION = 0.7;
++/** Lenis velocity units (px/frame) below which scroll counts as settled. */
++const SETTLE_VELOCITY = 0.35;
++/** Quiet period after the last touchend before a touch-driven snap may fire. */
++const TOUCH_SETTLE_MS = 600;
+ 
+ const easeOutCubic = (t: number): number => 1 - Math.pow(1 - t, 3);
+ 
+ function filmMetrics(): { top: number; dist: number } | null {
+
+[0m
+[0m← [0mEdit src/v1/snap.ts
+Index: /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/v1/snap.ts
+===================================================================
+--- /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/v1/snap.ts
++++ /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/v1/snap.ts
+@@ -51,8 +51,9 @@
+ 
+ let idleTimer: number | null = null;
+ let snapping = false;
+ let disposed = false;
++let lastTouchEnd = 0;
+ 
+ const clearIdle = () => {
+   if (idleTimer !== null) {
+     window.clearTimeout(idleTimer);
+
+[0m
+[0m← [0mEdit src/v1/snap.ts
+Index: /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/v1/snap.ts
+===================================================================
+--- /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/v1/snap.ts
++++ /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/v1/snap.ts
+@@ -74,17 +74,39 @@
+     }
+   }
+ };
+ 
+-const scheduleIdle = () => {
++const scheduleIdle = (delay: number = IDLE_MS) => {
+   if (disposed || snapping) return;
+   clearIdle();
+-  idleTimer = window.setTimeout(onIdle, IDLE_MS);
++  idleTimer = window.setTimeout(onIdle, delay);
+ };
+ 
++/** True only when scroll has fully settled — no Lenis motion, no fling. */
++const isSettled = (): boolean => {
++  try {
++    // isScrolling is truthy while Lenis drives smooth/native scroll
++    // (wheel smoothing, momentum glide, or an in-flight scrollTo).
++    if (l.isScrolling) return false;
++    if (Math.abs(l.velocity) > SETTLE_VELOCITY) return false;
++  } catch {
++    return false;
++  }
++  // Mobile flings: native inertia keeps the page moving after touchend
++  // without Lenis events — wait for the quiet period before snapping.
++  if (performance.now() - lastTouchEnd < TOUCH_SETTLE_MS) return false;
++  return true;
++};
++
+ const onIdle = () => {
+   idleTimer = null;
+   if (disposed || snapping) return;
++  // Still gliding (momentum / fling)? Back off and re-check — never snap
++  // mid-motion.
++  if (!isSettled()) {
++    scheduleIdle(RETRY_MS);
++    return;
++  }
+   const m = filmMetrics();
+   if (!m) return;
+   const y = window.scrollY;
+   // Only inside the film section (1px tolerance at the edges).
+
+[0m
+[0m← [0mEdit src/v1/snap.ts
+Index: /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/v1/snap.ts
+===================================================================
+--- /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/v1/snap.ts
++++ /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/v1/snap.ts
+@@ -111,9 +111,9 @@
+ const y = window.scrollY;
+ // Only inside the film section (1px tolerance at the edges).
+ if (y < m.top - 1 || y > m.top + m.dist + 1) return;
+ const scrollP = (y - m.top) / m.dist;
+-// Nearest key + its capture window (≈⅓ gap to the neighbouring key).
++// Nearest key + its capture window (≈¼ gap to the neighbouring key).
+ let best = 0;
+ let bestDist = Infinity;
+ for (let i = 0; i < keys.length; i++) {
+   const d = Math.abs(scrollP - keys[i]);
+
+[0m
+[0m← [0mEdit src/v1/snap.ts
+Index: /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/v1/snap.ts
+===================================================================
+--- /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/v1/snap.ts
++++ /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/v1/snap.ts
+@@ -146,12 +146,20 @@
+   if (snapping) cancelSnap();
+   else scheduleIdle();
+ };
+ 
++const onTouchEnd = () => {
++  lastTouchEnd = performance.now();
++  if (snapping) cancelSnap();
++  else scheduleIdle();
++};
++
+ l.on('scroll', onLenisScroll);
+ window.addEventListener('wheel', onUserInput, { passive: true });
+ window.addEventListener('touchstart', onUserInput, { passive: true });
+ window.addEventListener('touchmove', onUserInput, { passive: true });
++window.addEventListener('touchend', onTouchEnd, { passive: true });
++window.addEventListener('touchcancel', onTouchEnd, { passive: true });
+ window.addEventListener('keydown', onUserInput);
+ scheduleIdle();
+ 
+ return () => {
+
+[0m
+[0m← [0mEdit src/v1/snap.ts
+Index: /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/v1/snap.ts
+===================================================================
+--- /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/v1/snap.ts
++++ /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/v1/snap.ts
+@@ -172,7 +172,9 @@
+     }
+     window.removeEventListener('wheel', onUserInput);
+     window.removeEventListener('touchstart', onUserInput);
+     window.removeEventListener('touchmove', onUserInput);
++    window.removeEventListener('touchend', onTouchEnd);
++    window.removeEventListener('touchcancel', onTouchEnd);
+     window.removeEventListener('keydown', onUserInput);
+   };
+ }
+
+[0m
+Edits done. Typechecking, then writing the verification script.
+[0m$ [0mnpx tsc -b 2>&1 | head -20; echo "tsc exit: $?"
+npm notice run eyeq-vision-care@0.1.0 npx
+npm notice run 'tsc' -b
+tsc exit: 0
+[0m
+[0m# [0mTodos
+[✓] Retune lenis.ts (lerp 0.11, wheel 1.0, touch 1.2, syncTouch off)
+[✓] Rebalance filmCurve shares for uniform frames/100px
+[✓] Tighten snap.ts (0.7s, ¼ window, settled-only, no mobile fling snap)
+[•] Verify: curve table + Playwright 4 viewports + scroll video + report
+[0m
+[0m← [0mWrite docs/phase4/qa/v3/scroll-verify.mjs
+Wrote file successfully.
+[0m
+[0m$ [0mnode docs/phase4/qa/v3/scroll-verify.mjs 2>&1 | tail -120
+{
+        "beat": "sweep",
+        "dSrc": 59,
+        "px": 572,
+        "per100": 10.32,
+        "ease": "power3.inOut"
+      },
+      {
+        "beat": "sweepHold",
+        "dSrc": 0,
+        "px": 48,
+        "per100": 0,
+        "ease": "linear"
+      },
+      {
+        "beat": "zoom",
+        "dSrc": 63,
+        "px": 608,
+        "per100": 10.36,
+        "ease": "expo.inOut"
+      },
+      {
+        "beat": "dissolve",
+        "dSrc": 27,
+        "px": 259,
+        "per100": 10.43,
+        "ease": "power2.inOut"
+      },
+      {
+        "beat": "endcard",
+        "dSrc": 55,
+        "px": 530,
+        "per100": 10.38,
+        "ease": "linear"
+      }
+    ]
+  },
+  "keys": {
+    "keys": [
+      {
+        "src": 1,
+        "frac": 0,
+        "y": 0,
+        "winFrac": 0.0277,
+        "winPx": 167
+      },
+      {
+        "src": 70,
+        "frac": 0.111,
+        "y": 668,
+        "winFrac": 0.0277,
+        "winPx": 167
+      },
+      {
+        "src": 145,
+        "frac": 0.231,
+        "y": 1391,
+        "winFrac": 0.028,
+        "winPx": 169
+      },
+      {
+        "src": 215,
+        "frac": 0.343,
+        "y": 2065,
+        "winFrac": 0.0255,
+        "winPx": 154
+      },
+      {
+        "src": 280,
+        "frac": 0.445,
+        "y": 2679,
+        "winFrac": 0.0255,
+        "winPx": 154
+      },
+      {
+        "src": 368,
+        "frac": 0.596,
+        "y": 3588,
+        "winFrac": 0.0291,
+        "winPx": 175
+      },
+      {
+        "src": 440,
+        "frac": 0.7122,
+        "y": 4288,
+        "winFrac": 0.0265,
+        "winPx": 159
+      },
+      {
+        "src": 500,
+        "frac": 0.8181,
+        "y": 4925,
+        "winFrac": 0.0265,
+        "winPx": 159
+      },
+      {
+        "src": 600,
+        "frac": 0.976,
+        "y": 5876,
+        "winFrac": 0.0395,
+        "winPx": 238
+      }
+    ]
+  },
+  "lenisSrc": {
+    "lerp": ".11",
+    "wheelMultiplier": "1",
+    "touchMultiplier": "1.2",
+    "syncTouch": "false",
+    "hasDuration": false
+  },
+  "shots": [
+    "scroll-hero-1512.png",
+    "scroll-hero-1920.png (filmDist=7560px ≈ 7.0 screens)",
+    "scroll-hero-1024.png (filmDist=5376px ≈ 7.0 screens)",
+    "scroll-hero-390.png (filmDist=3882px ≈ 4.6 screens)"
+  ],
+  "errors": [],
+  "settledY": 2065
+}
+[0m
+[0m→ [0mRead docs/phase4/qa/v3/scroll-hero-390.png
+[0m→ [0mRead docs/phase4/qa/v3/scroll-hero-1512.png
+[0m
+[0m$ [0mpython3 -c "
+import json
+m = json.load(open('docs/phase4/qa/v3/scroll-metrics.json'))
+b = m['beats']
+print('viewport', b['vw'], 'x', b['vh'], 'filmDist', b['dist'])
+for r in b['rows']:
+    print(f\"{r['beat']:10s} dSrc={r['dSrc']:5.1f} px={r['px']:5d} per100={r['per100']:6.2f} {r['ease']}\")
+"
+viewport 1512 x 860 filmDist 6020
+birdseye   dSrc= 29.0 px=  283 per100= 10.25 linear
+tilt       dSrc= 40.0 px=  385 per100= 10.38 power2.inOut
+takeout    dSrc= 75.0 px=  722 per100= 10.38 linear
+expand     dSrc= 70.0 px=  674 per100= 10.38 power2.inOut
+heroHold   dSrc= 20.0 px=  181 per100= 11.07 linear
+spin       dSrc= 90.0 px=  867 per100= 10.38 power3.inOut
+spinHold   dSrc=  0.0 px=   60 per100=  0.00 linear
+burst      dSrc= 25.0 px=  241 per100= 10.38 expo.inOut
+ring       dSrc= 36.0 px=  349 per100= 10.31 linear
+collapse   dSrc= 25.0 px=  241 per100= 10.38 power3.inOut
+sweep      dSrc= 59.0 px=  572 per100= 10.32 power3.inOut
+sweepHold  dSrc=  0.0 px=   48 per100=  0.00 linear
+zoom       dSrc= 63.0 px=  608 per100= 10.36 expo.inOut
+dissolve   dSrc= 27.0 px=  259 per100= 10.43 power2.inOut
+endcard    dSrc= 55.0 px=  530 per100= 10.38 linear
+[0m
+[0m→ [0mRead docs/phase4/qa/v3/scroll-hero-1024.png
+[0m→ [0mRead docs/phase4/qa/v3/scroll-hero-1920.png
+All four viewports render clean. Now the scroll video with wheel + touch-fling sampling.
+[0m
+[0m← [0mWrite docs/phase4/qa/v3/scroll-video.mjs
+Wrote file successfully.
+[0m
+[0m$ [0mnode docs/phase4/qa/v3/scroll-video.mjs 2>&1 | tail -80
+"y": 2376
+    },
+    {
+      "dt": 15.3,
+      "tag": "fling+100ms",
+      "y": 3780
+    },
+    {
+      "dt": 15.4,
+      "tag": "fling+200ms",
+      "y": 3780
+    },
+    {
+      "dt": 15.5,
+      "tag": "fling+300ms",
+      "y": 3780
+    },
+    {
+      "dt": 15.6,
+      "tag": "fling+400ms",
+      "y": 3780
+    },
+    {
+      "dt": 15.7,
+      "tag": "fling+500ms",
+      "y": 3780
+    },
+    {
+      "dt": 15.8,
+      "tag": "fling+600ms",
+      "y": 3780
+    },
+    {
+      "dt": 15.9,
+      "tag": "fling+700ms",
+      "y": 3780
+    },
+    {
+      "dt": 16,
+      "tag": "fling+800ms",
+      "y": 3780
+    },
+    {
+      "dt": 16.1,
+      "tag": "fling+900ms",
+      "y": 3780
+    },
+    {
+      "dt": 16.2,
+      "tag": "fling+1000ms",
+      "y": 3780
+    },
+    {
+      "dt": 16.3,
+      "tag": "fling+1100ms",
+      "y": 3780
+    },
+    {
+      "dt": 16.4,
+      "tag": "fling+1200ms",
+      "y": 3780
+    },
+    {
+      "dt": 16.5,
+      "tag": "fling+1300ms",
+      "y": 3780
+    },
+    {
+      "dt": 16.6,
+      "tag": "fling+1400ms",
+      "y": 3780
+    },
+    {
+      "dt": 19.1,
+      "tag": "fling-settled",
+      "y": 3780
+    }
+  ]
+}
+video -> scroll-video.webm
+[0m
+[0m$ [0mpython3 -c "
+import json
+o = json.load(open('docs/phase4/qa/v3/scroll-video-log.json'))
+print('errors:', o['errors'])
+print('reversalsInFlingGlide:', o['reversalsInFlingGlide'])
+for s in o['log'][:30]:
+    print(s['dt'], s['tag'], s['y'])
+"; rtk ls -la docs/phase4/qa/v3/
+errors: []
+reversalsInFlingGlide: 0
+0 start 0
+0 wheel-0 4
+1.1 wheel-4 182
+2.2 wheel-8 380
+3.2 wheel-12 578
+4.3 wheel-16 775
+5.4 wheel-20 974
+6.4 wheel-24 1172
+7.5 wheel-28 1370
+8.5 wheel-32 1567
+9.6 wheel-36 1766
+10.7 wheel-40 1964
+11.7 wheel-44 2161
+12.7 wheel-end 2351
+14.3 wheel-settled 2376
+14.3 pre-fling 2376
+15.3 fling+100ms 3780
+15.4 fling+200ms 3780
+15.5 fling+300ms 3780
+15.6 fling+400ms 3780
+15.7 fling+500ms 3780
+15.8 fling+600ms 3780
+15.9 fling+700ms 3780
+16 fling+800ms 3780
+16.1 fling+900ms 3780
+16.2 fling+1000ms 3780
+16.3 fling+1100ms 3780
+16.4 fling+1200ms 3780
+16.5 fling+1300ms 3780
+16.6 fling+1400ms 3780
+644  ORCHESTRATOR-NOTES.md  1019B
+644  mfilm-probe.png  210.2K
+644  mfilm-waves-ring-gap-1512.png  15.4K
+644  mfilm-waves-w1-flight-1512.png  89.9K
+644  mfilm-waves-w1-hold-1512.png  179.6K
+644  mfilm-waves-w2-flight-1512.png  81.4K
+644  mfilm-waves-w2-hold-1512.png  71.3K
+644  mfilm-words-s1-1512.png  232.8K
+644  mfilm-words-s100-1512.png  223.4K
+644  mfilm-words-s145-1512.png  243.2K
+644  mfilm-words-s185-1512.png  90.4K
+644  mfilm-words-s215-1512.png  54.9K
+644  mfilm-words-s280-1512.png  127.4K
+644  mfilm-words-s368-1512.png  107.3K
+644  mfilm-words-s440-1512.png  110.3K
+644  mfilm-words-s500-1512.png  96.8K
+644  mfilm-words-s600-1512.png  173.2K
+644  mfilm-words-s70-1512.png  237.4K
+644  mpage-base-foot-1024.png  41.7K
+644  mpage-base-foot-1512.png  44.8K
+644  mpage-base-foot-1920.png  54.6K
+644  mpage-base-foot-390.png  44.6K
+644  mpage-base-foot-768.png  48.8K
+644  mpage-base-top-1024.png  295.6K
+644  mpage-base-top-1512.png  424.3K
+644  mpage-base-top-1920.png  597.7K
+644  mpage-base-top-390.png  199.0K
+644  mpage-base-top-768.png  329.2K
+644  mpage-base-white-1024.png  199.0K
+644  mpage-base-white-1512.png  240.0K
+644  mpage-base-white-1920.png  311.6K
+644  mpage-base-white-390.png  59.1K
+644  mpage-base-white-768.png  171.1K
+644  scroll-hero-1024.png  228.3K
+644  scroll-hero-1512.png  230.7K
+644  scroll-hero-1920.png  384.6K
+644  scroll-hero-390.png  182.3K
+644  scroll-metrics.json  3.6K
+644  scroll-verify.mjs  4.5K
+644  scroll-video-log.json  2.3K
+644  scroll-video.mjs  2.6K
+644  scroll-video.webm  2.6M
+[0m
+[0m$ [0mpython3 -c "
+from playwright.sync_api import sync_playwright
+" 2>/dev/null && echo has-sync || echo no-sync; cat > /tmp/snap-probe.mjs <<'EOF'
+import { chromium } from '@playwright/test';
+const browser = await chromium.launch();
+const page = await browser.newPage({ viewport: { width: 1512, height: 860 } });
+await page.goto('http://localhost:5502/v1.html', { waitUntil: 'domcontentloaded' });
+await page.waitForTimeout(3500);
+// Park 100px before the hero key (2065), inside the 154px capture window.
+await page.evaluate(() => window.scrollTo(0, 1965));
+await page.waitForTimeout(400);
+const y0 = await page.evaluate(() => window.scrollY);
+await page.waitForTimeout(2000);
+const y1 = await page.evaluate(() => window.scrollY);
+console.log(JSON.stringify({ parkedAt: 1965, after400ms: y0, after2400ms: y1, heroKey: 2065, nudged: Math.abs(y1 - 2065) < 3 }));
+await browser.close();
+EOF
+node /tmp/snap-probe.mjs
+no-sync
+node:internal/modules/package_json_reader:301
+  throw new ERR_MODULE_NOT_FOUND(packageName, fileURLToPath(base), null);
+        ^
+
+Error [ERR_MODULE_NOT_FOUND]: Cannot find package '@playwright/test' imported from /private/tmp/snap-probe.mjs
+    at Object.getPackageJSONURL (node:internal/modules/package_json_reader:301:9)
+    at packageResolve (node:internal/modules/esm/resolve:768:81)
+    at moduleResolve (node:internal/modules/esm/resolve:859:18)
+    at defaultResolve (node:internal/modules/esm/resolve:992:11)
+    at #cachedDefaultResolve (node:internal/modules/esm/loader:701:20)
+    at #resolveAndMaybeBlockOnLoaderThread (node:internal/modules/esm/loader:721:38)
+    at ModuleLoader.resolveSync (node:internal/modules/esm/loader:759:56)
+    at #resolve (node:internal/modules/esm/loader:683:17)
+    at ModuleLoader.getOrCreateModuleJob (node:internal/modules/esm/loader:603:35)
+    at ModuleJob.syncLink (node:internal/modules/esm/module_job:163:33) {
+  code: 'ERR_MODULE_NOT_FOUND'
+}
+
+Node.js v24.18.0
+[0m
+[0m$ [0mcp /tmp/snap-probe.mjs docs/phase4/qa/v3/snap-probe.mjs && node docs/phase4/qa/v3/snap-probe.mjs
+{"parkedAt":1965,"after400ms":1965,"after2400ms":2065,"heroKey":2065,"nudged":true}
+[0m
+Nudge confirmed exact. Writing the report.
+[0m← [0mWrite docs/phase4/qa/v3/SCROLL.md
+Wrote file successfully.
+[0m
+[0m# [0mTodos
+[✓] Retune lenis.ts (lerp 0.11, wheel 1.0, touch 1.2, syncTouch off)
+[✓] Rebalance filmCurve shares for uniform frames/100px
+[✓] Tighten snap.ts (0.7s, ¼ window, settled-only, no mobile fling snap)
+[✓] Verify: curve table + Playwright 4 viewports + scroll video + report
+[0m
+V3-SCROLL-DONE
+- Lenis snappier: lerp 0.11, wheel 1.0 normalised, touch 1.2, syncTouch off, lerp-mode (no duration easing); zero errors.
+- Uniform sensitivity: all motion beats 10.25–10.43 frames/100px (±1%, target ±35%); short dwells only, take-out linear.
+- Snap: 0.7s, ¼-gap windows, settled-only gate + 600ms touch quiet period; live nudge lands exact, fling shows 0 reversals.
+- Verified at 1512×860 / 1920×1080 / 1024×768 / 390×844 (screenshots looked at) + 20s wheel/touch video; report `docs/phase4/qa/v3/SCROLL.md`. Two flags for FILM agent: inline Lenis still unadopted, mobile film 4.6 screens (needs 1-line CSS, not my file).
+EXIT 0 model=opencode/muse-spark-1.3-contributor-free

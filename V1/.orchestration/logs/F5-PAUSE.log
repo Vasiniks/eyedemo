@@ -1,0 +1,487 @@
+[0m
+> build · muse-spark-1.3-contributor
+[0m
+[0m→ [0mSkill "systematic-debugging"
+[0m→ [0mRead .
+[0m→ [0mRead package.json
+[0m✱ [0mGrep "pause"[90m in src · 25 matches[0m
+[0m→ [0mRead src/components/dom/LogoRails.tsx
+[0m→ [0mRead src/components/dom/lane-e.css[90m [limit=250, offset=710][0m
+[0m✱ [0mGrep "RailsPause|eyeq-rails__pause|paused|setPaused|Play brand|Pause brand"[90m in src · 21 matches[0m
+[0m✱ [0mGrep "aria-label.*[Pp]lay|aria-label.*[Pp]ause|<button"[90m in src · 20 matches[0m
+[0m→ [0mRead src/components/dom/Sections.tsx[90m [limit=80, offset=150][0m
+[0m✱ [0mGrep "playLabel|videoMeta"[90m in src · 10 matches[0m
+[0m→ [0mRead src/components/dom/index.ts
+[0m→ [0mRead src/components/dom/lane-e.css[90m [limit=30, offset=820][0m
+[0m
+[0m← [0mEdit src/components/dom/LogoRails.tsx
+Index: /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/components/dom/LogoRails.tsx
+===================================================================
+--- /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/components/dom/LogoRails.tsx
++++ /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/components/dom/LogoRails.tsx
+@@ -317,22 +317,8 @@
+     <Rail logos={insurers} label="Accepted insurance plans" direction={-1} running={running} speed={speed} />
+   );
+ }
+ 
+-export function RailsPause({ paused, onToggle }: { paused: boolean; onToggle: () => void }) {
+-  return (
+-    <button
+-      type="button"
+-      className="eyeq-rails__pause"
+-      onClick={onToggle}
+-      aria-pressed={paused}
+-      aria-label={paused ? 'Play brand rails' : 'Pause brand rails'}
+-    >
+-      {paused ? '▶' : '❚❚'}
+-    </button>
+-  );
+-}
+-
+ // Screen-reader truth: real lists with text names (fixes live empty-alts).
+ export function RailsSrLists() {
+   return (
+     <>
+
+[0m
+[0m← [0mEdit src/components/dom/LogoRails.tsx
+Index: /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/components/dom/LogoRails.tsx
+===================================================================
+--- /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/components/dom/LogoRails.tsx
++++ /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/components/dom/LogoRails.tsx
+@@ -337,9 +337,8 @@
+ }
+ 
+ function useRailsRunning() {
+   const rm = usePrefersReducedMotion();
+-  const [paused, setPaused] = useState(false);
+   const [visible, setVisible] = useState(true);
+   const [narrow, setNarrow] = useState(
+     () => typeof window !== 'undefined' && window.matchMedia('(max-width: 767px)').matches,
+   );
+
+[0m
+[0m← [0mEdit src/components/dom/LogoRails.tsx
+Index: /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/components/dom/LogoRails.tsx
+===================================================================
+--- /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/components/dom/LogoRails.tsx
++++ /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/components/dom/LogoRails.tsx
+@@ -361,11 +361,11 @@
+     io.observe(el);
+     return () => io.disconnect();
+   }, []);
+ 
+-  const running = visible && !paused;
++  const running = visible;
+   const speed = narrow ? MOB_SPEED : DESK_SPEED;
+-  return { rm, running, speed, paused, setPaused, wrapRef };
++  return { rm, running, speed, wrapRef };
+ }
+ 
+ // White-act flank layout (ART §4.4 desktop geometry): Lane B places
+ // <WhiteActRails side="left"> … WhiteSection … <WhiteActRails side="right">.
+
+[0m
+[0m→ [0mRead src/components/dom/LogoRails.tsx[90m [limit=60, offset=430][0m
+[0m
+[0m← [0mEdit src/components/dom/LogoRails.tsx
+Index: /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/components/dom/LogoRails.tsx
+===================================================================
+--- /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/components/dom/LogoRails.tsx
++++ /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/components/dom/LogoRails.tsx
+@@ -429,9 +429,9 @@
+   }, [wrapRef]);
+ }
+ 
+ export function WhiteActRails({ side = 'pair' }: { side?: 'left' | 'right' | 'pair' }) {
+-  const { rm, running, speed, paused, setPaused, wrapRef } = useRailsRunning();
++  const { rm, running, speed, wrapRef } = useRailsRunning();
+   useRailPlacement(wrapRef);
+   if (rm) {
+     if (side === 'pair') return <StaticGrid />;
+     return side === 'left' ? (
+
+[0m
+[0m← [0mEdit src/components/dom/LogoRails.tsx
+Index: /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/components/dom/LogoRails.tsx
+===================================================================
+--- /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/components/dom/LogoRails.tsx
++++ /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/components/dom/LogoRails.tsx
+@@ -444,9 +444,8 @@
+ <div className="eyeq-e" ref={wrapRef}>
+   {side === 'pair' ? (
+     <div className="eyeq-rails eyeq-rails--desktop" role="presentation">
+       <BrandRail running={running} speed={speed} />
+-      <RailsPause paused={paused} onToggle={() => setPaused((v) => !v)} />
+       <InsurerRail running={running} speed={speed} />
+     </div>
+   ) : (
+     <div className="eyeq-railside" role="presentation" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 12 }}>
+@@ -456,9 +455,8 @@
+         ) : (
+           <InsurerRail running={running} speed={speed} />
+         )}
+       </div>
+-      <RailsPause paused={paused} onToggle={() => setPaused((v) => !v)} />
+     </div>
+   )}
+   {side === 'pair' && <MobileMarquee running={running} speed={speed} />}
+   {side === 'pair' && <RailsSrLists />}
+
+[0m
+[0m← [0mEdit src/components/dom/LogoRails.tsx
+Index: /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/components/dom/LogoRails.tsx
+===================================================================
+--- /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/components/dom/LogoRails.tsx
++++ /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/components/dom/LogoRails.tsx
+@@ -466,9 +466,9 @@
+ 
+ // Mobile 68px horizontal marquee (brands + insurers in one strip). Lane B
+ // renders this below the white act on <768px; CSS hides it on desktop.
+ export function RailsMobileStrip() {
+-  const { rm, running, speed, paused, setPaused, wrapRef } = useRailsRunning();
++  const { rm, running, speed, wrapRef } = useRailsRunning();
+   if (rm)
+     return (
+       <div className="eyeq-rails--mobile-static">
+         <StaticGrid />
+
+[0m
+[0m← [0mEdit src/components/dom/LogoRails.tsx
+Index: /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/components/dom/LogoRails.tsx
+===================================================================
+--- /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/components/dom/LogoRails.tsx
++++ /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/components/dom/LogoRails.tsx
+@@ -476,11 +476,8 @@
+     );
+   return (
+     <div className="eyeq-e" ref={wrapRef}>
+       <MobileMarquee running={running} speed={speed} />
+-      <div className="eyeq-rails__pause--mobile">
+-        <RailsPause paused={paused} onToggle={() => setPaused((v) => !v)} />
+-      </div>
+     </div>
+   );
+ }
+ 
+
+[0m
+[0m← [0mEdit src/components/dom/LogoRails.tsx
+Index: /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/components/dom/LogoRails.tsx
+===================================================================
+--- /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/components/dom/LogoRails.tsx
++++ /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/components/dom/LogoRails.tsx
+@@ -10,10 +10,9 @@
+ // sprocket perforations in Paper colour along both edges, light-knockout
+ // logos (brief §6c.2) placed DIRECTLY on the dark base (no inner tile),
+ // 10px frame numbers in Bone-dim / Lamp-amber at 60%, 1px Steel-edge frame
+ // dividers, film grain ≤3%, top/bottom edge masks ≥120px into Paper.
+-// Pause on hover/focus + visible pause control + IntersectionObserver
+-// offscreen-pause; RM = static labelled grid; mobile = one 68px horizontal
++// Pause on hover/focus + IntersectionObserver offscreen-pause; RM = static
+ // marquee (vertical pair hidden).
+ 
+ const DESK_SPEED = 72;
+ const MOB_SPEED = 44;
+
+[0m
+[0m← [0mEdit src/components/dom/index.ts
+Index: /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/components/dom/index.ts
+===================================================================
+--- /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/components/dom/index.ts
++++ /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/components/dom/index.ts
+@@ -8,6 +8,6 @@
+ export { ChapterOverlay } from './ChapterOverlay';
+ export { WhiteSection } from './WhiteSection';
+ export { Header } from './Header';
+ export { Footer } from './Footer';
+-export { LogoRails, WhiteActRails, BrandRail, InsurerRail, RailsPause, RailsSrLists, RailsMobileStrip } from './LogoRails';
++export { LogoRails, WhiteActRails, BrandRail, InsurerRail, RailsSrLists, RailsMobileStrip } from './LogoRails';
+ export { AboutSection, ServicesSection, LensesSection, ReviewsSection, VisitSection, HomeSections } from './Sections';
+
+[0m
+[0m← [0mEdit src/components/dom/lane-e.css
+Index: /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/components/dom/lane-e.css
+===================================================================
+--- /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/components/dom/lane-e.css
++++ /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/components/dom/lane-e.css
+@@ -819,29 +819,8 @@
+ }
+ .eyeq-rail__frame--hero .eyeq-rail__num {
+   color: rgba(217, 164, 65, 0.6);
+ }
+-.eyeq-rails__pause {
+-  align-self: center;
+-  margin: 0 12px;
+-  flex: 0 0 auto;
+-  min-width: 44px;
+-  min-height: 44px;
+-  background: none;
+-  border: 1px solid var(--eyeq-hairline-light-strong);
+-  border-radius: 50%;
+-  color: var(--eyeq-ink-muted);
+-  font-size: 12px;
+-  cursor: pointer;
+-}
+-.eyeq-rails__pause:hover {
+-  color: var(--eyeq-ink);
+-}
+-.eyeq-rails__pause--mobile {
+-  display: none;
+-  justify-content: center;
+-  padding: 12px 0 4px;
+-}
+ /* RM mobile grid: only below 768px (desktop RM uses the flank columns) */
+ .eyeq-rails--mobile-static {
+   display: none;
+ }
+
+[0m
+[0m→ [0mRead src/components/dom/lane-e.css[90m [limit=50, offset=900][0m
+[0m
+[0m← [0mEdit src/components/dom/lane-e.css
+Index: /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/components/dom/lane-e.css
+===================================================================
+--- /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/components/dom/lane-e.css
++++ /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/components/dom/lane-e.css
+@@ -898,11 +898,8 @@
+ .eyeq-rails--mobile {
+   display: none;
+ }
+ @media (max-width: 767px) {
+-  .eyeq-railside .eyeq-rails__pause {
+-    display: none;
+-  }
+   /* Vertical rails are desktop-only (PLAN-MASTER §8): on mobile the white
+    * act is flanked by nothing — the single 68px horizontal marquee
+    * (.eyeq-rails--mobile) carries the marks below the white act. Without
+    * this the 120px flank strips overlay the 4-col content. */
+
+[0m
+[0m← [0mEdit src/components/dom/lane-e.css
+Index: /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/components/dom/lane-e.css
+===================================================================
+--- /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/components/dom/lane-e.css
++++ /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/components/dom/lane-e.css
+@@ -905,11 +905,8 @@
+  * this the 120px flank strips overlay the 4-col content. */
+ .eyeq-rails--desktop {
+   display: none;
+ }
+-.eyeq-rails__pause--mobile {
+-  display: flex;
+-}
+ .eyeq-railside--static {
+   display: none;
+ }
+ .eyeq-rails--mobile {
+
+[0m
+[0m→ [0mRead src/components/dom/lane-e.css[90m [limit=20, offset=700][0m
+[0m→ [0mRead src/components/dom/lane-e.css[90m [limit=20, offset=720][0m
+[0m
+[0m← [0mEdit src/components/dom/lane-e.css
+Index: /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/components/dom/lane-e.css
+===================================================================
+--- /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/components/dom/lane-e.css
++++ /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/components/dom/lane-e.css
+@@ -721,13 +721,13 @@
+   flex-direction: column;
+   align-items: stretch;
+ }
+ /* F4-RAILS: on ≥1280px the aside is viewport-fixed — the strip runs the full
+- * viewport height (76px reserved for the pause control) so the loop reads
++ * viewport height so the loop reads
+  * continuously past the white act, alongside every section to the footer. */
+ @media (min-width: 1280px) {
+   .v1-rail .eyeq-rail {
+-    height: calc(100svh - 76px);
++    height: 100svh;
+   }
+   .v1-rail .eyeq-rail__body {
+     height: 100%;
+   }
+
+[0m
+[0m✱ [0mGrep "pause"[90m in src · 4 matches[0m
+[0m
+[0m← [0mEdit src/components/dom/LogoRails.tsx
+Index: /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/components/dom/LogoRails.tsx
+===================================================================
+--- /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/components/dom/LogoRails.tsx
++++ /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/components/dom/LogoRails.tsx
+@@ -10,9 +10,9 @@
+ // sprocket perforations in Paper colour along both edges, light-knockout
+ // logos (brief §6c.2) placed DIRECTLY on the dark base (no inner tile),
+ // 10px frame numbers in Bone-dim / Lamp-amber at 60%, 1px Steel-edge frame
+ // dividers, film grain ≤3%, top/bottom edge masks ≥120px into Paper.
+-// Pause on hover/focus + IntersectionObserver offscreen-pause; RM = static
++// Slow on hover/focus + IntersectionObserver offscreen-stop; RM = static
+ // marquee (vertical pair hidden).
+ 
+ const DESK_SPEED = 72;
+ const MOB_SPEED = 44;
+
+[0m
+[0m→ [0mRead src/components/dom/LogoRails.tsx[90m [limit=15, offset=365][0m
+[0m
+[0m← [0mEdit src/components/dom/LogoRails.tsx
+Index: /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/components/dom/LogoRails.tsx
+===================================================================
+--- /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/components/dom/LogoRails.tsx
++++ /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/components/dom/LogoRails.tsx
+@@ -367,9 +367,9 @@
+ }
+ 
+ // White-act flank layout (ART §4.4 desktop geometry): Lane B places
+ // <WhiteActRails side="left"> … WhiteSection … <WhiteActRails side="right">.
+-// "pair" renders both rails + pause (standalone bridge use).
++// "pair" renders both rails (standalone bridge use).
+ // F4-RAILS: on ≥1280px the asides are viewport-fixed (v1.css) so the strips
+ // run white act → footer. This drives .is-live visibility + a 200px
+ // opacity/blur fade just before the footer; hidden while the film is on
+ // screen. 768–1279px / <768px are pure-CSS (sticky / hidden) — idle there.
+
+[0m
+[0m$ [0mnpm run build 2>&1 | tail -30
+- plugin vite:prepare-out-dir renderStart (59%, 8.2s, 1 call)
+  - plugin vite:css-post transform (20%, 2.7s, 13 calls)
+  - plugin vite:css transform (17%, 2.3s, 13 calls)
+Additional callback time came from callbacks under 1s.
+See https://rolldown.rs/reference/InputOptions.checks#bundlertimings for more details.
+
+error during build:
+Build failed with 1 error:
+
+[plugin vite:prepare-out-dir]
+Error: ENOENT: no such file or directory, stat '/Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/public/v1film/.tmp.mobile.20407/f_00219.webp'
+    at Object.statSync (node:fs:1734:25)
+    at copyDir (file:///Users/admin/Desktop/BUISNESS/EyeQ%20Vision%20Care/V1/node_modules/vite/dist/node/chunks/node.js:2407:10)
+    at copyDir (file:///Users/admin/Desktop/BUISNESS/EyeQ%20Vision%20Care/V1/node_modules/vite/dist/node/chunks/node.js:2407:43)
+    at copyDir (file:///Users/admin/Desktop/BUISNESS/EyeQ%20Vision%20Care/V1/node_modules/vite/dist/node/chunks/node.js:2407:43)
+    at prepareOutDir (file:///Users/admin/Desktop/BUISNESS/EyeQ%20Vision%20Care/V1/node_modules/vite/dist/node/chunks/node.js:34014:4)
+    at PluginContextImpl.handler (file:///Users/admin/Desktop/BUISNESS/EyeQ%20Vision%20Care/V1/node_modules/vite/dist/node/chunks/node.js:33996:6)
+    at PluginContextImpl.handler (file:///Users/admin/Desktop/BUISNESS/EyeQ%20Vision%20Care/V1/node_modules/vite/dist/node/chunks/node.js:34704:13)
+    at plugin (file:///Users/admin/Desktop/BUISNESS/EyeQ%20Vision%20Care/V1/node_modules/rolldown/dist/shared/bindingify-input-options-XrReX_BJ.mjs:1610:17)
+    at file:///Users/admin/Desktop/BUISNESS/EyeQ%20Vision%20Care/V1/node_modules/rolldown/dist/shared/bindingify-input-options-XrReX_BJ.mjs:1932:21
+    at plugin.<computed> (file:///Users/admin/Desktop/BUISNESS/EyeQ%20Vision%20Care/V1/node_modules/rolldown/dist/shared/bindingify-input-options-XrReX_BJ.mjs:2130:18)
+    at aggregateBindingErrorsIntoJsError (file:///Users/admin/Desktop/BUISNESS/EyeQ%20Vision%20Care/V1/node_modules/rolldown/dist/shared/error-C7pxws0W.mjs:48:18)
+    at unwrapBindingResult (file:///Users/admin/Desktop/BUISNESS/EyeQ%20Vision%20Care/V1/node_modules/rolldown/dist/shared/error-C7pxws0W.mjs:18:128)
+    at #build (file:///Users/admin/Desktop/BUISNESS/EyeQ%20Vision%20Care/V1/node_modules/rolldown/dist/shared/rolldown-CgWItHdG.mjs:133:34)
+    at async buildEnvironment (file:///Users/admin/Desktop/BUISNESS/EyeQ%20Vision%20Care/V1/node_modules/vite/dist/node/chunks/node.js:34445:66)
+    at async Object.build (file:///Users/admin/Desktop/BUISNESS/EyeQ%20Vision%20Care/V1/node_modules/vite/dist/node/chunks/node.js:34866:19)
+    at async Object.buildApp (file:///Users/admin/Desktop/BUISNESS/EyeQ%20Vision%20Care/V1/node_modules/vite/dist/node/chunks/node.js:34863:153)
+    at async CAC.<anonymous> (file:///Users/admin/Desktop/BUISNESS/EyeQ%20Vision%20Care/V1/node_modules/vite/dist/node/cli.js:780:3) {
+  errors: [Getter/Setter]
+}
+[0m
+[0m$ [0mnpx tsc -b 2>&1 | head -20; echo TSC_EXIT:$?
+npm notice run eyeq-vision-care@0.1.0 npx
+npm notice run 'tsc' -b
+TSC_EXIT:0
+[0m
+[0m$ [0mrtk ls -la "public/v1film/" 2>&1 | head -20; rtk ls "public/v1film/.tmp.mobile.20407" 2>&1 | head -5
+755  full/
+755  mobile/
+755  web/
+644  manifest.json  205B
+ls: public/v1film/.tmp.mobile.20407: No such file or directory
+[0m
+[0m$ [0mnpm run build 2>&1 | tail -15
+[plugin builtin:vite-reporter] 
+(!) Some chunks are larger than 500 kB after minification. Consider:
+- Using dynamic import() to code-split the application
+- Use build.rolldownOptions.output.codeSplitting to improve chunking: https://rolldown.rs/reference/OutputOptions.codeSplitting
+- Adjust chunk size limit for this warning via build.chunkSizeWarningLimit.
+✓ built in 37.76s
+[33m[PLUGIN_TIMINGS] [0mJavaScript callbacks ran for 37.6s of this 37.8s build (99%).
+The slowest callbacks, timed inside each callback (the wait before a callback starts is excluded, the time it awaits is included):
+  - plugin vite:prepare-out-dir renderStart (99%, 37.2s, 1 call)
+1 callback is listed without a time. Its calls overlapped, so the time inside one call includes work from other calls. To find its cost, profile the build with `node --cpu-prof`:
+  - plugin vite:css transform (13 calls)
+See https://rolldown.rs/reference/InputOptions.checks#bundlertimings for more details.
+
+npm notice run eyeq-vision-care@0.1.0 postbuild
+npm notice run cp dist/index.html dist/404.html
+[0m
+[0m→ [0mRead playwright.config.ts
+[0m→ [0mRead playwright.config.ts
+[0m→ [0mRead vite.config.ts
+[0m
+[0m$ [0mrtk ls docs/phase4/qa/v3/ 2>&1 | head -20; rtk ls src/v1/ 2>&1 | head -20
+F4-MAIN.md  3.8K
+F4-MAP.md  1.9K
+F4-MFILM.md  1.9K
+F4-PERF.md  3.2K
+F4-RAILS.md  2.3K
+F4-SCROLL.md  1.8K
+F5-PHOTOS.md  2.9K
+MPAGE.md  4.4K
+ORCHESTRATOR-NOTES.md  2.2K
+PERF.md  4.0K
+SCROLL.md  4.8K
+caption-about.png  90.5K
+caption-lenses-offset.png  268.6K
+caption-lenses-wide.png  791.1K
+caption-services.png  179.8K
+f5-mobile-qa.mjs  1.6K
+main-desktop-full.png  342.5K
+main-desktop-top.png  357.0K
+main-desktop-white.png  228.4K
+main-mobile-full.png  121.6K
+App.tsx  3.2K
+BrandWaves.tsx  11.3K
+FilmCaptions.tsx  1.8K
+FilmSequence.tsx  18.5K
+SidePanels.tsx  8.1K
+captions.css  1.7K
+dev-text.tsx  1.7K
+dev-waves.tsx  2.4K
+dev-words.tsx  3.4K
+filmCurve.ts  13.4K
+frameLoader.ts  11.9K
+lenis.ts  5.2K
+main.tsx  620B
+progress.ts  3.4K
+side.css  5.4K
+sideCopy.ts  4.7K
+snap.ts  6.2K
+v1.css  7.9K
+waves.css  3.8K
+[0m
+[0m$ [0mPORT=5707 rtk npm run dev -- --port 5707 --strictPort & echo $!; sleep 5; rtk curl -s -o /dev/null -w "%{http_code}" http://localhost:5707/
+72860
+FAILED: curl 000
+  VITE v8.3.1  ready in 2618 ms
+  ➜  Local:   http://localhost:5707/
+  ➜  Network: use --host to expose
+
+
+<shell_metadata>
+shell tool terminated command after exceeding timeout 120000 ms. If this command is expected to take longer and is not waiting for interactive input, retry with a larger timeout value in milliseconds.
+</shell_metadata>
+[0m
+[0m$ [0mrtk curl -s -o /dev/null -w "%{http_code}" http://localhost:5707/ || echo FAIL
+FAILED: curl 000
+FAIL
+[0m
+[0m$ [0mnohup npm run dev -- --port 5707 --strictPort > /tmp/vite-5707.log 2>&1 & echo STARTED:$!; sleep 4; curl -s -o /dev/null -w "%{http_code}\n" http://localhost:5707/
+STARTED:76336
+200
+[0m
+[0m⚙ [0mplaywright_browser_navigate {"url":"http://localhost:5707/"}
+[0m⚙ [0mplaywright_browser_resize {"height":860,"width":1512}
+[0m⚙ [0mplaywright_browser_evaluate {"function":"() => { const btns = Array.from(document.querySelectorAll('button')); const hits = btns.map(b => ({ text: (b.innerText||'').slice(0,80), aria: b.getAttribute('aria-label')||'', cls: b.className||'', visible: (()=>{const r=b.getBoundingClientRect(); const cs=getComputedStyle(b); return r.width>0&&r.height>0&&cs.display!=='none'&&cs.visibility!=='hidden';})() })).filter(b => /pause|play/i.test(b.text+' '+b.aria)); return { totalButtons: btns.length, hits, all: btns.map(b=>({text:(b.innerText||'').slice(0,40),aria:b.getAttribute('aria-label')||'',cls:String(b.className).slice(0,60)})) }; }"}
+[0m⚙ [0mplaywright_browser_evaluate {"function":"() => { const pauseBtns = Array.from(document.querySelectorAll('button')).filter(b => /pause/i.test((b.innerText||'')+' '+(b.getAttribute('aria-label')||''))); const railPauseEls = document.querySelectorAll('.eyeq-rails__pause, .eyeq-rails__pause--mobile'); const rails = document.querySelectorAll('.eyeq-rail, .eyeq-rails--mobile, .eyeq-rails--desktop'); return { pauseHits: pauseBtns.length, railPauseCount: railPauseEls.length, railsPresent: rails.length, railClasses: Array.from(rails).slice(0,4).map(e=>e.className) }; }"}
+[0m⚙ [0mplaywright_browser_take_screenshot Unknown
+[0m
+[0m← [0mWrite docs/phase4/qa/v3/F5-PAUSE.md
+Wrote file successfully.
+[0m
+[0m$ [0mkill 76336 2>/dev/null; pkill -f "vite.*5707" 2>/dev/null; echo cleaned
+cleaned
+[0m
+Removed all rail pause controls (`RailsPause` + 3 usages + CSS), kept reduced-motion static grids and hover-slow. `tsc` clean, `npm run build` passes (retry after transient public-asset race). Verified at 1512×860: 0 `/pause/i` buttons, 0 `.eyeq-rails__pause` nodes, rails still render. Doc: `docs/phase4/qa/v3/F5-PAUSE.md`.
+
+F5-PAUSE-DONE
+EXIT 0 model=meta/muse-spark-1.3-contributor

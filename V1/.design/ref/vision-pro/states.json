@@ -1,0 +1,10 @@
+[
+ {
+  "trigger": "button[aria-expanded=false]",
+  "frames": [
+   "states/buttonariaexpandedfa-120ms.jpg",
+   "states/buttonariaexpandedfa-450ms.jpg",
+   "states/buttonariaexpandedfa-1100ms.jpg"
+  ]
+ }
+]

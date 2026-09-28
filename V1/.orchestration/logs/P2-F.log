@@ -1,0 +1,111 @@
+[0m
+> build · muse-spark-1.3-contributor
+[0m
+[0m→ [0mRead docs/00-BRIEF.md
+[0m
+[0m# [0mTodos
+[•] Read brief + inspect skills (section 1)
+[ ] Context7 docs research: three.js, R3F, drei, postprocessing, GSAP, Lenis (section 2)
+[ ] Blender MCP read-only status check (section 3)
+[ ] Per-effect technique recommendations (section 4)
+[ ] Stack recommendation + versions (section 5)
+[ ] Blender→web pipeline (section 6) + write output file
+[0m
+[0m→ [0mSkill "threejs-scenes"
+[0m→ [0mSkill "build-threejs-scroll-worlds"
+[0m→ [0mSkill "cinematic-gsap-lenis-motion-system"
+[0m→ [0mSkill "webgl-3d-object"
+[0m→ [0mSkill "optimize-web-animations"
+[0m→ [0mSkill "marquee-loop"
+[0m→ [0mSkill "masked-reveal"
+[0m→ [0mSkill "awwwards-playbook"
+[0m→ [0mSkill "scroll-world-storytelling"
+[0m→ [0mSkill "design-motion-principles"
+[0m→ [0mSkill "scroll-craft"
+[0m→ [0mSkill "visual-fidelity"
+[0m→ [0mSkill "gsap-scrolltrigger-storytelling"
+[0m→ [0mSkill "blender-hard-surface-modeling"
+[0m→ [0mSkill "iterate-until-verified"
+[0m
+[0m# [0mTodos
+[✓] Read brief + inspect skills (section 1)
+[•] Context7 docs research: three.js, R3F, drei, postprocessing, GSAP, Lenis (section 2)
+[ ] Blender MCP read-only status check (section 3)
+[ ] Per-effect technique recommendations (section 4)
+[ ] Stack recommendation + versions (section 5)
+[ ] Blender→web pipeline (section 6) + write output file
+[0m
+[0m⚙ [0mcontext7_resolve-library-id {"libraryName":"Lenis smooth scroll","query":"Lenis smooth scroll ScrollTrigger sync"}
+[0m⚙ [0mcontext7_resolve-library-id {"libraryName":"@react-three/fiber","query":"React Three Fiber Canvas ScrollControls"}
+[0m⚙ [0mcontext7_resolve-library-id {"libraryName":"GSAP ScrollTrigger","query":"ScrollTrigger scrub pin timeline"}
+[0m⚙ [0mcontext7_resolve-library-id {"libraryName":"three.js","query":"MeshPhysicalMaterial sheen transmission lenses"}
+[0m⚙ [0mcontext7_query-docs {"libraryId":"/websites/gsap_v3","query":"ScrollTrigger scrub pin timeline scrub smoothing with Lenis smooth scroll"}
+[0m⚙ [0mcontext7_query-docs {"libraryId":"/pmndrs/react-three-fiber","query":"Canvas frameloop demand vs always, useFrame, useGLTF ScrollControls vs external GSAP ScrollTrigger"}
+[0m⚙ [0mcontext7_query-docs {"libraryId":"/darkroomengineering/lenis","query":"Lenis ScrollTrigger sync gsap ticker raf integration React"}
+[0m⚙ [0mcontext7_query-docs {"libraryId":"/mrdoob/three.js","query":"MeshPhysicalMaterial sheen sheenColor sheenRoughness transmission thickness ior for lenses"}
+[0m⚙ [0mcontext7_resolve-library-id {"libraryName":"drei","query":"useGLTF useAnimations Environment MeshTransmissionMaterial ScrollControls"}
+[0m⚙ [0mcontext7_resolve-library-id {"libraryName":"postprocessing","query":"DepthOfField Bloom motion blur EffectComposer"}
+[0m⚙ [0mcontext7_query-docs {"libraryId":"/pmndrs/react-postprocessing","query":"EffectComposer Bloom DepthOfField Vignette ChromaticAberration motion blur"}
+[0m⚙ [0mcontext7_query-docs {"libraryId":"/pmndrs/drei","query":"useGLTF useAnimations Environment MeshTransmissionMaterial ScrollControls"}
+[0m⚙ [0mcontext7_query-docs {"libraryId":"/mrdoob/three.js","query":"KHR_materials_sheen glTF export sheen supported transmission"}
+[0m⚙ [0mgsap_get_gsap_guidance {"max_skills":2,"topic":"pin a section on scroll scrub cinematic camera timeline with Lenis smooth scroll"}
+[0m⚙ [0mblender_get_addon_status {"user_prompt":"determine the best technical approach for every effect. The project folder has NO existing code, so also recommend the stack."}
+[0m⚙ [0mblender_get_scene_info {"user_prompt":"determine the best technical approach for every effect. The project folder has NO existing code, so also recommend the stack."}
+[0m
+[0m$ [0mnpm view three version; npm view @react-three/fiber version; npm view @react-three/drei version; npm view @react-three/postprocessing version; npm view gsap version; npm view lenis version; npm view vite version; npm view react version; npm view three-mesh-bvh version 2>&1 | head -30
+0.186.1
+9.8.1
+10.7.9
+3.1.3
+3.15.0
+1.3.26
+8.3.1
+19.3.0
+0.9.15
+[0m
+[0m$ [0mnpm view postprocessing version; npm view @gsap/react version; npm view zustand version; npm view maath version; npm view draco3dgltf version; npm view meshoptimizer version; npm view @playwright/test version 2>&1 | head -20
+6.39.5
+2.1.2
+5.0.15
+0.10.8
+1.5.7
+1.3.0
+1.63.0
+[0m
+[0m→ [0mRead .
+[0m→ [0mRead docs
+[0m
+[0m# [0mTodos
+[✓] Read brief + inspect skills (section 1)
+[✓] Context7 docs research: three.js, R3F, drei, postprocessing, GSAP, Lenis (section 2)
+[✓] Blender MCP read-only status check (section 3)
+[•] Per-effect technique recommendations (section 4)
+[ ] Stack recommendation + versions (section 5)
+[ ] Blender→web pipeline (section 6) + write output file
+[0m
+[0m← [0mWrite docs/research/F-3d-motion-tech.md
+Wrote file successfully.
+[0m
+[0m← [0mWrite docs/research/F-3d-motion-tech.md
+Wrote file successfully.
+[0m
+[0m← [0mWrite docs/research/F-3d-motion-tech.md
+Wrote file successfully.
+[0m
+[0m# [0mTodos
+[✓] Read brief + inspect skills (section 1)
+[✓] Context7 docs research: three.js, R3F, drei, postprocessing, GSAP, Lenis (section 2)
+[✓] Blender MCP read-only status check (section 3)
+[✓] Per-effect technique recommendations (section 4)
+[✓] Stack recommendation + versions (section 5)
+[✓] Blender→web pipeline (section 6) + write output file
+[0m
+Output written to `docs/research/F-3d-motion-tech.md` covering all 6 sections + architecture diagram + top-10 risks, with exact source URLs and UNVERIFIED labels; no code scaffolded, no packages installed, Blender left untouched (both read-only calls failed — recorded).
+
+PHASE2-F-DONE
+- Stack: Vite + React 19 + R3F 9.8.1 + drei 10.7.9 + three 0.186.1 + GSAP 3.15 + Lenis 1.3.26, static dist; Next.js/vanilla rejected with reasons.
+- Film driver: one GSAP master timeline (scrub ~1, pin) + Lenis single ticker; R3F reads progress ref in useFrame; drei ScrollControls banned.
+- Key techniques: boolean-logo geometry (survives glTF), runtime hinge pivots + tip-lag flap, sheen velvet + physical transmission lens, instanced alpha sponsor planes + authored streaks (no motion-blur pass found), bloom+overlay portal, DOM marquee rails.
+- Perf: mobile DPR≤1.5/tris 150-300k, desktop DPR≤2/tris ≤1.2M, KTX2 + Draco/meshopt, post gated per-beat, RAF offscreen gating.
+- Blender MCP unreachable (both calls connection error, version UNVERIFIED); EEVEE-now/Cycles-later pipeline specified with Phase-3 re-check gate.
+EXIT 0 model=meta/muse-spark-1.3-contributor

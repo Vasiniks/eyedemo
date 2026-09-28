@@ -1,0 +1,79 @@
+[
+ {
+  "family": "SF Pro Display",
+  "weight": "300",
+  "style": "normal",
+  "url": "https://www.apple.com/wss/fonts/SF-Pro-Display/v3/sf-pro-display_light.woff2",
+  "saved": "assets/font-v3-sf-pro-display_light-be76bdbb.woff2"
+ },
+ {
+  "family": "SF Pro Display",
+  "weight": "400",
+  "style": "normal",
+  "url": "https://www.apple.com/wss/fonts/SF-Pro-Display/v3/sf-pro-display_regular.woff2",
+  "saved": "assets/font-v3-sf-pro-display_regular-e4d0d032.woff2"
+ },
+ {
+  "family": "SF Pro Display",
+  "weight": "600",
+  "style": "normal",
+  "url": "https://www.apple.com/wss/fonts/SF-Pro-Display/v3/sf-pro-display_semibold.woff2",
+  "saved": "assets/font-v3-sf-pro-display_semibold-bbfbf88f.woff2"
+ },
+ {
+  "family": "SF Pro Display",
+  "weight": "700",
+  "style": "normal",
+  "url": "https://www.apple.com/wss/fonts/SF-Pro-Display/v3/sf-pro-display_bold.woff2",
+  "saved": "assets/font-v3-sf-pro-display_bold-6d8c88e6.woff2"
+ },
+ {
+  "family": "SF Pro Text",
+  "weight": "300",
+  "style": "normal",
+  "url": "https://www.apple.com/wss/fonts/SF-Pro-Text/v3/sf-pro-text_light.woff2",
+  "saved": "assets/font-v3-sf-pro-text_light-4e55b19a.woff2"
+ },
+ {
+  "family": "SF Pro Text",
+  "weight": "400",
+  "style": "normal",
+  "url": "https://www.apple.com/wss/fonts/SF-Pro-Text/v3/sf-pro-text_regular.woff2",
+  "saved": "assets/font-v3-sf-pro-text_regular-3cccedef.woff2"
+ },
+ {
+  "family": "SF Pro Text",
+  "weight": "400",
+  "style": "italic",
+  "url": "https://www.apple.com/wss/fonts/SF-Pro-Text/v3/sf-pro-text_regular-italic.woff2",
+  "saved": "assets/font-v3-sf-pro-text_regular-italic-55df7438.woff2"
+ },
+ {
+  "family": "SF Pro Text",
+  "weight": "600",
+  "style": "normal",
+  "url": "https://www.apple.com/wss/fonts/SF-Pro-Text/v3/sf-pro-text_semibold.woff2",
+  "saved": "assets/font-v3-sf-pro-text_semibold-117a79c0.woff2"
+ },
+ {
+  "family": "SF Pro Icons",
+  "weight": "300",
+  "style": "normal",
+  "url": "https://www.apple.com/wss/fonts/SF-Pro-Icons/v3/sf-pro-icons_light.woff2",
+  "saved": "assets/font-v3-sf-pro-icons_light-94ac44ac.woff2"
+ },
+ {
+  "family": "SF Pro Icons",
+  "weight": "400",
+  "style": "normal",
+  "url": "https://www.apple.com/wss/fonts/SF-Pro-Icons/v3/sf-pro-icons_regular.woff2",
+  "saved": "assets/font-v3-sf-pro-icons_regular-e6c13e47.woff2"
+ },
+ {
+  "family": "SF Pro Icons",
+  "weight": "600",
+  "style": "normal",
+  "url": "https://www.apple.com/wss/fonts/SF-Pro-Icons/v3/sf-pro-icons_semibold.woff2",
+  "saved": "assets/font-v3-sf-pro-icons_semibold-e870953b.woff2"
+ }
+]

@@ -1,0 +1,38 @@
+[
+ {
+  "label": "1280x800",
+  "elements": 12,
+  "docHeight": 800,
+  "fonts": [
+   "Inter",
+   "Barlow Condensed",
+   "GTStandard-M"
+  ],
+  "errors": 1,
+  "overflow": 0
+ },
+ {
+  "label": "900x1000",
+  "elements": 17,
+  "docHeight": 3692,
+  "fonts": [
+   "Inter",
+   "Barlow Condensed",
+   "GTStandard-M"
+  ],
+  "errors": 0,
+  "overflow": 0
+ },
+ {
+  "label": "600x900",
+  "elements": 11,
+  "docHeight": 4737,
+  "fonts": [
+   "Inter",
+   "Barlow Condensed",
+   "GTStandard-M"
+  ],
+  "errors": 0,
+  "overflow": 0
+ }
+]

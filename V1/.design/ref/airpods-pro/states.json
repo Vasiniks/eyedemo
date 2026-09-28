@@ -1,0 +1,18 @@
+[
+ {
+  "trigger": "button[aria-expanded=false]",
+  "frames": [
+   "states/buttonariaexpandedfa-120ms.jpg",
+   "states/buttonariaexpandedfa-450ms.jpg",
+   "states/buttonariaexpandedfa-1100ms.jpg"
+  ]
+ },
+ {
+  "trigger": "[role=tab]",
+  "frames": [
+   "states/roletab-120ms.jpg",
+   "states/roletab-450ms.jpg",
+   "states/roletab-1100ms.jpg"
+  ]
+ }
+]

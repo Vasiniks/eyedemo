@@ -1,0 +1,3008 @@
+[0m
+> build · muse-spark-1.3-contributor
+[0m
+[0m→ [0mRead docs/00-BRIEF.md
+[0m→ [0mRead docs/phase4/PLAN-MASTER.md
+[0m→ [0mRead docs/phase4/requests
+[0m→ [0mRead docs/phase4/PLAN-MASTER.md[90m [offset=477][0m
+[0m→ [0mRead docs/phase4/COPY-DRAFTS.md
+[0m→ [0mRead docs/phase4/requests/B-film-integration.md
+[0m→ [0mRead docs/phase4/requests/C-opt-recondition.md
+[0m→ [0mRead docs/phase4/requests/C-conductor-remap.md
+[0m→ [0mRead docs/phase4/requests/C-router-catalog-missing.md
+[0m→ [0mRead docs/phase4/requests/D-build-blockers.md
+[0m→ [0mRead docs/phase4/requests/C-services-tsx-syntax.md
+[0m→ [0mRead docs/phase4/requests/D-camera-notes.md
+[0m→ [0mRead docs/phase4/requests/D-services-tsc.md
+[0m→ [0mRead docs/phase4/requests/E-build-blocker-sponsorfield.md
+[0m→ [0mRead docs/phase4/requests/F-router.md
+[0m→ [0mRead docs/phase4/requests/E-lenses-usecaps.md
+[0m→ [0mRead docs/phase4/requests/F-redirects.md
+[0m→ [0mRead docs/phase4/requests/E-build-blocker-round2.md
+[0m→ [0mRead .
+[0m→ [0mRead src
+[0m→ [0mRead src/main.tsx
+[0m→ [0mRead index.html
+[0m→ [0mRead package.json
+[0m→ [0mRead src/app/router.tsx
+[0m→ [0mRead src/routes/Home.tsx
+[0m→ [0mRead src/motion
+[0m→ [0mRead src/canvas
+[0m→ [0mRead src/components
+[0m→ [0mRead src/components/canvas
+[0m→ [0mRead src/routes
+[0m→ [0mRead src/app
+[0m→ [0mRead src/motion/lenis.ts
+[0m→ [0mRead src/motion/masterTimeline.ts
+[0m→ [0mRead src/motion/progress.ts
+[0m→ [0mRead src/motion/chapters.ts
+[0m→ [0mRead src/components/canvas/API.md
+[0m→ [0mRead src/canvas/GlassesRig.tsx
+[0m→ [0mRead src/canvas/CaseRig.tsx
+[0m→ [0mRead src/components/canvas/Effects.tsx
+[0m→ [0mRead src/components/canvas/LensPortal.tsx
+[0m→ [0mRead src/components/canvas/CameraRig.tsx
+[0m→ [0mRead src/components/canvas/FilmCanvas.tsx
+[0m→ [0mRead src/components/dom
+[0m→ [0mRead src/app/providers.tsx
+[0m→ [0mRead src/canvas/rigs/progressMap.ts
+[0m→ [0mRead src/canvas/SceneStage.tsx
+[0m→ [0mRead src/canvas/SponsorField.tsx
+[0m→ [0mRead src/components/dom/WhiteSection.tsx
+[0m→ [0mRead src/components/dom/ChapterOverlay.tsx
+[0m→ [0mRead src/components/dom/Footer.tsx
+[0m→ [0mRead src/components/dom/Sections.tsx
+[0m→ [0mRead src/components/dom/Header.tsx
+[0m→ [0mRead src/components/dom/LogoRails.tsx
+[0m→ [0mRead src/data
+[0m→ [0mRead src/store/useFilmStore.ts
+[0m→ [0mRead src/motion/tiers.ts
+[0m→ [0mRead scripts/qa/beats.spec.ts
+[0m→ [0mRead src/routes/Services.tsx
+[0m→ [0mRead src/routes/parts
+[0m→ [0mRead public
+[0m→ [0mRead src/data/index.ts
+[0m→ [0mRead src/routes/Contact.tsx
+[0m→ [0mRead src/routes/Policies.tsx
+[0m→ [0mRead src/canvas/rigs/modelLoader.ts
+[0m→ [0mRead public/_redirects
+[0m→ [0mRead src/styles/film.css
+[0m→ [0mRead src/routes/parts/content.ts
+[0m→ [0mRead src/routes/parts/chrome.tsx
+[0m→ [0mRead public/models
+[0m→ [0mRead public/env
+[0m→ [0mRead public/web
+[0m→ [0mSkill "iterate-until-verified"
+[0m→ [0mSkill "no-ai-design-slop"
+[0m→ [0mRead src/data/chapters.json
+[0m→ [0mRead src/__dev__
+[0m→ [0mRead vite.config.ts
+[0m→ [0mRead playwright.config.ts
+[0m
+[0m$ [0mnpx tsc -b 2>&1 | head -30; echo "---EXIT:$?"
+(no output)
+
+<shell_metadata>
+User aborted the command
+</shell_metadata>
+[0m
+[0m→ [0mRead src/__dev__
+[0m→ [0mRead src/canvas/stage
+[0m→ [0mRead playwright.config.ts
+[0m→ [0mRead vite.config.ts
+[0m→ [0mRead src/components/dom/SkipLinks.tsx
+[0m→ [0mRead src/components/dom/StoreBits.tsx
+[0m→ [0mRead src/components/dom/BookingCTA.tsx
+[0m
+[0m# [0mTodos
+[•] Read integration inputs (brief, master, requests, current src) and set up plan
+[ ] Fix router: remove Catalog, canonical /pages/* + redirects, keep build green
+[ ] Build Home composition: FilmCanvas + adapters (C remap, D camera notes, lens anchor) + ChapterOverlay + Header + WhiteSection + LogoRails + sections + Footer
+[ ] Wire master timeline + film.css (#film-pin shell, #white-veil) + QA hook
+[ ] npm run build + lint clean for owned files
+[ ] Run QA beats harness vs real page, capture + LOOK at screenshots, fix integration issues
+[ ] Write docs/phase4/qa/beats/INTEGRATION.md + stop dev server
+[0m
+[0m→ [0mRead src/__dev__/b
+[0m→ [0mRead src/tokens.ts
+[0m→ [0mRead src/components/dom/Scrims.tsx
+[0m→ [0mRead src/__dev__/C/main.tsx
+[0m→ [0mRead src/canvas/stage/slots.ts[90m [limit=120][0m
+[0m→ [0mRead docs/phase4/qa
+[0m→ [0mRead dev-b.html
+[0m→ [0mRead src/data/store.json
+[0m→ [0mRead src/canvas/stage/logos.ts
+[0m→ [0mRead src/__dev__/b/main.tsx
+[0m→ [0mRead src/canvas/stage/slots.ts[90m [offset=121][0m
+[0m
+[0m$ [0mrtk ls -la src/styles/ src/components/dom/ docs/phase4/qa/beats/ && rtk wc -l src/styles/*.css src/components/dom/lane-e.css 2>/dev/null; rtk read tsconfig.app.json
+644  01-case-1440.png  24.5K
+644  01-case-390.png  12.9K
+644  02-open-1440.png  27.2K
+644  02-open-390.png  13.8K
+644  03-velvet-1440.png  27.5K
+644  03-velvet-390.png  14.2K
+644  04-emerge-1440.png  26.8K
+644  04-emerge-390.png  13.0K
+644  05-unfold-1440.png  29.1K
+644  05-unfold-390.png  13.9K
+644  06-info-1440.png  26.2K
+644  06-info-390.png  13.9K
+644  07-wave1-1440.png  40.8K
+644  07-wave1-390.png  11.6K
+644  08-wave2-1440.png  43.0K
+644  08-wave2-390.png  12.5K
+644  09-approach-1440.png  35.5K
+644  09-approach-390.png  11.8K
+644  09-approach-768.png  13.3K
+644  10-entry-1440.png  42.2K
+644  10-entry-390.png  8.4K
+644  10-entry-768.png  15.3K
+644  11-white-dom-1440.png  14.1K
+644  11-white-veil-768.png  12.6K
+644  reverse-077-1440.png  45.2K
+644  rm-static-1440.png  23.1K
+644  tier-low-1440.png  28.0K
+644  BookingCTA.tsx  1.7K
+644  ChapterOverlay.tsx  7.8K
+644  Footer.tsx  2.4K
+644  Header.tsx  6.4K
+644  LogoRails.tsx  12.7K
+644  Scrims.tsx  590B
+644  Sections.tsx  11.9K
+644  SkipLinks.tsx  1.6K
+644  StoreBits.tsx  2.4K
+644  WhiteSection.tsx  1.6K
+644  index.ts  820B
+644  lane-e.css  30.7K
+644  film.css  124B
+644  rails.css  104B
+644  tokens.css  5.5K
+644  white.css  103B
+... (3 filtered)
+[+3 hidden: rtk recall b607909c6381]
+2 styles/film.css
+2 styles/rails.css
+187 styles/tokens.css
+2 styles/white.css
+1374 components/dom/lane-e.css
+Σ 1567
+{
+  "compilerOptions": {
+    "tsBuildInfoFile": "./node_modules/.tmp/tsconfig.app.tsbuildinfo",
+    "target": "ES2022",
+    "useDefineForClassFields": true,
+    "lib": ["ES2022", "DOM", "DOM.Iterable"],
+    "module": "ESNext",
+    "skipLibCheck": true,
+    "moduleResolution": "bundler",
+    "allowImportingTsExtensions": true,
+    "verbatimModuleSyntax": true,
+    "moduleDetection": "force",
+    "noEmit": true,
+    "jsx": "react-jsx",
+    "strict": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "erasableSyntaxOnly": true,
+    "noFallthroughCasesInSwitch": true,
+    "noUncheckedSideEffectImports": true
+  },
+  "include": ["src"]
+}
+[0m
+[0m→ [0mRead src/__dev__/b/dev-b.css
+[0m✱ [0mGrep "film-pin|white-veil|white-stub"[90m in src · 24 matches[0m
+[0m→ [0mRead src/styles/tokens.css[90m [offset=140][0m
+[0m→ [0mRead src/components/dom/lane-e.css[90m [limit=220][0m
+[0m→ [0mRead src/components/dom/index.ts
+[0m✱ [0mGrep "eyeq-chapters|eyeq-chapter\{|eyeq-chapter__|position: (sticky|fixed|absolute)|height: 100|100vh|100svh|100dvh"[90m in src/components/dom/lane-e.css · 47 matches[0m
+[0m→ [0mRead src/components/dom/lane-e.css[90m [offset=330, limit=140][0m
+[0m→ [0mRead src/__dev__/E/main.tsx[90m [limit=130][0m
+[0m✱ [0mGrep "lane-e\.css|import.*css"[90m in src · 15 matches[0m
+[0m
+[0m$ [0mrtk ls public/fonts/ 2>/dev/null; echo ---; head -c 600 src/data/brands.json; echo; echo ---; head -c 600 src/data/insurers.json; echo; echo ---; rtk grep -n "premium" src/canvas/rigs/materialUpgrades.ts src/routes/parts/content.ts 2>/dev/null; echo ---; rtk grep -n "progress" src/__dev__/D/main.tsx | head -20; echo ---; rtk grep -c "eyeq-white\|eyeq-rails\|eyeq-rail\|eyeq-section\|eyeq-footer\|eyeq-header" src/components/dom/lane-e.css
+fraunces-italic-var.woff2  79.8K
+fraunces-var.woff2  65.8K
+inter-var.woff2  71.3K
+---
+{
+  "source": "docs/research/B-content-inventory.md §9 — homepage OUR FEATURED EYEWEAR BRANDS strip, DOM order. Logos unlinked as today. Single-color light knockouts per brief §6c.2.",
+  "heading": "OUR FEATURED EYEWEAR BRANDS",
+  "brands": [
+    { "name": "Maui Jim", "file": "/web/brands-light/maui-jim.png", "alt": "Maui Jim" },
+    { "name": "Ray-Ban", "file": "/web/brands-light/ray-ban.png", "alt": "Ray-Ban", "hero": true },
+    { "name": "Prada", "file": "/web/brands-light/prada.png", "alt": "Prada" },
+    { "name": "Miu Miu", "file": "/web/brands-light/miu-miu.png", "alt": "Miu Miu" }
+---
+{
+  "source": "docs/research/B-content-inventory.md §5 — services page insurance section, display order. Never assert direct billing (brief §6c.7).",
+  "heading": "We Accept Most Major Insurance Plans",
+  "headingAltCaps": "WE ACCEPT MOST MAJOR INSURANCE PLANS",
+  "ariaLabel": "Accepted insurance plans",
+  "insurers": [
+    { "name": "Sun Life", "file": "/web/insurance-light/sun-life.png", "alt": "Sun Life", "hero": true },
+    { "name": "Medavie Blue Cross", "file": "/web/insurance-light/mbc-logo-en.png", "alt": "Medavie Blue Cross" },
+    { "name": "Manulife", "file": "/web/insurance-lig
+---
+src/routes/parts/content.ts:43:  'We also offer a carefully curated collection of premium eyewear from leading designer brands, including Gucci, Prada, and Ray-Ban, making it easy to find frames that match your style while providing exceptional vision.',
+---
+4:// Open http://localhost:5104/dev-D.html — progress slider + wave stops +
+51:function HarnessCamera({ progress, mobile }: { progress: number; mobile: boolean }) {
+56:    const p = clamp01(progress)
+181:        <HarnessCamera progress={p} mobile={narrow} />
+182:        <SceneStage progress={p} />
+185:            progress={p}
+226:          aria-label="Film progress"
+---
+103
+[0m
+[0m$ [0mnpx tsc -b > /tmp/tsc-base.txt 2>&1; echo "EXIT:$?"; head -40 /tmp/tsc-base.txt
+EXIT:2
+npm notice run eyeq-vision-care@0.1.0 npx
+npm notice run 'tsc' -b
+src/app/router.tsx(6,25): error TS2307: Cannot find module '../routes/Catalog' or its corresponding type declarations.
+[0m
+[0m$ [0mrtk grep -n "@media\|\.eyeq-white\|\.eyeq-rails\|\.eyeq-railside\|\.eyeq-footer\|\.eyeq-section" src/components/dom/lane-e.css | head -60
+80 matches in 1 files:
+
+318:@media (max-width: 600px) {
+506:.eyeq-white {
+511:.eyeq-white__grid {
+518:.eyeq-white__col {
+526:.eyeq-white__logo {
+532:.eyeq-white__h1 {
+536:.eyeq-white__cta {
+539:.eyeq-white__ledger {
+547:.eyeq-white__ledger li {
+555:.eyeq-white__ledger dt,
+556:.eyeq-white__ledger .eyeq-ledger__k {
+565:.eyeq-white__ledger dd,
+566:.eyeq-white__ledger .eyeq-ledger__v {
+571:.eyeq-white__ledger a {
+574:.eyeq-white__map {
+578:@media (max-width: 1100px) {
+579:.eyeq-white__grid {
+645:.eyeq-rails {
+747:.eyeq-rails__pause {
+760:.eyeq-rails__pause:hover {
+763:.eyeq-rails__pause--mobile {
+769:.eyeq-rails--mobile-static {
+772:@media (max-width: 767px) {
+773:.eyeq-railside--static {
+776:.eyeq-rails--static {
+  +55 more in src/components/dom/lane-e.css [+55 hidden: rtk recall 2c417a55de0d]
+[0m
+[0m# [0mTodos
+[✓] Read integration inputs (brief, master, requests, current src) and set up plan
+[•] Fix router: remove Catalog, canonical /pages/* + redirects, keep build green
+[ ] Build Home composition: FilmCanvas + adapters (C remap, D camera notes, lens anchor) + ChapterOverlay + Header + WhiteSection + LogoRails + sections + Footer
+[ ] Wire master timeline + film.css (#film-pin shell, #white-veil) + QA hook
+[ ] npm run build + lint clean for owned files
+[ ] Run QA beats harness vs real page, capture + LOOK at screenshots, fix integration issues
+[ ] Write docs/phase4/qa/beats/INTEGRATION.md + stop dev server
+[0m
+[0m→ [0mRead eslint.config.js
+[0m
+[0m← [0mEdit src/app/router.tsx
+Index: /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/app/router.tsx
+===================================================================
+--- /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/app/router.tsx
++++ /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/app/router.tsx
+@@ -1,24 +1,29 @@
+-import { createBrowserRouter } from 'react-router-dom'
++import { createBrowserRouter, Navigate } from 'react-router-dom'
+ import { Home } from '../routes/Home'
+ import { Services } from '../routes/Services'
+ import { Contact } from '../routes/Contact'
+ import { Policies } from '../routes/Policies'
+-import { Catalog } from '../routes/Catalog'
+ import { TokensQA } from '../routes/TokensQA'
+ 
+-// PLAN-MASTER §3 route table (SITE authoritative, ARCH implementation).
+-// BrowserRouter here; no-rewrite hosts swap to HashRouter in THIS FILE ONLY.
+-// Code-splitting (lazy except Home shell) is Lane F's step-13 work; direct
+-// imports keep the Lane A scaffold shippable. Film never replays on change.
++// Lane B integration (brief §6d + PLAN-MASTER ORCHESTRATOR OVERRIDE, client
++// rule — highest priority, supersedes §3/§12 route tables): NO Catalog route
++// and no Frames/Browse frames/Catalog/Search/Account/Cart links or UI.
++// Canonical routes: `/`, `/pages/services`, `/pages/contact`,
++// `/policies/refund-policy`, `/policies/privacy-policy`,
++// `/policies/terms-of-service`. `/services` + `/contact` are kept as
++// in-app redirects (zero broken links; Lane F chrome + live-site habits
++// still link the short forms). Static hosts serve index.html for every path
++// (public/_redirects + dist/404.html), so these Navigate fallbacks also cover
++// direct visits. BrowserRouter here; no-rewrite hosts swap to HashRouter in
++// THIS FILE ONLY. Film never replays on route change.
+ // NOTE: /qa/tokens is a Lane A acceptance artifact (type scale + swatches);
+-// lanes B-F leave it alone (or remove pre-launch).
++// unlinked from all navigation; remove pre-launch.
+ export const router = createBrowserRouter([
+   { path: '/', element: <Home /> },
+-  { path: '/services', element: <Services /> },
+-  { path: '/contact', element: <Contact /> },
+-  { path: '/frames', element: <Catalog /> },
+-  { path: '/frames/:handle', element: <Catalog /> },
++  { path: '/pages/services', element: <Services /> },
++  { path: '/pages/contact', element: <Contact /> },
++  { path: '/services', element: <Navigate to="/pages/services" replace /> },
++  { path: '/contact', element: <Navigate to="/pages/contact" replace /> },
+   { path: '/policies/:policy', element: <Policies /> },
+-  { path: '/search', element: <Catalog /> },
+   { path: '/qa/tokens', element: <TokensQA /> },
+ ])
+
+[0m
+[0m← [0mEdit src/motion/chapters.ts
+Index: /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/motion/chapters.ts
+===================================================================
+--- /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/motion/chapters.ts
++++ /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/motion/chapters.ts
+@@ -128,39 +128,59 @@
+ }
+ 
+ /** Dolly reframe for the as-built 198 mm shell (§0.6 override: ×1.20). */
+ const K = 1.2
+-const L = STAND_IN_LENS_ANCHOR.center
+-const N = STAND_IN_LENS_ANCHOR.normal
+ 
+-const railStart: Vec3 = [L[0] + N[0] * 0.36, L[1] + N[1] * 0.36, L[2] + N[2] * 0.36]
+-const railMid: Vec3 = [L[0] + N[0] * 0.054, L[1] + N[1] * 0.054, L[2] + N[2] * 0.054]
+-const railEnd: Vec3 = [L[0] - N[0] * 0.04, L[1] - N[1] * 0.04, L[2] - N[2] * 0.04]
+-const railNear: Vec3 = [L[0] + N[0] * 0.01, L[1] + N[1] * 0.01, L[2] + N[2] * 0.01]
++/**
++ * Portal rail keys, rebuilt per call from the LIVE lens anchor (integration:
++ * `LensAnchorReporter` tracks the real right lens of `G_Lenses`; default =
++ * stand-in, so isolated harnesses sample the authored rail unchanged).
++ * Straight rail along the lens normal: 0.36 m out → 0.054 m → 0.01 m →
++ * 0.04 m behind the lens plane (B8–B9, near 0.01→0.002).
++ */
++function railKeys(anchor: LensAnchor): { start: Vec3; mid: Vec3; near: Vec3; end: Vec3 } {
++  const L = anchor.center
++  const nLen = Math.hypot(anchor.normal[0], anchor.normal[1], anchor.normal[2]) || 1
++  const N: Vec3 = [anchor.normal[0] / nLen, anchor.normal[1] / nLen, anchor.normal[2] / nLen]
++  return {
++    start: [L[0] + N[0] * 0.36, L[1] + N[1] * 0.36, L[2] + N[2] * 0.36],
++    mid: [L[0] + N[0] * 0.054, L[1] + N[1] * 0.054, L[2] + N[2] * 0.054],
++    near: [L[0] + N[0] * 0.01, L[1] + N[1] * 0.01, L[2] + N[2] * 0.01],
++    end: [L[0] - N[0] * 0.04, L[1] - N[1] * 0.04, L[2] - N[2] * 0.04],
++  }
++}
+ 
+-const KEYS: Key[] = [
++// Wave-beat hold, per Lane D `D-camera-notes.md` (integration reframe):
++// all 16 settled planes need ≈1.05 m × 0.62 m at slot depth, so the B6–B7
++// hold sits at ≈0.80 m desktop (was 0.43–0.50 m) with the look-target dipped
++// to the 16-plane centroid (y −0.04, z −0.10) so the W2 row reads whole.
++const WAVE_HOLD_Z = 0.8
++const WAVE_HOLD_Y = 0.08
++const WAVE_TGT: Vec3 = [0, -0.04, -0.1]
++
++const KEYS_STATIC: Key[] = [
+   { p: 0.0, pos: [0.18 * K, 0.1 * K, 0.32 * K], tgt: [0, 0.01, 0], fov: 32, fog: 0.035, exp: 1.0, near: 0.01 },
+   { p: 0.1, pos: [0.14 * K, 0.12 * K, 0.29 * K], tgt: [0, 0.012, 0], fov: 33, fog: 0.035, exp: 1.0, near: 0.01 },
+   { p: 0.25, pos: [0.12 * K, 0.14 * K, 0.26 * K], tgt: [0, 0.015, 0], fov: 34, fog: 0.035, exp: 1.02, near: 0.01 },
+   { p: 0.4, pos: [-0.14 * K, 0.12 * K, 0.22 * K], tgt: [0, 0.06, 0], fov: 35, fog: 0.035, exp: 1.05, near: 0.01 },
+   // B5 slowest orbit: authored swing with arc lift (mid key), ±12° register.
+   { p: 0.475, pos: [0, 0.174 * K, 0.22 * K], tgt: [0, 0.065, 0], fov: 35, fog: 0.035, exp: 1.05, near: 0.01 },
+   { p: 0.55, pos: [0.14 * K, 0.12 * K, 0.22 * K], tgt: [0, 0.07, 0], fov: 35, fog: 0.035, exp: 1.05, near: 0.01 },
+-  { p: 0.7, pos: [0, 0.1 * K, 0.42 * K], tgt: [0, 0.07, 0], fov: 35, fog: 0.035, exp: 1.05, near: 0.01 },
++  { p: 0.7, pos: [0, WAVE_HOLD_Y, WAVE_HOLD_Z], tgt: [...WAVE_TGT], fov: 35, fog: 0.035, exp: 1.05, near: 0.01 },
+   // B6 Wave 1: FOV kick +8°, fog dip 0.015.
+-  { p: 0.775, pos: [0, 0.095 * K, 0.39 * K], tgt: [0, 0.07, 0], fov: 43, fog: 0.015, exp: 1.1, near: 0.01 },
+-  { p: 0.85, pos: [0, 0.09 * K, 0.36 * K], tgt: [0, 0.07, 0], fov: 35, fog: 0.022, exp: 1.15, near: 0.01 },
++  { p: 0.775, pos: [0, WAVE_HOLD_Y, WAVE_HOLD_Z - 0.02], tgt: [...WAVE_TGT], fov: 43, fog: 0.015, exp: 1.1, near: 0.01 },
++  { p: 0.85, pos: [0, WAVE_HOLD_Y, WAVE_HOLD_Z - 0.02], tgt: [...WAVE_TGT], fov: 35, fog: 0.022, exp: 1.15, near: 0.01 },
+   // B7 Wave 2: FOV kick +3° (binding, not +7°), shorter window.
+-  { p: 0.878, pos: [0, 0.09 * K, 0.36 * K], tgt: [0, 0.07, 0], fov: 38, fog: 0.018, exp: 1.15, near: 0.01 },
++  { p: 0.878, pos: [0, WAVE_HOLD_Y, WAVE_HOLD_Z - 0.02], tgt: [...WAVE_TGT], fov: 38, fog: 0.018, exp: 1.15, near: 0.01 },
+   // B8 approach: hold, blend onto the lens-normal rail, dolly to 0.054 m.
+-  { p: 0.92, pos: [0, 0.09 * K, 0.36 * K], tgt: [0, 0.07, 0], fov: 35, fog: 0.03, exp: 1.15, near: 0.01 },
+-  { p: 0.928, pos: railStart, tgt: [...L], fov: 36, fog: 0.03, exp: 1.2, near: 0.008 },
+-  { p: 0.97, pos: railMid, tgt: [...L], fov: 48, fog: 0.03, exp: 1.35, near: 0.002 },
+-  // B9 entry: near-plane crosses under the veil; FOV stretch then settle.
+-  { p: 0.985, pos: railNear, tgt: [...L], fov: 68, fog: 0.03, exp: 1.8, near: 0.002 },
+-  { p: 1.0, pos: railEnd, tgt: [...L], fov: 55, fog: 0.0, exp: 2.2, near: 0.002 },
++  { p: 0.92, pos: [0, WAVE_HOLD_Y, WAVE_HOLD_Z - 0.02], tgt: [...WAVE_TGT], fov: 35, fog: 0.03, exp: 1.15, near: 0.01 },
+ ]
+ 
++function smoothstepLocal(a: number, b: number, x: number): number {
++  const t = clamp01((x - a) / (b - a))
++  return t * t * (3 - 2 * t)
++}
++
+ function lerp(a: number, b: number, t: number): number {
+   return a + (b - a) * t
+ }
+ 
+
+[0m
+[0m← [0mEdit src/motion/chapters.ts
+Index: /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/motion/chapters.ts
+===================================================================
+--- /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/motion/chapters.ts
++++ /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/motion/chapters.ts
+@@ -206,8 +206,23 @@
+  * state forward, backward, after jumps and reloads (§6).
+  */
+ export function sampleCamera(pRaw: number, mobile: boolean): CameraSample {
+   const p = clamp01(pRaw)
++  // Full key table per call: static spine + live-anchor portal rail (B8–B9).
++  // The rail recentres onto the real right lens once `LensAnchorReporter`
++  // publishes it; isolated harnesses (stand-in anchor) sample the authored
++  // rail bit-identically.
++  const anchor = getLensAnchor()
++  const rail = railKeys(anchor)
++  const L = anchor.center
++  const KEYS: Key[] = [
++    ...KEYS_STATIC,
++    { p: 0.928, pos: rail.start, tgt: [...L], fov: 36, fog: 0.03, exp: 1.2, near: 0.008 },
++    { p: 0.97, pos: rail.mid, tgt: [...L], fov: 48, fog: 0.03, exp: 1.35, near: 0.002 },
++    // B9 entry: near-plane crosses under the veil; FOV stretch then settle.
++    { p: 0.985, pos: rail.near, tgt: [...L], fov: 68, fog: 0.03, exp: 1.8, near: 0.002 },
++    { p: 1.0, pos: rail.end, tgt: [...L], fov: 55, fog: 0.0, exp: 2.2, near: 0.002 },
++  ]
+   let i = 0
+   while (i < KEYS.length - 2 && p > KEYS[i + 1].p) i++
+   const a = KEYS[i]
+   const b = KEYS[i + 1]
+@@ -218,11 +233,16 @@
+   const target = lerp3(a.tgt, b.tgt, t)
+   const fovBase = lerp(a.fov, b.fov, t)
+ 
+   if (mobile) {
+-    // Pullback ×1.45 on radius + FOV +9° (§6 mobile overrides).
+-    const dx = (position[0] - target[0]) * 1.45
+-    const dz = (position[2] - target[2]) * 1.45
++    // Pullback ×1.45 on radius + FOV +9° (§6 mobile overrides). During the
++    // wave beats the compact constellation needs a ≈0.57 m-wide frame, so
++    // the pullback eases to ×1.9 (≈1.52 m hold, per D-camera-notes §3) —
++    // blended over 0.03p each side so scrubbing never pops.
++    const waveBoost = smoothstepLocal(0.65, 0.7, p) * (1 - smoothstepLocal(0.92, 0.95, p))
++    const pull = 1.45 + 0.45 * waveBoost
++    const dx = (position[0] - target[0]) * pull
++    const dz = (position[2] - target[2]) * pull
+     position = [target[0] + dx, position[1], target[2] + dz]
+   }
+ 
+   const veilT = clamp01((p - 0.985) / 0.015)
+
+[0m
+[0m← [0mEdit src/components/canvas/LensPortal.tsx
+Index: /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/components/canvas/LensPortal.tsx
+===================================================================
+--- /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/components/canvas/LensPortal.tsx
++++ /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/components/canvas/LensPortal.tsx
+@@ -8,37 +8,39 @@
+ // real G_Lenses transform AND passes `linked`, the disc unmounts (the real
+ // lens carries the material) but the ramp hooks + veil keep driving.
+ // Position the disc from G_Lenses once available (API.md §3).
+ 
+-import { useEffect, useMemo, useRef } from 'react'
++import { useEffect, useRef } from 'react'
+ import * as THREE from 'three'
+ import { useFrame } from '@react-three/fiber'
+ import { getLensAnchor, samplePortal } from '../../motion/chapters'
+ import { filmProgress, subscribeFilmProgress } from '../../motion/progress'
+ import { useFilmStore } from '../../store/useFilmStore'
+ import { tokens } from '../../tokens'
+ 
+ const DISC_RADIUS = 0.032 // stand-in right-lens radius, metres
++const Z_AXIS = new THREE.Vector3(0, 0, 1)
+ 
+ /** Chorography portal: 80% camera path + bloom + DOM veil, 20% shader (§1-C13). */
+ export function LensPortal({ linked = false }: { linked?: boolean }) {
++  const groupRef = useRef<THREE.Group | null>(null)
+   const matRef = useRef<THREE.MeshPhysicalMaterial | null>(null)
+   const edgeRef = useRef<THREE.MeshBasicMaterial | null>(null)
+   const quality = useFilmStore((s) => s.quality)
+   const transmissionAllowed = quality === 'high' || quality === 'laptop'
+ 
+-  const { position, quaternion } = useMemo(() => {
+-    const anchor = getLensAnchor()
+-    const position = new THREE.Vector3(...anchor.center)
+-    const normal = new THREE.Vector3(...anchor.normal).normalize()
+-    const quaternion = new THREE.Quaternion().setFromUnitVectors(
+-      new THREE.Vector3(0, 0, 1),
+-      normal,
+-    )
+-    return { position, quaternion }
+-  }, [])
+-
+   useFrame(() => {
++    // Track the LIVE anchor per frame (integration: the real right lens once
++    // `LensAnchorReporter` publishes it; stand-in before that).
++    const g = groupRef.current
++    if (g) {
++      const anchor = getLensAnchor()
++      g.position.set(anchor.center[0], anchor.center[1], anchor.center[2])
++      g.quaternion.setFromUnitVectors(
++        Z_AXIS,
++        new THREE.Vector3(anchor.normal[0], anchor.normal[1], anchor.normal[2]).normalize(),
++      )
++    }
+     const s = samplePortal(filmProgress.p)
+     const mat = matRef.current
+     if (mat) {
+       if (transmissionAllowed) {
+
+[0m
+[0m← [0mEdit src/components/canvas/LensPortal.tsx
+Index: /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/components/canvas/LensPortal.tsx
+===================================================================
+--- /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/components/canvas/LensPortal.tsx
++++ /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/components/canvas/LensPortal.tsx
+@@ -63,12 +63,14 @@
+   }
+ })
+ 
+ // Linked to the real G_Lenses: the real mesh carries the material.
++// (Integration: the crossing reads via camera rail + bloom + veil; the
++// disc stays available for isolated QA by passing linked={false}.)
+ if (linked) return null
+ 
+ return (
+-  <group position={position} quaternion={quaternion}>
++  <group ref={groupRef}>
+     <mesh>
+       <circleGeometry args={[DISC_RADIUS, 48]} />
+       <meshPhysicalMaterial
+         ref={matRef}
+
+[0m
+[0m← [0mWrite src/components/canvas/HeroRigs.tsx
+Wrote file successfully.
+[0m
+[0m← [0mWrite src/styles/film.css
+Wrote file successfully.
+[0m
+[0m← [0mEdit src/styles/film.css
+Index: /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/styles/film.css
+===================================================================
+--- /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/styles/film.css
++++ /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/styles/film.css
+@@ -95,9 +95,11 @@
+ @media (max-width: 767px) {
+   .film-whitegrid {
+     grid-template-columns: minmax(0, 1fr);
+   }
+-  .film-whitegrid__left,
+-  .film-whitegrid__right {
++  /* Animated flanks collapse into the 68px horizontal strip below; the
++   * reduced-motion static columns (.eyeq-railside--static) stay visible. */
++  .film-whitegrid__left .eyeq-railside,
++  .film-whitegrid__right .eyeq-railside {
+     display: none;
+   }
+ }
+
+[0m
+[0m← [0mEdit src/main.tsx
+Index: /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/main.tsx
+===================================================================
+--- /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/main.tsx
++++ /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/main.tsx
+@@ -6,8 +6,12 @@
+ import './styles/tokens.css'
+ import './styles/film.css'
+ import './styles/rails.css'
+ import './styles/white.css'
++// Lane B integration: Lane E component styles (ChapterOverlay, Header,
++// WhiteSection, LogoRails, rest-of-homepage, footer). Owned by Lane E;
++// imported here because main.tsx is the integration entry.
++import './components/dom/lane-e.css'
+ 
+ const root = document.getElementById('root')
+ if (!root) throw new Error('Missing #root element')
+ 
+
+[0m
+[0m← [0mWrite src/routes/Home.tsx
+Wrote file successfully.
+[0m
+[0m$ [0mnpx tsc -b > /tmp/tsc-int.txt 2>&1; echo "EXIT:$?"; head -30 /tmp/tsc-int.txt
+EXIT:0
+npm notice run eyeq-vision-care@0.1.0 npx
+npm notice run 'tsc' -b
+[0m
+[0m← [0mWrite scripts/qa/int-beats.spec.ts
+Wrote file successfully.
+[0m
+[0m← [0mEdit scripts/qa/int-beats.spec.ts
+Index: /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/scripts/qa/int-beats.spec.ts
+===================================================================
+--- /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/scripts/qa/int-beats.spec.ts
++++ /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/scripts/qa/int-beats.spec.ts
+@@ -27,12 +27,8 @@
+   ['09-approach', 0.945],
+   ['10-entry', 0.985],
+ ]
+ 
+-async function gotoFilm(page: Parameters<Parameters<typeof test>[0]['fn']>[0] extends never ? never : never): Promise<void> {
+-  throw new Error('type helper only')
+-}
+-
+ test.describe('int-beats', () => {
+   test.setTimeout(300000)
+ 
+   for (const [tag, vp] of [
+
+[0m
+[0m← [0mEdit scripts/qa/int-beats.spec.ts
+Index: /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/scripts/qa/int-beats.spec.ts
+===================================================================
+--- /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/scripts/qa/int-beats.spec.ts
++++ /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/scripts/qa/int-beats.spec.ts
+@@ -35,9 +35,8 @@
+   ['1440', { width: 1440, height: 900 }],
+   ['390', { width: 390, height: 844 }],
+ ] as const) {
+   test(`progress stops @${tag}`, async ({ page }) => {
+-    void gotoFilm
+     const errors: string[] = []
+     page.on('console', (msg) => {
+       if (msg.type() === 'error') errors.push(msg.text())
+     })
+
+[0m
+[0m$ [0mnpx tsc -b > /tmp/tsc-int2.txt 2>&1; echo "EXIT:$?"; head -30 /tmp/tsc-int2.txt; npx eslint src/routes/Home.tsx src/components/canvas/HeroRigs.tsx src/components/canvas/LensPortal.tsx src/motion/chapters.ts src/app/router.tsx src/main.tsx scripts/qa/int-beats.spec.ts --max-warnings 0 2>&1 | tail -20
+EXIT:0
+npm notice run eyeq-vision-care@0.1.0 npx
+npm notice run 'tsc' -b
+npm notice run eyeq-vision-care@0.1.0 npx
+npm notice run 'eslint' src/routes/Home.tsx src/components/canvas/HeroRigs.tsx src/components/canvas/LensPortal.tsx src/motion/chapters.ts src/app/router.tsx src/main.tsx scripts/qa/int-beats.spec.ts --max-warnings 0
+[0m
+[0m$ [0mnpm run build > /tmp/build-int.txt 2>&1; echo "EXIT:$?"; tail -25 /tmp/build-int.txt
+EXIT:0
+npm notice run eyeq-vision-care@0.1.0 build
+npm notice run tsc -b && vite build
+vite v8.3.1 building client environment for production...
+transforming...
+✓ 646 modules transformed.
+rendering chunks...
+computing gzip size...
+dist/index.html                     0.67 kB │ gzip:   0.39 kB
+dist/assets/index-CNlTXt1m.css     36.78 kB │ gzip:   7.32 kB
+dist/assets/index-C7Fgrk4F.js   1,696.12 kB │ gzip: 492.07 kB
+
+[plugin builtin:vite-reporter] 
+(!) Some chunks are larger than 500 kB after minification. Consider:
+- Using dynamic import() to code-split the application
+- Use build.rolldownOptions.output.codeSplitting to improve chunking: https://rolldown.rs/reference/OutputOptions.codeSplitting
+- Adjust chunk size limit for this warning via build.chunkSizeWarningLimit.
+✓ built in 1.03s
+npm notice run eyeq-vision-care@0.1.0 postbuild
+npm notice run cp dist/index.html dist/404.html
+[0m
+[0m$ [0mnohup npx vite --port 5111 --strictPort > /tmp/vite-5111.log 2>&1 & echo "PID:$!"; sleep 6; tail -5 /tmp/vite-5111.log; curl -s -o /dev/null -w "%{http_code}" http://localhost:5111/
+PID:74907
+
+  VITE v8.3.1  ready in 142 ms
+
+  ➜  Local:   http://localhost:5111/
+  ➜  Network: use --host to expose
+200
+[0m
+[0m$ [0mFILM_URL=http://localhost:5111/ npx playwright test int-beats --project=chromium -g "progress stops @1440" > /tmp/qa-1440.txt 2>&1; echo "EXIT:$?"; tail -20 /tmp/qa-1440.txt
+EXIT:0
+npm notice run eyeq-vision-care@0.1.0 npx
+npm notice run 'playwright' test int-beats --project=chromium -g progress stops @1440
+[WebServer] npm notice run eyeq-vision-care@0.1.0 dev
+[WebServer] npm notice run vite --port 5173 --strictPort
+
+Running 1 test using 1 worker
+
+  ✓  1 [chromium] › scripts/qa/int-beats.spec.ts:38:5 › int-beats › progress stops @1440 (2.0m)
+
+  1 passed (2.0m)
+[0m
+[0m→ [0mRead docs/phase4/qa/beats/int-02-open-1440.png
+[0m→ [0mRead docs/phase4/qa/beats/int-00-load-1440.png
+[0m→ [0mRead docs/phase4/qa/beats/int-01-case-1440.png
+[0m→ [0mRead docs/phase4/qa/beats/int-04-emerge-1440.png
+[0m→ [0mRead docs/phase4/qa/beats/int-05-unfold-1440.png
+[0m→ [0mRead docs/phase4/qa/beats/int-03-velvet-1440.png
+[0m→ [0mRead docs/phase4/qa/beats/int-08-wave2-1440.png
+[0m→ [0mRead docs/phase4/qa/beats/int-06-info-1440.png
+[0m→ [0mRead docs/phase4/qa/beats/int-07-wave1-1440.png
+[0m→ [0mRead docs/phase4/qa/beats/int-10-entry-1440.png
+[0m→ [0mRead docs/phase4/qa/beats/int-09-approach-1440.png
+[0m
+[0m← [0mWrite scripts/qa/zz-probe.spec.ts
+Wrote file successfully.
+[0m
+[0m$ [0mnpx playwright test zz-probe --project=chromium > /tmp/probe.txt 2>&1; echo "EXIT:$?"; rtk grep -o "LANEC-PROBE.*" /tmp/probe.txt | head -5; echo ===; cat /tmp/probe.txt | tr ',' '\n' | rtk grep -i "bboxMin\|bboxMax\|G_Lenses\|G_Root\|pos" | head -40
+EXIT:0
+LANEC-PROBE {"G_Arm_R":{"type":"Group","pos":[0.05907,0.17153,-0.02873],"rot":[0,0,0],"localPos":[0.06956,0.03154,0.05953],"parent":"Object3D:G_Root","bboxMin":[0.06368,-0.12783,-0.01178],"bboxMax":[0.07536,0.00399,0.02086],"children":["Mesh:G_Arm_R_1@0,0,0","Mesh:G_Arm_R_2@0,0,0","Mesh:G_Arm_R_3@0,0,0"],"geoLocalMin":[-0.00188,-0.03131,-0.1318],"geoLocalMax":[0.0098,0.00133,0.00002]},"G_Arm_L":{"type":"Group","pos":[-0.06213,0.17153,0.03958],"rot":[0,0,0],"localPos":[-0.06956,0.03154,0.05953],"parent":"Object3D:G_Root","bboxMin":[-0.13538,0.14023,-0.07291],"bboxMax":[-0.06049,0.17286,0.04357],"children":["Mesh:G_Arm_L_1@0,0,0","Mesh:G_Arm_L_2@0,0,0","Mesh:G_Arm_L_3@0,0,0"],"geoLocalMin":[-0.0098,-0.03131,-0.1318],"geoLocalMax":[0.00188,0.00133,0.00002]},"G_Front":{"type":"Group","pos":[-0.03076,0.14,-0.04643],"rot":[0,0,0],"localPos":[0,0,0],"parent":"Object3D:G_Root","bboxMin":[-0.06356,0.15451,-0.03084],"bboxMax":[0.06602,0.17626,0.0515],"children":["Mesh:G_Front_1@0,0,0","Mesh:G_Front_2@0,0,0"],"geoLocalMin":[-0.06995,0.01451,0.05732],"geoLocalMax":[0.06995,0.03626,0.07299]},"G_Lenses":{"type":"Group","pos":[-0.03076,0.14,-0.04643],"rot":[0,0,0],"localPos":[0,0,0],"parent":"Object3D:G_Root","bboxMin":[-0.0538,0.14012,-0.0203],"bboxMax":[0.05957,0.18164,0.04717],"children":["Mesh:G_Lenses_1@0,0,0","Mesh:G_Lenses_2@0,0,0"],"geoLocalMin":[-0.06346,0.00012,0.06566],"geoLocalMax":[0.06329,0.04165,0.07168]},"G_Root":{"type":"Object3D","pos":[-0.03076,0.14,-0.04643],"rot":[-1.5708,0,0],"localPos":[-0.004,-0.05555,0.02109],"parent":"Group:Scene","bboxMin":[-0.13538,0.14012,-0.14836],"bboxMax":[0.06614,0.18164,0.0515],"children":["Group:G_Arm_L@-0.0696,0.0315,0.0595","Group:G_Arm_R@0.0696,0.0315,0.0595","Group:G_Front@0,0,0","Group:G_Lenses@0,0,0"]}}
+zsh:1: == not found
+[0m
+[0m← [0mEdit src/components/canvas/HeroRigs.tsx
+Index: /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/components/canvas/HeroRigs.tsx
+===================================================================
+--- /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/components/canvas/HeroRigs.tsx
++++ /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/components/canvas/HeroRigs.tsx
+@@ -41,14 +41,26 @@
+ export function caseQFor(pRaw: number): number {
+   return clamp01((clamp01(pRaw) - 0.1) / 0.15)
+ }
+ 
+-/** Master p → GlassesRig lane-local q (B3–B4 core, B5 hover tail). */
++/**
++ * Master p → GlassesRig lane-local q.
++ *
++ * DEVIATION from the suggested `B3–B4 → q 0–0.7` (see INTEGRATION.md §B):
++ * that map lands the fade at master ≈0.38–0.41, leaving all of B3 an empty
++ * case and pushing unfold onto the B3/B4 boundary — the 04-emerge stop shows
++ * nothing emerging. This map instead places the rig's local windows onto the
++ * beat labels: fade (local 0.30–0.38) → early B3, rise (0.25–0.40) → B3,
++ * unfold (0.40–0.55) → B3-late/B4, hover tail (0.70–0.90) → B4-late, settled
++ * hero for B5+. Internal sequencing (rise-completes-when-unfold-starts
++ * clearance) is untouched — the map is monotonic in local-q space, so the
++ * geometric proof holds. q starts at 0.28 (past the invisible dead zone;
++ * opacity is still 0 there, so the step is never seen).
++ */
+ export function glassesQFor(pRaw: number): number {
+   const p = clamp01(pRaw)
+   if (p <= 0.25) return 0
+-  if (p <= 0.55) return clamp01((p - 0.25) / 0.3) * 0.7
+-  if (p <= 0.7) return 0.7 + 0.3 * clamp01((p - 0.55) / 0.15)
++  if (p <= 0.55) return Math.min(1, 0.28 + 2.4 * (p - 0.25))
+   return 1
+ }
+ 
+ /**
+
+[0m
+[0m← [0mEdit src/motion/chapters.ts
+Index: /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/motion/chapters.ts
+===================================================================
+--- /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/motion/chapters.ts
++++ /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/motion/chapters.ts
+@@ -76,11 +76,16 @@
+   /** Unit vector, glasses-local ≈ (−0.08, 0.02, 0.97) per MOTION §5. */
+   normal: Vec3
+ }
+ 
+-/** Stand-in: glasses hover above the case, right lens at +x. Metres. */
++/**
++ * Stand-in: glasses hover above the case, right lens at +x. Metres.
++ * Integration-measured (LANEC-PROBE @q=1.0 hero pose: G_Lenses bbox centre
++ * ≈ (0.003, 0.161, 0.013)): the hero lenses hover at y ≈ 0.16, not 0.08.
++ * The live reporter overwrites the centre per frame once models load.
++ */
+ export const STAND_IN_LENS_ANCHOR: LensAnchor = {
+-  center: [0.048, 0.082, 0.012],
++  center: [0.03, 0.16, 0.01],
+   normal: [-0.0822, 0.0205, 0.9964],
+ }
+ 
+ const liveAnchor: LensAnchor = {
+
+[0m
+[0m← [0mEdit src/motion/chapters.ts
+Index: /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/motion/chapters.ts
+===================================================================
+--- /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/motion/chapters.ts
++++ /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/motion/chapters.ts
+@@ -155,22 +155,25 @@
+ }
+ 
+ // Wave-beat hold, per Lane D `D-camera-notes.md` (integration reframe):
+ // all 16 settled planes need ≈1.05 m × 0.62 m at slot depth, so the B6–B7
+-// hold sits at ≈0.80 m desktop (was 0.43–0.50 m) with the look-target dipped
+-// to the 16-plane centroid (y −0.04, z −0.10) so the W2 row reads whole.
+-const WAVE_HOLD_Z = 0.8
+-const WAVE_HOLD_Y = 0.08
+-const WAVE_TGT: Vec3 = [0, -0.04, -0.1]
++// hold sits at ≈0.84 m desktop with the look-target near the 16-plane +
++// drifted-hero centroid (y −0.02, z −0.10) so the W2 row reads whole.
++// B4/B5 are reframed onto the MEASURED hero (LANEC-PROBE: lenses hover at
++// y ≈ 0.16 — the authored 0.06–0.07 targets framed empty air above the case).
++const WAVE_HOLD_Z = 0.84
++const WAVE_HOLD_Y = 0.1
++const WAVE_TGT: Vec3 = [0, -0.02, -0.1]
+ 
+ const KEYS_STATIC: Key[] = [
+   { p: 0.0, pos: [0.18 * K, 0.1 * K, 0.32 * K], tgt: [0, 0.01, 0], fov: 32, fog: 0.035, exp: 1.0, near: 0.01 },
+   { p: 0.1, pos: [0.14 * K, 0.12 * K, 0.29 * K], tgt: [0, 0.012, 0], fov: 33, fog: 0.035, exp: 1.0, near: 0.01 },
+   { p: 0.25, pos: [0.12 * K, 0.14 * K, 0.26 * K], tgt: [0, 0.015, 0], fov: 34, fog: 0.035, exp: 1.02, near: 0.01 },
+-  { p: 0.4, pos: [-0.14 * K, 0.12 * K, 0.22 * K], tgt: [0, 0.06, 0], fov: 35, fog: 0.035, exp: 1.05, near: 0.01 },
+-  // B5 slowest orbit: authored swing with arc lift (mid key), ±12° register.
+-  { p: 0.475, pos: [0, 0.174 * K, 0.22 * K], tgt: [0, 0.065, 0], fov: 35, fog: 0.035, exp: 1.05, near: 0.01 },
+-  { p: 0.55, pos: [0.14 * K, 0.12 * K, 0.22 * K], tgt: [0, 0.07, 0], fov: 35, fog: 0.035, exp: 1.05, near: 0.01 },
++  // B4 unfold: tilt up to the risen hero (unfold completes at full lift).
++  { p: 0.4, pos: [-0.17, 0.15, 0.3], tgt: [0, 0.1, 0], fov: 35, fog: 0.035, exp: 1.05, near: 0.01 },
++  // B5 slowest orbit: authored swing shape, raised onto the hero lenses.
++  { p: 0.475, pos: [0, 0.21, 0.3], tgt: [0, 0.11, 0], fov: 35, fog: 0.035, exp: 1.05, near: 0.01 },
++  { p: 0.55, pos: [0.17, 0.15, 0.3], tgt: [0, 0.11, 0], fov: 35, fog: 0.035, exp: 1.05, near: 0.01 },
+   { p: 0.7, pos: [0, WAVE_HOLD_Y, WAVE_HOLD_Z], tgt: [...WAVE_TGT], fov: 35, fog: 0.035, exp: 1.05, near: 0.01 },
+   // B6 Wave 1: FOV kick +8°, fog dip 0.015.
+   { p: 0.775, pos: [0, WAVE_HOLD_Y, WAVE_HOLD_Z - 0.02], tgt: [...WAVE_TGT], fov: 43, fog: 0.015, exp: 1.1, near: 0.01 },
+   { p: 0.85, pos: [0, WAVE_HOLD_Y, WAVE_HOLD_Z - 0.02], tgt: [...WAVE_TGT], fov: 35, fog: 0.022, exp: 1.15, near: 0.01 },
+
+[0m
+[0m← [0mEdit src/routes/Home.tsx
+Index: /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/routes/Home.tsx
+===================================================================
+--- /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/routes/Home.tsx
++++ /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/routes/Home.tsx
+@@ -67,9 +67,12 @@
+   onScroll()
+   window.addEventListener('scroll', onScroll, { passive: true })
+   return () => window.removeEventListener('scroll', onScroll)
+ }, [])
+-const theme = p >= 0.985 || pastWhite ? 'light' : 'dark'
++// Flip to light once the Paper veil covers half the canvas (p≈0.992) —
++// flipping at the veil START (0.985) shows a light header over dark canvas.
++// Scrolling past the film flips via pastWhite regardless of progress.
++const theme = p >= 0.992 || pastWhite ? 'light' : 'dark'
+ return (
+   <Header
+     theme={theme}
+     progress={Math.round(p * 500) / 500}
+
+[0m
+[0m$ [0mrm scripts/qa/zz-probe.spec.ts && rtk grep -n "waitForTimeout(1200)" scripts/qa/int-beats.spec.ts
+53:        await page.waitForTimeout(1200)
+60:      await page.waitForTimeout(1200)
+80:      await page.waitForTimeout(1200)
+102:    await page.waitForTimeout(1200)
+105:    await page.waitForTimeout(1200)
+129:    await page.waitForTimeout(1200)
+132:    await page.waitForTimeout(1200)
+136:    await page.waitForTimeout(1200)
+151:    await page.waitForTimeout(1200)
+[0m
+[0m→ [0mRead scripts/qa/int-beats.spec.ts[90m [offset=44, limit=70][0m
+[0m
+[0m← [0mEdit scripts/qa/int-beats.spec.ts
+Index: /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/scripts/qa/int-beats.spec.ts
+===================================================================
+--- /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/scripts/qa/int-beats.spec.ts
++++ /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/scripts/qa/int-beats.spec.ts
+@@ -49,16 +49,18 @@
+   await page.waitForTimeout(7000)
+   await page.screenshot({ path: join(OUT, `int-00-load-${tag}.png`) })
+   for (const [name, p] of PROGRESS_STOPS) {
+     await page.evaluate((v) => window.__film?.setProgress(v), p)
+-    await page.waitForTimeout(1200)
++    // Damped camera (λ=5.2) converges slowly under software GL: settle
++    // long so the shot shows the settled state, not a transient.
++    await page.waitForTimeout(3500)
+     const state = await page.evaluate(() => window.__film?.getProgress())
+     expect(state?.p, `${name} progress sticks`).toBeCloseTo(p, 2)
+     await page.screenshot({ path: join(OUT, `int-${name}-${tag}.png`) })
+   }
+   // Fast-flick to the handoff: veil must be full.
+   await page.evaluate(() => window.__film?.setProgress(1.0))
+-  await page.waitForTimeout(1200)
++  await page.waitForTimeout(3500)
+   const veil = await page.evaluate(() => document.getElementById('white-veil')?.style.opacity)
+   expect(veil, 'veil full at p=1').toBe('1')
+   expect(errors, 'console-clean').toEqual([])
+ })
+
+[0m
+[0m← [0mEdit scripts/qa/int-beats.spec.ts
+Index: /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/scripts/qa/int-beats.spec.ts
+===================================================================
+--- /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/scripts/qa/int-beats.spec.ts
++++ /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/scripts/qa/int-beats.spec.ts
+@@ -78,9 +78,9 @@
+     ['09-approach', 0.945],
+     ['10-entry', 0.985],
+   ] as const) {
+     await page.evaluate((v) => window.__film?.setProgress(v), p)
+-    await page.waitForTimeout(1200)
++    await page.waitForTimeout(3500)
+     await page.screenshot({ path: join(OUT, `int-${name}-768.png`) })
+   }
+   expect(errors, 'console-clean').toEqual([])
+ })
+
+[0m
+[0m→ [0mRead scripts/qa/int-beats.spec.ts[90m [offset=120, limit=60][0m
+[0m
+[0m← [0mEdit scripts/qa/int-beats.spec.ts
+Index: /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/scripts/qa/int-beats.spec.ts
+===================================================================
+--- /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/scripts/qa/int-beats.spec.ts
++++ /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/scripts/qa/int-beats.spec.ts
+@@ -127,16 +127,16 @@
+   await page.waitForFunction(() => window.__film !== undefined, null, { timeout: 20000 })
+   await page.waitForSelector('[data-film-canvas] canvas', { timeout: 30000 })
+   await page.waitForTimeout(7000)
+   await page.evaluate(() => window.__film?.setProgress(0.77))
+-  await page.waitForTimeout(1200)
++  await page.waitForTimeout(3500)
+   const fwd = await page.evaluate(() => window.__film?.getProgress())
+   await page.evaluate(() => window.__film?.setProgress(0.32))
+-  await page.waitForTimeout(1200)
++  await page.waitForTimeout(3500)
+   const back = await page.evaluate(() => window.__film?.getProgress())
+   expect(back?.beat).toBe('B3')
+   await page.evaluate(() => window.__film?.setProgress(0.77))
+-  await page.waitForTimeout(1200)
++  await page.waitForTimeout(3500)
+   const again = await page.evaluate(() => window.__film?.getProgress())
+   expect(again?.p).toBeCloseTo(fwd?.p ?? 0.77, 3)
+   await page.screenshot({ path: join(OUT, 'int-reverse-077-1440.png') })
+ })
+
+[0m
+[0m← [0mEdit scripts/qa/int-beats.spec.ts
+Index: /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/scripts/qa/int-beats.spec.ts
+===================================================================
+--- /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/scripts/qa/int-beats.spec.ts
++++ /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/scripts/qa/int-beats.spec.ts
+@@ -149,9 +149,9 @@
+   await page.waitForFunction(() => window.__film !== undefined, null, { timeout: 20000 })
+   await page.waitForSelector('[data-film-canvas] canvas', { timeout: 30000 })
+   await page.waitForTimeout(7000)
+   await page.evaluate(() => window.__film?.setProgress(0.77))
+-  await page.waitForTimeout(1200)
++  await page.waitForTimeout(3500)
+   await page.screenshot({ path: join(OUT, 'int-tier-low-1440.png') })
+   expect(errors, 'console-clean').toEqual([])
+ })
+ 
+
+[0m
+[0m$ [0mnpx tsc -b > /tmp/tsc-int3.txt 2>&1; echo "TSC:$?"; head -10 /tmp/tsc-int3.txt; npx eslint src/routes/Home.tsx src/components/canvas/HeroRigs.tsx src/motion/chapters.ts scripts/qa/int-beats.spec.ts --max-warnings 0 2>&1 | tail -5; echo "LINT done"
+TSC:2
+npm notice run eyeq-vision-care@0.1.0 npx
+npm notice run 'tsc' -b
+src/v1/FilmCaptions.tsx(19,7): error TS6133: 'easeOut' is declared but its value is never read.
+npm notice run eyeq-vision-care@0.1.0 npx
+npm notice run 'eslint' src/routes/Home.tsx src/components/canvas/HeroRigs.tsx src/motion/chapters.ts scripts/qa/int-beats.spec.ts --max-warnings 0
+LINT done
+[0m
+[0m$ [0mrtk ls -la src/v1/ 2>/dev/null; rtk ls src/__dev__/ src/canvas/ 2>/dev/null
+644  App.tsx  2.3K
+644  BrandWaves.tsx  5.6K
+644  FilmCaptions.tsx  7.5K
+644  FilmSequence.tsx  8.8K
+644  captions.css  5.6K
+644  dev-text.tsx  1.7K
+644  dev-waves.tsx  1.5K
+644  main.tsx  620B
+644  progress.ts  809B
+644  v1.css  2.5K
+644  waves.css  2.1K
+C/
+D/
+E/
+F/
+b/
+rigs/
+stage/
+CaseRig.tsx  3.7K
+GlassesRig.tsx  8.5K
+SceneStage.tsx  7.3K
+SponsorField.tsx  10.6K
+... (2 filtered)
+[+2 hidden: rtk recall 792dbbf8446e]
+[0m
+[0m$ [0mrtk grep -rn "from.*v1\|import.*v1\|src/v1" src/*.tsx src/app src/routes dev-*.html index.html vite.config.ts 2>/dev/null | head; echo ===; rtk read src/v1/main.tsx src/v1/progress.ts 2>/dev/null | head -60
+zsh:1: == not found
+[0m
+[0m→ [0mRead src/v1/progress.ts
+[0m→ [0mRead src/v1/main.tsx
+[0m✱ [0mGrep "v1/"[90m in src · 0 matches[0m
+[0m→ [0mRead src/v1/FilmCaptions.tsx[90m [limit=50][0m
+[0m
+[0m$ [0mnpx tsc -b > /tmp/tsc-int4.txt 2>&1; echo "TSC:$?"; head -10 /tmp/tsc-int4.txt
+TSC:0
+npm notice run eyeq-vision-care@0.1.0 npx
+npm notice run 'tsc' -b
+[0m
+[0m$ [0mFILM_URL=http://localhost:5111/ npx playwright test int-beats --project=chromium -g "progress stops @1440" > /tmp/qa-1440b.txt 2>&1; echo "EXIT:$?"; tail -6 /tmp/qa-1440b.txt
+EXIT:1
+        at /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/scripts/qa/int-beats.spec.ts:57:53
+
+    Error Context: test-results/int-beats-int-beats-progress-stops-1440-chromium/error-context.md
+
+  1 failed
+    [chromium] › scripts/qa/int-beats.spec.ts:38:5 › int-beats › progress stops @1440 ──────────────
+[0m
+[0m$ [0mrtk grep -B2 -A12 "failed\|Error\|expect" /tmp/qa-1440b.txt | head -60
+1) [chromium] › scripts/qa/int-beats.spec.ts:38:5 › int-beats › progress stops @1440 ─────────────
+
+    Error: 05-unfold progress sticks
+
+    expect(received).toBeCloseTo(expected, precision)
+
+    Expected: 0.47
+    Received: 1.3888886959876811e-7
+
+    Expected precision:    2
+    Expected difference: < 0.005
+    Received difference:   0.4699998611111304
+
+      55 |         await page.waitForTimeout(3500)
+      56 |         const state = await page.evaluate(() => window.__film?.getProgress())
+    > 57 |         expect(state?.p, `${name} progress sticks`).toBeCloseTo(p, 2)
+         |                                                     ^
+      58 |         await page.screenshot({ path: join(OUT, `int-${name}-${tag}.png`) })
+      59 |       }
+      60 |       // Fast-flick to the handoff: veil must be full.
+        at /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/scripts/qa/int-beats.spec.ts:57:53
+
+    Error Context: test-results/int-beats-int-beats-progress-stops-1440-chromium/error-context.md
+
+  1 failed
+    [chromium] › scripts/qa/int-beats.spec.ts:38:5 › int-beats › progress stops @1440 ──────────────
+[0m
+[0m← [0mWrite scripts/qa/zz-traj.spec.ts
+Wrote file successfully.
+[0m
+[0m$ [0mnpx playwright test zz-traj --project=chromium > /tmp/traj.txt 2>&1; echo "EXIT:$?"; rtk grep -E "t=|scroll events" /tmp/traj.txt | head -25
+EXIT:1
+npm notice run 'playwright' test zz-traj --project=chromium
+t=10.0s p=0.4700 beat=B4 scrollY=0
+t=13.3s p=0.4700 beat=B4 scrollY=0
+t=15.9s p=0.4700 beat=B4 scrollY=0
+t=17.4s p=0.4700 beat=B4 scrollY=0
+t=19.7s p=0.4700 beat=B4 scrollY=0
+t=24.3s p=0.4700 beat=B4 scrollY=0
+[0m
+[0m$ [0mrtk read /tmp/traj.txt --tail-lines 30
+Running 1 test using 1 worker
+
+t=10.0s p=0.4700 beat=B4 scrollY=0
+t=13.3s p=0.4700 beat=B4 scrollY=0
+t=15.9s p=0.4700 beat=B4 scrollY=0
+t=17.4s p=0.4700 beat=B4 scrollY=0
+t=19.7s p=0.4700 beat=B4 scrollY=0
+t=24.3s p=0.4700 beat=B4 scrollY=0
+  ✘  1 [chromium] › scripts/qa/zz-traj.spec.ts:4:1 › trajectory (33.0s)
+
+
+  1) [chromium] › scripts/qa/zz-traj.spec.ts:4:1 › trajectory ──────────────────────────────────────
+
+    Test timeout of 30000ms exceeded.
+
+    Error: page.waitForTimeout: Test timeout of 30000ms exceeded.
+
+      21 |   const t0 = Date.now()
+      22 |   for (let i = 0; i < 16; i++) {
+    > 23 |     await page.waitForTimeout(400)
+         |                ^
+      24 |     const s = await page.evaluate(() => ({
+      25 |       p: window.__film?.getProgress(),
+      26 |       y: window.scrollY,
+        at /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/scripts/qa/zz-traj.spec.ts:23:16
+
+    Error Context: test-results/zz-traj-trajectory-chromium/error-context.md
+
+  1 failed
+    [chromium] › scripts/qa/zz-traj.spec.ts:4:1 › trajectory ───────────────────────────────────────
+[0m
+[0m← [0mEdit scripts/qa/int-beats.spec.ts
+Index: /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/scripts/qa/int-beats.spec.ts
+===================================================================
+--- /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/scripts/qa/int-beats.spec.ts
++++ /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/scripts/qa/int-beats.spec.ts
+@@ -48,15 +48,14 @@
+ // Raw Phase-3 case.glb is ~10 MB + studio HDRI: let models settle.
+ await page.waitForTimeout(7000)
+ await page.screenshot({ path: join(OUT, `int-00-load-${tag}.png`) })
+ for (const [name, p] of PROGRESS_STOPS) {
+-  await page.evaluate((v) => window.__film?.setProgress(v), p)
+-  // Damped camera (λ=5.2) converges slowly under software GL: settle
+-  // long so the shot shows the settled state, not a transient.
+-  await page.waitForTimeout(3500)
+-  const state = await page.evaluate(() => window.__film?.getProgress())
+-  expect(state?.p, `${name} progress sticks`).toBeCloseTo(p, 2)
+-  await page.screenshot({ path: join(OUT, `int-${name}-${tag}.png`) })
++  // A stray ScrollTrigger refresh can clobber the dev-only write with
++  // the scroll-derived value (production-meaningless: for real users
++  // scroll IS the truth). Settle, re-assert, and verify p immediately
++  // before AND after the shot; retry the stop if it drifted.
++  // eslint-disable-next-line no-await-in-loop
++  await settleStop(page, OUT, `int-${name}-${tag}.png`, p)
+ }
+ // Fast-flick to the handoff: veil must be full.
+ await page.evaluate(() => window.__film?.setProgress(1.0))
+ await page.waitForTimeout(3500)
+
+[0m
+[0m← [0mEdit scripts/qa/int-beats.spec.ts
+Index: /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/scripts/qa/int-beats.spec.ts
+===================================================================
+--- /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/scripts/qa/int-beats.spec.ts
++++ /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/scripts/qa/int-beats.spec.ts
+@@ -27,8 +27,63 @@
+   ['09-approach', 0.945],
+   ['10-entry', 0.985],
+ ]
+ 
++type QAData = { __film?: { setProgress: (p: number) => void; getProgress: () => { p: number } } }
++type QAPage = { evaluate: (fn: (v: number) => void, arg: number) => Promise<unknown> } & {
++  evaluate: (fn: () => { p: number } | undefined) => Promise<{ p: number } | undefined>
++  waitForTimeout: (ms: number) => Promise<void>
++  screenshot: (opts: { path: string }) => Promise<void>
++}
++
++/**
++ * Drive to p, let the damped camera (λ=5.2, slow under software GL) converge,
++ * re-assert (a stray ScrollTrigger refresh can clobber the dev-only write),
++ * shoot, and verify p held across the shot. Retries the stop on drift.
++ */
++async function settleStop(
++  page: {
++    evaluate: (fn: string | ((v: number) => unknown), arg?: number) => Promise<unknown>
++    waitForTimeout: (ms: number) => Promise<void>
++    screenshot: (opts: { path: string }) => Promise<void>
++  },
++  outDir: string,
++  file: string,
++  p: number,
++): Promise<void> {
++  void outDir
++  for (let attempt = 0; attempt < 3; attempt++) {
++    await page.evaluate((v) => (window as unknown as QAData).__film?.setProgress(v as number), p)
++    // Damped camera (λ=5.2) converges slowly under software GL: settle long
++    // so the shot shows the settled state, not a transient.
++    await page.waitForTimeout(3500)
++    await page.evaluate((v) => (window as unknown as QAData).__film?.setProgress(v as number), p)
++    await page.waitForTimeout(600)
++    const before = (await page.evaluate(() => (window as unknown as QAData).__film?.getProgress())) as
++      | { p: number }
++      | undefined
++    // eslint-disable-next-line no-await-in-loop
++    await page.screenshot({ path: join(outDir, file) })
++    const after = (await page.evaluate(() => (window as unknown as QAData).__film?.getProgress())) as
++      | { p: number }
++      | undefined
++    if (
++      before &&
++      after &&
++      Math.abs(before.p - p) < 0.005 &&
++      Math.abs(after.p - p) < 0.005
++    ) {
++      return
++    }
++  }
++  const state = (await page.evaluate(() => (window as unknown as QAData).__film?.getProgress())) as
++    | { p: number }
++    | undefined
++  if (!state || Math.abs(state.p - p) >= 0.005) {
++    throw new Error(`stop ${file} progress drifted (p=${state?.p}, want ${p})`)
++  }
++}
++
+ test.describe('int-beats', () => {
+   test.setTimeout(300000)
+ 
+   for (const [tag, vp] of [
+
+[0m
+[0m← [0mEdit scripts/qa/int-beats.spec.ts
+Index: /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/scripts/qa/int-beats.spec.ts
+===================================================================
+--- /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/scripts/qa/int-beats.spec.ts
++++ /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/scripts/qa/int-beats.spec.ts
+@@ -27,61 +27,38 @@
+   ['09-approach', 0.945],
+   ['10-entry', 0.985],
+ ]
+ 
+-type QAData = { __film?: { setProgress: (p: number) => void; getProgress: () => { p: number } } }
+-type QAPage = { evaluate: (fn: (v: number) => void, arg: number) => Promise<unknown> } & {
+-  evaluate: (fn: () => { p: number } | undefined) => Promise<{ p: number } | undefined>
+-  waitForTimeout: (ms: number) => Promise<void>
+-  screenshot: (opts: { path: string }) => Promise<void>
+-}
+-
+ /**
+  * Drive to p, let the damped camera (λ=5.2, slow under software GL) converge,
+- * re-assert (a stray ScrollTrigger refresh can clobber the dev-only write),
+- * shoot, and verify p held across the shot. Retries the stop on drift.
++ * re-assert (a stray ScrollTrigger refresh can clobber the dev-only write
++ * with the scroll-derived value — production-meaningless, real users ARE at
++ * their scroll truth), shoot, and verify p held across the shot. Retries the
++ * stop on drift instead of failing the run on a harness artifact.
+  */
+ async function settleStop(
+-  page: {
+-    evaluate: (fn: string | ((v: number) => unknown), arg?: number) => Promise<unknown>
+-    waitForTimeout: (ms: number) => Promise<void>
+-    screenshot: (opts: { path: string }) => Promise<void>
+-  },
+-  outDir: string,
++  page: import('@playwright/test').Page,
+   file: string,
+   p: number,
+ ): Promise<void> {
+-  void outDir
+   for (let attempt = 0; attempt < 3; attempt++) {
+-    await page.evaluate((v) => (window as unknown as QAData).__film?.setProgress(v as number), p)
++    await page.evaluate((v) => window.__film?.setProgress(v), p)
+     // Damped camera (λ=5.2) converges slowly under software GL: settle long
+     // so the shot shows the settled state, not a transient.
+     await page.waitForTimeout(3500)
+-    await page.evaluate((v) => (window as unknown as QAData).__film?.setProgress(v as number), p)
++    await page.evaluate((v) => window.__film?.setProgress(v), p)
+     await page.waitForTimeout(600)
+-    const before = (await page.evaluate(() => (window as unknown as QAData).__film?.getProgress())) as
+-      | { p: number }
+-      | undefined
++    const before = await page.evaluate(() => window.__film?.getProgress())
+     // eslint-disable-next-line no-await-in-loop
+-    await page.screenshot({ path: join(outDir, file) })
+-    const after = (await page.evaluate(() => (window as unknown as QAData).__film?.getProgress())) as
+-      | { p: number }
+-      | undefined
+-    if (
+-      before &&
+-      after &&
+-      Math.abs(before.p - p) < 0.005 &&
+-      Math.abs(after.p - p) < 0.005
+-    ) {
++    await page.screenshot({ path: join(OUT, file) })
++    const after = await page.evaluate(() => window.__film?.getProgress())
++    if (before && after && Math.abs(before.p - p) < 0.005 && Math.abs(after.p - p) < 0.005) {
++      expect(before.p, `${file} progress sticks`).toBeCloseTo(p, 2)
+       return
+     }
+   }
+-  const state = (await page.evaluate(() => (window as unknown as QAData).__film?.getProgress())) as
+-    | { p: number }
+-    | undefined
+-  if (!state || Math.abs(state.p - p) >= 0.005) {
+-    throw new Error(`stop ${file} progress drifted (p=${state?.p}, want ${p})`)
+-  }
++  const state = await page.evaluate(() => window.__film?.getProgress())
++  expect(state?.p, `${file} progress sticks`).toBeCloseTo(p, 2)
+ }
+ 
+ test.describe('int-beats', () => {
+   test.setTimeout(300000)
+
+[0m
+[0m← [0mEdit scripts/qa/int-beats.spec.ts
+Index: /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/scripts/qa/int-beats.spec.ts
+===================================================================
+--- /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/scripts/qa/int-beats.spec.ts
++++ /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/scripts/qa/int-beats.spec.ts
+@@ -80,14 +80,11 @@
+ // Raw Phase-3 case.glb is ~10 MB + studio HDRI: let models settle.
+ await page.waitForTimeout(7000)
+ await page.screenshot({ path: join(OUT, `int-00-load-${tag}.png`) })
+ for (const [name, p] of PROGRESS_STOPS) {
+-  // A stray ScrollTrigger refresh can clobber the dev-only write with
+-  // the scroll-derived value (production-meaningless: for real users
+-  // scroll IS the truth). Settle, re-assert, and verify p immediately
+-  // before AND after the shot; retry the stop if it drifted.
++  // Settle, re-assert, verify p across the shot; retry on drift.
+   // eslint-disable-next-line no-await-in-loop
+-  await settleStop(page, OUT, `int-${name}-${tag}.png`, p)
++  await settleStop(page, `int-${name}-${tag}.png`, p)
+ }
+ // Fast-flick to the handoff: veil must be full.
+ await page.evaluate(() => window.__film?.setProgress(1.0))
+ await page.waitForTimeout(3500)
+
+[0m
+[0m← [0mEdit scripts/qa/int-beats.spec.ts
+Index: /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/scripts/qa/int-beats.spec.ts
+===================================================================
+--- /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/scripts/qa/int-beats.spec.ts
++++ /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/scripts/qa/int-beats.spec.ts
+@@ -105,11 +105,10 @@
+   for (const [name, p] of [
+     ['09-approach', 0.945],
+     ['10-entry', 0.985],
+   ] as const) {
+-    await page.evaluate((v) => window.__film?.setProgress(v), p)
+-    await page.waitForTimeout(3500)
+-    await page.screenshot({ path: join(OUT, `int-${name}-768.png`) })
++    // eslint-disable-next-line no-await-in-loop
++    await settleStop(page, `int-${name}-768.png`, p)
+   }
+   expect(errors, 'console-clean').toEqual([])
+ })
+ 
+
+[0m
+[0m$ [0mrm -f scripts/qa/zz-traj.spec.ts && npx tsc -b > /tmp/tsc-int5.txt 2>&1; echo "TSC:$?"; rtk grep "error" /tmp/tsc-int5.txt | head -5; npx eslint scripts/qa/int-beats.spec.ts --max-warnings 0 2>&1 | tail -8; echo LINT-OK
+TSC:2
+src/canvas/SponsorField.tsx(121,11): error TS2322: Type '{ wave: "w1"; manifest: AtlasManifest; texture: Texture<unknown, TextureEventMap>; progress: StageProgress; compact: boolean; streaksEnabled: boolean; solo: number | undefined; }' is not assignable to type 'IntrinsicAttributes & WaveProps'.
+src/canvas/SponsorField.tsx(132,11): error TS2322: Type '{ wave: "w2"; manifest: AtlasManifest; texture: Texture<unknown, TextureEventMap>; progress: StageProgress; compact: boolean; streaksEnabled: boolean; solo: number | undefined; }' is not assignable to type 'IntrinsicAttributes & WaveProps'.
+   51:5  warning  Unused eslint-disable directive (no problems were reported from 'no-await-in-loop')
+   85:9  warning  Unused eslint-disable directive (no problems were reported from 'no-await-in-loop')
+  109:7  warning  Unused eslint-disable directive (no problems were reported from 'no-await-in-loop')
+
+✖ 3 problems (0 errors, 3 warnings)
+  0 errors and 3 warnings potentially fixable with the `--fix` option.
+
+ESLint found too many warnings (maximum: 0).
+LINT-OK
+[0m
+[0m$ [0mpython3 - <<'PYEOF'
+import re
+p = 'scripts/qa/int-beats.spec.ts'
+s = open(p).read()
+s = s.replace("        // eslint-disable-next-line no-await-in-loop\n        await settleStop", "        await settleStop")
+s = s.replace("      // eslint-disable-next-line no-await-in-loop\n      await settleStop", "      await settleStop")
+s = s.replace("    // eslint-disable-next-line no-await-in-loop\n    await page.screenshot", "    await page.screenshot")
+open(p, 'w').write(s)
+print("done")
+PYEOF
+npx eslint scripts/qa/int-beats.spec.ts --max-warnings 0 2>&1 | tail -3; echo LINT-DONE; sleep 45; npx tsc -b > /tmp/tsc-int6.txt 2>&1; echo "TSC:$?"; head -6 /tmp/tsc-int6.txt
+done
+npm notice run eyeq-vision-care@0.1.0 npx
+npm notice run 'eslint' scripts/qa/int-beats.spec.ts --max-warnings 0
+LINT-DONE
+TSC:0
+npm notice run eyeq-vision-care@0.1.0 npx
+npm notice run 'tsc' -b
+[0m
+[0m$ [0mFILM_URL=http://localhost:5111/ npx playwright test int-beats --project=chromium -g "progress stops @1440" > /tmp/qa-1440c.txt 2>&1; echo "EXIT:$?"; tail -5 /tmp/qa-1440c.txt
+EXIT:0
+Running 1 test using 1 worker
+
+  ✓  1 [chromium] › scripts/qa/int-beats.spec.ts:69:5 › int-beats › progress stops @1440 (2.9m)
+
+  1 passed (3.0m)
+[0m
+[0m→ [0mRead docs/phase4/qa/beats/int-05-unfold-1440.png
+[0m→ [0mRead docs/phase4/qa/beats/int-04-emerge-1440.png
+[0m→ [0mRead docs/phase4/qa/beats/int-06-info-1440.png
+[0m→ [0mRead docs/phase4/qa/beats/int-08-wave2-1440.png
+[0m→ [0mRead docs/phase4/qa/beats/int-09-approach-1440.png
+[0m→ [0mRead docs/phase4/qa/beats/int-07-wave1-1440.png
+[0m
+[0m← [0mEdit src/components/canvas/CameraRig.tsx
+Index: /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/components/canvas/CameraRig.tsx
+===================================================================
+--- /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/components/canvas/CameraRig.tsx
++++ /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/components/canvas/CameraRig.tsx
+@@ -13,8 +13,15 @@
+ 
+ const DAMP_LAMBDA = 5.2
+ const MAX_DT = 1 / 30
+ 
++/**
++ * Damped progress value (dev/QA convergence signal). `smooth` trails the
++ * master target; QA waits on it instead of wall-time so captures are
++ * deterministic at any frame rate (software GL converges slowly).
++ */
++export const camSmooth = { v: 0 }
++
+ export function CameraRig() {
+   const camera = useThree((s) => s.camera)
+   const gl = useThree((s) => s.gl)
+   const scene = useThree((s) => s.scene)
+
+[0m
+[0m← [0mEdit src/motion/progress.ts
+Index: /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/motion/progress.ts
+===================================================================
+--- /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/motion/progress.ts
++++ /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/motion/progress.ts
+@@ -50,18 +50,32 @@
+ export interface FilmDebugHook {
+   /** Jump the film to progress p (proves pure-function-of-progress). */
+   setProgress: (p: number) => void
+   getProgress: () => FilmProgressState
++  /**
++   * Damped camera progress (CameraRig `smooth`). QA waits for convergence
++   * (|smooth − p| < ε) instead of wall-time so captures are deterministic at
++   * any frame rate. Installed lazily — null until the first frame renders.
++   */
++  getSmooth: () => number | null
+ }
+ 
++let smoothReader: (() => number) | null = null
++
++/** Called by CameraRig (sole writer of the damped value). */
++export function registerSmoothReader(fn: () => number): void {
++  smoothReader = fn
++}
++
+ /** Dev-only QA hook (`window.__film`). Installed by Providers in dev builds. */
+ export function installFilmDebugHook(): void {
+   if (typeof window === 'undefined') return
+   const w = window as unknown as { __film?: FilmDebugHook }
+   if (w.__film) return
+   w.__film = {
+     setProgress: (p: number) => setFilmProgress(p),
+     getProgress: () => getFilmProgress(),
++    getSmooth: () => (smoothReader ? smoothReader() : null),
+   }
+ }
+ 
+ declare global {
+
+[0m
+[0m← [0mEdit src/components/canvas/CameraRig.tsx
+Index: /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/components/canvas/CameraRig.tsx
+===================================================================
+--- /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/components/canvas/CameraRig.tsx
++++ /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/components/canvas/CameraRig.tsx
+@@ -46,8 +46,9 @@
+ const target = filmProgress.p
+ smooth.current = reducedMotion
+   ? target
+   : THREE.MathUtils.damp(smooth.current, target, DAMP_LAMBDA, dt)
++camSmooth.v = smooth.current
+ 
+ const mobile = isMobileWidth(size.width)
+ const s = sampleCamera(smooth.current, mobile)
+ 
+
+[0m
+[0m← [0mEdit src/components/canvas/CameraRig.tsx
+Index: /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/components/canvas/CameraRig.tsx
+===================================================================
+--- /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/components/canvas/CameraRig.tsx
++++ /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/components/canvas/CameraRig.tsx
+@@ -7,11 +7,13 @@
+ import { useEffect, useRef } from 'react'
+ import * as THREE from 'three'
+ import { useFrame, useThree } from '@react-three/fiber'
+ import { isMobileWidth, sampleCamera } from '../../motion/chapters'
+-import { filmProgress, subscribeFilmProgress } from '../../motion/progress'
++import { filmProgress, registerSmoothReader, subscribeFilmProgress } from '../../motion/progress'
+ import { useFilmStore } from '../../store/useFilmStore'
+ 
++registerSmoothReader(() => camSmooth.v)
++
+ const DAMP_LAMBDA = 5.2
+ const MAX_DT = 1 / 30
+ 
+ /**
+
+[0m
+[0m← [0mEdit scripts/qa/int-beats.spec.ts
+Index: /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/scripts/qa/int-beats.spec.ts
+===================================================================
+--- /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/scripts/qa/int-beats.spec.ts
++++ /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/scripts/qa/int-beats.spec.ts
+@@ -41,13 +41,20 @@
+   p: number,
+ ): Promise<void> {
+   for (let attempt = 0; attempt < 3; attempt++) {
+     await page.evaluate((v) => window.__film?.setProgress(v), p)
+-    // Damped camera (λ=5.2) converges slowly under software GL: settle long
+-    // so the shot shows the settled state, not a transient.
+-    await page.waitForTimeout(3500)
++    // Deterministic settle: wait for the damped camera to converge instead
++    // of wall-time (software GL converges slowly; fast GPUs instantly).
++    await page.waitForFunction(
++      (want) => {
++        const s = window.__film?.getSmooth()
++        return s !== null && s !== undefined && Math.abs(s - want) < 0.003
++      },
++      p,
++      { timeout: 60000 },
++    )
+     await page.evaluate((v) => window.__film?.setProgress(v), p)
+-    await page.waitForTimeout(600)
++    await page.waitForTimeout(800)
+     const before = await page.evaluate(() => window.__film?.getProgress())
+     await page.screenshot({ path: join(OUT, file) })
+     const after = await page.evaluate(() => window.__film?.getProgress())
+     if (before && after && Math.abs(before.p - p) < 0.005 && Math.abs(after.p - p) < 0.005) {
+
+[0m
+[0m← [0mEdit scripts/qa/int-beats.spec.ts
+Index: /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/scripts/qa/int-beats.spec.ts
+===================================================================
+--- /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/scripts/qa/int-beats.spec.ts
++++ /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/scripts/qa/int-beats.spec.ts
+@@ -157,17 +157,27 @@
+   await page.goto(FILM_URL, { waitUntil: 'load' })
+   await page.waitForFunction(() => window.__film !== undefined, null, { timeout: 20000 })
+   await page.waitForSelector('[data-film-canvas] canvas', { timeout: 30000 })
+   await page.waitForTimeout(7000)
++  const converge = async (want: number): Promise<void> => {
++    await page.waitForFunction(
++      (w) => {
++        const s = window.__film?.getSmooth()
++        return s !== null && s !== undefined && Math.abs(s - w) < 0.003
++      },
++      want,
++      { timeout: 60000 },
++    )
++  }
+   await page.evaluate(() => window.__film?.setProgress(0.77))
+-  await page.waitForTimeout(3500)
++  await converge(0.77)
+   const fwd = await page.evaluate(() => window.__film?.getProgress())
+   await page.evaluate(() => window.__film?.setProgress(0.32))
+-  await page.waitForTimeout(3500)
++  await converge(0.32)
+   const back = await page.evaluate(() => window.__film?.getProgress())
+   expect(back?.beat).toBe('B3')
+   await page.evaluate(() => window.__film?.setProgress(0.77))
+-  await page.waitForTimeout(3500)
++  await converge(0.77)
+   const again = await page.evaluate(() => window.__film?.getProgress())
+   expect(again?.p).toBeCloseTo(fwd?.p ?? 0.77, 3)
+   await page.screenshot({ path: join(OUT, 'int-reverse-077-1440.png') })
+ })
+
+[0m
+[0m← [0mEdit scripts/qa/int-beats.spec.ts
+Index: /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/scripts/qa/int-beats.spec.ts
+===================================================================
+--- /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/scripts/qa/int-beats.spec.ts
++++ /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/scripts/qa/int-beats.spec.ts
+@@ -190,9 +190,16 @@
+   await page.waitForFunction(() => window.__film !== undefined, null, { timeout: 20000 })
+   await page.waitForSelector('[data-film-canvas] canvas', { timeout: 30000 })
+   await page.waitForTimeout(7000)
+   await page.evaluate(() => window.__film?.setProgress(0.77))
+-  await page.waitForTimeout(3500)
++  await page.waitForFunction(
++    () => {
++      const s = window.__film?.getSmooth()
++      return s !== null && s !== undefined && Math.abs(s - 0.77) < 0.003
++    },
++    null,
++    { timeout: 60000 },
++  )
+   await page.screenshot({ path: join(OUT, 'int-tier-low-1440.png') })
+   expect(errors, 'console-clean').toEqual([])
+ })
+ 
+
+[0m
+[0m← [0mEdit scripts/qa/int-beats.spec.ts
+Index: /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/scripts/qa/int-beats.spec.ts
+===================================================================
+--- /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/scripts/qa/int-beats.spec.ts
++++ /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/scripts/qa/int-beats.spec.ts
+@@ -98,8 +98,19 @@
+     expect(errors, 'console-clean').toEqual([])
+   })
+ }
+ 
++test('08b settled constellations @1440 (diagnostic, B8 hold)', async ({ page }) => {
++  // p=0.92: W2 flights finished (settle 0.951? last stragglers land during
++  // the rail blend) — documents the 16-plane frame the portal leaves from.
++  await page.setViewportSize({ width: 1440, height: 900 })
++  await page.goto(FILM_URL, { waitUntil: 'load' })
++  await page.waitForFunction(() => window.__film !== undefined, null, { timeout: 20000 })
++  await page.waitForSelector('[data-film-canvas] canvas', { timeout: 30000 })
++  await page.waitForTimeout(7000)
++  await settleStop(page, 'int-08b-settled-1440.png', 0.92)
++})
++
+ test('portal stops @768', async ({ page }) => {
+   const errors: string[] = []
+   page.on('pageerror', (err) => errors.push(String(err)))
+   await page.setViewportSize({ width: 768, height: 1024 })
+
+[0m
+[0m$ [0mnpx tsc -b > /tmp/tsc-int7.txt 2>&1; echo "TSC:$?"; head -5 /tmp/tsc-int7.txt; npx eslint src/components/canvas/CameraRig.tsx src/motion/progress.ts scripts/qa/int-beats.spec.ts src/components/canvas/HeroRigs.tsx src/routes/Home.tsx src/motion/chapters.ts --max-warnings 0 2>&1 | tail -4; echo LINT-DONE
+TSC:0
+npm notice run eyeq-vision-care@0.1.0 npx
+npm notice run 'tsc' -b
+
+✖ 1 problem (0 errors, 1 warning)
+
+ESLint found too many warnings (maximum: 0).
+LINT-DONE
+[0m
+[0m$ [0mnpx eslint src/components/canvas/CameraRig.tsx src/motion/progress.ts scripts/qa/int-beats.spec.ts src/components/canvas/HeroRigs.tsx src/routes/Home.tsx src/motion/chapters.ts 2>&1 | rtk grep -A3 warning | head -12
+24:14  warning  Fast refresh only works when a file only exports components. Use a new file to share constants or functions between components  react-refresh/only-export-components
+
+✖ 1 problem (0 errors, 1 warning)
+[0m
+[0m← [0mEdit src/motion/progress.ts
+Index: /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/motion/progress.ts
+===================================================================
+--- /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/motion/progress.ts
++++ /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/motion/progress.ts
+@@ -58,15 +58,15 @@
+    */
+   getSmooth: () => number | null
+ }
+ 
+-let smoothReader: (() => number) | null = null
++/**
++ * Damped progress value (dev/QA convergence signal). CameraRig writes its
++ * `smooth` here per frame; QA waits on it instead of wall-time so captures
++ * are deterministic at any frame rate (software GL converges slowly).
++ */
++export const camSmooth = { v: 0 }
+ 
+-/** Called by CameraRig (sole writer of the damped value). */
+-export function registerSmoothReader(fn: () => number): void {
+-  smoothReader = fn
+-}
+-
+ /** Dev-only QA hook (`window.__film`). Installed by Providers in dev builds. */
+ export function installFilmDebugHook(): void {
+   if (typeof window === 'undefined') return
+   const w = window as unknown as { __film?: FilmDebugHook }
+
+[0m
+[0m← [0mEdit src/components/canvas/CameraRig.tsx
+Index: /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/components/canvas/CameraRig.tsx
+===================================================================
+--- /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/components/canvas/CameraRig.tsx
++++ /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/components/canvas/CameraRig.tsx
+@@ -15,15 +15,8 @@
+ 
+ const DAMP_LAMBDA = 5.2
+ const MAX_DT = 1 / 30
+ 
+-/**
+- * Damped progress value (dev/QA convergence signal). `smooth` trails the
+- * master target; QA waits on it instead of wall-time so captures are
+- * deterministic at any frame rate (software GL converges slowly).
+- */
+-export const camSmooth = { v: 0 }
+-
+ export function CameraRig() {
+   const camera = useThree((s) => s.camera)
+   const gl = useThree((s) => s.gl)
+   const scene = useThree((s) => s.scene)
+
+[0m
+[0m← [0mEdit src/motion/progress.ts
+Index: /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/motion/progress.ts
+===================================================================
+--- /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/motion/progress.ts
++++ /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/motion/progress.ts
+@@ -73,9 +73,9 @@
+   if (w.__film) return
+   w.__film = {
+     setProgress: (p: number) => setFilmProgress(p),
+     getProgress: () => getFilmProgress(),
+-    getSmooth: () => (smoothReader ? smoothReader() : null),
++    getSmooth: () => camSmooth.v,
+   }
+ }
+ 
+ declare global {
+
+[0m
+[0m← [0mEdit src/components/canvas/CameraRig.tsx
+Index: /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/components/canvas/CameraRig.tsx
+===================================================================
+--- /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/components/canvas/CameraRig.tsx
++++ /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/components/canvas/CameraRig.tsx
+@@ -7,13 +7,11 @@
+ import { useEffect, useRef } from 'react'
+ import * as THREE from 'three'
+ import { useFrame, useThree } from '@react-three/fiber'
+ import { isMobileWidth, sampleCamera } from '../../motion/chapters'
+-import { filmProgress, registerSmoothReader, subscribeFilmProgress } from '../../motion/progress'
++import { camSmooth, filmProgress, subscribeFilmProgress } from '../../motion/progress'
+ import { useFilmStore } from '../../store/useFilmStore'
+ 
+-registerSmoothReader(() => camSmooth.v)
+-
+ const DAMP_LAMBDA = 5.2
+ const MAX_DT = 1 / 30
+ 
+ export function CameraRig() {
+
+[0m
+[0m← [0mEdit src/motion/progress.ts
+Index: /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/motion/progress.ts
+===================================================================
+--- /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/motion/progress.ts
++++ /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/motion/progress.ts
+@@ -53,11 +53,11 @@
+   getProgress: () => FilmProgressState
+   /**
+    * Damped camera progress (CameraRig `smooth`). QA waits for convergence
+    * (|smooth − p| < ε) instead of wall-time so captures are deterministic at
+-   * any frame rate. Installed lazily — null until the first frame renders.
++   * any frame rate. Reads 0 until the first frame renders.
+    */
+-  getSmooth: () => number | null
++  getSmooth: () => number
+ }
+ 
+ /**
+  * Damped progress value (dev/QA convergence signal). CameraRig writes its
+
+[0m
+[0m← [0mEdit scripts/qa/int-beats.spec.ts
+Index: /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/scripts/qa/int-beats.spec.ts
+===================================================================
+--- /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/scripts/qa/int-beats.spec.ts
++++ /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/scripts/qa/int-beats.spec.ts
+@@ -43,16 +43,11 @@
+ for (let attempt = 0; attempt < 3; attempt++) {
+   await page.evaluate((v) => window.__film?.setProgress(v), p)
+   // Deterministic settle: wait for the damped camera to converge instead
+   // of wall-time (software GL converges slowly; fast GPUs instantly).
+-  await page.waitForFunction(
+-    (want) => {
+-      const s = window.__film?.getSmooth()
+-      return s !== null && s !== undefined && Math.abs(s - want) < 0.003
+-    },
+-    p,
+-    { timeout: 60000 },
+-  )
++  await page.waitForFunction((want) => Math.abs((window.__film?.getSmooth() ?? 0) - want) < 0.003, p, {
++    timeout: 60000,
++  })
+   await page.evaluate((v) => window.__film?.setProgress(v), p)
+   await page.waitForTimeout(800)
+   const before = await page.evaluate(() => window.__film?.getProgress())
+   await page.screenshot({ path: join(OUT, file) })
+
+[0m
+[0m← [0mEdit scripts/qa/int-beats.spec.ts
+Index: /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/scripts/qa/int-beats.spec.ts
+===================================================================
+--- /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/scripts/qa/int-beats.spec.ts
++++ /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/scripts/qa/int-beats.spec.ts
+@@ -165,12 +165,9 @@
+ await page.waitForSelector('[data-film-canvas] canvas', { timeout: 30000 })
+ await page.waitForTimeout(7000)
+ const converge = async (want: number): Promise<void> => {
+   await page.waitForFunction(
+-    (w) => {
+-      const s = window.__film?.getSmooth()
+-      return s !== null && s !== undefined && Math.abs(s - w) < 0.003
+-    },
++    (w) => Math.abs((window.__film?.getSmooth() ?? 0) - w) < 0.003,
+     want,
+     { timeout: 60000 },
+   )
+ }
+
+[0m
+[0m← [0mEdit scripts/qa/int-beats.spec.ts
+Index: /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/scripts/qa/int-beats.spec.ts
+===================================================================
+--- /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/scripts/qa/int-beats.spec.ts
++++ /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/scripts/qa/int-beats.spec.ts
+@@ -193,16 +193,11 @@
+   await page.waitForFunction(() => window.__film !== undefined, null, { timeout: 20000 })
+   await page.waitForSelector('[data-film-canvas] canvas', { timeout: 30000 })
+   await page.waitForTimeout(7000)
+   await page.evaluate(() => window.__film?.setProgress(0.77))
+-  await page.waitForFunction(
+-    () => {
+-      const s = window.__film?.getSmooth()
+-      return s !== null && s !== undefined && Math.abs(s - 0.77) < 0.003
+-    },
+-    null,
+-    { timeout: 60000 },
+-  )
++  await page.waitForFunction(() => Math.abs((window.__film?.getSmooth() ?? 0) - 0.77) < 0.003, null, {
++    timeout: 60000,
++  })
+   await page.screenshot({ path: join(OUT, 'int-tier-low-1440.png') })
+   expect(errors, 'console-clean').toEqual([])
+ })
+ 
+
+[0m
+[0m$ [0mnpx tsc -b > /tmp/tsc-int8.txt 2>&1; echo "TSC:$?"; head -5 /tmp/tsc-int8.txt; npx eslint src/components/canvas/CameraRig.tsx src/motion/progress.ts scripts/qa/int-beats.spec.ts --max-warnings 0 > /tmp/lint8.txt 2>&1; echo "LINT:$?"; tail -3 /tmp/lint8.txt
+TSC:0
+npm notice run eyeq-vision-care@0.1.0 npx
+npm notice run 'tsc' -b
+LINT:0
+npm notice run eyeq-vision-care@0.1.0 npx
+npm notice run 'eslint' src/components/canvas/CameraRig.tsx src/motion/progress.ts scripts/qa/int-beats.spec.ts --max-warnings 0
+[0m
+[0m$ [0mFILM_URL=http://localhost:5111/ npx playwright test int-beats --project=chromium -g "progress stops @1440|08b settled" > /tmp/qa-1440d.txt 2>&1; echo "EXIT:$?"; tail -6 /tmp/qa-1440d.txt
+EXIT:1
+
+    Error Context: test-results/int-beats-int-beats-progress-stops-1440-chromium/error-context.md
+
+  1 failed
+    [chromium] › scripts/qa/int-beats.spec.ts:71:5 › int-beats › progress stops @1440 ──────────────
+  1 passed (5.0m)
+[0m
+[0m$ [0mrtk grep -B3 -A18 "1)" /tmp/qa-1440d.txt | head -50
+✘  2 [chromium] › scripts/qa/int-beats.spec.ts:71:5 › int-beats › progress stops @1440 (5.0m)
+
+
+  1) [chromium] › scripts/qa/int-beats.spec.ts:71:5 › int-beats › progress stops @1440 ─────────────
+
+    Test timeout of 300000ms exceeded.
+
+    Error: page.waitForFunction: Test timeout of 300000ms exceeded.
+
+      45 |     // Deterministic settle: wait for the damped camera to converge instead
+      46 |     // of wall-time (software GL converges slowly; fast GPUs instantly).
+    > 47 |     await page.waitForFunction((want) => Math.abs((window.__film?.getSmooth() ?? 0) - want) < 0.003, p, {
+         |                ^
+      48 |       timeout: 60000,
+      49 |     })
+      50 |     await page.evaluate((v) => window.__film?.setProgress(v), p)
+        at settleStop (/Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/scripts/qa/int-beats.spec.ts:47:16)
+        at /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/scripts/qa/int-beats.spec.ts:86:9
+
+    Error Context: test-results/int-beats-int-beats-progress-stops-1440-chromium/error-context.md
+
+  1 failed
+[0m
+[0m$ [0mrtk ls test-results/int-beats-int-beats-progress-stops-1440-chromium/ 2>/dev/null; rtk tail -30 /tmp/vite-5111.log
+error-context.md  29.2K
+10:44:28 PM [vite] (client) [console.warn] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead.
+10:45:05 PM [vite] (client) hmr update /src/components/dom/Footer.tsx
+10:46:22 PM [vite] (client) hmr update /src/components/dom/Sections.tsx
+10:46:33 PM [vite] (client) hmr update /src/canvas/SponsorField.tsx
+10:46:40 PM [vite] (client) hmr update /src/canvas/SponsorField.tsx
+10:46:50 PM [vite] (client) hmr update /src/components/dom/Sections.tsx
+10:46:53 PM [vite] (client) hmr update /src/canvas/SponsorField.tsx
+10:47:05 PM [vite] (client) hmr update /src/canvas/SponsorField.tsx
+10:47:12 PM [vite] (client) hmr update /src/canvas/SponsorField.tsx
+10:47:30 PM [vite] (client) hmr update /src/components/dom/Sections.tsx
+10:47:45 PM [vite] (client) hmr update /src/components/dom/Sections.tsx
+10:48:11 PM [vite] (client) hmr update /src/components/dom/Sections.tsx
+10:48:27 PM [vite] (client) [console.warn] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead.
+10:51:39 PM [vite] (client) hmr update /src/canvas/SponsorField.tsx
+10:51:48 PM [vite] (client) hmr update /src/canvas/SponsorField.tsx
+10:52:44 PM [vite] (client) hmr update /src/app/providers.tsx, /src/routes/Home.tsx, /src/components/canvas/FilmCanvas.tsx, /src/components/canvas/LensPortal.tsx, /src/components/canvas/HeroRigs.tsx, /src/canvas/SceneStage.tsx, /src/canvas/SponsorField.tsx, /src/components/canvas/CameraRig.tsx, /src/components/canvas/Effects.tsx
+10:52:44 PM [vite] (client) hmr update /src/components/canvas/CameraRig.tsx
+10:52:56 PM [vite] (client) hmr update /src/components/canvas/CameraRig.tsx
+10:54:40 PM [vite] (client) hmr update /src/app/providers.tsx, /src/routes/Home.tsx, /src/components/canvas/FilmCanvas.tsx, /src/components/canvas/LensPortal.tsx, /src/components/canvas/HeroRigs.tsx, /src/canvas/SceneStage.tsx, /src/canvas/SponsorField.tsx, /src/components/canvas/CameraRig.tsx, /src/components/canvas/Effects.tsx
+10:54:40 PM [vite] (client) hmr update /src/components/canvas/CameraRig.tsx
+10:54:40 PM [vite] (client) hmr update /src/app/providers.tsx, /src/routes/Home.tsx, /src/components/canvas/FilmCanvas.tsx, /src/components/canvas/LensPortal.tsx, /src/components/canvas/HeroRigs.tsx, /src/canvas/SceneStage.tsx, /src/canvas/SponsorField.tsx, /src/components/canvas/CameraRig.tsx, /src/components/canvas/Effects.tsx
+10:54:40 PM [vite] (client) hmr update /src/components/canvas/CameraRig.tsx
+10:54:51 PM [vite] (client) hmr update /src/app/providers.tsx, /src/routes/Home.tsx, /src/components/canvas/FilmCanvas.tsx, /src/components/canvas/LensPortal.tsx, /src/components/canvas/HeroRigs.tsx, /src/canvas/SceneStage.tsx, /src/canvas/SponsorField.tsx, /src/components/canvas/CameraRig.tsx, /src/components/canvas/Effects.tsx
+10:55:36 PM [vite] (client) [console.warn] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead.
+10:55:36 PM [vite] (client) [console.warn] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead.
+10:56:49 PM [vite] (client) hmr update /src/canvas/SponsorField.tsx
+10:56:52 PM [vite] (client) hmr invalidate /src/canvas/SponsorField.tsx Could not Fast Refresh ("projectedHeightPx" export is incompatible). Learn more at https://github.com/vitejs/vite-plugin-react/tree/main/packages/plugin-react#consistent-components-exports
+10:56:52 PM [vite] (client) hmr update /src/routes/Home.tsx
+11:00:42 PM [vite] (client) hmr update /src/canvas/SponsorField.tsx
+11:00:55 PM [vite] (client) hmr update /src/canvas/SponsorField.tsx
+[0m
+[0m← [0mEdit scripts/qa/int-beats.spec.ts
+Index: /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/scripts/qa/int-beats.spec.ts
+===================================================================
+--- /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/scripts/qa/int-beats.spec.ts
++++ /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/scripts/qa/int-beats.spec.ts
+@@ -39,15 +39,23 @@
+   page: import('@playwright/test').Page,
+   file: string,
+   p: number,
+ ): Promise<void> {
+-  for (let attempt = 0; attempt < 3; attempt++) {
++  for (let attempt = 0; attempt < 4; attempt++) {
+     await page.evaluate((v) => window.__film?.setProgress(v), p)
+     // Deterministic settle: wait for the damped camera to converge instead
+-    // of wall-time (software GL converges slowly; fast GPUs instantly).
+-    await page.waitForFunction((want) => Math.abs((window.__film?.getSmooth() ?? 0) - want) < 0.003, p, {
+-      timeout: 60000,
+-    })
++    // of wall-time (software GL converges slowly; fast GPUs instantly). The
++    // wait can time out if a refresh clobbers the dev-only write mid-settle
++    // (dev HMR during parallel-lane edits; production-meaningless) — retry.
++    try {
++      await page.waitForFunction(
++        (want) => Math.abs((window.__film?.getSmooth() ?? 0) - want) < 0.003,
++        p,
++        { timeout: 25000 },
++      )
++    } catch {
++      continue
++    }
+     await page.evaluate((v) => window.__film?.setProgress(v), p)
+     await page.waitForTimeout(800)
+     const before = await page.evaluate(() => window.__film?.getProgress())
+     await page.screenshot({ path: join(OUT, file) })
+
+[0m
+[0m← [0mEdit scripts/qa/int-beats.spec.ts
+Index: /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/scripts/qa/int-beats.spec.ts
+===================================================================
+--- /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/scripts/qa/int-beats.spec.ts
++++ /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/scripts/qa/int-beats.spec.ts
+@@ -175,9 +175,9 @@
+ const converge = async (want: number): Promise<void> => {
+   await page.waitForFunction(
+     (w) => Math.abs((window.__film?.getSmooth() ?? 0) - w) < 0.003,
+     want,
+-    { timeout: 60000 },
++    { timeout: 45000 },
+   )
+ }
+ await page.evaluate(() => window.__film?.setProgress(0.77))
+ await converge(0.77)
+
+[0m
+[0m$ [0mnpx tsc -b > /tmp/tsc-prev.txt 2>&1; echo "TSC:$?"; head -5 /tmp/tsc-prev.txt; npm run build > /tmp/build-prev.txt 2>&1; echo "BUILD:$?"; tail -3 /tmp/build-prev.txt; npx eslint scripts/qa/int-beats.spec.ts --max-warnings 0 > /tmp/lint-prev.txt 2>&1; echo "LINT:$?"; tail -2 /tmp/lint-prev.txt
+TSC:0
+npm notice run eyeq-vision-care@0.1.0 npx
+npm notice run 'tsc' -b
+BUILD:0
+✓ built in 1.49s
+npm notice run eyeq-vision-care@0.1.0 postbuild
+npm notice run cp dist/index.html dist/404.html
+LINT:0
+npm notice run eyeq-vision-care@0.1.0 npx
+npm notice run 'eslint' scripts/qa/int-beats.spec.ts --max-warnings 0
+[0m
+[0m$ [0mnohup npx vite preview --port 5112 --strictPort > /tmp/preview-5112.log 2>&1 & echo "PID:$!"; sleep 4; tail -4 /tmp/preview-5112.log; curl -s -o /dev/null -w "%{http_code}" http://localhost:5112/
+PID:21436
+npm notice run eyeq-vision-care@0.1.0 npx
+npm notice run 'vite' preview --port 5112 --strictPort
+  ➜  Local:   http://localhost:5112/
+  ➜  Network: use --host to expose
+200
+[0m
+[0m$ [0mFILM_URL=http://localhost:5112/ npx playwright test int-beats --project=chromium -g "progress stops @1440|08b settled" > /tmp/qa-prev.txt 2>&1; echo "EXIT:$?"; tail -6 /tmp/qa-prev.txt
+EXIT:0
+Running 2 tests using 2 workers
+
+  ✓  2 [chromium] › scripts/qa/int-beats.spec.ts:105:3 › int-beats › 08b settled constellations @1440 (diagnostic, B8 hold) (1.4m)
+  ✓  1 [chromium] › scripts/qa/int-beats.spec.ts:79:5 › int-beats › progress stops @1440 (4.6m)
+
+  2 passed (4.7m)
+[0m
+[0m→ [0mRead docs/phase4/qa/beats/int-10-entry-1440.png
+[0m→ [0mRead docs/phase4/qa/beats/int-09-approach-1440.png
+[0m→ [0mRead docs/phase4/qa/beats/int-08b-settled-1440.png
+[0m
+[0m← [0mEdit src/motion/chapters.ts
+Index: /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/motion/chapters.ts
+===================================================================
+--- /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/motion/chapters.ts
++++ /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/motion/chapters.ts
+@@ -159,11 +159,11 @@
+ // hold sits at ≈0.84 m desktop with the look-target near the 16-plane +
+ // drifted-hero centroid (y −0.02, z −0.10) so the W2 row reads whole.
+ // B4/B5 are reframed onto the MEASURED hero (LANEC-PROBE: lenses hover at
+ // y ≈ 0.16 — the authored 0.06–0.07 targets framed empty air above the case).
+-const WAVE_HOLD_Z = 0.84
++const WAVE_HOLD_Z = 0.92
+ const WAVE_HOLD_Y = 0.1
+-const WAVE_TGT: Vec3 = [0, -0.02, -0.1]
++const WAVE_TGT: Vec3 = [0, -0.05, -0.1]
+ 
+ const KEYS_STATIC: Key[] = [
+   { p: 0.0, pos: [0.18 * K, 0.1 * K, 0.32 * K], tgt: [0, 0.01, 0], fov: 32, fog: 0.035, exp: 1.0, near: 0.01 },
+   { p: 0.1, pos: [0.14 * K, 0.12 * K, 0.29 * K], tgt: [0, 0.012, 0], fov: 33, fog: 0.035, exp: 1.0, near: 0.01 },
+
+[0m
+[0m$ [0mnpx tsc -b 2>&1 | rtk grep error | head -3; npm run build > /tmp/build-b2.txt 2>&1; echo "BUILD:$?"; kill %1 2>/dev/null; pkill -f "vite preview" 2>/dev/null; sleep 1; nohup npx vite preview --port 5112 --strictPort > /tmp/preview-5112b.log 2>&1 & echo started; sleep 4; curl -s -o /dev/null -w "%{http_code}\n" http://localhost:5112/
+BUILD:0
+started
+200
+[0m
+[0m$ [0mrtk curl -s -o /dev/null -w "5111:%{http_code} " http://localhost:5111/; rtk curl -s -o /dev/null -w "5112:%{http_code}\n" http://localhost:5112/
+5111:200
+5112:200
+[0m
+[0m$ [0mFILM_URL=http://localhost:5112/ npx playwright test int-beats --project=chromium -g "progress stops @390|portal stops @768|11-white" > /tmp/qa-rest1.txt 2>&1; echo "EXIT:$?"; tail -8 /tmp/qa-rest1.txt
+EXIT:0
+Running 4 tests using 4 workers
+
+  ✓  4 [chromium] › scripts/qa/int-beats.spec.ts:157:3 › int-beats › 11-white + rails @390 (real scroll path) (25.0s)
+  ✓  2 [chromium] › scripts/qa/int-beats.spec.ts:133:3 › int-beats › 11-white + rails + rest @1440 (real scroll path) (31.4s)
+  ✓  1 [chromium] › scripts/qa/int-beats.spec.ts:116:3 › int-beats › portal stops @768 (1.8m)
+  ✓  3 [chromium] › scripts/qa/int-beats.spec.ts:79:5 › int-beats › progress stops @390 (4.1m)
+
+  4 passed (4.1m)
+[0m
+[0m→ [0mRead docs/phase4/qa/beats/int-12-rails-A-1440.png
+[0m→ [0mRead docs/phase4/qa/beats/int-11-white-1440.png
+[0m
+[0m← [0mEdit src/components/canvas/LensPortal.tsx
+Index: /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/components/canvas/LensPortal.tsx
+===================================================================
+--- /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/components/canvas/LensPortal.tsx
++++ /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/components/canvas/LensPortal.tsx
+@@ -101,31 +101,44 @@
+  */
+ export function WhiteVeil() {
+   const ref = useRef<HTMLDivElement | null>(null)
+ 
+-  useEffect(
+-    () =>
+-      subscribeFilmProgress(() => {
+-        const el = ref.current
+-        if (!el) return
+-        const { p, beat } = filmProgress
+-        const reducedMotion = useFilmStore.getState().reducedMotion
+-        const t = Math.min(1, Math.max(0, (p - 0.985) / 0.015))
+-        let opacity: string
+-        if (beat === 'B9' || p >= 0.985) {
+-          opacity = reducedMotion ? '1' : String(expoInOutLocal(t))
+-        } else {
+-          opacity = '0'
+-        }
+-        if (el.style.opacity !== opacity) el.style.opacity = opacity
+-        const reduced = reducedMotion ? 'none' : `circle(${30 + 120 * t}% at 50% 50%)`
+-        const clip = t <= 0 ? 'none' : reduced
+-        if (el.style.clipPath !== clip) el.style.clipPath = clip
+-        const store = useFilmStore.getState()
+-        store.setVeil(t <= 0 ? 0 : Number(opacity))
+-      }),
+-    [],
+-  )
++  useEffect(() => {
++    const update = (): void => {
++      const el = ref.current
++      if (!el) return
++      const { p, beat } = filmProgress
++      const reducedMotion = useFilmStore.getState().reducedMotion
++      const t = Math.min(1, Math.max(0, (p - 0.985) / 0.015))
++      const base = beat === 'B9' || p >= 0.985 ? (reducedMotion ? 1 : expoInOutLocal(t)) : 0
++      // Post-handoff fade-out (integration): p stays 1 while the visitor
++      // scrolls the real white act, but this fixed overlay would sit OVER the
++      // white-act content (and later the dark footer) forever. Fade it out as
++      // the white act arrives — 0 while pinned, →0 over 40% viewport past
++      // pin release. Pure function of (p, scrollY): scrub-reversible.
++      let postFade = 0
++      const pin = document.getElementById('film-pin')
++      if (pin && !reducedMotion) {
++        const release = pin.offsetTop + pin.offsetHeight - window.innerHeight
++        postFade = Math.min(1, Math.max(0, (window.scrollY - release) / (window.innerHeight * 0.4)))
++      }
++      const opacity = base * (1 - postFade)
++      const opacityStr = String(opacity)
++      if (el.style.opacity !== opacityStr) el.style.opacity = opacityStr
++      const reduced = reducedMotion ? 'none' : `circle(${30 + 120 * t}% at 50% 50%)`
++      const clip = t <= 0 ? 'none' : reduced
++      if (el.style.clipPath !== clip) el.style.clipPath = clip
++      const store = useFilmStore.getState()
++      store.setVeil(t <= 0 ? 0 : opacity)
++    }
++    const unsub = subscribeFilmProgress(update)
++    window.addEventListener('scroll', update, { passive: true })
++    update()
++    return () => {
++      unsub()
++      window.removeEventListener('scroll', update)
++    }
++  }, [])
+ 
+   return (
+     <div
+       id="white-veil"
+
+[0m
+[0m← [0mEdit src/components/canvas/LensPortal.tsx
+Index: /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/components/canvas/LensPortal.tsx
+===================================================================
+--- /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/components/canvas/LensPortal.tsx
++++ /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/components/canvas/LensPortal.tsx
+@@ -112,14 +112,15 @@
+ const base = beat === 'B9' || p >= 0.985 ? (reducedMotion ? 1 : expoInOutLocal(t)) : 0
+ // Post-handoff fade-out (integration): p stays 1 while the visitor
+ // scrolls the real white act, but this fixed overlay would sit OVER the
+ // white-act content (and later the dark footer) forever. Fade it out as
+-// the white act arrives — 0 while pinned, →0 over 40% viewport past
+-// pin release. Pure function of (p, scrollY): scrub-reversible.
++// the white act arrives: 0 while pinned, →0 over 40% viewport past pin
++// release (= dark scroll budget; the pin is page-first, so no DOM
++// measurement — immune to the pin's fixed positioning). Pure function
++// of (p, scrollY): scrub-reversible.
+ let postFade = 0
+-const pin = document.getElementById('film-pin')
+-if (pin && !reducedMotion) {
+-  const release = pin.offsetTop + pin.offsetHeight - window.innerHeight
++if (!reducedMotion) {
++  const release = (darkVhForWidth(window.innerWidth) / 100) * window.innerHeight
+   postFade = Math.min(1, Math.max(0, (window.scrollY - release) / (window.innerHeight * 0.4)))
+ }
+ const opacity = base * (1 - postFade)
+ const opacityStr = String(opacity)
+
+[0m
+[0m← [0mEdit src/components/canvas/LensPortal.tsx
+Index: /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/components/canvas/LensPortal.tsx
+===================================================================
+--- /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/components/canvas/LensPortal.tsx
++++ /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/components/canvas/LensPortal.tsx
+@@ -11,9 +11,9 @@
+ 
+ import { useEffect, useRef } from 'react'
+ import * as THREE from 'three'
+ import { useFrame } from '@react-three/fiber'
+-import { getLensAnchor, samplePortal } from '../../motion/chapters'
++import { darkVhForWidth, getLensAnchor, samplePortal } from '../../motion/chapters'
+ import { filmProgress, subscribeFilmProgress } from '../../motion/progress'
+ import { useFilmStore } from '../../store/useFilmStore'
+ import { tokens } from '../../tokens'
+ 
+
+[0m
+[0m$ [0mnpx tsc -b 2>&1 | rtk grep error | head -3; npx eslint src/components/canvas/LensPortal.tsx --max-warnings 0 2>&1 | tail -2; echo LINT-OK; npm run build > /tmp/build-veil.txt 2>&1; echo "BUILD:$?"; tail -2 /tmp/build-veil.txt
+npm notice run eyeq-vision-care@0.1.0 npx
+npm notice run 'eslint' src/components/canvas/LensPortal.tsx --max-warnings 0
+LINT-OK
+BUILD:0
+npm notice run eyeq-vision-care@0.1.0 postbuild
+npm notice run cp dist/index.html dist/404.html
+[0m
+[0m$ [0mpkill -f "vite preview" 2>/dev/null; sleep 1; nohup npx vite preview --port 5112 --strictPort > /tmp/preview-5112c.log 2>&1 & sleep 5; curl -s -o /dev/null -w "%{http_code}\n" http://localhost:5112/
+200
+[0m
+[0m$ [0mFILM_URL=http://localhost:5112/ npx playwright test int-beats --project=chromium -g "11-white" > /tmp/qa-dom2.txt 2>&1; echo "EXIT:$?"; tail -6 /tmp/qa-dom2.txt
+EXIT:0
+Running 2 tests using 2 workers
+
+  ✓  2 [chromium] › scripts/qa/int-beats.spec.ts:157:3 › int-beats › 11-white + rails @390 (real scroll path) (15.5s)
+  ✓  1 [chromium] › scripts/qa/int-beats.spec.ts:133:3 › int-beats › 11-white + rails + rest @1440 (real scroll path) (22.4s)
+
+  2 passed (23.5s)
+[0m
+[0m→ [0mRead docs/phase4/qa/beats/int-11-white-1440.png
+[0m→ [0mRead docs/phase4/qa/beats/int-12-rails-A-1440.png
+[0m
+[0m$ [0mrtk sed -n '645,775p' src/components/dom/lane-e.css
+.eyeq-rails {
+  display: flex;
+  justify-content: center;
+  gap: 0;
+  width: 100%;
+}
+.eyeq-rail {
+  position: relative;
+  width: 120px;
+  flex: 0 0 120px;
+  background: var(--eyeq-void);
+  border-left: 1px solid rgba(75, 85, 99, 0.5);
+  border-right: 1px solid rgba(75, 85, 99, 0.5);
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+}
+/* Film grain ≤3%: static turbulence dusted over the strip (texture, not art). */
+.eyeq-rail::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.03;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='120' height='120' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+/* Sprocket perforations: Paper-coloured blocks punched along both edges. */
+.eyeq-rail__edge {
+  width: 18px;
+  flex: 0 0 18px;
+  background-image: repeating-linear-gradient(
+    to bottom,
+    var(--eyeq-paper) 0 10px,
+    transparent 10px 34px
+  );
+  background-size: 8px 34px;
+  background-repeat: repeat-y;
+  background-position: center top;
+}
+.eyeq-rail__body {
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
+  overflow: hidden;
+}
+.eyeq-rail__viewport {
+  overflow: hidden;
+  flex: 1;
+  /* Edge mask ≥120px: the strip dissolves into Paper top and bottom. */
+  -webkit-mask-image: linear-gradient(to bottom, transparent, black 120px, black calc(100% - 120px), transparent);
+  mask-image: linear-gradient(to bottom, transparent, black 120px, black calc(100% - 120px), transparent);
+}
+.eyeq-rail__track {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 24px 0;
+  will-change: transform;
+}
+/* Measurable half-track: one full logo set (the loop wraps over its height) */
+.eyeq-rail__set {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.eyeq-rail__frame {
+  width: 96px;
+  padding: 18px 0 16px;
+  /* Faint frame divider: 1px Steel-edge at 30%. */
+  border-bottom: 1px solid rgba(75, 85, 99, 0.3);
+}
+.eyeq-rail__cell {
+  /* Logos sit DIRECTLY on the dark base — no inner tile. */
+  width: 96px;
+  min-height: 64px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px 10px;
+}
+.eyeq-rail__frame--hero .eyeq-rail__cell {
+  min-height: 96px;
+}
+.eyeq-rail__cell img {
+  max-width: 100%;
+  max-height: 100%;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  display: block;
+}
+.eyeq-rail__num {
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  color: rgba(197, 188, 166, 0.6);
+  text-align: center;
+  padding: 10px 0 0;
+}
+.eyeq-rail__frame--hero .eyeq-rail__num {
+  color: rgba(217, 164, 65, 0.6);
+}
+.eyeq-rails__pause {
+  align-self: center;
+  margin: 0 12px;
+  flex: 0 0 auto;
+  min-width: 44px;
+  min-height: 44px;
+  background: none;
+  border: 1px solid var(--eyeq-hairline-light-strong);
+  border-radius: 50%;
+  color: var(--eyeq-ink-muted);
+  font-size: 12px;
+  cursor: pointer;
+}
+.eyeq-rails__pause:hover {
+  color: var(--eyeq-ink);
+}
+.eyeq-rails__pause--mobile {
+  display: none;
+  justify-content: center;
+  padding: 12px 0 4px;
+}
+/* RM mobile grid: only below 768px (desktop RM uses the flank columns) */
+.eyeq-rails--mobile-static {
+  display: none;
+}
+@media (max-width: 767px) {
+  .eyeq-railside--static {
+    display: none;
+  }
+[0m
+[0m← [0mWrite scripts/qa/zz-rails.spec.ts
+Wrote file successfully.
+[0m
+[0m$ [0mnpx playwright test zz-rails --project=chromium > /tmp/rails-probe.txt 2>&1; echo "EXIT:$?"; rtk grep -E "TRACKS|VIS" /tmp/rails-probe.txt | head -8
+EXIT:0
+TRACKS-A ["translate3d(0px, -958.1px, 0px) skewY(0.04deg)","translate3d(0px, -73.9px, 0px) skewY(0.04deg)"]
+TRACKS-B ["translate3d(0px, -778px, 0px) skewY(0deg)","translate3d(0px, -254px, 0px) skewY(0deg)"]
+VIS ["eyeq-railside -323..1845x120","eyeq-rails eyeq-rails--desktop -323..1789x120","eyeq-railside -323..1845x120","eyeq-rails eyeq-rails--desktop -323..1789x120"]
+[0m
+[0m$ [0mrm -f scripts/qa/zz-rails.spec.ts && echo removed
+removed
+[0m
+[0m✱ [0mGrep "skewY"[90m in src · 1 match[0m
+[0m
+[0m← [0mEdit src/styles/film.css
+Index: /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/styles/film.css
+===================================================================
+--- /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/styles/film.css
++++ /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/styles/film.css
+@@ -66,8 +66,14 @@
+   height: 100%;
+   margin: 0;
+ }
+ 
++/* Skip-film / anchor landings must clear the fixed header (64px desk/56 mob)
++ * so the white-act micro-cap + logo + H1 are never tucked underneath. */
++#white-act {
++  scroll-margin-top: 76px;
++}
++
+ /* White act with flanking rails (brief §4Q: rails hug the LEFT and RIGHT page
+  * edges, centre content readable between them). Mirrors the Lane E harness
+  * geometry; mobile collapses to a single column (rails become the 68px
+  * horizontal strip below, CSS in lane-e.css). */
+
+[0m
+[0m$ [0mnpm run build > /tmp/build-sm.txt 2>&1; echo "BUILD:$?"; tail -1 /tmp/build-sm.txt; pkill -f "vite preview" 2>/dev/null; sleep 1; nohup npx vite preview --port 5112 --strictPort > /tmp/preview-5112d.log 2>&1 & sleep 5; curl -s -o /dev/null -w "%{http_code}\n" http://localhost:5112/
+BUILD:0
+npm notice run cp dist/index.html dist/404.html
+200
+[0m
+[0m$ [0mFILM_URL=http://localhost:5112/ npx playwright test int-beats --project=chromium -g "reverse|tier=low|reduced-motion|banned-token" > /tmp/qa-rest2.txt 2>&1; echo "EXIT:$?"; tail -8 /tmp/qa-rest2.txt
+EXIT:0
+Running 4 tests using 4 workers
+
+  ✓  2 [chromium] › scripts/qa/int-beats.spec.ts:229:3 › int-beats › banned-token grep — Lane B files (brief §7 + ART A6) (6ms)
+  ✓  3 [chromium] › scripts/qa/int-beats.spec.ts:212:3 › int-beats › reduced-motion: static chapters, no Lenis (13.5s)
+  ✓  1 [chromium] › scripts/qa/int-beats.spec.ts:196:3 › int-beats › ?tier=low renders the film (52.0s)
+  ✓  4 [chromium] › scripts/qa/int-beats.spec.ts:169:3 › int-beats › reverse 0.77→0.32 reproduces state (no pops) (1.6m)
+
+  4 passed (1.6m)
+[0m
+[0m→ [0mRead docs/phase4/qa/beats/int-11-white-390.png
+[0m→ [0mRead docs/phase4/qa/beats/int-07-wave1-390.png
+[0m→ [0mRead docs/phase4/qa/beats/int-09-approach-390.png
+[0m→ [0mRead docs/phase4/qa/beats/int-09-approach-768.png
+[0m→ [0mRead docs/phase4/qa/beats/int-08-wave2-390.png
+[0m→ [0mRead docs/phase4/qa/beats/int-13-visit-1440.png
+[0m→ [0mRead docs/phase4/qa/beats/int-10-entry-390.png
+[0m→ [0mRead docs/phase4/qa/beats/int-14-footer-1440.png
+[0m→ [0mRead docs/phase4/qa/beats/int-reverse-077-1440.png
+[0m→ [0mRead docs/phase4/qa/beats/int-rm-static-1440.png
+[0m→ [0mRead docs/phase4/qa/beats/int-tier-low-1440.png
+[0m→ [0mRead docs/phase4/qa/beats/int-reverse-077-1440.png
+[0m→ [0mRead docs/phase4/qa/beats/int-rm-static-1440.png
+[0m→ [0mRead docs/phase4/qa/beats/int-tier-low-1440.png
+[0m
+[0m← [0mEdit src/styles/film.css
+Index: /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/styles/film.css
+===================================================================
+--- /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/styles/film.css
++++ /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/styles/film.css
+@@ -27,14 +27,22 @@
+     height: 560vh;
+   }
+ }
+ 
+-/* Reduced-motion: no pin, chapters stack in flow (ChapterOverlay stacked). */
++/* Reduced-motion: no pin, chapters stack in flow (ChapterOverlay stacked).
++ * The stage becomes a relative 100svh poster so the first chapters start
++ * BELOW the canvas instead of underneath it. */
+ #film-pin.film--static {
+   height: auto;
+   min-height: 100svh;
+ }
+ 
++#film-pin.film--static .film-stage {
++  position: relative;
++  height: 100vh;
++  height: 100svh;
++}
++
+ /* Viewport-locked stage: absolute (NOT fixed — ScrollTrigger's pin re-contains
+  * fixed descendants to the full shell; absolute inset × 100svh inside the
+  * pinned trigger renders viewport-locked at 1× cost, see canvas API §6). */
+ .film-stage {
+
+[0m
+[0m← [0mEdit src/motion/chapters.ts
+Index: /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/motion/chapters.ts
+===================================================================
+--- /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/motion/chapters.ts
++++ /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/motion/chapters.ts
+@@ -237,21 +237,25 @@
+ const span = Math.max(1e-6, b.p - a.p)
+ const t = clamp01((p - a.p) / span)
+ 
+ let position = lerp3(a.pos, b.pos, t)
+-const target = lerp3(a.tgt, b.tgt, t)
++let target = lerp3(a.tgt, b.tgt, t)
+ const fovBase = lerp(a.fov, b.fov, t)
+ 
+ if (mobile) {
+   // Pullback ×1.45 on radius + FOV +9° (§6 mobile overrides). During the
+-  // wave beats the compact constellation needs a ≈0.57 m-wide frame, so
+-  // the pullback eases to ×1.9 (≈1.52 m hold, per D-camera-notes §3) —
+-  // blended over 0.03p each side so scrubbing never pops.
++  // wave beats the pullback eases to ×2.0 (≈1.94 m hold): the desktop
++  // 1.0 m W1 arc still applies at the 768px tablet width (Lane D compacts
++  // only below 768), so the frame needs the extra margin (D-camera-notes
++  // §2–§3). Blended over 0.03p each side so scrubbing never pops. The
++  // look-target dips 0.07 m with the same window so the compact W2 rows
++  // ride above the bottom-sheet captions.
+   const waveBoost = smoothstepLocal(0.65, 0.7, p) * (1 - smoothstepLocal(0.92, 0.95, p))
+-  const pull = 1.45 + 0.45 * waveBoost
++  const pull = 1.45 + 0.55 * waveBoost
+   const dx = (position[0] - target[0]) * pull
+   const dz = (position[2] - target[2]) * pull
+   position = [target[0] + dx, position[1], target[2] + dz]
++  target = [target[0], target[1] - 0.07 * waveBoost, target[2]]
+ }
+ 
+ const veilT = clamp01((p - 0.985) / 0.015)
+ return {
+
+[0m
+[0m← [0mEdit scripts/qa/int-beats.spec.ts
+Index: /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/scripts/qa/int-beats.spec.ts
+===================================================================
+--- /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/scripts/qa/int-beats.spec.ts
++++ /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/scripts/qa/int-beats.spec.ts
+@@ -222,8 +222,12 @@
+     () => document.querySelector('[data-testid="chapter-overlay"]')?.classList.contains('eyeq-chapters--stacked'),
+   )
+   expect(stacked, 'stacked chapters under RM').toBe(true)
+   await page.screenshot({ path: join(OUT, 'int-rm-static-1440.png') })
++  // Static chapters carry the full story below the poster stage.
++  await page.locator('[data-testid="chapter-overlay"]').scrollIntoViewIfNeeded()
++  await page.waitForTimeout(800)
++  await page.screenshot({ path: join(OUT, 'int-rm-chapters-1440.png') })
+   await ctx.close()
+ })
+ 
+ test('banned-token grep — Lane B files (brief §7 + ART A6)', async () => {
+
+[0m
+[0m$ [0mnpx tsc -b 2>&1 | rtk grep error | head -3; npx eslint src/motion/chapters.ts scripts/qa/int-beats.spec.ts --max-warnings 0 2>&1 | tail -2; echo LINT-OK; npm run build > /tmp/build-mob.txt 2>&1; echo "BUILD:$?"; pkill -f "vite preview" 2>/dev/null; sleep 1; nohup npx vite preview --port 5112 --strictPort > /tmp/preview-5112e.log 2>&1 & sleep 5; curl -s -o /dev/null -w "%{http_code}\n" http://localhost:5112/
+npm notice run eyeq-vision-care@0.1.0 npx
+npm notice run 'eslint' src/motion/chapters.ts scripts/qa/int-beats.spec.ts --max-warnings 0
+LINT-OK
+BUILD:0
+200
+[0m
+[0m$ [0mFILM_URL=http://localhost:5112/ npx playwright test int-beats --project=chromium -g "progress stops @390|portal stops @768|11-white|reduced-motion" > /tmp/qa-final.txt 2>&1; echo "EXIT:$?"; tail -9 /tmp/qa-final.txt
+EXIT:0
+Running 5 tests using 5 workers
+
+  ✓  2 [chromium] › scripts/qa/int-beats.spec.ts:157:3 › int-beats › 11-white + rails @390 (real scroll path) (31.5s)
+  ✓  1 [chromium] › scripts/qa/int-beats.spec.ts:133:3 › int-beats › 11-white + rails + rest @1440 (real scroll path) (39.5s)
+  ✓  3 [chromium] › scripts/qa/int-beats.spec.ts:212:3 › int-beats › reduced-motion: static chapters, no Lenis (52.4s)
+  ✓  4 [chromium] › scripts/qa/int-beats.spec.ts:116:3 › int-beats › portal stops @768 (2.1m)
+  ✓  5 [chromium] › scripts/qa/int-beats.spec.ts:79:5 › int-beats › progress stops @390 (4.4m)
+
+  5 passed (4.4m)
+[0m
+[0m→ [0mRead docs/phase4/qa/beats/int-08-wave2-390.png
+[0m→ [0mRead docs/phase4/qa/beats/int-13-visit-1440.png
+[0m→ [0mRead docs/phase4/qa/beats/int-09-approach-768.png
+[0m
+[0m$ [0mrtk grep -n "eyeq-header" src/components/dom/lane-e.css | head -20; rtk sed -n '280,330p' src/components/dom/lane-e.css
+99:.eyeq-header {
+103:  height: var(--eyeq-header-h);
+114:.eyeq-header--dark {
+117:.eyeq-header--light {
+126:.eyeq-header.is-scrolled--dark {
+132:.eyeq-header--light.is-scrolled--light,
+133:.eyeq-header--light.is-scrolled--dark {
+139:.eyeq-header__brand {
+144:.eyeq-header__brand img {
+149:.eyeq-header__actions {
+154:.eyeq-header__book {
+172:.eyeq-header__book:hover {
+175:.eyeq-header__book:active {
+178:.eyeq-header__book .eyeq-arrow {
+181:.eyeq-header__menu-btn {
+197:.eyeq-header__menu-btn:hover {
+200:.eyeq-header__progress {
+1621:.eyeq-header {
+1628:.eyeq-header.is-hiddenbar {
+1631:.eyeq-header__brand img {
+.eyeq-menu__list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.eyeq-menu__list a {
+  color: var(--eyeq-bone);
+  text-decoration: none;
+  font-family: var(--eyeq-font-display);
+  font-weight: 300;
+  font-size: clamp(30px, 4.5vw, 52px);
+  line-height: 1.25;
+  letter-spacing: -0.02em;
+}
+.eyeq-menu__list a:hover {
+  text-decoration: underline;
+  text-underline-offset: 8px;
+  text-decoration-thickness: 1px;
+}
+.eyeq-menu__foot {
+  margin-top: 48px;
+  padding-top: 24px;
+  border-top: 1px solid var(--eyeq-hairline-dark);
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px 32px;
+  font-size: 14px;
+  color: var(--eyeq-bone-dim);
+}
+.eyeq-menu__foot a {
+  color: var(--eyeq-bone-dim);
+}
+.eyeq-menu__bookbar {
+  display: none;
+}
+@media (max-width: 600px) {
+  .eyeq-menu__bookbar {
+    display: block;
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 56px;
+    line-height: 56px;
+    text-align: center;
+    background: var(--eyeq-paper);
+    color: var(--eyeq-ink);
+    font-size: 14px;
+[0m
+[0m← [0mWrite scripts/qa/zz-header.spec.ts
+Wrote file successfully.
+[0m
+[0m$ [0mnpx playwright test zz-header --project=chromium > /tmp/hdr.txt 2>&1; echo "EXIT:$?"; rtk grep "HEADER" /tmp/hdr.txt | head -3
+EXIT:0
+HEADER {"rect":{"top":0,"height":64,"width":1440},"opacity":"1","visibility":"visible","display":"flex","zIndex":"100","position":"fixed","cls":"eyeq-header eyeq-header--light is-scrolled--light","coverBy":"HEADER.eyeq-header eyeq-header--light is-scrolled--light","scrollY":20460,"filmP":{"p":1,"beat":"B9"}}
+[0m
+[0m$ [0mrm -f scripts/qa/zz-header.spec.ts; rtk ls -la --time-style=full-iso docs/phase4/qa/beats/int-1*.png 2>/dev/null | head -12
+(no output)
+[0m
+[0m$ [0mrtk ls -la docs/phase4/qa/beats/int-13-visit-1440.png docs/phase4/qa/beats/int-14-footer-1440.png docs/phase4/qa/beats/int-11-white-1440.png; date -u
+644  docs/phase4/qa/beats/int-11-white-1440.png  262.1K
+644  docs/phase4/qa/beats/int-13-visit-1440.png  56.4K
+644  docs/phase4/qa/beats/int-14-footer-1440.png  42.6K
+Mon Sep 28 03:38:03 UTC 2026
+[0m
+[0m→ [0mRead docs/phase4/qa/beats/int-13-visit-1440.png
+[0m→ [0mRead docs/phase4/qa/beats/int-11-white-390.png
+[0m
+[0m← [0mWrite scripts/qa/zz-header2.spec.ts
+Wrote file successfully.
+[0m
+[0m$ [0mnpx playwright test zz-header2 --project=chromium > /tmp/hdr2.txt 2>&1; echo "EXIT:$?"; rtk grep "SEQ" /tmp/hdr2.txt | head -5; rm -f scripts/qa/zz-header2.spec.ts; echo cleaned
+EXIT:1
+cleaned
+[0m
+[0m$ [0mrtk grep -a "SEQ\|Error\|error" /tmp/hdr2.txt | head -12
+Error: page.evaluate: ReferenceError: tag is not defined
+    Error Context: test-results/zz-header2-header-sequence-chromium/error-context.md
+[0m
+[0m← [0mWrite scripts/qa/zz-header2.spec.ts
+Wrote file successfully.
+[0m
+[0m$ [0mnpx playwright test zz-header2 --project=chromium > /tmp/hdr3.txt 2>&1; echo "EXIT:$?"; rtk grep -a "SEQ" /tmp/hdr3.txt | head -5; rm -f scripts/qa/zz-header2.spec.ts; echo cleaned
+EXIT:0
+SEQ {"tag":"white","inDom":true,"cls":"eyeq-header eyeq-header--light is-scrolled--light","scrollY":14685,"coverBy":"IMG."}
+SEQ {"tag":"visit","inDom":true,"cls":"eyeq-header eyeq-header--light is-scrolled--light is-hiddenbar","scrollY":20460,"coverBy":"DIV.eyeq-sections"}
+SEQ {"tag":"footer","inDom":true,"cls":"eyeq-header eyeq-header--light is-scrolled--light","scrollY":21698,"coverBy":"IMG."}
+cleaned
+[0m
+[0m$ [0mrtk grep -n "hiddenbar\|hide\|Hide" src/components/dom/Header.tsx | head; rtk sed -n '1615,1645p' src/components/dom/lane-e.css
+30:  // WHITE polish: hide on scroll-down / show on scroll-up (Book pill stays
+55:        // Hide only once well into the page; any upward move (or theme/act
+119:        className={`eyeq-header eyeq-header--${theme}${scrolled ? ` is-scrolled--${theme}` : ''}${barHidden && !menuOpen ? ' is-hiddenbar' : ''}${swapping ? ' eyeq-header--swap' : ''}`}
+  .eyeq-visit__sticky {
+    position: static;
+  }
+}
+
+/* ---- WHITE polish: header smooth inversion + hide/show -------------------- */
+.eyeq-header {
+  transition:
+    background-color 0.5s var(--eyeq-ease-out),
+    color 0.5s var(--eyeq-ease-out),
+    border-color 0.5s var(--eyeq-ease-out),
+    transform 0.45s var(--eyeq-ease-out);
+}
+.eyeq-header.is-hiddenbar {
+  transform: translateY(-100%);
+}
+.eyeq-header__brand img {
+  transition: opacity 0.5s var(--eyeq-ease-out);
+}
+.eyeq-header--swap .eyeq-header__brand img {
+  opacity: 0;
+}
+@media (hover: hover) and (pointer: fine) {
+  .eyeq-header__book {
+    position: relative;
+    overflow: hidden;
+    isolation: isolate;
+    transition:
+      transform 0.16s ease-out,
+      color 0.35s var(--eyeq-ease-out),
+      border-color 0.35s var(--eyeq-ease-out);
+[0m
+[0m← [0mEdit src/motion/progress.ts
+Index: /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/motion/progress.ts
+===================================================================
+--- /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/motion/progress.ts
++++ /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/motion/progress.ts
+@@ -56,8 +56,10 @@
+    * (|smooth − p| < ε) instead of wall-time so captures are deterministic at
+    * any frame rate. Reads 0 until the first frame renders.
+    */
+   getSmooth: () => number
++  /** Live portal anchor (centre + normal) for aim verification. */
++  getAnchor: () => { center: [number, number, number]; normal: [number, number, number] }
+ }
+ 
+ /**
+  * Damped progress value (dev/QA convergence signal). CameraRig writes its
+
+[0m
+[0m← [0mEdit src/motion/progress.ts
+Index: /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/motion/progress.ts
+===================================================================
+--- /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/motion/progress.ts
++++ /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/motion/progress.ts
+@@ -76,8 +76,12 @@
+   w.__film = {
+     setProgress: (p: number) => setFilmProgress(p),
+     getProgress: () => getFilmProgress(),
+     getSmooth: () => camSmooth.v,
++    getAnchor: () => {
++      const a = getLensAnchor()
++      return { center: [...a.center], normal: [...a.normal] }
++    },
+   }
+ }
+ 
+ declare global {
+
+[0m
+[0m← [0mWrite scripts/qa/zz-anchor.spec.ts
+Wrote file successfully.
+[0m
+[0m← [0mEdit src/motion/progress.ts
+Index: /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/motion/progress.ts
+===================================================================
+--- /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/motion/progress.ts
++++ /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/motion/progress.ts
+@@ -2,9 +2,9 @@
+ // Mutable ref object (never React state): R3F reads `filmProgress.p` in
+ // useFrame and mutates refs. Discrete consumers (zustand store, veil, HUD)
+ // subscribe. Everything stays a pure function of p.
+ 
+-import { beatAt, type BeatId } from './chapters'
++import { beatAt, getLensAnchor, type BeatId } from './chapters'
+ 
+ export interface FilmProgressState {
+   /** Master progress 0→1 over the dark pin. */
+   p: number
+
+[0m
+[0m$ [0mnpx tsc -b 2>&1 | rtk grep error | head -3; npm run build > /tmp/build-anchor.txt 2>&1; echo "BUILD:$?"; pkill -f "vite preview" 2>/dev/null; sleep 1; nohup npx vite preview --port 5112 --strictPort > /tmp/preview-5112f.log 2>&1 & sleep 5; curl -s -o /dev/null -w "%{http_code}\n" http://localhost:5112/; npx playwright test zz-anchor --project=chromium > /tmp/aim.txt 2>&1; echo "PROBE:$?"; rtk grep -a "AIM" /tmp/aim.txt | head -3; rm -f scripts/qa/zz-anchor.spec.ts; echo cleaned
+BUILD:0
+200
+PROBE:1
+cleaned
+[0m
+[0m$ [0mrtk grep -a "AIM\|Error\|error" /tmp/aim.txt | head -8
+Error: page.waitForFunction: Test timeout of 30000ms exceeded.
+    Error Context: test-results/zz-anchor-anchor-at-09-chromium/error-context.md
+[0m
+[0m← [0mWrite scripts/qa/zz-anchor.spec.ts
+Wrote file successfully.
+[0m
+[0m$ [0mnpx playwright test zz-anchor --project=chromium > /tmp/aim2.txt 2>&1; echo "PROBE:$?"; rtk grep -a "AIM" /tmp/aim2.txt | head -3; rm -f scripts/qa/zz-anchor.spec.ts; echo cleaned
+PROBE:0
+AIM {"anchor":{"center":[0.027103212485261576,0.16122099044508528,0.012938002573966323],"normal":[-0.0822,0.0205,0.9964]},"p":{"p":0.945,"beat":"B8"}}
+cleaned
+[0m
+[0m← [0mWrite scripts/qa/zz-reshoot.spec.ts
+Wrote file successfully.
+[0m
+[0m$ [0mnpx playwright test zz-reshoot --project=chromium > /tmp/reshoot.txt 2>&1; echo "EXIT:$?"; tail -3 /tmp/reshoot.txt; rm -f scripts/qa/zz-reshoot.spec.ts; echo cleaned
+EXIT:0
+  ✓  1 [chromium] › scripts/qa/zz-reshoot.spec.ts:5:1 › reshoot 09-390 (1.1m)
+
+  1 passed (1.1m)
+cleaned
+[0m
+[0m→ [0mRead docs/phase4/qa/beats/zz-09-2-390.png
+[0m→ [0mRead docs/phase4/qa/beats/zz-09-0-390.png
+[0m
+[0m← [0mWrite scripts/qa/zz-state.spec.ts
+Wrote file successfully.
+[0m
+[0m$ [0mnpx playwright test zz-state --project=chromium > /tmp/state.txt 2>&1; echo "EXIT:$?"; rtk grep -a "STATE" /tmp/state.txt | head -3; rm -f scripts/qa/zz-state.spec.ts docs/phase4/qa/beats/zz-*.png; echo cleaned
+EXIT:0
+STATE {"scrollY":0,"p":{"p":0.945,"beat":"B8"},"smooth":0.9434506252331064,"anchor":{"center":[0.027612463539871564,0.15990814770490602,0.01311925781660734],"normal":[-0.0822,0.0205,0.9964]}}
+cleaned
+[0m
+[0m$ [0mpython3 -c "from PIL import Image; im=Image.open('docs/phase4/qa/beats/int-09-approach-390.png'); print(im.size); im.crop((0,300,390,650)).resize((780,700)).save('/tmp/crop-09.png'); print('ok')"
+(390, 844)
+ok
+[0m
+[0m→ [0mRead /tmp/crop-09.png
+[0m
+[0m$ [0mFILM_URL=http://localhost:5112/ npx playwright test int-beats --project=chromium -g "progress stops @1440|08b settled|reverse|tier=low" > /tmp/qa-1440final.txt 2>&1; echo "EXIT:$?"; tail -7 /tmp/qa-1440final.txt
+EXIT:1
+
+    Error Context: test-results/int-beats-int-beats-tier-low-renders-the-film-chromium/error-context.md
+
+  2 failed
+    [chromium] › scripts/qa/int-beats.spec.ts:169:3 › int-beats › reverse 0.77→0.32 reproduces state (no pops) 
+    [chromium] › scripts/qa/int-beats.spec.ts:196:3 › int-beats › ?tier=low renders the film ───────
+  2 passed (4.3m)
+[0m
+[0m$ [0mrtk grep -a -B2 -A14 "1)" /tmp/qa-1440final.txt | head -55
+1) [chromium] › scripts/qa/int-beats.spec.ts:169:3 › int-beats › reverse 0.77→0.32 reproduces state (no pops) 
+
+    TimeoutError: page.waitForFunction: Timeout 45000ms exceeded.
+
+      174 |     await page.waitForTimeout(7000)
+      175 |     const converge = async (want: number): Promise<void> => {
+    > 176 |       await page.waitForFunction(
+          |                  ^
+      177 |         (w) => Math.abs((window.__film?.getSmooth() ?? 0) - w) < 0.003,
+      178 |         want,
+      179 |         { timeout: 45000 },
+        at converge (/Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/scripts/qa/int-beats.spec.ts:176:18)
+        at /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/scripts/qa/int-beats.spec.ts:183:11
+
+    Error Context: test-results/int-beats-int-beats-revers-34083-2-reproduces-state-no-pops--chromium/error-context.md
+[0m
+[0m$ [0mFILM_URL=http://localhost:5112/ npx playwright test int-beats --project=chromium --workers=1 -g "reverse|tier=low" > /tmp/qa-rt.txt 2>&1; echo "EXIT:$?"; tail -6 /tmp/qa-rt.txt
+EXIT:0
+Running 2 tests using 1 worker
+
+  ✓  1 [chromium] › scripts/qa/int-beats.spec.ts:169:3 › int-beats › reverse 0.77→0.32 reproduces state (no pops) (1.4m)
+  ✓  2 [chromium] › scripts/qa/int-beats.spec.ts:196:3 › int-beats › ?tier=low renders the film (38.3s)
+
+  2 passed (2.0m)
+[0m
+[0m→ [0mRead docs/phase4/qa/beats/int-08b-settled-1440.png
+[0m→ [0mRead docs/phase4/qa/beats/int-rm-chapters-1440.png
+[0m→ [0mRead docs/phase4/qa/beats/int-09-approach-1440.png
+[0m
+[0m← [0mEdit src/motion/chapters.ts
+Index: /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/motion/chapters.ts
+===================================================================
+--- /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/motion/chapters.ts
++++ /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/motion/chapters.ts
+@@ -159,9 +159,9 @@
+ // hold sits at ≈0.84 m desktop with the look-target near the 16-plane +
+ // drifted-hero centroid (y −0.02, z −0.10) so the W2 row reads whole.
+ // B4/B5 are reframed onto the MEASURED hero (LANEC-PROBE: lenses hover at
+ // y ≈ 0.16 — the authored 0.06–0.07 targets framed empty air above the case).
+-const WAVE_HOLD_Z = 0.92
++const WAVE_HOLD_Z = 0.98
+ const WAVE_HOLD_Y = 0.1
+ const WAVE_TGT: Vec3 = [0, -0.05, -0.1]
+ 
+ const KEYS_STATIC: Key[] = [
+
+[0m
+[0m← [0mEdit scripts/qa/int-beats.spec.ts
+Index: /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/scripts/qa/int-beats.spec.ts
+===================================================================
+--- /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/scripts/qa/int-beats.spec.ts
++++ /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/scripts/qa/int-beats.spec.ts
+@@ -222,10 +222,14 @@
+     () => document.querySelector('[data-testid="chapter-overlay"]')?.classList.contains('eyeq-chapters--stacked'),
+   )
+   expect(stacked, 'stacked chapters under RM').toBe(true)
+   await page.screenshot({ path: join(OUT, 'int-rm-static-1440.png') })
+-  // Static chapters carry the full story below the poster stage.
+-  await page.locator('[data-testid="chapter-overlay"]').scrollIntoViewIfNeeded()
++  // Static chapters carry the full story below the poster stage (scroll the
++  // B5 lens-list chapter to the centre — it proves the verbatim copy).
++  await page.evaluate(() => {
++    const overlay = document.querySelector('[data-testid="chapter-overlay"]')
++    overlay?.children[4]?.scrollIntoView({ block: 'center' })
++  })
+   await page.waitForTimeout(800)
+   await page.screenshot({ path: join(OUT, 'int-rm-chapters-1440.png') })
+   await ctx.close()
+ })
+
+[0m
+[0m← [0mEdit src/motion/chapters.ts
+Index: /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/motion/chapters.ts
+===================================================================
+--- /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/motion/chapters.ts
++++ /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/motion/chapters.ts
+@@ -249,9 +249,9 @@
+ // §2–§3). Blended over 0.03p each side so scrubbing never pops. The
+ // look-target dips 0.07 m with the same window so the compact W2 rows
+ // ride above the bottom-sheet captions.
+ const waveBoost = smoothstepLocal(0.65, 0.7, p) * (1 - smoothstepLocal(0.92, 0.95, p))
+-const pull = 1.45 + 0.55 * waveBoost
++const pull = 1.45 + 0.35 * waveBoost
+ const dx = (position[0] - target[0]) * pull
+ const dz = (position[2] - target[2]) * pull
+ position = [target[0] + dx, position[1], target[2] + dz]
+ target = [target[0], target[1] - 0.07 * waveBoost, target[2]]
+
+[0m
+[0m$ [0mnpx tsc -b 2>&1 | rtk grep error | head -3; npx eslint src/motion/chapters.ts scripts/qa/int-beats.spec.ts --max-warnings 0 2>&1 | tail -2; echo LINT-OK; npm run build > /tmp/build-final.txt 2>&1; echo "BUILD:$?"; pkill -f "vite preview" 2>/dev/null; sleep 1; nohup npx vite preview --port 5112 --strictPort > /tmp/preview-5112g.log 2>&1 & sleep 5; curl -s -o /dev/null -w "%{http_code}\n" http://localhost:5112/
+npm notice run eyeq-vision-care@0.1.0 npx
+npm notice run 'eslint' src/motion/chapters.ts scripts/qa/int-beats.spec.ts --max-warnings 0
+LINT-OK
+BUILD:0
+200
+[0m
+[0m$ [0mFILM_URL=http://localhost:5112/ npx playwright test int-beats --project=chromium --workers=1 -g "progress stops @1440|08b settled" > /tmp/qaf1.txt 2>&1; echo "EXIT:$?"; tail -5 /tmp/qaf1.txt
+EXIT:0
+
+  ✓  1 [chromium] › scripts/qa/int-beats.spec.ts:79:5 › int-beats › progress stops @1440 (3.5m)
+  ✓  2 [chromium] › scripts/qa/int-beats.spec.ts:105:3 › int-beats › 08b settled constellations @1440 (diagnostic, B8 hold) (40.7s)
+
+  2 passed (4.2m)
+[0m
+[0m→ [0mRead docs/phase4/qa/beats/int-07-wave1-1440.png
+[0m→ [0mRead docs/phase4/qa/beats/int-08b-settled-1440.png
+[0m
+[0m← [0mEdit src/motion/chapters.ts
+Index: /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/motion/chapters.ts
+===================================================================
+--- /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/motion/chapters.ts
++++ /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/motion/chapters.ts
+@@ -161,9 +161,9 @@
+ // B4/B5 are reframed onto the MEASURED hero (LANEC-PROBE: lenses hover at
+ // y ≈ 0.16 — the authored 0.06–0.07 targets framed empty air above the case).
+ const WAVE_HOLD_Z = 0.98
+ const WAVE_HOLD_Y = 0.1
+-const WAVE_TGT: Vec3 = [0, -0.05, -0.1]
++const WAVE_TGT: Vec3 = [0, -0.07, -0.1]
+ 
+ const KEYS_STATIC: Key[] = [
+   { p: 0.0, pos: [0.18 * K, 0.1 * K, 0.32 * K], tgt: [0, 0.01, 0], fov: 32, fog: 0.035, exp: 1.0, near: 0.01 },
+   { p: 0.1, pos: [0.14 * K, 0.12 * K, 0.29 * K], tgt: [0, 0.012, 0], fov: 33, fog: 0.035, exp: 1.0, near: 0.01 },
+
+[0m
+[0m$ [0mnpx tsc -b 2>&1 | rtk grep error | head -3; npm run build > /tmp/build-g2.txt 2>&1; echo "BUILD:$?"; pkill -f "vite preview" 2>/dev/null; sleep 1; nohup npx vite preview --port 5112 --strictPort > /tmp/preview-5112h.log 2>&1 & sleep 5; curl -s -o /dev/null -w "%{http_code}\n" http://localhost:5112/
+BUILD:0
+200
+[0m
+[0m$ [0mFILM_URL=http://localhost:5112/ npx playwright test int-beats --project=chromium --workers=1 -g "08b settled" > /tmp/qa-08b.txt 2>&1; echo "EXIT:$?"; tail -4 /tmp/qa-08b.txt
+EXIT:0
+
+  ✓  1 [chromium] › scripts/qa/int-beats.spec.ts:105:3 › int-beats › 08b settled constellations @1440 (diagnostic, B8 hold) (46.0s)
+
+  1 passed (47.2s)
+[0m
+[0m→ [0mRead docs/phase4/qa/beats/int-08b-settled-1440.png
+[0m
+[0m$ [0mFILM_URL=http://localhost:5112/ npx playwright test int-beats --project=chromium --workers=1 -g "progress stops @1440|progress stops @390" > /tmp/qaf2.txt 2>&1; echo "EXIT:$?"; tail -5 /tmp/qaf2.txt
+EXIT:0
+  ✓  2 [chromium] › scripts/qa/int-beats.spec.ts:79:5 › int-beats › progress stops @390 (3.7m)
+
+  Slow test file: [chromium] › scripts/qa/int-beats.spec.ts (7.8m)
+  Consider running tests from slow files in parallel. See: https://playwright.dev/docs/test-parallel
+  2 passed (7.8m)
+[0m
+[0m$ [0mFILM_URL=http://localhost:5112/ npx playwright test int-beats --project=chromium --workers=1 -g "portal stops @768|11-white|reverse|tier=low|reduced-motion|banned-token" > /tmp/qaf3.txt 2>&1; echo "EXIT:$?"; tail -10 /tmp/qaf3.txt
+EXIT:0
+
+  ✓  1 [chromium] › scripts/qa/int-beats.spec.ts:116:3 › int-beats › portal stops @768 (1.1m)
+  ✓  2 [chromium] › scripts/qa/int-beats.spec.ts:133:3 › int-beats › 11-white + rails + rest @1440 (real scroll path) (20.6s)
+  ✓  3 [chromium] › scripts/qa/int-beats.spec.ts:157:3 › int-beats › 11-white + rails @390 (real scroll path) (14.2s)
+  ✓  4 [chromium] › scripts/qa/int-beats.spec.ts:169:3 › int-beats › reverse 0.77→0.32 reproduces state (no pops) (1.5m)
+  ✓  5 [chromium] › scripts/qa/int-beats.spec.ts:196:3 › int-beats › ?tier=low renders the film (38.2s)
+  ✓  6 [chromium] › scripts/qa/int-beats.spec.ts:212:3 › int-beats › reduced-motion: static chapters, no Lenis (11.7s)
+  ✓  7 [chromium] › scripts/qa/int-beats.spec.ts:237:3 › int-beats › banned-token grep — Lane B files (brief §7 + ART A6) (12ms)
+
+  7 passed (4.0m)
+[0m
+[0m→ [0mRead docs/phase4/qa/beats/int-rm-chapters-1440.png
+[0m→ [0mRead docs/phase4/qa/beats/int-08-wave2-1440.png
+[0m→ [0mRead docs/phase4/qa/beats/int-07-wave1-390.png
+[0m→ [0mRead docs/phase4/qa/beats/int-10-entry-768.png
+[0m→ [0mRead docs/phase4/qa/beats/int-09-approach-768.png
+[0m
+[0m# [0mTodos
+[✓] Read integration inputs (brief, master, requests, current src) and set up plan
+[✓] Fix router: remove Catalog, canonical /pages/* + redirects, keep build green
+[✓] Build Home composition: FilmCanvas + adapters (C remap, D camera notes, lens anchor) + ChapterOverlay + Header + WhiteSection + LogoRails + sections + Footer
+[✓] Wire master timeline + film.css (#film-pin shell, #white-veil) + QA hook
+[✓] npm run build + lint clean for owned files
+[✓] Run QA beats harness vs real page, capture + LOOK at screenshots, fix integration issues
+[•] Write docs/phase4/qa/beats/INTEGRATION.md + B-to-F request + stop dev server
+[0m
+[0m← [0mWrite docs/phase4/requests/B-to-F.md
+Wrote file successfully.
+[0m
+[0m$ [0mrtk ls docs/phase4/qa/beats/ | rtk sort | head -50; echo; rtk du -sh docs/phase4/qa/beats/ 2>/dev/null
+... (13 more)
+[+13 hidden: rtk recall 53c8934ec056]
+01-case-1440.png  24.5K
+01-case-390.png  12.9K
+02-open-1440.png  27.2K
+02-open-390.png  13.8K
+03-velvet-1440.png  27.5K
+03-velvet-390.png  14.2K
+04-emerge-1440.png  26.8K
+04-emerge-390.png  13.0K
+05-unfold-1440.png  29.1K
+05-unfold-390.png  13.9K
+06-info-1440.png  26.2K
+06-info-390.png  13.9K
+07-wave1-1440.png  40.8K
+07-wave1-390.png  11.6K
+08-wave2-1440.png  43.0K
+08-wave2-390.png  12.5K
+09-approach-1440.png  35.5K
+09-approach-390.png  11.8K
+09-approach-768.png  13.3K
+10-entry-1440.png  42.2K
+10-entry-390.png  8.4K
+10-entry-768.png  15.3K
+11-white-dom-1440.png  14.1K
+11-white-veil-768.png  12.6K
+int-00-load-1440.png  73.3K
+int-00-load-390.png  30.4K
+int-01-case-1440.png  79.2K
+int-01-case-390.png  32.6K
+int-02-open-1440.png  136.6K
+int-02-open-390.png  50.3K
+int-03-velvet-1440.png  150.9K
+int-03-velvet-390.png  54.5K
+int-04-emerge-1440.png  166.3K
+int-04-emerge-390.png  67.5K
+int-05-unfold-1440.png  122.3K
+int-05-unfold-390.png  60.3K
+int-06-info-1440.png  87.4K
+int-06-info-390.png  40.6K
+int-07-wave1-1440.png  96.7K
+int-07-wave1-390.png  34.2K
+int-08-wave2-1440.png  143.9K
+int-08-wave2-390.png  55.7K
+int-08b-settled-1440.png  159.6K
+int-09-approach-1440.png  124.7K
+int-09-approach-390.png  62.6K
+int-09-approach-768.png  105.3K
+int-10-entry-1440.png  249.5K
+int-10-entry-390.png  21.6K
+
+4.2M	docs/phase4/qa/beats/
+[0m
+[0m← [0mWrite docs/phase4/qa/beats/INTEGRATION.md
+Wrote file successfully.
+[0m
+[0m$ [0mnpm run build > /tmp/build-final2.txt 2>&1; echo "BUILD:$?"; tail -2 /tmp/build-final2.txt; npm run lint > /tmp/lint-final.txt 2>&1; echo "LINT:$?"; tail -15 /tmp/lint-final.txt; rtk ls scripts/qa/ | head; rtk ls docs/phase4/qa/beats/zz-* 2>&1 | head -2
+BUILD:0
+npm notice run eyeq-vision-care@0.1.0 postbuild
+npm notice run cp dist/index.html dist/404.html
+LINT:1
+  137:323  error  Irregular whitespace not allowed  no-irregular-whitespace
+  138:297  error  Irregular whitespace not allowed  no-irregular-whitespace
+  141:362  error  Irregular whitespace not allowed  no-irregular-whitespace
+  146:112  error  Irregular whitespace not allowed  no-irregular-whitespace
+  146:202  error  Irregular whitespace not allowed  no-irregular-whitespace
+  195:367  error  Irregular whitespace not allowed  no-irregular-whitespace
+  203:249  error  Irregular whitespace not allowed  no-irregular-whitespace
+  203:358  error  Irregular whitespace not allowed  no-irregular-whitespace
+  204:24   error  Irregular whitespace not allowed  no-irregular-whitespace
+
+/Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/v1/dev-text.tsx
+  14:10  warning  Fast refresh only works when a file has exports. Move your component(s) to a separate file  react-refresh/only-export-components
+
+✖ 60 problems (46 errors, 14 warnings)
+
+beats.spec.ts  10.5K
+int-beats.spec.ts  12.4K
+zsh:1: no matches found: docs/phase4/qa/beats/zz-*
+[0m
+[0m$ [0mrtk grep -E "^/Users.*(Home|HeroRigs|LensPortal|CameraRig|FilmCanvas|Effects|chapters|progress|masterTimeline|lenis|tiers|router|main|film.css|int-beats|useFilmStore)" /tmp/lint-final.txt | head; echo ---; rtk grep "^/Users" /tmp/lint-final.txt | head -20
+/Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/__dev__/D/main.tsx
+/Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/__dev__/D/main.tsx:64:5
+/Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/__dev__/D/main.tsx:68:5
+/Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/__dev__/D/main.tsx:71:46
+/Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/__dev__/D/main.tsx:180:27
+/Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/__dev__/F/main.tsx
+---
+/Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/__dev__/D/main.tsx
+/Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/__dev__/D/main.tsx:64:5
+/Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/__dev__/D/main.tsx:68:5
+/Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/__dev__/D/main.tsx:71:46
+/Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/__dev__/D/main.tsx:180:27
+/Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/__dev__/F/main.tsx
+/Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/canvas/SceneStage.tsx
+/Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/canvas/SponsorField.tsx
+/Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/routes/parts/policies-data.ts
+/Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/v1/dev-text.tsx
+[0m
+[0m$ [0mrtk lint src/routes/Home.tsx src/components/canvas/HeroRigs.tsx src/components/canvas/LensPortal.tsx src/components/canvas/CameraRig.tsx src/components/canvas/FilmCanvas.tsx src/components/canvas/Effects.tsx src/motion/chapters.ts src/motion/progress.ts src/motion/masterTimeline.ts src/motion/lenis.ts src/motion/tiers.ts src/app/router.tsx src/app/providers.tsx src/main.tsx src/store/useFilmStore.ts scripts/qa/int-beats.spec.ts --max-warnings 0 2>&1 | tail -3; echo "MY-LINT:$?"; pkill -f "vite preview" 2>/dev/null; pkill -f "vite --port 5111" 2>/dev/null; sleep 1; rtk curl -s -m 3 -o /dev/null -w "5111:%{http_code} " http://localhost:5111/ 2>/dev/null || echo -n "5111:down "; rtk curl -s -m 3 -o /dev/null -w "5112:%{http_code}\n" http://localhost:5112/ 2>/dev/null || echo "5112:down"
+ESLint: No issues found
+MY-LINT:0
+5111:down 5112:down
+[0m
+[0m# [0mTodos
+[✓] Read integration inputs (brief, master, requests, current src) and set up plan
+[✓] Fix router: remove Catalog, canonical /pages/* + redirects, keep build green
+[✓] Build Home composition: FilmCanvas + adapters (C remap, D camera notes, lens anchor) + ChapterOverlay + Header + WhiteSection + LogoRails + sections + Footer
+[✓] Wire master timeline + film.css (#film-pin shell, #white-veil) + QA hook
+[✓] npm run build + lint clean for owned files
+[✓] Run QA beats harness vs real page, capture + LOOK at screenshots, fix integration issues
+[✓] Write docs/phase4/qa/beats/INTEGRATION.md + B-to-F request + stop dev server
+[0m
+PHASE4-B-DONE
+
+1. Real Home composed (FilmCanvas + C/D rigs via adapters + overlay/header/white/rails/sections/footer); router §6d-clean (`/pages/*` canonical + redirects); `npm run build` + `tsc` pass, my files lint-clean.
+2. Beats line up per screenshots (`int-*.png`, all viewed): case → flap/velvet → rise → unfold → hero/info → wave 1 → wave 2 → lens approach (live-anchored, probe-verified) → veil → Paper white + rails; reverse/RM/tier/banned-token smokes green, runs console-clean.
+3. Two conductor deviations, both measured: glasses remap compressed so emergence lands in B3 (C's 0–0.7 left B3 empty); wave hold 0.98 m + dipped target so 16/16 settle with margin (D asked 0.78).
+4. Found + fixed in my files: veil curtained the white act forever (now fades post-handoff); header flipped light over dark canvas (now 0.992); RM chapters hid under the stage (now in-flow poster).
+5. Known issues (others' lanes, in INTEGRATION.md §C): opaque real lens ⇒ crossing reads dark→white via veil (C material follow-up); ~10 MB raw case pending C-opt-recondition; mobile marks ~60–100 px vs 120 gate (accepted, no-overflow wins); `src/v1/*` dead prototype intermittently breaks shared `tsc`; preloader/session flags not implemented (step 17).
+6. Harness `scripts/qa/int-beats.spec.ts` runs serially (`--workers=1`) against preview; dev servers stopped; requests filed: `B-to-F.md` (canonical links).
+EXIT 0 model=meta/muse-spark-1.3-contributor

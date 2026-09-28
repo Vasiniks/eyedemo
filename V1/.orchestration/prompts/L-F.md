@@ -1,0 +1,8 @@
+LANE F — secondary routes (step 13). Files: src/routes/Services.tsx, Contact.tsx, Policies.tsx, Catalog.tsx (+ src/routes/parts/*). Read-only use of src/data/*.json once Lane E writes them (until then read B-content-inventory directly and keep a local TODO to swap to data files).
+PARALLEL-SAFETY: Lane A (scaffold) is still finishing `src/app/*`, `src/styles/*`, `src/main.tsx`, `index.html`, `package.json` — never edit those; never run npm install (all deps are installed; if one is truly missing, write a request file). For isolated testing create your OWN Vite entry `dev-<lane>.html` in the project root + `src/__dev__/<lane>/main.tsx` (you own both) and open http://localhost:<port>/dev-<lane>.html. Use port 51<lane-number> (B=5102, C=5103, D=5104, E=5105, F=5106) with --strictPort. Integration into the real Home page happens in Lane B after all lanes finish.
+- Services: all 3 services + Essilor lens section + insurance logos + "We accept most major insurance plans" + booking CTA (same-tab like the live site) — all verbatim.
+- Contact: new store info (brief §2), tel:+19054970227, mailto, map + directions for the new address, hours. No invented form.
+- Policies: refund/privacy/terms — link to or reproduce the live Shopify policy pages verbatim (fetch them).
+- Catalog: the 22 real products (from /products.json research, Ray-Ban/Persol/Prada) with SUN/OPTICAL filter + search; never show "$0.00" prices.
+- Light, fast, no Canvas; same tokens/typography; editorial not template.
+- Dev harness dev-F.html with a small router; screenshots of each route at 1440 + 390 into docs/phase4/qa/F/.

@@ -1,0 +1,68 @@
+{
+ "hovers": [
+  {
+   "el": "a",
+   "text": "By The Sea Coastal, Marina & Seafront pr",
+   "changes": [
+    "self filter: none → brightness(1)",
+    "child img transform: none → s1",
+    "child img filter: brightness(1) saturate(1) → brightness(1) saturate(1)"
+   ]
+  },
+  {
+   "el": "span",
+   "text": "",
+   "changes": [
+    "child img transform: none → s1",
+    "child img filter: brightness(1) saturate(1) → brightness(1) saturate(1)"
+   ]
+  },
+  {
+   "el": "a",
+   "text": "Evergreen Gulf Resorts, parks & Forest O",
+   "changes": [
+    "self filter: none → brightness(1)",
+    "child img transform: none → s1",
+    "child img filter: brightness(1) saturate(1) → brightness(1) saturate(1)"
+   ]
+  },
+  {
+   "el": "span",
+   "text": "",
+   "changes": [
+    "child img transform: none → s1",
+    "child img filter: brightness(1) saturate(1) → brightness(1) saturate(1)"
+   ]
+  },
+  {
+   "el": "a",
+   "text": "Urban Living City center & Old city vibe",
+   "changes": [
+    "self filter: none → brightness(1)",
+    "child img transform: none → s1",
+    "child img filter: brightness(1) saturate(1) → brightness(1) saturate(1)"
+   ]
+  },
+  {
+   "el": "span",
+   "text": "",
+   "changes": [
+    "child img transform: none → s1",
+    "child img filter: brightness(1) saturate(1) → brightness(1) saturate(1)"
+   ]
+  },
+  {
+   "el": "a",
+   "text": "Rare Gems One of a kind & Unique concept",
+   "changes": [
+    "self filter: none → brightness(1)",
+    "child img transform: none → s1",
+    "child img filter: brightness(1) saturate(1) → brightness(1) saturate(1)"
+   ]
+  }
+ ],
+ "cursor": {
+  "custom_cursor": false,
+  "css_cursor": "auto"
+ }
+}

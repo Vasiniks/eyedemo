@@ -1,0 +1,21 @@
+{
+  "source": "docs/research/B-content-inventory.md §3 — /pages/services, verbatim. Only these services are named anywhere on the live site.",
+  "heading": "Services",
+  "intro": [
+    "Looking for a trusted optometrist in Burlington? At Eye Q Optical, we're committed to helping you achieve clear, healthy vision through comprehensive eye care. Our services include comprehensive eye exams, children's eye exams, and contact lens fittings tailored to your individual needs.",
+    "We also offer a carefully curated collection of premium eyewear from leading designer brands, including Gucci, Prada, and Ray-Ban, making it easy to find frames that match your style while providing exceptional vision.",
+    "Whether you need a routine eye exam, an updated prescription, or your next pair of prescription glasses or sunglasses, our experienced team is here to help. Book your eye exam with Eye Q Optical today and visit our Burlington store to discover quality eye care and eyewear for every lifestyle."
+  ],
+  "precis": [
+    {
+      "name": "Comprehensive Eye Exams",
+      "description": "A complete assessment of your vision and eye health, including prescription testing and screening for common eye conditions."
+    },
+    {
+      "name": "Accurate Prescription Fittings",
+      "description": "Accurate prescription fitting to ensure clear, comfortable vision tailored to your needs."
+    },
+    { "name": "children's eye exams", "description": null },
+    { "name": "contact lens fittings", "description": null }
+  ]
+}

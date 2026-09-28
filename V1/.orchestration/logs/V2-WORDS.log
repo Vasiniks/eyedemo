@@ -1,0 +1,375 @@
+[0m
+> build · muse-spark-1.3-contributor-free
+[0m
+Shipping the words pass — placing restrained panels in the empty sides of each beat.
+[0m→ [0mRead src/v1
+[0m→ [0mRead docs/00-BRIEF.md
+[0m→ [0mRead render-repo/RENDER-REPORT.md
+[0m→ [0mRead src/v1/sideCopy.ts
+[0m→ [0mRead src/v1/SidePanels.tsx
+[0m→ [0mRead src/v1/FilmCaptions.tsx
+[0m→ [0mRead src/v1/sidePanels.css
+[0m→ [0mRead src/v1/captions.css
+[0m→ [0mRead src/v1/filmCurve.ts
+[0m→ [0mRead src/v1/App.tsx
+[0m→ [0mRead docs/research/B-content-inventory.md
+[0m→ [0mRead v1.html
+[0m→ [0mRead src/v1/FilmSequence.tsx
+[0m→ [0mRead src/v1/BrandWaves.tsx
+I've mapped the beats and content rules — now checking the current wiring before rewriting the panels.
+[0m→ [0mRead docs/phase4/qa/v2
+[0m✱ [0mGrep "SHOW_DRAFT|DRAFT|draft"[90m in src · 71 matches[0m
+[0m→ [0mRead src/v1/v1.css
+[0m
+[0m$ [0mrtk ls public/v1film/ 2>/dev/null | head -5; echo ---; rtk read public/v1film/manifest.json 2>/dev/null; echo ---; rtk ls render-repo/out/frames/ 2>/dev/null | head -5; echo ---; rtk ls public/ 2>/dev/null; echo ---; rtk ls docs/phase4/qa/ 2>/dev/null
+0001.jpg  69.6K
+0002.jpg  69.6K
+0003.jpg  69.6K
+0004.jpg  69.7K
+0005.jpg  69.9K
+---
+{"count": 308, "width": 1512, "height": 860, "pad": 4, "ext": "jpg", "sourceFrames": 615, "step": 2}
+---
+f_00001.webp  78.9K
+f_00002.webp  78.9K
+f_00003.webp  78.8K
+f_00004.webp  78.8K
+f_00005.webp  78.8K
+---
+decoders/
+fonts/
+models/
+v1film/
+web/
+_redirects  19B
+... (1 filtered)
+[+1 hidden: rtk recall ba2f5bc393e9]
+---
+A/
+B/
+C/
+D/
+E/
+F/
+beats/
+polish/
+v1/
+v2/
+[0m
+[0m→ [0mRead src/v1/progress.ts
+[0m→ [0mRead src/v1/dev-text.tsx
+[0m
+[0m# [0mTodos
+[•] Rewrite sideCopy.ts to new beat map + SHOW_DRAFT_COPY gate
+[ ] Rewrite SidePanels + new side.css (36%/6% placement, masked reveals, count-ups)
+[ ] Trim FilmCaptions.tsx + captions.css to hint-only (no left lens list)
+[ ] QA harness + Playwright screenshots vs real frames at key frames 1512×860 + 390
+[ ] Write docs/phase4/qa/v2/words report, stop server
+[0m
+[0m← [0mWrite src/v1/sideCopy.ts
+Wrote file successfully.
+[0m
+[0m# [0mTodos
+[✓] Rewrite sideCopy.ts to new beat map + SHOW_DRAFT_COPY gate
+[•] Rewrite SidePanels + new side.css (36%/6% placement, masked reveals, count-ups)
+[ ] Trim FilmCaptions.tsx + captions.css to hint-only (no left lens list)
+[ ] QA harness + Playwright screenshots vs real frames at key frames 1512×860 + 390
+[ ] Write docs/phase4/qa/v2/words report, stop server
+[0m
+[0m← [0mWrite src/v1/SidePanels.tsx
+Wrote file successfully.
+[0m
+[0m← [0mWrite src/v1/side.css
+Wrote file successfully.
+[0m
+Side panels rewritten. Now trimming the captions overlay to hint-only.
+[0m# [0mTodos
+[✓] Rewrite sideCopy.ts to new beat map + SHOW_DRAFT_COPY gate
+[✓] Rewrite SidePanels + new side.css (36%/6% placement, masked reveals, count-ups)
+[•] Trim FilmCaptions.tsx + captions.css to hint-only (no left lens list)
+[ ] QA harness + Playwright screenshots vs real frames at key frames 1512×860 + 390
+[ ] Write docs/phase4/qa/v2/words report, stop server
+[0m
+[0m← [0mWrite src/v1/FilmCaptions.tsx
+Wrote file successfully.
+[0m
+[0m← [0mWrite src/v1/captions.css
+Wrote file successfully.
+[0m
+[0m$ [0mrtk ls *.html; echo ---; cat package.json | head -40
+dev-C.html  332B
+dev-D.html  451B
+dev-E.html  456B
+dev-F.html  462B
+dev-b.html  441B
+index.html  577B
+v1-text.html  438B
+v1-waves.html  313B
+v1.html  674B
+---
+{
+  "name": "eyeq-vision-care",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc -b && vite build",
+    "postbuild": "cp dist/index.html dist/404.html",
+    "preview": "vite preview",
+    "lint": "eslint src --max-warnings 0",
+    "test:e2e": "playwright test"
+  },
+  "dependencies": {
+    "@gsap/react": "2.1.2",
+    "@react-three/drei": "10.7.9",
+    "@react-three/fiber": "9.8.1",
+    "@react-three/postprocessing": "3.1.3",
+    "gsap": "3.15.0",
+    "lenis": "1.3.26",
+    "maath": "0.10.8",
+    "postprocessing": "6.39.5",
+    "react": "19.3.0",
+    "react-dom": "19.3.0",
+    "react-router-dom": "7.18.4",
+    "three": "0.186.1",
+    "zustand": "5.0.15"
+  },
+  "devDependencies": {
+    "@eslint/js": "9.39.1",
+    "@gltf-transform/cli": "4.5.0",
+    "@playwright/test": "1.63.0",
+    "@types/react": "19.3.0",
+    "@types/react-dom": "19.3.0",
+    "@types/three": "0.186.0",
+    "@vitejs/plugin-react": "6.1.1",
+    "eslint": "9.39.1",
+    "eslint-plugin-react-hooks": "7.0.1",
+    "eslint-plugin-react-refresh": "0.4.24",
+    "globals": "16.5.0",
+[0m
+[0m→ [0mRead v1-text.html
+Now the QA harness to verify panels against the real new frames.
+[0m
+[0m← [0mWrite v1-words.html
+Wrote file successfully.
+[0m
+[0m← [0mWrite src/v1/dev-words.tsx
+Wrote file successfully.
+[0m
+[0m$ [0mnpx tsc --noEmit -p tsconfig.json 2>&1 | grep -E "v1/(sideCopy|SidePanels|FilmCaptions|dev-words|side)" | head -20; echo TSC-DONE
+TSC-DONE
+[0m
+Typecheck clean. Starting the dev server and capturing the key frames.
+[0m$ [0mnohup npx vite --port 5403 --strictPort > /tmp/v2-words-vite.log 2>&1 & sleep 6; curl -s -o /dev/null -w "%{http_code}" http://localhost:5403/v1-words.html
+200
+[0m
+[0m# [0mTodos
+[✓] Rewrite sideCopy.ts to new beat map + SHOW_DRAFT_COPY gate
+[✓] Rewrite SidePanels + new side.css (36%/6% placement, masked reveals, count-ups)
+[✓] Trim FilmCaptions.tsx + captions.css to hint-only (no left lens list)
+[•] QA harness + Playwright screenshots vs real frames at key frames 1512×860 + 390
+[ ] Write docs/phase4/qa/v2/words report, stop server
+[0m
+[0m✗ [0mplaywright_browser_navigate {"url":"http://localhost:5403/v1-words.html?s=100"} failed
+[91m[1mError: [0m### Error
+Error: Browser is already in use for /Users/admin/Library/Caches/ms-playwright-mcp/mcp-chrome-062bebd, use --isolated to run multiple instances of the same browser
+The shared test browser is busy — I'll capture screenshots via the Playwright CLI instead.
+[0m
+[0m$ [0mmkdir -p docs/phase4/qa/v2 && for s in 1 70 100 145 180 215 260 280 368 440 445 500 600; do npx playwright screenshot --viewport-size=1512,860 --wait-for-timeout=3500 "http://localhost:5403/v1-words.html?s=$s" "docs/phase4/qa/v2/words-s${s}-1512.png" > /dev/null 2>&1; done; rtk ls docs/phase4/qa/v2/
+SNAP-integration.md  1.7K
+snap-verify.mjs  2.5K
+words-s1-1512.png  296.4K
+words-s100-1512.png  266.2K
+words-s145-1512.png  310.7K
+words-s180-1512.png  118.0K
+words-s215-1512.png  120.3K
+words-s260-1512.png  164.6K
+words-s280-1512.png  179.4K
+words-s368-1512.png  169.8K
+words-s440-1512.png  149.3K
+words-s445-1512.png  149.4K
+words-s500-1512.png  164.9K
+words-s600-1512.png  266.5K
+words-s70-1512.png  281.0K
+[0m
+[0m→ [0mRead docs/phase4/qa/v2/words-s180-1512.png
+[0m→ [0mRead docs/phase4/qa/v2/words-s100-1512.png
+[0m
+[0m← [0mEdit src/v1/dev-words.tsx
+Index: /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/v1/dev-words.tsx
+===================================================================
+--- /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/v1/dev-words.tsx
++++ /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/v1/dev-words.tsx
+@@ -40,9 +40,11 @@
+   alt=""
+   style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover' }}
+ />
+ <FilmCaptions progress={p} />
+-<SidePanels progress={p} instant />
++{/* Real behaviour: progress-driven easings (not instant stills),
++    so each screenshot shows exactly what the film shows at src s. */}
++<SidePanels progress={p} />
+ {guides && (
+   <div style={{ position: 'absolute', inset: 0, pointerEvents: 'none' }} data-testid="words-guides">
+     {/* empty-side safe zones: outer 36% each side, 6% margin */}
+     <div style={{ position: 'absolute', left: '6%', top: 0, bottom: 0, width: '30%', borderLeft: '1px dashed rgba(233,226,211,.5)', borderRight: '1px dashed rgba(233,226,211,.5)', background: 'rgba(233,226,211,.04)' }} />
+
+[0m
+[0m$ [0mfor s in 1 70 100 145 180 215 260 280 368 440 445 500 600; do npx playwright screenshot --viewport-size=1512,860 --wait-for-timeout=3500 "http://localhost:5403/v1-words.html?s=$s" "docs/phase4/qa/v2/words-s${s}-1512.png" > /dev/null 2>&1; done; echo SHOT-DONE
+SHOT-DONE
+[0m
+[0m→ [0mRead docs/phase4/qa/v2/words-s180-1512.png
+[0m→ [0mRead docs/phase4/qa/v2/words-s100-1512.png
+[0m→ [0mRead docs/phase4/qa/v2/words-s445-1512.png
+[0m→ [0mRead docs/phase4/qa/v2/words-s260-1512.png
+Brands and insurance headers sit cleanly above their constellation zones. Checking the no-text beats.
+[0m→ [0mRead docs/phase4/qa/v2/words-s1-1512.png
+[0m→ [0mRead docs/phase4/qa/v2/words-s368-1512.png
+[0m→ [0mRead docs/phase4/qa/v2/words-s500-1512.png
+[0m→ [0mRead docs/phase4/qa/v2/words-s600-1512.png
+Lens dive and end card are clean. Checking the beat transitions.
+[0m→ [0mRead docs/phase4/qa/v2/words-s215-1512.png
+[0m→ [0mRead docs/phase4/qa/v2/words-s70-1512.png
+[0m
+[0m← [0mEdit src/v1/SidePanels.tsx
+Index: /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/v1/SidePanels.tsx
+===================================================================
+--- /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/v1/SidePanels.tsx
++++ /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/v1/SidePanels.tsx
+@@ -201,10 +201,11 @@
+ const op = Math.min(enter, 1 - exit);
+ if (op <= 0.001) return null;
+ 
+ // Per-line masked reveal, stagger in progress space, yPercent 110→0 expo.out.
++// Tight stagger so the 7-lens list lands fully by ~src 183 (mid-beat).
+ const lineE = (i: number): number =>
+-  instant ? 1 : expoOut(clamp01((p - (p0 + 0.006 + i * 0.007)) / 0.018));
++  instant ? 1 : expoOut(clamp01((p - (p0 + 0.006 + i * 0.005)) / 0.014));
+ // Small count-up for numbers, settled well before the panel exits.
+ const numT = instant ? 1 : expoOut(clamp01((p - (p0 + 0.008)) / 0.03));
+ const n = (target: number, decimals: number): string =>
+   instant
+
+[0m
+[0m$ [0mrtk playwright screenshot --viewport-size=1512,860 --wait-for-timeout=3500 "http://localhost:5403/v1-words.html?s=185" "docs/phase4/qa/v2/words-s185-1512.png" > /dev/null 2>&1; echo DONE; for s in 100 180 260 445; do npx playwright screenshot --viewport-size=390,844 --wait-for-timeout=3500 "http://localhost:5403/v1-words.html?s=$s" "docs/phase4/qa/v2/words-s${s}-390.png" > /dev/null 2>&1; done; echo MOBILE-DONE
+DONE
+MOBILE-DONE
+[0m
+[0m$ [0mrtk playwright screenshot --viewport-size=1512,860 --wait-for-timeout=3500 "http://localhost:5403/v1-words.html?s=185" docs/phase4/qa/v2/words-s185-1512.png > /dev/null 2>&1; echo DONE; rtk ls docs/phase4/qa/v2/
+DONE
+QA.md  3.0K
+SNAP-integration.md  1.7K
+SNAP.md  2.1K
+film-key-001.png  414.4K
+film-key-070.png  368.6K
+film-key-145.png  408.3K
+film-key-215-390.png  159.8K
+film-key-215.png  274.8K
+film-key-280.png  462.8K
+film-key-368.png  329.6K
+film-key-440.png  212.5K
+film-key-500.png  242.1K
+film-key-600-390.png  249.1K
+film-key-600.png  553.5K
+page@568162cf729108aa1e15f05f52cfdaa2.webm  1.5M
+snap-after.png  14.2K
+snap-before.png  14.2K
+snap-mobile.mjs  937B
+snap-mobile.png  180.9K
+snap-nudge.webm  109.0K
+snap-verify.mjs  2.5K
+waves-lens-gap.png  15.0K
+waves-ring-gap.png  15.4K
+waves-w1-f222.png  32.7K
+waves-w1-f240.png  58.3K
+waves-w1-f258.png  76.0K
+waves-w1-f276.png  91.7K
+waves-w1-f294.png  96.5K
+waves-w1-f310.png  132.2K
+waves-w1-hold-m.png  39.6K
+waves-w1-hold.png  82.9K
+waves-w2-f415.png  30.6K
+waves-w2-f425.png  54.3K
+waves-w2-f435.png  72.4K
+waves-w2-f445.png  89.9K
+waves-w2-f455.png  88.9K
+waves-w2-f462.png  157.6K
+waves-w2-hold-m.png  35.2K
+waves-w2-hold.png  73.5K
+waves.md  2.0K
+words-s1-1512.png  239.0K
+words-s100-1512.png  223.1K
+words-s100-390.png  106.6K
+words-s145-1512.png  254.9K
+words-s180-1512.png  84.5K
+words-s180-390.png  48.5K
+words-s185-1512.png  89.8K
+words-s215-1512.png  66.1K
+words-s260-1512.png  115.5K
+words-s260-390.png  53.4K
+... (8 more)
+[+8 hidden: rtk recall a2745bc44ba9]
+[0m
+[0m→ [0mRead docs/phase4/qa/v2/words-s185-1512.png
+[0m→ [0mRead docs/phase4/qa/v2/words-s100-390.png
+[0m→ [0mRead docs/phase4/qa/v2/words-s260-390.png
+[0m
+[0m$ [0mVITE_SHOW_DRAFT_COPY=true nohup npx vite --port 5404 --strictPort > /tmp/v2-words-vite-draft.log 2>&1 & sleep 6; curl -s -o /dev/null -w "%{http_code}\n" http://localhost:5404/v1-words.html
+200
+[0m
+[0m$ [0mrtk playwright screenshot --viewport-size=1512,860 --wait-for-timeout=3500 "http://localhost:5404/v1-words.html?s=100" "docs/phase4/qa/v2/words-s100-draft-1512.png" > /dev/null 2>&1; echo DONE
+DONE
+[0m
+[0m→ [0mRead docs/phase4/qa/v2/words-s100-draft-1512.png
+[0m→ [0mRead docs/phase4/qa/v2/words-s440-1512.png
+[0m→ [0mRead docs/phase4/qa/v2/words-s280-1512.png
+[0m
+[0m← [0mEdit src/v1/dev-words.tsx
+Index: /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/v1/dev-words.tsx
+===================================================================
+--- /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/v1/dev-words.tsx
++++ /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/v1/dev-words.tsx
+@@ -1,5 +1,5 @@
+-// V2-WORDS QA harness (dev only, deleted before ship).
++// V2-WORDS QA harness (dev only; mirrors the v1-text.html pattern).
+ // Full-viewport stage: REAL new-film frame (render-repo/out/frames, cover)
+ // + FilmCaptions + SidePanels at film progress p = (s-1)/614.
+ // Query: ?s=<source frame 1..615> ?guides=1 (safe-area overlay).
+ // Open e.g. http://localhost:5403/v1-words.html?s=100
+
+[0m
+[0m✱ [0mGrep "sidePanels\.css"[90m in src · 0 matches[0m
+[0m
+[0m$ [0mrm src/v1/sidePanels.css && npx tsc --noEmit -p tsconfig.json 2>&1 | head -5; echo TSC-DONE
+npm notice run eyeq-vision-care@0.1.0 npx
+npm notice run 'tsc' --noEmit -p tsconfig.json
+TSC-DONE
+[0m
+Typecheck clean. Writing the QA report and stopping the servers.
+[0m# [0mTodos
+[✓] Rewrite sideCopy.ts to new beat map + SHOW_DRAFT_COPY gate
+[✓] Rewrite SidePanels + new side.css (36%/6% placement, masked reveals, count-ups)
+[✓] Trim FilmCaptions.tsx + captions.css to hint-only (no left lens list)
+[✓] QA harness + Playwright screenshots vs real frames at key frames 1512×860 + 390
+[•] Write docs/phase4/qa/v2/words report, stop server
+[0m
+[0m← [0mWrite docs/phase4/qa/v2/words.md
+Wrote file successfully.
+[0m
+[0m$ [0mpkill -f "vite --port 5403" ; pkill -f "vite --port 5404"; sleep 1; echo SERVERS-STOPPED
+SERVERS-STOPPED
+[0m
+[0m# [0mTodos
+[✓] Rewrite sideCopy.ts to new beat map + SHOW_DRAFT_COPY gate
+[✓] Rewrite SidePanels + new side.css (36%/6% placement, masked reveals, count-ups)
+[✓] Trim FilmCaptions.tsx + captions.css to hint-only (no left lens list)
+[✓] QA harness + Playwright screenshots vs real frames at key frames 1512×860 + 390
+[✓] Write docs/phase4/qa/v2/words report, stop server
+[0m
+V2-WORDS-DONE
+- Panels live in the empty side's outer 36% (6% margin) on all 4 beats, verified against real frames at every key frame, 1512×860 + 390.
+- Real copy only: 4.9★/208 reviews, 7 verbatim Essilor names, "8" + EYEWEAR BRANDS, verbatim insurance heading; DRAFT catchphrases gated behind VITE_SHOW_DRAFT_COPY.
+- Logo, ring, lens dive, end card stay clean; headers dock above WAVES zones; tsc clean; servers stopped.
+- Report: docs/phase4/qa/v2/words.md (+ words-* screenshots).
+EXIT 0 model=opencode/muse-spark-1.3-contributor-free

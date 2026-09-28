@@ -1,0 +1,57 @@
+{
+  "ok": true,
+  "qStep": 0.02,
+  "heroYawDeg": 29,
+  "cameraPos": [
+    0.23999999999999994,
+    0.17000000000000007,
+    0.43
+  ],
+  "cameraForward": [
+    -0.47459662781755024,
+    -0.22741088416257632,
+    -0.8503189581731111
+  ],
+  "armR": {
+    "samples": 313,
+    "minM": 0.07755792092920034,
+    "maxM": 0.07755792092920034,
+    "spreadMm": 0.000017265524759890738,
+    "pass": true
+  },
+  "armL": {
+    "samples": 313,
+    "minM": 0.07716636573631128,
+    "maxM": 0.07716636573631128,
+    "spreadMm": 0.000016977268257889477,
+    "pass": true
+  },
+  "attachR": {
+    "samples": 51,
+    "minM": 0.06982454523124766,
+    "maxM": 0.07005943975348276,
+    "spreadMm": 0.23489452223510177,
+    "pass": true
+  },
+  "attachL": {
+    "samples": 51,
+    "minM": 0.06992816846487888,
+    "maxM": 0.07005943975348276,
+    "spreadMm": 0.13127128860387915,
+    "pass": true
+  },
+  "clearance": {
+    "worstQ": 0.44,
+    "minClearanceMm": 31.816909069221605,
+    "violations": 0,
+    "pass": true
+  },
+  "facing": {
+    "worstQ": 0.86,
+    "worstDot": -0.9722047762905163,
+    "pass": true
+  },
+  "notes": [
+    "cradle bbox (Case_Body+Velvet_Cushion): min -0.0899,-0.0200,-0.0349 max 0.1079,-0.0000,0.0325"
+  ]
+}

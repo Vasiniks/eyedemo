@@ -1,0 +1,465 @@
+{
+ "viewport": {
+  "w": 900,
+  "h": 1000
+ },
+ "scrollY": 0,
+ "docHeight": 3692,
+ "hScrollOverflow": 0,
+ "bodyBg": "rgb(255, 255, 255)",
+ "fontsLoaded": [
+  "Inter",
+  "Barlow Condensed",
+  "GTStandard-M"
+ ],
+ "canvases": 0,
+ "elements": [
+  {
+   "tag": "img",
+   "role": "media",
+   "text": "",
+   "box": {
+    "x": 0,
+    "y": 0,
+    "w": 900,
+    "h": 700
+   },
+   "vw": {
+    "x": 0,
+    "w": 100
+   },
+   "vh": {
+    "y": 0,
+    "h": 70
+   },
+   "area_pct": 70,
+   "z": "0"
+  },
+  {
+   "tag": "img",
+   "role": "media",
+   "text": "",
+   "box": {
+    "x": 0,
+    "y": 713,
+    "w": 549,
+    "h": 549
+   },
+   "vw": {
+    "x": 0,
+    "w": 61
+   },
+   "vh": {
+    "y": 71.3,
+    "h": 54.9
+   },
+   "area_pct": 17.51
+  },
+  {
+   "tag": "video",
+   "role": "media",
+   "text": "",
+   "box": {
+    "x": 0,
+    "y": 713,
+    "w": 549,
+    "h": 549
+   },
+   "vw": {
+    "x": 0,
+    "w": 61
+   },
+   "vh": {
+    "y": 71.3,
+    "h": 54.9
+   },
+   "area_pct": 17.51,
+   "position": "absolute"
+  },
+  {
+   "tag": "img",
+   "role": "media",
+   "text": "",
+   "box": {
+    "x": 40,
+    "y": 11,
+    "w": 174,
+    "h": 81
+   },
+   "vw": {
+    "x": 4.4,
+    "w": 19.3
+   },
+   "vh": {
+    "y": 1.1,
+    "h": 8.1
+   },
+   "area_pct": 1.57
+  },
+  {
+   "tag": "svg",
+   "role": "media",
+   "text": "",
+   "box": {
+    "x": 243,
+    "y": 956,
+    "w": 64,
+    "h": 64
+   },
+   "vw": {
+    "x": 26.9,
+    "w": 7.1
+   },
+   "vh": {
+    "y": 95.6,
+    "h": 6.4
+   },
+   "area_pct": 0.32,
+   "fill": "rgb(255, 255, 255)"
+  },
+  {
+   "tag": "svg",
+   "role": "media",
+   "text": "",
+   "box": {
+    "x": 831,
+    "y": 43,
+    "w": 15,
+    "h": 17
+   },
+   "vw": {
+    "x": 92.3,
+    "w": 1.7
+   },
+   "vh": {
+    "y": 4.3,
+    "h": 1.7
+   },
+   "area_pct": 0.03,
+   "fill": "rgb(255, 255, 255)"
+  },
+  {
+   "tag": "h1",
+   "role": "text",
+   "text": "From Eye Exams to Everyday Style.",
+   "box": {
+    "x": 40,
+    "y": 305,
+    "w": 279,
+    "h": 130
+   },
+   "vw": {
+    "x": 4.4,
+    "w": 31
+   },
+   "vh": {
+    "y": 30.5,
+    "h": 13
+   },
+   "area_pct": 4.01,
+   "font": {
+    "family": "Barlow Condensed",
+    "size": 43.2,
+    "weight": "600",
+    "lh": "43.2px",
+    "ls": "normal",
+    "transform": "uppercase",
+    "color": "rgb(0, 0, 0)",
+    "align": "left"
+   }
+  },
+  {
+   "tag": "p",
+   "role": "text",
+   "text": "At EyeQ Vision Care, our patients are at the heart of everyt",
+   "box": {
+    "x": 583,
+    "y": 879,
+    "w": 289,
+    "h": 216
+   },
+   "vw": {
+    "x": 64.8,
+    "w": 32.1
+   },
+   "vh": {
+    "y": 87.9,
+    "h": 21.6
+   },
+   "area_pct": 3.87,
+   "font": {
+    "family": "Inter",
+    "size": 14,
+    "weight": "400",
+    "lh": "19.6px",
+    "ls": "normal",
+    "transform": "none",
+    "color": "rgb(0, 0, 0)",
+    "align": "left"
+   }
+  },
+  {
+   "tag": "p",
+   "role": "text",
+   "text": "Welcome to . Since opening our doors in 2018, we have proudl",
+   "box": {
+    "x": 583,
+    "y": 767,
+    "w": 289,
+    "h": 98
+   },
+   "vw": {
+    "x": 64.8,
+    "w": 32.1
+   },
+   "vh": {
+    "y": 76.7,
+    "h": 9.8
+   },
+   "area_pct": 3.15,
+   "font": {
+    "family": "Inter",
+    "size": 14,
+    "weight": "400",
+    "lh": "19.6px",
+    "ls": "normal",
+    "transform": "none",
+    "color": "rgb(0, 0, 0)",
+    "align": "left"
+   }
+  },
+  {
+   "tag": "a",
+   "role": "text",
+   "text": "Book Your Eye Exam Today!",
+   "box": {
+    "x": 40,
+    "y": 447,
+    "w": 191,
+    "h": 52
+   },
+   "vw": {
+    "x": 4.4,
+    "w": 21.2
+   },
+   "vh": {
+    "y": 44.6,
+    "h": 5.2
+   },
+   "area_pct": 1.09,
+   "font": {
+    "family": "Barlow Condensed",
+    "size": 14,
+    "weight": "400",
+    "lh": "19.6px",
+    "ls": "normal",
+    "transform": "uppercase",
+    "color": "rgb(255, 255, 255)",
+    "align": "center"
+   },
+   "bg": {
+    "color": "rgb(0, 0, 0)"
+   }
+  },
+  {
+   "tag": "h2",
+   "role": "text",
+   "text": "About Us",
+   "box": {
+    "x": 583,
+    "y": 729,
+    "w": 82,
+    "h": 26
+   },
+   "vw": {
+    "x": 64.8,
+    "w": 9.1
+   },
+   "vh": {
+    "y": 72.9,
+    "h": 2.6
+   },
+   "area_pct": 0.24,
+   "font": {
+    "family": "Barlow Condensed",
+    "size": 24,
+    "weight": "600",
+    "lh": "26.4px",
+    "ls": "normal",
+    "transform": "uppercase",
+    "color": "rgb(0, 0, 0)",
+    "align": "left"
+   }
+  },
+  {
+   "tag": "span",
+   "role": "text",
+   "text": "Services",
+   "box": {
+    "x": 279,
+    "y": 37,
+    "w": 80,
+    "h": 30
+   },
+   "vw": {
+    "x": 30.9,
+    "w": 8.9
+   },
+   "vh": {
+    "y": 3.7,
+    "h": 3
+   },
+   "area_pct": 0.27,
+   "font": {
+    "family": "Barlow Condensed",
+    "size": 18,
+    "weight": "600",
+    "lh": "30.0857px",
+    "ls": "normal",
+    "transform": "uppercase",
+    "color": "rgba(255, 255, 255, 0.8)",
+    "align": "start"
+   }
+  },
+  {
+   "tag": "span",
+   "role": "text",
+   "text": "Contact",
+   "box": {
+    "x": 359,
+    "y": 37,
+    "w": 77,
+    "h": 30
+   },
+   "vw": {
+    "x": 39.9,
+    "w": 8.6
+   },
+   "vh": {
+    "y": 3.7,
+    "h": 3
+   },
+   "area_pct": 0.26,
+   "font": {
+    "family": "Barlow Condensed",
+    "size": 18,
+    "weight": "600",
+    "lh": "30.0857px",
+    "ls": "normal",
+    "transform": "uppercase",
+    "color": "rgba(255, 255, 255, 0.8)",
+    "align": "start"
+   }
+  },
+  {
+   "tag": "span",
+   "role": "text",
+   "text": "Home",
+   "box": {
+    "x": 224,
+    "y": 37,
+    "w": 55,
+    "h": 30
+   },
+   "vw": {
+    "x": 24.9,
+    "w": 6.1
+   },
+   "vh": {
+    "y": 3.7,
+    "h": 3
+   },
+   "area_pct": 0.18,
+   "font": {
+    "family": "Barlow Condensed",
+    "size": 18,
+    "weight": "600",
+    "lh": "30.0857px",
+    "ls": "normal",
+    "transform": "uppercase",
+    "color": "rgb(255, 255, 255)",
+    "align": "start"
+   }
+  },
+  {
+   "tag": "strong",
+   "role": "text",
+   "text": "EyeQ Vision Care",
+   "box": {
+    "x": 665,
+    "y": 768,
+    "w": 118,
+    "h": 17
+   },
+   "vw": {
+    "x": 73.9,
+    "w": 13.1
+   },
+   "vh": {
+    "y": 76.8,
+    "h": 1.7
+   },
+   "area_pct": 0.22,
+   "font": {
+    "family": "Inter",
+    "size": 14,
+    "weight": "700",
+    "lh": "19.6px",
+    "ls": "normal",
+    "transform": "none",
+    "color": "rgb(0, 0, 0)",
+    "align": "left"
+   }
+  },
+  {
+   "tag": "div",
+   "role": "box",
+   "text": "",
+   "box": {
+    "x": 0,
+    "y": 0,
+    "w": 900,
+    "h": 700
+   },
+   "vw": {
+    "x": 0,
+    "w": 100
+   },
+   "vh": {
+    "y": 0,
+    "h": 70
+   },
+   "area_pct": 70,
+   "bg": {
+    "color": "rgb(255, 255, 255)"
+   }
+  },
+  {
+   "tag": "div",
+   "role": "box",
+   "text": "",
+   "box": {
+    "x": 0,
+    "y": 701,
+    "w": 900,
+    "h": 573
+   },
+   "vw": {
+    "x": 0,
+    "w": 100
+   },
+   "vh": {
+    "y": 70.1,
+    "h": 57.3
+   },
+   "area_pct": 29.9,
+   "bg": {
+    "color": "rgb(255, 255, 255)"
+   },
+   "z": "-2",
+   "position": "absolute"
+  }
+ ],
+ "url": "https://eyeqoptical.ca/",
+ "errors": []
+}

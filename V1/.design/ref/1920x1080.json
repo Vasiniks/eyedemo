@@ -1,0 +1,326 @@
+{
+ "viewport": {
+  "w": 1920,
+  "h": 1080
+ },
+ "scrollY": 0,
+ "docHeight": 1080,
+ "hScrollOverflow": 0,
+ "bodyBg": "rgb(255, 255, 255)",
+ "fontsLoaded": [
+  "Inter",
+  "Barlow Condensed",
+  "GTStandard-M"
+ ],
+ "canvases": 0,
+ "elements": [
+  {
+   "tag": "img",
+   "role": "media",
+   "text": "",
+   "box": {
+    "x": 0,
+    "y": 0,
+    "w": 1920,
+    "h": 864
+   },
+   "vw": {
+    "x": 0,
+    "w": 100
+   },
+   "vh": {
+    "y": 0,
+    "h": 80
+   },
+   "area_pct": 80,
+   "z": "0"
+  },
+  {
+   "tag": "img",
+   "role": "media",
+   "text": "",
+   "box": {
+    "x": 0,
+    "y": 865,
+    "w": 1171,
+    "h": 1171
+   },
+   "vw": {
+    "x": 0,
+    "w": 61
+   },
+   "vh": {
+    "y": 80.1,
+    "h": 108.4
+   },
+   "area_pct": 12.14
+  },
+  {
+   "tag": "video",
+   "role": "media",
+   "text": "",
+   "box": {
+    "x": 0,
+    "y": 865,
+    "w": 1171,
+    "h": 1171
+   },
+   "vw": {
+    "x": 0,
+    "w": 61
+   },
+   "vh": {
+    "y": 80.1,
+    "h": 108.4
+   },
+   "area_pct": 12.14,
+   "position": "absolute"
+  },
+  {
+   "tag": "img",
+   "role": "media",
+   "text": "",
+   "box": {
+    "x": 40,
+    "y": 11,
+    "w": 174,
+    "h": 81
+   },
+   "vw": {
+    "x": 2.1,
+    "w": 9.1
+   },
+   "vh": {
+    "y": 1,
+    "h": 7.5
+   },
+   "area_pct": 0.68
+  },
+  {
+   "tag": "svg",
+   "role": "media",
+   "text": "",
+   "box": {
+    "x": 1851,
+    "y": 43,
+    "w": 15,
+    "h": 17
+   },
+   "vw": {
+    "x": 96.4,
+    "w": 0.8
+   },
+   "vh": {
+    "y": 4,
+    "h": 1.6
+   },
+   "area_pct": 0.01,
+   "fill": "rgb(255, 255, 255)"
+  },
+  {
+   "tag": "h1",
+   "role": "text",
+   "text": "From Eye Exams to Everyday Style.",
+   "box": {
+    "x": 240,
+    "y": 404,
+    "w": 490,
+    "h": 96
+   },
+   "vw": {
+    "x": 12.5,
+    "w": 25.5
+   },
+   "vh": {
+    "y": 37.4,
+    "h": 8.9
+   },
+   "area_pct": 2.27,
+   "font": {
+    "family": "Barlow Condensed",
+    "size": 48,
+    "weight": "600",
+    "lh": "48px",
+    "ls": "normal",
+    "transform": "uppercase",
+    "color": "rgb(0, 0, 0)",
+    "align": "left"
+   }
+  },
+  {
+   "tag": "a",
+   "role": "text",
+   "text": "Book Your Eye Exam Today!",
+   "box": {
+    "x": 240,
+    "y": 512,
+    "w": 191,
+    "h": 52
+   },
+   "vw": {
+    "x": 12.5,
+    "w": 9.9
+   },
+   "vh": {
+    "y": 47.4,
+    "h": 4.8
+   },
+   "area_pct": 0.47,
+   "font": {
+    "family": "Barlow Condensed",
+    "size": 14,
+    "weight": "400",
+    "lh": "19.6px",
+    "ls": "normal",
+    "transform": "uppercase",
+    "color": "rgb(255, 255, 255)",
+    "align": "center"
+   },
+   "bg": {
+    "color": "rgb(0, 0, 0)"
+   }
+  },
+  {
+   "tag": "span",
+   "role": "text",
+   "text": "Services",
+   "box": {
+    "x": 279,
+    "y": 37,
+    "w": 80,
+    "h": 30
+   },
+   "vw": {
+    "x": 14.5,
+    "w": 4.2
+   },
+   "vh": {
+    "y": 3.4,
+    "h": 2.8
+   },
+   "area_pct": 0.12,
+   "font": {
+    "family": "Barlow Condensed",
+    "size": 18,
+    "weight": "600",
+    "lh": "30.0857px",
+    "ls": "normal",
+    "transform": "uppercase",
+    "color": "rgba(255, 255, 255, 0.8)",
+    "align": "start"
+   }
+  },
+  {
+   "tag": "span",
+   "role": "text",
+   "text": "Contact",
+   "box": {
+    "x": 359,
+    "y": 37,
+    "w": 77,
+    "h": 30
+   },
+   "vw": {
+    "x": 18.7,
+    "w": 4
+   },
+   "vh": {
+    "y": 3.4,
+    "h": 2.8
+   },
+   "area_pct": 0.11,
+   "font": {
+    "family": "Barlow Condensed",
+    "size": 18,
+    "weight": "600",
+    "lh": "30.0857px",
+    "ls": "normal",
+    "transform": "uppercase",
+    "color": "rgba(255, 255, 255, 0.8)",
+    "align": "start"
+   }
+  },
+  {
+   "tag": "span",
+   "role": "text",
+   "text": "Home",
+   "box": {
+    "x": 224,
+    "y": 37,
+    "w": 55,
+    "h": 30
+   },
+   "vw": {
+    "x": 11.7,
+    "w": 2.8
+   },
+   "vh": {
+    "y": 3.4,
+    "h": 2.8
+   },
+   "area_pct": 0.08,
+   "font": {
+    "family": "Barlow Condensed",
+    "size": 18,
+    "weight": "600",
+    "lh": "30.0857px",
+    "ls": "normal",
+    "transform": "uppercase",
+    "color": "rgb(255, 255, 255)",
+    "align": "start"
+   }
+  },
+  {
+   "tag": "div",
+   "role": "box",
+   "text": "",
+   "box": {
+    "x": 0,
+    "y": 0,
+    "w": 1920,
+    "h": 864
+   },
+   "vw": {
+    "x": 0,
+    "w": 100
+   },
+   "vh": {
+    "y": 0,
+    "h": 80
+   },
+   "area_pct": 80,
+   "bg": {
+    "color": "rgb(255, 255, 255)"
+   }
+  },
+  {
+   "tag": "div",
+   "role": "box",
+   "text": "",
+   "box": {
+    "x": 0,
+    "y": 865,
+    "w": 1920,
+    "h": 1171
+   },
+   "vw": {
+    "x": 0,
+    "w": 100
+   },
+   "vh": {
+    "y": 80.1,
+    "h": 108.4
+   },
+   "area_pct": 19.91,
+   "bg": {
+    "color": "rgb(255, 255, 255)"
+   },
+   "z": "-2",
+   "position": "absolute"
+  }
+ ],
+ "url": "https://eyeqoptical.ca/",
+ "errors": [
+  "Failed to load resource: the server responded with a status of 404 ()"
+ ]
+}

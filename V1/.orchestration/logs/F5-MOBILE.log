@@ -1,0 +1,395 @@
+[0m
+> build · muse-spark-1.3-contributor
+[0m
+[0m→ [0mSkill "webapp-testing"
+[0m→ [0mRead src/v1/FilmSequence.tsx
+[0m→ [0mRead .
+[0m→ [0mRead src/v1/frameLoader.ts
+[0m→ [0mRead src/v1/filmCurve.ts
+[0m→ [0mRead docs/phase4/qa/v3
+[0m→ [0mRead package.json
+[0m→ [0mRead playwright.config.ts
+[0m
+[0m← [0mEdit src/v1/FilmSequence.tsx
+Index: /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/v1/FilmSequence.tsx
+===================================================================
+--- /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/v1/FilmSequence.tsx
++++ /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/v1/FilmSequence.tsx
+@@ -103,8 +103,50 @@
+   const c = clamp01(t);
+   return c * c * (3 - 2 * c);
+ };
+ 
++// F5-MOBILE (ID=MOBILE): portrait focal follows the SUBJECT SIDE MAP
++// (source frames): 1–30 centre; 30–145 RIGHT; 145–215 →LEFT; 215–325 LEFT;
++// 325–411 centre; 411–470 RIGHT; 470–615 centre (lens dive then white).
++// Smoothstep interpolation — no jumps. Pure arithmetic, no allocations.
++// Landscape/desktop always 0.5 (unchanged). Right≈0.72, left≈0.28.
++function mobileFocalX(src: number): number {
++  const CENTRE = 0.5;
++  const RIGHT = 0.72;
++  const LEFT = 0.28;
++  if (src <= 30) return CENTRE;
++  if (src < 50) {
++    const t = (src - 30) / 20;
++    const s = t * t * (3 - 2 * t);
++    return CENTRE + (RIGHT - CENTRE) * s;
++  }
++  if (src <= 145) return RIGHT;
++  if (src < 215) {
++    const t = (src - 145) / 70;
++    const s = t * t * (3 - 2 * t);
++    return RIGHT + (LEFT - RIGHT) * s;
++  }
++  if (src <= 325) return LEFT;
++  if (src < 355) {
++    const t = (src - 325) / 30;
++    const s = t * t * (3 - 2 * t);
++    return LEFT + (CENTRE - LEFT) * s;
++  }
++  if (src <= 411) return CENTRE;
++  if (src < 431) {
++    const t = (src - 411) / 20;
++    const s = t * t * (3 - 2 * t);
++    return CENTRE + (RIGHT - CENTRE) * s;
++  }
++  if (src <= 470) return RIGHT;
++  if (src < 500) {
++    const t = (src - 470) / 30;
++    const s = t * t * (3 - 2 * t);
++    return RIGHT + (CENTRE - RIGHT) * s;
++  }
++  return CENTRE;
++}
++
+ function FilmCanvas() {
+   const sectionRef = useRef<HTMLElement>(null);
+   const stageRef = useRef<HTMLDivElement>(null);
+   const canvasRef = useRef<HTMLCanvasElement>(null);
+
+[0m
+[0m← [0mEdit src/v1/FilmSequence.tsx
+Index: /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/v1/FilmSequence.tsx
+===================================================================
+--- /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/v1/FilmSequence.tsx
++++ /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/v1/FilmSequence.tsx
+@@ -174,8 +174,9 @@
+ let inView = true;
+ let io: IntersectionObserver | null = null;
+ let loader: FrameLoader | null = null;
+ let count = 0;
++let sourceTotal = 615;
+ let fw = 16;
+ let fh = 9;
+ let target = 0;
+ let smooth = 0;
+
+[0m
+[0m← [0mEdit src/v1/FilmSequence.tsx
+Index: /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/v1/FilmSequence.tsx
+===================================================================
+--- /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/v1/FilmSequence.tsx
++++ /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/v1/FilmSequence.tsx
+@@ -203,16 +203,17 @@
+ 
+ // Cover-fit blit of one frame; alpha lets two neighbours cross-blend.
+ // focalX 0..1 anchors the crop horizontally (0.5 = centre). Desktop
+ // landscape stays 0.5 (no visual change); portrait phones shift the
+-// window toward the subject side so 390×844 never cuts it.
++// window toward the subject side so 390×844 never cuts it. Any 0..1
++// keeps the crop inside the image for cover-fit — clamp only to 0..1.
+ const blit = (img: Frame, alpha: number, focalX = 0.5) => {
+   const cw = canvas.width;
+   const ch = canvas.height;
+   const s = Math.max(cw / fw, ch / fh);
+   const dw = fw * s;
+   const dh = fh * s;
+-  const fx = Math.min(0.7, Math.max(0.3, focalX));
++  const fx = focalX < 0 ? 0 : focalX > 1 ? 1 : focalX;
+   ctx.globalAlpha = alpha;
+   ctx.drawImage(img, (cw - dw) * fx, (ch - dh) / 2, dw, dh);
+   ctx.globalAlpha = 1;
+ };
+
+[0m
+[0m← [0mEdit src/v1/FilmSequence.tsx
+Index: /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/v1/FilmSequence.tsx
+===================================================================
+--- /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/v1/FilmSequence.tsx
++++ /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/v1/FilmSequence.tsx
+@@ -226,14 +226,19 @@
+ const clamped = clamp01(f) * maxI;
+ const i0 = Math.min(maxI, Math.floor(clamped));
+ const alpha = clamped - i0;
+ const i1 = Math.min(maxI, i0 + 1);
+-// Portrait phones: focal follows the subject side — centre through
+-// the sleeve/takeout beats, drifting right into the right-lens zoom
+-// tail (filmCurve: zoom owns the right lens), clamped so the subject
+-// is never cropped out at 390×844.
++// F5-MOBILE: portrait focal follows the SUBJECT SIDE MAP via the
++// current source frame (1-based): 1–30 centre; 30–145 RIGHT;
++// 145–215 →LEFT; 215–325 LEFT; 325–411 centre; 411–470 RIGHT;
++// 470–615 centre. Smooth interpolation (no jumps). Landscape 0.5.
++// Pure arithmetic per frame, no allocations.
+ const portrait = ch > cw;
+-const focalX = portrait ? 0.5 + 0.08 * smooth : 0.5;
++let focalX = 0.5;
++if (portrait) {
++  const src = 1 + clamp01(f) * (sourceTotal - 1);
++  focalX = mobileFocalX(src);
++}
+ if (fast) {
+   // High velocity: single drawImage (nearest), no cross-blend.
+   const ni = alpha < 0.5 ? i0 : i1;
+   const n = loader.get(ni) ?? loader.nearest(ni)?.frame ?? null;
+
+[0m
+[0m← [0mEdit src/v1/FilmSequence.tsx
+Index: /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/v1/FilmSequence.tsx
+===================================================================
+--- /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/v1/FilmSequence.tsx
++++ /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/v1/FilmSequence.tsx
+@@ -322,8 +322,9 @@
+ if (cancelled) return;
+ const tier = pickTier();
+ const size = tierSize(m, tier);
+ count = m.count;
++sourceTotal = Math.max(2, Math.floor(m.sourceFrames ?? 615));
+ fw = size.w;
+ fh = size.h;
+ 
+ loader = new FrameLoader(m, tier);
+
+[0m
+[0m→ [0mRead qa-v3-probe.mjs
+[0m→ [0mRead vite.config.ts
+[0m→ [0mRead docs/phase4/qa/v3/snap-probe.mjs
+[0m
+[0m$ [0mnpx tsc --noEmit 2>&1 | head -n 50; echo TSC_EXIT:$?
+npm notice run eyeq-vision-care@0.1.0 npx
+npm notice run 'tsc' --noEmit
+TSC_EXIT:0
+[0m
+[0m$ [0mrtk ls docs/phase4/qa/v3/*.mjs | head; rtk ls src/v1/*.ts* | head -n 20; cat index.html | head -n 30
+docs/phase4/qa/v3/photos-qa.mjs  1.9K
+docs/phase4/qa/v3/scroll-verify.mjs  4.5K
+docs/phase4/qa/v3/scroll-video.mjs  2.6K
+docs/phase4/qa/v3/snap-probe.mjs  738B
+src/v1/App.tsx  3.2K
+src/v1/BrandWaves.tsx  11.3K
+src/v1/FilmCaptions.tsx  1.8K
+src/v1/FilmSequence.tsx  18.5K
+src/v1/SidePanels.tsx  8.1K
+src/v1/dev-text.tsx  1.7K
+src/v1/dev-waves.tsx  2.4K
+src/v1/dev-words.tsx  3.4K
+src/v1/filmCurve.ts  13.4K
+src/v1/frameLoader.ts  11.9K
+src/v1/lenis.ts  5.2K
+src/v1/main.tsx  620B
+src/v1/progress.ts  3.4K
+src/v1/sideCopy.ts  4.7K
+src/v1/snap.ts  6.2K
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="EyeQ Vision Care — 2-227 Vodden St East, Brampton, ON. Eye exams, prescription fittings, high-definition lenses." />
+    <meta name="theme-color" content="#050607" />
+    <style>html{background:#050607}</style>
+    <link rel="preload" href="/fonts/fraunces-var.woff2" as="font" type="font/woff2" crossorigin />
+    <!-- MAIN lane: same first-paint contract as v1.html (loader blocks on it). -->
+    <link rel="preload" href="/v1film/manifest.json" as="fetch" crossorigin />
+    <title>EyeQ Vision Care — Brampton, ON</title>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>
+[0m
+[0m→ [0mRead docs/phase4/qa/v3/scroll-verify.mjs
+[0m
+[0m$ [0mpython3 -c "
+BEATS=[('birdseye',1,30,0.047,'linear'),('tilt',30,70,0.064,'power2'),('takeout',70,145,0.120,'linear'),('expand',145,215,0.112,'power2'),('heroHold',215,235,0.030,'linear'),('spin',235,325,0.144,'power3'),('spinHold',325,325,0.010,'linear'),('burst',325,350,0.040,'expo'),('ring',350,386,0.058,'linear'),('collapse',386,411,0.040,'power3'),('sweep',411,470,0.095,'power3'),('sweepHold',470,470,0.008,'linear'),('zoom',470,533,0.101,'expo'),('dissolve',533,560,0.043,'power2'),('endcard',560,615,0.088,'linear')]
+def ease(n,t):
+    import math
+    if n=='linear': return t
+    if n=='power2': return 2*t*t if t<0.5 else 1-pow(-2*t+2,2)/2
+    if n=='power3': return 4*t*t*t if t<0.5 else 1-pow(-2*t+2,3)/2
+    if n=='expo':
+        import math
+        if t<=0: return 0
+        if t>=1: return 1
+        return pow(2,20*t-10)/2 if t<0.5 else (2-pow(2,-20*t+10))/2
+def src2film(s): return (s-1)/614
+total=sum(b[3] for b in BEATS)
+# build segs
+segs=[]; sc=0
+for name,s0,s1,sh,e in BEATS:
+    share=sh/total
+    segs.append((name,src2film(s0),src2film(s1),sc,sc+share,e))
+    sc+=share
+segs[-1]=(segs[-1][0],segs[-1][1],segs[-1][2],1,1,segs[-1][5]) if False else (segs[-1][0],segs[-1][1],segs[-1][2],segs[-1][3],1,segs[-1][5])
+def film2scroll(f):
+    for name,f0,f1,s0,s1,e in segs:
+        lo=min(f0,f1); hi=max(f0,f1)
+        if lo-1e-9<=f<=hi+1e-9:
+            if hi-lo<1e-12: return s0
+            tgt=(f-f0)/(f1-f0)
+            a,b=0,1
+            for _ in range(24):
+                m=(a+b)/2
+                if ease(e,m)<tgt: a=m
+                else: b=m
+            return s0+((a+b)/2)*(s1-s0)
+    return 0 if f<=0 else 1
+for s in [1,70,145,215,280,368,440,500,600]:
+    print(s, round(film2scroll(src2film(s)),5))
+"
+
+1 0.0
+70 0.111
+145 0.231
+215 0.343
+280 0.445
+368 0.596
+440 0.71223
+500 0.81814
+600 0.976
+[0m
+[0m$ [0mls v1.html index.html 2>&1; ps aux | grep -i "vite.*5709" | grep -v grep || echo "no 5709"; (nohup npx vite --port 5709 --strictPort > /tmp/vite-5709.log 2>&1 & echo $!)
+index.html
+v1.html
+no 5709
+20305
+[0m
+[0m$ [0msleep 4; cat /tmp/vite-5709.log | tail -n 20; rtk curl -s -o /dev/null -w "%{http_code}" http://localhost:5709/; echo " root"; rtk curl -s -o /dev/null -w "%{http_code}" http://localhost:5709/v1.html; echo " v1"
+FAILED: curl 000
+ root
+FAILED: curl 000
+ v1
+[0m
+[0m$ [0mrtk read /tmp/vite-5709.log; ps aux | grep vite | grep -v grep | head
+admin            13495  27.4  1.2 509327936 197456   ??  RN   11:17AM   0:44.38 opencode run -m meta/muse-spark-1.3-contributor --auto --dir /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1 --title FINALQA Final QA for the EyeQ site, READ-ONLY (edit only docs/phase4/qa/v3/FINAL-QA.md + your scratch scripts). TIME BOX 10 min, fan out with the task tool. ID=FINALQA (port 5710). Serve with 'npx vite --port 5710 --strictPort' and test '/' (the homepage is now the red-velvet film).\012Priority order: (1) film scroll FLUIDITY + speed on 1512×860 (Chrome performance trace of a full scroll: frame p50/p95, long tasks, dropped frames; frames never blank; fast flick still shows every key beat ≥250 ms), (2) 390×844 mobile (subject in frame at key frames, smooth), (3) visual polish (words only in empty sides, constellations, rails down the page + fade before footer, map loaded, NO pause buttons, NO invented captions), (4) console errors, Lighthouse perf mobile+desktop.\012Other agents are finishing small fixes right now (pause buttons, photo captions, mobile crop, frame re-encode) — note their state; re-check those 4 items once at the end of your time box. Rank remaining issues P0/P1 with exact file + fix. End with FINALQA-DONE.
+admin            16898   3.2  0.2 445722544  39952   ??  SN   11:19AM   0:04.31 node /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/node_modules/.bin/vite --port 5173
+admin            20305   3.2  0.4 436242528  65824   ??  SN   11:22AM   0:00.60 npm exec vite --port 5709 --strictPort     
+admin            17286   2.7  0.3 445757264  42160   ??  SN   11:19AM   0:07.30 node ./node_modules/.bin/vite --port 5710 --strictPort
+admin            98815   2.4  0.2 445736112  38432   ??  SN   11:03AM   0:06.92 node /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/node_modules/.bin/vite --port 5708 --strictPort
+admin            78415   2.3  0.2 445767392  35664   ??  SN   10:44AM   0:05.82 node /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/node_modules/.bin/vite --port 5705 --strictPort --host 127.0.0.1
+admin            13467   2.3  0.2 445760048  36384   ??  SN   10:11AM   0:21.35 node /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/node_modules/.bin/vite --port 5501 --strictPort
+admin            44536   2.2  0.2 445731648  39280   ??  SN   10:21AM   0:32.96 node /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/node_modules/.bin/vite --port 5505 --strictPort
+admin            69381   2.2  0.2 445731344  35440   ??  SN   10:37AM   0:05.74 node /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/node_modules/.bin/vite --port 5602 --strictPort
+admin            78080   2.0  0.2 445735568  33360   ??  SN   10:04AM   0:14.52 node /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/node_modules/.bin/vite --port 5503 --strictPort
+[0m
+[0m$ [0mrtk read /tmp/vite-5709.log; echo ---; rtk curl -s -o /dev/null -w "%{http_code}\n" http://localhost:5709/ || true; rtk curl -s -o /dev/null -w "%{http_code}\n" http://127.0.0.1:5709/ || true
+npm notice run eyeq-vision-care@0.1.0 npx
+npm notice run 'vite' --port 5709 --strictPort
+
+  VITE v8.3.1  ready in 7907 ms
+
+  ➜  Local:   http://localhost:5709/
+  ➜  Network: use --host to expose
+---
+200
+FAILED: curl 000
+[0m
+[0m$ [0mcat /tmp/vite-5709.log | tail -n 5; rtk curl -s -o /dev/null -w "%{http_code}\n" http://localhost:5709/
+VITE v8.3.1  ready in 7907 ms
+
+  ➜  Local:   http://localhost:5709/
+  ➜  Network: use --host to expose
+200
+[0m
+[0m← [0mWrite docs/phase4/qa/v3/f5-mobile-qa.mjs
+Wrote file successfully.
+[0m
+[0m← [0mWrite /tmp/f5-mobile.mjs
+Wrote file successfully.
+[0m
+[0m$ [0mnode /tmp/f5-mobile.mjs 2>&1 | tail -n 30
+node:internal/modules/package_json_reader:301
+  throw new ERR_MODULE_NOT_FOUND(packageName, fileURLToPath(base), null);
+        ^
+
+Error [ERR_MODULE_NOT_FOUND]: Cannot find package 'playwright' imported from /private/tmp/f5-mobile.mjs
+    at Object.getPackageJSONURL (node:internal/modules/package_json_reader:301:9)
+    at packageResolve (node:internal/modules/esm/resolve:768:81)
+    at moduleResolve (node:internal/modules/esm/resolve:859:18)
+    at defaultResolve (node:internal/modules/esm/resolve:992:11)
+    at #cachedDefaultResolve (node:internal/modules/esm/loader:701:20)
+    at #resolveAndMaybeBlockOnLoaderThread (node:internal/modules/esm/loader:721:38)
+    at ModuleLoader.resolveSync (node:internal/modules/esm/loader:759:56)
+    at #resolve (node:internal/modules/esm/loader:683:17)
+    at ModuleLoader.getOrCreateModuleJob (node:internal/modules/esm/loader:603:35)
+    at ModuleJob.syncLink (node:internal/modules/esm/module_job:163:33) {
+  code: 'ERR_MODULE_NOT_FOUND'
+}
+
+Node.js v24.18.0
+[0m
+[0m← [0mWrite f5-mobile-tmp.mjs
+Wrote file successfully.
+[0m
+[0m$ [0mnode f5-mobile-tmp.mjs 2>&1 | tail -n 30
+scrollFracs=[0,0.111,0.231,0.343,0.445,0.596,0.71223,0.81814,0.976]
+geo={"top":0,"dist":4389}
+mobile-1: target=0 final=0 drift=0
+mobile-70: target=487 final=487 drift=0
+mobile-145: target=1014 final=1014 drift=0
+mobile-215: target=1505 final=1505 drift=0
+mobile-280: target=1953 final=1953 drift=0
+mobile-368: target=2616 final=2616 drift=0
+mobile-440: target=3126 final=3126 drift=0
+mobile-500: target=3591 final=3591 drift=0
+mobile-600: target=4284 final=4284 drift=0
+F5-MOBILE-SHOTS DONE
+[0m
+[0m→ [0mRead docs/phase4/qa/v3/mobile-70.png
+[0m→ [0mRead docs/phase4/qa/v3/mobile-1.png
+[0m→ [0mRead docs/phase4/qa/v3/mobile-145.png
+[0m→ [0mRead docs/phase4/qa/v3/mobile-215.png
+[0m→ [0mRead docs/phase4/qa/v3/mobile-368.png
+[0m→ [0mRead docs/phase4/qa/v3/mobile-280.png
+[0m→ [0mRead docs/phase4/qa/v3/mobile-600.png
+[0m→ [0mRead docs/phase4/qa/v3/mobile-440.png
+[0m→ [0mRead docs/phase4/qa/v3/mobile-500.png
+[0m
+[0m← [0mWrite f5-desk-tmp.mjs
+Wrote file successfully.
+[0m
+[0m$ [0mnode f5-desk-tmp.mjs 2>&1 | tail -n 5
+desk-70 y=668
+desk-215 y=2065
+DESK DONE
+[0m
+[0m→ [0mRead docs/phase4/qa/v3/desk-215.png
+[0m
+[0m$ [0mrm -f f5-mobile-tmp.mjs f5-desk-tmp.mjs docs/phase4/qa/v3/f5-mobile-qa.mjs docs/phase4/qa/v3/desk-70.png docs/phase4/qa/v3/desk-215.png /tmp/f5-mobile.mjs && rtk ls docs/phase4/qa/v3/mobile-*.png && npx tsc --noEmit 2>&1 | head -n 20; echo TSC_EXIT:$?
+docs/phase4/qa/v3/mobile-1.png  720.7K
+docs/phase4/qa/v3/mobile-145.png  645.5K
+docs/phase4/qa/v3/mobile-215.png  521.9K
+docs/phase4/qa/v3/mobile-280.png  719.7K
+docs/phase4/qa/v3/mobile-368.png  616.9K
+docs/phase4/qa/v3/mobile-440.png  702.1K
+docs/phase4/qa/v3/mobile-500.png  568.3K
+docs/phase4/qa/v3/mobile-600.png  805.4K
+docs/phase4/qa/v3/mobile-70.png  685.0K
+npm notice run eyeq-vision-care@0.1.0 npx
+npm notice run 'tsc' --noEmit
+TSC_EXIT:0
+[0m
+[0m← [0mWrite docs/phase4/qa/v3/F5-MOBILE.md
+Wrote file successfully.
+[0m
+F5-MOBILE done. Only `src/v1/FilmSequence.tsx` changed:
+
+- New pure `mobileFocalX(src)` implementing the subject side map (1–30 centre; 30–145 RIGHT 0.72; 145–215 ease → LEFT 0.28; 215–325 LEFT; 325–411 centre; 411–470 RIGHT; 470–615 centre), smoothstep-interpolated, zero allocations.
+- Portrait (`ch > cw`) computes `src = 1 + f·(sourceTotal−1)` from film progress; landscape stays exactly 0.5.
+- Blit clamp widened `[0.3,0.7]` → `[0,1]` so 0.72/0.28 are reachable (any 0..1 is in-bounds for cover-fit).
+
+Verified at 390×844 on :5709 (scroll fracs from shipped `snapKeyScrolls()`, zero drift): all 9 shots `mobile-{1,70,145,215,280,368,440,500,600}.png` looked at — subject fully in frame in each, including sleeve+lens at 145 and full-span hero at 215. Desktop 1512×860 spot-check unchanged. `tsc --noEmit` clean. Wrote `docs/phase4/qa/v3/F5-MOBILE.md`, ending F5-MOBILE-DONE. Scratch QA scripts removed.
+
+F5-MOBILE-DONE
+EXIT 0 model=meta/muse-spark-1.3-contributor

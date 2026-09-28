@@ -1,0 +1,447 @@
+[0m
+> build · muse-spark-1.3-contributor
+[0m
+[0m→ [0mRead docs/00-BRIEF.md
+[0m→ [0mRead docs/research/B-content-inventory.md
+[0m→ [0mRead public/v1film/manifest.json
+[0m→ [0mRead src/components/dom/index.ts
+[0m→ [0mRead src/styles
+[0m✱ [0mGlob "src/styles/*"[90m 4 matches[0m
+[0m→ [0mRead src/styles/tokens.css
+[0m
+[0m$ [0mrtk ls src/v1/ 2>/dev/null; rtk ls docs/phase4/qa/v1/ 2>/dev/null; rtk ls public/web/ 2>/dev/null | head -20
+(empty)
+(empty)
+brands-light/
+insurance-light/
+atlas-brands.json  5.7K
+atlas-brands.png  488.0K
+atlas-insurers.json  5.8K
+atlas-insurers.png  228.8K
+eyeq-logo-header-original.png  81.7K
+eyeq-logo-white.png  35.6K
+eyeq-logo-white@2x.png  35.3K
+[0m
+[0m$ [0mrtk ls; rtk ls src/ 2>/dev/null; cat index.html 2>/dev/null | head -30; cat vite.config.* 2>/dev/null | head -40; cat package.json 2>/dev/null | head -60
+assets/
+blender/
+docs/
+public/
+scripts/
+src/
+test-results/
+dev-C.html  332B
+dev-D.html  451B
+dev-E.html  456B
+dev-F.html  462B
+dev-b.html  441B
+eslint.config.js  725B
+index.html  577B
+package-lock.json  212.0K
+package.json  1.2K
+playwright.config.ts  679B
+tsconfig.app.json  659B
+tsconfig.json  119B
+tsconfig.node.json  587B
+vite.config.ts  325B
+... (2 filtered)
+[+2 hidden: rtk recall 3df683ba0e68]
+__dev__/
+app/
+canvas/
+components/
+data/
+motion/
+routes/
+store/
+styles/
+v1/
+README-LANES.md  3.6K
+main.tsx  798B
+tokens.ts  942B
+vite-env.d.ts  38B
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="EyeQ Vision Care — 2-227 Vodden St East, Brampton, ON. Eye exams, prescription fittings, high-definition lenses." />
+    <link rel="preload" href="/fonts/fraunces-var.woff2" as="font" type="font/woff2" crossorigin />
+    <title>EyeQ Vision Care — Brampton, ON</title>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>
+import { defineConfig } from 'vite'
+import react from '@vitejs/plugin-react'
+
+// EyeQ Vision Care cinematic homepage — Lane A scaffold.
+// Static-host SPA fallback: `public/_redirects` + postbuild copy of
+// index.html -> dist/404.html (see package.json `postbuild`).
+export default defineConfig({
+  plugins: [react()],
+})
+{
+  "name": "eyeq-vision-care",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc -b && vite build",
+    "postbuild": "cp dist/index.html dist/404.html",
+    "preview": "vite preview",
+    "lint": "eslint src --max-warnings 0",
+    "test:e2e": "playwright test"
+  },
+  "dependencies": {
+    "@gsap/react": "2.1.2",
+    "@react-three/drei": "10.7.9",
+    "@react-three/fiber": "9.8.1",
+    "@react-three/postprocessing": "3.1.3",
+    "gsap": "3.15.0",
+    "lenis": "1.3.26",
+    "maath": "0.10.8",
+    "postprocessing": "6.39.5",
+    "react": "19.3.0",
+    "react-dom": "19.3.0",
+    "react-router-dom": "7.18.4",
+    "three": "0.186.1",
+    "zustand": "5.0.15"
+  },
+  "devDependencies": {
+    "@eslint/js": "9.39.1",
+    "@gltf-transform/cli": "4.5.0",
+    "@playwright/test": "1.63.0",
+    "@types/react": "19.3.0",
+    "@types/react-dom": "19.3.0",
+    "@types/three": "0.186.0",
+    "@vitejs/plugin-react": "6.1.1",
+    "eslint": "9.39.1",
+    "eslint-plugin-react-hooks": "7.0.1",
+    "eslint-plugin-react-refresh": "0.4.24",
+    "globals": "16.5.0",
+    "typescript": "5.9.2",
+    "typescript-eslint": "8.50.0",
+    "vite": "8.3.1"
+  }
+}
+[0m
+[0m$ [0mrtk read dev-b.html; echo ---; rtk ls src/v1/; echo ---; rtk ls src/__dev__/ 2>/dev/null
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="EyeQ Vision Care — Lane B isolated film harness (dev only)." />
+    <title>EyeQ Vision Care — Lane B film harness</title>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/__dev__/b/main.tsx"></script>
+  </body>
+</html>
+---
+(empty)
+---
+C/
+D/
+E/
+F/
+b/
+[0m
+[0m$ [0mrtk ls src/__dev__/b/; rtk read src/__dev__/b/main.tsx 2>/dev/null | head -50; echo ===; rtk read dev-E.html
+StandIns.tsx  4.7K
+dev-b.css  1.6K
+main.tsx  3.5K
+// EyeQ Vision Care — Lane B isolated dev entry (owns this file + dev-b.html).
+// Suite: pin shell (#film-pin, same contract id) + FilmCanvas on box
+// stand-ins + veil + HUD + white-stub. Proves steps 3/4/9 without touching
+// Lane A/E files. Open http://localhost:5102/dev-b.html.
+
+/* eslint-disable react-refresh/only-export-components -- Vite entry point:
+ * components are intentionally local (Hud/FilmDev) and never imported. */
+import { StrictMode, useEffect, useState } from 'react'
+import { createRoot } from 'react-dom/client'
+import { Providers } from '../../app/providers'
+import { FilmCanvas } from '../../components/canvas/FilmCanvas'
+import { WhiteVeil } from '../../components/canvas/LensPortal'
+import { StandInStage } from './StandIns'
+import { BEATS } from '../../motion/chapters'
+import { createFilmTimeline } from '../../motion/masterTimeline'
+import { filmProgress, subscribeFilmProgress } from '../../motion/progress'
+import { prefersReducedMotion } from '../../motion/lenis'
+import { useFilmStore } from '../../store/useFilmStore'
+import './dev-b.css'
+
+/** DRAFT chapter eyebrows (COPY-DRAFTS.md D1/D3/D5/D6/D8/D10 — client sign-off). */
+const DRAFT_EYEBROWS: Record<string, string> = {
+  B1: 'DRAFT: 01 — Dark room',
+  B2: 'DRAFT: 02 — Velvet',
+  B3: 'DRAFT: 03 — Folded',
+  B4: 'DRAFT: 04 — Rimless, black metal',
+  B5: 'DRAFT: 05 — Lenses',
+  B6: 'DRAFT: Carried in store — eight houses',
+  B7: 'We Accept Most Major Insurance Plans',
+  B8: 'DRAFT: — (geometry leads, no copy)',
+  B9: 'DRAFT: — (handoff, no copy)',
+}
+
+function Hud() {
+  const [snap, setSnap] = useState({ p: 0, beat: filmProgress.beat })
+  useEffect(() => subscribeFilmProgress(() => setSnap({ ...filmProgress })), [])
+  const quality = useFilmStore((s) => s.quality)
+  const jump = (p: number): void => {
+    window.__film?.setProgress(p)
+  }
+  return (
+    <div id="film-hud" data-testid="film-hud">
+      <div>
+        beat <strong>{snap.beat}</strong> · p <strong>{snap.p.toFixed(3)}</strong> · tier{' '}
+        <strong>{quality}</strong>
+      </div>
+      <input
+        type="range"
+        min={0}
+        max={1000}
+zsh:1: == not found
+[0m
+[0m← [0mWrite src/v1/captions.css
+Wrote file successfully.
+[0m
+[0m← [0mWrite src/v1/FilmCaptions.tsx
+Wrote file successfully.
+[0m
+[0m← [0mWrite v1-text.html
+Wrote file successfully.
+[0m
+[0m← [0mEdit src/v1/FilmCaptions.tsx
+Index: /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/v1/FilmCaptions.tsx
+===================================================================
+--- /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/v1/FilmCaptions.tsx
++++ /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/v1/FilmCaptions.tsx
+@@ -79,9 +79,9 @@
+       src="/web/eyeq-logo-white.png"
+       alt=""
+       width={120}
+     />
+-    <div className="v1cap__microcap">EyeQ Vision Care</div>
++    <div className="v1cap__microcap">EYEQ VISION CARE</div>
+     <div className="v1cap__scrollhint" />
+   </div>
+ )}
+ {showB && (
+
+[0m
+[0m← [0mWrite src/v1/dev-text.tsx
+Wrote file successfully.
+[0m
+[0m$ [0mnpx vite --port 5203 --strictPort > /tmp/v1text-dev.log 2>&1 & echo $! > /tmp/v1text-dev.pid; sleep 4; curl -s -o /dev/null -w "%{http_code}" http://localhost:5203/v1-text.html
+200
+[0m
+[0m$ [0mmkdir -p docs/phase4/qa/v1 && cat > /tmp/v1text-shot.mjs <<'EOF'
+import { chromium } from 'playwright';
+const b = await chromium.launch();
+for (const vp of [{w:1440,h:900,name:'desk'},{w:390,h:844,name:'mob'}]) {
+  const pg = await b.newPage({ viewport: { width: vp.w, height: vp.h } });
+  for (const p of ['0.02','0.28','0.34']) {
+    await pg.goto(`http://localhost:5203/v1-text.html?p=${p}`, { waitUntil: 'networkidle' });
+    await pg.waitForTimeout(600);
+    await pg.screenshot({ path: `docs/phase4/qa/v1/text-${p.replace('.','p')}-${vp.name}.png` });
+  }
+  await pg.close();
+}
+await b.close();
+EOF
+node /tmp/v1text-shot.mjs && ls docs/phase4/qa/v1/
+node:internal/modules/package_json_reader:301
+  throw new ERR_MODULE_NOT_FOUND(packageName, fileURLToPath(base), null);
+        ^
+
+Error [ERR_MODULE_NOT_FOUND]: Cannot find package 'playwright' imported from /private/tmp/v1text-shot.mjs
+    at Object.getPackageJSONURL (node:internal/modules/package_json_reader:301:9)
+    at packageResolve (node:internal/modules/esm/resolve:768:81)
+    at moduleResolve (node:internal/modules/esm/resolve:859:18)
+    at defaultResolve (node:internal/modules/esm/resolve:992:11)
+    at #cachedDefaultResolve (node:internal/modules/esm/loader:701:20)
+    at #resolveAndMaybeBlockOnLoaderThread (node:internal/modules/esm/loader:721:38)
+    at ModuleLoader.resolveSync (node:internal/modules/esm/loader:759:56)
+    at #resolve (node:internal/modules/esm/loader:683:17)
+    at ModuleLoader.getOrCreateModuleJob (node:internal/modules/esm/loader:603:35)
+    at ModuleJob.syncLink (node:internal/modules/esm/module_job:163:33) {
+  code: 'ERR_MODULE_NOT_FOUND'
+}
+
+Node.js v24.18.0
+[0m
+[0m$ [0msed -i "s/from 'playwright'/from '@playwright\/test'/" /tmp/v1text-shot.mjs && node /tmp/v1text-shot.mjs && rtk ls docs/phase4/qa/v1/
+sed: 1: "/tmp/v1text-shot.mjs
+": invalid command code v
+[0m
+[0m$ [0mpython3 -c "s=open('/tmp/v1text-shot.mjs').read().replace(\"from 'playwright'\",\"from '@playwright/test'\");open('/tmp/v1text-shot.mjs','w').write(s)" && node /tmp/v1text-shot.mjs && rtk ls docs/phase4/qa/v1/
+node:internal/modules/package_json_reader:301
+  throw new ERR_MODULE_NOT_FOUND(packageName, fileURLToPath(base), null);
+        ^
+
+Error [ERR_MODULE_NOT_FOUND]: Cannot find package '@playwright/test' imported from /private/tmp/v1text-shot.mjs
+    at Object.getPackageJSONURL (node:internal/modules/package_json_reader:301:9)
+    at packageResolve (node:internal/modules/esm/resolve:768:81)
+    at moduleResolve (node:internal/modules/esm/resolve:859:18)
+    at defaultResolve (node:internal/modules/esm/resolve:992:11)
+    at #cachedDefaultResolve (node:internal/modules/esm/loader:701:20)
+    at #resolveAndMaybeBlockOnLoaderThread (node:internal/modules/esm/loader:721:38)
+    at ModuleLoader.resolveSync (node:internal/modules/esm/loader:759:56)
+    at #resolve (node:internal/modules/esm/loader:683:17)
+    at ModuleLoader.getOrCreateModuleJob (node:internal/modules/esm/loader:603:35)
+    at ModuleJob.syncLink (node:internal/modules/esm/module_job:163:33) {
+  code: 'ERR_MODULE_NOT_FOUND'
+}
+
+Node.js v24.18.0
+[0m
+[0m$ [0mcp /tmp/v1text-shot.mjs ./v1text-shot.tmp.mjs && node ./v1text-shot.tmp.mjs; rm -f ./v1text-shot.tmp.mjs; rtk ls docs/phase4/qa/v1/
+text-0p02-desk.png  114.4K
+text-0p02-mob.png  55.1K
+text-0p28-desk.png  114.4K
+text-0p28-mob.png  55.1K
+text-0p34-desk.png  114.4K
+text-0p34-mob.png  55.1K
+[0m
+[0m→ [0mRead docs/phase4/qa/v1/text-0p28-desk.png
+[0m→ [0mRead docs/phase4/qa/v1/text-0p02-desk.png
+[0m
+[0m← [0mEdit src/v1/captions.css
+Index: /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/v1/captions.css
+===================================================================
+--- /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/v1/captions.css
++++ /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/v1/captions.css
+@@ -4,9 +4,9 @@
+  * progress-mapped transforms from FilmCaptions.tsx (pure function of p);
+  * this file owns layout, type, and the scroll-hint line only.
+  * All copy rendered here is verbatim from docs/research/B-content-inventory.md.
+  */
+-@import "../../styles/tokens.css";
++@import "../styles/tokens.css";
+ 
+ .v1cap {
+   position: absolute;
+   inset: 0;
+
+[0m
+[0m$ [0mcp /tmp/v1text-shot.mjs ./v1text-shot.tmp.mjs && node ./v1text-shot.tmp.mjs; rm -f ./v1text-shot.tmp.mjs
+(no output)
+[0m
+[0m→ [0mRead docs/phase4/qa/v1/text-0p02-desk.png
+[0m→ [0mRead docs/phase4/qa/v1/text-0p34-desk.png
+[0m→ [0mRead docs/phase4/qa/v1/text-0p28-desk.png
+[0m→ [0mRead docs/phase4/qa/v1/text-0p34-mob.png
+[0m
+[0m$ [0mnpx tsc --noEmit -p tsconfig.app.json 2>&1 | head -20; echo "tsc-exit:$?"
+npm notice run eyeq-vision-care@0.1.0 npx
+npm notice run 'tsc' --noEmit -p tsconfig.app.json
+src/v1/dev-text.tsx(6,8): error TS2613: Module '"/Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/v1/FilmCaptions"' has no default export. Did you mean to use 'import { FilmCaptions } from "/Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/v1/FilmCaptions"' instead?
+tsc-exit:0
+[0m
+[0m$ [0mrtk grep -n "export" src/v1/FilmCaptions.tsx
+3:export function FilmCaptions({ progress }: { progress: number }) {
+[0m
+[0m← [0mEdit src/v1/FilmCaptions.tsx
+Index: /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/v1/FilmCaptions.tsx
+===================================================================
+--- /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/v1/FilmCaptions.tsx
++++ /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/v1/FilmCaptions.tsx
+@@ -1,7 +1,7 @@
+ // V1-CORE — placeholder owned by another agent (FilmCaptions).
+ // No-op until the real file lands; DO NOT overwrite once it exists.
+-export function FilmCaptions({ progress }: { progress: number }) {
++export default function FilmCaptions({ progress }: { progress: number }) {
+   return (
+     <div
+       className="v1-captions-ph"
+       data-progress={progress.toFixed(3)}
+
+[0m
+[0m$ [0mnpx tsc --noEmit -p tsconfig.app.json 2>&1 | head -20; echo DONE
+npm notice run eyeq-vision-care@0.1.0 npx
+npm notice run 'tsc' --noEmit -p tsconfig.app.json
+src/v1/FilmSequence.tsx(9,10): error TS2614: Module '"./BrandWaves"' has no exported member 'BrandWaves'. Did you mean to use 'import BrandWaves from "./BrandWaves"' instead?
+src/v1/FilmSequence.tsx(10,10): error TS2614: Module '"./FilmCaptions"' has no exported member 'FilmCaptions'. Did you mean to use 'import FilmCaptions from "./FilmCaptions"' instead?
+src/v1/FilmSequence.tsx(244,19): error TS2339: Property 'getAll' does not exist on type 'Ticker'.
+DONE
+[0m
+[0m← [0mEdit src/v1/FilmCaptions.tsx
+Index: /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/v1/FilmCaptions.tsx
+===================================================================
+--- /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/v1/FilmCaptions.tsx
++++ /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/v1/FilmCaptions.tsx
+@@ -1,7 +1,7 @@
+ // V1-CORE — placeholder owned by another agent (FilmCaptions).
+ // No-op until the real file lands; DO NOT overwrite once it exists.
+-export default function FilmCaptions({ progress }: { progress: number }) {
++function FilmCaptions({ progress }: { progress: number }) {
+   return (
+     <div
+       className="v1-captions-ph"
+       data-progress={progress.toFixed(3)}
+
+[0m
+[0m✗ [0mRead src/v1/FilmCaptions.tsx failed[90m [offset=100][0m
+[91m[1mError: [0mOffset 100 is out of range for this file (11 lines)
+[0m→ [0mRead src/v1/FilmCaptions.tsx
+[0m
+[0m$ [0mrtk head -5 src/v1/captions.css; echo ---; rtk head -8 src/v1/dev-text.tsx; echo ---; rtk head -12 v1-text.html
+/* EyeQ Vision Care — V1 TEXT: FilmCaptions overlay styles.
+ * Restrained editorial overlay on the dark film. Bone on black, Fraunces
+ * display + Inter UI (tokens). Masked line reveals are driven by inline
+ * progress-mapped transforms from FilmCaptions.tsx (pure function of p);
+ * this file owns layout, type, and the scroll-hint line only.
+---
+// EyeQ Vision Care — V1 TEXT isolated dev harness (owns this file + v1-text.html).
+// Black stage + scrub slider driving FilmCaptions progress. Open
+// http://localhost:5203/v1-text.html — set ?p=0.28 for a fixed beat.
+import { StrictMode, useState } from 'react';
+import { createRoot } from 'react-dom/client';
+import FilmCaptions from './FilmCaptions';
+
+const initial = (): number => {
+---
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="EyeQ Vision Care — V1 TEXT isolated caption harness (dev only)." />
+    <title>EyeQ Vision Care — V1 TEXT harness</title>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/v1/dev-text.tsx"></script>
+  </body>
+[0m
+[0m← [0mWrite src/v1/FilmCaptions.tsx
+Wrote file successfully.
+[0m
+[0m$ [0mnpx tsc --noEmit -p tsconfig.app.json 2>&1 | grep -v "npm notice" | head -10; echo TSC-DONE; cp /tmp/v1text-shot.mjs ./v1text-shot.tmp.mjs && node ./v1text-shot.tmp.mjs; rm -f ./v1text-shot.tmp.mjs; rtk ls docs/phase4/qa/v1/
+src/v1/FilmSequence.tsx(9,10): error TS2614: Module '"./BrandWaves"' has no exported member 'BrandWaves'. Did you mean to use 'import BrandWaves from "./BrandWaves"' instead?
+TSC-DONE
+text-0p02-desk.png  14.1K
+text-0p02-mob.png  10.5K
+text-0p28-desk.png  28.8K
+text-0p28-mob.png  16.2K
+text-0p34-desk.png  33.8K
+text-0p34-mob.png  21.7K
+[0m
+[0m→ [0mRead docs/phase4/qa/v1/text-0p02-desk.png
+[0m→ [0mRead docs/phase4/qa/v1/text-0p34-desk.png
+[0m
+[0m$ [0mkill $(cat /tmp/v1text-dev.pid) 2>/dev/null; sleep 1; curl -s -o /dev/null -m 3 -w "%{http_code}" http://localhost:5203/v1-text.html || echo " server-stopped"
+000 server-stopped
+[0m
+V1-TEXT-DONE
+- `src/v1/FilmCaptions.tsx` (+`captions.css`, `v1-text.html`, `src/v1/dev-text.tsx`): pure-function-of-progress overlay, default + named export for the FilmSequence integrator.
+- Beats: p0–0.06 bottom-left logo/micro-cap/scroll-hint; p0.24–0.38 left-column verbatim heading + 7 Essilor lenses revealing one-by-one (®/™ at 60%); p0.58–0.70 and p0.72–0.84 render nothing; centre never covered; Fraunces/Inter, Bone on black.
+- QA: 6 screenshots in `docs/phase4/qa/v1/text-*.png` (p 0.02/0.28/0.34 × 1440/390), visually checked; tsc clean for my files (only remaining error is BrandWaves, another agent's).
+- Note: V1-CORE overwrote FilmCaptions.tsx with a placeholder mid-task; I restored the full implementation. Server on 5203 stopped.
+EXIT 0 model=meta/muse-spark-1.3-contributor

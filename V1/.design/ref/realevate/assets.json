@@ -1,0 +1,474 @@
+[
+ {
+  "url": "https://realevate.agency/assets/bythesea-card-cover.avif",
+  "kind": "image",
+  "type": "image/avif",
+  "bytes": 50813
+ },
+ {
+  "url": "https://realevate.agency/fonts/sans-latin.woff2",
+  "kind": "font",
+  "type": "font/woff2",
+  "bytes": 26268,
+  "saved": "assets/font-fonts-sans-latin-6d379bda.woff2"
+ },
+ {
+  "url": "https://realevate.agency/assets/hero-load-visual-400w.avif",
+  "kind": "image",
+  "type": "image/avif",
+  "bytes": 16666
+ },
+ {
+  "url": "https://realevate.agency/assets/urban-living-card-cover.avif",
+  "kind": "image",
+  "type": "image/avif",
+  "bytes": 60184,
+  "saved": "assets/image-assets-urban-living-card-cover-c8e21b58.avif"
+ },
+ {
+  "url": "https://realevate.agency/assets/evergreen-card-cover.avif",
+  "kind": "image",
+  "type": "image/avif",
+  "bytes": 100768,
+  "saved": "assets/image-assets-evergreen-card-cover-7f6515d1.avif"
+ },
+ {
+  "url": "https://realevate.agency/assets/realevate-symbol-navy.svg",
+  "kind": "image",
+  "type": "image/svg+xml",
+  "bytes": 684
+ },
+ {
+  "url": "https://realevate.agency/assets/realevate-blue-logo.svg",
+  "kind": "image",
+  "type": "image/svg+xml",
+  "bytes": 842
+ },
+ {
+  "url": "https://realevate.agency/assets/hero-load-visual.avif",
+  "kind": "image",
+  "type": "image/avif",
+  "bytes": 238872,
+  "saved": "assets/image-assets-hero-load-visual-482990c5.avif"
+ },
+ {
+  "url": "https://realevate.agency/assets/rare-gems-card-cover.avif",
+  "kind": "image",
+  "type": "image/avif",
+  "bytes": 8365
+ },
+ {
+  "url": "https://realevate.agency/assets/realevate-symbol-white.svg",
+  "kind": "image",
+  "type": "image/svg+xml",
+  "bytes": 677
+ },
+ {
+  "url": "https://realevate.agency/fonts/extended.woff2",
+  "kind": "font",
+  "type": "font/woff2",
+  "bytes": 25464,
+  "saved": "assets/font-fonts-extended-e21864b2.woff2"
+ },
+ {
+  "url": "https://realevate.agency/fonts/serif.woff2",
+  "kind": "font",
+  "type": "font/woff2",
+  "bytes": 45252,
+  "saved": "assets/font-fonts-serif-6122821f.woff2"
+ },
+ {
+  "url": "https://realevate.agency/images/favicon.png",
+  "kind": "image",
+  "type": "image/png",
+  "bytes": 59547
+ },
+ {
+  "url": "https://www.google.ca/ads/ga-audiences?v=1&t=sr&slf_rd=1&_r=4&ngs=1&ibt=1&tid=G-XHTK8R6WEK&cid=1958886692.1790549354&gtm=45je69n1v9260201569za208zd9260201569xf1&rcb=8&aip=1&dma=0&gcd=13l3l3l3l1l1&npa=0&frm=0&tag_exp=115938466~115938469~118897920~118897930~120213116~120385422~120469145~120469153~121280971&z=806434719",
+  "kind": "image",
+  "type": "image/gif",
+  "bytes": 42
+ },
+ {
+  "url": "https://realevate.agency/assets/women-montenegro.avif",
+  "kind": "image",
+  "type": "image/avif",
+  "bytes": 154357,
+  "saved": "assets/image-assets-women-montenegro-bd3de19a.avif"
+ },
+ {
+  "url": "https://realevate.agency/assets/hero-load-visual-828w.avif",
+  "kind": "image",
+  "type": "image/avif",
+  "bytes": 33700
+ },
+ {
+  "url": "https://realevate.agency/assets/hero-load-visual-1440w.avif",
+  "kind": "image",
+  "type": "image/avif",
+  "bytes": 129860,
+  "saved": "assets/image-assets-hero-load-visual-1440w-1ff97a92.avif"
+ },
+ {
+  "url": "https://realevate.agency/assets/selection/bythesea/slider/BTS-1_converted.avif",
+  "kind": "image",
+  "type": "image/avif",
+  "bytes": 195753,
+  "saved": "assets/image-slider-BTS-1_converted-e715ea9e.avif"
+ },
+ {
+  "url": "https://realevate.agency/assets/selection/evergreen/slider/ever-1_converted.avif",
+  "kind": "image",
+  "type": "image/avif",
+  "bytes": 397050,
+  "saved": "assets/image-slider-ever-1_converted-1cafaa01.avif"
+ },
+ {
+  "url": "https://realevate.agency/assets/selection/raregems/slider/rare-1_converted.avif",
+  "kind": "image",
+  "type": "image/avif",
+  "bytes": 49279
+ },
+ {
+  "url": "https://realevate.agency/assets/selection/urbanliving/slider/urban-1_converted.avif",
+  "kind": "image",
+  "type": "image/avif",
+  "bytes": 121196,
+  "saved": "assets/image-slider-urban-1_converted-299df40e.avif"
+ },
+ {
+  "url": "https://realevate.agency/assets/selection/bythesea/bythesea-cover.avif",
+  "kind": "image",
+  "type": "image/avif",
+  "bytes": 173889,
+  "saved": "assets/image-bythesea-bythesea-cover-24fea01c.avif"
+ },
+ {
+  "url": "https://realevate.agency/assets/selection/evergreen/evergreen-big-image.avif",
+  "kind": "image",
+  "type": "image/avif",
+  "bytes": 337014,
+  "saved": "assets/image-evergreen-evergreen-big-image-74688721.avif"
+ },
+ {
+  "url": "https://realevate.agency/assets/selection/urbanliving/urban-living-cover-big.avif",
+  "kind": "image",
+  "type": "image/avif",
+  "bytes": 165571,
+  "saved": "assets/image-urbanliving-urban-living-cover-big-a635685a.avif"
+ },
+ {
+  "url": "https://realevate.agency/assets/selection/raregems/rare-gem-cover_converted.avif",
+  "kind": "image",
+  "type": "image/avif",
+  "bytes": 16840
+ },
+ {
+  "url": "https://realevate.agency/assets/selection/bythesea/slider/BTS-3_converted.avif",
+  "kind": "image",
+  "type": "image/avif",
+  "bytes": 330783,
+  "saved": "assets/image-slider-BTS-3_converted-270e056f.avif"
+ },
+ {
+  "url": "https://realevate.agency/assets/selection/bythesea/slider/BTS-2_converted.avif",
+  "kind": "image",
+  "type": "image/avif",
+  "bytes": 144171,
+  "saved": "assets/image-slider-BTS-2_converted-e4195b24.avif"
+ },
+ {
+  "url": "https://realevate.agency/assets/selection/bythesea/slider/BTS-5_converted.avif",
+  "kind": "image",
+  "type": "image/avif",
+  "bytes": 174597,
+  "saved": "assets/image-slider-BTS-5_converted-7ce98a44.avif"
+ },
+ {
+  "url": "https://realevate.agency/assets/selection/bythesea/slider/BTS-4_converted.avif",
+  "kind": "image",
+  "type": "image/avif",
+  "bytes": 197673,
+  "saved": "assets/image-slider-BTS-4_converted-9e9c4309.avif"
+ },
+ {
+  "url": "https://realevate.agency/assets/selection/bythesea/slider/BTS-6_converted.avif",
+  "kind": "image",
+  "type": "image/avif",
+  "bytes": 300693,
+  "saved": "assets/image-slider-BTS-6_converted-ef561daa.avif"
+ },
+ {
+  "url": "https://realevate.agency/assets/selection/bythesea/slider/BTS-9_converted.avif",
+  "kind": "image",
+  "type": "image/avif",
+  "bytes": 41892
+ },
+ {
+  "url": "https://realevate.agency/assets/selection/bythesea/slider/BTS-7_converted.avif",
+  "kind": "image",
+  "type": "image/avif",
+  "bytes": 45178
+ },
+ {
+  "url": "https://realevate.agency/assets/selection/bythesea/slider/BTS-8_converted.avif",
+  "kind": "image",
+  "type": "image/avif",
+  "bytes": 144566,
+  "saved": "assets/image-slider-BTS-8_converted-6ae1e46c.avif"
+ },
+ {
+  "url": "https://realevate.agency/assets/selection/bythesea/slider/BTS-10_converted.avif",
+  "kind": "image",
+  "type": "image/avif",
+  "bytes": 160814,
+  "saved": "assets/image-slider-BTS-10_converted-1b741012.avif"
+ },
+ {
+  "url": "https://realevate.agency/assets/selection/evergreen/slider/ever-2_converted.avif",
+  "kind": "image",
+  "type": "image/avif",
+  "bytes": 189261,
+  "saved": "assets/image-slider-ever-2_converted-268aaa29.avif"
+ },
+ {
+  "url": "https://realevate.agency/assets/selection/bythesea/slider/BTS-11_converted.avif",
+  "kind": "image",
+  "type": "image/avif",
+  "bytes": 102118,
+  "saved": "assets/image-slider-BTS-11_converted-4364d1fa.avif"
+ },
+ {
+  "url": "https://realevate.agency/assets/selection/evergreen/slider/ever-12_converted.avif",
+  "kind": "image",
+  "type": "image/avif",
+  "bytes": 266749,
+  "saved": "assets/image-slider-ever-12_converted-eba16820.avif"
+ },
+ {
+  "url": "https://realevate.agency/assets/selection/evergreen/slider/ever-13_converted.avif",
+  "kind": "image",
+  "type": "image/avif",
+  "bytes": 195449,
+  "saved": "assets/image-slider-ever-13_converted-46730929.avif"
+ },
+ {
+  "url": "https://realevate.agency/assets/selection/evergreen/slider/ever-14_converted.avif",
+  "kind": "image",
+  "type": "image/avif",
+  "bytes": 167874,
+  "saved": "assets/image-slider-ever-14_converted-0b66f26e.avif"
+ },
+ {
+  "url": "https://realevate.agency/assets/selection/raregems/slider/rare-2_converted.avif",
+  "kind": "image",
+  "type": "image/avif",
+  "bytes": 100602,
+  "saved": "assets/image-slider-rare-2_converted-58b5c6b6.avif"
+ },
+ {
+  "url": "https://realevate.agency/assets/selection/evergreen/slider/ever-4_converted.avif",
+  "kind": "image",
+  "type": "image/avif",
+  "bytes": 316129,
+  "saved": "assets/image-slider-ever-4_converted-83aaaa48.avif"
+ },
+ {
+  "url": "https://realevate.agency/assets/selection/evergreen/slider/ever-3_converted.avif",
+  "kind": "image",
+  "type": "image/avif",
+  "bytes": 382277,
+  "saved": "assets/image-slider-ever-3_converted-ba1aa413.avif"
+ },
+ {
+  "url": "https://realevate.agency/assets/selection/raregems/slider/rare-7_converted.avif",
+  "kind": "image",
+  "type": "image/avif",
+  "bytes": 32523
+ },
+ {
+  "url": "https://realevate.agency/assets/selection/evergreen/slider/ever-5_converted.avif",
+  "kind": "image",
+  "type": "image/avif",
+  "bytes": 220892,
+  "saved": "assets/image-slider-ever-5_converted-f1c81a2e.avif"
+ },
+ {
+  "url": "https://realevate.agency/assets/selection/evergreen/slider/ever-8_converted.avif",
+  "kind": "image",
+  "type": "image/avif",
+  "bytes": 89750,
+  "saved": "assets/image-slider-ever-8_converted-24461548.avif"
+ },
+ {
+  "url": "https://realevate.agency/assets/selection/evergreen/slider/ever-7_converted.avif",
+  "kind": "image",
+  "type": "image/avif",
+  "bytes": 218934,
+  "saved": "assets/image-slider-ever-7_converted-83e8dac7.avif"
+ },
+ {
+  "url": "https://realevate.agency/assets/selection/evergreen/slider/ever-6_converted.avif",
+  "kind": "image",
+  "type": "image/avif",
+  "bytes": 128518,
+  "saved": "assets/image-slider-ever-6_converted-04e764af.avif"
+ },
+ {
+  "url": "https://realevate.agency/assets/selection/evergreen/slider/ever-9_converted.avif",
+  "kind": "image",
+  "type": "image/avif",
+  "bytes": 73367,
+  "saved": "assets/image-slider-ever-9_converted-f117ee51.avif"
+ },
+ {
+  "url": "https://realevate.agency/assets/selection/evergreen/slider/ever-11_converted.avif",
+  "kind": "image",
+  "type": "image/avif",
+  "bytes": 82194,
+  "saved": "assets/image-slider-ever-11_converted-83f17e7e.avif"
+ },
+ {
+  "url": "https://realevate.agency/assets/selection/evergreen/slider/ever-10_converted.avif",
+  "kind": "image",
+  "type": "image/avif",
+  "bytes": 144281,
+  "saved": "assets/image-slider-ever-10_converted-5e2ca193.avif"
+ },
+ {
+  "url": "https://realevate.agency/assets/selection/raregems/slider/rare-5_converted.avif",
+  "kind": "image",
+  "type": "image/avif",
+  "bytes": 44891
+ },
+ {
+  "url": "https://realevate.agency/assets/selection/raregems/slider/rare-3_converted.avif",
+  "kind": "image",
+  "type": "image/avif",
+  "bytes": 99668,
+  "saved": "assets/image-slider-rare-3_converted-9600db3e.avif"
+ },
+ {
+  "url": "https://realevate.agency/assets/selection/raregems/slider/rare-4_converted.avif",
+  "kind": "image",
+  "type": "image/avif",
+  "bytes": 42969
+ },
+ {
+  "url": "https://realevate.agency/assets/selection/raregems/slider/rare-8_converted.avif",
+  "kind": "image",
+  "type": "image/avif",
+  "bytes": 73519,
+  "saved": "assets/image-slider-rare-8_converted-9944e9a1.avif"
+ },
+ {
+  "url": "https://realevate.agency/assets/selection/urbanliving/slider/urban-2_converted.avif",
+  "kind": "image",
+  "type": "image/avif",
+  "bytes": 60538,
+  "saved": "assets/image-slider-urban-2_converted-ca0bb101.avif"
+ },
+ {
+  "url": "https://realevate.agency/assets/selection/urbanliving/slider/urban-3_converted.avif",
+  "kind": "image",
+  "type": "image/avif",
+  "bytes": 86469,
+  "saved": "assets/image-slider-urban-3_converted-68fcf48d.avif"
+ },
+ {
+  "url": "https://realevate.agency/assets/selection/raregems/slider/rare-9_converted.avif",
+  "kind": "image",
+  "type": "image/avif",
+  "bytes": 109358,
+  "saved": "assets/image-slider-rare-9_converted-3332841b.avif"
+ },
+ {
+  "url": "https://realevate.agency/assets/selection/raregems/slider/rare-10_converted.avif",
+  "kind": "image",
+  "type": "image/avif",
+  "bytes": 67382,
+  "saved": "assets/image-slider-rare-10_converted-1c444214.avif"
+ },
+ {
+  "url": "https://realevate.agency/assets/selection/urbanliving/slider/urban-5_converted.avif",
+  "kind": "image",
+  "type": "image/avif",
+  "bytes": 109531,
+  "saved": "assets/image-slider-urban-5_converted-544df13c.avif"
+ },
+ {
+  "url": "https://realevate.agency/assets/selection/urbanliving/slider/urban-6_converted.avif",
+  "kind": "image",
+  "type": "image/avif",
+  "bytes": 33015
+ },
+ {
+  "url": "https://realevate.agency/assets/selection/raregems/slider/rare-6_converted.avif",
+  "kind": "image",
+  "type": "image/avif",
+  "bytes": 76353,
+  "saved": "assets/image-slider-rare-6_converted-35795282.avif"
+ },
+ {
+  "url": "https://realevate.agency/assets/selection/urbanliving/slider/urban-7_converted.avif",
+  "kind": "image",
+  "type": "image/avif",
+  "bytes": 153492,
+  "saved": "assets/image-slider-urban-7_converted-8da53749.avif"
+ },
+ {
+  "url": "https://realevate.agency/assets/selection/urbanliving/slider/urban-4_converted.avif",
+  "kind": "image",
+  "type": "image/avif",
+  "bytes": 208603,
+  "saved": "assets/image-slider-urban-4_converted-0b23dd1f.avif"
+ },
+ {
+  "url": "https://realevate.agency/assets/selection/urbanliving/slider/urban-8_converted.avif",
+  "kind": "image",
+  "type": "image/avif",
+  "bytes": 96832,
+  "saved": "assets/image-slider-urban-8_converted-60b8d830.avif"
+ },
+ {
+  "url": "https://realevate.agency/assets/selection/urbanliving/slider/urban-10_converted.avif",
+  "kind": "image",
+  "type": "image/avif",
+  "bytes": 154772,
+  "saved": "assets/image-slider-urban-10_converted-06c8d68e.avif"
+ },
+ {
+  "url": "https://realevate.agency/assets/selection/urbanliving/slider/urban-9_converted.avif",
+  "kind": "image",
+  "type": "image/avif",
+  "bytes": 52957
+ },
+ {
+  "url": "https://realevate.agency/assets/arrow.svg",
+  "kind": "image",
+  "type": "image/svg+xml"
+ },
+ {
+  "url": "https://realevate.agency/assets/realevate-white-logo.svg",
+  "kind": "image",
+  "type": "image/svg+xml",
+  "bytes": 836
+ },
+ {
+  "url": "https://realevate.agency/assets/arrow-right-white.svg",
+  "kind": "image",
+  "type": "image/svg+xml"
+ },
+ {
+  "url": "https://realevate.agency/assets/arrow-left-white.svg",
+  "kind": "image",
+  "type": "image/svg+xml"
+ },
+ {
+  "url": "https://realevate.agency/assets/video-thumb.avif",
+  "kind": "image",
+  "type": "image/avif",
+  "bytes": 94880,
+  "saved": "assets/image-assets-video-thumb-9ee9fe2d.avif"
+ }
+]

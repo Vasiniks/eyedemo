@@ -1,0 +1,258 @@
+[0m
+> build · muse-spark-1.3-contributor
+[0m
+[0m→ [0mRead docs/00-BRIEF.md
+[0m
+[0m# [0mTodos
+[•] Load sitemap + enumerate all pages
+[ ] Browser-load homepage + capture verbatim content
+[ ] Browser-load /pages/* subpages verbatim
+[ ] Capture brands, lenses, insurance, promos, reviews, contact, nav, social/legal
+[ ] Write docs/research/B-content-inventory.md
+[0m
+[0m% [0mWebFetch https://eyeqoptical.ca/sitemap.xml
+[0m✗ [0mplaywright_browser_navigate {"url":"https://eyeqoptical.ca/"} failed
+[91m[1mError: [0m### Error
+Error: async initializeServer: Opening in existing browser session. This usually means that the profile is already in use by another instance of Chromium.
+Call log:
+[2m  - <launching> /Applications/Google Chrome.app/Contents/MacOS/Google Chrome --disable-field-trial-config --disable-background-networking --disable-background-timer-throttling --disable-backgrounding-occluded-windows --disable-back-forward-cache --disable-breakpad --disable-client-side-phishing-detection --disable-component-extensions-with-background-pages --disable-component-update --no-default-browser-check --disable-default-apps --disable-dev-shm-usage --disable-edgeupdater --disable-features=AvoidUnnecessaryBeforeUnloadCheckSync,DestroyProfileOnBrowserClose,DialMediaRouteProvider,GlobalMediaControls,HttpsUpgrades,LensOverlay,MediaRouter,PaintHolding,ThirdPartyStoragePartitioning,BlockOriginHeaderModificationOnRedirect,Translate,AutoDeElevate,OptimizationHints,msForceBrowserSignIn,msEdgeUpdateLaunchServicesPreferredVersion --enable-features=CDPScreenshotNewSurface --allow-pre-commit-input --disable-hang-monitor --disable-ipc-flooding-protection --disable-popup-blocking --disable-prompt-on-repost --disable-renderer-backgrounding --disable-updater-scheduler --force-color-profile=srgb --metrics-recording-only --no-first-run --password-store=basic --use-mock-keychain --no-service-autorun --export-tagged-pdf --disable-search-engine-choice-screen --unsafely-disable-devtools-self-xss-warnings --edge-skip-compat-layer-relaunch --disable-infobars --disable-search-engine-choice-screen --disable-sync --enable-unsafe-swiftshader --disable-blink-features=AutomationControlled --user-data-dir=/Users/admin/Library/Caches/ms-playwright-mcp/mcp-chrome-062bebd --remote-debugging-pipe about:blank[22m
+[2m  - <launched> pid=3579[22m
+[2m  - [pid=3579][err] [3579:52973279:0927/180307.113841:ERROR:chrome/browser/process_singleton_posix.cc:347] Failed to create /Users/admin/Library/Caches/ms-playwright-mcp/mcp-chrome-062bebd/SingletonLock: File exists (17)[22m
+[2m  - [pid=3579][out] Opening in existing browser session.[22m
+[2m  - [pid=3579] <gracefully close start>[22m
+[2m  - [pid=3579] <kill>[22m
+[2m  - [pid=3579] <will force kill>[22m
+[2m  - [pid=3579] exception while trying to kill process: Error: kill EPERM[22m
+[2m  - [pid=3579] <process did exit: exitCode=0, signal=null>[22m
+[2m  - [pid=3579] starting temporary directories cleanup[22m
+[2m  - [pid=3579] finished temporary directories cleanup[22m
+[2m  - [pid=3579] <gracefully close end>[22m
+
+[0m% [0mWebFetch https://eyeqoptical.ca/sitemap_pages_1.xml?from=103706820888&to=161602634008
+[0m% [0mWebFetch https://eyeqoptical.ca/sitemap_collections_1.xml?from=425607528728&to=520731001112
+[0m% [0mWebFetch https://eyeqoptical.ca/sitemap_products_1.xml?from=10385988452632&to=10387129532696
+[0m% [0mWebFetch https://eyeqoptical.ca/sitemap_blogs_1.xml
+[0m⚙ [0mchrome-devtools_list_pages Unknown
+[0m⚙ [0mchrome-devtools_navigate_page {"pageId":1,"type":"url","url":"https://eyeqoptical.ca/"}
+[0m⚙ [0mchrome-devtools_take_snapshot {"pageId":1}
+[0m⚙ [0mchrome-devtools_evaluate_script {"function":"() => { const els = [...document.querySelectorAll('img')].map(i=>({alt:i.alt, src:i.src.slice(0,160)})); return JSON.stringify({title:document.title, bodyText:document.body.innerText.slice(0,12000), imgs:els, links:[...document.querySelectorAll('a')].map(a=>({t:a.innerText.trim().slice(0,120), h:a.href}))}); }","pageId":1}
+[0m⚙ [0mchrome-devtools_navigate_page {"pageId":1,"type":"url","url":"https://eyeqoptical.ca/pages/services"}
+[0m⚙ [0mchrome-devtools_evaluate_script {"function":"() => document.body.innerText.slice(0,15000)","pageId":1}
+[0m⚙ [0mchrome-devtools_evaluate_script {"function":"() => { return JSON.stringify({html: document.querySelector('main').innerHTML.slice(0,12000), imgs:[...document.querySelectorAll('img')].map(i=>i.src.slice(0,150)), links:[...document.querySelectorAll('a')].map(a=>({t:a.innerText.trim().slice(0,100),h:a.href}))}); }","pageId":1}
+[0m⚙ [0mchrome-devtools_evaluate_script {"function":"() => [...document.querySelectorAll('main h1, main h2, main h3, main h4, main h5, main p, main li, main a')].map(e=>e.tagName+': '+e.innerText.trim().slice(0,600)).join('\\n').slice(0,15000)","pageId":1}
+[0m⚙ [0mchrome-devtools_evaluate_script {"function":"() => { const secs=[...document.querySelectorAll('main section, main div')].length; const imgs=[...document.querySelectorAll('main img')].map(i=>i.src.split('/').pop().split('?')[0]); return JSON.stringify({imgs}); }","pageId":1}
+[0m⚙ [0mchrome-devtools_evaluate_script {"function":"() => [...document.querySelectorAll('main img')].map(i=>{let p=i.closest('section,div');let t=p?p.innerText.trim().slice(0,300).replace(/\\n/g,' | '):'';return i.src.split('/').pop().split('?')[0]+' || context: '+t;}).join('\\n')","pageId":1}
+[0m⚙ [0mchrome-devtools_take_screenshot {"fullPage":true,"pageId":1}
+[0m% [0mWebFetch https://eyeqoptical.ca/pages/services
+[0m% [0mWebFetch https://eyeqoptical.ca/pages/contact
+[0m
+[0m$ [0mmkdir -p /tmp/eyeq-logos && cd /tmp/eyeq-logos && for f in "images.png?v=1786132899" "images_1fe4cef6-c639-4c8c-8277-f04c0fb8fa8d.png?v=1786135405" "images_1.png?v=1786135474" "mbc-logo-en.svg?v=1786132976"; do base=$(echo "$f" | cut -d'?' -f1); curl -sL "https://eyeqoptical.ca/cdn/shop/files/$f&width=400" -o "$base"; done; ls -la
+total 56
+drwxr-xr-x@   6 admin  wheel    192 Sep 27 18:04 .
+drwxrwxrwt  713 root   wheel  22816 Sep 27 18:04 ..
+-rw-r--r--@   1 admin  wheel   3059 Sep 27 18:04 images_1.png
+-rw-r--r--@   1 admin  wheel   6726 Sep 27 18:04 images_1fe4cef6-c639-4c8c-8277-f04c0fb8fa8d.png
+-rw-r--r--@   1 admin  wheel  11861 Sep 27 18:04 images.png
+-rw-r--r--@   1 admin  wheel   4015 Sep 27 18:04 mbc-logo-en.svg
+[0m
+[0m→ [0mRead /tmp/eyeq-logos/images_1.png
+[0m→ [0mRead /tmp/eyeq-logos/images_1fe4cef6-c639-4c8c-8277-f04c0fb8fa8d.png
+[0m→ [0mRead /tmp/eyeq-logos/images.png
+[0m
+[0m$ [0mhead -c 600 /tmp/eyeq-logos/mbc-logo-en.svg; echo; rtk curl -sL "https://eyeqoptical.ca/cdn/shop/files/8a63a471d047967a05c5e2649717127e.webp?v=1786135752&width=400" -o /tmp/eyeq-logos/mystery.webp && rtk ls -la /tmp/eyeq-logos/
+<svg xmlns="http://www.w3.org/2000/svg" id="a5446c50-d59a-4603-83f7-24e2b58c5fcf" data-name="Layer 1" width="770.3" height="115.5" viewBox="0 0 770.3 115.5">
+  <defs>
+    <style>
+      .a1f08931-eea5-4f17-ba0e-81f2a30d92cb {
+        fill: #0094d7;
+      }
+    </style>
+  </defs>
+  <title>mbc-logo-2</title>
+  <polygon class="a1f08931-eea5-4f17-ba0e-81f2a30d92cb" points="82.8 0 32.7 0 32.7 33 0 33 0 82.8 32.7 82.8 32.7 115.5 82.8 115.5 82.8 82.8 115.5 82.8 115.5 33 82.8 33 82.8 0"></polygon>
+  <path class="a1f08931-eea5-4f17-ba0e-81f2a30d92cb" d="M136,33.1h43.9c12.2,0,18.1,3.3,18.1,13s-3.1,10.2-7
+
+644  images.png  11.6K
+644  images_1.png  3.0K
+644  images_1fe4cef6-c639-4c8c-8277-f04c0fb8fa8d.png  6.6K
+644  mbc-logo-en.svg  3.9K
+644  mystery.webp  9.3K
+[0m
+[0m→ [0mRead /tmp/eyeq-logos/mystery.webp
+[0m
+[0m$ [0mrtk grep -o -i -m5 "Medavie\|Blue.Cross\|Manitoba\|MBC\|[A-Za-z ]*Blue[A-Za-z ]*" /tmp/eyeq-logos/mbc-logo-en.svg | head -20; echo "---strings---"; strings /tmp/eyeq-logos/mbc-logo-en.svg | rtk grep -i -m10 "title\|text\|medavie\|blue\|cross"
+mbc
+---strings---
+  <title>mbc-logo-2</title>
+[0m
+[0m$ [0mpython3 -c "
+import re
+svg = open('/tmp/eyeq-logos/mbc-logo-en.svg').read()
+texts = re.findall(r'<text[^>]*>(.*?)</text>', svg, re.S)
+print('TEXTS:', texts)
+paths = re.findall(r'<title>(.*?)</title>', svg)
+print('TITLE:', paths)
+print('LEN:', len(svg))
+"
+TEXTS: []
+TITLE: ['mbc-logo-2']
+LEN: 4015
+[0m
+[0m→ [0mRead /tmp/eyeq-logos/mbc-logo-en.svg
+[0m
+[0m$ [0mcd /tmp && rtk curl -sL "https://eyeqoptical.ca/products.json?limit=250" -o products.json && python3 -c "
+import json
+d = json.load(open('products.json'))
+ps = d.get('products', d if isinstance(d,list) else [])
+print('COUNT:', len(ps))
+for p in ps:
+    print('|', p.get('title'), '|', p.get('vendor'), '|', p.get('product_type'), '|', (p.get('body_html') or '')[:80].replace(chr(10),' '))
+"; echo "===COLLECTIONS==="; rtk curl -sL "https://eyeqoptical.ca/collections.json" -o collections.json && python3 -c "
+import json
+d = json.load(open('collections.json'))
+cs = d.get('collections', d if isinstance(d,list) else [])
+print('COUNT:', len(cs))
+for c in cs: print('|', c.get('title'), '|', c.get('handle'))
+"
+COUNT: 22
+| Prada PR 15WS | EyeQ Vision Care |  | <h2>PR 15WS</h2> <p>The<span> </span><strong>Prada PR 15WS</strong><span> </span
+| Persol PO3272S | Persol | SUN | <h2>PO3272S</h2> <p>The<span> </span><strong>Persol PO3272S</strong><span> </spa
+| Persol PO3210S | Persol | SUN | <h2>PO3210S</h2> <p>The<span> </span><strong>Persol PO3210S</strong><span> </spa
+| Persol PO2803S | Persol | SUN | <h2>PO2803S</h2> <p>The<span> </span><strong>Persol PO2803S</strong><span> </spa
+| Persol PO0649 | Persol | SUN | <h2>PO0649 Original</h2> <p>The<span> </span><strong>Persol PO0649 649 Original<
+| Rayban RX5228 | Rayban | OPTICAL | <h2>RX5228</h2> <p>The<span> </span><strong>RX5228</strong><span> </span>combine
+| Rayban RX6513 | Rayban | OPTICAL | <h2>RX6513</h2> <p>The<span> </span><strong>RX6513</strong><span> </span>takes a
+| Rayban RX6489 Aviator | Rayban | OPTICAL | <h2>RX6489 Aviator</h2> <p>Bring timeless pilot-inspired style to your everyday 
+| Rayban RX5154 Clubmaster | Rayban | OPTICAL | <h2>RX5154 Clubmaster</h2> <p>The<span> </span><strong>RX5154 Clubmaster</strong
+| Rayban RX3927V | Rayban | OPTICAL | <h2>RX3927V Optics</h2> <p>The<span> </span><strong>RX3927V</strong><span> </spa
+| Rayban RB3928 by A$AP Rocky | Rayban | SUN | <h2>RB3928 by A$AP Rocky</h2> <p>The<span> </span><strong>RB3928 001/S2</strong>
+| Rayban RB3927 by A$AP Rocky | Rayban | SUN | <h2>RB3927 by A$AP Rocky</h2> <p>The<span> </span><strong>RB3927 by A$AP Rocky</
+| Rayban RB4925 Aviator Puffer — A$AP Rocky | Rayban | SUN | <h2>RB4925 Aviator Puffer — A$AP Rocky</h2> <p>The<span> </span><strong>RB4925 A
+| Rayban RB4547 Boyfriend Two | Rayban | SUN | <h2>RB4547 Boyfriend Two</h2> <p>Relaxed proportions meet contemporary sophistic
+| Rayban RB4340 Wayfarer | Rayban | SUN | <h2>RB4340 Wayfarer</h2> <p>Refresh your everyday style with the<span> </span><s
+| Rayban RB2140 Wayfarer | Rayban | SUN | <h2>RB2140 Wayfarer</h2> <p>Own an iconic piece of eyewear history with the<span
+| Rayban RB4165 Justin | Rayban | SUN | <h2>RB4165 Justin</h2> <p>Make a bold statement with the<span> </span><strong>RB
+| Rayban RB4171F Erika | Rayban | SUN | <h2>RB4171F Erika</h2> <p>Embrace effortless style with the<span> </span><strong
+| Rayban RB3016 Clubmaster | Rayban | SUN | <h2>RB3016 Clubmaster</h2> <p>Step into timeless style with the<span> </span><st
+| Rayban RB3025 | Rayban | SUN | <h2>RB3025 Aviator</h2> <p>Discover the timeless appeal of the<span> </span><str
+| Rayban RB3721 | Rayban | SUN | <h2>RB3721</h2> <p>Elevate your everyday look with the<span> </span><strong>RB37
+| Rayban RB2132 - New wayfarer | Rayban | SUN | <p>Make a statement with the iconic<span> </span><strong>RB2132 New Wayfarer</st
+===COLLECTIONS===
+
+COUNT: 3
+| Persol | persol
+| Prada | prada
+| Ray-Ban Sun | ray-ban-sun
+[0m
+[0m⚙ [0mchrome-devtools_navigate_page {"pageId":1,"type":"url","url":"https://eyeqoptical.ca/pages/contact"}
+[0m⚙ [0mchrome-devtools_evaluate_script {"function":"() => document.body.innerText.slice(0,8000)","pageId":1}
+[0m⚙ [0mchrome-devtools_navigate_page {"pageId":1,"type":"url","url":"https://eyeqoptical.ca/"}
+[0m⚙ [0mchrome-devtools_evaluate_script {"function":"() => JSON.stringify({announce: [...document.querySelectorAll('[class*=announcement]')].map(e=>e.innerText.trim()).join(' || '), hero: [...document.querySelectorAll('main h1, main h2, main p, main a')].map(e=>e.tagName+': '+(e.innerText||'').trim().slice(0,400)).join('\\n').slice(0,6000), social: [...document.querySelectorAll('a[href*=instagram], a[href*=facebook], a[href*=twitter], a[href*=tiktok], a[href*=youtube], footer a')].map(a=>a.href), video: [...document.querySelectorAll('video source, video, iframe[src*=youtube], iframe[src*=youtu]')].map(v=>v.src||v.currentSrc)})","pageId":1}
+[0m% [0mWebFetch https://eyeqoptical.ca/policies/refund-policy
+[0m⚙ [0mchrome-devtools_evaluate_script {"function":"() => { const r=[...document.querySelectorAll('[class*=review], [class*=Review], [id*=review], [id*=Review]')].length; const w=document.body.innerHTML; const m=w.match(/judge\\.me|okendo|loox|google[^a-z]*review|reviews[^a-z]{0,20}widget|elfsight|trustindex|stamped/ig); return JSON.stringify({reviewEls:r, widgets:m, stars:(w.match(/★/g)||[]).length, starImgs:[...document.querySelectorAll('img')].filter(i=>/star/i.test(i.src)).map(i=>i.src.slice(0,120))}); }","pageId":1}
+[0m⚙ [0mchrome-devtools_evaluate_script {"function":"() => [...document.querySelectorAll('*')].filter(e=>/google-review/i.test(e.tagName||'')).map(e=>({tag:e.tagName, txt:e.innerText.slice(0,500).replace(/\\n/g,' | '), html:e.outerHTML.slice(0,800)})).slice(0,12).map(o=>JSON.stringify(o)).join('\\n---\\n').slice(0,6000)","pageId":1}
+[0m⚙ [0mchrome-devtools_evaluate_script {"function":"() => { const el=document.querySelector('google-reviews-ar1k0s24zwlprt2fkraigenblock874be41awjed4'); const cards=[...el.querySelectorAll('[class*=card], [class*=review-item], [class*=slide]')].slice(0,8).map(c=>c.innerText.replace(/\\n/g,' | ').slice(0,700)); return JSON.stringify({cards, time:(el.innerHTML.match(/20\\d\\d|ago|month|week|day/gi)||[]).slice(0,10)}); }","pageId":1}
+[0m% [0mWebFetch https://eyeqoptical.ca/policies/privacy-policy
+[0m
+[0m$ [0mpython3 -c "
+import json, re
+d = json.load(open('/tmp/products.json'))
+ps = d.get('products', [])
+from collections import Counter
+print('TYPES:', Counter((p.get('product_type') or '') for p in ps))
+print('VENDORS:', Counter(p.get('vendor') for p in ps))
+prices = set()
+for p in ps:
+    for v in p.get('variants', []):
+        prices.add(str(v.get('price')))
+print('PRICES:', prices)
+print('TAGS sample:', [p.get('tags') for p in ps][:3])
+print('STATUS:', Counter(p.get('status') for p in ps))
+p0 = [p for p in ps if 'Prada' in p.get('title','')][0]
+print('PRADA vendor/type:', p0.get('vendor'), '|', repr(p0.get('product_type')))
+html = re.sub('<[^>]+>', ' ', p0.get('body_html') or '')
+print('PRADA desc:', ' '.join(html.split())[:400])
+"
+TYPES: Counter({'SUN': 16, 'OPTICAL': 5, '': 1})
+VENDORS: Counter({'Rayban': 17, 'Persol': 4, 'EyeQ Vision Care': 1})
+PRICES: {'0.00'}
+TAGS sample: [['sun'], ['sun'], ['sun']]
+STATUS: Counter({None: 22})
+PRADA vendor/type: EyeQ Vision Care | ''
+PRADA desc: PR 15WS The Prada PR 15WS gives the classic rectangular frame a distinctly feminine and fashion-forward update. Its bold acetate construction creates a confident silhouette, while the clean lines keep the overall design polished and sophisticated. With a selection of rich tortoise and classic black finishes paired with dark or gradient lenses, the PR 15WS adds effortless Prada style to any look. I
+[0m
+[0m$ [0mrtk curl -sL "https://eyeqoptical.ca/policies/terms-of-service" | python3 -c "
+import sys, re, html
+t = sys.stdin.read()
+t = re.sub(r'<script.*?</script>|<style.*?</style>', ' ', t, flags=re.S)
+t = re.sub(r'<[^>]+>', ' ', t)
+t = html.unescape(t)
+t = re.sub(r'\s+', ' ', t)
+i = t.find('Terms of service')
+print(t[i:i+2500])
+print('...')
+print('STORE-SPECIFIC HITS:')
+for m in set(re.findall(r'.{40}eyeq2020.{40}|.{40}2434804.{40}|.{40}Guelph.{40}|.{40}905.{40}', t, flags=re.I)):
+    print(' -', m.strip()[:140])
+"
+Terms of service – EyeQ Vision Care Skip to content Home Services Contact More Home Services Contact More Account Cart 0 Terms of service OVERVIEW This website is operated by EyeQ Vision Care. Throughout the site, the terms “we”, “us” and “our” refer to EyeQ Vision Care. EyeQ Vision Care offers this website, including all information, tools and services available from this site to you, the user, conditioned upon your acceptance of all terms, conditions, policies and notices stated here. By visiting our site and/ or purchasing something from us, you engage in our “Service” and agree to be bound by the following terms and conditions (“Terms of Service”, “Terms”), including those additional terms and conditions and policies referenced herein and/or available by hyperlink. These Terms of Service apply to all users of the site, including without limitation users who are browsers, vendors, customers, merchants, and/ or contributors of content. Please read these Terms of Service carefully before accessing or using our website. By accessing or using any part of the site, you agree to be bound by these Terms of Service. If you do not agree to all the terms and conditions of this agreement, then you may not access the website or use any services. If these Terms of Service are considered an offer, acceptance is expressly limited to these Terms of Service. Any new features or tools which are added to the current store shall also be subject to the Terms of Service. You can review the most current version of the Terms of Service at any time on this page. We reserve the right to update, change or replace any part of these Terms of Service by posting updates and/or changes to our website. It is your responsibility to check this page periodically for changes. Your continued use of or access to the website following the posting of any changes constitutes acceptance of those changes. Our store is hosted on Shopify Inc. They provide us with the online e-commerce platform that allows us to sell our products and services to you. SECTION 1 - ONLINE STORE TERMS By agreeing to these Terms of Service, you represent that you are at least the age of majority in your state or province of residence, or that you are the age of majority in your state or province of residence and you have given us your consent to allow any of your minor dependents to use this site. You may not use our products for any illegal or unauthorized purpose nor may you, in the use of the Service, violate any laws
+...
+STORE-SPECIFIC HITS:
+ - CONTACT INFORMATION Visit our store 777 Guelph Line C1A, Burlington, ON L7R 3N2 Get di
+[0m
+[0m$ [0mfor h in persol prada ray-ban-sun; do echo "== $h =="; rtk curl -sL "https://eyeqoptical.ca/collections/$h/products.json?limit=100" | python3 -c "
+import json,sys
+d = json.load(sys.stdin)
+ps = d.get('products', [])
+print('count:', len(ps))
+print([p.get('title') for p in ps][:25])
+"; done; echo "== blogs/news =="; rtk curl -sL "https://eyeqoptical.ca/blogs/news" | python3 -c "
+import sys, re, html
+t = sys.stdin.read()
+t = re.sub(r'<script.*?</script>|<style.*?</style>', ' ', t, flags=re.S)
+t = re.sub(r'<[^>]+>', ' ', t); t = html.unescape(t); t = re.sub(r'\s+', ' ', t)
+i = t.find('News')
+print(t[i:i+600] if i>=0 else t[:600])
+"
+== persol ==
+count: 4
+['Persol PO3272S', 'Persol PO3210S', 'Persol PO2803S', 'Persol PO0649']
+== prada ==
+count: 1
+['Prada PR 15WS']
+== ray-ban-sun ==
+count: 12
+['Rayban RB3928 by A$AP Rocky', 'Rayban RB3927 by A$AP Rocky', 'Rayban RB4925 Aviator Puffer — A$AP Rocky', 'Rayban RB4547 Boyfriend Two', 'Rayban RB4340 Wayfarer', 'Rayban RB2140 Wayfarer', 'Rayban RB4165 Justin', 'Rayban RB4171F Erika', 'Rayban RB3016 Clubmaster', 'Rayban RB3025', 'Rayban RB3721', 'Rayban RB2132 - New wayfarer']
+== blogs/news ==
+News – EyeQ Vision Care Skip to content Home Services Contact More Home Services Contact More Account Cart 0 News Visit our store 777 Guelph Line C1A, Burlington, ON L7R 3N2 Get directions © 2026 EyeQ Vision Care , Powered by Shopify Terms and Policies Refund policy Privacy policy Terms of service Search Search Clear Products Persol PO0649 Persol PO0649 $0.00 CAD Persol PO2803S Persol PO2803S $0.00 CAD Persol PO3210S Persol PO3210S $0.00 CAD Persol PO3272S Persol PO3272S $0.00 CAD View all
+[0m
+[0m$ [0mrtk ls "/Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/docs/" 2>/dev/null || echo "NO-DOCS-DIR"
+research/
+00-BRIEF.md  3.8K
+[0m
+[0m# [0mTodos
+[✓] Load sitemap + enumerate all pages
+[✓] Browser-load homepage + capture verbatim content
+[✓] Browser-load /pages/* subpages verbatim
+[✓] Capture brands, lenses, insurance, promos, reviews, contact, nav, social/legal
+[•] Write docs/research/B-content-inventory.md
+[0m
+[0m← [0mWrite docs/research/B-content-inventory.md
+Wrote file successfully.
+[0m
+[0m# [0mTodos
+[✓] Load sitemap + enumerate all pages
+[✓] Browser-load homepage + capture verbatim content
+[✓] Browser-load /pages/* subpages verbatim
+[✓] Capture brands, lenses, insurance, promos, reviews, contact, nav, social/legal
+[✓] Write docs/research/B-content-inventory.md
+[0m
+`docs/research/B-content-inventory.md` written from live page loads (chrome-devtools MCP) + sitemap/products/collections JSON. No app code touched.
+
+PHASE2-B-DONE
+- 7 URLs mapped: home, services, contact, 3 collections, empty /blogs/news; 22 products, all $0.00 CAD.
+- 8 homepage brands in order (Maui Jim→Versace); 7 Essilor lens names + 3 verbatim descriptions; 8 insurers verified pixel-by-pixel.
+- 6 Google reviews captured verbatim (initials only, 4.9/208); zero promos, zero hours, zero social links found.
+- OLD STORE block recorded (Burlington Centre, (905)333-3931, info@eyeq2020.ca, fax); booking = Deen-and-Associates URL.
+- Wave-2 pick: Essilor lens family (only other named multi-item group); SUN-vs-OPTICAL taxonomy as runner-up.
+EXIT 0 model=meta/muse-spark-1.3-contributor

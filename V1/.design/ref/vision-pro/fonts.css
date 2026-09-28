@@ -1,0 +1,12 @@
+@font-face { font-family: "SF Pro Display"; src: url("./assets/font-v3-sf-pro-display_light-be76bdbb.woff2") format("woff2"); font-weight: 300; font-style: normal; font-display: swap; }
+@font-face { font-family: "SF Pro Display"; src: url("./assets/font-v3-sf-pro-display_regular-e4d0d032.woff2") format("woff2"); font-weight: 400; font-style: normal; font-display: swap; }
+@font-face { font-family: "SF Pro Display"; src: url("./assets/font-v3-sf-pro-display_semibold-bbfbf88f.woff2") format("woff2"); font-weight: 600; font-style: normal; font-display: swap; }
+@font-face { font-family: "SF Pro Display"; src: url("./assets/font-v3-sf-pro-display_bold-6d8c88e6.woff2") format("woff2"); font-weight: 700; font-style: normal; font-display: swap; }
+@font-face { font-family: "SF Pro Text"; src: url("./assets/font-v3-sf-pro-text_light-4e55b19a.woff2") format("woff2"); font-weight: 300; font-style: normal; font-display: swap; }
+@font-face { font-family: "SF Pro Text"; src: url("./assets/font-v3-sf-pro-text_regular-3cccedef.woff2") format("woff2"); font-weight: 400; font-style: normal; font-display: swap; }
+@font-face { font-family: "SF Pro Text"; src: url("./assets/font-v3-sf-pro-text_regular-italic-55df7438.woff2") format("woff2"); font-weight: 400; font-style: italic; font-display: swap; }
+@font-face { font-family: "SF Pro Text"; src: url("./assets/font-v3-sf-pro-text_semibold-117a79c0.woff2") format("woff2"); font-weight: 600; font-style: normal; font-display: swap; }
+@font-face { font-family: "SF Pro Text"; src: url("./assets/font-v3-sf-pro-text_semibold-italic-d18565d4.woff2") format("woff2"); font-weight: 600; font-style: italic; font-display: swap; }
+@font-face { font-family: "SF Pro Icons"; src: url("./assets/font-v3-sf-pro-icons_light-94ac44ac.woff2") format("woff2"); font-weight: 300; font-style: normal; font-display: swap; }
+@font-face { font-family: "SF Pro Icons"; src: url("./assets/font-v3-sf-pro-icons_regular-e6c13e47.woff2") format("woff2"); font-weight: 400; font-style: normal; font-display: swap; }
+@font-face { font-family: "SF Pro Icons"; src: url("./assets/font-v3-sf-pro-icons_semibold-e870953b.woff2") format("woff2"); font-weight: 600; font-style: normal; font-display: swap; }

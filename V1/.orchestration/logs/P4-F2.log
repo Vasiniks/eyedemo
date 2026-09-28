@@ -1,0 +1,1046 @@
+[0m
+> build · muse-spark-1.3-contributor
+[0m
+[0m→ [0mRead docs/00-BRIEF.md
+[0m→ [0mRead docs/phase4/PLAN-MASTER.md
+[0m→ [0mRead docs/phase4/PLAN-MASTER.md[90m [offset=477][0m
+[0m→ [0mRead docs/phase4/COPY-DRAFTS.md
+[0m→ [0mRead docs/research/B-content-inventory.md
+[0m→ [0mRead .
+[0m→ [0mRead dev-F.html
+[0m→ [0mRead src/routes/Contact.tsx
+[0m→ [0mRead src/routes/Services.tsx
+[0m→ [0mRead src/routes/Policies.tsx
+[0m→ [0mRead src/routes/parts/chrome.tsx
+[0m→ [0mRead package.json
+[0m→ [0mRead src/app/router.tsx
+[0m→ [0mRead src/routes/parts/content.ts
+[0m✱ [0mGlob "src/__dev__/F/**/*"[90m 1 match[0m
+[0m✱ [0mGlob "src/routes/**/*"[90m 13 matches[0m
+[0m→ [0mRead src/__dev__/F/main.tsx
+[0m→ [0mRead src/routes/Catalog.tsx
+[0m→ [0mRead src/routes/parts/policies-data.ts
+[0m→ [0mRead src/routes/parts/route.css
+[0m→ [0mRead src/routes/parts/catalog.ts[90m [limit=60][0m
+[0m✱ [0mGlob "docs/phase4/requests/*"[90m 6 matches[0m
+[0m✱ [0mGlob "docs/phase4/qa/F/*"[90m 12 matches[0m
+[0m✱ [0mGlob "docs/phase4/*.md"[90m 7 matches[0m
+[0m→ [0mSkill "no-ai-design-slop"
+[0m→ [0mSkill "visual-fidelity"
+[0m→ [0mSkill "iterate-until-verified"
+[0m
+[0m# [0mTodos
+[•] Delete Catalog.tsx + parts/catalog-*.ts + catalog links/code in lane files + harness
+[ ] Audit all visible strings vs B-content-inventory + brief §2; remove invented copy
+[ ] Finish Services/Contact/Policies per corrected scope
+[ ] Write docs/phase4/requests/F-router.md
+[ ] Screenshots 1440+390 per route into qa/F, LOOK, delete old catalog shots, npm run build
+[0m
+[0m→ [0mRead docs/phase4/requests/F-redirects.md
+[0m→ [0mRead docs/research/C-link-inventory.md[90m [limit=120][0m
+[0m✱ [0mGrep "frames|Catalog|catalog|/search|Browse"[90m in src · 64 matches[0m
+[0m✱ [0mGrep "frames|Frames|Catalog|catalog|Search|search|Browse frames|Browse|Gucci|premium eyewear|children|contact lens"[90m in src/routes · 64 matches[0m
+[0m→ [0mRead src/routes/Home.tsx
+[0m✱ [0mGrep "services|Services|/services"[90m in docs/phase4/PLAN-site-ia.md · 68 matches[0m
+[0m
+[0m$ [0mrtk ls public/web/insurance-light/ public/web/ 2>&1; rtk ls docs/phase4/qa/F/
+brands-light/
+insurance-light/
+atlas-brands.json  5.7K
+atlas-brands.png  488.0K
+atlas-insurers.json  5.8K
+atlas-insurers.png  228.8K
+eyeq-logo-header-original.png  81.7K
+eyeq-logo-white.png  35.6K
+eyeq-logo-white@2x.png  35.3K
+canada-life-min.png  11.8K
+desjardins.png  53.3K
+empire-life.png  26.9K
+greenshield.png  3.7K
+ia-financial-group.png  51.8K
+manulife.png  6.9K
+mbc-logo-en.png  16.1K
+sun-life.png  15.7K
+... (2 filtered)
+[+2 hidden: rtk recall 8dffe5f76733]
+contact-1440-full.png  1.6M
+contact-1440-top.png  603.3K
+frames-1440-top.png  339.0K
+frames-detail-1440-top.png  553.0K
+frames-search-1440.png  350.9K
+policies-privacy-1440-top.png  531.0K
+policies-refund-1440-top.png  367.1K
+policies-terms-1440-top.png  556.4K
+services-1440-full.png  1.0M
+services-1440-insurance.png  341.4K
+services-1440-top.png  387.5K
+services-390-top.png  287.7K
+[0m
+[0m✱ [0mGrep "AVAILABILITY_LINE|EMPTY_STATE_LINE|from './parts/catalog|from '../routes/parts/catalog|parts/catalog|filterProducts|getProduct|FILTER_COUNTS|PRODUCTS"[90m in src · 30 matches[0m
+[0m✱ [0mGrep "VisitStrip|RouteHeader|RouteFooter|parts/content"[90m in src · 19 matches[0m
+[0m
+[0m$ [0mrm src/routes/Catalog.tsx src/routes/parts/catalog.ts src/routes/parts/catalog-sun.ts src/routes/parts/catalog-rest.ts && rm "docs/phase4/qa/F/frames-1440-top.png" "docs/phase4/qa/F/frames-detail-1440-top.png" "docs/phase4/qa/F/frames-search-1440.png" && rtk ls src/routes src/routes/parts "docs/phase4/qa/F"
+parts/
+contact-1440-full.png  1.6M
+contact-1440-top.png  603.3K
+policies-privacy-1440-top.png  531.0K
+policies-refund-1440-top.png  367.1K
+policies-terms-1440-top.png  556.4K
+services-1440-full.png  1.0M
+services-1440-insurance.png  341.4K
+services-1440-top.png  387.5K
+services-390-top.png  287.7K
+Contact.tsx  3.2K
+Home.tsx  942B
+Policies.tsx  2.7K
+Services.tsx  4.6K
+TokensQA.tsx  3.7K
+chrome.tsx  5.5K
+content.ts  6.1K
+policies-data.ts  42.6K
+route.css  18.8K
+... (3 filtered)
+[+3 hidden: rtk recall e66ba2b4e6d0]
+[0m
+[0m← [0mEdit src/routes/Services.tsx
+Index: /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/routes/Services.tsx
+===================================================================
+--- /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/routes/Services.tsx
++++ /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/routes/Services.tsx
+@@ -2,9 +2,8 @@
+ // Sections per PLAN-MASTER §3: H1 → 3 intro paras → 2 service blocks →
+ // 4 lens names → Essilor slideshow (3 slides) → insurance band → visit.
+ // All copy verbatim from B §§3–5; booking CTA same-tab (C §2).
+ import { useEffect, useState } from 'react'
+-import { Link } from 'react-router-dom'
+ import './parts/route.css'
+ import { RouteFooter, RouteHeader, VisitStrip } from './parts/chrome'
+ import {
+   BOOKING_URL,
+
+[0m
+[0m← [0mEdit src/routes/Services.tsx
+Index: /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/routes/Services.tsx
+===================================================================
+--- /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/routes/Services.tsx
++++ /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/routes/Services.tsx
+@@ -117,13 +117,8 @@
+       <li key={name}>{name}</li>
+     ))}
+   </ul>
+   <LensSlideshow />
+-  <p style={{ marginTop: 32 }}>
+-    <Link to="/frames" className="f-arrow-link">
+-      Browse frames <span className="f-arrow" aria-hidden="true">→</span>
+-    </Link>
+-  </p>
+ </section>
+ 
+ <section className="f-insurance" aria-label={INSURANCE_HEADING}>
+   <div className="f-insurance-inner">
+
+[0m
+[0m← [0mEdit src/routes/Services.tsx
+Index: /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/routes/Services.tsx
+===================================================================
+--- /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/routes/Services.tsx
++++ /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/routes/Services.tsx
+@@ -80,9 +80,9 @@
+ <div className="f-hero">
+   <h1 className="eyeq-h1">{SERVICES_H1}</h1>
+ </div>
+ <div className="f-body">
+-  <section className="f-section" aria-label="Introduction">
++  <section className="f-section">
+     <div className="f-measure">
+       {SERVICES_INTRO.map((para) => (
+         <p key={para.slice(0, 32)}>{para}</p>
+       ))}
+
+[0m
+[0m← [0mEdit src/routes/Services.tsx
+Index: /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/routes/Services.tsx
+===================================================================
+--- /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/routes/Services.tsx
++++ /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/routes/Services.tsx
+@@ -88,9 +88,9 @@
+     ))}
+   </div>
+ </section>
+ 
+-<section className="f-section" aria-label="Our services">
++<section className="f-section">
+   <ol className="f-ledger">
+     {SERVICE_BLOCKS.map((block, i) => (
+       <li key={block.heading} className="f-ledger-row">
+         <span className="f-ledger-num" aria-hidden="true">
+
+[0m
+[0m← [0mEdit src/routes/parts/chrome.tsx
+Index: /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/routes/parts/chrome.tsx
+===================================================================
+--- /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/routes/parts/chrome.tsx
++++ /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/routes/parts/chrome.tsx
+@@ -36,14 +36,8 @@
+     className={current === 'contact' ? 'f-nav-link is-current' : 'f-nav-link'}
+   >
+     Contact
+   </Link>
+-  <Link
+-    to="/frames"
+-    className={current === 'frames' ? 'f-nav-link is-current' : 'f-nav-link'}
+-  >
+-    Browse frames
+-  </Link>
+ </nav>
+ <a
+   className="f-book-pill"
+   href={BOOKING_URL}
+
+[0m
+[0m← [0mEdit src/routes/parts/chrome.tsx
+Index: /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/routes/parts/chrome.tsx
+===================================================================
+--- /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/routes/parts/chrome.tsx
++++ /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/routes/parts/chrome.tsx
+@@ -87,22 +87,8 @@
+             <Link to="/policies/terms-of-service">Terms of service</Link>
+           </li>
+         </ul>
+       </nav>
+-      <nav className="f-footer-more" aria-label="More">
+-        <p className="f-footer-heading">More</p>
+-        <ul>
+-          <li>
+-            <Link to="/frames">Browse frames</Link>
+-          </li>
+-          <li>
+-            <Link to="/">Back to home</Link>
+-          </li>
+-          <li>
+-            <a href="#f-top">Back to top</a>
+-          </li>
+-        </ul>
+-      </nav>
+     </div>
+     <p className="f-footer-copy">© {year} EyeQ Vision Care</p>
+   </footer>
+ )
+
+[0m
+[0m← [0mEdit src/routes/parts/content.ts
+Index: /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/routes/parts/content.ts
+===================================================================
+--- /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/routes/parts/content.ts
++++ /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/routes/parts/content.ts
+@@ -119,13 +119,4 @@
+   email: 'EMAIL',
+   address: 'ADDRESS',
+   hours: 'HOURS',
+ } as const
+-
+-// ---- Catalog fallback lines (DRAFT — COPY-DRAFTS.md) ---------------------
+-// Rendered with an adjacent DRAFT code-comment; wording pending client
+-// approval. Never render "$0.00" (B §10 placeholder pricing).
+-
+-/** DRAFT D16 (COPY-DRAFTS.md) — pending client price/availability policy. */
+-export const AVAILABILITY_LINE = 'In-store only — call for availability.'
+-/** DRAFT D14 (COPY-DRAFTS.md) — search/catalog empty state. */
+-export const EMPTY_STATE_LINE = 'No frames match — call 905-497-0227.'
+
+[0m
+[0m← [0mEdit src/routes/Policies.tsx
+Index: /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/routes/Policies.tsx
+===================================================================
+--- /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/routes/Policies.tsx
++++ /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/routes/Policies.tsx
+@@ -30,10 +30,10 @@
+ <div className="f-page" id="f-top">
+   <RouteHeader current="policies" />
+   <main id="f-content">
+     <div className="f-hero">
+-      <h1 className="eyeq-h1">Policies</h1>
+-      <nav className="f-policy-nav" aria-label="Policies">
++      <h1 className="eyeq-h1">Terms and Policies</h1>
++      <nav className="f-policy-nav" aria-label="Terms and Policies">
+         {POLICIES.map((doc) => (
+           <Link
+             key={doc.slug}
+             to={`/policies/${doc.slug}`}
+
+[0m
+[0m← [0mEdit src/routes/Policies.tsx
+Index: /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/routes/Policies.tsx
+===================================================================
+--- /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/routes/Policies.tsx
++++ /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/routes/Policies.tsx
+@@ -43,17 +43,13 @@
+         {doc.title}
+       </Link>
+     ))}
+   </nav>
+-  {/* [COPY NEEDED: updated legal entity + returns contact for the
+-      Brampton store (COPY-DRAFTS.md rollup (b)). Bodies below are
+-      verbatim from the live site until the client supplies them. */}
+-  <p className="f-copy-note">
+-    [COPY NEEDED: Brampton legal entity + returns contact] The texts
+-    below are reproduced from the current live site. Store contact
+-    strings still name the previous location until updated details are
+-    supplied.
+-  </p>
++  {/* [COPY NEEDED: Brampton legal entity + returns contact
++      (COPY-DRAFTS.md rollup (b)). Bodies below are verbatim from the
++      live site until the client supplies them; old-store strings
++      (info@eyeq2020.ca, Burlington address, 2434804 Ontario Inc.)
++      are preserved verbatim, never presented as the new store. */}
+ </div>
+ <div className="f-body">
+   <div className="f-policy-article">
+     {POLICIES.map((doc) => (
+
+[0m
+[0m← [0mEdit src/routes/Contact.tsx
+Index: /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/routes/Contact.tsx
+===================================================================
+--- /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/routes/Contact.tsx
++++ /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/routes/Contact.tsx
+@@ -28,9 +28,9 @@
+ <div className="f-hero">
+   <h1 className="eyeq-h1">Contact</h1>
+ </div>
+ <div className="f-body">
+-  <section className="f-section" aria-label="Store contact details">
++  <section className="f-section">
+     <ul className="f-facts">
+       <li className="f-fact">
+         <span className="f-fact-label">{CONTACT_LABELS.phone}</span>
+         <a href={STORE.phoneHref}>{STORE.phoneDisplay}</a>
+
+[0m
+[0m← [0mEdit src/__dev__/F/main.tsx
+Index: /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/__dev__/F/main.tsx
+===================================================================
+--- /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/__dev__/F/main.tsx
++++ /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/__dev__/F/main.tsx
+@@ -1,25 +1,21 @@
+ // Lane F isolated dev harness (owned by Lane F — see lane brief).
+-// Small router over the four Lane F routes only; the real app's
+-// src/app/router.tsx is Lane A owned and stays untouched. Open:
+-// http://localhost:5106/dev-F.html
++// Small router over the three Lane F routes only (Services / Contact /
++// Policies); the real app's src/app/router.tsx is Lane A owned and stays
++// untouched. Open: http://localhost:5106/dev-F.html
+ import { StrictMode } from 'react'
+ import { createRoot } from 'react-dom/client'
+ import { RouterProvider, createMemoryRouter } from 'react-router-dom'
+ import { Services } from '../../routes/Services'
+ import { Contact } from '../../routes/Contact'
+ import { Policies } from '../../routes/Policies'
+-import { Catalog } from '../../routes/Catalog'
+ import '../../styles/tokens.css'
+ 
+ const router = createMemoryRouter(
+   [
+     { path: '/services', element: <Services /> },
+     { path: '/contact', element: <Contact /> },
+     { path: '/policies/:policy', element: <Policies /> },
+-    { path: '/frames', element: <Catalog /> },
+-    { path: '/frames/:handle', element: <Catalog /> },
+-    { path: '/search', element: <Catalog /> },
+     { path: '*', element: <Services /> },
+   ],
+   { initialEntries: ['/services'] },
+ )
+
+[0m
+[0m← [0mEdit src/__dev__/F/main.tsx
+Index: /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/__dev__/F/main.tsx
+===================================================================
+--- /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/__dev__/F/main.tsx
++++ /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/__dev__/F/main.tsx
+@@ -44,11 +44,8 @@
+   ['/contact', 'Contact'],
+   ['/policies/refund-policy', 'Refund'],
+   ['/policies/privacy-policy', 'Privacy'],
+   ['/policies/terms-of-service', 'Terms'],
+-  ['/frames', 'Frames'],
+-  ['/frames/persol-po0649', 'Detail'],
+-  ['/search?q=aviator', 'Search'],
+ ].map(([path, label]) => (
+   <button
+     key={path}
+     type="button"
+
+[0m
+[0m← [0mEdit src/routes/parts/route.css
+Index: /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/routes/parts/route.css
+===================================================================
+--- /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/routes/parts/route.css
++++ /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/routes/parts/route.css
+@@ -180,9 +180,9 @@
+   color: var(--eyeq-ink-muted);
+   margin: 0 0 12px;
+ }
+ 
+-/* ---- Ledger rows (services, contact facts, catalog rows) ---- */
++/* ---- Ledger rows (services, contact facts) ---- */
+ 
+ .f-ledger {
+   list-style: none;
+   margin: 0;
+
+[0m
+[0m← [0mEdit src/routes/parts/route.css
+Index: /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/routes/parts/route.css
+===================================================================
+--- /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/routes/parts/route.css
++++ /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/routes/parts/route.css
+@@ -918,9 +918,9 @@
+   margin: 0 auto;
+   max-width: 1200px;
+   padding: 72px var(--eyeq-margin) 48px;
+   display: grid;
+-  grid-template-columns: 1.4fr 1fr 1fr;
++  grid-template-columns: 1.4fr 1fr;
+   gap: 48px;
+ }
+ 
+ .f-footer-mark {
+
+[0m
+[0m← [0mEdit src/routes/parts/route.css
+Index: /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/routes/parts/route.css
+===================================================================
+--- /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/routes/parts/route.css
++++ /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/routes/parts/route.css
+@@ -963,22 +963,19 @@
+   color: var(--eyeq-bone-dim);
+   margin: 0 0 16px;
+ }
+ 
+-.f-footer-policies ul,
+-.f-footer-more ul {
++.f-footer-policies ul {
+   list-style: none;
+   margin: 0;
+   padding: 0;
+ }
+ 
+-.f-footer-policies li,
+-.f-footer-more li {
++.f-footer-policies li {
+   margin-bottom: 10px;
+ }
+ 
+-.f-footer-policies a,
+-.f-footer-more a {
++.f-footer-policies a {
+   color: var(--eyeq-bone);
+   font-size: 15px;
+   text-decoration: none;
+ }
+
+[0m
+[0m← [0mEdit src/routes/parts/route.css
+Index: /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/routes/parts/route.css
+===================================================================
+--- /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/routes/parts/route.css
++++ /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/routes/parts/route.css
+@@ -979,10 +979,9 @@
+   font-size: 15px;
+   text-decoration: none;
+ }
+ 
+-.f-footer-policies a:hover,
+-.f-footer-more a:hover {
++.f-footer-policies a:hover {
+   text-decoration: underline;
+   text-underline-offset: 3px;
+ }
+ 
+
+[0m
+[0m✗ [0mEdit src/routes/parts/route.css failed
+[91m[1mError: [0mCould not find oldString in the file. It must match exactly, including whitespace, indentation, and line endings.
+[0m✗ [0mEdit src/routes/parts/route.css failed
+[91m[1mError: [0mCould not find oldString in the file. It must match exactly, including whitespace, indentation, and line endings.
+[0m→ [0mRead src/routes/parts/route.css[90m [offset=560, limit=130][0m
+[0m→ [0mRead src/routes/parts/route.css[90m [limit=160, offset=690][0m
+[0m
+[0m← [0mEdit src/routes/parts/route.css
+Index: /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/routes/parts/route.css
+===================================================================
+--- /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/routes/parts/route.css
++++ /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/routes/parts/route.css
+@@ -561,72 +561,10 @@
+   margin-top: 24px;
+   flex-wrap: wrap;
+ }
+ 
+-/* ---- Catalog ---- */
++/* Catalog/search/frames styles removed — no catalog routes (brief §6d). */
+ 
+-.f-filter-bar {
+-  display: flex;
+-  flex-wrap: wrap;
+-  gap: 16px;
+-  align-items: center;
+-  justify-content: space-between;
+-  padding: 32px 0;
+-  border-top: 1px solid var(--eyeq-hairline-light);
+-}
+-
+-.f-seg {
+-  display: inline-flex;
+-  border: 1px solid var(--eyeq-hairline-light-strong);
+-  border-radius: var(--eyeq-radius-pill);
+-  padding: 4px;
+-  gap: 4px;
+-}
+-
+-.f-seg-btn {
+-  font: inherit;
+-  font-size: 14px;
+-  font-weight: 500;
+-  border: 0;
+-  border-radius: var(--eyeq-radius-pill);
+-  background: transparent;
+-  color: var(--eyeq-ink-body);
+-  padding: 8px 18px;
+-  cursor: pointer;
+-}
+-
+-.f-seg-btn[aria-pressed="true"] {
+-  background: var(--eyeq-ink);
+-  color: var(--eyeq-paper);
+-}
+-
+-.f-search {
+-  display: flex;
+-  align-items: center;
+-  gap: 8px;
+-}
+-
+-.f-search input {
+-  font: inherit;
+-  font-size: 15px;
+-  color: var(--eyeq-ink);
+-  background: var(--eyeq-card-white);
+-  border: 1px solid var(--eyeq-hairline-light-strong);
+-  border-radius: var(--eyeq-radius-card);
+-  padding: 10px 14px;
+-  min-width: 240px;
+-}
+-
+-.f-search input::placeholder {
+-  color: var(--eyeq-ink-muted);
+-}
+-
+-.f-count {
+-  font-size: 14px;
+-  color: var(--eyeq-ink-muted);
+-  font-variant-numeric: tabular-nums;
+-}
+-
+ .f-product-list {
+   list-style: none;
+   margin: 0;
+   padding: 0;
+
+[0m
+[0m← [0mEdit src/routes/parts/route.css
+Index: /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/routes/parts/route.css
+===================================================================
+--- /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/routes/parts/route.css
++++ /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/routes/parts/route.css
+@@ -563,160 +563,8 @@
+ }
+ 
+ /* Catalog/search/frames styles removed — no catalog routes (brief §6d). */
+ 
+-.f-product-list {
+-  list-style: none;
+-  margin: 0;
+-  padding: 0;
+-}
+-
+-.f-product-row {
+-  border-top: 1px solid var(--eyeq-hairline-light);
+-}
+-
+-.f-product-row:last-child {
+-  border-bottom: 1px solid var(--eyeq-hairline-light);
+-}
+-
+-.f-product-link {
+-  display: grid;
+-  grid-template-columns: 200px 1fr auto;
+-  gap: 32px;
+-  align-items: center;
+-  padding: 24px 0;
+-  text-decoration: none;
+-  color: inherit;
+-}
+-
+-.f-product-thumb {
+-  width: 200px;
+-  aspect-ratio: 2 / 1;
+-  object-fit: contain;
+-  background: var(--eyeq-card-white);
+-  border: 1px solid var(--eyeq-hairline-light);
+-  border-radius: var(--eyeq-radius-media);
+-  display: block;
+-}
+-
+-.f-product-name {
+-  font-family: var(--eyeq-font-display);
+-  font-weight: 400;
+-  font-size: 22px;
+-  line-height: 1.15;
+-  letter-spacing: -0.02em;
+-  color: var(--eyeq-ink);
+-  margin: 0 0 6px;
+-}
+-
+-.f-product-meta {
+-  margin: 0;
+-  font-size: 14px;
+-  color: var(--eyeq-ink-muted);
+-}
+-
+-.f-product-avail {
+-  margin: 8px 0 0;
+-  font-size: 14px;
+-  color: var(--eyeq-ink-muted);
+-}
+-
+-.f-product-arrow {
+-  font-size: 20px;
+-  color: var(--eyeq-ink);
+-  transition: transform 350ms cubic-bezier(0.16, 1, 0.3, 1);
+-}
+-
+-.f-product-link:hover .f-product-arrow {
+-  transform: translateX(6px);
+-}
+-
+-.f-empty {
+-  padding: 64px 0;
+-  max-width: 560px;
+-}
+-
+-.f-empty p {
+-  font-size: 16px;
+-  margin: 0 0 24px;
+-}
+-
+-/* ---- Catalog detail ---- */
+-
+-.f-back {
+-  display: inline-block;
+-  margin-bottom: 32px;
+-}
+-
+-.f-detail-grid {
+-  display: grid;
+-  grid-template-columns: 1.15fr 1fr;
+-  gap: 64px;
+-  align-items: start;
+-}
+-
+-.f-detail-gallery {
+-  position: sticky;
+-  top: 24px;
+-}
+-
+-.f-detail-main {
+-  width: 100%;
+-  aspect-ratio: 2 / 1;
+-  object-fit: contain;
+-  background: var(--eyeq-card-white);
+-  border: 1px solid var(--eyeq-hairline-light);
+-  border-radius: var(--eyeq-radius-media);
+-  display: block;
+-}
+-
+-.f-detail-thumbs {
+-  display: flex;
+-  gap: 12px;
+-  margin-top: 12px;
+-  flex-wrap: wrap;
+-}
+-
+-.f-detail-thumb {
+-  border: 1px solid var(--eyeq-hairline-light);
+-  border-radius: var(--eyeq-radius-card);
+-  background: var(--eyeq-card-white);
+-  padding: 0;
+-  cursor: pointer;
+-  width: 96px;
+-}
+-
+-.f-detail-thumb img {
+-  width: 100%;
+-  aspect-ratio: 2 / 1;
+-  object-fit: contain;
+-  display: block;
+-}
+-
+-.f-detail-thumb[aria-current="true"] {
+-  outline: 2px solid var(--eyeq-lamp-amber);
+-  outline-offset: 2px;
+-}
+-
+-.f-detail-info h1 {
+-  color: var(--eyeq-ink);
+-}
+-
+-.f-detail-sizes {
+-  margin: 24px 0 0;
+-  font-size: 14px;
+-  color: var(--eyeq-ink-muted);
+-}
+-
+-.f-detail-ctas {
+-  display: flex;
+-  gap: 12px;
+-  flex-wrap: wrap;
+-  margin-top: 32px;
+-  padding-top: 32px;
+-  border-top: 1px solid var(--eyeq-hairline-light);
+-}
+-
+ .f-richtext {
+   margin-top: 32px;
+   padding-top: 32px;
+   border-top: 1px solid var(--eyeq-hairline-light);
+
+[0m
+[0m✱ [0mGrep "f-lede|f-copy-note|f-back|f-count|f-empty|f-arrow-link"[90m in src · 6 matches[0m
+[0m→ [0mRead src/routes/parts/route.css[90m [limit=130, offset=773][0m
+[0m
+[0m← [0mEdit src/routes/parts/route.css
+Index: /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/routes/parts/route.css
+===================================================================
+--- /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/routes/parts/route.css
++++ /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/routes/parts/route.css
+@@ -781,17 +781,8 @@
+ 
+ /* ---- Responsive ---- */
+ 
+ @media (max-width: 900px) {
+-  .f-detail-grid {
+-    grid-template-columns: 1fr;
+-    gap: 40px;
+-  }
+-
+-  .f-detail-gallery {
+-    position: static;
+-  }
+-
+   .f-visit-inner {
+     grid-template-columns: 1fr;
+     gap: 32px;
+   }
+
+[0m
+[0m← [0mEdit src/routes/parts/route.css
+Index: /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/routes/parts/route.css
+===================================================================
+--- /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/routes/parts/route.css
++++ /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/routes/parts/route.css
+@@ -852,31 +852,8 @@
+   .f-map-actions .f-btn {
+     flex: 1;
+     text-align: center;
+   }
+-
+-  .f-product-link {
+-    grid-template-columns: 1fr;
+-    gap: 16px;
+-  }
+-
+-  .f-product-thumb {
+-    width: 100%;
+-    max-width: 320px;
+-  }
+-
+-  .f-product-arrow {
+-    display: none;
+-  }
+-
+-  .f-search input {
+-    min-width: 0;
+-    width: 100%;
+-  }
+-
+-  .f-search {
+-    width: 100%;
+-  }
+ }
+ 
+ @media (prefers-reduced-motion: reduce) {
+   .f-nav-link,
+
+[0m
+[0m← [0mEdit src/routes/parts/route.css
+Index: /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/routes/parts/route.css
+===================================================================
+--- /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/routes/parts/route.css
++++ /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/routes/parts/route.css
+@@ -858,10 +858,8 @@
+ @media (prefers-reduced-motion: reduce) {
+   .f-nav-link,
+   .f-book-pill,
+   .f-btn,
+-  .f-arrow-link .f-arrow,
+-  .f-product-arrow,
+   .f-slide-btn,
+   .f-skip {
+     transition: none;
+   }
+
+[0m
+[0m← [0mEdit src/routes/parts/route.css
+Index: /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/routes/parts/route.css
+===================================================================
+--- /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/routes/parts/route.css
++++ /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/routes/parts/route.css
+@@ -130,16 +130,8 @@
+   color: var(--eyeq-ink);
+   max-width: 12ch;
+ }
+ 
+-.f-lede {
+-  margin: 24px 0 0;
+-  max-width: 560px;
+-  font-size: 16px;
+-  line-height: 1.6;
+-  color: var(--eyeq-ink-body);
+-}
+-
+ .f-body {
+   margin: 0 auto;
+   max-width: 1200px;
+   padding: 0 var(--eyeq-margin) 112px;
+
+[0m
+[0m← [0mEdit src/routes/parts/route.css
+Index: /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/routes/parts/route.css
+===================================================================
+--- /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/routes/parts/route.css
++++ /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/routes/parts/route.css
+@@ -248,27 +248,8 @@
+   text-underline-offset: 3px;
+   text-decoration-thickness: 1px;
+ }
+ 
+-.f-arrow-link {
+-  display: inline-flex;
+-  align-items: center;
+-  gap: 8px;
+-  color: var(--eyeq-ink);
+-  font-size: 14px;
+-  font-weight: 500;
+-  text-decoration: none;
+-}
+-
+-.f-arrow-link .f-arrow {
+-  display: inline-block;
+-  transition: transform 350ms cubic-bezier(0.16, 1, 0.3, 1);
+-}
+-
+-.f-arrow-link:hover .f-arrow {
+-  transform: translateX(6px);
+-}
+-
+ /* ---- Lens names + slideshow ---- */
+ 
+ .f-lens-names {
+   list-style: none;
+
+[0m
+[0m← [0mEdit src/routes/parts/route.css
+Index: /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/routes/parts/route.css
+===================================================================
+--- /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/routes/parts/route.css
++++ /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/routes/parts/route.css
+@@ -629,19 +629,8 @@
+   color: var(--eyeq-paper);
+   border-color: var(--eyeq-ink);
+ }
+ 
+-.f-copy-note {
+-  margin-top: 24px;
+-  padding: 16px 20px;
+-  border: 1px solid var(--eyeq-hairline-light-strong);
+-  border-radius: var(--eyeq-radius-card);
+-  font-size: 14px;
+-  line-height: 1.55;
+-  color: var(--eyeq-ink-muted);
+-  max-width: 680px;
+-}
+-
+ .f-policy-article {
+   max-width: 760px;
+ }
+ 
+
+[0m
+[0m✱ [0mGrep "Catalog|/frames|/search|Frames"[90m in src/__dev__/F · 0 matches[0m
+[0m✱ [0mGrep "Catalog|catalog|/frames|frames|/search|Search|Browse|AVAILABILITY|EMPTY_STATE|FILTER_|PRODUCTS|getProduct|filterProducts"[90m in src/routes · 5 matches[0m
+[0m
+[0m# [0mTodos
+[✓] Delete Catalog.tsx + parts/catalog-*.ts + catalog links/code in lane files + harness
+[✓] Audit all visible strings vs B-content-inventory + brief §2; remove invented copy
+[•] Finish Services/Contact/Policies per corrected scope
+[ ] Write docs/phase4/requests/F-router.md
+[ ] Screenshots 1440+390 per route into qa/F, LOOK, delete old catalog shots, npm run build
+[0m
+[0m← [0mWrite docs/phase4/requests/F-router.md
+Wrote file successfully.
+[0m
+[0m← [0mEdit docs/phase4/requests/F-redirects.md
+Index: /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/docs/phase4/requests/F-redirects.md
+===================================================================
+--- /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/docs/phase4/requests/F-redirects.md
++++ /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/docs/phase4/requests/F-redirects.md
+@@ -1,6 +1,12 @@
+ # Lane F request — legacy-URL redirects (needs Lane A files)
+ 
++> SUPERSEDED in part by `F-router.md` (round 2, brief §6d): the
++> `/collections/* → /frames` and `/products/* → /frames/:splat` redirects
++> below must NOT be added (no `/frames` target exists anymore). Only the
++> `/pages/services → /services` and `/pages/contact → /contact` redirects
++> are still wanted.
++
+ Lane F owns `src/routes/*` only and must not edit `public/_redirects` or
+ `src/app/router.tsx` (Lane A). Step-13 acceptance requires zero broken
+ links (PLAN-MASTER §3: "zero broken links today, C §7 — keep it that way").
+ 
+
+[0m
+[0m$ [0mnpm run build 2>&1 | tail -25
+npm notice run eyeq-vision-care@0.1.0 build
+npm notice run tsc -b && vite build
+src/__dev__/C/main.tsx(140,9): error TS6133: 'glassesUrl' is declared but its value is never read.
+src/app/router.tsx(6,25): error TS2307: Cannot find module '../routes/Catalog' or its corresponding type declarations.
+[0m
+[0m$ [0mnpx tsc -b 2>&1 | head -20; echo "---"; rtk ls ~/.cache/ms-playwright 2>/dev/null || echo "no ms-playwright cache"
+npm notice run eyeq-vision-care@0.1.0 npx
+npm notice run 'tsc' -b
+src/__dev__/C/main.tsx(140,9): error TS6133: 'glassesUrl' is declared but its value is never read.
+src/app/router.tsx(6,25): error TS2307: Cannot find module '../routes/Catalog' or its corresponding type declarations.
+---
+no ms-playwright cache
+[0m
+[0m→ [0mRead playwright.config.ts
+[0m
+[0m$ [0mrtk playwright --version 2>&1; which chromium chromium-browser google-chrome 2>&1; rtk ls /Applications 2>/dev/null | head -30
+[RTK:PASSTHROUGH] playwright parser: All parsing tiers failed
+Version 1.63.0
+
+chromium not found
+chromium-browser not found
+google-chrome not found
+A Dance of Fire and Ice.app/
+Ample Sound/
+Antigravity Tools.app/
+Antigravity.app/
+Arduino IDE.app/
+Avast.app/
+Backup and Sync.app/
+Balatro.app/
+BambuStudio.app/
+Blackmagic Proxy Generator Lite.app/
+Blackmagic RAW/
+Blender.app/
+Bluebook.app/
+Bubble.app/
+CCleaner.app/
+CapCut.app/
+Celeste.app/
+Chrome Apps.localized/
+Chrome Remote Desktop Host Uninstaller.app/
+Claude.app/
+Cloude.app/
+Codex.app/
+Conductor.app/
+CrossOver/
+CrossOver.app/
+Cyberpunk 2077.app/
+DEVOUR.app/
+DaVinci Resolve/
+Discord.app/
+Dovetail.app/
+[0m
+[0m$ [0mrtk ls /Applications 2>/dev/null | rtk grep -i -E "chrom|firefox|edge|safari"; echo "---"; rtk ls "/Applications/Google Chrome.app" 2>&1 | head -5
+Chrome Apps.localized/
+Chrome Remote Desktop Host Uninstaller.app/
+Google Chrome 3.app/
+---
+/Applications/Google Chrome.app -> /Applications/Google Chrome 3.app  33B
+[0m
+[0m$ [0mrtk ls "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome" && rm "docs/phase4/qa/F/contact-1440-full.png" "docs/phase4/qa/F/contact-1440-top.png" "docs/phase4/qa/F/policies-privacy-1440-top.png" "docs/phase4/qa/F/policies-refund-1440-top.png" "docs/phase4/qa/F/policies-terms-1440-top.png" "docs/phase4/qa/F/services-1440-full.png" "docs/phase4/qa/F/services-1440-insurance.png" "docs/phase4/qa/F/services-1440-top.png" "docs/phase4/qa/F/services-390-top.png" && rtk ls docs/phase4/qa/F/
+/Applications/Google Chrome.app/Contents/MacOS/Google Chrome  359.1K
+(empty)
+[0m
+[0m← [0mWrite /var/folders/79/kmzzxdrj3zv5njqg4n32mp0m0000gp/T/opencode/laneF-shots.mjs
+Wrote file successfully.
+[0m
+[0m$ [0mnohup npx vite --port 5116 --strictPort > /var/folders/79/kmzzxdrj3zv5njqg4n32mp0m0000gp/T/opencode/laneF-vite.log 2>&1 & echo "started pid $!"; sleep 6; curl -s -o /dev/null -w "%{http_code}" http://localhost:5116/dev-F.html; echo
+started pid 60188
+200
+[0m
+[0m$ [0mnode /var/folders/79/kmzzxdrj3zv5njqg4n32mp0m0000gp/T/opencode/laneF-shots.mjs 2>&1 | tail -20
+saved services-1440-full.png
+saved contact-1440-full.png
+saved policies-refund-1440-full.png
+saved policies-privacy-1440-full.png
+saved policies-terms-1440-full.png
+saved services-390-full.png
+saved contact-390-full.png
+saved policies-refund-390-full.png
+saved policies-privacy-390-full.png
+saved policies-terms-390-full.png
+done
+[0m
+[0m→ [0mRead docs/phase4/qa/F/contact-1440-full.png
+[0m→ [0mRead docs/phase4/qa/F/services-1440-full.png
+[0m→ [0mRead docs/phase4/qa/F/policies-refund-1440-full.png
+[0m→ [0mRead docs/phase4/qa/F/services-390-full.png
+[0m→ [0mRead docs/phase4/qa/F/contact-390-full.png
+[0m→ [0mRead docs/phase4/qa/F/policies-terms-1440-full.png
+[0m→ [0mRead docs/phase4/qa/F/policies-terms-390-full.png
+[0m→ [0mRead docs/phase4/qa/F/policies-privacy-390-full.png
+[0m
+[0m$ [0mkill 60188 2>/dev/null; sleep 1; rtk curl -s -o /dev/null -m 3 -w "%{http_code}" http://localhost:5116/dev-F.html || echo "server stopped"; rtk ls docs/phase4/qa/F/
+FAILED: curl 000
+server stopped
+contact-1440-full.png  95.1K
+contact-390-full.png  80.6K
+policies-privacy-1440-full.png  3.4M
+policies-privacy-390-full.png  3.3M
+policies-refund-1440-full.png  3.4M
+policies-refund-390-full.png  3.3M
+policies-terms-1440-full.png  3.4M
+policies-terms-390-full.png  3.3M
+services-1440-full.png  319.1K
+services-390-full.png  222.4K
+[0m
+[0m# [0mTodos
+[✓] Delete Catalog.tsx + parts/catalog-*.ts + catalog links/code in lane files + harness
+[✓] Audit all visible strings vs B-content-inventory + brief §2; remove invented copy
+[✓] Finish Services/Contact/Policies per corrected scope
+[✓] Write docs/phase4/requests/F-router.md
+[✓] Screenshots 1440+390 per route into qa/F, LOOK, delete old catalog shots, npm run build
+[0m
+PHASE4-F-DONE
+
+1. Deleted `Catalog.tsx`, `parts/catalog*.ts`, all Browse-frames/search/product links, dead catalog CSS, and harness catalog routes; nav is Home·Services·Contact+Book CTA, footer is store block + Refund·Privacy·Terms.
+2. Audited every visible string: all copy now byte-verbatim from B-content-inventory (Eye Q Optical/Burlington intact) or brief §2; removed invented labels and moved the policies notice to a code comment.
+3. Services/Contact/Policies finished per scope: verbatim services + 7 Essilor lenses + 8 unlinked insurer logos + same-tab booking; new-store contact facts with tel/mailto/map/directions, no form; verbatim policy bodies.
+4. Wrote `docs/phase4/requests/F-router.md` (exact router register/remove list) and marked `F-redirects.md` catalog redirects superseded.
+5. Saved 10 fresh screenshots (5 routes × 1440+390) in `docs/phase4/qa/F/`, inspected them, deleted all stale shots; harness ran with zero console errors; dev server stopped.
+6. Known issues: `npm run build` still fails on 2 files outside Lane F — `src/app/router.tsx` imports the deleted Catalog (fix is F-router.md §1, needs router owner) and `src/__dev__/C/main.tsx` has a pre-existing unused-var error (Lane C); `tsc` reports zero errors in any Lane F file.
+EXIT 0 model=meta/muse-spark-1.3-contributor

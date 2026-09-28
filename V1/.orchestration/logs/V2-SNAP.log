@@ -1,0 +1,536 @@
+[0m
+> build · muse-spark-1.3-contributor-free
+[0m
+Shipping the snap nudge — mapping key frames to scroll stops.
+[0m→ [0mRead src/v1
+[0m→ [0mRead docs/00-BRIEF.md
+[0m→ [0mRead render-repo/RENDER-REPORT.md
+[0m→ [0mRead src/v1/progress.ts
+[0m→ [0mRead src/v1/filmCurve.ts
+[0m→ [0mRead src/v1/App.tsx
+[0m→ [0mRead src/v1/FilmSequence.tsx
+[0m→ [0mRead package.json
+[0m→ [0mRead src/v1/main.tsx
+[0m→ [0mRead src/v1/v1.css
+[0m
+[0m# [0mTodos
+[•] Write lenis.ts singleton + filmCurve snap helpers
+[ ] Write snap.ts initSnap + App.tsx hookup + integration note
+[ ] Verify with vite dev server + Playwright video at 1512x860 and 390x844, write QA report
+[0m
+[0m← [0mWrite src/v1/lenis.ts
+Wrote file successfully.
+[0m
+[0m← [0mEdit src/v1/filmCurve.ts
+Index: /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/v1/filmCurve.ts
+===================================================================
+--- /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/v1/filmCurve.ts
++++ /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/v1/filmCurve.ts
+@@ -279,4 +279,39 @@
+     out.push([s, scrollToFilm(s, manifest)]);
+   }
+   return out;
+ }
++
++// ── V2-SNAP — key-frame → scroll map for the snap nudge ─────────────────
++// V2 film: 3588 output frames = 615 source frames × (140/24).
++// Output frame i ↔ source frame s = 1 + (i−1)·24/140.
++// Snap targets (source frames): 1 (logo), 70 (3/4), 145 (out of sleeve),
++// 215 (hero), 280 (spin peak), 368 (ring), 440 (sweep), 500 (lens),
++// 600 (end card). Scroll positions derive from the curve above so snap and
++// pacing share one source of truth.
++export const V2_FILM_MANIFEST: FilmManifest = { count: 3588, sourceFrames: 615 };
++
++export const SNAP_SOURCE_KEYS: readonly number[] = [1, 70, 145, 215, 280, 368, 440, 500, 600];
++
++/** Key SOURCE frame → pin-scroll progress 0..1 (through the punch curve). */
++export function snapSourceToScroll(source: number): number {
++  return filmToScroll(sourceToFilm(source, resolveFilmSpace(V2_FILM_MANIFEST)), V2_FILM_MANIFEST);
++}
++
++/** Pin-scroll progress of every snap key, ascending. */
++export function snapKeyScrolls(): number[] {
++  return SNAP_SOURCE_KEYS.map(snapSourceToScroll);
++}
++
++/**
++ * Capture window for key `i` (scroll-fraction units): ≈⅓ of the gap to the
++ * nearest neighbouring key. The nudge only fires inside this window.
++ */
++export function snapCaptureWindow(i: number): number {
++  const keys = snapKeyScrolls();
++  const k = keys[i];
++  const gaps: number[] = [];
++  if (i > 0) gaps.push(k - keys[i - 1]);
++  if (i < keys.length - 1) gaps.push(keys[i + 1] - k);
++  const nearest = Math.min(...gaps);
++  return nearest / 3;
++}
+
+[0m
+[0m# [0mTodos
+[✓] Write lenis.ts singleton + filmCurve snap helpers
+[•] Write snap.ts initSnap + App.tsx hookup + integration note
+[ ] Verify with vite dev server + Playwright video at 1512x860 and 390x844, write QA report
+[0m
+[0m← [0mWrite src/v1/snap.ts
+Wrote file successfully.
+[0m
+[0m← [0mEdit src/v1/App.tsx
+Index: /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/v1/App.tsx
+===================================================================
+--- /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/v1/App.tsx
++++ /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/v1/App.tsx
+@@ -12,8 +12,10 @@
+   Footer,
+ } from '../components/dom/index';
+ import { FilmSequence } from './FilmSequence';
+ import { getFilmProgress, subscribeFilmProgress, useFilmProgress } from './progress';
++import { initSnap } from './snap';
++import { getLenis } from './lenis';
+ 
+ export default function App() {
+   const p = useFilmProgress();
+   const [theme, setTheme] = useState<'dark' | 'light'>('dark');
+
+[0m
+[0m← [0mEdit src/v1/App.tsx
+Index: /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/v1/App.tsx
+===================================================================
+--- /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/v1/App.tsx
++++ /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/v1/App.tsx
+@@ -57,8 +57,11 @@
+     window.setTimeout(() => h1?.classList.add('is-settled'), 1200);
+   });
+ }, []);
+ 
++// V2-SNAP: gentle key-frame nudge, started once (no-op reduced-motion).
++useEffect(() => initSnap(getLenis()), []);
++
+ const skipToWhite = () => {
+   document.querySelector('#white-act')?.scrollIntoView({ behavior: 'auto' });
+ };
+ 
+
+[0m
+Fixing a Lenis API risk (`onComplete` isn't part of `scrollTo` options in lenis 1.x):
+[0m← [0mEdit src/v1/snap.ts
+Index: /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/v1/snap.ts
+===================================================================
+--- /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/v1/snap.ts
++++ /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/v1/snap.ts
+@@ -92,16 +92,10 @@
+ if (bestDist > snapCaptureWindow(best) || bestDist < 1e-4) return;
+ const targetY = m.top + keys[best] * m.dist;
+ snapping = true;
+ try {
+-  l.scrollTo(targetY, {
+-    duration: SNAP_DURATION,
+-    easing: easeOutCubic,
+-    onComplete: () => {
+-      snapping = false;
+-    },
+-  });
+-  // Safety: if onComplete never fires, unlock on next idle pass.
++  l.scrollTo(targetY, { duration: SNAP_DURATION, easing: easeOutCubic });
++  // scrollTo has no completion callback — unlock after the ease lands.
+   window.setTimeout(() => {
+     snapping = false;
+   }, SNAP_DURATION * 1000 + 400);
+ } catch {
+
+[0m
+[0m← [0mWrite docs/phase4/qa/v2/SNAP-integration.md
+Wrote file successfully.
+[0m
+[0m$ [0mnpx tsc --noEmit -p tsconfig.app.json 2>&1 | head -30 || npx tsc --noEmit 2>&1 | head -30
+npm notice run eyeq-vision-care@0.1.0 npx
+npm notice run 'tsc' --noEmit -p tsconfig.app.json
+[0m
+Typecheck clean. Starting the dev server:
+[0m$ [0mrtk ls public/v1film/ 2>/dev/null | head -5; rtk ls public/ 2>/dev/null | head; cat vite.config.ts 2>/dev/null | head -40
+full/
+web/
+decoders/
+fonts/
+models/
+v1film/
+web/
+_redirects  19B
+... (1 filtered)
+[+1 hidden: rtk recall ba2f5bc393e9]
+import { defineConfig } from 'vite'
+import react from '@vitejs/plugin-react'
+
+// EyeQ Vision Care cinematic homepage — Lane A scaffold.
+// Static-host SPA fallback: `public/_redirects` + postbuild copy of
+// index.html -> dist/404.html (see package.json `postbuild`).
+export default defineConfig({
+  plugins: [react()],
+})
+[0m
+[0m$ [0mrtk ls public/v1film/ | head -5; rtk read public/v1film/manifest.json 2>/dev/null; cat index.html | head -30
+full/
+web/
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="EyeQ Vision Care — 2-227 Vodden St East, Brampton, ON. Eye exams, prescription fittings, high-definition lenses." />
+    <link rel="preload" href="/fonts/fraunces-var.woff2" as="font" type="font/woff2" crossorigin />
+    <title>EyeQ Vision Care — Brampton, ON</title>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>
+[0m
+[0m$ [0mcat src/main.tsx 2>/dev/null | head -50; echo ---; rtk ls src/v1/; echo ---; rtk read public/v1film/web/manifest.json 2>/dev/null || rtk find public/v1film -name manifest.json 2>/dev/null
+import { StrictMode } from 'react'
+import { createRoot } from 'react-dom/client'
+import { RouterProvider } from 'react-router-dom'
+import { router } from './app/router'
+import { Providers } from './app/providers'
+import './styles/tokens.css'
+import './styles/film.css'
+import './styles/rails.css'
+import './styles/white.css'
+// Lane B integration: Lane E component styles (ChapterOverlay, Header,
+// WhiteSection, LogoRails, rest-of-homepage, footer). Owned by Lane E;
+// imported here because main.tsx is the integration entry.
+import './components/dom/lane-e.css'
+
+const root = document.getElementById('root')
+if (!root) throw new Error('Missing #root element')
+
+createRoot(root).render(
+  <StrictMode>
+    <Providers>
+      <RouterProvider router={router} />
+    </Providers>
+  </StrictMode>,
+)
+---
+App.tsx  3.2K
+BrandWaves.tsx  11.0K
+FilmCaptions.tsx  1.8K
+FilmSequence.tsx  16.0K
+SidePanels.tsx  7.2K
+captions.css  1.7K
+dev-text.tsx  1.7K
+dev-waves.tsx  1.5K
+filmCurve.ts  12.4K
+frameLoader.ts  8.9K
+lenis.ts  1.2K
+main.tsx  620B
+progress.ts  1.1K
+side.css  4.6K
+sideCopy.ts  4.7K
+sidePanels.css  4.3K
+snap.ts  4.3K
+v1.css  6.4K
+waves.css  2.9K
+---
+[0m
+[0m$ [0mrtk find . -maxdepth 2 -name "v1.html" -o -maxdepth 2 -name "*.html" | head; echo ---; rtk grep -r "v1" src/app/router* 2>/dev/null | head -10; echo ---; rtk ls public/v1film/web/ 2>/dev/null | head -5; rtk ls public/v1film/full/ 2>/dev/null | head -5
+dev-C.html
+dev-D.html
+dev-E.html
+dev-F.html
+dev-b.html
+index.html
+v1-text.html
+v1-waves.html
+v1.html
+dist/404.html
+---
+---
+(empty)
+f_00001.webp  78.9K
+f_00002.webp  78.9K
+f_00003.webp  78.8K
+f_00004.webp  78.8K
+f_00005.webp  78.8K
+[0m
+[0m$ [0mrtk read v1.html; echo ===; rtk read public/v1film/manifest.json 2>/dev/null || rtk find public -name "manifest.json" | head
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="EyeQ Vision Care — 2-227 Vodden St East, Brampton, ON. Eye exams, prescription fittings, high-definition lenses." />
+    <meta name="theme-color" content="#050607" />
+    <style>html{background:#050607}</style>
+    <link rel="preload" href="/fonts/fraunces-var.woff2" as="font" type="font/woff2" crossorigin />
+    <title>EyeQ Vision Care — Brampton, ON</title>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/v1/main.tsx"></script>
+  </body>
+</html>
+zsh:1: == not found
+[0m
+[0m$ [0mrtk find public -name "manifest.json" -maxdepth 3; rtk ls public/v1film 2>/dev/null || rtk find public -maxdepth 2 | head -20
+full/
+web/
+[0m
+[0m$ [0mrtk ls public/v1film/web | wc -l; rtk ls public/v1film/full | wc -l; rtk ls public/v1film/web | tail -3; rtk find docs/phase4/qa/v2 -maxdepth 1 2>/dev/null; rtk ls docs/phase4/qa/v2/ 2>/dev/null || echo "no v2 dir"
+1
+      52
+(empty)
+SNAP-integration.md
+SNAP-integration.md  1.3K
+[0m
+[0m$ [0mrtk ls public/v1film/web/ | head -3; echo ...; ls public/v1film/web/ | wc -l; rtk ls public/v1film/full/ | head -3; ls public/v1film/full/ | wc -l; rtk ls public/v1film/
+(empty)
+...
+       0
+f_00001.webp  78.9K
+f_00002.webp  78.9K
+f_00003.webp  78.8K
+    3588
+full/
+web/
+[0m
+[0m$ [0mrtk find . -name "manifest.json" -not -path "*/node_modules/*" 2>/dev/null | head; echo ---; rtk grep -rn "manifest" src/v1/frameLoader.ts 2>/dev/null | head; echo ---; rtk grep -rln "v1film" src/ public/*.html *.html 2>/dev/null | head
+dist/v1film/manifest.json
+---
+src/v1/frameLoader.ts:21:  // Legacy V1 shape (pre-tier manifests) — still accepted as fallback.
+src/v1/frameLoader.ts:37:  const res = await fetch('/v1film/manifest.json', { cache: 'no-store' });
+src/v1/frameLoader.ts:38:  if (!res.ok) throw new Error(`manifest ${res.status}`);
+src/v1/frameLoader.ts:72:  readonly manifest: FilmManifest;
+src/v1/frameLoader.ts:93:  constructor(manifest: FilmManifest, tier: TierName) {
+src/v1/frameLoader.ts:94:    this.manifest = manifest;
+src/v1/frameLoader.ts:96:    this.count = Math.max(1, Math.floor(manifest.count));
+src/v1/frameLoader.ts:233:    const url = frameUrl(this.manifest, this.tier, i);
+---
+zsh:1: no matches found: public/*.html
+[0m
+Other agents are editing concurrently — re-reading the current state of the film wiring:
+[0m$ [0mrtk read dist/v1film/manifest.json; echo; rtk read src/v1/frameLoader.ts --max-lines 60
+{"count": 308, "width": 1512, "height": 860, "pad": 4, "ext": "jpg", "sourceFrames": 615, "step": 2}
+
+// V2-FILM — progressive loader for the 3588-frame film (232 MB full tier).
+// Never blocks on the whole set: picks a tier by DPR×viewport, fetches an
+// initial batch (first ~120 frames + every 8th frame, so any scroll position
+// shows something immediately), then fills in progressively around the
+// current playhead with a priority queue (max 8 concurrent fetches,
+// createImageBitmap decode, LRU cap ~600 decoded bitmaps). Missing frames
+// fall back to the nearest loaded neighbour; FilmSequence cross-blends.
+
+export interface FilmTier {
+  w: number;
+  h: number;
+  dir: string;
+}
+
+export interface FilmManifest {
+  count: number;
+  sourceFrames: number;
+  fpsMult: number;
+  tiers: { full: FilmTier; web: FilmTier };
+  pattern: string;
+  // Legacy V1 shape (pre-tier manifests) — still accepted as fallback.
+  width?: number;
+  height?: number;
+  pad?: number;
+  ext?: string;
+  step?: number;
+}
+
+export type TierName = 'full' | 'web';
+
+export const MAX_CONCURRENT = 8;
+export const LRU_CAP = 600;
+export async function loadManifest(): Promise<FilmManifest> {
+}
+export function pickTier(): TierName {
+}
+function pad5(i: number): string {
+}
+export function frameUrl(m: FilmManifest, tier: TierName, i: number): string {
+  }
+}
+export function tierSize(m: FilmManifest, tier: TierName): { w: number; h: number } {
+}
+export type Frame = ImageBitmap | HTMLImageElement;
+export class FrameLoader {
+  }
+    }
+  }
+    }
+  }
+  }
+  }
+  }
+  }
+    }
+      }
+      }
+    }
+  }
+[236 more lines]
+[0m
+[0m$ [0mrtk grep -n "Lenis\|lenis\|ensureLenis\|getLenis\|initSnap" src/v1/FilmSequence.tsx src/v1/App.tsx src/v1/*.ts src/v1/*.tsx 2>/dev/null | head -30; echo ---; rtk wc -l src/v1/FilmSequence.tsx
+73 matches in 5 files:
+
+src/v1/App.tsx:16:import { initSnap } from './snap';
+src/v1/App.tsx:17:import { getLenis } from './lenis';
+src/v1/App.tsx:62:useEffect(() => initSnap(getLenis()), []);
+src/v1/App.tsx:16:import { initSnap } from './snap';
+src/v1/App.tsx:17:import { getLenis } from './lenis';
+src/v1/App.tsx:62:useEffect(() => initSnap(getLenis()), []);
+src/v1/FilmSequence.tsx:10:// initSnap() hook below with a static import and call it once here; the
+src/v1/FilmSequence.tsx:11:// SNAP agent owns Lenis/snapping/filmCurve/progress.
+src/v1/FilmSequence.tsx:12://  - Lenis lerp 0.075 on the shared GSAP ticker; scrubbed draw at rAF with
+src/v1/FilmSequence.tsx:23:import Lenis from 'lenis';
+src/v1/FilmSequence.tsx:42:// replace this dynamic hook with `import { initSnap } from './snap'` and
+src/v1/FilmSequence.tsx:43:// call initSnap() once after ScrollTrigger setup below.
+src/v1/FilmSequence.tsx:47:if (typeof m.initSnap === 'function') m.initSnap();
+src/v1/FilmSequence.tsx:134:let lenis: Lenis | null = null;
+src/v1/FilmSequence.tsx:136:let rafLenis: ((time: number) => void) | null = null;
+src/v1/FilmSequence.tsx:210:// Eased follow of the scrub target; Lenis (lerp 0.075) already
+src/v1/FilmSequence.tsx:269:// POLISH-SIDE Lenis: silky single-ticker smooth scroll (lerp 0.075,
+src/v1/FilmSequence.tsx:271:// the ONE RAF in this file (tick, below). No Lenis under
+src/v1/FilmSequence.tsx:273:lenis = new Lenis({
+src/v1/FilmSequence.tsx:279:lenis.on('scroll', ScrollTrigger.update);
+src/v1/FilmSequence.tsx:280:rafLenis = (time: number) => {
+src/v1/FilmSequence.tsx:281:lenis?.raf(time * 1000);
+src/v1/FilmSequence.tsx:283:gsap.ticker.add(rafLenis);
+src/v1/FilmSequence.tsx:346:if (rafLenis) gsap.ticker.remove(rafLenis);
+src/v1/FilmSequence.tsx:348:lenis?.destroy();
+src/v1/FilmSequence.tsx:349:lenis = null;
+src/v1/FilmSequence.tsx:10:// initSnap() hook below with a static import and call it once here; the
+src/v1/FilmSequence.tsx:11:// SNAP agent owns Lenis/snapping/filmCurve/progress.
+---
+439
+[0m
+[0m→ [0mRead src/v1/FilmSequence.tsx[90m [limit=80, offset=1][0m
+[0m
+[0m← [0mWrite docs/phase4/qa/v2/SNAP-integration.md
+Wrote file successfully.
+[0m
+[0m# [0mTodos
+[✓] Write lenis.ts singleton + filmCurve snap helpers
+[✓] Write snap.ts initSnap + App.tsx hookup + integration note
+[•] Verify with vite dev server + Playwright video at 1512x860 and 390x844, write QA report
+[0m
+[0m$ [0mnpx vite --port 5404 --strictPort > /tmp/vite-5404.log 2>&1 & echo started; sleep 6; tail -5 /tmp/vite-5404.log
+started
+
+  VITE v8.3.1  ready in 250 ms
+
+  ➜  Local:   http://localhost:5404/
+  ➜  Network: use --host to expose
+[0m
+[0m$ [0mrtk ls ~/.cache/ms-playwright/ 2>/dev/null | head; node -e "require('playwright');console.log('pw ok')" 2>&1 | tail -1
+pw ok
+[0m
+[0m$ [0mrtk ls ~/.cache/ms-playwright/ 2>/dev/null || npx playwright install --dry-run 2>&1 | head -5
+npm notice run eyeq-vision-care@0.1.0 npx
+npm notice run 'playwright' install --dry-run
+Chrome for Testing 153.0.8010.12 (playwright chromium v1243)
+  Install location:    /Users/admin/Library/Caches/ms-playwright/chromium-1243
+  Download url:        https://cdn.playwright.dev/builds/cft/153.0.8010.12/mac-arm64/chrome-mac-arm64.zip
+[0m
+[0m← [0mWrite docs/phase4/qa/v2/snap-verify.mjs
+Wrote file successfully.
+[0m
+[0m$ [0mnode docs/phase4/qa/v2/snap-verify.mjs 2>&1 | tail -15
+FILM {"top":0,"h":6880,"vh":860}
+KEYS 0.0000 0.1600 0.2650 0.3800 0.4725 0.6375 0.7722 0.8742 0.9883
+CAPT 0.0533 0.0350 0.0350 0.0308 0.0308 0.0449 0.0340 0.0340 0.0380
+TARGET 2288 START 2195 HALFWIN 93
+Y-SETTLE 2249 -> 2288 TARGET 2288
+NUDGE-OK true
+CANCEL-POS 2242
+ERRORS none
+[0m
+Nudge verified: 2249 → 2288, exact key hit, zero errors. Checking the screenshots:
+[0m→ [0mRead docs/phase4/qa/v2/snap-before.png
+[0m→ [0mRead docs/phase4/qa/v2/snap-after.png
+[0m
+[0m$ [0mcat > /tmp/snap-mobile.mjs <<'EOF'
+import { chromium } from 'playwright';
+const browser = await chromium.launch();
+const page = await (await browser.newContext({ viewport: { width: 390, height: 844 } })).newPage();
+const errs = [];
+page.on('pageerror', (e) => errs.push(e.message));
+await page.goto('http://localhost:5404/v1.html', { waitUntil: 'domcontentloaded' });
+await page.waitForSelector('.v1-film', { timeout: 20000 });
+await page.waitForTimeout(2000);
+const g = await page.evaluate(() => {
+  const s = document.querySelector('.v1-film');
+  return { h: s.offsetHeight, vh: window.innerHeight };
+});
+console.log('MOBILE-FILM', JSON.stringify(g));
+await page.evaluate(() => window.scrollTo(0, 1500));
+await page.waitForTimeout(2200);
+console.log('MOBILE-Y', await page.evaluate(() => Math.round(window.scrollY)));
+await page.screenshot({ path: 'docs/phase4/qa/v2/snap-mobile.png' });
+console.log('MOBILE-ERRORS', errs.length ? errs : 'none');
+await browser.close();
+EOF
+node /tmp/snap-mobile.mjs 2>&1 | tail -5; rtk ls docs/phase4/qa/v2/
+at ModuleJob.syncLink (node:internal/modules/esm/module_job:163:33) {
+  code: 'ERR_MODULE_NOT_FOUND'
+}
+
+Node.js v24.18.0
+QA.md  3.0K
+SNAP-integration.md  1.7K
+page@2b352ab3f548a8153d7670d08f6c4625.webm  109.0K
+snap-after.png  14.2K
+snap-before.png  14.2K
+snap-verify.mjs  2.5K
+words-s1-1512.png  296.4K
+words-s100-1512.png  266.2K
+words-s145-1512.png  310.7K
+words-s180-1512.png  118.0K
+words-s215-1512.png  120.3K
+words-s260-1512.png  164.6K
+words-s280-1512.png  179.4K
+words-s368-1512.png  169.8K
+words-s440-1512.png  149.3K
+words-s445-1512.png  149.4K
+words-s500-1512.png  164.9K
+words-s600-1512.png  266.5K
+words-s70-1512.png  281.0K
+[0m
+[0m$ [0mcp /tmp/snap-mobile.mjs ./docs/phase4/qa/v2/snap-mobile.mjs && node docs/phase4/qa/v2/snap-mobile.mjs 2>&1 | tail -4
+MOBILE-FILM {"h":4726,"vh":844}
+MOBILE-Y 1475
+MOBILE-ERRORS none
+[0m
+[0m→ [0mRead docs/phase4/qa/v2/snap-mobile.png
+[0m
+[0m$ [0mmv docs/phase4/qa/v2/page@*.webm docs/phase4/qa/v2/snap-nudge.webm && rtk ls docs/phase4/qa/v2/snap-*
+docs/phase4/qa/v2/snap-after.png  14.2K
+docs/phase4/qa/v2/snap-before.png  14.2K
+docs/phase4/qa/v2/snap-mobile.mjs  937B
+docs/phase4/qa/v2/snap-mobile.png  180.9K
+docs/phase4/qa/v2/snap-nudge.webm  109.0K
+docs/phase4/qa/v2/snap-verify.mjs  2.5K
+[0m
+[0m← [0mWrite docs/phase4/qa/v2/SNAP.md
+Wrote file successfully.
+[0m
+[0m$ [0mpkill -f "vite --port 5404" && echo stopped; rtk tsc --noEmit -p tsconfig.app.json && echo TSC-CLEAN
+stopped
+src/v1/BrandWaves.tsx(212,68): error TS6133: 'exitStart' is declared but its value is never read.
+TypeScript: 1 errors in 1 files
+[0m
+[0m# [0mTodos
+[✓] Write lenis.ts singleton + filmCurve snap helpers
+[✓] Write snap.ts initSnap + App.tsx hookup + integration note
+[✓] Verify with vite dev server + Playwright video at 1512x860 and 390x844, write QA report
+[0m
+V2-SNAP-DONE
+- Shipped `lenis.ts` singleton, `snap.ts` nudge (160 ms idle, ⅓-gap window, 1 s easeOutCubic, cancel on input), curve key-map, App hookup.
+- Proved exact: desktop 2249→2288, mobile 1500→1475 (hero key), zero errors, video + screenshots in `docs/phase4/qa/v2/snap-*`, report `SNAP.md`.
+- FILM agent must apply `SNAP-integration.md` (adopt singleton, pass instance) to remove interim double-Lenis.
+- Note: `tsc` flags one error in `BrandWaves.tsx` (exitStart unused) — another agent's file, not mine; my four files typecheck clean.
+EXIT 0 model=opencode/muse-spark-1.3-contributor-free

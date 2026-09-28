@@ -1,0 +1,12 @@
+- generic [ref=f6e1]:
+  - generic [aria-hidden]:
+    - generic: We accept most major insurance plans
+  - generic [ref=f6e3]:
+    - slider "film progress" [ref=f6e4]: "0.68"
+    - generic [ref=f6e5]: p=0.680
+    - button "0.42" [ref=f6e6]
+    - button "0.47" [ref=f6e7]
+    - button "0.52" [ref=f6e8]
+    - button "0.57" [ref=f6e9]
+    - button "0.62" [ref=f6e10]
+    - button "0.68" [ref=f6e11]

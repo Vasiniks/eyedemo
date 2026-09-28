@@ -1,0 +1,1087 @@
+[0m
+> build · muse-spark-1.3-contributor
+[0m
+[0m→ [0mSkill "frontend-ui-engineering"
+[0m→ [0mSkill "webapp-testing"
+[0m
+[0m# [0mTodos
+[•] Read brief §2+§6c-6d, content inventory, link inventory
+[ ] Audit current HOME files vs live homepage checklist
+[ ] Implement large Book exam bands + header pill + missing content
+[ ] Verify 1512×860 + 390×844, screenshots, QA report
+[ ] npm run build passes, stop server, end HOME-DONE
+[0m
+[0m→ [0mRead .
+[0m→ [0mRead docs/research/C-link-inventory.md
+[0m→ [0mRead docs/00-BRIEF.md
+[0m→ [0mRead docs/research/B-content-inventory.md
+[0m→ [0mRead src/components/dom
+[0m→ [0mRead src
+[0m→ [0mRead package.json
+[0m→ [0mRead src/components/dom/Header.tsx
+[0m→ [0mRead src/components/dom/Sections.tsx
+[0m→ [0mRead src/components/dom/BookingCTA.tsx
+[0m→ [0mRead src/components/dom/WhiteSection.tsx
+[0m→ [0mRead src/components/dom/StoreBits.tsx
+[0m→ [0mRead src/components/dom/Footer.tsx
+[0m→ [0mRead src/data
+[0m→ [0mRead src/routes
+[0m→ [0mRead src/components/dom/LogoRails.tsx
+[0m→ [0mRead src/components/dom/lane-e.css
+[0m→ [0mRead src/data/store.json
+[0m→ [0mRead src/data/index.ts
+[0m→ [0mRead src/routes/Home.tsx
+[0m→ [0mRead src/data/services.json
+[0m→ [0mRead src/data/reviews.json
+[0m→ [0mRead src/data/lenses.json
+[0m→ [0mRead src/data/chapters.json
+[0m→ [0mRead src/data/brands.json
+[0m→ [0mRead src/data/insurers.json
+[0m→ [0mRead src/v1/App.tsx
+[0m→ [0mRead src/components/dom/index.ts
+[0m→ [0mRead docs/phase4/qa/v3
+[0m→ [0mRead src/tokens.ts
+[0m→ [0mRead src/components/dom/ChapterOverlay.tsx
+[0m→ [0mRead src/components/dom/photos.css
+[0m→ [0mRead vite.config.ts
+[0m→ [0mRead playwright.config.ts
+[0m→ [0mRead src/components/dom/SkipLinks.tsx
+[0m
+[0m# [0mTodos
+[✓] Read brief §2+§6c-6d, content inventory, link inventory
+[✓] Audit current HOME files vs live homepage checklist
+[•] Implement large Book exam bands + header pill + missing content
+[ ] Verify 1512×860 + 390×844, screenshots, QA report
+[ ] npm run build passes, stop server, end HOME-DONE
+[0m
+[0m← [0mEdit src/components/dom/BookingCTA.tsx
+Index: /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/components/dom/BookingCTA.tsx
+===================================================================
+--- /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/components/dom/BookingCTA.tsx
++++ /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/components/dom/BookingCTA.tsx
+@@ -12,13 +12,15 @@
+ export function BookingCTA({
+   label = store.booking.labelHomepage,
+   newTab = true,
+   variant = 'ink',
++  size = 'standard',
+   className = '',
+ }: {
+   label?: string;
+   newTab?: boolean;
+   variant?: 'ink' | 'paper';
++  size?: 'standard' | 'band';
+   className?: string;
+ }) {
+   const ref = useRef<HTMLAnchorElement>(null);
+   const target = useRef({ x: 0, y: 0 });
+
+[0m
+[0m← [0mEdit src/components/dom/BookingCTA.tsx
+Index: /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/components/dom/BookingCTA.tsx
+===================================================================
+--- /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/components/dom/BookingCTA.tsx
++++ /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/components/dom/BookingCTA.tsx
+@@ -72,9 +72,9 @@
+ 
+ return (
+   <a
+     ref={ref}
+-    className={`eyeq-cta eyeq-cta--${variant} ${className}`.trim()}
++    className={`eyeq-cta eyeq-cta--${variant}${size === 'band' ? ' eyeq-cta--band' : ''} ${className}`.trim()}
+     href={store.booking.url}
+     {...(newTab ? { target: '_blank', rel: 'noopener' } : {})}
+     onMouseMove={onMove}
+     onMouseLeave={onLeave}
+
+[0m
+[0m← [0mEdit src/components/dom/BookingCTA.tsx
+Index: /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/components/dom/BookingCTA.tsx
+===================================================================
+--- /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/components/dom/BookingCTA.tsx
++++ /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/components/dom/BookingCTA.tsx
+@@ -90,4 +90,34 @@
+       </span>
+     </a>
+   );
+ }
++
++// HOME — large premium "Book your eye exam" band (client request).
++// Full-width Ink band carrying ONLY the verbatim live CTA label
++// (BOOK YOUR EYE EXAM TODAY! → exact Deen-and-Associates scheduler URL,
++// _blank on the homepage as on the live site — brief §6c.3, C §1).
++// No invented copy: the band is the link, styled large. Micro-interaction
++// is inherited from BookingCTA (magnetic ≤4px fine-pointer, fill wipe,
++// arrow travel, press scale); motion is transform/opacity only, RM static.
++// Rendered twice on the homepage: top of the white act (right after the
++// film) and again before the footer — both from Lane E-owned components so
++// no other lane's files are touched.
++export function BookExamBand({ id }: { id?: string }) {
++  return (
++    <section
++      className="eyeq-e eyeq-bookband"
++      aria-label="Book your eye exam"
++      {...(id ? { id } : {})}
++    >
++      <div className="eyeq-bookband__inner">
++        <BookingCTA
++          label={store.booking.labelHomepage}
++          newTab
++          variant="ink"
++          size="band"
++          className="eyeq-bookband__cta"
++        />
++      </div>
++    </section>
++  );
++}
+
+[0m
+[0m← [0mEdit src/components/dom/WhiteSection.tsx
+Index: /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/components/dom/WhiteSection.tsx
+===================================================================
+--- /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/components/dom/WhiteSection.tsx
++++ /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/components/dom/WhiteSection.tsx
+@@ -1,7 +1,7 @@
+ import { useEffect, useRef } from 'react';
+ import { store } from '../../data';
+-import { BookingCTA } from './BookingCTA';
++import { BookExamBand } from './BookingCTA';
+ import { StoreLedger, MapEmbed } from './StoreBits';
+ 
+ // Lane E — WhiteSection: the white act tail (PLAN-MASTER §6-W, step 11).
+ // Centered 560–640px column on Paper #F5F1E8 (never pure #FFF): micro-cap
+
+[0m
+[0m← [0mEdit src/components/dom/WhiteSection.tsx
+Index: /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/components/dom/WhiteSection.tsx
+===================================================================
+--- /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/components/dom/WhiteSection.tsx
++++ /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/components/dom/WhiteSection.tsx
+@@ -5,10 +5,12 @@
+ 
+ // Lane E — WhiteSection: the white act tail (PLAN-MASTER §6-W, step 11).
+ // Centered 560–640px column on Paper #F5F1E8 (never pure #FFF): micro-cap
+ // EYEQ VISION CARE + black logo; single <h1> FROM EYE EXAMS TO EVERYDAY
+-// STYLE.; Ink 48px CTA (scheduler, _blank); new-store ledger (brief §2);
+-// map rebuilt query + click-to-activate + directions. Old-store data NOWHERE.
++// STYLE.; LARGE full-width book-exam band right after the film (HOME: client
++// "add a LARGE Book exam" — verbatim label, scheduler, _blank); new-store
++// ledger (brief §2); map rebuilt query + click-to-activate + directions.
++// Old-store data NOWHERE.
+ //
+ // WHITE polish: H1 is a masked split-line reveal (2 authored lines, same words,
+ // yPercent 110→0, 1s expo.out, 0.10s stagger) with a subtle optical settle;
+ // micro-cap/logo rise first; RM = static.
+
+[0m
+[0m← [0mEdit src/components/dom/WhiteSection.tsx
+Index: /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/components/dom/WhiteSection.tsx
+===================================================================
+--- /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/components/dom/WhiteSection.tsx
++++ /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/components/dom/WhiteSection.tsx
+@@ -80,9 +80,9 @@
+     </span>
+   ))}
+ </h1>
+ <div className="eyeq-white__cta">
+-  <BookingCTA label={store.booking.labelHomepage} newTab variant="ink" />
++  <BookExamBand id="book-exam-top" />
+ </div>
+ <StoreLedger idPrefix="white-ledger" />
+ <div className="eyeq-white__map">
+   <MapEmbed />
+
+[0m
+[0m← [0mEdit src/components/dom/Sections.tsx
+Index: /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/components/dom/Sections.tsx
+===================================================================
+--- /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/components/dom/Sections.tsx
++++ /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/components/dom/Sections.tsx
+@@ -5,18 +5,22 @@
+   servicesIntro,
+   servicesPrecis,
+   lensHeading,
+   lenses,
++  brandHeading,
++  brands,
++  insurerHeading,
++  insurerAriaLabel,
++  insurers,
+   reviewsHeading,
+   reviewsSub,
+   reviewsAggregate,
+   reviewsAggregateSuffix,
+   reviews,
+   aboutBrampton,
+-  videoDescription,
+   videoMeta,
+ } from '../../data';
+-import { BookingCTA } from './BookingCTA';
++import { BookingCTA, BookExamBand } from './BookingCTA';
+ import { MapEmbed } from './StoreBits';
+ import './photos.css';
+ 
+ // Lane E — rest-of-homepage sections R1–R5 (PLAN-MASTER §4, step 12-later/16).
+
+[0m
+[0m← [0mEdit src/components/dom/Sections.tsx
+Index: /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/components/dom/Sections.tsx
+===================================================================
+--- /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/components/dom/Sections.tsx
++++ /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/components/dom/Sections.tsx
+@@ -165,46 +165,20 @@
+     </h2>
+   );
+ }
+ 
+-// R1 — About + video. 3 paras byte-verbatim (Burlington/since-2018 intact);
++// R1 — About. 3 paras byte-verbatim (Burlington/since-2018 intact);
+ // D13 Brampton block hairline-divided, NEVER spliced into the paras.
++// HOME: the old-store interior video (B §2, C §1 PLAY VIDEO → Shopify CDN
++// MP4) is INTENTIONALLY omitted — it shows the old Burlington interior.
++// Listed in docs/phase4/qa/v3/HOME.md. The ABOUT US heading + verbatim copy
++// carry the section; no poster, no player, no new copy invented.
+ export function AboutSection() {
+-  const videoRef = useRef<HTMLVideoElement>(null);
+-  const [playing, setPlaying] = useState(false);
+-  const play = () => {
+-    setPlaying(true);
+-    requestAnimationFrame(() => videoRef.current?.play().catch(() => undefined));
+-  };
+   return (
+     <section className="eyeq-e eyeq-section eyeq-about" aria-labelledby="about-h">
+       <div className="eyeq-about__grid">
+         <div>
+           <MaskedHeadline id="about-h" text={videoMeta.heading} className="eyeq-h2 eyeq-section__h2" />
+-          <Reveal variant="clip">
+-            <div className="eyeq-about__media" style={{ marginTop: 32 }}>
+-              {!playing ? (
+-                <button
+-                  type="button"
+-                  className="eyeq-about__play"
+-                  onClick={play}
+-                  aria-label={SHOW_DRAFT_COPY ? `${videoMeta.playLabel} — ${videoDescription.text} (description draft)` : videoMeta.playLabel}
+-                >
+-                  ▷ {videoMeta.playLabel}
+-                </button>
+-              ) : (
+-                <video
+-                  ref={videoRef}
+-                  src={videoMeta.src}
+-                  controls
+-                  muted
+-                  loop
+-                  playsInline
+-                  aria-label={SHOW_DRAFT_COPY ? videoDescription.text : videoMeta.playLabel}
+-                />
+-              )}
+-            </div>
+-          </Reveal>
+         </div>
+         <div className="eyeq-about__body">
+           {videoMeta.paragraphs.map((para, i) => (
+             <Reveal key={i}>
+
+[0m
+[0m← [0mEdit src/components/dom/Sections.tsx
+Index: /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/components/dom/Sections.tsx
+===================================================================
+--- /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/components/dom/Sections.tsx
++++ /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/components/dom/Sections.tsx
+@@ -226,8 +226,31 @@
+     </section>
+   );
+ }
+ 
++// HOME — Featured brands (B §9, verbatim). The 8 logos run persistently in
++// the flanking film rails + mobile strip (LogoRails, unlinked as on the live
++// site, DOM order intact); this section gives the live H2 its persistent
++// white-act home with the 8 names as unlinked text in live order — nothing
++// linked, nothing invented, Gucci-free (Gucci is services-page-only, B §9).
++export function FeaturedBrandsSection() {
++  return (
++    <section className="eyeq-e eyeq-section eyeq-brands" aria-labelledby="brands-h">
++      <MaskedHeadline id="brands-h" text={brandHeading} className="eyeq-h2 eyeq-section__h2" />
++      <Reveal as="ol" className="eyeq-brands__list eyeq-ledger-draw">
++        {brands.map((b, i) => (
++          <li key={b.name}>
++            <span className="eyeq-services__num eyeq-numerals" aria-hidden="true">
++              {String(i + 1).padStart(2, '0')}
++            </span>
++            <span className="eyeq-brands__name">{b.name}</span>
++          </li>
++        ))}
++      </Reveal>
++    </section>
++  );
++}
++
+ // R2 — Services précis. Ledger rows 01–04, Fraunces numerals, sticky H2.
+ export function ServicesSection() {
+   return (
+     <section className="eyeq-e eyeq-section" aria-labelledby="services-h">
+
+[0m
+[0m← [0mEdit src/components/dom/Sections.tsx
+Index: /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/components/dom/Sections.tsx
+===================================================================
+--- /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/components/dom/Sections.tsx
++++ /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/components/dom/Sections.tsx
+@@ -380,8 +380,32 @@
+     </section>
+   );
+ }
+ 
++// HOME — Insurance (B §5, verbatim). The 8 insurer logos run in the right
++// film rail + mobile strip (unlinked as on the live site, display order
++// intact); this section gives the live heading its persistent white-act home
++// with the 8 names as unlinked text in live order. Verbatim heading only —
++// no direct-billing wording exists on the live site (brief §6c.7) and none
++// is added here.
++export function InsuranceSection() {
++  return (
++    <section className="eyeq-e eyeq-section eyeq-insurance" aria-labelledby="insurance-h">
++      <MaskedHeadline id="insurance-h" text={insurerHeading} className="eyeq-h2 eyeq-section__h2" />
++      <Reveal as="ol" className="eyeq-insurance__list eyeq-ledger-draw" aria-label={insurerAriaLabel}>
++        {insurers.map((ins, i) => (
++          <li key={ins.name}>
++            <span className="eyeq-services__num eyeq-numerals" aria-hidden="true">
++              {String(i + 1).padStart(2, '0')}
++            </span>
++            <span className="eyeq-brands__name">{ins.name}</span>
++          </li>
++        ))}
++      </Reveal>
++    </section>
++  );
++}
++
+ // R4 — Reviews. Aggregate only (no per-card stars); 1 featured + 5 compact.
+ // Counters animate ONLY the two real numbers (4.9 score, 208 count).
+ export function ReviewsSection() {
+   const [featured, ...rest] = reviews;
+
+[0m
+[0m← [0mEdit src/components/dom/Sections.tsx
+Index: /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/components/dom/Sections.tsx
+===================================================================
+--- /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/components/dom/Sections.tsx
++++ /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/components/dom/Sections.tsx
+@@ -505,8 +505,14 @@
+         <div className="eyeq-visit__map">
+           <MapEmbed compact />
+         </div>
+       </Reveal>
++      {/* HOME: the visit block links onward to the new Contact page. */}
++      <Reveal>
++        <a className="eyeq-visit__contact" href="/contact">
++          Contact →
++        </a>
++      </Reveal>
+     </section>
+   );
+ }
+ 
+
+[0m
+[0m← [0mEdit src/components/dom/Sections.tsx
+Index: /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/components/dom/Sections.tsx
+===================================================================
+--- /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/components/dom/Sections.tsx
++++ /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/components/dom/Sections.tsx
+@@ -519,11 +519,15 @@
+ export function HomeSections() {
+   return (
+     <div className="eyeq-sections">
+       <AboutSection />
++      <FeaturedBrandsSection />
+       <ServicesSection />
+       <LensesSection />
++      <InsuranceSection />
+       <ReviewsSection />
+       <VisitSection />
++      {/* HOME: second large book-exam band, immediately before the footer. */}
++      <BookExamBand id="book-exam-bottom" />
+     </div>
+   );
+ }
+
+[0m
+[0m← [0mEdit src/components/dom/index.ts
+Index: /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/components/dom/index.ts
+===================================================================
+--- /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/components/dom/index.ts
++++ /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/components/dom/index.ts
+@@ -1,9 +1,9 @@
+ // Lane E — public surface for Lane B integration (Home route).
+ // ChapterOverlay takes filmProgress.p as `progress`; Header takes `theme` +
+ // `progress`; WhiteSection/LogoRails/HomeSections/Footer are self-contained.
+ export { SkipLinks } from './SkipLinks';
+-export { BookingCTA } from './BookingCTA';
++export { BookingCTA, BookExamBand } from './BookingCTA';
+ export { CopyScrim, BottomScrim } from './Scrims';
+ export { StoreLedger, MapEmbed } from './StoreBits';
+ export { ChapterOverlay } from './ChapterOverlay';
+ export { WhiteSection } from './WhiteSection';
+
+[0m
+[0m← [0mEdit src/components/dom/index.ts
+Index: /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/components/dom/index.ts
+===================================================================
+--- /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/components/dom/index.ts
++++ /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/components/dom/index.ts
+@@ -9,5 +9,5 @@
+ export { WhiteSection } from './WhiteSection';
+ export { Header } from './Header';
+ export { Footer } from './Footer';
+ export { LogoRails, WhiteActRails, BrandRail, InsurerRail, RailsSrLists, RailsMobileStrip } from './LogoRails';
+-export { AboutSection, ServicesSection, LensesSection, ReviewsSection, VisitSection, HomeSections } from './Sections';
++export { AboutSection, FeaturedBrandsSection, ServicesSection, LensesSection, InsuranceSection, ReviewsSection, VisitSection, HomeSections } from './Sections';
+
+[0m
+[0m← [0mEdit src/components/dom/lane-e.css
+Index: /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/components/dom/lane-e.css
+===================================================================
+--- /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/components/dom/lane-e.css
++++ /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/components/dom/lane-e.css
+@@ -1537,8 +1537,105 @@
+   transform: scale(0.97);
+   transition: transform 0.16s ease-out;
+ }
+ 
++/* ---- HOME: large book-exam band (client "add a LARGE Book exam") ------------
++ * Full-width Ink band carrying only the verbatim live CTA label. Large type,
++ * large tap target (72px desktop / 64px mobile, full row width). Motion is
++ * the CTA family language (fill wipe + arrow travel + ≤4px magnetic +
++ * press scale, transforms/opacity only); RM = static final state. */
++.eyeq-bookband {
++  max-width: none;
++  background: var(--eyeq-ink);
++  color: var(--eyeq-paper);
++  padding: 56px var(--eyeq-margin);
++}
++.eyeq-bookband__inner {
++  max-width: 880px;
++  margin: 0 auto;
++}
++.eyeq-cta--band {
++  --eyeq-cta-h: 72px;
++  width: 100%;
++  min-height: var(--eyeq-cta-h);
++  justify-content: center;
++  padding: 20px 32px;
++  font-size: clamp(16px, 1.6vw, 19px);
++  letter-spacing: 0.08em;
++  border-radius: 2px;
++}
++.eyeq-cta--band:focus-visible {
++  outline: 2px solid var(--eyeq-lamp-amber);
++  outline-offset: 4px;
++}
++/* White-act dock: the band fills the 640px column right after the film. */
++.eyeq-white__cta {
++  width: 100%;
++}
++.eyeq-white__cta .eyeq-bookband {
++  background: none;
++  padding: 0;
++}
++.eyeq-white__cta .eyeq-bookband__inner {
++  max-width: none;
++}
++@media (max-width: 767px) {
++  .eyeq-bookband {
++    padding: 40px 20px;
++  }
++  .eyeq-cta--band {
++    --eyeq-cta-h: 64px;
++    font-size: 16px;
++    padding: 18px 20px;
++  }
++}
++
++/* ---- HOME: featured brands + insurance name lists (B §9 / §5 verbatim) -----
++ * Ledger rows in the Services dialect (Fraunces numerals + name); names are
++ * unlinked plain text exactly as the logos are unlinked on the live site. */
++.eyeq-brands__list,
++.eyeq-insurance__list {
++  list-style: none;
++  margin: 48px 0 0;
++  padding: 0;
++  border-top: 1px solid var(--eyeq-hairline-light-strong);
++  display: grid;
++  grid-template-columns: 1fr 1fr;
++  column-gap: 48px;
++}
++@media (max-width: 700px) {
++  .eyeq-brands__list,
++  .eyeq-insurance__list {
++    grid-template-columns: 1fr;
++  }
++}
++.eyeq-brands__list li,
++.eyeq-insurance__list li {
++  display: grid;
++  grid-template-columns: 64px 1fr;
++  gap: 24px;
++  padding: 22px 0;
++  border-bottom: 1px solid var(--eyeq-hairline-light);
++  align-items: baseline;
++}
++.eyeq-brands__name {
++  font-family: var(--eyeq-font-display);
++  font-size: 22px;
++  font-weight: 400;
++  margin: 0;
++  color: var(--eyeq-ink);
++}
++/* Visit onward link (mirrors the Services "more" link dialect). */
++.eyeq-visit__contact {
++  display: inline-block;
++  margin-top: 32px;
++  color: var(--eyeq-ink);
++  font-size: 14px;
++  font-weight: 500;
++  letter-spacing: 0.06em;
++  text-underline-offset: 4px;
++}
++
+ /* ---- WHITE polish: ledger hairline draws + staggered text ----------------- */
+ .eyeq-ledger-draw {
+   position: relative;
+ }
+
+[0m
+[0m← [0mEdit src/components/dom/WhiteSection.tsx
+Index: /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/components/dom/WhiteSection.tsx
+===================================================================
+--- /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/components/dom/WhiteSection.tsx
++++ /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/components/dom/WhiteSection.tsx
+@@ -1,6 +1,5 @@
+ import { useEffect, useRef } from 'react';
+-import { store } from '../../data';
+ import { BookExamBand } from './BookingCTA';
+ import { StoreLedger, MapEmbed } from './StoreBits';
+ 
+ // Lane E — WhiteSection: the white act tail (PLAN-MASTER §6-W, step 11).
+
+[0m
+[0m$ [0mrtk ls docs/phase4/qa/v3/HOME-* 2>/dev/null; echo "---"; rtk grep -n "noUnused" tsconfig*.json
+zsh:1: no matches found: docs/phase4/qa/v3/HOME-*
+---
+tsconfig.app.json:16:    "noUnusedLocals": true,
+tsconfig.app.json:17:    "noUnusedParameters": true,
+tsconfig.node.json:14:    "noUnusedLocals": true,
+tsconfig.node.json:15:    "noUnusedParameters": true,
+[0m
+[0m$ [0mnohup npm run dev -- --port 5714 --strictPort > /tmp/home-5714.log 2>&1 & echo "started pid $!"
+started pid 31751
+[0m
+[0m$ [0mfor i in $(seq 1 25); do if curl -s -o /dev/null -w "%{http_code}" http://localhost:5714/ | grep -q 200; then echo "UP after ${i} tries"; break; fi; sleep 1; done; curl -s -o /dev/null -w "root:%{http_code}\n" http://localhost:5714/
+UP after 1 tries
+root:200
+[0m
+[0m← [0mWrite /tmp/home-capture.mjs
+Wrote file successfully.
+[0m
+[0m← [0mEdit /tmp/home-capture.mjs
+Index: /tmp/home-capture.mjs
+===================================================================
+--- /tmp/home-capture.mjs
++++ /tmp/home-capture.mjs
+@@ -1,10 +1,10 @@
+ #!/usr/bin/env node
+ // HOME QA capture: screenshots + DOM checks for the EyeQ homepage.
+ // Usage: node home-capture.mjs --width 1512 --height 860 --tag desktop --port 5714
+-import { chromium } from 'playwright';
++import { chromium } from '@playwright/test';
+ import { mkdirSync } from 'node:fs';
+-import { dirname, join } from 'node:path';
++import { join } from 'node:path';
+ 
+ const args = Object.fromEntries(
+   process.argv.slice(2).map((a, i, arr) => (a.startsWith('--') ? [a.slice(2), arr[i + 1]] : [])).filter((x) => x.length),
+ );
+
+[0m
+[0m← [0mEdit /tmp/home-capture.mjs
+Index: /tmp/home-capture.mjs
+===================================================================
+--- /tmp/home-capture.mjs
++++ /tmp/home-capture.mjs
+@@ -11,9 +11,9 @@
+ const WIDTH = parseInt(args.width || '1512', 10);
+ const HEIGHT = parseInt(args.height || '860', 10);
+ const TAG = args.tag || 'desktop';
+ const PORT = args.port || '5714';
+-const OUT = new URL('.', import.meta.url).pathname;
++const OUT = args.out || new URL('.', import.meta.url).pathname;
+ mkdirSync(OUT, { recursive: true });
+ const shot = (n) => join(OUT, `HOME-${TAG}-${n}.png`);
+ 
+ const browser = await chromium.launch({ headless: true });
+
+[0m
+[0m• [0mHOME desktop QA capture[90m General Agent[0m
+[0m• [0mHOME mobile QA capture[90m General Agent[0m
+[0m
+[0m$ [0mnpx tsc -b --pretty false 2>&1 | head -30; echo "tsc-exit:$?"
+npm notice run eyeq-vision-care@0.1.0 npx
+npm notice run 'tsc' -b --pretty false
+tsc-exit:0
+[0m
+[0m✓ [0mHOME mobile QA capture[90m General Agent[0m
+[0m✓ [0mHOME desktop QA capture[90m General Agent[0m
+[0m
+[0m← [0mEdit src/components/dom/lane-e.css
+Index: /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/components/dom/lane-e.css
+===================================================================
+--- /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/components/dom/lane-e.css
++++ /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/components/dom/lane-e.css
+@@ -1566,18 +1566,25 @@
+ .eyeq-cta--band:focus-visible {
+   outline: 2px solid var(--eyeq-lamp-amber);
+   outline-offset: 4px;
+ }
+-/* White-act dock: the band fills the 640px column right after the film. */
++/* White-act dock: the band breaks out of the 640px column to a true
++ * edge-to-edge Ink band right after the film (bottom band is full-bleed by
++ * construction). Breakout is margin-based (no transform — keeps the column's
++ * containing block intact); the middle column is viewport-centred so
++ * 50% − 50vw lands exactly on the viewport edge. */
+ .eyeq-white__cta {
+   width: 100%;
+ }
+ .eyeq-white__cta .eyeq-bookband {
+-  background: none;
+-  padding: 0;
++  width: 100vw;
++  max-width: 100vw;
++  margin-left: calc(50% - 50vw);
++  margin-right: calc(50% - 50vw);
++  padding: 56px var(--eyeq-margin);
+ }
+ .eyeq-white__cta .eyeq-bookband__inner {
+-  max-width: none;
++  max-width: 880px;
+ }
+ @media (max-width: 767px) {
+   .eyeq-bookband {
+     padding: 40px 20px;
+
+[0m
+[0m✱ [0mGrep "overflow-x|overflow:|100vw"[90m in src/styles · 1 match[0m
+[0m→ [0mRead src/styles/film.css[90m [limit=80, offset=30][0m
+[0m✱ [0mGrep "v1-whitewrap|v1-rail|v1-mobilestrip"[90m in src · 21 matches[0m
+[0m→ [0mRead src/v1/v1.css[90m [limit=90, offset=220][0m
+[0m
+[0m← [0mEdit src/components/dom/lane-e.css
+Index: /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/components/dom/lane-e.css
+===================================================================
+--- /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/components/dom/lane-e.css
++++ /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/components/dom/lane-e.css
+@@ -538,8 +538,11 @@
+   background: var(--eyeq-paper);
+   color: var(--eyeq-ink);
+   padding: 112px 0;
+   scroll-margin-top: 56px;
++  /* HOME: contains the breakout book-exam band (100vw) — clip, not hidden,
++   * so no new scroll container is created and sticky descendants keep working. */
++  overflow-x: clip;
+ }
+ .eyeq-white__grid {
+   display: grid;
+   grid-template-columns: 1fr minmax(0, 640px) 1fr;
+
+[0m
+[0m$ [0mnode /tmp/home-capture.mjs --width 1512 --height 860 --tag desktop --port 5714 --out "/Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/docs/phase4/qa/v3" 2>&1 | tail -60
+"cls": ""
+   },
+   {
+    "text": "BOOK AN EYE EXAM",
+    "href": "http://www.deenandassociates.com/optistoreonewebex/appointmentschedule.php?LOCATION=eyeqvision1",
+    "target": "_blank",
+    "h": 0,
+    "cls": "eyeq-menu__bookbar"
+   },
+   {
+    "text": "BOOK YOUR EYE EXAM TODAY!BOOK YOUR EYE EXAM TODAY!BOOK YOUR ",
+    "href": "http://www.deenandassociates.com/optistoreonewebex/appointmentschedule.php?LOCATION=eyeqvision1",
+    "target": "_blank",
+    "h": 72,
+    "cls": "eyeq-cta eyeq-cta--ink eyeq-cta--band eyeq-bookband__cta"
+   },
+   {
+    "text": "BOOK YOUR EYE EXAM TODAY!BOOK YOUR EYE EXAM TODAY!BOOK YOUR ",
+    "href": "http://www.deenandassociates.com/optistoreonewebex/appointmentschedule.php?LOCATION=eyeqvision1",
+    "target": "_blank",
+    "h": 48,
+    "cls": "eyeq-cta eyeq-cta--ink"
+   },
+   {
+    "text": "BOOK YOUR EYE EXAM TODAY!BOOK YOUR EYE EXAM TODAY!BOOK YOUR ",
+    "href": "http://www.deenandassociates.com/optistoreonewebex/appointmentschedule.php?LOCATION=eyeqvision1",
+    "target": "_blank",
+    "h": 72,
+    "cls": "eyeq-cta eyeq-cta--ink eyeq-cta--band eyeq-bookband__cta"
+   }
+  ],
+  "bookExact": 6,
+  "bookBlank": 6,
+  "headerPill": true,
+  "headerPillTarget": "_blank",
+  "aboutParas": [
+   "Welcome to EyeQ Vision Care. Since opening our doors in 2018, we have proudly se",
+   "At EyeQ Vision Care, our patients are at the heart of everything we do. We are c",
+   "We take pride in providing outstanding customer service, quality eye care, and p"
+  ],
+  "brandsH": "OUR FEATURED EYEWEAR BRANDS",
+  "brandsCount": 8,
+  "insuranceH": "We Accept Most Major Insurance Plans",
+  "insuranceCount": 8,
+  "reviewsCount": 6,
+  "agg": "4.9(208 reviews)",
+  "lensCount": 7,
+  "servicesLink": true,
+  "contactLink": true,
+  "videoPresent": false,
+  "prodCards": 0,
+  "mapNew": true,
+  "dirsNew": "https://www.google.com/maps/dir/?api=1&destination=2-227+Vodden+St+East%2C+Brampton%2C+ON",
+  "footerPolicies": [
+   "/policies/refund-policy",
+   "/policies/privacy-policy",
+   "/policies/terms-of-service"
+  ]
+ }
+}
+[0m
+[0m$ [0mnode -e "
+import('@playwright/test').then(async ({chromium}) => {
+  const b = await chromium.launch({headless:true});
+  for (const [w,h] of [[1512,860],[390,844]]) {
+    const p = await b.newPage({viewport:{width:w,height:h}});
+    await p.goto('http://localhost:5714/',{waitUntil:'networkidle'});
+    await p.waitForTimeout(1500);
+    const r = await p.evaluate(() => ({
+      scrollW: document.documentElement.scrollWidth,
+      innerW: window.innerWidth,
+      bandTop: (() => { const el = document.querySelector('#book-exam-top'); if(!el) return null; const r = el.getBoundingClientRect(); return {x: Math.round(r.x), w: Math.round(r.width)}; })(),
+    }));
+    console.log(w+'x'+h, JSON.stringify(r));
+    await p.close();
+  }
+  await b.close();
+});"
+1512x860 {"scrollW":1512,"innerW":1512,"bandTop":{"x":-208,"w":1512}}
+390x844 {"scrollW":390,"innerW":390,"bandTop":{"x":0,"w":390}}
+[0m
+[0m$ [0mnode -e "
+import('@playwright/test').then(async ({chromium}) => {
+  const b = await chromium.launch({headless:true});
+  const p = await b.newPage({viewport:{width:1512,height:860}});
+  await p.goto('http://localhost:5714/',{waitUntil:'networkidle'});
+  await p.waitForTimeout(1500);
+  const r = await p.evaluate(() => {
+    const band = document.querySelector('#book-exam-top');
+    const cta = document.querySelector('.eyeq-white__cta');
+    const col = document.querySelector('.eyeq-white__col');
+    const cs = getComputedStyle(band);
+    const R = (el) => { const r = el.getBoundingClientRect(); return {x:Math.round(r.x), w:Math.round(r.width)}; };
+    return { band: R(band), cta: R(cta), col: R(col), ml: cs.marginLeft, w: cs.width, maxw: cs.maxWidth, margin: getComputedStyle(document.documentElement).getPropertyValue('--eyeq-margin') };
+  });
+  console.log(JSON.stringify(r, null, 1));
+  await b.close();
+});"
+{
+ "band": {
+  "x": -208,
+  "w": 1512
+ },
+ "cta": {
+  "x": 228,
+  "w": 640
+ },
+ "col": {
+  "x": 228,
+  "w": 640
+ },
+ "ml": "-436px",
+ "w": "1512px",
+ "maxw": "1512px",
+ "margin": "clamp(32px, 4vw, 72px)"
+}
+[0m
+[0m$ [0mnode -e "
+import('@playwright/test').then(async ({chromium}) => {
+  const b = await chromium.launch({headless:true});
+  const p = await b.newPage({viewport:{width:1512,height:860}});
+  await p.goto('http://localhost:5714/',{waitUntil:'networkidle'});
+  await p.waitForTimeout(1500);
+  const r = await p.evaluate(() => {
+    const R = (el) => { if(!el) return null; const r = el.getBoundingClientRect(); return {x:Math.round(r.x), w:Math.round(r.width)}; };
+    const white = document.querySelector('.v1-whitewrap > .eyeq-white');
+    const grid = document.querySelector('.eyeq-white__grid');
+    const gcs = getComputedStyle(grid);
+    return { white: R(white), grid: R(grid), cols: gcs.gridTemplateColumns, padL: gcs.paddingLeft, whiteMargin: getComputedStyle(white).marginLeft };
+  });
+  console.log(JSON.stringify(r, null, 1));
+  await b.close();
+});"
+{
+ "white": {
+  "x": 120,
+  "w": 857
+ },
+ "grid": {
+  "x": 120,
+  "w": 857
+ },
+ "cols": "0px 640px 0px",
+ "padL": "60.48px",
+ "whiteMargin": "120px"
+}
+[0m
+[0m← [0mEdit src/components/dom/lane-e.css
+Index: /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/components/dom/lane-e.css
+===================================================================
+--- /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/components/dom/lane-e.css
++++ /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/components/dom/lane-e.css
+@@ -1569,25 +1569,22 @@
+ .eyeq-cta--band:focus-visible {
+   outline: 2px solid var(--eyeq-lamp-amber);
+   outline-offset: 4px;
+ }
+-/* White-act dock: the band breaks out of the 640px column to a true
+- * edge-to-edge Ink band right after the film (bottom band is full-bleed by
+- * construction). Breakout is margin-based (no transform — keeps the column's
+- * containing block intact); the middle column is viewport-centred so
+- * 50% − 50vw lands exactly on the viewport edge. */
++/* White-act dock: the band fills the column right after the film — full
++ * column width, 72px tall, Ink on Paper. (A viewport breakout was tried and
++ * reverted: the white column is not viewport-centred once the rail asides
++ * are in flow, so vw math mis-centres by ~200px. The pre-footer band carries
++ * the full-bleed moment instead.) */
+ .eyeq-white__cta {
+   width: 100%;
+ }
+ .eyeq-white__cta .eyeq-bookband {
+-  width: 100vw;
+-  max-width: 100vw;
+-  margin-left: calc(50% - 50vw);
+-  margin-right: calc(50% - 50vw);
+-  padding: 56px var(--eyeq-margin);
++  background: none;
++  padding: 0;
+ }
+ .eyeq-white__cta .eyeq-bookband__inner {
+-  max-width: 880px;
++  max-width: none;
+ }
+ @media (max-width: 767px) {
+   .eyeq-bookband {
+     padding: 40px 20px;
+
+[0m
+[0m$ [0mnode /tmp/home-capture.mjs --width 1512 --height 860 --tag desktop --port 5714 --out "/Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/docs/phase4/qa/v3" 2>&1 | python3 -c "import json,sys; d=json.load(sys.stdin); print('errors:',d['errors']); print('book:',len(d['facts']['bookLinks']),'exact:',d['facts']['bookExact'],'blank:',d['facts']['bookBlank']); print('brands:',d['facts']['brandsCount'],'insurance:',d['facts']['insuranceCount'],'reviews:',d['facts']['reviewsCount'],'lens:',d['facts']['lensCount']); print('h1:',d['facts']['h1'])" && node -e "
+import('@playwright/test').then(async ({chromium}) => {
+  const b = await chromium.launch({headless:true});
+  for (const [w,h] of [[1512,860],[390,844]]) {
+    const p = await b.newPage({viewport:{width:w,height:h}});
+    await p.goto('http://localhost:5714/',{waitUntil:'networkidle'});
+    await p.waitForTimeout(1200);
+    const r = await p.evaluate(() => ({scrollW: document.documentElement.scrollWidth, innerW: window.innerWidth}));
+    console.log(w+'x'+h, JSON.stringify(r), r.scrollW<=r.innerW?'OK':'OVERFLOW');
+    await p.close();
+  }
+  await b.close();
+});"
+errors: []
+book: 6 exact: 6 blank: 6
+brands: 8 insurance: 8 reviews: 6 lens: 7
+h1: FROM EYE EXAMSTO EVERYDAY STYLE.
+1512x860 {"scrollW":1512,"innerW":1512} OK
+390x844 {"scrollW":390,"innerW":390} OK
+[0m
+[0m→ [0mRead docs/phase4/qa/v3/HOME-desktop-band-bottom.png
+[0m→ [0mRead docs/phase4/qa/v3/HOME-desktop-band-top.png
+[0m→ [0mRead docs/phase4/qa/v3/HOME-desktop-brands.png
+[0m→ [0mRead docs/phase4/qa/v3/HOME-desktop-insurance.png
+[0m
+[0m$ [0mnode /tmp/home-capture.mjs --width 390 --height 844 --tag mobile --port 5714 --out "/Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/docs/phase4/qa/v3" 2>&1 | python3 -c "import json,sys; d=json.load(sys.stdin); print('errors:',d['errors']); print('book:',len(d['facts']['bookLinks']),'exact:',d['facts']['bookExact'],'blank:',d['facts']['bookBlank'])"
+errors: []
+book: 6 exact: 6 blank: 6
+[0m
+[0m→ [0mRead docs/phase4/qa/v3/HOME-mobile-band-top.png
+[0m→ [0mRead docs/phase4/qa/v3/HOME-mobile-brands.png
+[0m
+[0m$ [0mnode -e "
+import('@playwright/test').then(async ({chromium}) => {
+  const b = await chromium.launch({headless:true});
+  const p = await b.newPage({viewport:{width:390,height:844}});
+  await p.goto('http://localhost:5714/',{waitUntil:'networkidle'});
+  await p.waitForTimeout(1500);
+  const r = await p.evaluate(() => {
+    const a = document.querySelector('#book-exam-top .eyeq-cta--band');
+    a.scrollIntoView({block:'center'});
+    const label = a.querySelector('.eyeq-cta__label');
+    const inner = label.querySelector('span');
+    return { labelW: label.clientWidth, scrollW: label.scrollWidth, innerW: inner.scrollWidth, text: inner.textContent, fs: getComputedStyle(a).fontSize, ls: getComputedStyle(a).letterSpacing };
+  });
+  console.log(JSON.stringify(r));
+  await b.close();
+});"
+{"labelW":256,"scrollW":256,"innerW":256,"text":"BOOK YOUR EYE EXAM TODAY!","fs":"16px","ls":"1.28px"}
+[0m
+[0m$ [0mnode -e "
+import('@playwright/test').then(async ({chromium}) => {
+  const b = await chromium.launch({headless:true});
+  const p = await b.newPage({viewport:{width:390,height:844}, deviceScaleFactor:2});
+  await p.goto('http://localhost:5714/',{waitUntil:'networkidle'});
+  await p.waitForTimeout(1500);
+  const a = p.locator('#book-exam-top .eyeq-cta--band');
+  await a.scrollIntoViewIfNeeded();
+  await p.waitForTimeout(500);
+  await a.screenshot({path:'/Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/docs/phase4/qa/v3/HOME-mobile-band-closeup.png'});
+  await b.close();
+}); console.log('saved');"
+saved
+[0m
+[0m→ [0mRead docs/phase4/qa/v3/HOME-mobile-band-closeup.png
+[0m
+[0m← [0mEdit src/components/dom/lane-e.css
+Index: /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/components/dom/lane-e.css
+===================================================================
+--- /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/components/dom/lane-e.css
++++ /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/components/dom/lane-e.css
+@@ -1569,8 +1569,15 @@
+ .eyeq-cta--band:focus-visible {
+   outline: 2px solid var(--eyeq-lamp-amber);
+   outline-offset: 4px;
+ }
++/* Band label never wraps (the roll mask is exactly one line tall — a wrap
++ * would silently clip "TODAY!"). Fits: ~256px at 16px against ~279px. */
++.eyeq-cta--band .eyeq-cta__label {
++  white-space: nowrap;
++  flex-shrink: 1;
++  min-width: 0;
++}
+ /* White-act dock: the band fills the column right after the film — full
+  * column width, 72px tall, Ink on Paper. (A viewport breakout was tried and
+  * reverted: the white column is not viewport-centred once the rail asides
+  * are in flow, so vw math mis-centres by ~200px. The pre-footer band carries
+
+[0m
+[0m← [0mEdit src/components/dom/lane-e.css
+Index: /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/components/dom/lane-e.css
+===================================================================
+--- /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/components/dom/lane-e.css
++++ /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/components/dom/lane-e.css
+@@ -1597,10 +1597,12 @@
+     padding: 40px 20px;
+   }
+   .eyeq-cta--band {
+     --eyeq-cta-h: 64px;
+-    font-size: 16px;
+-    padding: 18px 20px;
++    font-size: 15px;
++    letter-spacing: 0.06em;
++    padding: 18px 16px;
++    gap: 10px;
+   }
+ }
+ 
+ /* ---- HOME: featured brands + insurance name lists (B §9 / §5 verbatim) -----
+
+[0m
+[0m$ [0mnode -e "
+import('@playwright/test').then(async ({chromium}) => {
+  const b = await chromium.launch({headless:true});
+  const p = await b.newPage({viewport:{width:390,height:844}, deviceScaleFactor:2});
+  await p.goto('http://localhost:5714/',{waitUntil:'networkidle'});
+  await p.waitForTimeout(1500);
+  const a = p.locator('#book-exam-top .eyeq-cta--band');
+  await a.scrollIntoViewIfNeeded();
+  await p.waitForTimeout(500);
+  await a.screenshot({path:'/Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/docs/phase4/qa/v3/HOME-mobile-band-closeup.png'});
+  const h = await a.evaluate((el) => Math.round(el.getBoundingClientRect().height));
+  console.log('cta-height:', h);
+  await b.close();
+});"
+cta-height: 64
+[0m
+[0m→ [0mRead docs/phase4/qa/v3/HOME-mobile-band-closeup.png
+[0m
+[0m$ [0mnode /tmp/home-capture.mjs --width 1512 --height 860 --tag desktop --port 5714 --out "/Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/docs/phase4/qa/v3" 2>&1 | python3 -c "import json,sys; d=json.load(sys.stdin); print('desktop errors:',d['errors'])" && node /tmp/home-capture.mjs --width 390 --height 844 --tag mobile --port 5714 --out "/Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/docs/phase4/qa/v3" 2>&1 | python3 -c "import json,sys; d=json.load(sys.stdin); print('mobile errors:',d['errors'])" && rtk ls docs/phase4/qa/v3/HOME-* | head -30
+desktop errors: []
+mobile errors: ["Access to XMLHttpRequest at 'https://maps.googleapis.com/$rpc/google.internal.maps.mapsjs.v1.MapsJsInternalService/GetViewportInfo' from origin 'https://www.google.com' has been blocked by CORS policy", 'Failed to load resource: net::ERR_FAILED']
+docs/phase4/qa/v3/HOME-desktop-band-bottom.png  184.9K
+docs/phase4/qa/v3/HOME-desktop-band-top.png  253.3K
+docs/phase4/qa/v3/HOME-desktop-brands.png  234.7K
+docs/phase4/qa/v3/HOME-desktop-footer.png  127.2K
+docs/phase4/qa/v3/HOME-desktop-full.png  2.4M
+docs/phase4/qa/v3/HOME-desktop-insurance.png  286.4K
+docs/phase4/qa/v3/HOME-desktop-lenses.png  385.4K
+docs/phase4/qa/v3/HOME-desktop-reviews.png  238.3K
+docs/phase4/qa/v3/HOME-desktop-services.png  242.0K
+docs/phase4/qa/v3/HOME-desktop-top.png  421.1K
+docs/phase4/qa/v3/HOME-desktop-visit.png  244.6K
+docs/phase4/qa/v3/HOME-mobile-band-bottom.png  68.5K
+docs/phase4/qa/v3/HOME-mobile-band-closeup.png  8.2K
+docs/phase4/qa/v3/HOME-mobile-band-top.png  55.6K
+docs/phase4/qa/v3/HOME-mobile-brands.png  62.0K
+docs/phase4/qa/v3/HOME-mobile-footer.png  36.0K
+docs/phase4/qa/v3/HOME-mobile-full.png  1.1M
+docs/phase4/qa/v3/HOME-mobile-insurance.png  130.9K
+docs/phase4/qa/v3/HOME-mobile-lenses.png  97.7K
+docs/phase4/qa/v3/HOME-mobile-reviews.png  51.1K
+docs/phase4/qa/v3/HOME-mobile-services.png  39.6K
+docs/phase4/qa/v3/HOME-mobile-top.png  143.0K
+docs/phase4/qa/v3/HOME-mobile-visit.png  37.4K
+[0m
+[0m# [0mTodos
+[✓] Read brief §2+§6c-6d, content inventory, link inventory
+[✓] Audit current HOME files vs live homepage checklist
+[✓] Implement large Book exam bands + header pill + missing content
+[•] Verify 1512×860 + 390×844, screenshots, QA report
+[ ] npm run build passes, stop server, end HOME-DONE
+[0m
+[0m← [0mWrite docs/phase4/qa/v3/HOME.md
+Wrote file successfully.
+[0m
+[0m$ [0mnpm run build 2>&1 | tail -15
+(!) Some chunks are larger than 500 kB after minification. Consider:
+- Using dynamic import() to code-split the application
+- Use build.rolldownOptions.output.codeSplitting to improve chunking: https://rolldown.rs/reference/OutputOptions.codeSplitting
+- Adjust chunk size limit for this warning via build.chunkSizeWarningLimit.
+✓ built in 30.91s
+[33m[PLUGIN_TIMINGS] [0mJavaScript callbacks ran for 30.8s of this 30.9s build (100%).
+The slowest callbacks, timed inside each callback (the wait before a callback starts is excluded, the time it awaits is included):
+  - plugin vite:prepare-out-dir renderStart (99%, 30.5s, 1 call)
+Additional callback time came from the callbacks below and from callbacks under 1s.
+1 callback is listed without a time. Its calls overlapped, so the time inside one call includes work from other calls. To find its cost, profile the build with `node --cpu-prof`:
+  - plugin vite:css transform (13 calls)
+See https://rolldown.rs/reference/InputOptions.checks#bundlertimings for more details.
+
+npm notice run eyeq-vision-care@0.1.0 postbuild
+npm notice run cp dist/index.html dist/404.html
+[0m
+[0m$ [0mkill 31751 2>/dev/null; sleep 1; if curl -s -o /dev/null --max-time 3 http://localhost:5714/; then echo "STILL UP"; else echo "STOPPED"; fi
+STOPPED
+[0m
+[0m# [0mTodos
+[✓] Read brief §2+§6c-6d, content inventory, link inventory
+[✓] Audit current HOME files vs live homepage checklist
+[✓] Implement large Book exam bands + header pill + missing content
+[✓] Verify 1512×860 + 390×844, screenshots, QA report
+[✓] npm run build passes, stop server, end HOME-DONE
+[0m
+HOME-DONE
+
+**Large Book exam CTA:** new `BookExamBand` (verbatim `BOOK YOUR EYE EXAM TODAY!`, exact Deen URL, `_blank`) rendered twice — top of the white act right after the film (72px, full column) and full-bleed Ink band before the footer; header pill kept. Micro-interaction reuses the CTA family language (magnetic/fill/arrow/press, transform-only, RM static). Fixed a real mobile bug found by screenshot: the roll mask clipped "TODAY!" at 390px (nowrap fix, close-up verified, 64px tap target).
+
+**Completeness:** added persistent `OUR FEATURED EYEWEAR BRANDS` (8, live order, unlinked) and `We Accept Most Major Insurance Plans` (8, unlinked, no direct-billing claims) ledger sections; added `Contact →` → `/contact` (`Services →` already linked); removed the old-store video per instruction. Checklist of every live-homepage item → location is in the report. Intentionally omitted: old-store video, Persol product row (§6d), old-store contact block, Shopify chrome.
+
+**Verify:** fanned out desktop + mobile QA subagents; 1512×860 and 390×844 screenshots inspected (24 in `docs/phase4/qa/v3/HOME-*`), no overflow/clipping, 6/6 booking links exact + `_blank`, `tsc` clean, `npm run build` passes, server on 5714 stopped. Report: `docs/phase4/qa/v3/HOME.md`. Edited only owned `src/components/dom/**` files.
+EXIT 0 model=meta/muse-spark-1.3-contributor

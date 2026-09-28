@@ -1,0 +1,33 @@
+- generic [ref=f2e1]:
+  - generic [ref=f2e2]:
+    - generic [aria-hidden]:
+      - generic:
+        - generic:
+          - heading [level=2]:
+            - generic: Our Popular High-Definition Lenses
+          - generic:
+            - list:
+              - listitem:
+                - generic: "01"
+                - generic: Varilux® Physio Extensee™
+              - listitem:
+                - generic: "02"
+                - generic: Distinctive® Superior
+              - listitem:
+                - generic: "03"
+                - generic: Distinctive® Enhanced
+              - listitem:
+                - generic: "04"
+                - generic: Distinctive® SV Lenses
+              - listitem:
+                - generic: "05"
+                - generic: Essilor Stellest® 2.0 Lenses
+              - listitem:
+                - generic: "06"
+                - generic: Transitions® Lenses
+              - listitem:
+                - generic: "07"
+                - generic: Xperio® Lenses
+  - generic [ref=f2e3]:
+    - strong [ref=f2e4]: p 0.360
+    - slider "Film progress" [ref=f2e5]: "360"

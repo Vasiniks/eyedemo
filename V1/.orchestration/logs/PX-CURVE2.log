@@ -1,0 +1,484 @@
+[0m
+> build · muse-spark-1.3-contributor
+[0m
+[0m→ [0mSkill "emil-design-eng"
+[0m→ [0mSkill "animation-vocabulary"
+[0m→ [0mSkill "cinematic-gsap-lenis-motion-system"
+[0m→ [0mSkill "emil-design-eng"
+[0m→ [0mSkill "improve-animations"
+[0m→ [0mSkill "design-motion-principles"
+[0m✗ [0mSkill "brag" failed
+[91m[1mError: [0mSkill "brag" not found. Available skills: animate, animation-vocabulary, api-and-interface-design, apple-design, ask-sonner, asset-forge, asset-library, atmosphere-background, audit-ai-design-slop, aura-asset-images, awwwards-playbook, banner-design, baseline-ui, blender-hard-surface-modeling, blender-mcp, blender-modeling, blender-pro-workflow, blender-web-pipeline, brainstorming, brand, brandkit, browser-testing-with-devtools, build-awwwards-quality-sites, build-threejs-scroll-worlds, built-in-browser, caveman, chrome-browser, ci-cd-and-automation, cinematic-gsap-lenis-motion-system, cinematic-scroll-storytelling, citation-management, code-review-and-quality, code-simplification, computer-use, constraint-driven-development, context-engineering, convergence-study, create-design-md, customize-opencode, debugging-and-error-recovery, deep-research, deprecation-and-migration, design, design-first-ui-prompting, design-motion-principles, design-system, design-taste-frontend, desmos-graphs, diagnosing-superpowers, dispatching-parallel-agents, docs, documentation-and-adrs, docx, doubt-driven-development, emil-design-eng, executing-plans, find-animation-opportunities, find-skills, finishing-a-development-branch, fixing-accessibility, fixing-metadata, fixing-motion-performance, frontend-design, frontend-ui-engineering, generate-reference-inspired-brand-worlds, git-workflow-and-versioning, graphify, gsap-core, gsap-frameworks, gsap-performance, gsap-plugins, gsap-react, gsap-scrolltrigger, gsap-scrolltrigger-storytelling, gsap-timeline, gsap-utils, hallmark, high-end-visual-design, html-to-interaction-prompts, hypothesis-generation, idea-refine, image-to-code, impeccable, import-memory, improve-animations, improve-ui, incremental-implementation, industrial-brutalist-ui, interview-me, iterate-until-verified, latex-paper-en, learn, marquee-loop, masked-reveal, matplotlib, mcp-builder, minimalist-ui, morning, motion, no-ai-design-slop, observability-and-instrumentation, optimize-web-animations, paper-lookup, pdf, performance-optimization, pick-ui-library, planning-and-task-breakdown, playwright-cli, playwright-component-testing, playwright-trace, pptx, progressive-blur, prototype, receiving-code-review, redesign-existing-projects, requesting-code-review, reveal-hover-effect, review-animations, scientific-figure-making, scroll-craft, scroll-scrubbed-visual-sequence, scroll-scrubbed-word-reveal, scroll-world-storytelling, security-and-hardening, shadcn, shader-dev, shaders-cursor-ripples, shipping-and-launch, skill-creator, slides, source-driven-development, spec-driven-development, staggered-word-reveal, subagent-driven-development, sympy, systematic-debugging, tailwind-design-system, test-driven-development, theme-factory, threejs-scenes, ui-skills-root, ui-styling, ui-ux-pro-max, unsplash-asset-images, using-agent-skills, using-git-worktrees, using-superpowers, vercel-composition-patterns, vercel-react-best-practices, vercel-react-view-transitions, verification-before-completion, video-to-superprompt, visual-fidelity, web-artifacts-builder, web-design-guidelines, web-perf, webapp-testing, webgl-3d-object, writing-plans, writing-skills, xlsx
+[0m→ [0mSkill "review-animations"
+[0m→ [0mSkill "fixing-motion-performance"
+[0m→ [0mSkill "no-ai-design-slop"
+[0m→ [0mSkill "awwwards-playbook"
+[0m→ [0mRead .
+[0m→ [0mRead src/v1
+[0m→ [0mRead v1.html
+[0m→ [0mRead docs/phase4/PLAN-MASTER.md
+[0m→ [0mRead src/v1/App.tsx
+[0m→ [0mRead src/v1/FilmCaptions.tsx
+[0m→ [0mRead src/v1/BrandWaves.tsx
+[0m→ [0mRead src/v1/FilmSequence.tsx
+[0m→ [0mRead src/v1/filmCurve.ts
+[0m→ [0mRead docs/phase4/qa/polish
+[0m→ [0mRead package.json
+[0m→ [0mRead src/v1/progress.ts
+[0m→ [0mRead public/v1film/manifest.json
+[0m→ [0mRead vite.config.ts
+[0m→ [0mRead playwright.config.ts
+[0m→ [0mRead src/v1/main.tsx
+[0m
+[0m# [0mTodos
+[•] Update src/v1/filmCurve.ts beat table to 615-frame map with punch curve
+[ ] Re-time BrandWaves (wave1 spin, wave2 sweep, breathe ring gap)
+[ ] Re-time FilmCaptions (lenses 150-215, clear birdseye)
+[ ] Verify: vite 5306 + Playwright 12 stops + video at 1512x860 & 390, look, stop
+[0m
+[0m← [0mEdit src/v1/filmCurve.ts
+Index: /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/v1/filmCurve.ts
+===================================================================
+--- /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/v1/filmCurve.ts
++++ /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/v1/filmCurve.ts
+@@ -31,33 +31,46 @@
+   ease: FilmEaseName;
+ }
+ 
+ // ── TUNABLE TABLE ─────────────────────────────────────────────────────────
+-// Source-frame beat map (NEW film, 525 src frames):
+-//  1–30  bird's-eye on the logo on the velvet sleeve
+-//  30–70  camera tilts down to 3/4
++// Source-frame beat map (FINAL film, 615 src frames @24fps, JPEG 1512×860):
++//  1–30   bird's-eye on the EyeQ logo on the red velvet sleeve (grey studio)
++//  30–70  tilt down to 3/4
+ //  70–145 glasses slide out of the sleeve (SMOOTH)
+-//  145–230 glasses rise, turn upright, unfold
+-//  235–325 360° rotate · 325–385 camera sweep · 385–457 zoom into right lens
+-//  443–470 through the lens to paper white (overlaps the zoom tail: the
+-//    frames carry both, so ZOOM owns 385–443 and DISSOLVE owns 443–470)
+-//  470–525 end card (logo + store info)
+-// Gap 230–235 is the expand soft-landing (EXPAND_SETTLE).
+-export const SOURCE_TOTAL = 525;
++//  145–215 glasses pull far away from the sleeve (sleeve leaves ~178),
++//         rise, turn upright, unfold
++//  215–235 hero hold
++//  235–325 spin with tilt + barrel roll
++//  325–350 eight tinted duplicates burst out
++//  350–386 tinted ring spins around the hero (camera looks down)
++//  386–411 ring collapses back
++//  411–470 camera sweep
++//  470–545 zoom into the right lens
++//  533–560 through the lens to paper white (overlaps the zoom tail: the
++//    frames carry both, so ZOOM owns 470–533 and DISSOLVE owns 533–560)
++//  560–615 end card (logo + store info in the film)
++// Gaps 215–235 is the hero soft-landing/hold (HERO_HOLD). Zero-length holds
++// (SPIN_HOLD @325, SWEEP_HOLD @470) freeze highlight end-frames briefly.
++// Ring (325–411) gets a smooth linear ride so it breathes — overlays stay
++// clear there (see BrandWaves / FilmCaptions).
++export const SOURCE_TOTAL = 615;
+ 
+ export const BEAT_TABLE: BeatRow[] = [
+-  { name: 'birdseye',      s0: 1,   s1: 30,  scroll: 0.105, ease: 'linear' },
+-  { name: 'tilt',          s0: 30,  s1: 70,  scroll: 0.085, ease: 'power2.inOut' },
+-  { name: 'takeout',       s0: 70,  s1: 145, scroll: 0.125, ease: 'linear' },
+-  { name: 'expand',        s0: 145, s1: 230, scroll: 0.14,  ease: 'power3.inOut' },
+-  { name: 'expandSettle',  s0: 230, s1: 235, scroll: 0.025, ease: 'power2.inOut' },
+-  { name: 'rotate',        s0: 235, s1: 325, scroll: 0.15,  ease: 'power3.inOut' },
+-  { name: 'rotateHold',    s0: 325, s1: 325, scroll: 0.02,  ease: 'linear' },
+-  { name: 'sweep',         s0: 325, s1: 385, scroll: 0.12,  ease: 'power3.inOut' },
+-  { name: 'sweepHold',     s0: 385, s1: 385, scroll: 0.015, ease: 'linear' },
+-  { name: 'zoom',          s0: 385, s1: 443, scroll: 0.10,  ease: 'expo.inOut' },
+-  { name: 'dissolve',      s0: 443, s1: 470, scroll: 0.05,  ease: 'power2.inOut' },
+-  { name: 'endcard',       s0: 470, s1: 525, scroll: 0.065, ease: 'linear' },
++  { name: 'birdseye',      s0: 1,   s1: 30,  scroll: 0.095, ease: 'linear' },
++  { name: 'tilt',          s0: 30,  s1: 70,  scroll: 0.065, ease: 'power2.inOut' },
++  { name: 'takeout',       s0: 70,  s1: 145, scroll: 0.105, ease: 'linear' },
++  { name: 'expand',        s0: 145, s1: 215, scroll: 0.115, ease: 'power2.inOut' },
++  { name: 'heroHold',      s0: 215, s1: 235, scroll: 0.03,  ease: 'linear' },
++  { name: 'spin',          s0: 235, s1: 325, scroll: 0.125, ease: 'power3.inOut' },
++  { name: 'spinHold',      s0: 325, s1: 325, scroll: 0.015, ease: 'linear' },
++  { name: 'burst',         s0: 325, s1: 350, scroll: 0.055, ease: 'expo.inOut' },
++  { name: 'ring',          s0: 350, s1: 386, scroll: 0.065, ease: 'linear' },
++  { name: 'collapse',      s0: 386, s1: 411, scroll: 0.055, ease: 'power3.inOut' },
++  { name: 'sweep',         s0: 411, s1: 470, scroll: 0.095, ease: 'power3.inOut' },
++  { name: 'sweepHold',     s0: 470, s1: 470, scroll: 0.012, ease: 'linear' },
++  { name: 'zoom',          s0: 470, s1: 533, scroll: 0.085, ease: 'expo.inOut' },
++  { name: 'dissolve',      s0: 533, s1: 560, scroll: 0.04,  ease: 'power2.inOut' },
++  { name: 'endcard',       s0: 560, s1: 615, scroll: 0.043, ease: 'linear' },
+ ];
+ 
+ // ── Easing (all f(0)=0, f(1)=1, monotonic increasing) ─────────────────────
+ const EASES: Record<FilmEaseName, (t: number) => number> = {
+
+[0m
+[0m← [0mEdit src/v1/filmCurve.ts
+Index: /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/v1/filmCurve.ts
+===================================================================
+--- /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/v1/filmCurve.ts
++++ /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/v1/filmCurve.ts
+@@ -1,11 +1,12 @@
+-// V1 CURVE — scroll→film "punch" curve for the re-rendered Blender film.
++// V1 CURVE — scroll→film "punch" curve for the FINAL Blender film.
+ //
+-// The film is being re-rendered with a NEW timeline (525 source frames @24fps).
+-// `public/v1film/manifest.json` gains {"sourceFrames":525,"step":2}: frame file
+-// i ↔ source frame 1+(i-1)*step, count ≈ 263. Until the new frames land the
+-// old 240 frames are served — everything here derives from the manifest, so
+-// both cuts work (if sourceFrames is missing we assume 480).
++// The FINAL film renders into `public/v1film/` (JPEG 1512×860, 308 files
++// 0001–0308) with manifest
++// {"count":308,"width":1512,"height":860,"pad":4,"ext":"jpg",
++//  "sourceFrames":615,"step":2}: file i ↔ source frame 1+(i-1)*2.
++// Old frames stay until replaced; everything here derives from the manifest,
++// so both cuts work (if sourceFrames is missing we assume 480).
+ //
+ // Motion language (PLAN-MASTER §8): expo.out entrances, power2.inOut scrubs,
+ // linear loops; transforms/opacity only. The curve itself is evaluated inside
+ // the scrubbed rAF draw (scroll IS timing), so per-segment easings shape the
+
+[0m
+[0m← [0mEdit src/v1/filmCurve.ts
+Index: /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/v1/filmCurve.ts
+===================================================================
+--- /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/v1/filmCurve.ts
++++ /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/v1/filmCurve.ts
+@@ -216,14 +216,14 @@
+   }
+   return BEAT_TABLE[0].name;
+ }
+ 
+-// ── Canonical overlay marks (film fractions for the 525-frame cut) ────────
++// ── Canonical overlay marks (film fractions for the 615-frame cut) ────────
+ // Overlays are pure functions of film progress p, so they bind to these
+ // canonical marks derived from the tunable table — no per-manifest async.
+ // On the legacy cut the same fractions land at sensible mid-film positions.
+ const CANONICAL: FilmSpace = {
+-  count: 263,
++  count: 308,
+   sourceFrames: SOURCE_TOTAL,
+   step: 2,
+ };
+ 
+
+[0m
+[0m← [0mEdit src/v1/filmCurve.ts
+Index: /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/v1/filmCurve.ts
+===================================================================
+--- /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/v1/filmCurve.ts
++++ /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/v1/filmCurve.ts
+@@ -239,10 +239,18 @@
+   birdseyeEnd: R('birdseye')[1],
+   takeoutStart: R('takeout')[0],
+   expandStart: R('expand')[0],
+   expandEnd: R('expand')[1],
+-  rotateStart: R('rotate')[0],
+-  rotateEnd: R('rotate')[1],
++  heroHoldEnd: R('heroHold')[1],
++  spinStart: R('spin')[0],
++  spinEnd: R('spin')[1],
++  // Legacy aliases (pre-final cut named the spin "rotate").
++  rotateStart: R('spin')[0],
++  rotateEnd: R('spin')[1],
++  burstStart: R('burst')[0],
++  ringStart: R('ring')[0],
++  ringEnd: R('ring')[1],
++  collapseEnd: R('collapse')[1],
+   sweepStart: R('sweep')[0],
+   sweepEnd: R('sweep')[1],
+   zoomStart: R('zoom')[0],
+   dissolveStart: R('dissolve')[0],
+@@ -253,9 +261,11 @@
+ export const CHAPTER_TICKS: readonly number[] = [
+   0,
+   OVERLAY_MARKS.takeoutStart,
+   OVERLAY_MARKS.expandStart,
+-  OVERLAY_MARKS.rotateStart,
++  OVERLAY_MARKS.spinStart,
++  OVERLAY_MARKS.burstStart,
++  OVERLAY_MARKS.ringStart,
+   OVERLAY_MARKS.sweepStart,
+   OVERLAY_MARKS.zoomStart,
+   OVERLAY_MARKS.endcardStart,
+   1,
+
+[0m
+[0m# [0mTodos
+[✓] Update src/v1/filmCurve.ts beat table to 615-frame map with punch curve
+[•] Re-time BrandWaves (wave1 spin, wave2 sweep, breathe ring gap)
+[ ] Re-time FilmCaptions (lenses 150-215, clear birdseye)
+[ ] Verify: vite 5306 + Playwright 12 stops + video at 1512x860 & 390, look, stop
+[0m
+[0m← [0mEdit src/v1/BrandWaves.tsx
+Index: /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/v1/BrandWaves.tsx
+===================================================================
+--- /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/v1/BrandWaves.tsx
++++ /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/v1/BrandWaves.tsx
+@@ -157,18 +157,22 @@
+     </div>
+   );
+ }
+ 
+-/* POLISH-CURVE timing (film fractions, derived from the CURVE beat table):
+- * Wave 1 (brands) flies during the 360° ROTATE, wave 2 (insurers) during the
+- * camera SWEEP, both settled + exited before the lens ZOOM. Staggers land
+- * each wave with room to read before the next beat. */
+-const W1_START = OVERLAY_MARKS.rotateStart;
++/* POLISH-CURVE2 timing (film fractions, FINAL 615-frame cut):
++ * Wave 1 (brands) flies during the SPIN (235–325), wave 2 (insurers) during
++ * the SWEEP (411–470), both settled + exited before the lens ZOOM (470+).
++ * NOTHING over the tinted ring (325–411: burst + ring + collapse) — the
++ * ring breathes. Staggers land each wave with room to read. */
++const W1_START = OVERLAY_MARKS.spinStart;
++const W1_END = OVERLAY_MARKS.spinEnd;
+ const W2_START = OVERLAY_MARKS.sweepStart;
+ const W2_END = OVERLAY_MARKS.sweepEnd;
+ const W1_ITEM0 = W1_START + 0.004;
+ const W1_STAGGER = 0.0085;
+ const W1_DUR = 0.05;
++const W1_EXIT_START = W1_END - 0.032;
++const W1_EXIT_SPAN = 0.03;
+ const W2_ITEM0 = W2_START + 0.004;
+ const W2_STAGGER = 0.006;
+ const W2_DUR = 0.032;
+ const EXIT_START = W2_END - 0.035;
+@@ -180,21 +184,31 @@
+   const p = progress;
+   const { w: W, h: H } = useViewport();
+   const reduced = useReducedMotion();
+   if (p < W1_START - 0.004 || p > W2_END + 0.02) return null;
++  // Ring breathe gap (burst 325 → sweep 411): no logos, no label.
++  if (p >= W1_END - 0.001 && p < W2_START - 0.004) return null;
++  const w1ExitT = reduced
++    ? clamp01((p - W1_EXIT_START) / 0.04) * 0.9
++    : clamp01((p - W1_EXIT_START) / W1_EXIT_SPAN);
+   const exitT = reduced ? clamp01((p - EXIT_START) / 0.04) * 0.9 : clamp01((p - EXIT_START) / EXIT_SPAN);
+   const labelOp = clamp01((p - LABEL_START) / LABEL_SPAN) * (1 - exitT);
++  const showW1 = p < W1_END + 0.002;
++  const showW2 = p >= W2_START - 0.004;
++  if (!showW1 && !showW2 && labelOp <= 0) return null;
+   return (
+     <div className="bw-root" aria-hidden>
+-      {BRANDS.map((s, i) => (
+-        <LogoItem key={s.src} slot={s} i={i} p={p} W={W} H={H}
+-          start={W1_ITEM0 + i * W1_STAGGER} dur={W1_DUR} z0={-6000} exitT={exitT} reduced={reduced} />
+-      ))}
+-      {INSURERS.map((s, i) => (
+-        <LogoItem key={s.src} slot={s} i={i + 20} p={p} W={W} H={H}
+-          start={W2_ITEM0 + i * W2_STAGGER} dur={W2_DUR} z0={-2600} exitT={exitT} reduced={reduced} />
+-      ))}
+-      {labelOp > 0 && (
++      {showW1 &&
++        BRANDS.map((s, i) => (
++          <LogoItem key={s.src} slot={s} i={i} p={p} W={W} H={H}
++            start={W1_ITEM0 + i * W1_STAGGER} dur={W1_DUR} z0={-6000} exitT={w1ExitT} reduced={reduced} />
++        ))}
++      {showW2 &&
++        INSURERS.map((s, i) => (
++          <LogoItem key={s.src} slot={s} i={i + 20} p={p} W={W} H={H}
++            start={W2_ITEM0 + i * W2_STAGGER} dur={W2_DUR} z0={-2600} exitT={exitT} reduced={reduced} />
++        ))}
++      {showW2 && labelOp > 0 && (
+         <div className="bw-label eyeq-microcap eyeq-microcap--dark" style={{ opacity: labelOp.toFixed(3) }}>
+           We accept most major insurance plans
+         </div>
+       )}
+
+[0m
+[0m# [0mTodos
+[✓] Update src/v1/filmCurve.ts beat table to 615-frame map with punch curve
+[✓] Re-time BrandWaves (wave1 spin, wave2 sweep, breathe ring gap)
+[•] Re-time FilmCaptions (lenses 150-215, clear birdseye)
+[ ] Verify: vite 5306 + Playwright 12 stops + video at 1512x860 & 390, look, stop
+[0m
+[0m← [0mEdit src/v1/FilmCaptions.tsx
+Index: /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/v1/FilmCaptions.tsx
+===================================================================
+--- /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/v1/FilmCaptions.tsx
++++ /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/v1/FilmCaptions.tsx
+@@ -3,11 +3,13 @@
+ // Masked line reveals (clip-path/translateY, eased in progress space).
+ // Never covers frame centre (bottom-left / left-column only).
+ // ALL copy verbatim from docs/research/B-content-inventory.md —
+ // §4 lens heading + 7 lens names, §11 micro-cap "EYEQ VISION CARE".
+-// POLISH-CURVE: intro shows ONLY a small scroll hint at the bottom (the
+-// bird's-eye beat holds on the logo on the sleeve — no caption may cover
+-// it); the lens-name list runs during EXPAND (glasses rise/unfold).
++// POLISH-CURVE2: intro shows ONLY a small scroll hint at the bottom (the
++// bird's-eye beat 1–30 holds on the logo on the sleeve — no caption may cover
++// it); the lens-name list runs during EXPAND rise/unfold (src 150–215,
++// inside the 145–215 beat so the sleeve is leaving and the glasses own the
++// left column).
+ // p dissolve→endcard: empty — no verbatim line fits; nothing invented.
+ import './captions.css';
+ import { OVERLAY_MARKS } from './filmCurve';
+ 
+
+[0m
+[0m← [0mEdit src/v1/FilmCaptions.tsx
+Index: /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/v1/FilmCaptions.tsx
+===================================================================
+--- /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/v1/FilmCaptions.tsx
++++ /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/v1/FilmCaptions.tsx
+@@ -51,12 +51,13 @@
+     </>
+   );
+ }
+ 
+-// Lens reveal schedule inside the EXPAND window (derived from the beat table).
+-const LENS_START = OVERLAY_MARKS.expandStart + 0.017;
+-const LENS_STEP = 0.014;
+-const LENS_DUR = 0.012;
++// Lens reveal schedule inside the EXPAND window (FINAL 615-frame cut:
++// expand 145–215, list 150–215 so nothing touches the bird's-eye logo).
++const LENS_START = OVERLAY_MARKS.expandStart + 0.01;
++const LENS_STEP = 0.013;
++const LENS_DUR = 0.011;
+ 
+ function FilmCaptions({ progress }: { progress: number }) {
+   const p = clamp01(progress);
+ 
+
+[0m
+[0m← [0mEdit src/v1/FilmCaptions.tsx
+Index: /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/v1/FilmCaptions.tsx
+===================================================================
+--- /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/v1/FilmCaptions.tsx
++++ /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/v1/FilmCaptions.tsx
+@@ -71,11 +71,11 @@
+ );
+ const hintOp = Math.min(hintIn, 1 - hintExit);
+ const showHint = hintOp > 0.001;
+ 
+-// Beat B: EXPAND left-column lenses.
++// Beat B: EXPAND left-column lenses (150–215). Clears before the hero hold.
+ const bIn = smooth(p, OVERLAY_MARKS.expandStart - 0.002, OVERLAY_MARKS.expandStart + 0.01);
+-const bExit = smooth(p, OVERLAY_MARKS.expandEnd - 0.015, OVERLAY_MARKS.expandEnd + 0.006);
++const bExit = smooth(p, OVERLAY_MARKS.expandEnd - 0.012, OVERLAY_MARKS.expandEnd + 0.002);
+ const bOp = Math.min(bIn, 1 - bExit);
+ const showB = bOp > 0.001;
+ const hT = expoOut(clamp01((p - OVERLAY_MARKS.expandStart) / 0.02));
+ // Counter-drift across the lens window: ≤10px upward, tied to scroll.
+
+[0m
+[0m# [0mTodos
+[✓] Update src/v1/filmCurve.ts beat table to 615-frame map with punch curve
+[✓] Re-time BrandWaves (wave1 spin, wave2 sweep, breathe ring gap)
+[✓] Re-time FilmCaptions (lenses 150-215, clear birdseye)
+[•] Verify: vite 5306 + Playwright 12 stops + video at 1512x860 & 390, look, stop
+[0m
+[0m$ [0mnpx tsc --noEmit -p tsconfig.app.json 2>&1 | head -50
+npm notice run eyeq-vision-care@0.1.0 npx
+npm notice run 'tsc' --noEmit -p tsconfig.app.json
+[0m
+[0m$ [0mnohup npx vite --port 5306 --strictPort > /tmp/vite-curve2.log 2>&1 & sleep 4 && tail -20 /tmp/vite-curve2.log && curl -s -o /dev/null -w "%{http_code}" http://localhost:5306/v1.html
+npm notice run eyeq-vision-care@0.1.0 npx
+npm notice run 'vite' --port 5306 --strictPort
+
+  VITE v8.3.1  ready in 128 ms
+
+  ➜  Local:   http://localhost:5306/
+  ➜  Network: use --host to expose
+200
+[0m
+[0m✱ [0mGrep "v1-film|height.*vh|800vh|560vh"[90m in src/v1 · 19 matches[0m
+[0m
+[0m← [0mWrite /tmp/curve2-qa.mjs
+Wrote file successfully.
+[0m
+[0m$ [0mnode /tmp/curve2-qa.mjs 2>&1 | tail -40
+node:internal/modules/package_json_reader:301
+  throw new ERR_MODULE_NOT_FOUND(packageName, fileURLToPath(base), null);
+        ^
+
+Error [ERR_MODULE_NOT_FOUND]: Cannot find package '@playwright/test' imported from /private/tmp/curve2-qa.mjs
+    at Object.getPackageJSONURL (node:internal/modules/package_json_reader:301:9)
+    at packageResolve (node:internal/modules/esm/resolve:768:81)
+    at moduleResolve (node:internal/modules/esm/resolve:859:18)
+    at defaultResolve (node:internal/modules/esm/resolve:992:11)
+    at #cachedDefaultResolve (node:internal/modules/esm/loader:701:20)
+    at #resolveAndMaybeBlockOnLoaderThread (node:internal/modules/esm/loader:721:38)
+    at ModuleLoader.resolveSync (node:internal/modules/esm/loader:759:56)
+    at #resolve (node:internal/modules/esm/loader:683:17)
+    at ModuleLoader.getOrCreateModuleJob (node:internal/modules/esm/loader:603:35)
+    at ModuleJob.syncLink (node:internal/modules/esm/module_job:163:33) {
+  code: 'ERR_MODULE_NOT_FOUND'
+}
+
+Node.js v24.18.0
+[0m
+[0m$ [0mcp /tmp/curve2-qa.mjs ./curve2-qa.tmp.mjs && node ./curve2-qa.tmp.mjs 2>&1 | tail -40
+desk film metrics { top: 0, height: 6880, vh: 860 }
+desk stop 0 y= 0
+desk stop 1 y= 547
+desk stop 2 y= 1095
+desk stop 3 y= 1642
+desk stop 4 y= 2189
+desk stop 5 y= 2736
+desk stop 6 y= 3284
+desk stop 7 y= 3831
+desk stop 8 y= 4378
+desk stop 9 y= 4925
+desk stop 10 y= 5473
+desk stop 11 y= 6020
+videos [
+  'CAPS-scrub.webm',
+  'FILM-scroll.webm',
+  'WAVES-scrub.webm',
+  'WHITE-scroll.webm',
+  'curve-scroll.webm',
+  'page@a46255105d9fe78a2e650782fa3f2c9b.webm'
+] page video /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/docs/phase4/qa/polish/page@a46255105d9fe78a2e650782fa3f2c9b.webm
+mob film metrics { top: 0, height: 4726.390625, vh: 844 }
+mob stop 0 y= 0
+mob stop 4 y= 1412
+mob stop 6 y= 2118
+mob stop 9 y= 3177
+renamed page@a46255105d9fe78a2e650782fa3f2c9b.webm -> curve2-scroll-1512.webm
+QA done
+[0m
+[0m$ [0mrm ./curve2-qa.tmp.mjs && rtk ls -la docs/phase4/qa/polish/curve2-* && rtk du -h docs/phase4/qa/polish/curve2-scroll-1512.webm
+644  docs/phase4/qa/polish/curve2-scroll-1512.webm  3.2M
+644  docs/phase4/qa/polish/curve2-stop-00-1512.png  151.7K
+644  docs/phase4/qa/polish/curve2-stop-00-390.png  119.2K
+644  docs/phase4/qa/polish/curve2-stop-01-1512.png  1005.7K
+644  docs/phase4/qa/polish/curve2-stop-02-1512.png  1.1M
+644  docs/phase4/qa/polish/curve2-stop-03-1512.png  1.1M
+644  docs/phase4/qa/polish/curve2-stop-04-1512.png  732.3K
+644  docs/phase4/qa/polish/curve2-stop-04-390.png  236.1K
+644  docs/phase4/qa/polish/curve2-stop-05-1512.png  944.4K
+644  docs/phase4/qa/polish/curve2-stop-06-1512.png  800.9K
+644  docs/phase4/qa/polish/curve2-stop-06-390.png  238.2K
+644  docs/phase4/qa/polish/curve2-stop-07-1512.png  1.1M
+644  docs/phase4/qa/polish/curve2-stop-08-1512.png  556.6K
+644  docs/phase4/qa/polish/curve2-stop-09-1512.png  991.6K
+644  docs/phase4/qa/polish/curve2-stop-09-390.png  246.2K
+644  docs/phase4/qa/polish/curve2-stop-10-1512.png  187.1K
+644  docs/phase4/qa/polish/curve2-stop-11-1512.png  5.7K
+3.3M	docs/phase4/qa/polish/curve2-scroll-1512.webm
+[0m
+[0m→ [0mRead docs/phase4/qa/polish/curve2-stop-00-1512.png
+[0m→ [0mRead docs/phase4/qa/polish/curve2-stop-04-1512.png
+[0m→ [0mRead docs/phase4/qa/polish/curve2-stop-06-1512.png
+[0m→ [0mRead docs/phase4/qa/polish/curve2-stop-10-1512.png
+[0m→ [0mRead docs/phase4/qa/polish/curve2-stop-07-1512.png
+[0m→ [0mRead docs/phase4/qa/polish/curve2-stop-09-1512.png
+[0m→ [0mRead docs/phase4/qa/polish/curve2-stop-11-1512.png
+[0m→ [0mRead docs/phase4/qa/polish/curve2-stop-06-390.png
+[0m
+[0m$ [0mpkill -f "vite --port 5306" 2>/dev/null; sleep 1; rtk curl -s -o /dev/null -w "%{http_code}" --max-time 3 http://localhost:5306/v1.html || echo " server stopped"
+FAILED: curl 000
+ server stopped
+[0m
+[0m# [0mTodos
+[✓] Update src/v1/filmCurve.ts beat table to 615-frame map with punch curve
+[✓] Re-time BrandWaves (wave1 spin, wave2 sweep, breathe ring gap)
+[✓] Re-time FilmCaptions (lenses 150-215, clear birdseye)
+[✓] Verify: vite 5306 + Playwright 12 stops + video at 1512x860 & 390, look, stop
+[0m
+POLISH-CURVE2-DONE
+- `filmCurve.ts`: 615-frame beat table (birdseye→endcard, 15 rows) — linear dwell on birdseye/takeout/ring, power3/expo punch on spin/burst/collapse/sweep/zoom, holds at heroHold/spinHold/sweepHold; marks + rail ticks re-derived, legacy-proof via manifest.
+- `BrandWaves.tsx`: wave 1 rides the spin (235–325) with exit before the burst, ring gap (325–411) renders nothing, wave 2 rides the sweep (411–470) exiting before the lens zoom.
+- `FilmCaptions.tsx`: lens list lands src 150–215 inside expand, clears before hero hold; birdseye keeps scroll-hint only, logo uncovered.
+- QA: 12 stops @1512×860 + 4 @390 + scroll video in `docs/phase4/qa/polish/curve2-*` (shot against old 240-frame cut — new 308-frame timings take effect on swap, no code change needed); tsc clean, server stopped.
+EXIT 0 model=meta/muse-spark-1.3-contributor

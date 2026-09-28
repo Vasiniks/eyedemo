@@ -1,0 +1,66 @@
+{
+  "source": "docs/research/B-content-inventory.md §2 (verbatim anchors) + docs/phase4/COPY-DRAFTS.md (DRAFT lines). Every non-verbatim line carries draft:true and MUST keep its DRAFT marker in render until client approval (brief §6c.5).",
+  "beats": [
+    {
+      "id": "B1",
+      "range": [0.0, 0.1],
+      "eyebrow": { "text": "01 — Dark room", "draft": true, "ref": "D1" },
+      "display": { "text": "Instruments kept in darkness.", "draft": true, "ref": "D2" }
+    },
+    {
+      "id": "B2",
+      "range": [0.1, 0.25],
+      "eyebrow": { "text": "02 — Velvet", "draft": true, "ref": "D3" },
+      "display": { "text": "Cut for one instrument.", "draft": true, "ref": "D4" }
+    },
+    {
+      "id": "B3",
+      "range": [0.25, 0.4],
+      "eyebrow": { "text": "03 — Folded", "draft": true, "ref": "D5" },
+      "display": null
+    },
+    {
+      "id": "B4",
+      "range": [0.4, 0.55],
+      "eyebrow": { "text": "04 — Rimless, black metal", "draft": true, "ref": "D6" },
+      "display": { "text": "Hinges, damped by hand.", "draft": true, "ref": "D7" }
+    },
+    {
+      "id": "B5",
+      "range": [0.55, 0.7],
+      "eyebrow": { "text": "05 — Lenses", "draft": true, "ref": "D8", "verbatimAlternative": "Our Popular High-Definition Lenses" },
+      "display": { "text": "Glass with a prescription.", "draft": true, "ref": "D9" },
+      "lensList": true
+    },
+    {
+      "id": "B6",
+      "range": [0.7, 0.85],
+      "eyebrow": null,
+      "microLabel": { "text": "Carried in store — eight houses", "draft": true, "ref": "D10" },
+      "display": null,
+      "brandList": "brands"
+    },
+    {
+      "id": "B7",
+      "range": [0.85, 0.92],
+      "eyebrow": null,
+      "heading": { "text": "We Accept Most Major Insurance Plans", "draft": false, "verbatim": true },
+      "sub": { "text": "Bring your card to your visit.", "draft": true, "ref": "D11" },
+      "brandList": "insurers"
+    },
+    { "id": "B8", "range": [0.92, 0.97], "eyebrow": null, "display": null },
+    { "id": "B9", "range": [0.97, 1.0], "eyebrow": null, "display": null }
+  ],
+  "aboutBrampton": { "text": "Visit us at our new Brampton store.", "draft": true, "ref": "D13" },
+  "videoDescription": { "text": "Interior view of the EyeQ practice and eyewear displays.", "draft": true, "ref": "D15" },
+  "video": {
+    "heading": "ABOUT US",
+    "playLabel": "PLAY VIDEO",
+    "src": "https://eyeqoptical.ca/cdn/shop/videos/c/vp/79805717509b43fe9c4059d4b634357b/79805717509b43fe9c4059d4b634357b.HD-720p-2.1Mbps-90768020.mp4",
+    "paragraphs": [
+      "Welcome to EyeQ Vision Care. Since opening our doors in 2018, we have proudly served the Burlington, Ontario community as a Canadian privately owned vision care practice.",
+      "At EyeQ Vision Care, our patients are at the heart of everything we do. We are committed to providing exceptional eye care in a welcoming and comfortable environment with a focus on personalized service and lasting relationships. Whether you are visiting for a comprehensive eye exam or searching for the perfect pair of glasses, our experienced team is dedicated to helping you see your best while ensuring every visit exceeds your expectations.",
+      "We take pride in providing outstanding customer service, quality eye care, and premium eyewear to individuals and families throughout Burlington. Thank you for trusting us with your vision. We look forward to welcoming you to EyeQ Vision Care."
+    ]
+  }
+}

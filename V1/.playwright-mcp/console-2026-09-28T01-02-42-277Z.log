@@ -1,0 +1,8 @@
+[     184ms] [INFO] %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold @ http://localhost:5105/node_modules/.vite/deps/react-dom_client.js?v=88a3693d:15804
+[  283092ms] [ERROR] You are calling ReactDOMClient.createRoot() on a container that has already been passed to createRoot() before. Instead, call root.render() on the existing root instead if you want to update it. @ http://localhost:5105/@vite/client:298
+[  283420ms] [INFO] %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold @ http://localhost:5105/node_modules/.vite/deps/react-dom_client.js?v=88a3693d:15804
+[  307109ms] [ERROR] You are calling ReactDOMClient.createRoot() on a container that has already been passed to createRoot() before. Instead, call root.render() on the existing root instead if you want to update it. @ http://localhost:5105/@vite/client:298
+[  307114ms] [ERROR] [vite] ReferenceError: Harness is not defined
+    at http://localhost:5105/src/__dev__/E/main.tsx?t=1790557669366:295:49 @ http://localhost:5105/@vite/client:298
+[  307120ms] [ERROR] [vite] Failed to reload /src/__dev__/E/main.tsx. This could be due to syntax errors or importing non-existent modules. (see errors above) @ http://localhost:5105/@vite/client:298
+[  311750ms] [ERROR] You are calling ReactDOMClient.createRoot() on a container that has already been passed to createRoot() before. Instead, call root.render() on the existing root instead if you want to update it. @ http://localhost:5105/@vite/client:298

@@ -1,0 +1,94 @@
+[0m
+> build · muse-spark-1.3-contributor-free
+[0m
+Fixing your depth constellations and side margins — reading the QA plan.
+[0m→ [0mRead .
+[0m→ [0mRead docs/phase4/qa/v3/ORCHESTRATOR-NOTES.md
+[0m→ [0mRead src/v1/BrandWaves.tsx
+[0m→ [0mRead src/v1/waves.css
+[0m→ [0mRead src/v1/FilmCaptions.tsx
+[0m→ [0mRead src/v1/captions.css
+[0m→ [0mRead src/v1/sideCopy.ts
+[0m✱ [0mGlob "src/v1/Side*.tsx"[90m 1 match[0m
+[0m✱ [0mGlob "src/v1/side*.css"[90m 1 match[0m
+[0m✱ [0mGlob "docs/phase4/qa/v3/*"[90m 62 matches[0m
+[0m→ [0mRead src/v1/SidePanels.tsx
+[0m→ [0mRead src/v1/side.css
+[0m→ [0mRead docs/phase4/qa/v3/mfilm.md
+[0m→ [0mRead docs/phase4/qa/v3/mfilm-waves-w2-hold-1512.png
+[0m→ [0mRead docs/phase4/qa/v3/mfilm-waves-w1-hold-1512.png
+[0m→ [0mRead docs/phase4/qa/v3/mfilm-words-s100-1512.png
+I can see both issues in the QA shots: the `4.9` glyph ink clips at the panel edge, and the wave-1 hold is a neat 2-column grid. Let me check the harness setup and get a server running.
+[0m→ [0mRead v1-waves.html
+[0m→ [0mRead package.json
+[0m
+[0m$ [0mnpx vite --port 5602 --strictPort > /tmp/mfilm-5602.log 2>&1 & echo "started $!"
+started 68941
+[0m
+While that boots, making the edits. First the constellation slots in `BrandWaves.tsx`:
+[0m← [0mEdit src/v1/BrandWaves.tsx
+Index: /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/v1/BrandWaves.tsx
+===================================================================
+--- /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/v1/BrandWaves.tsx
++++ /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/v1/BrandWaves.tsx
+@@ -19,16 +19,16 @@
+   depth: Depth; z: number; src: string; alt: string; wave: 1 | 2;
+ };
+ 
+ const BRANDS: Slot[] = [
+-  { x: 69, y: 34, depth: "near", z: 0,    src: "/web/brands-light/maui-jim.png", alt: "Maui Jim",  wave: 1 },
+-  { x: 86, y: 36, depth: "mid",  z: -120, src: "/web/brands-light/ray-ban.png",  alt: "Ray-Ban",   wave: 1 },
+-  { x: 69, y: 47, depth: "mid",  z: -120, src: "/web/brands-light/prada.png",    alt: "Prada",     wave: 1 },
+-  { x: 86, y: 49, depth: "near", z: 0,    src: "/web/brands-light/miu-miu.png",  alt: "Miu Miu",   wave: 1 },
+-  { x: 69, y: 60, depth: "far",  z: -160, src: "/web/brands-light/persol.png",   alt: "Persol",    wave: 1 },
+-  { x: 86, y: 62, depth: "mid",  z: -120, src: "/web/brands-light/oakley.png",   alt: "Oakley",    wave: 1 },
+-  { x: 69, y: 73, depth: "mid",  z: -120, src: "/web/brands-light/tiffany.png",  alt: "Tiffany & Co.", wave: 1 },
+-  { x: 86, y: 75, depth: "far",  z: -160, src: "/web/brands-light/versace.png",  alt: "Versace",   wave: 1 },
++  { x: 68, y: 35, depth: "near", z: 0,    src: "/web/brands-light/maui-jim.png", alt: "Maui Jim",  wave: 1 },
++  { x: 82, y: 32, depth: "mid",  z: -120, src: "/web/brands-light/ray-ban.png",  alt: "Ray-Ban",   wave: 1 },
++  { x: 90, y: 44, depth: "far",  z: -160, src: "/web/brands-light/prada.png",    alt: "Prada",     wave: 1 },
++  { x: 76, y: 49, depth: "near", z: 0,    src: "/web/brands-light/miu-miu.png",  alt: "Miu Miu",   wave: 1 },
++  { x: 66, y: 60, depth: "mid",  z: -120, src: "/web/brands-light/persol.png",   alt: "Persol",    wave: 1 },
++  { x: 85, y: 58, depth: "far",  z: -160, src: "/web/brands-light/oakley.png",   alt: "Oakley",    wave: 1 },
++  { x: 73, y: 72, depth: "mid",  z: -120, src: "/web/brands-light/tiffany.png",  alt: "Tiffany & Co.", wave: 1 },
++  { x: 89, y: 74, depth: "far",  z: -160, src: "/web/brands-light/versace.png",  alt: "Versace",   wave: 1 },
+ ];
+ 
+ const INSURERS: Slot[] = [
+   { x: 14, y: 36, depth: "near", z: 0,    src: "/web/insurance-light/sun-life.png",           alt: "Sun Life", wave: 2 },
+
+[0m
+[0m← [0mEdit src/v1/BrandWaves.tsx
+Index: /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/v1/BrandWaves.tsx
+===================================================================
+--- /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/v1/BrandWaves.tsx
++++ /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/v1/BrandWaves.tsx
+@@ -30,16 +30,16 @@
+   { x: 89, y: 74, depth: "far",  z: -160, src: "/web/brands-light/versace.png",  alt: "Versace",   wave: 1 },
+ ];
+ 
+ const INSURERS: Slot[] = [
+-  { x: 14, y: 36, depth: "near", z: 0,    src: "/web/insurance-light/sun-life.png",           alt: "Sun Life", wave: 2 },
+-  { x: 30, y: 34, depth: "mid",  z: -120, src: "/web/insurance-light/mbc-logo-en.png",        alt: "Medavie Blue Cross", wave: 2 },
+-  { x: 14, y: 49, depth: "mid",  z: -120, src: "/web/insurance-light/manulife.png",           alt: "Manulife", wave: 2 },
+-  { x: 30, y: 47, depth: "near", z: 0,    src: "/web/insurance-light/greenshield.png",        alt: "GreenShield", wave: 2 },
+-  { x: 14, y: 62, depth: "far",  z: -160, src: "/web/insurance-light/canada-life-min.png",    alt: "Canada Life", wave: 2 },
+-  { x: 30, y: 60, depth: "mid",  z: -120, src: "/web/insurance-light/desjardins.png",         alt: "Desjardins", wave: 2 },
+-  { x: 14, y: 75, depth: "mid",  z: -120, src: "/web/insurance-light/ia-financial-group.png", alt: "iA Financial Group", wave: 2 },
+-  { x: 30, y: 73, depth: "far",  z: -160, src: "/web/insurance-light/empire-life.png", alt: "Empire Life", wave: 2 },
++  { x: 13, y: 35, depth: "near", z: 0,    src: "/web/insurance-light/sun-life.png",           alt: "Sun Life", wave: 2 },
++  { x: 27, y: 32, depth: "mid",  z: -120, src: "/web/insurance-light/mbc-logo-en.png",        alt: "Medavie Blue Cross", wave: 2 },
++  { x: 10, y: 47, depth: "far",  z: -160, src: "/web/insurance-light/manulife.png",           alt: "Manulife", wave: 2 },
++  { x: 25, y: 49, depth: "near", z: 0,    src: "/web/insurance-light/greenshield.png",        alt: "GreenShield", wave: 2 },
++  { x: 14, y: 60, depth: "mid",  z: -120, src: "/web/insurance-light/canada-life-min.png",    alt: "Canada Life", wave: 2 },
++  { x: 29, y: 58, depth: "far",  z: -160, src: "/web/insurance-light/desjardins.png",         alt: "Desjardins", wave: 2 },
++  { x: 11, y: 72, depth: "mid",  z: -120, src: "/web/insurance-light/ia-financial-group.png", alt: "iA Financial Group", wave: 2 },
++  { x: 27, y: 74, depth: "far",  z: -160, src: "/web/insurance-light/empire-life.png", alt: "Empire Life", wave: 2 },
+ ];
+ 
+ const F = (s: number): number => (s - 1) / 614;
+ /* Whole-beat windows: wave 1 owns 215–325, wave 2 owns 411–470. */
+
+[0m
+[91m[1mError: [0mError from provider (Console): Rate limit exceeded. Please try again later.
+EXIT 1 model=opencode/muse-spark-1.3-contributor-free

@@ -1,0 +1,371 @@
+[0m
+> build · muse-spark-1.3-contributor
+[0m
+[0m→ [0mRead .
+[0m→ [0mRead scripts/frames
+[0m→ [0mRead public/v1film
+[0m→ [0mRead render-repo/out/frames
+[0m→ [0mRead scripts/frames/build.sh
+[0m
+[0m# [0mTodos
+[•] Inspect current tiers (counts, sizes, dims) + CPU/magick
+[ ] Patch build.sh for atomic temp+swap if needed, re-encode web+mobile in parallel
+[ ] Verify 3588 files/tier, dimensions, spot-check 5 frames visually
+[ ] Write docs/phase4/qa/v3/F5-ENCODE.md with before/after sizes
+[0m
+[0m$ [0msysctl -n hw.ncpu; which magick; magick -version | head -n 2; echo "---"; ls public/v1film/web | wc -l; ls public/v1film/mobile | wc -l; ls render-repo/out/frames | wc -l; echo "---sizes"; rtk du -sh public/v1film/web public/v1film/mobile render-repo/out/frames; echo "---sample dims"; magick identify -format "%f %wx%h\n" "public/v1film/web/f_00001.webp" "public/v1film/mobile/f_00001.webp" "render-repo/out/frames/f_00001.webp" 2>&1 | head -n 20
+12
+/opt/homebrew/bin/magick
+Version: ImageMagick 7.1.2-27 Q16-HDRI aarch64 e4c2b403b:20260705 https://imagemagick.org
+Copyright: (C) 1999 ImageMagick Studio LLC
+---
+    3588
+    3588
+    3588
+---sizes
+ 51M	public/v1film/web
+ 31M	public/v1film/mobile
+239M	render-repo/out/frames
+---sample dims
+f_00001.webp 1512x860
+f_00001.webp 1024x582
+f_00001.webp 3024x1720
+[0m
+[0m$ [0mtime magick render-repo/out/frames/f_00001.webp -resize 1512x860! -quality 68 /tmp/bench_web.webp; rtk ls -l /tmp/bench_web.webp public/v1film/web/f_00001.webp; time magick render-repo/out/frames/f_00001.webp -resize 1024x582! -quality 64 /tmp/bench_mob.webp; rtk ls -l /tmp/bench_mob.webp public/v1film/mobile/f_00001.webp; echo "---exact bytes before---"; rtk du -sb public/v1film/web public/v1film/mobile; echo "---magick identify existing quality estimate---"; magick identify -verbose public/v1film/web/f_00001.webp | grep -i -E "quality|geometry|depth" | head -n 10
+magick render-repo/out/frames/f_00001.webp -resize 1512x860! -quality 68   0.16s user 0.03s system 61% cpu 0.308 total
+644  /tmp/bench_web.webp  9.1K
+644  public/v1film/web/f_00001.webp  10.0K
+magick render-repo/out/frames/f_00001.webp -resize 1024x582! -quality 64   0.16s user 0.02s system 95% cpu 0.187 total
+644  /tmp/bench_mob.webp  4.9K
+644  public/v1film/mobile/f_00001.webp  5.2K
+---exact bytes before---
+du: invalid option -- b
+usage: du [-Aclnx] [-H | -L | -P] [-g | -h | -k | -m] [-a | -s | -d depth] [-B blocksize] [-I mask] [-t threshold] [file ...]
+
+---magick identify existing quality estimate---
+  Geometry: 1512x860+0+0
+  Depth: 8-bit
+  Channel depth:
+  Page geometry: 1512x860+0+0
+[0m
+[0m$ [0mrtk du -sk public/v1film/web public/v1film/mobile render-repo/out/frames; echo "---"; rtk du -sh public/v1film/web public/v1film/mobile render-repo/out/frames; echo "---count---"; echo -n "web: "; ls public/v1film/web | wc -l; echo -n "mobile: "; ls public/v1film/mobile | wc -l; echo "---sample ls -l---"; rtk ls -l public/v1film/web/f_00001.webp public/v1film/mobile/f_00001.webp /tmp/bench_web.webp /tmp/bench_mob.webp; echo "---total bytes via stat---"; python3 -c "import os,glob; web=sum(os.path.getsize(f) for f in glob.glob('public/v1film/web/*.webp')); mob=sum(os.path.getsize(f) for f in glob.glob('public/v1film/mobile/*.webp')); print(f'web_bytes={web} web_MB={web/1048576:.2f}'); print(f'mob_bytes={mob} mob_MB={mob/1048576:.2f}'); print(f'total_MB={(web+mob)/1048576:.2f}')"
+52348	public/v1film/web
+32164	public/v1film/mobile
+244852	render-repo/out/frames
+---
+ 51M	public/v1film/web
+ 31M	public/v1film/mobile
+239M	render-repo/out/frames
+---count---
+web:     3588
+mobile:     3588
+---sample ls -l---
+644  /tmp/bench_mob.webp  4.9K
+644  /tmp/bench_web.webp  9.1K
+644  public/v1film/mobile/f_00001.webp  5.2K
+644  public/v1film/web/f_00001.webp  10.0K
+---total bytes via stat---
+web_bytes=46364000 web_MB=44.22
+mob_bytes=24627518 mob_MB=23.49
+total_MB=67.70
+[0m
+[0m# [0mTodos
+[✓] Inspect current tiers (counts, sizes, dims) + CPU/magick
+[•] Patch build.sh for atomic temp+swap if needed, re-encode web+mobile in parallel
+[ ] Verify 3588 files/tier, dimensions, spot-check 5 frames visually
+[ ] Write docs/phase4/qa/v3/F5-ENCODE.md with before/after sizes
+[0m
+[0m← [0mEdit scripts/frames/build.sh
+Index: /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/scripts/frames/build.sh
+===================================================================
+--- /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/scripts/frames/build.sh
++++ /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/scripts/frames/build.sh
+@@ -5,13 +5,17 @@
+ #   mobile/ : 1024x582 WebP q64 (magick; ≤820px / saveData / slow)
+ #   manifest.json : {"count":3588,"sourceFrames":615,...,"tiers":{full,web,mobile}}
+ # Usage: sh scripts/frames/build.sh [jobs]
+ # Idempotent: skips frames already present (force with FORCE=1).
++#   TIERS="web mobile" limits to a subset (default: "full web mobile").
++#   Web/mobile/full stage to a temp dir on the same filesystem and swap
++#   atomically via mv so the live site never serves half-written files.
+ set -eu
+ ROOT="$(cd "$(dirname "$0")/../.." && pwd)"
+ SRC="$ROOT/render-repo/out/frames"
+ DST="$ROOT/public/v1film"
+ JOBS="${1:-8}"
++TIERS="${TIERS:-full web mobile}"
+ 
+ mkdir -p "$DST/full" "$DST/web" "$DST/mobile"
+ 
+ # Full tier: re-encode source at q80 (V3-PERF: was hard-linked as-rendered
+
+[0m
+[0m← [0mEdit scripts/frames/build.sh
+Index: /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/scripts/frames/build.sh
+===================================================================
+--- /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/scripts/frames/build.sh
++++ /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/scripts/frames/build.sh
+@@ -19,8 +19,10 @@
+ mkdir -p "$DST/full" "$DST/web" "$DST/mobile"
+ 
+ # Full tier: re-encode source at q80 (V3-PERF: was hard-linked as-rendered
+ # 239 MB; q80 lands ~150 MB). Skip when already at q80 size signature.
++# Staged to temp + atomic mv (F5-ENCODE).
++if case " $TIERS " in *" full "*) true;; *) false;; esac; then
+ echo "full: re-encoding to 3024x1720 q80 ($JOBS parallel)…"
+ export DST
+ if [ "${FORCE:-0}" = "1" ]; then rm -f "$DST/full"/f_*.webp; fi
+ find "$SRC" -maxdepth 1 -name 'f_*.webp' -print0 \
+@@ -30,32 +32,50 @@
+       [ -f "$out" ] || magick "$src" -quality 80 "$out"
+     done
+   ' sh
+ echo "full: $(ls "$DST/full" | wc -l | tr -d ' ') frames"
++fi
+ 
+-# Web tier: parallel resize, skip existing.
++# Web tier: parallel resize, skip existing. Staged to temp + atomic swap.
++if case " $TIERS " in *" web "*) true;; *) false;; esac; then
+ echo "web: resizing to 1512x860 q68 ($JOBS parallel)…"
+-if [ "${FORCE:-0}" = "1" ]; then rm -f "$DST/web"/f_*.webp; fi
++TMPWEB="$DST/.tmp.web.$$"
++rm -rf "$TMPWEB"; mkdir -p "$TMPWEB"
++export TMPWEB
++if [ "${FORCE:-0}" = "1" ]; then rm -f "$TMPWEB"/f_*.webp; fi
+ find "$SRC" -maxdepth 1 -name 'f_*.webp' -print0 \
+   | xargs -0 -n 32 -P "$JOBS" sh -c '
+     for src in "$@"; do
+-      out="$DST/web/$(basename "$src")"
++      out="$TMPWEB/$(basename "$src")"
+       [ -f "$out" ] || magick "$src" -resize 1512x860! -quality 68 "$out"
+     done
+   ' sh
++echo "web staged: $(ls "$TMPWEB" | wc -l | tr -d ' ') frames"
++rm -rf "$DST/web.bak"; if [ -d "$DST/web" ]; then mv "$DST/web" "$DST/web.bak"; fi
++mv "$TMPWEB" "$DST/web"; rm -rf "$DST/web.bak"
+ echo "web: $(ls "$DST/web" | wc -l | tr -d ' ') frames"
++fi
+ 
+ # Mobile tier (F4-PERF): 1024x582 q64 for ≤820px / saveData / slow.
++# Staged to temp + atomic swap.
++if case " $TIERS " in *" mobile "*) true;; *) false;; esac; then
+ echo "mobile: resizing to 1024x582 q64 ($JOBS parallel)…"
+-if [ "${FORCE:-0}" = "1" ]; then rm -f "$DST/mobile"/f_*.webp; fi
++TMPMOB="$DST/.tmp.mobile.$$"
++rm -rf "$TMPMOB"; mkdir -p "$TMPMOB"
++export TMPMOB
++if [ "${FORCE:-0}" = "1" ]; then rm -f "$TMPMOB"/f_*.webp; fi
+ find "$SRC" -maxdepth 1 -name 'f_*.webp' -print0 \
+   | xargs -0 -n 32 -P "$JOBS" sh -c '
+     for src in "$@"; do
+-      out="$DST/mobile/$(basename "$src")"
++      out="$TMPMOB/$(basename "$src")"
+       [ -f "$out" ] || magick "$src" -resize 1024x582! -quality 64 "$out"
+     done
+   ' sh
++echo "mobile staged: $(ls "$TMPMOB" | wc -l | tr -d ' ') frames"
++rm -rf "$DST/mobile.bak"; if [ -d "$DST/mobile" ]; then mv "$DST/mobile" "$DST/mobile.bak"; fi
++mv "$TMPMOB" "$DST/mobile"; rm -rf "$DST/mobile.bak"
+ echo "mobile: $(ls "$DST/mobile" | wc -l | tr -d ' ') frames"
++fi
+ 
+ cat > "$DST/manifest.json" <<'EOF'
+ {"count":3588,"sourceFrames":615,"fpsMult":5.8333,"tiers":{"full":{"w":3024,"h":1720,"dir":"full"},"web":{"w":1512,"h":860,"dir":"web"},"mobile":{"w":1024,"h":582,"dir":"mobile"}},"pattern":"f_%05d.webp"}
+ EOF
+
+[0m
+[0m→ [0mRead scripts/frames/build.sh
+[0m
+[0m← [0mEdit scripts/frames/build.sh
+Index: /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/scripts/frames/build.sh
+===================================================================
+--- /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/scripts/frames/build.sh
++++ /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/scripts/frames/build.sh
+@@ -15,9 +15,9 @@
+ DST="$ROOT/public/v1film"
+ JOBS="${1:-8}"
+ TIERS="${TIERS:-full web mobile}"
+ 
+-mkdir -p "$DST/full" "$DST/web" "$DST/mobile"
++for t in $TIERS; do mkdir -p "$DST/$t"; done
+ 
+ # Full tier: re-encode source at q80 (V3-PERF: was hard-linked as-rendered
+ # 239 MB; q80 lands ~150 MB). Skip when already at q80 size signature.
+ # Staged to temp + atomic mv (F5-ENCODE).
+
+[0m
+[0m← [0mEdit scripts/frames/build.sh
+Index: /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/scripts/frames/build.sh
+===================================================================
+--- /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/scripts/frames/build.sh
++++ /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/scripts/frames/build.sh
+@@ -75,8 +75,12 @@
+ mv "$TMPMOB" "$DST/mobile"; rm -rf "$DST/mobile.bak"
+ echo "mobile: $(ls "$DST/mobile" | wc -l | tr -d ' ') frames"
+ fi
+ 
++if case " $TIERS " in *" full "*web"*mobile "*) true;; *) false;; esac; then
+ cat > "$DST/manifest.json" <<'EOF'
+ {"count":3588,"sourceFrames":615,"fpsMult":5.8333,"tiers":{"full":{"w":3024,"h":1720,"dir":"full"},"web":{"w":1512,"h":860,"dir":"web"},"mobile":{"w":1024,"h":582,"dir":"mobile"}},"pattern":"f_%05d.webp"}
+ EOF
+ echo "manifest written"
++else
++echo "manifest skipped (TIERS=\"$TIERS\")"
++fi
+
+[0m
+[0m← [0mEdit scripts/frames/build.sh
+Index: /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/scripts/frames/build.sh
+===================================================================
+--- /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/scripts/frames/build.sh
++++ /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/scripts/frames/build.sh
+@@ -75,9 +75,11 @@
+ mv "$TMPMOB" "$DST/mobile"; rm -rf "$DST/mobile.bak"
+ echo "mobile: $(ls "$DST/mobile" | wc -l | tr -d ' ') frames"
+ fi
+ 
+-if case " $TIERS " in *" full "*web"*mobile "*) true;; *) false;; esac; then
++if case " $TIERS " in *" full "*) true;; *) false;; esac \
++&& case " $TIERS " in *" web "*) true;; *) false;; esac \
++&& case " $TIERS " in *" mobile "*) true;; *) false;; esac; then
+ cat > "$DST/manifest.json" <<'EOF'
+ {"count":3588,"sourceFrames":615,"fpsMult":5.8333,"tiers":{"full":{"w":3024,"h":1720,"dir":"full"},"web":{"w":1512,"h":860,"dir":"web"},"mobile":{"w":1024,"h":582,"dir":"mobile"}},"pattern":"f_%05d.webp"}
+ EOF
+ echo "manifest written"
+
+[0m
+[0m$ [0msh -n scripts/frames/build.sh && echo "syntax OK"; date; echo "CPU count:"; sysctl -n hw.ncpu
+syntax OK
+Mon Sep 28 11:22:07 EDT 2026
+CPU count:
+12
+[0m
+[0m$ [0mdate; FORCE=1 TIERS="web mobile" sh scripts/frames/build.sh 12; date; echo "EXIT:$?"
+Mon Sep 28 11:22:29 EDT 2026
+web: resizing to 1512x860 q68 (12 parallel)…
+web staged: 3588 frames
+web: 3588 frames
+mobile: resizing to 1024x582 q64 (12 parallel)…
+mobile staged: 3588 frames
+mobile: 3588 frames
+manifest skipped (TIERS="web mobile")
+Mon Sep 28 11:27:49 EDT 2026
+EXIT:0
+[0m
+[0m# [0mTodos
+[✓] Inspect current tiers (counts, sizes, dims) + CPU/magick
+[✓] Patch build.sh for atomic temp+swap if needed, re-encode web+mobile in parallel
+[•] Verify 3588 files/tier, dimensions, spot-check 5 frames visually
+[ ] Write docs/phase4/qa/v3/F5-ENCODE.md with before/after sizes
+[0m
+[0m$ [0mecho -n "web count: "; ls public/v1film/web | wc -l; echo -n "mobile count: "; ls public/v1film/mobile | wc -l; rtk du -sk public/v1film/web public/v1film/mobile; rtk du -sh public/v1film/web public/v1film/mobile; python3 -c "import os,glob; web=sum(os.path.getsize(f) for f in glob.glob('public/v1film/web/*.webp')); mob=sum(os.path.getsize(f) for f in glob.glob('public/v1film/mobile/*.webp')); print(f'web_bytes={web} web_MiB={web/1048576:.2f}'); print(f'mob_bytes={mob} mob_MiB={mob/1048576:.2f}'); print(f'total_MiB={(web+mob)/1048576:.2f}')"; echo "--- leftover tmp/bak (must be empty) ---"; rtk ls -d public/v1film/.tmp.* public/v1film/*.bak 2>&1; echo "--- dims spot (web+mobile, 8 samples) ---"; for f in 00001 00500 00900 01400 01800 02300 02700 03588; do magick identify -format "%f %wx%h\n" "public/v1film/web/f_${f}.webp" "public/v1film/mobile/f_${f}.webp"; done; echo "--- full-dir untouched check ---"; ls public/v1film/full | wc -l; rtk du -sh public/v1film/full
+web count:     3588
+mobile count:     3588
+48724	public/v1film/web
+30616	public/v1film/mobile
+ 48M	public/v1film/web
+ 30M	public/v1film/mobile
+web_bytes=42204726 web_MiB=40.25
+mob_bytes=23062204 mob_MiB=21.99
+total_MiB=62.24
+--- leftover tmp/bak (must be empty) ---
+--- dims spot (web+mobile, 8 samples) ---
+zsh:1: no matches found: public/v1film/.tmp.*
+f_00001.webp 1512x860
+f_00001.webp 1024x582
+f_00500.webp 1512x860
+f_00500.webp 1024x582
+f_00900.webp 1512x860
+f_00900.webp 1024x582
+f_01400.webp 1512x860
+f_01400.webp 1024x582
+f_01800.webp 1512x860
+f_01800.webp 1024x582
+f_02300.webp 1512x860
+f_02300.webp 1024x582
+f_02700.webp 1512x860
+f_02700.webp 1024x582
+f_03588.webp 1512x860
+f_03588.webp 1024x582
+--- full-dir untouched check ---
+    3588
+159M	public/v1film/full
+[0m
+[0m$ [0mfind public/v1film/web -name 'f_*.webp' -print0 | xargs -0 -n 64 -P 12 sh -c 'for f in "$@"; do d=$(magick identify -format "%wx%h" "$f"); [ "$d" = "1512x860" ] || echo "BAD $f $d"; done' sh; echo "web-dim-sweep-done"; find public/v1film/mobile -name 'f_*.webp' -print0 | xargs -0 -n 64 -P 12 sh -c 'for f in "$@"; do d=$(magick identify -format "%wx%h" "$f"); [ "$d" = "1024x582" ] || echo "BAD $f $d"; done' sh; echo "mobile-dim-sweep-done"
+web-dim-sweep-done
+mobile-dim-sweep-done
+[0m
+[0m→ [0mRead public/v1film/web/f_02700.webp
+[0m→ [0mRead public/v1film/web/f_01800.webp
+[0m→ [0mRead public/v1film/web/f_00001.webp
+[0m→ [0mRead public/v1film/web/f_00900.webp
+[0m→ [0mRead public/v1film/web/f_03588.webp
+[0m→ [0mRead public/v1film/mobile/f_01800.webp
+[0m→ [0mRead public/v1film/mobile/f_00001.webp
+[0m
+[0m$ [0mrtk ls docs/phase4/qa/v3/ 2>&1 | head -n 20; echo "---"; rtk ls docs/phase4/qa/ 2>&1 | head
+F4-MAIN.md  3.8K
+F4-MAP.md  1.9K
+F4-MFILM.md  1.9K
+F4-PERF.md  3.2K
+F4-RAILS.md  2.3K
+F4-SCROLL.md  1.8K
+F5-PHOTOS.md  2.9K
+MPAGE.md  4.4K
+ORCHESTRATOR-NOTES.md  2.2K
+PERF.md  4.0K
+SCROLL.md  4.8K
+caption-about.png  90.5K
+caption-lenses-offset.png  268.6K
+caption-lenses-wide.png  791.1K
+caption-services.png  179.8K
+f5-mobile-qa.mjs  1.6K
+main-desktop-full.png  342.5K
+main-desktop-top.png  357.0K
+main-desktop-white.png  228.4K
+main-mobile-full.png  121.6K
+---
+A/
+B/
+C/
+D/
+E/
+F/
+beats/
+polish/
+v1/
+v2/
+[0m
+[0m→ [0mRead docs/phase4/qa/v3/F5-PHOTOS.md
+[0m
+[0m$ [0mrtk ls docs/phase4/qa/v3/F5-ENCODE.md 2>&1; date
+ls: docs/phase4/qa/v3/F5-ENCODE.md: No such file or directory
+Mon Sep 28 11:33:38 EDT 2026
+[0m
+[0m# [0mTodos
+[✓] Inspect current tiers (counts, sizes, dims) + CPU/magick
+[✓] Patch build.sh for atomic temp+swap if needed, re-encode web+mobile in parallel
+[✓] Verify 3588 files/tier, dimensions, spot-check 5 frames visually
+[•] Write docs/phase4/qa/v3/F5-ENCODE.md with before/after sizes
+[0m
+[0m← [0mWrite docs/phase4/qa/v3/F5-ENCODE.md
+Wrote file successfully.
+[0m
+[0m# [0mTodos
+[✓] Inspect current tiers (counts, sizes, dims) + CPU/magick
+[✓] Patch build.sh for atomic temp+swap if needed, re-encode web+mobile in parallel
+[✓] Verify 3588 files/tier, dimensions, spot-check 5 frames visually
+[✓] Write docs/phase4/qa/v3/F5-ENCODE.md with before/after sizes
+[0m
+Done. `FORCE=1 TIERS="web mobile" sh scripts/frames/build.sh 12` (12 = CPU count), ~5m20s.
+
+- `scripts/frames/build.sh`: added `TIERS` subset gate; web/mobile now stage to same-filesystem temp dirs and swap via `mv` (no half-written live dir, no leftovers). `full/` untouched, manifest skipped on subset runs.
+- web 1512×860 q68: 3588 files, 46,364,000 → 42,204,726 B (−9.0%)
+- mobile 1024×582 q64: 3588 files, 24,627,518 → 23,062,204 B (−6.4%)
+- Combined 67.70 → 62.24 MiB (−8.1%).
+- Full parallel dimension sweep: all 7176 correct, zero BAD.
+- LOOKED at web f_00001/00900/01800/02700/03588 + mobile f_00001/01800: no banding on velvet/dark lens gradients — quality stands, no +6 bump.
+- Report: `docs/phase4/qa/v3/F5-ENCODE.md`.
+
+F5-ENCODE-DONE
+EXIT 0 model=meta/muse-spark-1.3-contributor

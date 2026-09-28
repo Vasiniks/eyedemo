@@ -1,0 +1,104 @@
+- generic [ref=f9e3]:
+  - banner [ref=f9e4]:
+    - link "Skip to content" [ref=f9e5] [cursor=pointer]:
+      - /url: "#f-content"
+    - generic [ref=f9e6]:
+      - link "EyeQ Vision Care — home" [ref=f9e7] [cursor=pointer]:
+        - /url: /
+        - img "EyeQ Vision Care" [ref=f9e8]
+      - navigation "Primary" [ref=f9e9]:
+        - link "Home" [ref=f9e10] [cursor=pointer]:
+          - /url: /
+        - link "Services" [ref=f9e11] [cursor=pointer]:
+          - /url: /pages/services
+        - link "Contact" [ref=f9e12] [cursor=pointer]:
+          - /url: /pages/contact
+      - link "Book an exam" [ref=f9e13] [cursor=pointer]:
+        - /url: http://www.deenandassociates.com/optistoreonewebex/appointmentschedule.php?LOCATION=eyeqvision1
+  - main [ref=f9e14]:
+    - generic [ref=f9e15]:
+      - heading "Contact" [level=1] [ref=f9e16]
+      - paragraph [ref=f9e17]:
+        - link "Book an exam" [ref=f9e18] [cursor=pointer]:
+          - /url: http://www.deenandassociates.com/optistoreonewebex/appointmentschedule.php?LOCATION=eyeqvision1
+    - generic [ref=f9e19]:
+      - list [ref=f9e21]:
+        - listitem [ref=f9e22]:
+          - generic [ref=f9e23]: PHONE
+          - link "905-497-0227" [ref=f9e24] [cursor=pointer]:
+            - /url: tel:+19054970227
+        - listitem [ref=f9e25]:
+          - generic [ref=f9e26]: EMAIL
+          - link "eyeshine2020@gmail.com" [ref=f9e27] [cursor=pointer]:
+            - /url: mailto:eyeshine2020@gmail.com
+        - listitem [ref=f9e28]:
+          - generic [ref=f9e29]: ADDRESS
+          - generic [ref=f9e30]: 2-227 Vodden St East, Brampton, ON
+        - listitem [ref=f9e31]:
+          - generic [ref=f9e32]: HOURS
+          - generic [ref=f9e33]:
+            - generic [ref=f9e34]: Mon–Fri 11:00 am–6:30 pm
+            - generic [ref=f9e35]: Sat 11:00 am–5:00 pm
+            - generic [ref=f9e36]: Sun 11:00 am–4:00 pm
+      - region "Map" [ref=f9e37]:
+        - generic [ref=f9e38]:
+          - iframe [ref=f9e39]
+          - button "Activate the map" [ref=f9e40] [cursor=pointer]:
+            - generic [ref=f9e41]: Activate map
+        - generic [ref=f9e42]:
+          - link "Get directions" [ref=f9e43] [cursor=pointer]:
+            - /url: https://www.google.com/maps/dir/?api=1&destination=2-227+Vodden+St+East%2C+Brampton%2C+ON
+          - link "Call 905-497-0227" [ref=f9e44] [cursor=pointer]:
+            - /url: tel:+19054970227
+      - region "Visit our store" [ref=f9e45]:
+        - generic [ref=f9e46]:
+          - generic [ref=f9e47]:
+            - heading "Visit our store" [level=2] [ref=f9e48]
+            - generic [ref=f9e49]: 2-227 Vodden St East, Brampton, ON
+            - paragraph [ref=f9e50]:
+              - link "905-497-0227" [ref=f9e51] [cursor=pointer]:
+                - /url: tel:+19054970227
+              - text: ·
+              - link "eyeshine2020@gmail.com" [ref=f9e52] [cursor=pointer]:
+                - /url: mailto:eyeshine2020@gmail.com
+            - paragraph [ref=f9e53]: Mon–Fri 11:00 am–6:30 pm · Sat 11:00 am–5:00 pm · Sun 11:00 am–4:00 pm
+          - generic [ref=f9e54]:
+            - link "Book your Eye Exam today" [ref=f9e55] [cursor=pointer]:
+              - /url: http://www.deenandassociates.com/optistoreonewebex/appointmentschedule.php?LOCATION=eyeqvision1
+            - link "Get directions" [ref=f9e56] [cursor=pointer]:
+              - /url: https://www.google.com/maps/dir/?api=1&destination=2-227+Vodden+St+East%2C+Brampton%2C+ON
+  - contentinfo [ref=f9e57]:
+    - generic [ref=f9e58]:
+      - generic [ref=f9e59]:
+        - paragraph [ref=f9e61]: EyeQ Vision Care
+        - generic [ref=f9e62]:
+          - text: 2-227 Vodden St East, Brampton, ON
+          - link "905-497-0227" [ref=f9e63] [cursor=pointer]:
+            - /url: tel:+19054970227
+          - link "eyeshine2020@gmail.com" [ref=f9e64] [cursor=pointer]:
+            - /url: mailto:eyeshine2020@gmail.com
+        - paragraph [ref=f9e65]: Mon–Fri 11:00 am–6:30 pm · Sat 11:00 am–5:00 pm · Sun 11:00 am–4:00 pm
+      - navigation "Terms and Policies" [ref=f9e66]:
+        - paragraph [ref=f9e67]: Menu
+        - list [ref=f9e68]:
+          - listitem [ref=f9e69]:
+            - link "Home" [ref=f9e70] [cursor=pointer]:
+              - /url: /
+          - listitem [ref=f9e71]:
+            - link "Services" [ref=f9e72] [cursor=pointer]:
+              - /url: /pages/services
+          - listitem [ref=f9e73]:
+            - link "Contact" [ref=f9e74] [cursor=pointer]:
+              - /url: /pages/contact
+        - paragraph [ref=f9e75]: Terms and Policies
+        - list [ref=f9e76]:
+          - listitem [ref=f9e77]:
+            - link "Refund policy" [ref=f9e78] [cursor=pointer]:
+              - /url: /policies/refund-policy
+          - listitem [ref=f9e79]:
+            - link "Privacy policy" [ref=f9e80] [cursor=pointer]:
+              - /url: /policies/privacy-policy
+          - listitem [ref=f9e81]:
+            - link "Terms of service" [ref=f9e82] [cursor=pointer]:
+              - /url: /policies/terms-of-service
+    - paragraph [ref=f9e83]: © 2026 EyeQ Vision Care

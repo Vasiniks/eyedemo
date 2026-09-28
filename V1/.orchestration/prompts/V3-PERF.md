@@ -1,0 +1,5 @@
+ID=PERF (port 5501). Own: `public/v1film/**`, `scripts/frames/**`, `src/v1/frameLoader.ts`, `src/v1/FilmSequence.tsx`, `v1.html`, `src/v1/main.tsx`.
+1. Compress slightly: rebuild tiers — `full` 3024 WebP q≈80, `web` 1512 q≈76, NEW `mobile` 1024×582 q≈72 (from render-repo/out/frames); target total transfer on desktop-retina ≤ ~150 MB, web ≤ ~60 MB, mobile ≤ ~25 MB. Update manifest tiers; loader picks mobile for ≤ 820 px wide or saveData/slow connections, web for DPR1 desktop, full for retina desktop.
+2. Loader: first-batch small (first 60 frames + every 12th), progressive fill around the current position, abort off-screen requests, LRU cap per tier (mobile ~250 bitmaps), decode off-main-thread (createImageBitmap), canvas DPR cap 2 (1.5 on mobile), pause drawing when the film is off-screen.
+3. Apply `docs/phase4/qa/v2/SNAP-integration.md` if not already applied (single Lenis instance from src/v1/lenis.ts).
+4. Measure: Lighthouse (mobile + desktop) and a Chrome performance trace of a full scroll: report LCP, TBT, CLS, frame time, JS heap. No layout thrash, no long tasks > 50 ms during scroll.

@@ -1,0 +1,559 @@
+[0m
+> build · muse-spark-1.3-contributor
+[0m
+[0m→ [0mRead docs/00-BRIEF.md
+[0m→ [0mRead /Users/admin/Downloads/Glasses_Mama_WBL
+[0m→ [0mRead /Users/admin/Downloads/Glasses_Mama_WBL/Glasses_Mama_Tex
+[0m→ [0mRead /Users/admin/Downloads/Glasses_Mama_WBL/Glasses_Mama_WBL.mtl
+[0m
+[0m$ [0mrtk ls -la "/Users/admin/Downloads/Glasses_Mama_WBL/Glasses_Mama_Tex/" && rtk du -h "/Users/admin/Downloads/Glasses_Mama_WBL/"* && rtk ls -la "/Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/docs/research/" 2>&1; which blender; rtk ls "/Applications/Blender.app/Contents/MacOS/Blender" 2>&1
+644  03_Steel_n.png  380.5K
+644  04_T_Color.png  4.9M
+5.3M	/Users/admin/Downloads/Glasses_Mama_WBL/Glasses_Mama_Tex
+4.0K	/Users/admin/Downloads/Glasses_Mama_WBL/Glasses_Mama_WBL.mtl
+3.9M	/Users/admin/Downloads/Glasses_Mama_WBL/Glasses_Mama_WBL.obj
+755  screens/
+/Users/admin/.local/bin/blender
+/Applications/Blender.app/Contents/MacOS/Blender  166.6M
+[0m
+[0m$ [0mpython3 -c "
+with open('/Users/admin/Downloads/Glasses_Mama_WBL/Glasses_Mama_WBL.obj') as f:
+    lines=f.readlines()
+print('total lines:',len(lines))
+from collections import Counter
+c=Counter(l.split()[0] if l.split() else 'EMPTY' for l in lines)
+for k,v in c.most_common(20): print(k,v)
+print('--- o/g/usemtl lines ---')
+for l in lines:
+    p=l.split()
+    if p and p[0] in ('o','g','usemtl','mtllib','s'): print(l.rstrip())
+" 2>&1 | head -60; echo ===; /Applications/Blender.app/Contents/MacOS/Blender --version 2>&1; echo ===; python3 -c "from PIL import Image; [print(f, Image.open('/Users/admin/Downloads/Glasses_Mama_WBL/Glasses_Mama_Tex/'+f).size, Image.open('/Users/admin/Downloads/Glasses_Mama_WBL/Glasses_Mama_Tex/'+f).mode) for f in ['03_Steel_n.png','04_T_Color.png']]" 2>&1; echo ===; rtk ls "/Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/docs/research/screens/" 2>&1
+total lines: 113563
+vt 31087
+f 29106
+vn 26956
+v 26371
+usemtl 14
+o 13
+s 13
+# 2
+mtllib 1
+--- o/g/usemtl lines ---
+mtllib Glasses_Mama_WBL.mtl
+o Vert.001
+usemtl 00_Base
+s 1
+o Vert.003
+usemtl 01_Glasses
+s 1
+usemtl 01_Glasses_Side
+o 立方体_立方体.004
+usemtl 00_Base
+s 1
+o 円柱
+usemtl 00_Base
+s 1
+o 平面
+usemtl 04_T
+s 1
+o 球
+usemtl 00_Base
+s 1
+o 円柱.001
+usemtl 00_Base
+s 1
+o 球.001
+usemtl 00_Base
+s 1
+o 立方体.001_立方体.006
+usemtl 02_nose
+s 1
+o 立方体.002_立方体.007
+usemtl 00_Base
+s 1
+o 立方体_立方体.001
+usemtl 00_Base
+s 1
+o Vert
+usemtl 03_Steel
+s 1
+o 円柱.002
+usemtl 00_Base
+s 1
+zsh:12: == not found
+[0m
+[0m$ [0m/Applications/Blender.app/Contents/MacOS/Blender --version; rtk ls "/Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/docs/research/screens/"; python3 -c "from PIL import Image
+for f in ['03_Steel_n.png','04_T_Color.png']:
+    im=Image.open('/Users/admin/Downloads/Glasses_Mama_WBL/Glasses_Mama_Tex/'+f)
+    print(f, im.size, im.mode)"
+Blender 5.0.1
+	build date: 2025-12-16
+	build time: 01:51:40
+	build commit date: 2025-12-15
+	build commit time: 16:36
+	build hash: a3db93c5b259
+	build branch: blender-v5.0-release
+	build platform: Darwin
+	build type: Release
+	build c flags:  -Wall -Werror=implicit-function-declaration -Werror=return-type -Wno-tautological-compare -Wno-unknown-pragmas -Wno-char-subscripts -Wstrict-prototypes -Wmissing-prototypes -Wunused-parameter -Wundef -Wundef-prefix -Werror=unguarded-availability-new  -mmacosx-version-min=11.2 -std=gnu11  -pipe -funsigned-char -fno-strict-aliasing -ffp-contract=off  
+	build c++ flags:  -Wall -Wc++20-designator -Wno-tautological-compare -Wno-unknown-pragmas -Wno-char-subscripts -Wno-overloaded-virtual -Wno-sign-compare -Wno-invalid-offsetof -Wno-suggest-override -Wundef -Wundef-prefix -Wunused-parameter -Wmismatched-tags -Werror=unguarded-availability-new  -mmacosx-version-min=11.2 -ftemplate-depth=1024  -pipe -funsigned-char -fno-strict-aliasing -ffp-contract=off  
+	build link flags: -fexceptions -framework CoreServices -framework Foundation -framework IOKit -framework AppKit -framework Cocoa    -framework Carbon -framework AudioUnit -framework AudioToolbox -framework CoreAudio -framework Metal    -framework QuartzCore -framework CoreImage -framework OpenGL -framework Accelerate -liconv -Wl,-unexported_symbols_list,'/Users/blender/git/blender-v500/blender.git/source/creator/symbols_apple.map' -Xlinker -no_warn_duplicate_libraries
+	build system: CMake
+A/
+E/
+03_Steel_n.png (1024, 1024) RGBA
+04_T_Color.png (4096, 4096) RGB
+[0m
+[0m$ [0mrtk ls -la; rtk ls .orchestration/tmp/ 2>/dev/null || mkdir -p .orchestration/tmp && rtk ls .orchestration/
+755  .claude/
+755  .orchestration/
+755  .playwright-mcp/
+755  assets/
+755  docs/
+logs/
+prompts/
+tmp/
+run.sh  648B
+[0m
+[0m$ [0mcat > .orchestration/tmp/g_analyze.py <<'EOF'
+import re
+from collections import defaultdict
+path='/Users/admin/Downloads/Glasses_Mama_WBL/Glasses_Mama_WBL.obj'
+objs=[]; cur=None
+def new_obj(name):
+    return {'name':name,'v':0,'vt':0,'vn':0,'f':0,'tris':0,'ngons':0,'quads':0,'tris_f':0,'mats':[],'vmin':[1e9]*3,'vmax':[-1e9]*3,'faces_vidx':[]}
+with open(path) as f:
+    V=[]; VT=[]; VN=[]
+    for line in f:
+        p=line.split()
+        if not p: continue
+        k=p[0]
+        if k=='o':
+            cur=new_obj(' '.join(p[1:])); objs.append(cur)
+        elif k=='v' and len(p)>=4:
+            xyz=tuple(map(float,p[1:4])); V.append(xyz)
+            if cur is not None:
+                cur['v']+=1
+                for i in range(3):
+                    cur['vmin'][i]=min(cur['vmin'][i],xyz[i]); cur['vmax'][i]=max(cur['vmax'][i],xyz[i])
+        elif k=='vt': VT.append(1); 
+        elif k=='vn': VN.append(1)
+        elif k=='f':
+            if cur is None: cur=new_obj('(default)'); objs.append(cur)
+            cur['f']+=1
+            n=len(p)-1
+            idxs=[]
+            for tok in p[1:]:
+                vi=tok.split('/')[0]
+                idxs.append(int(vi)-1)
+            t=n-2
+            cur['tris']+=t
+            if n==3: cur['tris_f']+=1
+            elif n==4: cur['quads']+=1
+            else: cur['ngons']+=1
+            cur['faces_vidx'].append((n,idxs))
+        elif k=='usemtl':
+            if cur is None: cur=new_obj('(default)'); objs.append(cur)
+            if p[1] not in cur['mats']: cur['mats'].append(p[1])
+print('TOTAL v:',len(V),'vt:',len(VT),'vn:',len(VN))
+print('n objects:',len(objs))
+tot_f=0; tot_t=0
+for o in objs:
+    tot_f+=o['f']; tot_t+=o['tris']
+    sz=[o['vmax'][i]-o['vmin'][i] for i in range(3)]
+    print(f"OBJ {o['name']!r} mats={o['mats']} verts={o['v']} faces={o['f']} tris-equiv={o['tris']} (t={o['tris_f']} q={o['quads']} ngon={o['ngons']}) bbox_min={[round(x,3) for x in o['vmin']]} bbox_max={[round(x,3) for x in o['vmax']]} size={[round(x,3) for x in sz]}")
+print('TOTAL faces:',tot_f,'TOTAL tris-equiv:',tot_t)
+# global bbox
+gmin=[min(o['vmin'][i] for o in objs) for i in range(3)]; gmax=[max(o['vmax'][i] for o in objs) for i in range(3)]
+print('GLOBAL bbox min:',[round(x,4) for x in gmin],'max:',[round(x,4) for x in gmax],'size:',[round(gmax[i]-gmin[i],4) for i in range(3)])
+EOF
+python3 .orchestration/tmp/g_analyze.py
+TOTAL v: 26371 vt: 31087 vn: 26956
+n objects: 13
+OBJ 'Vert.001' mats=['00_Base'] verts=1454 faces=2899 tris-equiv=2904 (t=2894 q=5 ngon=0) bbox_min=[-0.165, 0.207, 0.654] bbox_max=[0.163, 0.303, 0.716] size=[0.328, 0.097, 0.062]
+OBJ 'Vert.003' mats=['01_Glasses', '01_Glasses_Side'] verts=3144 faces=3140 tris-equiv=6280 (t=0 q=3140 ngon=0) bbox_min=[-0.623, 0.001, 0.644] bbox_max=[0.621, 0.409, 0.703] size=[1.244, 0.408, 0.059]
+OBJ '立方体_立方体.004' mats=['00_Base'] verts=1416 faces=1536 tris-equiv=2816 (t=256 q=1280 ngon=0) bbox_min=[-0.157, 0.291, 0.684] bbox_max=[0.155, 0.302, 0.704] size=[0.312, 0.01, 0.02]
+OBJ '円柱' mats=['00_Base'] verts=1508 faces=1538 tris-equiv=3008 (t=112 q=1382 ngon=44) bbox_min=[-0.687, 0.303, 0.563] bbox_max=[0.687, 0.325, 0.633] size=[1.373, 0.023, 0.07]
+OBJ '平面' mats=['04_T'] verts=7084 faces=7064 tris-equiv=14160 (t=32 q=6970 ngon=62) bbox_min=[-0.779, 0.002, -0.709] bbox_max=[0.779, 0.292, -0.093] size=[1.558, 0.29, 0.617]
+OBJ '球' mats=['00_Base'] verts=1412 faces=1408 tris-equiv=2816 (t=0 q=1408 ngon=0) bbox_min=[-0.681, 0.302, 0.567] bbox_max=[0.681, 0.325, 0.579] size=[1.363, 0.024, 0.012]
+OBJ '円柱.001' mats=['00_Base'] verts=310 faces=602 tris-equiv=612 (t=592 q=10 ngon=0) bbox_min=[-0.132, 0.177, 0.64] bbox_max=[0.133, 0.216, 0.686] size=[0.265, 0.039, 0.046]
+OBJ '球.001' mats=['00_Base'] verts=1892 faces=1888 tris-equiv=3776 (t=0 q=1888 ngon=0) bbox_min=[-0.128, 0.191, 0.645] bbox_max=[0.128, 0.211, 0.679] size=[0.256, 0.02, 0.033]
+OBJ '立方体.001_立方体.006' mats=['02_nose'] verts=511 faces=1005 tris-equiv=1014 (t=996 q=9 ngon=0) bbox_min=[-0.128, 0.142, 0.629] bbox_max=[0.128, 0.243, 0.672] size=[0.256, 0.101, 0.043]
+OBJ '立方体.002_立方体.007' mats=['00_Base'] verts=214 faces=420 tris-equiv=420 (t=420 q=0 ngon=0) bbox_min=[-0.164, 0.289, 0.681] bbox_max=[0.162, 0.304, 0.685] size=[0.326, 0.014, 0.004]
+OBJ '立方体_立方体.001' mats=['00_Base'] verts=4374 faces=4480 tris-equiv=8716 (t=300 q=4132 ngon=48) bbox_min=[-0.676, 0.321, 0.594] bbox_max=[0.676, 0.356, 0.686] size=[1.353, 0.035, 0.093]
+OBJ 'Vert' mats=['03_Steel'] verts=164 faces=186 tris-equiv=320 (t=52 q=134 ngon=0) bbox_min=[-0.767, 0.023, -0.689] bbox_max=[0.767, 0.085, -0.616] size=[1.533, 0.062, 0.073]
+OBJ '円柱.002' mats=['00_Base'] verts=2888 faces=2940 tris-equiv=5768 (t=144 q=2764 ngon=32) bbox_min=[-0.762, 0.27, -0.105] bbox_max=[0.762, 0.323, 0.584] size=[1.524, 0.052, 0.689]
+TOTAL faces: 29106 TOTAL tris-equiv: 52610
+GLOBAL bbox min: [-0.7789, 0.0012, -0.7093] max: [0.7789, 0.4087, 0.7163] size: [1.5578, 0.4076, 1.4257]
+[0m
+[0m$ [0mcat > .orchestration/tmp/g_analyze2.py <<'EOF'
+import numpy as np
+path='/Users/admin/Downloads/Glasses_Mama_WBL/Glasses_Mama_WBL.obj'
+objs={}; cur=None; V=[]
+with open(path) as f:
+    for line in f:
+        p=line.split()
+        if not p: continue
+        if p[0]=='o':
+            cur=' '.join(p[1:]); objs[cur]=[]
+        elif p[0]=='v':
+            xyz=np.array(list(map(float,p[1:4]))); V.append(xyz)
+            if cur is not None: objs[cur].append(len(V)-1)
+V=np.array(V)
+print('global mean',V.mean(axis=0).round(4),'std',V.std(axis=0).round(4))
+for name,idx in objs.items():
+    pts=V[idx]
+    # left/right split at x=0
+    nl=(pts[:,0]<0).sum(); nr=(pts[:,0]>=0).sum()
+    # z histogram: front (z>0.5) vs mid vs back (z<0)
+    nf=(pts[:,2]>0.5).sum(); nm=((pts[:,2]>=0)&(pts[:,2]<=0.5)).sum(); nb=(pts[:,2]<0).sum()
+    c=pts.mean(axis=0)
+    print(f"{name!r}: n={len(idx)} x<0:{nl} x>=0:{nr} | z>0.5:{nf} 0..0.5:{nm} z<0:{nb} | centroid={[round(float(x),3) for x in c]}")
+# sample face format
+with open(path) as f:
+    n=0
+    for line in f:
+        if line.startswith('f '):
+            print('sample face:',line.strip()[:160]); n+=1
+            if n>=3: break
+# doubled verts: exact duplicates
+print('exact-duplicate verts:', len(V)-len(np.unique(V.round(6),axis=0)))
+EOF
+python3 .orchestration/tmp/g_analyze2.py
+global mean [-0.003   0.2643  0.3419] std [0.5875 0.0848 0.4635]
+'Vert.001': n=1454 x<0:737 x>=0:717 | z>0.5:1454 0..0.5:0 z<0:0 | centroid=[-0.001, 0.282, 0.694]
+'Vert.003': n=3144 x<0:1572 x>=0:1572 | z>0.5:3144 0..0.5:0 z<0:0 | centroid=[-0.001, 0.23, 0.681]
+'立方体_立方体.004': n=1416 x<0:708 x>=0:708 | z>0.5:1416 0..0.5:0 z<0:0 | centroid=[-0.001, 0.296, 0.693]
+'円柱': n=1508 x<0:754 x>=0:754 | z>0.5:1508 0..0.5:0 z<0:0 | centroid=[0.0, 0.313, 0.592]
+'平面': n=7084 x<0:3542 x>=0:3542 | z>0.5:0 0..0.5:0 z<0:7084 | centroid=[-0.0, 0.213, -0.35]
+'球': n=1412 x<0:706 x>=0:706 | z>0.5:1412 0..0.5:0 z<0:0 | centroid=[0.0, 0.315, 0.573]
+'円柱.001': n=310 x<0:155 x>=0:155 | z>0.5:310 0..0.5:0 z<0:0 | centroid=[0.0, 0.199, 0.668]
+'球.001': n=1892 x<0:1282 x>=0:610 | z>0.5:1892 0..0.5:0 z<0:0 | centroid=[-0.04, 0.2, 0.659]
+'立方体.001_立方体.006': n=511 x<0:252 x>=0:259 | z>0.5:511 0..0.5:0 z<0:0 | centroid=[0.001, 0.193, 0.65]
+'立方体.002_立方体.007': n=214 x<0:107 x>=0:107 | z>0.5:214 0..0.5:0 z<0:0 | centroid=[-0.001, 0.297, 0.683]
+'立方体_立方体.001': n=4374 x<0:2187 x>=0:2187 | z>0.5:4374 0..0.5:0 z<0:0 | centroid=[0.0, 0.346, 0.652]
+'Vert': n=164 x<0:82 x>=0:82 | z>0.5:0 0..0.5:0 z<0:164 | centroid=[0.0, 0.062, -0.643]
+'円柱.002': n=2888 x<0:1444 x>=0:1444 | z>0.5:1518 0..0.5:760 z<0:610 | centroid=[0.0, 0.3, 0.341]
+sample face: f 731/1/1 80/2/2 502/3/3
+sample face: f 502/3/3 80/2/2 30/4/4
+sample face: f 39/5/5 745/6/6 744/7/7
+exact-duplicate verts: 87
+[0m
+[0m$ [0mcat > .orchestration/tmp/g_blender.py <<'EOF'
+import bpy, os, math
+from mathutils import Vector
+
+# clear
+bpy.ops.object.select_all(action='SELECT'); bpy.ops.object.delete(use_global=False)
+for m in list(bpy.data.materials): bpy.data.materials.remove(m)
+
+src='/Users/admin/Downloads/Glasses_Mama_WBL/Glasses_Mama_WBL.obj'
+bpy.ops.wm.obj_import(filepath=src, up_axis='Y', forward_axis='NEGATIVE_Z')
+print('=== IMPORTED OBJECTS ===')
+tot_v=tot_t=0
+gmin=Vector((1e9,)*3); gmax=Vector((-1e9,)*3)
+for ob in bpy.context.scene.objects:
+    if ob.type!='MESH': print(ob.name, ob.type); continue
+    me=ob.data
+    nv=len(me.vertices); npoly=len(me.polygons); ntri=sum(len(p.vertices)-2 for p in me.polygons)
+    tot_v+=nv; tot_t+=ntri
+    bb=[ob.matrix_world @ Vector(c) for c in ob.bound_box]
+    for c in bb:
+        gmin.x=min(gmin.x,c.x); gmin.y=min(gmin.y,c.y); gmin.z=min(gmin.z,c.z)
+        gmax.x=max(gmax.x,c.x); gmax.y=max(gmax.y,c.y); gmax.z=max(gmax.z,c.z)
+    mats=[m.name if m else '(none)' for m in me.materials]
+    has_uv=bool(me.uv_layers)
+    print(f"{ob.name!r} verts={nv} polys={npoly} tris={ntri} mats={mats} uv={has_uv}")
+print(f'TOTAL verts={tot_v} tris={tot_t}')
+print('BBOX min',tuple(round(v,4) for v in gmin),'max',tuple(round(v,4) for v in gmax),'size',tuple(round((gmax-gmin)[i],4) for i in range(3)))
+center=(gmin+gmax)/2; size=gmax-gmin; R=max(size)/2
+print('CENTER',tuple(round(v,4) for v in center),'R',round(R,4))
+# fix texture paths (mtl uses backslash windows paths)
+texdir='/Users/admin/Downloads/Glasses_Mama_WBL/Glasses_Mama_Tex'
+for img in bpy.data.images:
+    p=bpy.path.abspath(img.filepath)
+    base=os.path.basename(p.replace('\\','/'))
+    cand=os.path.join(texdir,base)
+    if os.path.exists(cand):
+        img.filepath=cand; img.reload()
+        print('remapped',img.name,'->',cand, img.size[:])
+
+# --- render setup ---
+scene=bpy.context.scene
+try: scene.render.engine='BLENDER_EEVEE'
+except TypeError as e: print('engine err',e); scene.render.engine=scene.render.engine
+scene.render.resolution_x=1280; scene.render.resolution_y=720
+scene.render.film_transparent=False
+world=scene.world; world.use_nodes=True
+bg=next(n for n in world.node_tree.nodes if n.type=='BACKGROUND')
+bg.inputs['Color'].default_value=(0.25,0.25,0.27,1); bg.inputs['Strength'].default_value=1.0
+# lights
+bpy.ops.object.light_add(type='SUN', location=(3,4,5)); sun=bpy.context.active_object; sun.data.energy=4
+bpy.ops.object.light_add(type='AREA', location=(center.x-3,center.y+2,center.z+3)); a=bpy.context.active_object; a.data.energy=300; a.data.size=4
+bpy.ops.object.light_add(type='AREA', location=(center.x+3,center.y+1,center.z-3)); b=bpy.context.active_object; b.data.energy=150; b.data.size=4
+cam_data=bpy.data.cameras.new('Gcam'); cam=bpy.data.objects.new('Gcam',cam_data); scene.collection.objects.link(cam)
+scene.camera=cam
+def aim(loc,look):
+    cam.location=loc
+    d=Vector(look)-Vector(loc)
+    from mathutils import Matrix
+    q=d.to_track_quat('-Z','Y'); cam.rotation_euler=q.to_euler()
+outdir='/Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/docs/research/screens/G'
+os.makedirs(outdir,exist_ok=True)
+D=float(max(size)*2.2)
+views={
+ 'front':(center.x, center.y, center.z+D),
+ 'three_quarter':(center.x+D*0.7, center.y+D*0.45, center.z+D*0.7),
+ 'top':(center.x, center.y+D, center.z+0.001),
+}
+for name,loc in views.items():
+    aim(loc,center)
+    scene.render.filepath=os.path.join(outdir,f'G_{name}.png')
+    bpy.ops.render.render(write_still=True)
+    print('wrote',scene.render.filepath)
+EOF
+/Applications/Blender.app/Contents/MacOS/Blender -b --factory-startup --python .orchestration/tmp/g_blender.py 2>&1 | grep -v "^Blender\|^Read prefs\|AL lib\|^Info:" | tail -60
+/Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/.orchestration/tmp/g_blender.py:45: DeprecationWarning: 'World.use_nodes' is expected to be removed in Blender 6.0
+  world=scene.world; world.use_nodes=True
+00:04.713  render           | Saved: '/Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/docs/research/screens/G/G_front.png'
+00:05.384  render           | Saved: '/Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/docs/research/screens/G/G_three_quarter.png'
+00:05.867  render           | Saved: '/Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/docs/research/screens/G/G_top.png'
+=== IMPORTED OBJECTS ===
+'Vert' verts=164 polys=186 tris=320 mats=['03_Steel'] uv=True
+'Vert.001' verts=1454 polys=2899 tris=2904 mats=['00_Base'] uv=True
+'Vert.003' verts=3144 polys=3140 tris=6280 mats=['01_Glasses', '01_Glasses_Side'] uv=True
+'円柱' verts=1508 polys=1538 tris=3008 mats=['00_Base'] uv=True
+'円柱.001' verts=310 polys=602 tris=612 mats=['00_Base'] uv=True
+'円柱.002' verts=2888 polys=2940 tris=5768 mats=['00_Base'] uv=True
+'平面' verts=7084 polys=7064 tris=14160 mats=['04_T'] uv=True
+'球' verts=1412 polys=1408 tris=2816 mats=['00_Base'] uv=True
+'球.001' verts=1892 polys=1888 tris=3776 mats=['00_Base'] uv=True
+'立方体.001_立方体.006' verts=511 polys=1005 tris=1014 mats=['02_nose'] uv=True
+'立方体.002_立方体.007' verts=214 polys=420 tris=420 mats=['00_Base'] uv=True
+'立方体_立方体.001' verts=4374 polys=4480 tris=8716 mats=['00_Base'] uv=True
+'立方体_立方体.004' verts=1416 polys=1536 tris=2816 mats=['00_Base'] uv=True
+TOTAL verts=26371 tris=52610
+BBOX min (-0.7789, -0.7163, 0.0012) max (0.7789, 0.7093, 0.4087) size (1.5578, 1.4257, 0.4076)
+CENTER (0.0, -0.0035, 0.2049) R 0.7789
+remapped 03_Steel_n.png -> /Users/admin/Downloads/Glasses_Mama_WBL/Glasses_Mama_Tex/03_Steel_n.png (1024, 1024)
+remapped 04_T_Color.png -> /Users/admin/Downloads/Glasses_Mama_WBL/Glasses_Mama_Tex/04_T_Color.png (4096, 4096)
+remapped Render Result -> /Users/admin/Downloads/Glasses_Mama_WBL/Glasses_Mama_Tex/ (0, 0)
+wrote /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/docs/research/screens/G/G_front.png
+wrote /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/docs/research/screens/G/G_three_quarter.png
+wrote /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/docs/research/screens/G/G_top.png
+OBJ import of 'Glasses_Mama_WBL.obj' took 49.74 ms
+[0m
+[0m→ [0mRead docs/research/screens/G/G_three_quarter.png
+[0m→ [0mRead docs/research/screens/G/G_top.png
+[0m→ [0mRead docs/research/screens/G/G_front.png
+[0m
+[0m$ [0mcat > .orchestration/tmp/g_color.py <<'EOF'
+import bpy, os
+from mathutils import Vector
+bpy.ops.object.select_all(action='SELECT'); bpy.ops.object.delete(use_global=False)
+for m in list(bpy.data.materials): bpy.data.materials.remove(m)
+bpy.ops.wm.obj_import(filepath='/Users/admin/Downloads/Glasses_Mama_WBL/Glasses_Mama_WBL.obj', up_axis='Y', forward_axis='NEGATIVE_Z')
+import mathutils
+cols=[(1,0,0),(0,1,0),(0,0,1),(1,1,0),(1,0,1),(0,1,1),(1,.5,0),(.5,0,1),(0,.5,1),(1,.5,.5),(.5,1,.5),(.5,.5,1),(1,1,1)]
+for i,ob in sorted(enumerate([o for o in bpy.context.scene.objects if o.type=='MESH']), key=lambda t:t[1].name):
+    m=bpy.data.materials.new('C_'+ob.name); m.use_nodes=True
+    bsdf=next(n for n in m.node_tree.nodes if n.type=='BSDF_PRINCIPLED')
+    bsdf.inputs['Base Color'].default_value=(*cols[i%len(cols)],1)
+    ob.data.materials.clear(); ob.data.materials.append(m)
+    print('COLOR', ob.name, [round(c,2) for c in cols[i%len(cols)]])
+scene=bpy.context.scene
+scene.render.engine='BLENDER_EEVEE'; scene.render.resolution_x=1600; scene.render.resolution_y=900
+world=scene.world
+bg=next(n for n in world.node_tree.nodes if n.type=='BACKGROUND'); bg.inputs['Color'].default_value=(0.08,0.08,0.09,1)
+bpy.ops.object.light_add(type='SUN', location=(3,4,5)); bpy.context.active_object.data.energy=5
+bpy.ops.object.light_add(type='AREA', location=(-3,2,4)); a=bpy.context.active_object; a.data.energy=400; a.data.size=4
+objs=[o for o in scene.objects if o.type=='MESH']
+gmin=Vector((1e9,)*3); gmax=Vector((-1e9,)*3)
+for ob in objs:
+    for c in [ob.matrix_world @ Vector(x) for x in ob.bound_box]:
+        gmin=Math_min(gmin,c); gmax=Math_max(gmax,c)
+EOF
+echo "skip - will write full script below"
+skip - will write full script below
+[0m
+[0m$ [0mcat > .orchestration/tmp/g_color.py <<'EOF'
+import bpy, os
+from mathutils import Vector
+bpy.ops.object.select_all(action='SELECT'); bpy.ops.object.delete(use_global=False)
+for m in list(bpy.data.materials): bpy.data.materials.remove(m)
+bpy.ops.wm.obj_import(filepath='/Users/admin/Downloads/Glasses_Mama_WBL/Glasses_Mama_WBL.obj', up_axis='Y', forward_axis='NEGATIVE_Z')
+cols=[(1,0,0),(0,1,0),(0,0,1),(1,1,0),(1,0,1),(0,1,1),(1,.5,0),(.5,0,1),(0,.5,1),(1,.5,.5),(.5,1,.5),(.5,.5,1),(1,1,1)]
+names=sorted([o.name for o in bpy.context.scene.objects if o.type=='MESH'])
+for i,name in enumerate(names):
+    ob=bpy.context.scene.objects[name]
+    m=bpy.data.materials.new('C_'+name); m.use_nodes=True
+    bsdf=next(n for n in m.node_tree.nodes if n.type=='BSDF_PRINCIPLED')
+    bsdf.inputs['Base Color'].default_value=(*cols[i%len(cols)],1)
+    ob.data.materials.clear(); ob.data.materials.append(m)
+    print('COLOR', i, name, [round(c,2) for c in cols[i%len(cols)]])
+scene=bpy.context.scene
+scene.render.engine='BLENDER_EEVEE'; scene.render.resolution_x=1600; scene.render.resolution_y=900
+bg=next(n for n in scene.world.node_tree.nodes if n.type=='BACKGROUND'); bg.inputs['Color'].default_value=(0.08,0.08,0.09,1)
+bpy.ops.object.light_add(type='SUN', location=(3,4,5)); bpy.context.active_object.data.energy=5
+bpy.ops.object.light_add(type='AREA', location=(-3,2,4)); a=bpy.context.active_object; a.data.energy=400; a.data.size=4
+objs=[o for o in scene.objects if o.type=='MESH']
+gmin=Vector((1e9,)*3); gmax=Vector((-1e9,)*3)
+for ob in objs:
+    for c in [ob.matrix_world @ Vector(x) for x in ob.bound_box]:
+        gmin.x=min(gmin.x,c.x); gmin.y=min(gmin.y,c.y); gmin.z=min(gmin.z,c.z)
+        gmax.x=max(gmax.x,c.x); gmax.y=max(gmax.y,c.y); gmax.z=max(gmax.z,c.z)
+center=(gmin+gmax)/2; size=gmax-gmin; D=float(max(size))*1.6
+cam_data=bpy.data.cameras.new('Gcam'); cam=bpy.data.objects.new('Gcam',cam_data); scene.collection.objects.link(cam); scene.camera=cam
+def aim(loc):
+    cam.location=loc; d=center-Vector(loc); cam.rotation_euler=d.to_track_quat('-Z','Y').to_euler()
+outdir='/Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/docs/research/screens/G'
+views={'color_34':(center.x+D*0.8,center.y-D*0.9,center.z+D*0.55),'color_front':(center.x,center.y+D,center.z+0.05)}
+for vn,loc in views.items():
+    aim(loc); scene.render.filepath=os.path.join(outdir,'G_'+vn+'.png'); bpy.ops.render.render(write_still=True); print('wrote',vn)
+EOF
+/Applications/Blender.app/Contents/MacOS/Blender -b --factory-startup --python .orchestration/tmp/g_color.py 2>&1 | grep -E "COLOR|wrote|Error|Traceback" | head -30
+COLOR 0 Vert [1, 0, 0]
+COLOR 1 Vert.001 [0, 1, 0]
+COLOR 2 Vert.003 [0, 0, 1]
+COLOR 3 円柱 [1, 1, 0]
+COLOR 4 円柱.001 [1, 0, 1]
+COLOR 5 円柱.002 [0, 1, 1]
+COLOR 6 平面 [1, 0.5, 0]
+COLOR 7 球 [0.5, 0, 1]
+COLOR 8 球.001 [0, 0.5, 1]
+COLOR 9 立方体.001_立方体.006 [1, 0.5, 0.5]
+COLOR 10 立方体.002_立方体.007 [0.5, 1, 0.5]
+COLOR 11 立方体_立方体.001 [0.5, 0.5, 1]
+COLOR 12 立方体_立方体.004 [1, 1, 1]
+wrote color_34
+wrote color_front
+[0m
+[0m→ [0mRead docs/research/screens/G/G_color_front.png
+[0m→ [0mRead docs/research/screens/G/G_color_34.png
+[0m
+[0m$ [0mcat > .orchestration/tmp/g_qa.py <<'EOF'
+import bpy, bmesh, os
+from mathutils import Vector
+bpy.ops.object.select_all(action='SELECT'); bpy.ops.object.delete(use_global=False)
+for m in list(bpy.data.materials): bpy.data.materials.remove(m)
+bpy.ops.wm.obj_import(filepath='/Users/admin/Downloads/Glasses_Mama_WBL/Glasses_Mama_WBL.obj', up_axis='Y', forward_axis='NEGATIVE_Z')
+print('=== PER-OBJECT QA (Blender space) ===')
+for ob in sorted([o for o in bpy.context.scene.objects if o.type=='MESH'], key=lambda o:o.name):
+    me=ob.data
+    bm=bmesh.new(); bm.from_mesh(me); bm.verts.ensure_lookup_table()
+    nonman=sum(1 for e in bm.edges if not e.is_manifold)
+    loose=sum(1 for v in bm.verts if not v.link_edges)
+    # zero-area faces
+    za=sum(1 for f in bm.faces if f.calc_area()<1e-10)
+    # uv coverage
+    uv=me.uv_layers[0] if me.uv_layers else None
+    uvs=set()
+    if uv:
+        for poly in me.polygons:
+            for li in poly.loop_indices:
+                uvs.add((round(uv.data[li].uv.x,3),round(uv.data[li].uv.y,3)))
+    bb=[ob.matrix_world @ Vector(c) for c in ob.bound_box]
+    mn=Vector((min(c[i] for c in bb) for i in range(3))); mx=Vector((max(c[i] for c in bb) for i in range(3)))
+    print(f"{ob.name!r}: nonman_edges={nonman} loose_verts={loose} zeroarea_faces={za} unique_uvs={len(uvs)} bbox=({tuple(round(v,3) for v in mn)},{tuple(round(v,3) for v in mx)})")
+    bm.free()
+print('=== HINGE ESTIMATE from arm object 円柱.002 ===')
+ob=bpy.context.scene.objects.get('円柱.002')
+if ob:
+    mw=ob.matrix_world
+    for side,s in (('R',1),('L',-1)):
+        pts=[mw@v.co for v in ob.data.vertices if (v.co.x>0)==(s>0)]
+        # front-most 5% in Y (front of glasses = +Y in Blender space? check)
+        pts_sorted=sorted(pts,key=lambda p:p.y)
+        print(side,'Y range:',round(min(p.y for p in pts),3),round(max(p.y for p in pts),3))
+        front=[p for p in pts if p.y>sorted([p.y for p in pts])[int(len(pts)*0.95)]]
+        c=sum(front,Vector())/len(front)
+        print(side,'front5% centroid (hinge approx):',tuple(round(v,4) for v in c))
+print('=== GLB EXPORT SIZES ===')
+tmp='/Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/.orchestration/tmp'
+bpy.ops.object.select_all(action='SELECT')
+p1=os.path.join(tmp,'g_full.glb')
+bpy.ops.export_scene.gltf(filepath=p1, export_format='GLB', use_selection=True)
+print('plain glb bytes:',os.path.getsize(p1))
+try:
+    p2=os.path.join(tmp,'g_draco.glb')
+    bpy.ops.export_scene.gltf(filepath=p2, export_format='GLB', use_selection=True, export_draco_mesh_compression_enable=True)
+    print('draco glb bytes:',os.path.getsize(p2))
+except Exception as e:
+    print('draco export failed:',type(e).__name__,str(e)[:200])
+EOF
+/Applications/Blender.app/Contents/MacOS/Blender -b --factory-startup --python .orchestration/tmp/g_qa.py 2>&1 | grep -E "^(球|円|平|立|Vert|'|---|===|R |L |plain|draco|TOTAL)" | head -40
+=== PER-OBJECT QA (Blender space) ===
+'Vert': nonman_edges=0 loose_verts=0 zeroarea_faces=0 unique_uvs=173 bbox=((-0.767, 0.616, 0.023),(0.767, 0.689, 0.085))
+'Vert.001': nonman_edges=0 loose_verts=0 zeroarea_faces=0 unique_uvs=1076 bbox=((-0.165, -0.716, 0.207),(0.163, -0.654, 0.303))
+'Vert.003': nonman_edges=0 loose_verts=0 zeroarea_faces=0 unique_uvs=1684 bbox=((-0.623, -0.703, 0.001),(0.621, -0.644, 0.409))
+'円柱': nonman_edges=0 loose_verts=0 zeroarea_faces=2 unique_uvs=555 bbox=((-0.687, -0.633, 0.303),(0.687, -0.563, 0.325))
+'円柱.001': nonman_edges=0 loose_verts=0 zeroarea_faces=0 unique_uvs=157 bbox=((-0.132, -0.686, 0.177),(0.133, -0.64, 0.216))
+'円柱.002': nonman_edges=0 loose_verts=0 zeroarea_faces=0 unique_uvs=1180 bbox=((-0.762, -0.584, 0.27),(0.762, 0.105, 0.323))
+'平面': nonman_edges=0 loose_verts=0 zeroarea_faces=0 unique_uvs=3954 bbox=((-0.779, 0.093, 0.002),(0.779, 0.709, 0.292))
+'球': nonman_edges=0 loose_verts=0 zeroarea_faces=0 unique_uvs=624 bbox=((-0.681, -0.579, 0.302),(0.681, -0.567, 0.325))
+'球.001': nonman_edges=0 loose_verts=0 zeroarea_faces=0 unique_uvs=952 bbox=((-0.128, -0.679, 0.191),(0.128, -0.645, 0.211))
+'立方体.001_立方体.006': nonman_edges=0 loose_verts=0 zeroarea_faces=0 unique_uvs=365 bbox=((-0.128, -0.672, 0.142),(0.128, -0.629, 0.243))
+'立方体.002_立方体.007': nonman_edges=0 loose_verts=0 zeroarea_faces=0 unique_uvs=196 bbox=((-0.164, -0.685, 0.289),(0.162, -0.681, 0.304))
+'立方体_立方体.001': nonman_edges=0 loose_verts=0 zeroarea_faces=54 unique_uvs=1910 bbox=((-0.676, -0.686, 0.321),(0.676, -0.594, 0.356))
+'立方体_立方体.004': nonman_edges=0 loose_verts=0 zeroarea_faces=0 unique_uvs=804 bbox=((-0.157, -0.704, 0.291),(0.155, -0.684, 0.302))
+=== HINGE ESTIMATE from arm object 円柱.002 ===
+R Y range: -0.584 0.105
+R front5% centroid (hinge approx): (0.7496, 0.1046, 0.2795)
+L Y range: -0.584 0.105
+L front5% centroid (hinge approx): (-0.7496, 0.1046, 0.2795)
+=== GLB EXPORT SIZES ===
+plain glb bytes: 9267312
+draco glb bytes: 8093892
+[0m
+[0m→ [0mRead /Users/admin/Downloads/Glasses_Mama_WBL/Glasses_Mama_Tex/04_T_Color.png
+[0m
+[0m$ [0mcat > .orchestration/tmp/g_hinge.py <<'EOF'
+import bpy
+from mathutils import Vector
+bpy.ops.object.select_all(action='SELECT'); bpy.ops.object.delete(use_global=False)
+for m in list(bpy.data.materials): bpy.data.materials.remove(m)
+bpy.ops.wm.obj_import(filepath='/Users/admin/Downloads/Glasses_Mama_WBL/Glasses_Mama_WBL.obj', up_axis='Y', forward_axis='NEGATIVE_Z')
+ob=bpy.context.scene.objects.get('円柱.002'); mw=ob.matrix_world
+for s in (1,-1):
+    pts=[mw@v.co for v in ob.data.vertices if (v.co.x>0)==(s>0)]
+    ys=sorted(p.y for p in pts)
+    lo=[p for p in pts if p.y<ys[int(len(pts)*0.05)]]
+    c=sum(lo,Vector())/len(lo)
+    print('arm_minY_end', 'R' if s>0 else 'L', tuple(round(v,4) for v in c), 'n=',len(lo))
+# lens thickness: Vert.003 extent along Y (view dir)
+l=bpy.context.scene.objects.get('Vert.003')
+ys=[(l.matrix_world@v.co).y for v in l.data.vertices]
+print('lens Y thickness extent:', round(max(ys)-min(ys),4))
+EOF
+/Applications/Blender.app/Contents/MacOS/Blender -b --factory-startup --python .orchestration/tmp/g_hinge.py 2>&1 | grep -E "arm_minY|lens Y"
+arm_minY_end R (0.6827, -0.5842, 0.3095) n= 72
+arm_minY_end L (-0.6827, -0.5842, 0.3095) n= 72
+lens Y thickness extent: 0.0591
+[0m
+[0m$ [0mrtk ls -la docs/research/screens/G/ && python3 -c "print(320+2904+6280+3008+612+5768+14160+2816+3776+1014+420+8716+2816)"
+644  G_color_34.png  1.4M
+644  G_color_front.png  1.4M
+644  G_front.png  927.1K
+644  G_three_quarter.png  931.2K
+644  G_top.png  929.8K
+52610
+[0m
+[0m$ [0mmv docs/research/screens/G/G_front.png docs/research/screens/G/G_view_topdown.png && mv docs/research/screens/G/G_three_quarter.png docs/research/screens/G/G_view_34.png && mv docs/research/screens/G/G_top.png docs/research/screens/G/G_view_faceside.png && rtk ls docs/research/screens/G/
+G_color_34.png  1.4M
+G_color_front.png  1.4M
+G_view_34.png  931.2K
+G_view_faceside.png  929.8K
+G_view_topdown.png  927.1K
+[0m
+[0m← [0mWrite docs/research/G-glasses-model.md
+Wrote file successfully.
+[0m
+Research complete. Report: `docs/research/G-glasses-model.md`; 5 EEVEE previews in `docs/research/screens/G/`.
+
+PHASE2-G-DONE
+- Rimless black-metal glasses, OPEN pose, 13 merged objects / 26,371 verts / 52,610 tris; all parts ID'd with false-colour renders.
+- Scale ≈104 mm/unit, Y-up front=+Z; hinge pivots measured: R (0.6827,−0.5842,0.3095), L mirrored (Blender import space).
+- Arms NOT separable as-is (L/R merged; arm vs tip already split across two objects); X-side split recipe + fold rig (Z-axis ~90°) documented.
+- Mesh clean (0 non-manifold/loose, UVs everywhere); 4K tortoise map has baked "WontBeLong" watermark + Windows MTL paths flagged.
+- Web-ready: 52.6k≪150k so no decimation; GLB measured 9.3 MB (5.3 MB textures) → <2.5 MB after dropping tortoise for dark-premium materials.
+EXIT 0 model=meta/muse-spark-1.3-contributor

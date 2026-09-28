@@ -1,0 +1,27 @@
+{
+ "scroll_linked": [],
+ "reveals": [],
+ "pinned": [],
+ "fixed": [
+  {
+   "el": "div",
+   "text": "",
+   "cls": "globalnav-curtain"
+  },
+  {
+   "el": "div",
+   "text": "Apple Vision Pro Local Nav Open Menu Local Nav C",
+   "cls": "ac-ln-wrapper"
+  },
+  {
+   "el": "div",
+   "text": "",
+   "cls": "ac-ln-background"
+  },
+  {
+   "el": "div",
+   "text": "Apple Vision Pro Local Nav Open Menu Local Nav C",
+   "cls": "ac-ln-content"
+  }
+ ]
+}

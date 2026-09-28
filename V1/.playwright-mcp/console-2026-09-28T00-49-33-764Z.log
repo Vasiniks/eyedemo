@@ -1,0 +1,18 @@
+[     171ms] [INFO] %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold @ http://localhost:5105/node_modules/.vite/deps/react-dom_client.js?v=88a3693d:15804
+[     541ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:5105/favicon.ico:0
+[   81658ms] ReferenceError: LENS_USE is not defined
+    at http://localhost:5105/src/components/dom/Sections.tsx?t=1790556655340:436:19
+    at Array.map (<anonymous>)
+    at LensesSection (http://localhost:5105/src/components/dom/Sections.tsx?t=1790556655340:404:23)
+    at Object.react_stack_bottom_frame (http://localhost:5105/node_modules/.vite/deps/react-dom_client.js?v=88a3693d:14142:12)
+    at renderWithHooks (http://localhost:5105/node_modules/.vite/deps/react-dom_client.js?v=88a3693d:4400:19)
+    at updateFunctionComponent (http://localhost:5105/node_modules/.vite/deps/react-dom_client.js?v=88a3693d:5775:16)
+    at beginWork (http://localhost:5105/node_modules/.vite/deps/react-dom_client.js?v=88a3693d:6391:20)
+    at runWithFiberInDEV (http://localhost:5105/node_modules/.vite/deps/react-dom_client.js?v=88a3693d:944:66)
+    at performUnitOfWork (http://localhost:5105/node_modules/.vite/deps/react-dom_client.js?v=88a3693d:9148:92)
+    at workLoopSync (http://localhost:5105/node_modules/.vite/deps/react-dom_client.js?v=88a3693d:9044:37)
+[   81657ms] [WARNING] %s
+
+%s
+ An error occurred in the <LensesSection> component. Consider adding an error boundary to your tree to customize error handling behavior.
+Visit https://react.dev/link/error-boundaries to learn more about error boundaries. @ http://localhost:5105/@vite/client:298

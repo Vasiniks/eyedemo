@@ -1,0 +1,323 @@
+{
+  "meta": {
+    "atlas": "atlas-insurers.png",
+    "width": 2048,
+    "height": 1024,
+    "cols": 4,
+    "rows": 2,
+    "cell": {
+      "w": 512,
+      "h": 512
+    },
+    "padding": 32,
+    "fit": "contain",
+    "alpha": "straight (non-premultiplied)",
+    "uv_origin": "bottom-left (three.js convention); pixel rects top-left origin"
+  },
+  "logos": [
+    {
+      "id": "sun-life",
+      "order": 0,
+      "source": "sun-life.png",
+      "source_size": {
+        "w": 800,
+        "h": 196
+      },
+      "aspect": 4.08163,
+      "drawn_size": {
+        "w": 448,
+        "h": 110
+      },
+      "cell_px": {
+        "x": 0,
+        "y": 0,
+        "w": 512,
+        "h": 512
+      },
+      "content_px": {
+        "x": 32,
+        "y": 201,
+        "w": 448,
+        "h": 110
+      },
+      "cell_uv_bl": {
+        "u0": 0.0,
+        "v0": 0.5,
+        "u1": 0.25,
+        "v1": 1.0
+      },
+      "content_uv_bl": {
+        "u0": 0.015625,
+        "v0": 0.6962890625,
+        "u1": 0.234375,
+        "v1": 0.8037109375
+      }
+    },
+    {
+      "id": "medavie-blue-cross",
+      "order": 1,
+      "source": "mbc-logo-en.png",
+      "source_size": {
+        "w": 1600,
+        "h": 240
+      },
+      "aspect": 6.66667,
+      "drawn_size": {
+        "w": 448,
+        "h": 67
+      },
+      "cell_px": {
+        "x": 512,
+        "y": 0,
+        "w": 512,
+        "h": 512
+      },
+      "content_px": {
+        "x": 544,
+        "y": 222,
+        "w": 448,
+        "h": 67
+      },
+      "cell_uv_bl": {
+        "u0": 0.25,
+        "v0": 0.5,
+        "u1": 0.5,
+        "v1": 1.0
+      },
+      "content_uv_bl": {
+        "u0": 0.265625,
+        "v0": 0.7177734375,
+        "u1": 0.484375,
+        "v1": 0.783203125
+      }
+    },
+    {
+      "id": "manulife",
+      "order": 2,
+      "source": "manulife.png",
+      "source_size": {
+        "w": 738,
+        "h": 141
+      },
+      "aspect": 5.23404,
+      "drawn_size": {
+        "w": 448,
+        "h": 86
+      },
+      "cell_px": {
+        "x": 1024,
+        "y": 0,
+        "w": 512,
+        "h": 512
+      },
+      "content_px": {
+        "x": 1056,
+        "y": 213,
+        "w": 448,
+        "h": 86
+      },
+      "cell_uv_bl": {
+        "u0": 0.5,
+        "v0": 0.5,
+        "u1": 0.75,
+        "v1": 1.0
+      },
+      "content_uv_bl": {
+        "u0": 0.515625,
+        "v0": 0.7080078125,
+        "u1": 0.734375,
+        "v1": 0.7919921875
+      }
+    },
+    {
+      "id": "greenshield",
+      "order": 3,
+      "source": "greenshield.png",
+      "source_size": {
+        "w": 331,
+        "h": 72
+      },
+      "aspect": 4.59722,
+      "drawn_size": {
+        "w": 448,
+        "h": 97
+      },
+      "cell_px": {
+        "x": 1536,
+        "y": 0,
+        "w": 512,
+        "h": 512
+      },
+      "content_px": {
+        "x": 1568,
+        "y": 207,
+        "w": 448,
+        "h": 97
+      },
+      "cell_uv_bl": {
+        "u0": 0.75,
+        "v0": 0.5,
+        "u1": 1.0,
+        "v1": 1.0
+      },
+      "content_uv_bl": {
+        "u0": 0.765625,
+        "v0": 0.703125,
+        "u1": 0.984375,
+        "v1": 0.7978515625
+      }
+    },
+    {
+      "id": "canada-life",
+      "order": 4,
+      "source": "canada-life-min.png",
+      "source_size": {
+        "w": 552,
+        "h": 205
+      },
+      "aspect": 2.69268,
+      "drawn_size": {
+        "w": 448,
+        "h": 166
+      },
+      "cell_px": {
+        "x": 0,
+        "y": 512,
+        "w": 512,
+        "h": 512
+      },
+      "content_px": {
+        "x": 32,
+        "y": 685,
+        "w": 448,
+        "h": 166
+      },
+      "cell_uv_bl": {
+        "u0": 0.0,
+        "v0": 0.0,
+        "u1": 0.25,
+        "v1": 0.5
+      },
+      "content_uv_bl": {
+        "u0": 0.015625,
+        "v0": 0.1689453125,
+        "u1": 0.234375,
+        "v1": 0.3310546875
+      }
+    },
+    {
+      "id": "desjardins",
+      "order": 5,
+      "source": "desjardins.png",
+      "source_size": {
+        "w": 894,
+        "h": 194
+      },
+      "aspect": 4.60825,
+      "drawn_size": {
+        "w": 448,
+        "h": 97
+      },
+      "cell_px": {
+        "x": 512,
+        "y": 512,
+        "w": 512,
+        "h": 512
+      },
+      "content_px": {
+        "x": 544,
+        "y": 719,
+        "w": 448,
+        "h": 97
+      },
+      "cell_uv_bl": {
+        "u0": 0.25,
+        "v0": 0.0,
+        "u1": 0.5,
+        "v1": 0.5
+      },
+      "content_uv_bl": {
+        "u0": 0.265625,
+        "v0": 0.203125,
+        "u1": 0.484375,
+        "v1": 0.2978515625
+      }
+    },
+    {
+      "id": "ia-financial-group",
+      "order": 6,
+      "source": "ia-financial-group.png",
+      "source_size": {
+        "w": 1600,
+        "h": 874
+      },
+      "aspect": 1.83066,
+      "drawn_size": {
+        "w": 448,
+        "h": 245
+      },
+      "cell_px": {
+        "x": 1024,
+        "y": 512,
+        "w": 512,
+        "h": 512
+      },
+      "content_px": {
+        "x": 1056,
+        "y": 645,
+        "w": 448,
+        "h": 245
+      },
+      "cell_uv_bl": {
+        "u0": 0.5,
+        "v0": 0.0,
+        "u1": 0.75,
+        "v1": 0.5
+      },
+      "content_uv_bl": {
+        "u0": 0.515625,
+        "v0": 0.130859375,
+        "u1": 0.734375,
+        "v1": 0.3701171875
+      }
+    },
+    {
+      "id": "empire-life",
+      "order": 7,
+      "source": "empire-life.png",
+      "source_size": {
+        "w": 1280,
+        "h": 407
+      },
+      "aspect": 3.14496,
+      "drawn_size": {
+        "w": 448,
+        "h": 142
+      },
+      "cell_px": {
+        "x": 1536,
+        "y": 512,
+        "w": 512,
+        "h": 512
+      },
+      "content_px": {
+        "x": 1568,
+        "y": 697,
+        "w": 448,
+        "h": 142
+      },
+      "cell_uv_bl": {
+        "u0": 0.75,
+        "v0": 0.0,
+        "u1": 1.0,
+        "v1": 0.5
+      },
+      "content_uv_bl": {
+        "u0": 0.765625,
+        "v0": 0.1806640625,
+        "u1": 0.984375,
+        "v1": 0.3193359375
+      }
+    }
+  ]
+}

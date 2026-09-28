@@ -1,0 +1,68 @@
+[0m
+> build · muse-spark-1.3-contributor
+[0m
+[0m→ [0mRead docs/phase4
+[0m→ [0mRead docs/research/00-PHASE2-SYNTHESIS.md
+[0m→ [0mRead docs/00-BRIEF.md
+[0m→ [0mRead docs/research
+[0m→ [0mRead docs/research/E-visual-references.md
+[0m→ [0mRead docs/research/B-content-inventory.md
+[0m→ [0mRead docs/research/A-website-audit.md
+[0m→ [0mRead docs/research/D-asset-inventory.md
+[0m→ [0mRead docs/research/F-3d-motion-tech.md
+[0m→ [0mRead docs/research/G-glasses-model.md
+[0m
+[0m# [0mTodos
+[✓] Read brief + synthesis + research A-G
+[•] Load art-direction skills
+[ ] Dispatch art-director, threejs-art-director, visual-critic subagents
+[ ] Synthesize docs/phase4/PLAN-art-direction.md (tokens, 10 beats, waves, portal/white act, rest-of-site, anti-slop)
+[0m
+[0m→ [0mSkill "design-motion-principles"
+[0m→ [0mSkill "awwwards-playbook"
+[0m→ [0mSkill "marquee-loop"
+[0m→ [0mSkill "no-ai-design-slop"
+[0m→ [0mSkill "build-threejs-scroll-worlds"
+[0m→ [0mSkill "masked-reveal"
+[0m→ [0mSkill "progressive-blur"
+[0m→ [0mSkill "cinematic-gsap-lenis-motion-system"
+[0m
+[0m# [0mTodos
+[✓] Read brief + synthesis + research A-G
+[✓] Load art-direction skills
+[•] Dispatch art-director, threejs-art-director, visual-critic subagents
+[ ] Synthesize docs/phase4/PLAN-art-direction.md (tokens, 10 beats, waves, portal/white act, rest-of-site, anti-slop)
+[0m
+[0m• [0mArt-director consultation[90m Art-Director Agent[0m
+[0m• [0mThree.js art-director consult[90m Threejs-Art-Director Agent[0m
+[0m• [0mVisual-critic challenge draft[90m Visual-Critic Agent[0m
+[0m✓ [0mThree.js art-director consult[90m Threejs-Art-Director Agent[0m
+[0m✓ [0mArt-director consultation[90m Art-Director Agent[0m
+[0m✓ [0mVisual-critic challenge draft[90m Visual-Critic Agent[0m
+[0m
+[0m# [0mTodos
+[✓] Read brief + synthesis + research A-G
+[✓] Load art-direction skills
+[✓] Dispatch art-director, threejs-art-director, visual-critic subagents
+[•] Synthesize docs/phase4/PLAN-art-direction.md (tokens, 10 beats, waves, portal/white act, rest-of-site, anti-slop)
+[0m
+[0m← [0mWrite docs/phase4/PLAN-art-direction.md
+Wrote file successfully.
+[0m
+[0m← [0mWrite docs/phase4/PLAN-art-direction.md
+Wrote file successfully.
+[0m
+[0m# [0mTodos
+[✓] Read brief + synthesis + research A-G
+[✓] Load art-direction skills
+[✓] Dispatch art-director, threejs-art-director, visual-critic subagents
+[✓] Synthesize docs/phase4/PLAN-art-direction.md (tokens, 10 beats, waves, portal/white act, rest-of-site, anti-slop)
+[0m
+PHASE4-PLAN-ART-DONE
+
+- `docs/phase4/PLAN-art-direction.md` complete: tokens (Void-graphite ladder, oxblood-as-material, Bone/Paper, one lamp-amber accent), Fraunces+Inter confirmed with ≥48px/≤8-word guardrails, grid/spacing/radii/hairlines.
+- 10 beats composed with per-beat camera (FOV/mm), lighting states (key/strips/velvet/exposure/fog), verbatim-copy-only DOM placement, desktop+mobile ASCII sketches.
+- Waves settled: 1.1m arc vs 0.7m cluster, tiered opacities/sizes, original ribbon-streak language, wave-2 as stagger-fade (never a second hyperspace), legibility floors.
+- Portal + white act: AR-tint/edge-glow lens approach, iris-to-Paper ramp (never hard white), practical ledger column, matte film-rail spec with anti-cheap laws.
+- 15-gate anti-slop checklist, 4 `[COPY NEEDED]` items flagged, Blender/`blender/`/`public/models/`/`assets/` untouched; planning only, no code.
+EXIT 0 model=meta/muse-spark-1.3-contributor

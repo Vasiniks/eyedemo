@@ -1,0 +1,101 @@
+[0m
+> build · muse-spark-1.3-contributor
+[0m
+[0m→ [0mRead docs/00-BRIEF.md
+[0m→ [0mSkill "awwwards-playbook"
+[0m→ [0mSkill "audit-ai-design-slop"
+[0m→ [0mSkill "design-motion-principles"
+[0m→ [0mSkill "no-ai-design-slop"
+[0m→ [0mSkill "cinematic-scroll-storytelling"
+[0m
+[0m# [0mTodos
+[•] Read brief + set up output folders
+[ ] Visit eyewear luxury brand sites (screenshots + design notes)
+[ ] Research premium glasses cases industrial design
+[ ] Research cinematic/Awwwards scroll + lens/portal transitions + rails/marquees
+[ ] Synthesize E-visual-references.md (all required sections)
+[0m
+[0m$ [0mrtk ls "/Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/docs/research/" 2>&1; rtk ls "/Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/docs/" 2>&1
+screens/
+research/
+00-BRIEF.md  3.8K
+[0m
+[0m$ [0mmkdir -p "/Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/docs/research/screens/E" && rtk ls "/Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/docs/research/screens/"
+A/
+E/
+[0m
+[0m• [0mResearch luxury eyewear sites[90m General Agent[0m
+[0m• [0mResearch premium glasses cases[90m General Agent[0m
+[0m• [0mResearch cinematic scroll sites[90m General Agent[0m
+[0m✓ [0mResearch premium glasses cases[90m General Agent[0m
+[0m✓ [0mResearch cinematic scroll sites[90m General Agent[0m
+[0m✓ [0mResearch luxury eyewear sites[90m General Agent[0m
+[0m
+[0m$ [0mrtk ls -la "/Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/docs/research/screens/E/"
+600  E-01-apple-airpods-pro-hero.png  615.9K
+600  E-02-apple-vision-pro-hero.png  1.9M
+600  E-03-active-theory-home.png  334.5K
+600  E-04-hellomonday-home.png  271.6K
+600  E-05-awwwards-home.png  1.8M
+600  E-06-awwwards-sotd-realevate-2026-09-27.png  154.9K
+600  E-07-realevate-agency-live.png  406.0K
+600  E-08-arcteryx-ca.png  3.4M
+600  E-09-locomotive-ca.png  3.7M
+600  E-10-locomotive-scroll-docs.png  209.7K
+600  E-11-gentlemonster-home.png  3.3M
+600  E-12-vam-velvet-O93220.png  799.8K
+600  e-awwwards-eyewear-results.png  1.6M
+600  e-cartier-sunglasses-search.png  391.0K
+600  e-cubitts-hero.png  2.7M
+600  e-dior-blocked.png  107.3K
+600  e-gentle-monster-hero-clean.png  6.1M
+600  e-gentle-monster-hero.png  2.1M
+600  e-ic-berlin-hero.png  854.3K
+600  e-jacques-marie-mage-hero.png  1.7M
+600  e-lindberg-hero.png  1.6M
+600  e-moscot-hero.png  3.8M
+600  e-mykita-hero.png  3.9M
+[0m
+[0m# [0mTodos
+[✓] Read brief + set up output folders
+[✓] Visit eyewear luxury brand sites (screenshots + design notes)
+[✓] Research premium glasses cases industrial design
+[✓] Research cinematic/Awwwards scroll + lens/portal transitions + rails/marquees
+[•] Synthesize E-visual-references.md (all required sections)
+[0m
+[0m← [0mWrite docs/research/E-visual-references.md
+Wrote file successfully.
+[0m
+[0m← [0mWrite docs/research/E-visual-references.md
+Wrote file successfully.
+[0m
+[0m← [0mWrite docs/research/E-visual-references.md
+Wrote file successfully.
+[0m
+[0m← [0mWrite docs/research/E-visual-references.md
+Wrote file successfully.
+[0m
+[0m← [0mWrite docs/research/E-visual-references.md
+Wrote file successfully.
+[0m
+[0m← [0mWrite docs/research/E-visual-references.md
+Wrote file successfully.
+[0m
+[0m$ [0mrtk wc -l "/Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/docs/research/E-visual-references.md" && ls "/Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/docs/research/screens/E/" | wc -l
+170
+      23
+[0m
+[0m# [0mTodos
+[✓] Read brief + set up output folders
+[✓] Visit eyewear luxury brand sites (screenshots + design notes)
+[✓] Research premium glasses cases industrial design
+[✓] Research cinematic/Awwwards scroll + lens/portal transitions + rails/marquees
+[✓] Synthesize E-visual-references.md (all required sections)
+[0m
+PHASE2-E-DONE
+- 10 eyewear sites visited live with screenshots; macro-material heroes + tracked micro-caps restraint win (JMM, Lindberg, Mykita, Cubitts).
+- 12 real case products verified; no true one-piece flap exists — thin consensus ratio 5.5–5.8:2.1–2.2:1, 156×60×28mm start point.
+- Apple/Realevate/Locomotive scroll mechanics captured; iris-portal + duplicated marquee rails specified; vertical rails flagged UNVERIFIED.
+- Velvet reads via grazing sheen (Blender manual + V&A nap + Khronos spec); Fraunces+Inter OFL pairing recommended.
+- Output complete: `docs/research/E-visual-references.md` (170 lines) + 23 screenshots in `screens/E/`; Dior/ActiveTheory/Veilance marked UNVERIFIED.
+EXIT 0 model=meta/muse-spark-1.3-contributor

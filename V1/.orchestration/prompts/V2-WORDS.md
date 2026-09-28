@@ -1,0 +1,9 @@
+ID=WORDS (port 5403). You own: `src/v1/sideCopy.ts`, the side-panel component(s) created by the previous SIDE pass (find them in `src/v1/`, e.g. SidePanels/SideText), `src/v1/FilmCaptions.tsx`, `src/v1/captions.css`, and a new `src/v1/side.css`.
+Client: "put the words on the blank parts." The new frames leave one side of the frame empty per beat (see the map in the header). Place one restrained editorial panel per beat INSIDE the empty side's outer ~36% (safe margin 6% from the edge), vertically centred on the empty area, never overlapping the subject — verify against the REAL new frames at each key frame (screenshots) and adjust positions per beat.
+Content (real stats verbatim from docs/research/B-content-inventory.md + the client-requested catchphrases already in `sideCopy.ts` marked draft):
+- 30–145 (LEFT): "4.9 ★" count-up + "208 Google reviews" + one catchphrase.
+- 145–215 / 215–325 (RIGHT): the 7 Essilor® lens names verbatim (heading "Our Popular High-Definition Lenses" exactly as on the live site) during 145–215; during 215–325 leave the RIGHT side's lower half free for the brand constellation (WAVES agent) and place only a short header above it — use the brand count only as "8" with the micro-cap label "EYEWEAR BRANDS" (a factual count of the live site's 8 logos, allowed).
+- 411–470 (LEFT): the verbatim "We accept most major insurance plans" as the header above the insurer constellation.
+- 1–30, 325–411, ≥470: no side text (keep the logo shot, the ring and the lens dive clean).
+Typography: Fraunces display (one display voice per viewport), Inter micro-caps labels, Bone #E9E2D3 on black; masked-line reveal in, masked exit before the side flips; numbers count up. Mobile 390: stack text above/below the subject, smaller.
+Verify: screenshots at every key frame 1512×860 + 390 against the real frames → `docs/phase4/qa/v2/words-*`.

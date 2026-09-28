@@ -1,0 +1,2939 @@
+[
+ {
+  "url": "https://www.apple.com/v/airpods-pro/t/images/overview/welcome/hero__b0eal3mn03ua_large.jpg",
+  "kind": "image",
+  "type": "image/jpeg",
+  "bytes": 49507
+ },
+ {
+  "url": "https://www.apple.com/v/airpods-pro/t/images/overview/welcome/hero_endframe__vzawkxxoc72u_large.jpg",
+  "kind": "image",
+  "type": "image/jpeg",
+  "bytes": 48008
+ },
+ {
+  "url": "https://www.apple.com/v/airpods-pro/t/images/overview/welcome/hero_startframe__bfinf01b59si_large.jpg",
+  "kind": "image",
+  "type": "image/jpeg",
+  "bytes": 47822
+ },
+ {
+  "url": "https://www.apple.com/wss/fonts/SF-Pro-Text/v3/sf-pro-text_semibold.woff2",
+  "kind": "font",
+  "type": "font/woff2",
+  "bytes": 234260,
+  "saved": "assets/font-v3-sf-pro-text_semibold-117a79c0.woff2"
+ },
+ {
+  "url": "https://www.apple.com/wss/fonts/SF-Pro-Text/v3/sf-pro-text_regular.woff2",
+  "kind": "font",
+  "type": "font/woff2",
+  "bytes": 220536,
+  "saved": "assets/font-v3-sf-pro-text_regular-3cccedef.woff2"
+ },
+ {
+  "url": "https://www.apple.com/wss/fonts/SF-Pro-Icons/v3/sf-pro-icons_semibold.woff2",
+  "kind": "font",
+  "type": "font/woff2",
+  "bytes": 14564,
+  "saved": "assets/font-v3-sf-pro-icons_semibold-e870953b.woff2"
+ },
+ {
+  "url": "https://www.apple.com/wss/fonts/SF-Pro-Display/v3/sf-pro-display_semibold.woff2",
+  "kind": "font",
+  "type": "font/woff2",
+  "bytes": 129484,
+  "saved": "assets/font-v3-sf-pro-display_semibold-bbfbf88f.woff2"
+ },
+ {
+  "url": "https://www.apple.com/wss/fonts/SF-Pro-Icons/v3/sf-pro-icons_regular.woff2",
+  "kind": "font",
+  "type": "font/woff2",
+  "bytes": 14140,
+  "saved": "assets/font-v3-sf-pro-icons_regular-e6c13e47.woff2"
+ },
+ {
+  "url": "https://www.apple.com/ac/globalfooter/8/en_US/assets/ac-footer/breadcrumbs/apple/icon_large.svg",
+  "kind": "image",
+  "type": "image/svg+xml",
+  "bytes": 626
+ },
+ {
+  "url": "https://www.apple.com/ac/globalfooter/8/en_US/assets/ac-footer/breadcrumbs/separator/icon_large.svg",
+  "kind": "image",
+  "type": "image/svg+xml",
+  "bytes": 190
+ },
+ {
+  "url": "https://securemetrics.apple.com/b/ss/applestoreww/1/JS-2.23.0/s11693324801185?AQB=1&pccr=true&vidn=355CCEA711E07ADF-60000F0F4402A783&ndh=1&pf=1&t=27%2F8%2F2026%2018%3A48%3A45%200%20240&fid=084269F0C725E802-33292B21FA447FD6&ce=UTF-8&cdp=2&cl=1800&pageName=airpods%20pro%20-%20overview%20%28us%29&g=https%3A%2F%2Fwww.apple.com%2Fairpods-pro%2F&cc=USD&ch=www.us.airpodspro&server=ac-2.30.0&h1=www.us.airpodspro&v3=aos%3A%20us&l3=D%3Das_tex&c4=D%3Dg&v4=D%3DpageName&v14=en-us&c20=aos%3A%20us&v54=D%3Dg&v97=s.t-p&s=1440x900&c=24&j=1.6&v=N&k=Y&bw=1440&bh=900&AQE=1",
+  "kind": "image",
+  "type": "image/gif",
+  "bytes": 43
+ },
+ {
+  "url": "https://www.apple.com/ac/ac-video-posterframe/4.0/images/ac_video_poster_960x540.jpg",
+  "kind": "image",
+  "type": "image/jpeg",
+  "bytes": 7641
+ },
+ {
+  "url": "https://www.apple.com/wss/fonts/SF-Pro-Icons/v3/sf-pro-icons_light.woff2",
+  "kind": "font",
+  "type": "font/woff2",
+  "bytes": 14188,
+  "saved": "assets/font-v3-sf-pro-icons_light-94ac44ac.woff2"
+ },
+ {
+  "url": "https://www.apple.com/wss/fonts/SF-Pro-Text/v3/sf-pro-text_light.woff2",
+  "kind": "font",
+  "type": "font/woff2",
+  "bytes": 225132,
+  "saved": "assets/font-v3-sf-pro-text_light-4e55b19a.woff2"
+ },
+ {
+  "url": "https://www.apple.com/v/airpods-pro/t/images/overview/highlights/highlights_battery_startframe__djmk5ebqjs8y_large.jpg",
+  "kind": "image",
+  "type": "image/jpeg",
+  "bytes": 128009,
+  "saved": "assets/image-ighlights_battery_startframe__djmk5ebqjs8y_large-08d7e469.jpg"
+ },
+ {
+  "url": "https://www.apple.com/v/airpods-pro/t/images/overview/highlights/highlights_battery_endframe__f5ljqvliqpym_large.jpg",
+  "kind": "image",
+  "type": "image/jpeg",
+  "bytes": 133258,
+  "saved": "assets/image-highlights_battery_endframe__f5ljqvliqpym_large-49d754e7.jpg"
+ },
+ {
+  "url": "https://www.apple.com/v/airpods-pro/t/images/overview/highlights/highlights_hearing_endframe__ehzacudia2ie_large.jpg",
+  "kind": "image",
+  "type": "image/jpeg",
+  "bytes": 71743,
+  "saved": "assets/image-highlights_hearing_endframe__ehzacudia2ie_large-0ae3d9f6.jpg"
+ },
+ {
+  "url": "https://www.apple.com/105/media/us/airpods-pro/2025/7acffb13-4adb-40b1-9393-8f1c99bc6c90/anim/hero/large.mp4",
+  "kind": "video",
+  "type": "video/mp4",
+  "bytes": 6052530,
+  "saved": "assets/video-hero-large-ccf53094.mp4"
+ },
+ {
+  "url": "https://www.apple.com/v/airpods-pro/t/images/overview/highlights/highlights_hearing_startframe__eoiwt7oiirsm_large.jpg",
+  "kind": "image",
+  "type": "image/jpeg",
+  "bytes": 53264
+ },
+ {
+  "url": "https://securemetrics.apple.com/b/ss/applestoreww/1/JS-2.23.0/s17579727084660?AQB=1&pccr=true&vidn=355CCEB1E2BFE2E6-4000199343CD401F&ndh=1&pf=1&t=27%2F8%2F2026%2018%3A49%3A6%200%20240&fid=3896B5D64B69B026-051C4D576028D94D&ce=UTF-8&cdp=2&cl=1800&pageName=airpods%20pro%20-%20overview%20%28us%29&g=https%3A%2F%2Fwww.apple.com%2Fairpods-pro%2F&cc=USD&ch=www.us.airpodspro&server=ac-2.30.0&h1=www.us.airpodspro&v3=aos%3A%20us&l3=D%3Das_tex&c4=D%3Dg&v4=D%3DpageName&v14=en-us&c20=aos%3A%20us&v54=D%3Dg&v97=s.t-p&s=1440x900&c=24&j=1.6&v=N&k=Y&bw=1440&bh=900&AQE=1",
+  "kind": "image",
+  "type": "image/gif",
+  "bytes": 43
+ },
+ {
+  "url": "https://www.apple.com/v/airpods-pro/t/images/overview/highlights/highlights_noise_cancellation__cxd50c0etw4m_large.jpg",
+  "kind": "image",
+  "type": "image/jpeg",
+  "bytes": 114032,
+  "saved": "assets/image-ighlights_noise_cancellation__cxd50c0etw4m_large-30291e04.jpg"
+ },
+ {
+  "url": "https://www.apple.com/v/airpods-pro/t/images/overview/highlights/highlights_heart_rate__emqj469iyfsm_large.jpg",
+  "kind": "image",
+  "type": "image/jpeg",
+  "bytes": 42337
+ },
+ {
+  "url": "https://www.apple.com/v/airpods-pro/t/images/overview/highlights/highlights_live_translation__ga7nep85dr6m_large.jpg",
+  "kind": "image",
+  "type": "image/jpeg",
+  "bytes": 34197
+ },
+ {
+  "url": "https://www.apple.com/v/airpods-pro/t/images/overview/highlights/highlights_acoustic__fiq4ppflft6q_large.jpg",
+  "kind": "image",
+  "type": "image/jpeg",
+  "bytes": 44641
+ },
+ {
+  "url": "https://securemetrics.apple.com/b/ss/applestoreww/1/JS-2.23.0/s11189910882784?AQB=1&ndh=1&pf=1&t=27%2F8%2F2026%2018%3A49%3A33%200%20240&fid=3896B5D64B69B026-051C4D576028D94D&ce=UTF-8&cdp=2&cl=1800&pageName=airpods%20pro%20-%20overview%20%28us%29&g=https%3A%2F%2Fwww.apple.com%2Fairpods-pro%2F&cc=USD&events=event243%3D10.60%2Cevent244&h1=www.us.airpodspro&l3=D%3Das_tex&v4=D%3DpageName&v14=en-us&c34=hero&c35=10.60&c36=1&v54=D%3Dg&v70=airpods%20pro%20-%20overview%20%28us%29%20%7C%20enhanced&v97=s.tl-o&pe=lnk_o&pev2=section%20engagement&s=1440x900&c=24&j=1.6&v=N&k=Y&bw=1440&bh=900&lrt=313&AQE=1",
+  "kind": "image",
+  "type": "image/gif",
+  "bytes": 43
+ },
+ {
+  "url": "https://www.apple.com/105/media/us/airpods-pro/2025/7acffb13-4adb-40b1-9393-8f1c99bc6c90/anim/heart-rate/large.mp4",
+  "kind": "video",
+  "type": "video/mp4",
+  "bytes": 1249821,
+  "saved": "assets/video-heart-rate-large-59a8d698.mp4",
+  "fetched_after": true
+ },
+ {
+  "url": "https://www.apple.com/105/media/us/airpods-pro/2025/7acffb13-4adb-40b1-9393-8f1c99bc6c90/anim/initial/large.mp4",
+  "kind": "video",
+  "type": "video/mp4",
+  "bytes": 766320,
+  "saved": "assets/video-initial-large-37f1635e.mp4",
+  "fetched_after": true
+ },
+ {
+  "url": "https://www.apple.com/105/media/us/airpods-pro/2025/7acffb13-4adb-40b1-9393-8f1c99bc6c90/anim/fit-feel/large.mp4",
+  "kind": "video",
+  "type": "video/mp4",
+  "bytes": 738323,
+  "saved": "assets/video-fit-feel-large-91f39a75.mp4",
+  "fetched_after": true
+ },
+ {
+  "url": "https://www.apple.com/v/airpods-pro/t/images/overview/product-viewer/initial_endframe__erf54wvsplsi_large.jpg",
+  "kind": "image",
+  "type": "image/jpeg",
+  "bytes": 32629
+ },
+ {
+  "url": "https://www.apple.com/v/airpods-pro/t/images/overview/product-viewer/closer_look_initial__cksqga5hm77m_large.jpg",
+  "kind": "image",
+  "type": "image/jpeg",
+  "bytes": 33318
+ },
+ {
+  "url": "https://www.apple.com/v/airpods-pro/t/images/overview/product-viewer/initial_startframe__fq77bi4qvkqe_large.jpg",
+  "kind": "image",
+  "type": "image/jpeg",
+  "bytes": 23367
+ },
+ {
+  "url": "https://www.apple.com/105/media/us/airpods-pro/2025/7acffb13-4adb-40b1-9393-8f1c99bc6c90/anim/touch-controls/large.mp4",
+  "kind": "video",
+  "type": "video/mp4",
+  "bytes": 1351499,
+  "saved": "assets/video-touch-controls-large-ecefce64.mp4",
+  "fetched_after": true
+ },
+ {
+  "url": "https://securemetrics.apple.com/b/ss/applestoreww/1/JS-2.23.0/s17003152210875?AQB=1&ndh=1&pf=1&t=27%2F8%2F2026%2018%3A49%3A37%200%20240&fid=3896B5D64B69B026-051C4D576028D94D&ce=UTF-8&cdp=2&cl=1800&pageName=airpods%20pro%20-%20overview%20%28us%29&g=https%3A%2F%2Fwww.apple.com%2Fairpods-pro%2F&cc=USD&events=event243%3D6.52%2Cevent244&h1=www.us.airpodspro&l3=D%3Das_tex&v4=D%3DpageName&v14=en-us&c34=highlights&c35=6.52&c36=2&v54=D%3Dg&v97=s.tl-o&pe=lnk_o&pev2=section%20engagement&s=1440x900&c=24&j=1.6&v=N&k=Y&bw=1440&bh=900&lrt=69&AQE=1",
+  "kind": "image",
+  "type": "image/gif",
+  "bytes": 43
+ },
+ {
+  "url": "https://www.apple.com/105/media/us/airpods-pro/2025/7acffb13-4adb-40b1-9393-8f1c99bc6c90/anim/case/large.mp4",
+  "kind": "video",
+  "type": "video/mp4",
+  "bytes": 931587,
+  "saved": "assets/video-case-large-d851eb17.mp4",
+  "fetched_after": true
+ },
+ {
+  "url": "https://www.apple.com/v/airpods-pro/t/images/overview/product-viewer/closer_look_acoustic_a__dz4nc2yr9aqa_large.jpg",
+  "kind": "image",
+  "type": "image/jpeg",
+  "bytes": 63798,
+  "saved": "assets/image-iewer-closer_look_acoustic_a__dz4nc2yr9aqa_large-6ea2f20d.jpg"
+ },
+ {
+  "url": "https://www.apple.com/v/airpods-pro/t/images/overview/product-viewer/closer_look_fit_feel__blsfw2dgyj6q_large.jpg",
+  "kind": "image",
+  "type": "image/jpeg",
+  "bytes": 29548
+ },
+ {
+  "url": "https://www.apple.com/v/airpods-pro/t/images/overview/product-viewer/fit_feel_endframe__bqbkjxfouqwi_large.jpg",
+  "kind": "image",
+  "type": "image/jpeg",
+  "bytes": 28988
+ },
+ {
+  "url": "https://www.apple.com/v/airpods-pro/t/images/overview/product-viewer/fit_feel_startframe__bfigdnyb1m82_large.jpg",
+  "kind": "image",
+  "type": "image/jpeg",
+  "bytes": 32697
+ },
+ {
+  "url": "https://www.apple.com/v/airpods-pro/t/images/overview/product-viewer/closer_look_heart_rate__bt709o8p7t5y_large.jpg",
+  "kind": "image",
+  "type": "image/jpeg",
+  "bytes": 51237
+ },
+ {
+  "url": "https://www.apple.com/v/airpods-pro/t/images/overview/noise-control/noise_control_startframe__fea2j3ie71ea_large.png",
+  "kind": "image",
+  "type": "image/png",
+  "bytes": 1021493,
+  "saved": "assets/image-rol-noise_control_startframe__fea2j3ie71ea_large-42441a08.png"
+ },
+ {
+  "url": "https://securemetrics.apple.com/b/ss/applestoreww/1/JS-2.23.0/s14043645169996?AQB=1&ndh=1&pf=1&t=27%2F8%2F2026%2018%3A49%3A41%200%20240&fid=3896B5D64B69B026-051C4D576028D94D&ce=UTF-8&cdp=2&cl=1800&pageName=airpods%20pro%20-%20overview%20%28us%29&g=https%3A%2F%2Fwww.apple.com%2Fairpods-pro%2F&cc=USD&events=event243%3D4.15%2Cevent244&h1=www.us.airpodspro&l3=D%3Das_tex&v4=D%3DpageName&v14=en-us&c34=product%20viewer&c35=4.15&c36=3&v54=D%3Dg&v97=s.tl-o&pe=lnk_o&pev2=section%20engagement&s=1440x900&c=24&j=1.6&v=N&k=Y&bw=1440&bh=900&lrt=80&AQE=1",
+  "kind": "image",
+  "type": "image/gif",
+  "bytes": 43
+ },
+ {
+  "url": "https://www.apple.com/v/airpods-pro/t/images/overview/product-viewer/heart_rate_endframe__dn7s077qapiu_large.jpg",
+  "kind": "image",
+  "type": "image/jpeg",
+  "bytes": 49882
+ },
+ {
+  "url": "https://www.apple.com/v/airpods-pro/t/images/overview/product-viewer/heart_rate_startframe__b1kg179snv2a_large.jpg",
+  "kind": "image",
+  "type": "image/jpeg",
+  "bytes": 43753
+ },
+ {
+  "url": "https://www.apple.com/v/airpods-pro/t/images/overview/product-viewer/closer_look_water_resistance__btut3m43on36_large.jpg",
+  "kind": "image",
+  "type": "image/jpeg",
+  "bytes": 91263,
+  "saved": "assets/image-closer_look_water_resistance__btut3m43on36_large-9f26ff44.jpg"
+ },
+ {
+  "url": "https://www.apple.com/v/airpods-pro/t/images/overview/product-viewer/closer_look_touch_control__dqo4p6ue36gm_large.jpg",
+  "kind": "image",
+  "type": "image/jpeg",
+  "bytes": 40571
+ },
+ {
+  "url": "https://www.apple.com/v/airpods-pro/t/images/overview/product-viewer/touch_controls_endframe__ghnn20vb33mi_large.jpg",
+  "kind": "image",
+  "type": "image/jpeg",
+  "bytes": 37803
+ },
+ {
+  "url": "https://www.apple.com/v/airpods-pro/t/images/overview/product-viewer/touch_controls_startframe__bmz3jtzwh37m_large.jpg",
+  "kind": "image",
+  "type": "image/jpeg",
+  "bytes": 37914
+ },
+ {
+  "url": "https://www.apple.com/v/airpods-pro/t/images/overview/product-viewer/closer_look_case__bjx2hp0oo16u_large.jpg",
+  "kind": "image",
+  "type": "image/jpeg",
+  "bytes": 26240
+ },
+ {
+  "url": "https://www.apple.com/v/airpods-pro/t/images/overview/product-viewer/case_endframe__ca40ub2l8sgi_large.jpg",
+  "kind": "image",
+  "type": "image/jpeg",
+  "bytes": 28041
+ },
+ {
+  "url": "https://www.apple.com/v/airpods-pro/t/images/overview/product-viewer/case_startframe__c33qulg9r1aq_large.jpg",
+  "kind": "image",
+  "type": "image/jpeg",
+  "bytes": 16199
+ },
+ {
+  "url": "https://www.apple.com/105/media/us/airpods-pro/2025/7acffb13-4adb-40b1-9393-8f1c99bc6c90/anim/noise-control/large.webm",
+  "kind": "video",
+  "type": "",
+  "bytes": 1817855,
+  "saved": "assets/video-noise-control-large-6ed086b7.webm",
+  "fetched_after": true
+ },
+ {
+  "url": "https://www.apple.com/v/airpods-pro/t/images/overview/noise-control/gallery/noise_control_low_noise_mic__kb6kvtgc5aa2_large.jpg",
+  "kind": "image",
+  "type": "image/jpeg",
+  "bytes": 28208
+ },
+ {
+  "url": "https://www.apple.com/v/airpods-pro/t/images/overview/noise-control/gallery/noise_control_adaptive_audio__gcfn46ubu82u_large.jpg",
+  "kind": "image",
+  "type": "image/jpeg",
+  "bytes": 82429,
+  "saved": "assets/image-noise_control_adaptive_audio__gcfn46ubu82u_large-a44489c3.jpg"
+ },
+ {
+  "url": "https://www.apple.com/v/airpods-pro/t/images/overview/noise-control/gallery/noise_control_voice_isolation__c6b9qlmdbx4y_large.jpg",
+  "kind": "image",
+  "type": "image/jpeg",
+  "bytes": 23960
+ },
+ {
+  "url": "https://www.apple.com/v/airpods-pro/t/images/overview/noise-control/gallery/noise_control_conversation_awareness__fl1nx541suye_large.jpg",
+  "kind": "image",
+  "type": "image/jpeg",
+  "bytes": 45726
+ },
+ {
+  "url": "https://securemetrics.apple.com/b/ss/applestoreww/1/JS-2.23.0/s18612965466335?AQB=1&ndh=1&pf=1&t=27%2F8%2F2026%2018%3A49%3A49%200%20240&fid=3896B5D64B69B026-051C4D576028D94D&ce=UTF-8&cdp=2&cl=1800&pageName=airpods%20pro%20-%20overview%20%28us%29&g=https%3A%2F%2Fwww.apple.com%2Fairpods-pro%2F&cc=USD&events=event243%3D3.75%2Cevent244&h1=www.us.airpodspro&l3=D%3Das_tex&v4=D%3DpageName&v14=en-us&c34=noise%20control%20intro&c35=3.75&c36=4&v54=D%3Dg&v97=s.tl-o&pe=lnk_o&pev2=section%20engagement&s=1440x900&c=24&j=1.6&v=N&k=Y&bw=1440&bh=900&lrt=146&AQE=1",
+  "kind": "image",
+  "type": "image/gif",
+  "bytes": 43
+ },
+ {
+  "url": "https://www.apple.com/105/media/us/airpods-pro/2025/ab88f834-9c62-4bab-8cf8-f5e866987d6e/anim/design/large.webm",
+  "kind": "video",
+  "type": "",
+  "bytes": 2384199,
+  "saved": "assets/video-design-large-4a52526c.webm"
+ },
+ {
+  "url": "https://www.apple.com/v/airpods-pro/t/images/overview/noise-control/noise_control_endframe__c9nekquzw4q6_large.png",
+  "kind": "image",
+  "type": "image/png",
+  "bytes": 730283,
+  "saved": "assets/image-ntrol-noise_control_endframe__c9nekquzw4q6_large-118890cc.png"
+ },
+ {
+  "url": "https://securemetrics.apple.com/b/ss/applestoreww/1/JS-2.23.0/s16722568948640?AQB=1&ndh=1&pf=1&t=27%2F8%2F2026%2018%3A49%3A53%200%20240&fid=3896B5D64B69B026-051C4D576028D94D&ce=UTF-8&cdp=2&cl=1800&pageName=airpods%20pro%20-%20overview%20%28us%29&g=https%3A%2F%2Fwww.apple.com%2Fairpods-pro%2F&cc=USD&events=event243%3D3.92%2Cevent244&h1=www.us.airpodspro&l3=D%3Das_tex&v4=D%3DpageName&v14=en-us&c34=noise%20control%20gallery&c35=3.92&c36=5&v54=D%3Dg&v97=s.tl-o&pe=lnk_o&pev2=section%20engagement&s=1440x900&c=24&j=1.6&v=N&k=Y&bw=1440&bh=900&lrt=139&AQE=1",
+  "kind": "image",
+  "type": "image/gif",
+  "bytes": 43
+ },
+ {
+  "url": "https://www.apple.com/v/airpods-pro/t/images/overview/audio-performance/audio_airpods_pro_guts__gbhfrhkjpjyy_large.png",
+  "kind": "image",
+  "type": "image/png",
+  "bytes": 180392,
+  "saved": "assets/image-mance-audio_airpods_pro_guts__gbhfrhkjpjyy_large-5161bc73.png"
+ },
+ {
+  "url": "https://www.apple.com/v/airpods-pro/t/images/overview/audio-performance/design_endframe__gc2e2e5qz7ue_large.png",
+  "kind": "image",
+  "type": "image/png",
+  "bytes": 120397,
+  "saved": "assets/image-performance-design_endframe__gc2e2e5qz7ue_large-6a2b8da3.png"
+ },
+ {
+  "url": "https://securemetrics.apple.com/b/ss/applestoreww/1/JS-2.23.0/s18429293376762?AQB=1&ndh=1&pf=1&t=27%2F8%2F2026%2018%3A50%3A3%200%20240&fid=3896B5D64B69B026-051C4D576028D94D&ce=UTF-8&cdp=2&cl=1800&pageName=airpods%20pro%20-%20overview%20%28us%29&g=https%3A%2F%2Fwww.apple.com%2Fairpods-pro%2F&cc=USD&events=event243%3D11.38%2Cevent244&h1=www.us.airpodspro&l3=D%3Das_tex&v4=D%3DpageName&v14=en-us&c34=audio%20performance&c35=11.38&c36=6&v54=D%3Dg&v97=s.tl-o&pe=lnk_o&pev2=section%20engagement&s=1440x900&c=24&j=1.6&v=N&k=Y&bw=1440&bh=900&lrt=82&AQE=1",
+  "kind": "image",
+  "type": "image/gif",
+  "bytes": 43
+ },
+ {
+  "url": "https://www.apple.com/v/airpods-pro/t/images/overview/audio-performance/audio_airpods_pro_pair__v28g95nj97mq_large.png",
+  "kind": "image",
+  "type": "image/png",
+  "bytes": 407475,
+  "saved": "assets/image-mance-audio_airpods_pro_pair__v28g95nj97mq_large-c6d1ebfd.png"
+ },
+ {
+  "url": "https://www.apple.com/v/airpods-pro/t/images/overview/audio-performance/design_startframe__cy9tz9to92oi_large.png",
+  "kind": "image",
+  "type": "image/png",
+  "bytes": 59662
+ },
+ {
+  "url": "https://www.apple.com/v/airpods-pro/t/images/overview/personalized-listening/personalized_listening__geshsqt82yeu_large.jpg",
+  "kind": "image",
+  "type": "image/jpeg",
+  "bytes": 509543,
+  "saved": "assets/image-ening-personalized_listening__geshsqt82yeu_large-716e9131.jpg"
+ },
+ {
+  "url": "https://www.apple.com/v/airpods-pro/t/images/overview/personalized-listening/icon_personalized_spatial_audio__s1e3hae8l4ya_large.png",
+  "kind": "image",
+  "type": "image/png",
+  "bytes": 1809
+ },
+ {
+  "url": "https://www.apple.com/v/airpods-pro/t/images/overview/personalized-listening/icon_adaptive_eq__byv4qlrb6cz6_large.png",
+  "kind": "image",
+  "type": "image/png",
+  "bytes": 499
+ },
+ {
+  "url": "https://www.apple.com/v/airpods-pro/t/images/overview/personalized-listening/icon_dynamic_head_tracking__c4hu1xaevcuq_large.png",
+  "kind": "image",
+  "type": "image/png",
+  "bytes": 1381
+ },
+ {
+  "url": "https://www.apple.com/105/media/us/airpods-pro/2025/ab88f834-9c62-4bab-8cf8-f5e866987d6e/anim/fitness-hero/large.webm",
+  "kind": "video",
+  "type": "",
+  "bytes": 1112601,
+  "saved": "assets/video-fitness-hero-large-d39c0a7f.webm",
+  "fetched_after": true
+ },
+ {
+  "url": "https://www.apple.com/v/airpods-pro/t/images/overview/fitness/fitness_hero_endframe__cbbu1uukdjyq_large.png",
+  "kind": "image",
+  "type": "image/png",
+  "bytes": 198927,
+  "saved": "assets/image-itness-fitness_hero_endframe__cbbu1uukdjyq_large-75afa8a2.png"
+ },
+ {
+  "url": "https://www.apple.com/v/airpods-pro/t/images/overview/fitness/fitness_hero_startframe__bkez1lr95bde_large.png",
+  "kind": "image",
+  "type": "image/png",
+  "bytes": 180960,
+  "saved": "assets/image-ness-fitness_hero_startframe__bkez1lr95bde_large-5f7b0da6.png"
+ },
+ {
+  "url": "https://securemetrics.apple.com/b/ss/applestoreww/1/JS-2.23.0/s11763216533387?AQB=1&ndh=1&pf=1&t=27%2F8%2F2026%2018%3A50%3A12%200%20240&fid=3896B5D64B69B026-051C4D576028D94D&ce=UTF-8&cdp=2&cl=1800&pageName=airpods%20pro%20-%20overview%20%28us%29&g=https%3A%2F%2Fwww.apple.com%2Fairpods-pro%2F&cc=USD&events=event243%3D9.73%2Cevent244&h1=www.us.airpodspro&l3=D%3Das_tex&v4=D%3DpageName&v14=en-us&c34=personalized%20listening&c35=9.73&c36=7&v54=D%3Dg&v97=s.tl-o&pe=lnk_o&pev2=section%20engagement&s=1440x900&c=24&j=1.6&v=N&k=Y&bw=1440&bh=900&lrt=64&AQE=1",
+  "kind": "image",
+  "type": "image/gif",
+  "bytes": 43
+ },
+ {
+  "url": "https://www.apple.com/v/airpods-pro/t/images/overview/fitness/fitness_workout_buddy_lifestyle__eavcyne0aaoi_large.png",
+  "kind": "image",
+  "type": "image/png",
+  "bytes": 665604,
+  "saved": "assets/image-ness_workout_buddy_lifestyle__eavcyne0aaoi_large-6a146566.png"
+ },
+ {
+  "url": "https://www.apple.com/v/airpods-pro/t/images/overview/fitness/icon_water_resistance__t2rmbvnakkyq_large.png",
+  "kind": "image",
+  "type": "image/png",
+  "bytes": 501
+ },
+ {
+  "url": "https://www.apple.com/v/airpods-pro/t/images/overview/hearing-health/hearing_health_lifestyle_enhanced__fkdyyeq20bau_large.png",
+  "kind": "image",
+  "type": "image/png",
+  "bytes": 602326,
+  "saved": "assets/image-ng_health_lifestyle_enhanced__fkdyyeq20bau_large-da022906.png"
+ },
+ {
+  "url": "https://www.apple.com/v/airpods-pro/t/images/overview/hearing-health/hearing_health_lifestyle__cj3yilvm69ea_large.png",
+  "kind": "image",
+  "type": "image/png",
+  "bytes": 760924,
+  "saved": "assets/image-lth-hearing_health_lifestyle__cj3yilvm69ea_large-b469d51d.png"
+ },
+ {
+  "url": "https://securemetrics.apple.com/b/ss/applestoreww/1/JS-2.23.0/s11343026015873?AQB=1&ndh=1&pf=1&t=27%2F8%2F2026%2018%3A50%3A22%200%20240&fid=3896B5D64B69B026-051C4D576028D94D&ce=UTF-8&cdp=2&cl=1800&pageName=airpods%20pro%20-%20overview%20%28us%29&g=https%3A%2F%2Fwww.apple.com%2Fairpods-pro%2F&cc=USD&events=event243%3D11.75%2Cevent244&h1=www.us.airpodspro&l3=D%3Das_tex&v4=D%3DpageName&v14=en-us&c34=fitness&c35=11.75&c36=8&v54=D%3Dg&v97=s.tl-o&pe=lnk_o&pev2=section%20engagement&s=1440x900&c=24&j=1.6&v=N&k=Y&bw=1440&bh=900&lrt=66&AQE=1",
+  "kind": "image",
+  "type": "image/gif",
+  "bytes": 43
+ },
+ {
+  "url": "https://www.apple.com/v/airpods-pro/t/images/overview/hearing-health/hearing_health_endframe__fddd0pwvl3u6_large.png",
+  "kind": "image",
+  "type": "image/png",
+  "bytes": 272082,
+  "saved": "assets/image-alth-hearing_health_endframe__fddd0pwvl3u6_large-b8659612.png"
+ },
+ {
+  "url": "https://www.apple.com/105/media/us/airpods-pro/2025/7acffb13-4adb-40b1-9393-8f1c99bc6c90/anim/hearing-health-halo/large.webm",
+  "kind": "video",
+  "type": "",
+  "bytes": 11224897,
+  "saved": "assets/video-hearing-health-halo-large-92f84932.webm",
+  "fetched_after": true
+ },
+ {
+  "url": "https://www.apple.com/v/airpods-pro/t/images/overview/hearing-health/hearing_health_startframe__b55bsu6g3ok2_large.png",
+  "kind": "image",
+  "type": "image/png",
+  "bytes": 271491,
+  "saved": "assets/image-th-hearing_health_startframe__b55bsu6g3ok2_large-54d8a6ae.png"
+ },
+ {
+  "url": "https://www.apple.com/v/airpods-pro/t/images/overview/hearing-health/battery_startframe__gd2rd0dmx866_large.jpg",
+  "kind": "image",
+  "type": "image/jpeg",
+  "bytes": 32940
+ },
+ {
+  "url": "https://www.apple.com/v/airpods-pro/t/images/overview/hearing-health/hearing_health_conversation_boost__cn2jd958nnde_large.jpg",
+  "kind": "image",
+  "type": "image/jpeg",
+  "bytes": 87276,
+  "saved": "assets/image-ng_health_conversation_boost__cn2jd958nnde_large-8d50e0a9.jpg"
+ },
+ {
+  "url": "https://www.apple.com/v/airpods-pro/t/images/overview/hearing-health/battery_endframe__dvog65lc87yq_large.jpg",
+  "kind": "image",
+  "type": "image/jpeg",
+  "bytes": 28805
+ },
+ {
+  "url": "https://www.apple.com/v/airpods-pro/t/images/overview/hearing-health/hearing_health_hearing_test__dk85fxy6khci_large.jpg",
+  "kind": "image",
+  "type": "image/jpeg",
+  "bytes": 35992
+ },
+ {
+  "url": "https://securemetrics.apple.com/b/ss/applestoreww/1/JS-2.23.0/s12272321725356?AQB=1&ndh=1&pf=1&t=27%2F8%2F2026%2018%3A50%3A28%200%20240&fid=3896B5D64B69B026-051C4D576028D94D&ce=UTF-8&cdp=2&cl=1800&pageName=airpods%20pro%20-%20overview%20%28us%29&g=https%3A%2F%2Fwww.apple.com%2Fairpods-pro%2F&cc=USD&events=event243%3D5.95%2Cevent244&h1=www.us.airpodspro&l3=D%3Das_tex&v4=D%3DpageName&v14=en-us&c34=hearing%20health%20intro&c35=5.95&c36=9&v54=D%3Dg&v97=s.tl-o&pe=lnk_o&pev2=section%20engagement&s=1440x900&c=24&j=1.6&v=N&k=Y&bw=1440&bh=900&lrt=81&AQE=1",
+  "kind": "image",
+  "type": "image/gif",
+  "bytes": 43
+ },
+ {
+  "url": "https://www.apple.com/v/airpods-pro/t/images/overview/hearing-health/hearing_protection_startframe__g1m7gdh21iye_large.jpg",
+  "kind": "image",
+  "type": "image/jpeg",
+  "bytes": 13691
+ },
+ {
+  "url": "https://www.apple.com/v/airpods-pro/t/images/overview/hearing-health/hearing_health_hearing_protection__d4fo4gj3b9ci_large.jpg",
+  "kind": "image",
+  "type": "image/jpeg",
+  "bytes": 9570
+ },
+ {
+  "url": "https://www.apple.com/v/airpods-pro/t/images/overview/hearing-health/hearing_protection_endframe__brxbh07cpmk2_large.jpg",
+  "kind": "image",
+  "type": "image/jpeg",
+  "bytes": 13502
+ },
+ {
+  "url": "https://www.apple.com/105/media/us/airpods-pro/2025/ab88f834-9c62-4bab-8cf8-f5e866987d6e/anim/battery/large.mp4",
+  "kind": "video",
+  "type": "video/mp4",
+  "bytes": 2212447,
+  "saved": "assets/video-battery-large-b7c88761.mp4"
+ },
+ {
+  "url": "https://www.apple.com/105/media/us/airpods-pro/2025/7acffb13-4adb-40b1-9393-8f1c99bc6c90/anim/hearing-protection/large.mp4",
+  "kind": "video",
+  "type": "video/mp4",
+  "bytes": 823425,
+  "saved": "assets/video-hearing-protection-large-39d6aeb5.mp4",
+  "fetched_after": true
+ },
+ {
+  "url": "https://www.apple.com/v/airpods-pro/t/images/overview/magical/connectivity_endframe__c1c58umoj7au_large.jpg",
+  "kind": "image",
+  "type": "image/jpeg",
+  "bytes": 67558,
+  "saved": "assets/image-agical-connectivity_endframe__c1c58umoj7au_large-cb2c1a71.jpg"
+ },
+ {
+  "url": "https://securemetrics.apple.com/b/ss/applestoreww/1/JS-2.23.0/s18453368950942?AQB=1&ndh=1&pf=1&t=27%2F8%2F2026%2018%3A50%3A32%200%20240&fid=3896B5D64B69B026-051C4D576028D94D&ce=UTF-8&cdp=2&cl=1800&pageName=airpods%20pro%20-%20overview%20%28us%29&g=https%3A%2F%2Fwww.apple.com%2Fairpods-pro%2F&cc=USD&events=event243%3D4.27%2Cevent244&h1=www.us.airpodspro&l3=D%3Das_tex&v4=D%3DpageName&v14=en-us&c34=hearing%20health%20gallery&c35=4.27&c36=10&v54=D%3Dg&v97=s.tl-o&pe=lnk_o&pev2=section%20engagement&s=1440x900&c=24&j=1.6&v=N&k=Y&bw=1440&bh=900&lrt=71&AQE=1",
+  "kind": "image",
+  "type": "image/gif",
+  "bytes": 43
+ },
+ {
+  "url": "https://www.apple.com/v/airpods-pro/t/images/overview/magical/connectivity_startframe__bxoyv9avrimu_large.jpg",
+  "kind": "image",
+  "type": "image/jpeg",
+  "bytes": 99299,
+  "saved": "assets/image-ical-connectivity_startframe__bxoyv9avrimu_large-c6aa8754.jpg"
+ },
+ {
+  "url": "https://www.apple.com/v/airpods-pro/t/images/overview/magical/magical_experience_controls__bfwb869bitbm_large.jpg",
+  "kind": "image",
+  "type": "image/jpeg",
+  "bytes": 25545
+ },
+ {
+  "url": "https://www.apple.com/v/airpods-pro/t/images/overview/magical/magical_experience_live_translation__gjk070yu926a_large.jpg",
+  "kind": "image",
+  "type": "image/jpeg",
+  "bytes": 34750
+ },
+ {
+  "url": "https://www.apple.com/105/media/us/airpods-pro/2025/7acffb13-4adb-40b1-9393-8f1c99bc6c90/anim/connectivity/large.mp4",
+  "kind": "video",
+  "type": "video/mp4",
+  "bytes": 1713930,
+  "saved": "assets/video-connectivity-large-bed07b27.mp4",
+  "fetched_after": true
+ },
+ {
+  "url": "https://securemetrics.apple.com/b/ss/applestoreww/1/JS-2.23.0/s1257850444232?AQB=1&ndh=1&pf=1&t=27%2F8%2F2026%2018%3A50%3A38%200%20240&fid=3896B5D64B69B026-051C4D576028D94D&ce=UTF-8&cdp=2&cl=1800&pageName=airpods%20pro%20-%20overview%20%28us%29&g=https%3A%2F%2Fwww.apple.com%2Fairpods-pro%2F&cc=USD&events=event243%3D7.51%2Cevent244&h1=www.us.airpodspro&l3=D%3Das_tex&v4=D%3DpageName&v14=en-us&c34=magical%20experience&c35=7.51&c36=11&v54=D%3Dg&v97=s.tl-o&pe=lnk_o&pev2=section%20engagement&s=1440x900&c=24&j=1.6&v=N&k=Y&bw=1440&bh=900&lrt=64&AQE=1",
+  "kind": "image",
+  "type": "image/gif",
+  "bytes": 43
+ },
+ {
+  "url": "https://www.apple.com/v/airpods-pro/t/images/overview/magical/icon_audio_sharing__bk0bzzrjku1y_large.png",
+  "kind": "image",
+  "type": "image/png",
+  "bytes": 1635
+ },
+ {
+  "url": "https://www.apple.com/v/airpods-pro/t/images/overview/magical/icon_notifications__dz0hl8mc152e_large.png",
+  "kind": "image",
+  "type": "image/png",
+  "bytes": 927
+ },
+ {
+  "url": "https://www.apple.com/v/airpods-pro/t/images/overview/battery/case__b87ou7jna9de_large.png",
+  "kind": "image",
+  "type": "image/png",
+  "bytes": 175345,
+  "saved": "assets/image-battery-case__b87ou7jna9de_large-cb1b9927.png"
+ },
+ {
+  "url": "https://securemetrics.apple.com/b/ss/applestoreww/1/JS-2.23.0/s15639184781502?AQB=1&ndh=1&pf=1&t=27%2F8%2F2026%2018%3A50%3A40%200%20240&fid=3896B5D64B69B026-051C4D576028D94D&ce=UTF-8&cdp=2&cl=1800&pageName=airpods%20pro%20-%20overview%20%28us%29&g=https%3A%2F%2Fwww.apple.com%2Fairpods-pro%2F&cc=USD&events=event243%3D1.93%2Cevent244&h1=www.us.airpodspro&l3=D%3Das_tex&v4=D%3DpageName&v14=en-us&c34=battery%20intro&c35=1.93&c36=12&v54=D%3Dg&v97=s.tl-o&pe=lnk_o&pev2=section%20engagement&s=1440x900&c=24&j=1.6&v=N&k=Y&bw=1440&bh=900&lrt=83&AQE=1",
+  "kind": "image",
+  "type": "image/gif",
+  "bytes": 43
+ },
+ {
+  "url": "https://www.apple.com/v/airpods-pro/t/images/overview/battery/find_my__cvjw4c07da2q_large.jpg",
+  "kind": "image",
+  "type": "image/jpeg",
+  "bytes": 43809
+ },
+ {
+  "url": "https://securemetrics.apple.com/b/ss/applestoreww/1/JS-2.23.0/s12179579312686?AQB=1&ndh=1&pf=1&t=27%2F8%2F2026%2018%3A50%3A44%200%20240&fid=3896B5D64B69B026-051C4D576028D94D&ce=UTF-8&cdp=2&cl=1800&pageName=airpods%20pro%20-%20overview%20%28us%29&g=https%3A%2F%2Fwww.apple.com%2Fairpods-pro%2F&cc=USD&events=event243%3D2.18%2Cevent244&h1=www.us.airpodspro&l3=D%3Das_tex&v4=D%3DpageName&v14=en-us&c34=battery%20details&c35=2.18&c36=13&v54=D%3Dg&v97=s.tl-o&pe=lnk_o&pev2=section%20engagement&s=1440x900&c=24&j=1.6&v=N&k=Y&bw=1440&bh=900&lrt=110&AQE=1",
+  "kind": "image",
+  "type": "image/gif",
+  "bytes": 43
+ },
+ {
+  "url": "https://securemetrics.apple.com/b/ss/applestoreww/1/JS-2.23.0/s13618193297796?AQB=1&ndh=1&pf=1&t=27%2F8%2F2026%2018%3A50%3A46%200%20240&fid=3896B5D64B69B026-051C4D576028D94D&ce=UTF-8&cdp=2&cl=1800&pageName=airpods%20pro%20-%20overview%20%28us%29&g=https%3A%2F%2Fwww.apple.com%2Fairpods-pro%2F&cc=USD&events=event243%3D2.13%2Cevent244&h1=www.us.airpodspro&l3=D%3Das_tex&v4=D%3DpageName&v14=en-us&c34=find%20my&c35=2.13&c36=14&v54=D%3Dg&v97=s.tl-o&pe=lnk_o&pev2=section%20engagement&s=1440x900&c=24&j=1.6&v=N&k=Y&bw=1440&bh=900&lrt=65&AQE=1",
+  "kind": "image",
+  "type": "image/gif",
+  "bytes": 43
+ },
+ {
+  "url": "https://www.apple.com/v/airpods-pro/t/images/overview/incentive/watch_personalize_short__e504hsifgd2e_large.jpg",
+  "kind": "image",
+  "type": "image/jpeg",
+  "bytes": 8055
+ },
+ {
+  "url": "https://www.apple.com/v/airpods-pro/t/images/overview/incentive/delivery_pickup_short__cbpkg4axy99e_large.jpg",
+  "kind": "image",
+  "type": "image/jpeg",
+  "bytes": 18977
+ },
+ {
+  "url": "https://www.apple.com/v/airpods-pro/t/images/overview/incentive/apple_card_short__frvlox42m6ie_large.jpg",
+  "kind": "image",
+  "type": "image/jpeg",
+  "bytes": 13080
+ },
+ {
+  "url": "https://www.apple.com/v/airpods-pro/t/images/overview/incentive/iphone_specialist_short__eved87stcp26_large.jpg",
+  "kind": "image",
+  "type": "image/jpeg",
+  "bytes": 31983
+ },
+ {
+  "url": "https://www.apple.com/v/airpods-pro/t/images/overview/incentive/apple_store_app_short__fe85q9auybu6_large.jpg",
+  "kind": "image",
+  "type": "image/jpeg",
+  "bytes": 10294
+ },
+ {
+  "url": "https://www.apple.com/v/airpods-pro/t/images/overview/contrast/explore_airpods_pro_3_open__e4dxk8zpalkm_large.jpg",
+  "kind": "image",
+  "type": "image/jpeg",
+  "bytes": 11407
+ },
+ {
+  "url": "https://www.apple.com/v/airpods-pro/t/images/overview/contrast/explore_airpods_5_wcc_open__gh79h5ud4jau_large.jpg",
+  "kind": "image",
+  "type": "image/jpeg",
+  "bytes": 9669
+ },
+ {
+  "url": "https://www.apple.com/v/airpods-pro/t/images/overview/contrast/icon_active_noise_cancellation__cu3ni5umcw6e_large.png",
+  "kind": "image",
+  "type": "image/png",
+  "bytes": 1923
+ },
+ {
+  "url": "https://www.apple.com/v/airpods-pro/t/images/overview/contrast/icon_group_2__egj6xed61t4y_large.png",
+  "kind": "image",
+  "type": "image/png",
+  "bytes": 1684
+ },
+ {
+  "url": "https://www.apple.com/v/airpods-pro/t/images/overview/contrast/person_spatialaudio__c9wmu8y19oom_large.png",
+  "kind": "image",
+  "type": "image/png",
+  "bytes": 536
+ },
+ {
+  "url": "https://www.apple.com/v/airpods-pro/t/images/overview/contrast/icon_heart_rate__bi0fmerqeknm_large.png",
+  "kind": "image",
+  "type": "image/png",
+  "bytes": 976
+ },
+ {
+  "url": "https://securemetrics.apple.com/b/ss/applestoreww/1/JS-2.23.0/s12996082167146?AQB=1&ndh=1&pf=1&t=27%2F8%2F2026%2018%3A50%3A50%200%20240&fid=3896B5D64B69B026-051C4D576028D94D&ce=UTF-8&cdp=2&cl=1800&pageName=airpods%20pro%20-%20overview%20%28us%29&g=https%3A%2F%2Fwww.apple.com%2Fairpods-pro%2F&cc=USD&events=event243%3D4.05%2Cevent244&h1=www.us.airpodspro&l3=D%3Das_tex&v4=D%3DpageName&v14=en-us&c34=why%20apple%20gallery&c35=4.05&c36=15&v54=D%3Dg&v97=s.tl-o&pe=lnk_o&pev2=section%20engagement&s=1440x900&c=24&j=1.6&v=N&k=Y&bw=1440&bh=900&lrt=65&AQE=1",
+  "kind": "image",
+  "type": "image/gif",
+  "bytes": 43
+ },
+ {
+  "url": "https://www.apple.com/v/airpods-pro/t/images/overview/contrast/icon_ear_badge_waveform_elevated__gjfl9l9fv6mq_large.png",
+  "kind": "image",
+  "type": "image/png",
+  "bytes": 1183
+ },
+ {
+  "url": "https://www.apple.com/v/airpods-pro/t/images/overview/contrast/icon_live_translation__f7a3yahoav6m_large.png",
+  "kind": "image",
+  "type": "image/png",
+  "bytes": 828
+ },
+ {
+  "url": "https://www.apple.com/v/airpods-pro/t/images/overview/contrast/chip_h2__fxu57e22criy_large.png",
+  "kind": "image",
+  "type": "image/png",
+  "bytes": 273
+ },
+ {
+  "url": "https://www.apple.com/v/airpods-pro/t/images/overview/environment/icon_package__es51hf1p9h8i_large.png",
+  "kind": "image",
+  "type": "image/png",
+  "bytes": 684
+ },
+ {
+  "url": "https://www.apple.com/v/airpods-pro/t/images/overview/environment/icon_electricity__ggoppgvmfpua_large.png",
+  "kind": "image",
+  "type": "image/png",
+  "bytes": 758
+ },
+ {
+  "url": "https://www.apple.com/v/airpods-pro/t/images/overview/environment/icon_recycling__c7i5efoa8p8i_large.png",
+  "kind": "image",
+  "type": "image/png",
+  "bytes": 875
+ },
+ {
+  "url": "https://www.apple.com/v/airpods-pro/t/images/overview/values/icon_environment__fo04kjojopym_large.png",
+  "kind": "image",
+  "type": "image/png",
+  "bytes": 503
+ },
+ {
+  "url": "https://www.apple.com/v/airpods-pro/t/images/overview/values/icon_privacy__59wrw6a3keqa_large.png",
+  "kind": "image",
+  "type": "image/png",
+  "bytes": 386
+ },
+ {
+  "url": "https://www.apple.com/v/airpods-pro/t/images/overview/values/icon_accessibility__d2tat6ki2tua_large.png",
+  "kind": "image",
+  "type": "image/png",
+  "bytes": 489
+ },
+ {
+  "url": "https://securemetrics.apple.com/b/ss/applestoreww/1/JS-2.23.0/s13683367806844?AQB=1&ndh=1&pf=1&t=27%2F8%2F2026%2018%3A51%3A0%200%20240&fid=3896B5D64B69B026-051C4D576028D94D&ce=UTF-8&cdp=2&cl=1800&pageName=airpods%20pro%20-%20overview%20%28us%29&g=https%3A%2F%2Fwww.apple.com%2Fairpods-pro%2F&cc=USD&events=event243%3D9.72%2Cevent244&h1=www.us.airpodspro&l3=D%3Das_tex&v4=D%3DpageName&v14=en-us&c34=compare&c35=9.72&c36=16&v54=D%3Dg&v97=s.tl-o&pe=lnk_o&pev2=section%20engagement&s=1440x900&c=24&j=1.6&v=N&k=Y&bw=1440&bh=900&lrt=76&AQE=1",
+  "kind": "image",
+  "type": "image/gif",
+  "bytes": 43
+ },
+ {
+  "url": "https://securemetrics.apple.com/b/ss/applestoreww/1/JS-2.23.0/s14446172023519?AQB=1&ndh=1&pf=1&t=27%2F8%2F2026%2018%3A51%3A2%200%20240&fid=3896B5D64B69B026-051C4D576028D94D&ce=UTF-8&cdp=2&cl=1800&pageName=airpods%20pro%20-%20overview%20%28us%29&g=https%3A%2F%2Fwww.apple.com%2Fairpods-pro%2F&cc=USD&events=event243%3D2.20%2Cevent244&h1=www.us.airpodspro&l3=D%3Das_tex&v4=D%3DpageName&v14=en-us&c34=environment%20gallery&c35=2.20&c36=17&v54=D%3Dg&v97=s.tl-o&pe=lnk_o&pev2=section%20engagement&s=1440x900&c=24&j=1.6&v=N&k=Y&bw=1440&bh=900&lrt=171&AQE=1",
+  "kind": "image",
+  "type": "image/gif",
+  "bytes": 43
+ },
+ {
+  "url": "https://securemetrics.apple.com/b/ss/applestoreww/1/JS-2.23.0/s11900339272225?AQB=1&ndh=1&pf=1&t=27%2F8%2F2026%2018%3A51%3A5%200%20240&fid=3896B5D64B69B026-051C4D576028D94D&ce=UTF-8&cdp=2&cl=1800&pageName=airpods%20pro%20-%20overview%20%28us%29&g=https%3A%2F%2Fwww.apple.com%2Fairpods-pro%2F&cc=USD&events=event243%3D3.71%2Cevent244&h1=www.us.airpodspro&l3=D%3Das_tex&v4=D%3DpageName&v14=en-us&c34=values%20gallery&c35=3.71&c36=18&v54=D%3Dg&v97=s.tl-o&pe=lnk_o&pev2=section%20engagement&s=1440x900&c=24&j=1.6&v=N&k=Y&bw=1440&bh=900&lrt=103&AQE=1",
+  "kind": "image",
+  "type": "image/gif",
+  "bytes": 43
+ },
+ {
+  "url": "https://securemetrics.apple.com/b/ss/applestoreww/1/JS-2.23.0/s15652425373235?AQB=1&ndh=1&pf=1&t=27%2F8%2F2026%2018%3A51%3A5%200%20240&fid=3896B5D64B69B026-051C4D576028D94D&ce=UTF-8&cdp=2&cl=1800&pageName=airpods%20pro%20-%20overview%20%28us%29&g=https%3A%2F%2Fwww.apple.com%2Fairpods-pro%2F&cc=USD&events=event406&h1=www.us.airpodspro&l3=D%3Das_tex&v4=D%3DpageName&v14=en-us&v54=D%3Dg&v97=s.tl-o&pe=lnk_o&pev2=end%20of%20page&s=1440x900&c=24&j=1.6&v=N&k=Y&bw=1440&bh=900&AQE=1",
+  "kind": "image",
+  "type": "image/gif",
+  "bytes": 43
+ },
+ {
+  "url": "https://securemetrics.apple.com/b/ss/applestoreww/1/JS-2.23.0/s17214792039670?AQB=1&ndh=1&pf=1&t=27%2F8%2F2026%2018%3A51%3A7%200%20240&fid=3896B5D64B69B026-051C4D576028D94D&ce=UTF-8&cdp=2&cl=1800&pageName=airpods%20pro%20-%20overview%20%28us%29&g=https%3A%2F%2Fwww.apple.com%2Fairpods-pro%2F&cc=USD&events=event243%3D3.70%2Cevent244&h1=www.us.airpodspro&l3=D%3Das_tex&v4=D%3DpageName&v14=en-us&c34=router&c35=3.70&c36=19&v54=D%3Dg&v97=s.tl-o&pe=lnk_o&pev2=section%20engagement&s=1440x900&c=24&j=1.6&v=N&k=Y&bw=1440&bh=900&lrt=69&AQE=1",
+  "kind": "image",
+  "type": "image/gif",
+  "bytes": 43
+ },
+ {
+  "url": "https://securemetrics.apple.com/b/ss/applestoreww/1/JS-2.23.0/s12806554443859?AQB=1&ndh=1&pf=1&t=27%2F8%2F2026%2018%3A52%3A24%200%20240&fid=3896B5D64B69B026-051C4D576028D94D&ce=UTF-8&cdp=2&cl=1800&pageName=airpods%20pro%20-%20overview%20%28us%29&g=https%3A%2F%2Fwww.apple.com%2Fairpods-pro%2F&cc=USD&events=event144%2C%20event141&h1=www.us.airpodspro&c3=continue&l3=D%3Das_tex&v4=D%3DpageName&v14=en-us&v54=D%3Dg&v74=en-ca&v75=en-ca&v97=s.tl-o&pe=lnk_o&pev2=continued%20with%20localeswitcher&c.&a.&activitymap.&page=airpods%20pro%20-%20overview%20%28us%29&link=continue%20button%20-%20%2Fca%2Fairpods-pro%2F%20-%20locale%20switcher&region=locale%20switcher&pageIDType=1&.activitymap&.a&.c&pid=airpods%20pro%20-%20overview%20%28us%29&pidt=1&oid=https%3A%2F%2Fwww.apple.com%2Fca%2Fairpods-pro%2F&ot=A&s=1440x900&c=24&j=1.6&v=N&k=Y&bw=1440&bh=900&lrt=75&AQE=1",
+  "kind": "image",
+  "type": "image/gif",
+  "bytes": 43
+ },
+ {
+  "url": "https://securemetrics.apple.com/b/ss/applestoreww/1/JS-2.23.0/s16171141845876?AQB=1&ndh=1&pf=1&t=27%2F8%2F2026%2018%3A52%3A26%200%20240&fid=3896B5D64B69B026-051C4D576028D94D&ce=UTF-8&cdp=2&cl=1800&pageName=airpods%20pro%20-%20overview%20%28us%29&g=https%3A%2F%2Fwww.apple.com%2Fairpods-pro%2F&cc=USD&ch=www.us.airpodspro&server=ac-2.30.0&h1=www.us.airpodspro&v3=aos%3A%20us&l3=D%3Das_tex&c4=D%3Dg&v4=D%3DpageName&c14=airpods%20pro%20-%20overview%20%28ca%29&v14=en-us&c17=100%3A3&c20=aos%3A%20us&c28=29240&v54=D%3Dg&c57=www.ca.airpodspro&v97=s.t-p&s=1440x900&c=24&j=1.6&v=N&k=Y&bw=1440&bh=900&AQE=1",
+  "kind": "image",
+  "type": "image/gif",
+  "bytes": 43
+ },
+ {
+  "url": "https://www.apple.com/v/homepage/images/iphone-18-pro/a/hero_iphone_18_pro__fqe1motd0ymy_largetall.jpg",
+  "kind": "image",
+  "type": "image/jpeg",
+  "bytes": 67874,
+  "saved": "assets/image-a-hero_iphone_18_pro__fqe1motd0ymy_largetall-53f18667.jpg"
+ },
+ {
+  "url": "https://securemetrics.apple.com/b/ss/applestoreww/1/JS-2.23.0/s14774624591261?AQB=1&ndh=1&pf=1&t=27%2F8%2F2026%2018%3A52%3A33%200%20240&fid=3896B5D64B69B026-051C4D576028D94D&ce=UTF-8&cdp=2&cl=1800&pageName=apple%20-%20index%2Ftab%20%28us%29&g=https%3A%2F%2Fwww.apple.com%2F&r=https%3A%2F%2Fwww.apple.com%2Fairpods-pro%2F&cc=USD&ch=www.us.homepage&server=ac-2.30.0&events=event246%2Cevent210%3D4.24%2Cevent220%3D0.002%2Cevent221%3D0.000%2Cevent222%3D0.000%2Cevent223%3D0.000%2Cevent224%3D0.000%2Cevent225%3D0.001%2Cevent226%3D0.694%2Cevent227%3D0.004%2Cevent228%3D0.001%2Cevent229%3D0.702%2Cevent230%3D0.000%2Cevent231%3D0.725%2Cevent232%2Cevent419%3D0.100%2Cevent420&v1=airpods%20pro%20-%20overview%20%28us%29%20%7C%20global%20nav%20%7C%20apple%20home&h1=www.us.homepage&v3=aos%3A%20us&l3=D%3Das_tex&c4=D%3Dg&v4=D%3DpageName&c14=airpods%20pro%20-%20overview%20%28us%29&v14=en-us&c17=3%3A3&c20=aos%3A%20us&c28=900&v49=D%3Dr&v54=D%3Dg&c57=www.us.airpodspro&v70=airpods%20pro%20-%20overview%20%28us%29%20%7C%20enhanced&v93=1&v94=4.24&v97=s.t-p&c.&a.&activitymap.&page=airpods%20pro%20-%20overview%20%28us%29&link=apple%20home%20-%20%2F%20-%20globalnav&region=globalnav&pageIDType=1&.activitymap&.a&.c&pid=airpods%20pro%20-%20overview%20%28us%29&pidt=1&oid=https%3A%2F%2Fwww.apple.com%2F&ot=A&s=1440x900&c=24&j=1.6&v=N&k=Y&bw=1440&bh=900&AQE=1",
+  "kind": "image",
+  "type": "image/gif",
+  "bytes": 43
+ },
+ {
+  "url": "https://www.apple.com/wss/fonts/SF-Pro-Display/v3/sf-pro-display_bold.woff2",
+  "kind": "font",
+  "type": "font/woff2",
+  "bytes": 127944,
+  "saved": "assets/font-v3-sf-pro-display_bold-6d8c88e6.woff2"
+ },
+ {
+  "url": "https://www.apple.com/wss/fonts/SF-Pro-Display/v3/sf-pro-display_regular.woff2",
+  "kind": "font",
+  "type": "font/woff2",
+  "bytes": 117056,
+  "saved": "assets/font-v3-sf-pro-display_regular-e4d0d032.woff2"
+ },
+ {
+  "url": "https://securemetrics.apple.com/b/ss/applestoreww/1/JS-2.23.0/s18782545847268?AQB=1&ndh=1&pf=1&t=27%2F8%2F2026%2018%3A52%3A34%200%20240&fid=3896B5D64B69B026-051C4D576028D94D&ce=UTF-8&cdp=2&cl=1800&pageName=airpods%20pro%20-%20overview%20%28us%29&g=https%3A%2F%2Fwww.apple.com%2Fairpods-pro%2F&cc=USD&ch=www.us.airpodspro&server=ac-2.30.0&h1=www.us.airpodspro&v3=aos%3A%20us&l3=D%3Das_tex&c4=D%3Dg&v4=D%3DpageName&c14=apple%20-%20index%2Ftab%20%28us%29&v14=en-us&c17=15%3A15&c20=aos%3A%20us&c28=900&v54=D%3Dg&c57=www.us.homepage&v97=s.t-p&s=1440x900&c=24&j=1.6&v=N&k=Y&bw=1440&bh=900&AQE=1",
+  "kind": "image",
+  "type": "image/gif",
+  "bytes": 43
+ },
+ {
+  "url": "https://store.storeimages.cdn-apple.com/4982/store.apple.com/static-resources/rs-external-1.74.1-85ac2/dist/031a5e775752813cfad5.svg",
+  "kind": "image",
+  "type": "image/svg+xml",
+  "bytes": 190
+ },
+ {
+  "url": "https://store.storeimages.cdn-apple.com/4982/store.apple.com/static-resources/rs-external-1.74.1-85ac2/dist/45dfd13dacaf484f3462.svg",
+  "kind": "image",
+  "type": "image/svg+xml",
+  "bytes": 626
+ },
+ {
+  "url": "https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/MKD14_SW_COLOR?wid=32&hei=32&fmt=png-alpha&.v=UWhkWkFkYUZPSVgyVkhhb0ZHc3hka3VZbFJnaWZRWGhXYUNxcUhMUUl5UEhxZjQyanFrTDN5a241WlpqRHdlVEN0bjNZTUZBV0VHeFEwRFBHUTI0dnc",
+  "kind": "image",
+  "type": "image/png",
+  "bytes": 3508
+ },
+ {
+  "url": "https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/MKD34_SW_COLOR?wid=32&hei=32&fmt=png-alpha&.v=NHFWSTVDN1BrUlhiWEZicS9Ba3NGa3VZbFJnaWZRWGhXYUNxcUhMUUl5UEhxZjQyanFrTDN5a241WlpqRHdlVE5lREp3Y05OMTE1dm9qRVEzd3g4UkE",
+  "kind": "image",
+  "type": "image/png",
+  "bytes": 3478
+ },
+ {
+  "url": "https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/MKD44_SW_COLOR?wid=32&hei=32&fmt=png-alpha&.v=Qys1aGtwV1E3SUk3MllUZElnWWJPVXVZbFJnaWZRWGhXYUNxcUhMUUl5UEhxZjQyanFrTDN5a241WlpqRHdlVFNaK2QzaFl3eVBnWm9pZ3Z2UmVkdUE",
+  "kind": "image",
+  "type": "image/png",
+  "bytes": 3531
+ },
+ {
+  "url": "https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/MKD54_SW_COLOR?wid=32&hei=32&fmt=png-alpha&.v=d1BjWnhYV2JUWXhldm1EM1JsWjlPa3VZbFJnaWZRWGhXYUNxcUhMUUl5UEhxZjQyanFrTDN5a241WlpqRHdlVGJITUdYc0hUSVhUcjJsS0JqNExyU2c",
+  "kind": "image",
+  "type": "image/png",
+  "bytes": 3535
+ },
+ {
+  "url": "https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/MKD24_SW_COLOR?wid=32&hei=32&fmt=png-alpha&.v=R0NlWjhPa2dJa0FUNHZKR1dKQ0wxVXVZbFJnaWZRWGhXYUNxcUhMUUl5UEhxZjQyanFrTDN5a241WlpqRHdlVGNPRVpLOUVLUHVUSlBIc1d5TUFWU1E",
+  "kind": "image",
+  "type": "image/png",
+  "bytes": 3542
+ },
+ {
+  "url": "https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/MKD64_SW_COLOR?wid=32&hei=32&fmt=png-alpha&.v=TzNpRXRtZlVpUlhkeEJMejRnOVFMRXVZbFJnaWZRWGhXYUNxcUhMUUl5UEhxZjQyanFrTDN5a241WlpqRHdlVDVoMFd6aUV3TG5UeUd6VEhWQlZhSUE",
+  "kind": "image",
+  "type": "image/png",
+  "bytes": 2847
+ },
+ {
+  "url": "https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/MK914_SW_COLOR?wid=32&hei=32&fmt=png-alpha&.v=cXV1Y1EzVVBubEg5bkVxRElDbzloRXVZbFJnaWZRWGhXYUNxcUhMUUl5UEhxZjQyanFrTDN5a241WlpqRHdlVEtBbTdGYWNLUGN1WklTZTJLWDdGNVE",
+  "kind": "image",
+  "type": "image/png",
+  "bytes": 1907
+ },
+ {
+  "url": "https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/MK924_SW_COLOR?wid=32&hei=32&fmt=png-alpha&.v=cmZoQXl4Z1M1VUNrVmNvcUZwZ0k1MHVZbFJnaWZRWGhXYUNxcUhMUUl5UEhxZjQyanFrTDN5a241WlpqRHdlVGRXZmZsZkNZZnZ6bklwVTlBOGxDMXc",
+  "kind": "image",
+  "type": "image/png",
+  "bytes": 1833
+ },
+ {
+  "url": "https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/MK934_SW_COLOR?wid=32&hei=32&fmt=png-alpha&.v=QTlYa3J4eEs4YUhWc3NhdldzU0oxVXVZbFJnaWZRWGhXYUNxcUhMUUl5UEhxZjQyanFrTDN5a241WlpqRHdlVDNzTTZZV2tUM3l1cEhWR2pueGNaUGc",
+  "kind": "image",
+  "type": "image/png",
+  "bytes": 1910
+ },
+ {
+  "url": "https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/MK904_SW_COLOR?wid=32&hei=32&fmt=png-alpha&.v=Rmk2aXlHLzlqamloWnFCbG1scjhSMHVZbFJnaWZRWGhXYUNxcUhMUUl5UEhxZjQyanFrTDN5a241WlpqRHdlVFFNOW9MUlVnSGt5anROMWxoY1JmS0E",
+  "kind": "image",
+  "type": "image/png",
+  "bytes": 2020
+ },
+ {
+  "url": "https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/MK954_SW_COLOR?wid=32&hei=32&fmt=png-alpha&.v=cEd4a29QcWlHTFpHRTFjTjQ4cjJLVXVZbFJnaWZRWGhXYUNxcUhMUUl5UEhxZjQyanFrTDN5a241WlpqRHdlVDdGaW5vd01QWVJhMU5BcFFhMFZFcGc",
+  "kind": "image",
+  "type": "image/png",
+  "bytes": 1559
+ },
+ {
+  "url": "https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/MK874_SW_COLOR?wid=32&hei=32&fmt=png-alpha&.v=aStTSjhEODQ2UkR3VDZNclNJSWh1MHVZbFJnaWZRWGhXYUNxcUhMUUl5UEhxZjQyanFrTDN5a241WlpqRHdlVHVPRlVEejRYVkNqTENyU3dGalZrYlE",
+  "kind": "image",
+  "type": "image/png",
+  "bytes": 3335
+ },
+ {
+  "url": "https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/MK8F4_SW_COLOR?wid=32&hei=32&fmt=png-alpha&.v=UzAzdkZUU3pjYXdYdTJ5Mk9TNjhrVXVZbFJnaWZRWGhXYUNxcUhMUUl5UEhxZjQyanFrTDN5a241WlpqRHdlVDJiZVJ6dEFDQStpRm9qNDJJVU5QVlE",
+  "kind": "image",
+  "type": "image/png",
+  "bytes": 3083
+ },
+ {
+  "url": "https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/MK8D4ref_SW_COLOR?wid=32&hei=32&fmt=png-alpha&.v=WjdnZWUvTFd2bWM3bDBxYVhzK1FxT1VKSERNL2hSZWVRNnBEeVJtdmxDaWJMQkJvZmEyY08xMStaSG9qcHFqRlBXQzI2NFFKVWM3M0s0ZUxGM3pjYnc",
+  "kind": "image",
+  "type": "image/png",
+  "bytes": 3193
+ },
+ {
+  "url": "https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/MK8C4_SW_COLOR?wid=32&hei=32&fmt=png-alpha&.v=bzZuNzBIUDlDV0xJTTRpZnBFd2ZSRXVZbFJnaWZRWGhXYUNxcUhMUUl5UEhxZjQyanFrTDN5a241WlpqRHdlVHhDY3hyYjVjVkMxdU11dk03WHdDRmc",
+  "kind": "image",
+  "type": "image/png",
+  "bytes": 3364
+ },
+ {
+  "url": "https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/MK944_SW_COLOR?wid=32&hei=32&fmt=png-alpha&.v=eFN4TFFEUnZwSEJaaG5lVHBKblFNVXVZbFJnaWZRWGhXYUNxcUhMUUl5UEhxZjQyanFrTDN5a241WlpqRHdlVDZ2S0J1VWU4OW93TG5GbkltQUtDL3c",
+  "kind": "image",
+  "type": "image/png",
+  "bytes": 1602
+ },
+ {
+  "url": "https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/MK894_SW_COLOR?wid=32&hei=32&fmt=png-alpha&.v=dzBHSitoMHhvWVJqSENqUHJDUERoRXVZbFJnaWZRWGhXYUNxcUhMUUl5UEhxZjQyanFrTDN5a241WlpqRHdlVGFDdmF5QTRGQ0x5MVBJYk13N1A5MVE",
+  "kind": "image",
+  "type": "image/png",
+  "bytes": 3525
+ },
+ {
+  "url": "https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/airpods-max-select-202409-purple_SW_COLOR?wid=32&hei=32&fmt=png-alpha&.v=azQxRkVJKzd6V3J0aGNqWFhLMzBmdEFZMGtjOXNTYXJEaHFYa1lFVzIyUmFpQzY4QU1YNUEzRWZDMHpVRXBjSU4xU1Z0cFpWNm8yUlJuN1FJbVJwMUlGUFhOdTZkMWpFWU84VW1YdkV5akNRd0hTVGRwK0hGRDZ2cHY3OVAxaWE",
+  "kind": "image",
+  "type": "image/png",
+  "bytes": 1317
+ },
+ {
+  "url": "https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/MK8E4_SW_COLOR?wid=32&hei=32&fmt=png-alpha&.v=ck9MNDY4MmxMajZDUW5heTB5R2RZVXVZbFJnaWZRWGhXYUNxcUhMUUl5UEhxZjQyanFrTDN5a241WlpqRHdlVDZXYzFjY2l6bDZ2QnlyR0s3V0svM0E",
+  "kind": "image",
+  "type": "image/png",
+  "bytes": 3293
+ },
+ {
+  "url": "https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/MJVX4ref_SW_COLOR?wid=32&hei=32&fmt=png-alpha&.v=MTlZOGt1Z0E1eDNSVE9yNGVFU0NLK1VKSERNL2hSZWVRNnBEeVJtdmxDaWJMQkJvZmEyY08xMStaSG9qcHFqRldxdSt6aG43c1JCT21BS3ZTQjlTUVE",
+  "kind": "image",
+  "type": "image/png",
+  "bytes": 1494
+ },
+ {
+  "url": "https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/MJVH4ref_SW_COLOR?wid=32&hei=32&fmt=png-alpha&.v=N3BBZkJ4QWk0S1Qya1JLNzVNMGdoT1VKSERNL2hSZWVRNnBEeVJtdmxDaWJMQkJvZmEyY08xMStaSG9qcHFqRk5Qb3NsdXdWL3ptd0U1NjNOL1FWM1E",
+  "kind": "image",
+  "type": "image/png",
+  "bytes": 1342
+ },
+ {
+  "url": "https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/MJVT4ref_SW_COLOR?wid=32&hei=32&fmt=png-alpha&.v=ZGhPWnA0Q0kzRVJ3NWtTWUZUODE4K1VKSERNL2hSZWVRNnBEeVJtdmxDaWJMQkJvZmEyY08xMStaSG9qcHFqRlI3Qzd6OHlhZ0RHK2JNdGZJWUJuUkE",
+  "kind": "image",
+  "type": "image/png",
+  "bytes": 1407
+ },
+ {
+  "url": "https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/MJW24ref_SW_COLOR?wid=32&hei=32&fmt=png-alpha&.v=VUNVUkhVNnhpL0t0dk5BdVp3bHpRdVVKSERNL2hSZWVRNnBEeVJtdmxDaWJMQkJvZmEyY08xMStaSG9qcHFqRmZGSGdlOFJlQ01ZaWFFcWtvdm5vUUE",
+  "kind": "image",
+  "type": "image/png",
+  "bytes": 1602
+ },
+ {
+  "url": "https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/MJVP4ref_SW_COLOR?wid=32&hei=32&fmt=png-alpha&.v=YmhoZG42OFMvaXhzK3dpQU1NS0p3K1VKSERNL2hSZWVRNnBEeVJtdmxDaWJMQkJvZmEyY08xMStaSG9qcHFqRlRwMmg1eGRKY3FMNFhyS3FqOHlLbGc",
+  "kind": "image",
+  "type": "image/png",
+  "bytes": 1611
+ },
+ {
+  "url": "https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/MJVV4ref_SW_COLOR?wid=32&hei=32&fmt=png-alpha&.v=STBCdC9nOFVZSEh0UmZFa1M3MUJQdVVKSERNL2hSZWVRNnBEeVJtdmxDaWJMQkJvZmEyY08xMStaSG9qcHFqRjVXSEUyRHRUc29mVWVUMHdlUnYyNFE",
+  "kind": "image",
+  "type": "image/png",
+  "bytes": 1198
+ },
+ {
+  "url": "https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/MDFV4J_SW_COLOR?wid=32&hei=32&fmt=png-alpha&.v=VFZQZzAzTCtNZU1iRmxyMTAwWWZmR0VwM2FxSDVlQzBpRUdiYWZpalY5eWZEY0JCMmxibnk1SmdSTXBFWi9jMmk3dG45cDhDRDlhOW8yQXJFYWgwQ0E",
+  "kind": "image",
+  "type": "image/png",
+  "bytes": 1585
+ },
+ {
+  "url": "https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/MGYX4TA_SW_COLOR?wid=32&hei=32&fmt=png-alpha&.v=aVQ1cWdYVFkwTStJaUw4SnVGNURFdWJodkFDNEUwMWpkSDNmQnlmY1dqUFRmMUFhaXkzWVI4b3hpbGUzQlh3YWViR2hIVnRMSE9XQW50UHFUbmUwTWc",
+  "kind": "image",
+  "type": "image/png",
+  "bytes": 1526
+ },
+ {
+  "url": "https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/MH024_SW_COLOR?wid=32&hei=32&fmt=png-alpha&.v=SlVGYTdkdFRGNDN6VStUbW9tTXhpRXVZbFJnaWZRWGhXYUNxcUhMUUl5UEhxZjQyanFrTDN5a241WlpqRHdlVEoxU3VDbUJiclRIVVIraXJGbVdnVXc",
+  "kind": "image",
+  "type": "image/png",
+  "bytes": 1420
+ },
+ {
+  "url": "https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/MH014_SW_COLOR?wid=32&hei=32&fmt=png-alpha&.v=cURSSlQvK01Edm1UM1RHTlA2Vkp1MHVZbFJnaWZRWGhXYUNxcUhMUUl5UEhxZjQyanFrTDN5a241WlpqRHdlVEoxU3VDbUJiclRIVVIraXJGbVdnVXc",
+  "kind": "image",
+  "type": "image/png",
+  "bytes": 1333
+ },
+ {
+  "url": "https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/MH004_SW_COLOR?wid=32&hei=32&fmt=png-alpha&.v=Y2VGdWFnOGg5Q3pneDU5Rkc2bUNwRXVZbFJnaWZRWGhXYUNxcUhMUUl5UEhxZjQyanFrTDN5a241WlpqRHdlVDdNa0J2cC9NRG9YTTdTUWgzRW81MFE",
+  "kind": "image",
+  "type": "image/png",
+  "bytes": 1301
+ },
+ {
+  "url": "https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/airpods-max-select-202409-blue_SW_COLOR?wid=32&hei=32&fmt=png-alpha&.v=azQxRkVJKzd6V3J0aGNqWFhLMzBmb0JiTy8rMnA3YjhsMm11blczbzRDVUFuV0psZ0JRc0xMNHNraHBENkdxOU1CZjUwYjhVN3dDUVBjMjVNZ1IxQUdtbmFXU1V3TllDY2laMU00WVMyRE1XY2NmSWNLK2p6T0t6OVFidVg0emY",
+  "kind": "image",
+  "type": "image/png",
+  "bytes": 1326
+ },
+ {
+  "url": "https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/MH044_SW_COLOR?wid=32&hei=32&fmt=png-alpha&.v=U3BOd044b0ZDWFJTM2JzbkZlZmNCVXVZbFJnaWZRWGhXYUNxcUhMUUl5UEhxZjQyanFrTDN5a241WlpqRHdlVENJR2NUdUpGMGU3K1lyNW1GclA5R0E",
+  "kind": "image",
+  "type": "image/png",
+  "bytes": 1392
+ },
+ {
+  "url": "https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/airpods-max-select-202409-midnight_SW_COLOR?wid=32&hei=32&fmt=png-alpha&.v=azQxRkVJKzd6V3J0aGNqWFhLMzBmdmVWNWdHYnp5cHkwMldsSElEOHpyeHpZQVJVVDZFeFVEWDd6ZW9MOXN4MW1TNk5ReHNJUDU3Y290emFpeE5nZkhhNTg4T05Ec0E3TWdBUW1EZTMyakVCVExaejlNM0RTeGVvbnJla2hmemM",
+  "kind": "image",
+  "type": "image/png",
+  "bytes": 1200
+ },
+ {
+  "url": "https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/airpods-max-select-202409-starlight_SW_COLOR?wid=32&hei=32&fmt=png-alpha&.v=azQxRkVJKzd6V3J0aGNqWFhLMzBmdWd1NjlYUXFPTDZEK2xySGJScW1PSkQvNkdrbW5KMHFNZFZhZHZWaURZeU5SQnIzRnZJWE90ZUFZdkttK09qTjVyTmNMbStFa25CTklVMjltdmZaZmVYYlBKSzlvdkpFVUp6a29xN0FWUWU",
+  "kind": "image",
+  "type": "image/png",
+  "bytes": 1338
+ },
+ {
+  "url": "https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/airpods-max-select-202409-orange_SW_COLOR?wid=32&hei=32&fmt=png-alpha&.v=azQxRkVJKzd6V3J0aGNqWFhLMzBmbVl3dU4zNmtlQ1czYnJUSEJUcWowRmFpQzY4QU1YNUEzRWZDMHpVRXBjSU4xU1Z0cFpWNm8yUlJuN1FJbVJwMUlGUFhOdTZkMWpFWU84VW1YdkV5akFVMWlmbVl0ZklRcUttM3pwYWFZSms",
+  "kind": "image",
+  "type": "image/png",
+  "bytes": 1344
+ },
+ {
+  "url": "https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/MX723_SW_COLOR?wid=32&hei=32&fmt=png-alpha&.v=SnhQM0tqUjIwMWpXV3FQR0lzTDg2VXVZbFJnaWZRWGhXYUNxcUhMUUl5UEhxZjQyanFrTDN5a241WlpqRHdlVDBFNDFUVE16enU3Mm1tajh0SVF3K3c",
+  "kind": "image",
+  "type": "image/png",
+  "bytes": 1087
+ },
+ {
+  "url": "https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/MX733_SW_COLOR?wid=32&hei=32&fmt=png-alpha&.v=TVZIWFM0bS85Vy96aC9qU2U1dWdpMHVZbFJnaWZRWGhXYUNxcUhMUUl5UEhxZjQyanFrTDN5a241WlpqRHdlVHNWbTZzRkxHNWtHcFljNkhlakFsaUE",
+  "kind": "image",
+  "type": "image/png",
+  "bytes": 1425
+ },
+ {
+  "url": "https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/MX753_SW_COLOR?wid=32&hei=32&fmt=png-alpha&.v=UVp5Y04xcmR0RDhOOWxHemp3MmtkMHVZbFJnaWZRWGhXYUNxcUhMUUl5UEhxZjQyanFrTDN5a241WlpqRHdlVHl2M1piaHdjb2M2MWkxakMwN2J5Nmc",
+  "kind": "image",
+  "type": "image/png",
+  "bytes": 1501
+ },
+ {
+  "url": "https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/MX743_SW_COLOR?wid=32&hei=32&fmt=png-alpha&.v=eVlGSEp2SFhYN0pITitPSU9acG5VMHVZbFJnaWZRWGhXYUNxcUhMUUl5UEhxZjQyanFrTDN5a241WlpqRHdlVEo5V0lQaWZWSjl5YXI5VXRtQlNjSmc",
+  "kind": "image",
+  "type": "image/png",
+  "bytes": 1647
+ },
+ {
+  "url": "https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/homepod-select-midnight-202210_SW_COLOR?wid=32&hei=32&fmt=png-alpha&.v=N0JQcmtNWnVWeGozUXcxK2ZBcC9vYjhZeXpNaWU5MkU3ZWVpa0NTV1Q3MEFuV0psZ0JRc0xMNHNraHBENkdxOU1CZjUwYjhVN3dDUVBjMjVNZ1IxQUdQVE1tWkxndjNtcERXNXNHc2t1NlRkcHp5V2MxRWVhVHZ3elc1bUZLQmU",
+  "kind": "image",
+  "type": "image/png",
+  "bytes": 1566
+ },
+ {
+  "url": "https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/homepod-select-white-202210_SW_COLOR?wid=32&hei=32&fmt=png-alpha&.v=M2ZJQ1JEdTZVMVdoSy9OYURZL0UwSllOSXV0REJPT2ZmZmZ1YW1wY0VZUDJXRUU1Y2dmMGNMbnJtd3ZQZXJkZkhFUzJzeWNxdFZLbFVJWEt6ZkxSQ1Vad2xlQzVScXdUamZUYnlOdWZPZWdVRk5BYjU4dkMrYjBKSjFqVXFOVGg",
+  "kind": "image",
+  "type": "image/png",
+  "bytes": 1473
+ },
+ {
+  "url": "https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/MUW23_SW_COLOR?wid=32&hei=32&fmt=png-alpha&.v=TWsxc0RHZnh6STVqdmlqZUFKMUloVXVZbFJnaWZRWGhXYUNxcUhMUUl5UEhxZjQyanFrTDN5a241WlpqRHdlVHBuZkJyaC8zeU90aGFYTUxMS2h3UkE",
+  "kind": "image",
+  "type": "image/png",
+  "bytes": 1094
+ },
+ {
+  "url": "https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/MUW43_SW_COLOR?wid=32&hei=32&fmt=png-alpha&.v=MER4M2prUUVjQW5yWmt2U2lpRUd3RXVZbFJnaWZRWGhXYUNxcUhMUUl5UEhxZjQyanFrTDN5a241WlpqRHdlVHBrOHJGenJDaHhPRzBwaVB5TUtrTlE",
+  "kind": "image",
+  "type": "image/png",
+  "bytes": 1512
+ },
+ {
+  "url": "https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/MUW33_SW_COLOR?wid=32&hei=32&fmt=png-alpha&.v=UktjSno0TndtVjdDY28wdjJhcThGMHVZbFJnaWZRWGhXYUNxcUhMUUl5UEhxZjQyanFrTDN5a241WlpqRHdlVHlVKzRZZUY5RHBmYmdzdy9UUlVBdkE",
+  "kind": "image",
+  "type": "image/png",
+  "bytes": 1419
+ },
+ {
+  "url": "https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/MW443_SW_COLOR?wid=32&hei=32&fmt=png-alpha&.v=NlhRaVA5SFBkdThpUHIwTHl5WHBJMHVZbFJnaWZRWGhXYUNxcUhMUUl5UEhxZjQyanFrTDN5a241WlpqRHdlVEc3SThLVXNRbDgxL0t6VkhqYUNoSXc",
+  "kind": "image",
+  "type": "image/png",
+  "bytes": 1087
+ },
+ {
+  "url": "https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/MWQW3_SW_COLOR?wid=32&hei=32&fmt=png-alpha&.v=TW9VSGhSejRyN0hGWUtjcWtGUkljVXVZbFJnaWZRWGhXYUNxcUhMUUl5UEhxZjQyanFrTDN5a241WlpqRHdlVEVrTUp2dUtSK3VqcGkxcjQ2bHZXMXc",
+  "kind": "image",
+  "type": "image/png",
+  "bytes": 1555
+ },
+ {
+  "url": "https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/MW463_SW_COLOR?wid=32&hei=32&fmt=png-alpha&.v=NWo3RDVocklPMGhxMHN6dWFYZzZoVXVZbFJnaWZRWGhXYUNxcUhMUUl5UEhxZjQyanFrTDN5a241WlpqRHdlVEc3SThLVXNRbDgxL0t6VkhqYUNoSXc",
+  "kind": "image",
+  "type": "image/png",
+  "bytes": 1518
+ },
+ {
+  "url": "https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/step1-chat-specialist_AV1?wid=108&hei=108&fmt=png-alpha&.v=VG1QV0dEVmFFbGlWeHJSNHZES2lmQS9McEhvUnE2a2NHT0pXQjZyRkU4emxPZFBFc0NlM0thN1AxUmdGV3ppS1JSOW5PYzUxT0dEclIzbzVKNW1KNGkrbm1YYTd0VlNhYlZQcDNWaUFiUnM",
+  "kind": "image",
+  "type": "image/png",
+  "bytes": 15158
+ },
+ {
+  "url": "https://www.apple.com/fxpmdp/ec/as/v1/echo.png?app=com.apple.www.Store&pageViewId=nq68ei6fb6-mukez7jd&recordTime=1790549561065&referrer=https://www.apple.com/airpods-pro/&referer=https://www.apple.com/airpods-pro/&host=www.apple.com&pageHostname=www.apple.com&pageUrl=https://www.apple.com/store&pagePathname=/store&pageShopPath=/store&pageUrlParams=&eventType=pageview&environment=&format=common&region=amr&country=US&sf=us&segment=Consumer&locale=en-us&node=standard/home&pageResource=rs-merch-4&feature=store-home",
+  "kind": "image",
+  "type": "image/png",
+  "bytes": 298
+ },
+ {
+  "url": "https://www.apple.com/shop/mdp/echo/echo.png?app=com.apple.www.Store&pageViewId=nq68ei6fb6-mukez7jd&recordTime=1790549561065&referrer=https://www.apple.com/airpods-pro/&referer=https://www.apple.com/airpods-pro/&host=www.apple.com&pageHostname=www.apple.com&pageUrl=https://www.apple.com/store&pagePathname=/store&pageShopPath=/store&pageUrlParams=&eventType=pageview&environment=&format=common&region=amr&country=US&sf=us&segment=Consumer&locale=en-us&node=standard/home&pageResource=rs-merch-4&feature=store-home",
+  "kind": "image",
+  "type": "image/png",
+  "bytes": 298
+ },
+ {
+  "url": "https://www.apple.com/wss/fonts/SF-Pro-Text/v3/sf-pro-text_regular-italic.woff2",
+  "kind": "font",
+  "type": "font/woff2",
+  "bytes": 88432,
+  "saved": "assets/font-v3-sf-pro-text_regular-italic-55df7438.woff2"
+ },
+ {
+  "url": "https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/store-card-13-mac-nav-202603?wid=400&hei=260&fmt=webp-alpha&qlt=90&.v=M1Q3OGxnb1lBaHhqNjZ2OVRXZmx4V2duSGVkdTVncGZYc0RnS1paU3IySCsrUlZaSVRoWVYzU0Qra0FoTmUwNi9QNXlFS1hSa1R2UkcrWjFiN21qeHJmM2dNTnRBQ1R4cGxoYkFsaEFKa1c1K1k1Y2ZhL2RsT3JqdUh6czBxZU0&traceId=1",
+  "kind": "image",
+  "type": "image/webp",
+  "bytes": 9878
+ },
+ {
+  "url": "https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/store-card-13-iphone-nav-202609?wid=400&hei=260&fmt=webp-alpha&qlt=90&.v=dW5XbHI1eDVpd01qWUU4bFRtWGZXMWdGVG1nbG0xL1p6dm9DRUFPZ0dweDVoZlhhY1p4QWdsTjFNaGRHM3FYWWUzNFVlZmYxaVpiTW5tRlBYR0RFVklTTzF3TXlWM0VQVDViZjNveGdyVU9lTTB1dFozcWlUMzVoT1cvanh0Tmw&traceId=1",
+  "kind": "image",
+  "type": "image/webp",
+  "bytes": 6312
+ },
+ {
+  "url": "https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/store-card-13-ipad-nav-202405?wid=400&hei=260&fmt=webp-alpha&qlt=90&.v=dW5XbHI1eDVpd01qWUU4bFRtWGZXNGFLQTJVNnlNQmQrVmRBYnZYei9jckUzelNmMnRxajE0NHhmMWtLazl6eGtqQUNSY05Zb293eGJHTE9hUWczcnVqTnpaVXRhU3dOZ1ZOcTU5bHVTTkNFYWxxelhUNTl3NnJFTGlRNFh3azE&traceId=1",
+  "kind": "image",
+  "type": "image/webp",
+  "bytes": 11484
+ },
+ {
+  "url": "https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/store-card-13-watch-nav-202609?wid=400&hei=260&fmt=webp-alpha&qlt=90&.v=S0tSVzBtSkRkSFFhMm1zS1NmeWtkM1krTnlTbUtyb2RYcy9TNU5WVjJnckh5NTJ6cGtEemJOblBHR043ZjFkZ1FUcmZyeDQwOGFDYVkxdC9kdiszb2RsY0pIL3JmeUsvMi9qL3Jkcm1CVjZYL1c4Z1hiQmdQWWZMTHBXbUhabnU&traceId=1",
+  "kind": "image",
+  "type": "image/webp",
+  "bytes": 13680
+ },
+ {
+  "url": "https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/store-card-13-vision-pro-nav-202401?wid=400&hei=260&fmt=webp-alpha&qlt=90&.v=VzVpanYvTldHb05iVXFhc0xveWRLM25jd0w4dXFwc1hFbWZkNm9IcUR2bytSMWt1ZUNyTGx4SjRKL1pSL0ZDeDJzTWppUFJjbWt5c0VTSnZpSGhSZVBqOWVIcWlLZU4wTy91U1NTVlNIU25RREYzN0M5bCttdXFSOEZURjh1ODY&traceId=1",
+  "kind": "image",
+  "type": "image/webp",
+  "bytes": 9384
+ },
+ {
+  "url": "https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/store-card-13-airpods-nav-202509?wid=400&hei=260&fmt=webp-alpha&qlt=90&.v=Q0Z1bWFqMUpRRnp3T0Y0VWJpdk1yMDhFUStvWHB3SDlDa3VrdUZORWRqeld1aTN5QlRYNG5PRjJxc2d1RklXbXFIMjJSU3VUZGRWY2Q0ZzZrZlVTSEVaKytVOXBFNXhUYkFYeU1LbHRXRDJCblJUU25lOTBVc1pJNFhQcHA5TlQ&traceId=1",
+  "kind": "image",
+  "type": "image/webp",
+  "bytes": 3034
+ },
+ {
+  "url": "https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/store-card-13-airtags-nav-202601?wid=400&hei=260&fmt=webp-alpha&qlt=90&.v=Q0Z1bWFqMUpRRnp3T0Y0VWJpdk1yL1FqZ2pobDV2bDUyWU1XVmNnMmx3VFd1aTN5QlRYNG5PRjJxc2d1RklXbXFIMjJSU3VUZGRWY2Q0ZzZrZlVTSEtwNS9iZlZFOXI4OVJlckErUVNlekMvZUZiN3NsZUNFZ1FxWm45dm13UTg&traceId=1",
+  "kind": "image",
+  "type": "image/webp",
+  "bytes": 3810
+ },
+ {
+  "url": "https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/store-card-13-appletv-nav-202210?wid=400&hei=260&fmt=webp-alpha&qlt=90&.v=T0wvM1N3YUcxQ09qK0VNRkl1RU1BZFM5WnN0RmVZRmVXQ0FCUWJjbnJDald1aTN5QlRYNG5PRjJxc2d1RklXbXFIMjJSU3VUZGRWY2Q0ZzZrZlVTSERxOTBFMThSYVlJdVFBV2ZnQ1NBeVcwck5OSHpVbkpKdUFBSHBmZzRLOFM&traceId=1",
+  "kind": "image",
+  "type": "image/webp",
+  "bytes": 3880
+ },
+ {
+  "url": "https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/store-card-13-holiday-giftcards-asit-agc-nav-202111?wid=400&hei=260&fmt=webp-alpha&qlt=90&.v=WVcvamRucHVMMWs5SXZ3bVJ3Q2hpWWJZU3c1a04rNW9Zem5ScTRJL25qWnlvS2lBUzZZRytsa2hkcGtRYVFoZnJYVFd2aTZFN3pZenpyR0NkbGY4enRyREk0ajBYSnBNckJFaWI0aDRVWGhHMHhkT2s0alNrTGt3eU5zVDdvTzBWTGpxbjFBdlZrNCswLzM1dnVOUTVB&traceId=1",
+  "kind": "image",
+  "type": "image/webp",
+  "bytes": 7288
+ },
+ {
+  "url": "https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/store-card-13-homepod-nav-202301?wid=400&hei=260&fmt=webp-alpha&qlt=90&.v=WVcvamRucHVMMWs5SXZ3bVJ3Q2hpZGR0czFXNWdCUW14eTN2U29pLzNMcld1aTN5QlRYNG5PRjJxc2d1RklXbXFIMjJSU3VUZGRWY2Q0ZzZrZlVTSE9Ob1JlMThuYVRLV29ucnpoS2dURTl4VGhFTjdSUWRqcm1rRTUvVTh5Zmk&traceId=1",
+  "kind": "image",
+  "type": "image/webp",
+  "bytes": 25986
+ },
+ {
+  "url": "https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/store-card-13-accessories-nav-202609?wid=240&hei=156&fmt=webp-alpha&qlt=90&.v=QnhsNk96S0o4R1dkN2FveStNM1hwNzZGMHVrNGw2NTM5Vmk2bHZzMXQ3andmemN3dmNHVFJjenRQYk1lUFpSRFUvQk80eDZ3VFAzNXRKWVBtSG1tRktvSHphdyszeHBObUNiNWtRSFBzM1k4aWJmZ0ZqclZySWJJMFljQnNqR1M&traceId=1",
+  "kind": "image",
+  "type": "image/webp",
+  "bytes": 3076
+ },
+ {
+  "url": "https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/store-card-40-iphone-18-pro-202609?wid=800&hei=1000&fmt=webp&qlt=90&.v=UzBXQnlhUWdraTNvNU1Kb3pEQlpXSWQybG1sZ1oxVnEyWjA5KzltU01ZTFNab1lJcUZwSFVRK1htYlNmZUtPTFJ2R3NEUGt3Q2tTUTNWU09neHFkdWRUL1Azd1lsYk5RbEsxZXhvbThSV3VXS3B5dFRDdHdOWGF6ZzVmZHdiRWc&traceId=1",
+  "kind": "image",
+  "type": "image/webp",
+  "bytes": 27994
+ },
+ {
+  "url": "https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/store-card-40-iphone-duo-202609_GEO_US?wid=800&hei=1000&fmt=webp&qlt=90&.v=UzBXQnlhUWdraTNvNU1Kb3pEQlpXTmRieWJxSUI5TWh3VExiQnFCdzRFVFRScHZrVGpHeDlzdWlveXRWTHp6UnBxK0ZBNmxGbmUyUFZlUkRMaDBrbFIrM1V0MXQ3L01IeDRJOXlOYjZtNCtnL0IzVThMTWdFQ2ozUUd1SUY5OFE&traceId=1",
+  "kind": "image",
+  "type": "image/webp",
+  "bytes": 70626,
+  "saved": "assets/image-is-store-card-40-iphone-duo-202609_GEO_US-dec0e3bb.webp"
+ },
+ {
+  "url": "https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/store-card-40-watch-series-12-202609?wid=800&hei=1000&fmt=webp&qlt=90&.v=QWhYaUFuRS9hTUliZ3N5RWVCV09vaG9ZUW1EeWY5MUtXMHdLVXUrS2thUHJ5SDBWM0EzY1NDZnVpYTkvandVRGdpcjhyQnJrZTk3NDVpVGh0RDBPL1dlb1hSRFZ1bHlsVUx3SFRzY0JhYVpmcTUrTlhNMWhLS2RHRXhjZnVURVQ&traceId=1",
+  "kind": "image",
+  "type": "image/webp",
+  "bytes": 27862
+ },
+ {
+  "url": "https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/store-card-40-watch-ultra-4-202609?wid=800&hei=1000&fmt=webp&qlt=90&.v=QWhYaUFuRS9hTUliZ3N5RWVCV09vdmMxTi9MK0F4TUMvaEkrKzQrSzRpblNab1lJcUZwSFVRK1htYlNmZUtPTFJ2R3NEUGt3Q2tTUTNWU09neHFkdVdlYVVBbmFMUDFqeWs3dFFqTGdRYzZNSFhEZ21GWmwyTk4vNzMrT0ZuUEE&traceId=1",
+  "kind": "image",
+  "type": "image/webp",
+  "bytes": 39532
+ },
+ {
+  "url": "https://store.storevideos.cdn-apple.com/v1/store.apple.com/st/1787323760889/store-card-40-upgrade-202609-vid1.mp4",
+  "kind": "video",
+  "type": "video/mp4",
+  "bytes": 312955,
+  "saved": "assets/video-1787323760889-store-card-40-upgrade-202609-vid1-6a4779f2.mp4",
+  "fetched_after": true
+ },
+ {
+  "url": "https://securemetrics.apple.com/b/ss/applestoreww/1/JS-2.23.0/s17304456759799?AQB=1&ndh=1&pf=1&t=27%2F8%2F2026%2018%3A52%3A42%200%20240&fid=3896B5D64B69B026-051C4D576028D94D&ce=UTF-8&cdp=2&cl=1800&pageName=AOS%3A%20homepage&g=https%3A%2F%2Fwww.apple.com%2Fstore&r=https%3A%2F%2Fwww.apple.com%2Fairpods-pro%2F&h.&architecture=x86&bitness=64&platformVersion=10_15_7&.h&cc=USD&ch=D%3Dh1&server=graf%409.8.0&events=event210%3D4.54%2Cevent220%3D0.000%2Cevent221%3D0.000%2Cevent222%3D0.000%2Cevent223%3D0.000%2Cevent224%3D0.001%2Cevent225%3D0.000%2Cevent226%3D0.170%2Cevent227%3D0.003%2Cevent228%3D0.041%2Cevent229%3D0.219%2Cevent230%3D0.000%2Cevent231%3D0.223%2Cevent232%2Cevent246%2Cevent419%3D0.112%2Cevent420&v1=airpods%20pro%20-%20overview%20%28us%29%20%7C%20global%20nav%20%7C%20store&h1=aos%3Ashop&l1=D%3Das_xs&v3=AOS%3A%20US%20Consumer&l3=D%3Das_tex&c4=D%3Dg&v4=D%3DpageName&c5=macintel&c8=AOS%3A%20home&c9=10.15.x&c14=airpods%20pro%20-%20overview%20%28us%29&v14=en-us&c17=3%3A3&c20=AOS%3A%20US%20Consumer&c25=other%20nav%20or%20none&c28=900&c40=10078&v49=D%3Dr&v54=D%3Dg&v93=1&v94=4.54&v97=s.t-p&c.&a.&activitymap.&page=airpods%20pro%20-%20overview%20%28us%29&link=store%20-%20%2Fus%2Fshop%2Fgoto%2Fstore%20-%20globalnav&region=globalnav&pageIDType=1&.activitymap&.a&.c&pid=airpods%20pro%20-%20overview%20%28us%29&pidt=1&oid=https%3A%2F%2Fwww.apple.com%2Fus%2Fshop%2Fgoto%2Fstore&ot=A&s=1440x900&c=24&j=1.6&v=N&k=Y&bw=1440&bh=900&AQE=1",
+  "kind": "image",
+  "type": "image/gif",
+  "bytes": 43
+ },
+ {
+  "url": "https://securemetrics.apple.com/b/ss/applestoreww/1/JS-2.23.0/s19258600473574?AQB=1&ndh=1&pf=1&t=27%2F8%2F2026%2018%3A52%3A43%200%20240&fid=3896B5D64B69B026-051C4D576028D94D&ce=UTF-8&cdp=2&cl=1800&pageName=airpods%20pro%20-%20overview%20%28us%29&g=https%3A%2F%2Fwww.apple.com%2Fairpods-pro%2F&cc=USD&ch=www.us.airpodspro&server=ac-2.30.0&events=event232%2Cevent220%3D1.473%2Cevent221%3D0.000%2Cevent222%3D0.000%2Cevent223%3D0.000%2Cevent224%3D0.843%2Cevent225%3D0.493%2Cevent226%3D1.133%2Cevent227%3D0.055%2Cevent228%3D0.793%2Cevent229%3D1.981%2Cevent230%3D0.006%2Cevent231%3D4.339&h1=www.us.airpodspro&v3=aos%3A%20us&l3=D%3Das_tex&c4=D%3Dg&v4=D%3DpageName&v9=43%20%7C%20aos%3A%20homepage&c14=aos%3A%20homepage&v14=en-us&c17=7%3A7&c20=aos%3A%20us&c28=900&v54=D%3Dg&c57=aos%3Ashop&v97=s.t-p&s=1440x900&c=24&j=1.6&v=N&k=Y&bw=1440&bh=900&AQE=1",
+  "kind": "image",
+  "type": "image/gif",
+  "bytes": 43
+ },
+ {
+  "url": "https://securemetrics.apple.com/b/ss/applestoreww/1/JS-2.23.0/s15966350775108?AQB=1&ndh=1&pf=1&t=27%2F8%2F2026%2018%3A52%3A48%200%20240&fid=3896B5D64B69B026-051C4D576028D94D&ce=UTF-8&cdp=2&cl=1800&pageName=airpods%20pro%20-%20overview%20%28us%29&g=https%3A%2F%2Fwww.apple.com%2Fairpods-pro%2F&cc=USD&events=event243%3D5.15%2Cevent244&h1=www.us.airpodspro&l3=D%3Das_tex&v4=D%3DpageName&v14=en-us&c34=hero&c35=5.15&c36=1&v54=D%3Dg&v70=airpods%20pro%20-%20overview%20%28us%29%20%7C%20enhanced&v97=s.tl-o&pe=lnk_o&pev2=section%20engagement&s=1440x900&c=24&j=1.6&v=N&k=Y&bw=1440&bh=900&lrt=287&AQE=1",
+  "kind": "image",
+  "type": "image/gif",
+  "bytes": 43
+ },
+ {
+  "url": "https://securemetrics.apple.com/b/ss/applestoreww/1/JS-2.23.0/s13692949840423?AQB=1&ndh=1&pf=1&t=27%2F8%2F2026%2018%3A52%3A50%200%20240&fid=3896B5D64B69B026-051C4D576028D94D&ce=UTF-8&cdp=2&cl=1800&pageName=airpods%20pro%20-%20overview%20%28us%29&g=https%3A%2F%2Fwww.apple.com%2Fairpods-pro%2F&cc=USD&events=event243%3D1.87%2Cevent244&h1=www.us.airpodspro&l3=D%3Das_tex&v4=D%3DpageName&v14=en-us&c34=highlights&c35=1.87&c36=2&v54=D%3Dg&v97=s.tl-o&pe=lnk_o&pev2=section%20engagement&s=1440x900&c=24&j=1.6&v=N&k=Y&bw=1440&bh=900&lrt=97&AQE=1",
+  "kind": "image",
+  "type": "image/gif",
+  "bytes": 43
+ },
+ {
+  "url": "https://securemetrics.apple.com/b/ss/applestoreww/1/JS-2.23.0/s15419021595154?AQB=1&ndh=1&pf=1&t=27%2F8%2F2026%2018%3A52%3A51%200%20240&fid=3896B5D64B69B026-051C4D576028D94D&ce=UTF-8&cdp=2&cl=1800&pageName=airpods%20pro%20-%20overview%20%28us%29&g=https%3A%2F%2Fwww.apple.com%2Fairpods-pro%2F&cc=USD&events=event243%3D1.83%2Cevent244&h1=www.us.airpodspro&l3=D%3Das_tex&v4=D%3DpageName&v14=en-us&c34=product%20viewer&c35=1.83&c36=3&v54=D%3Dg&v97=s.tl-o&pe=lnk_o&pev2=section%20engagement&s=1440x900&c=24&j=1.6&v=N&k=Y&bw=1440&bh=900&lrt=159&AQE=1",
+  "kind": "image",
+  "type": "image/gif",
+  "bytes": 43
+ },
+ {
+  "url": "https://securemetrics.apple.com/b/ss/applestoreww/1/JS-2.23.0/s11159676315783?AQB=1&ndh=1&pf=1&t=27%2F8%2F2026%2018%3A52%3A55%200%20240&fid=3896B5D64B69B026-051C4D576028D94D&ce=UTF-8&cdp=2&cl=1800&pageName=airpods%20pro%20-%20overview%20%28us%29&g=https%3A%2F%2Fwww.apple.com%2Fairpods-pro%2F&cc=USD&events=event243%3D1.65%2Cevent244&h1=www.us.airpodspro&l3=D%3Das_tex&v4=D%3DpageName&v14=en-us&c34=noise%20control%20gallery&c35=1.65&c36=5&v54=D%3Dg&v97=s.tl-o&pe=lnk_o&pev2=section%20engagement&s=1440x900&c=24&j=1.6&v=N&k=Y&bw=1440&bh=900&lrt=199&AQE=1",
+  "kind": "image",
+  "type": "image/gif",
+  "bytes": 43
+ },
+ {
+  "url": "https://securemetrics.apple.com/b/ss/applestoreww/1/JS-2.23.0/s19102476098008?AQB=1&ndh=1&pf=1&t=27%2F8%2F2026%2018%3A52%3A58%200%20240&fid=3896B5D64B69B026-051C4D576028D94D&ce=UTF-8&cdp=2&cl=1800&pageName=airpods%20pro%20-%20overview%20%28us%29&g=https%3A%2F%2Fwww.apple.com%2Fairpods-pro%2F&cc=USD&events=event243%3D3.33%2Cevent244&h1=www.us.airpodspro&l3=D%3Das_tex&v4=D%3DpageName&v14=en-us&c34=audio%20performance&c35=3.33&c36=6&v54=D%3Dg&v97=s.tl-o&pe=lnk_o&pev2=section%20engagement&s=1440x900&c=24&j=1.6&v=N&k=Y&bw=1440&bh=900&lrt=104&AQE=1",
+  "kind": "image",
+  "type": "image/gif",
+  "bytes": 43
+ },
+ {
+  "url": "https://securemetrics.apple.com/b/ss/applestoreww/1/JS-2.23.0/s15081347753214?AQB=1&ndh=1&pf=1&t=27%2F8%2F2026%2018%3A53%3A2%200%20240&fid=3896B5D64B69B026-051C4D576028D94D&ce=UTF-8&cdp=2&cl=1800&pageName=airpods%20pro%20-%20overview%20%28us%29&g=https%3A%2F%2Fwww.apple.com%2Fairpods-pro%2F&cc=USD&events=event243%3D3.45%2Cevent244&h1=www.us.airpodspro&l3=D%3Das_tex&v4=D%3DpageName&v14=en-us&c34=personalized%20listening&c35=3.45&c36=7&v54=D%3Dg&v97=s.tl-o&pe=lnk_o&pev2=section%20engagement&s=1440x900&c=24&j=1.6&v=N&k=Y&bw=1440&bh=900&lrt=112&AQE=1",
+  "kind": "image",
+  "type": "image/gif",
+  "bytes": 43
+ },
+ {
+  "url": "https://securemetrics.apple.com/b/ss/applestoreww/1/JS-2.23.0/s13104142440873?AQB=1&ndh=1&pf=1&t=27%2F8%2F2026%2018%3A53%3A5%200%20240&fid=3896B5D64B69B026-051C4D576028D94D&ce=UTF-8&cdp=2&cl=1800&pageName=airpods%20pro%20-%20overview%20%28us%29&g=https%3A%2F%2Fwww.apple.com%2Fairpods-pro%2F&cc=USD&events=event243%3D3.68%2Cevent244&h1=www.us.airpodspro&l3=D%3Das_tex&v4=D%3DpageName&v14=en-us&c34=fitness&c35=3.68&c36=8&v54=D%3Dg&v97=s.tl-o&pe=lnk_o&pev2=section%20engagement&s=1440x900&c=24&j=1.6&v=N&k=Y&bw=1440&bh=900&lrt=135&AQE=1",
+  "kind": "image",
+  "type": "image/gif",
+  "bytes": 43
+ },
+ {
+  "url": "https://securemetrics.apple.com/b/ss/applestoreww/1/JS-2.23.0/s15386905275104?AQB=1&ndh=1&pf=1&t=27%2F8%2F2026%2018%3A53%3A7%200%20240&fid=3896B5D64B69B026-051C4D576028D94D&ce=UTF-8&cdp=2&cl=1800&pageName=airpods%20pro%20-%20overview%20%28us%29&g=https%3A%2F%2Fwww.apple.com%2Fairpods-pro%2F&cc=USD&events=event243%3D2.02%2Cevent244&h1=www.us.airpodspro&l3=D%3Das_tex&v4=D%3DpageName&v14=en-us&c34=hearing%20health%20intro&c35=2.02&c36=9&v54=D%3Dg&v97=s.tl-o&pe=lnk_o&pev2=section%20engagement&s=1440x900&c=24&j=1.6&v=N&k=Y&bw=1440&bh=900&lrt=281&AQE=1",
+  "kind": "image",
+  "type": "image/gif",
+  "bytes": 43
+ },
+ {
+  "url": "https://securemetrics.apple.com/b/ss/applestoreww/1/JS-2.23.0/s14108924446667?AQB=1&ndh=1&pf=1&t=27%2F8%2F2026%2018%3A53%3A8%200%20240&fid=3896B5D64B69B026-051C4D576028D94D&ce=UTF-8&cdp=2&cl=1800&pageName=airpods%20pro%20-%20overview%20%28us%29&g=https%3A%2F%2Fwww.apple.com%2Fairpods-pro%2F&cc=USD&events=event243%3D1.68%2Cevent244&h1=www.us.airpodspro&l3=D%3Das_tex&v4=D%3DpageName&v14=en-us&c34=hearing%20health%20gallery&c35=1.68&c36=10&v54=D%3Dg&v97=s.tl-o&pe=lnk_o&pev2=section%20engagement&s=1440x900&c=24&j=1.6&v=N&k=Y&bw=1440&bh=900&lrt=249&AQE=1",
+  "kind": "image",
+  "type": "image/gif",
+  "bytes": 43
+ },
+ {
+  "url": "https://securemetrics.apple.com/b/ss/applestoreww/1/JS-2.23.0/s18023448376402?AQB=1&ndh=1&pf=1&t=27%2F8%2F2026%2018%3A53%3A11%200%20240&fid=3896B5D64B69B026-051C4D576028D94D&ce=UTF-8&cdp=2&cl=1800&pageName=airpods%20pro%20-%20overview%20%28us%29&g=https%3A%2F%2Fwww.apple.com%2Fairpods-pro%2F&cc=USD&events=event243%3D2.60%2Cevent244&h1=www.us.airpodspro&l3=D%3Das_tex&v4=D%3DpageName&v14=en-us&c34=magical%20experience&c35=2.60&c36=11&v54=D%3Dg&v97=s.tl-o&pe=lnk_o&pev2=section%20engagement&s=1440x900&c=24&j=1.6&v=N&k=Y&bw=1440&bh=900&lrt=83&AQE=1",
+  "kind": "image",
+  "type": "image/gif",
+  "bytes": 43
+ },
+ {
+  "url": "https://securemetrics.apple.com/b/ss/applestoreww/1/JS-2.23.0/s12951821338438?AQB=1&ndh=1&pf=1&t=27%2F8%2F2026%2018%3A53%3A16%200%20240&fid=3896B5D64B69B026-051C4D576028D94D&ce=UTF-8&cdp=2&cl=1800&pageName=airpods%20pro%20-%20overview%20%28us%29&g=https%3A%2F%2Fwww.apple.com%2Fairpods-pro%2F&cc=USD&events=event243%3D2.13%2Cevent244&h1=www.us.airpodspro&l3=D%3Das_tex&v4=D%3DpageName&v14=en-us&c34=why%20apple%20gallery&c35=2.13&c36=15&v54=D%3Dg&v97=s.tl-o&pe=lnk_o&pev2=section%20engagement&s=1440x900&c=24&j=1.6&v=N&k=Y&bw=1440&bh=900&lrt=80&AQE=1",
+  "kind": "image",
+  "type": "image/gif",
+  "bytes": 43
+ },
+ {
+  "url": "https://securemetrics.apple.com/b/ss/applestoreww/1/JS-2.23.0/s11637901490112?AQB=1&ndh=1&pf=1&t=27%2F8%2F2026%2018%3A53%3A19%200%20240&fid=3896B5D64B69B026-051C4D576028D94D&ce=UTF-8&cdp=2&cl=1800&pageName=airpods%20pro%20-%20overview%20%28us%29&g=https%3A%2F%2Fwww.apple.com%2Fairpods-pro%2F&cc=USD&events=event243%3D3.58%2Cevent244&h1=www.us.airpodspro&l3=D%3Das_tex&v4=D%3DpageName&v14=en-us&c34=compare&c35=3.58&c36=16&v54=D%3Dg&v97=s.tl-o&pe=lnk_o&pev2=section%20engagement&s=1440x900&c=24&j=1.6&v=N&k=Y&bw=1440&bh=900&lrt=414&AQE=1",
+  "kind": "image",
+  "type": "image/gif",
+  "bytes": 43
+ },
+ {
+  "url": "https://securemetrics.apple.com/b/ss/applestoreww/1/JS-2.23.0/s11645675953948?AQB=1&ndh=1&pf=1&t=27%2F8%2F2026%2018%3A53%3A20%200%20240&fid=3896B5D64B69B026-051C4D576028D94D&ce=UTF-8&cdp=2&cl=1800&pageName=airpods%20pro%20-%20overview%20%28us%29&g=https%3A%2F%2Fwww.apple.com%2Fairpods-pro%2F&cc=USD&events=event243%3D1.52%2Cevent244&h1=www.us.airpodspro&l3=D%3Das_tex&v4=D%3DpageName&v14=en-us&c34=environment%20gallery&c35=1.52&c36=17&v54=D%3Dg&v97=s.tl-o&pe=lnk_o&pev2=section%20engagement&s=1440x900&c=24&j=1.6&v=N&k=Y&bw=1440&bh=900&lrt=121&AQE=1",
+  "kind": "image",
+  "type": "image/gif",
+  "bytes": 43
+ },
+ {
+  "url": "https://securemetrics.apple.com/b/ss/applestoreww/1/JS-2.23.0/s16237016522603?AQB=1&ndh=1&pf=1&t=27%2F8%2F2026%2018%3A53%3A21%200%20240&fid=3896B5D64B69B026-051C4D576028D94D&ce=UTF-8&cdp=2&cl=1800&pageName=airpods%20pro%20-%20overview%20%28us%29&g=https%3A%2F%2Fwww.apple.com%2Fairpods-pro%2F&cc=USD&events=event406&h1=www.us.airpodspro&l3=D%3Das_tex&v4=D%3DpageName&v14=en-us&v54=D%3Dg&v97=s.tl-o&pe=lnk_o&pev2=end%20of%20page&s=1440x900&c=24&j=1.6&v=N&k=Y&bw=1440&bh=900&lrt=68&AQE=1",
+  "kind": "image",
+  "type": "image/gif",
+  "bytes": 43
+ },
+ {
+  "url": "https://www.apple.com/ac/globalfooter/8/en_CA/assets/ac-footer/breadcrumbs/separator/icon_large.svg",
+  "kind": "image",
+  "type": "image/svg+xml",
+  "bytes": 190
+ },
+ {
+  "url": "https://www.apple.com/ac/globalfooter/8/en_CA/assets/ac-footer/breadcrumbs/apple/icon_large.svg",
+  "kind": "image",
+  "type": "image/svg+xml",
+  "bytes": 626
+ },
+ {
+  "url": "https://securemetrics.apple.com/b/ss/applestoreww/1/JS-2.23.0/s14783319271975?AQB=1&pccr=true&vidn=355CCF341C541FA2-40001F0F424AB7E4&ndh=1&pf=1&t=27%2F8%2F2026%2018%3A53%3A27%200%20240&fid=1B4CB418AB6B6BAE-2B5820343ED1C544&ce=UTF-8&cdp=2&cl=1800&pageName=airpods%20pro%20-%20overview%20%28ca%29&g=https%3A%2F%2Fwww.apple.com%2Fca%2Fairpods-pro%2F&cc=USD&ch=www.ca.airpodspro&server=ac-2.30.0&h1=www.ca.airpodspro&v3=aos%3A%20ca&l3=D%3Das_tex&c4=D%3Dg&v4=D%3DpageName&v14=en-ca&c20=aos%3A%20ca&v54=D%3Dg&v97=s.t-p&s=1440x900&c=24&j=1.6&v=N&k=Y&bw=1440&bh=900&AQE=1",
+  "kind": "image",
+  "type": "image/gif",
+  "bytes": 43
+ },
+ {
+  "url": "https://www.apple.com/ca/airpods-pro/images/overview/highlights/highlights_live_translation__ga7nep85dr6m_large.jpg",
+  "kind": "image",
+  "type": "image/jpeg",
+  "bytes": 76940,
+  "saved": "assets/image-highlights_live_translation__ga7nep85dr6m_large-8d84cd50.jpg"
+ },
+ {
+  "url": "https://securemetrics.apple.com/b/ss/applestoreww/1/JS-2.23.0/s13635418297198?AQB=1&ndh=1&pf=1&t=27%2F8%2F2026%2018%3A53%3A31%200%20240&fid=1B4CB418AB6B6BAE-2B5820343ED1C544&ce=UTF-8&cdp=2&cl=1800&pageName=airpods%20pro%20-%20overview%20%28ca%29&g=https%3A%2F%2Fwww.apple.com%2Fca%2Fairpods-pro%2F&cc=USD&events=event243%3D3.52%2Cevent244&h1=www.ca.airpodspro&l3=D%3Das_tex&v4=D%3DpageName&v14=en-ca&c34=hero&c35=3.52&c36=1&v54=D%3Dg&v70=airpods%20pro%20-%20overview%20%28ca%29%20%7C%20enhanced&v97=s.tl-o&pe=lnk_o&pev2=section%20engagement&s=1440x900&c=24&j=1.6&v=N&k=Y&bw=1440&bh=900&lrt=385&AQE=1",
+  "kind": "image",
+  "type": "image/gif",
+  "bytes": 43
+ },
+ {
+  "url": "https://securemetrics.apple.com/b/ss/applestoreww/1/JS-2.23.0/s12511778585004?AQB=1&ndh=1&pf=1&t=27%2F8%2F2026%2018%3A53%3A34%200%20240&fid=1B4CB418AB6B6BAE-2B5820343ED1C544&ce=UTF-8&cdp=2&cl=1800&pageName=airpods%20pro%20-%20overview%20%28ca%29&g=https%3A%2F%2Fwww.apple.com%2Fca%2Fairpods-pro%2F&cc=USD&events=event243%3D2.63%2Cevent244&h1=www.ca.airpodspro&l3=D%3Das_tex&v4=D%3DpageName&v14=en-ca&c34=highlights&c35=2.63&c36=2&v54=D%3Dg&v97=s.tl-o&pe=lnk_o&pev2=section%20engagement&s=1440x900&c=24&j=1.6&v=N&k=Y&bw=1440&bh=900&lrt=466&AQE=1",
+  "kind": "image",
+  "type": "image/gif",
+  "bytes": 43
+ },
+ {
+  "url": "https://securemetrics.apple.com/b/ss/applestoreww/1/JS-2.23.0/s19687163452979?AQB=1&ndh=1&pf=1&t=27%2F8%2F2026%2018%3A53%3A35%200%20240&fid=1B4CB418AB6B6BAE-2B5820343ED1C544&ce=UTF-8&cdp=2&cl=1800&pageName=airpods%20pro%20-%20overview%20%28ca%29&g=https%3A%2F%2Fwww.apple.com%2Fca%2Fairpods-pro%2F&cc=USD&events=event243%3D2.52%2Cevent244&h1=www.ca.airpodspro&l3=D%3Das_tex&v4=D%3DpageName&v14=en-ca&c34=product%20viewer&c35=2.52&c36=3&v54=D%3Dg&v97=s.tl-o&pe=lnk_o&pev2=section%20engagement&s=1440x900&c=24&j=1.6&v=N&k=Y&bw=1440&bh=900&lrt=160&AQE=1",
+  "kind": "image",
+  "type": "image/gif",
+  "bytes": 43
+ },
+ {
+  "url": "https://securemetrics.apple.com/b/ss/applestoreww/1/JS-2.23.0/s16812140810329?AQB=1&ndh=1&pf=1&t=27%2F8%2F2026%2018%3A53%3A38%200%20240&fid=1B4CB418AB6B6BAE-2B5820343ED1C544&ce=UTF-8&cdp=2&cl=1800&pageName=airpods%20pro%20-%20overview%20%28ca%29&g=https%3A%2F%2Fwww.apple.com%2Fca%2Fairpods-pro%2F&cc=USD&events=event243%3D1.28%2Cevent244&h1=www.ca.airpodspro&l3=D%3Das_tex&v4=D%3DpageName&v14=en-ca&c34=noise%20control%20intro&c35=1.28&c36=4&v54=D%3Dg&v97=s.tl-o&pe=lnk_o&pev2=section%20engagement&s=1440x900&c=24&j=1.6&v=N&k=Y&bw=1440&bh=900&lrt=160&AQE=1",
+  "kind": "image",
+  "type": "image/gif",
+  "bytes": 43
+ },
+ {
+  "url": "https://securemetrics.apple.com/b/ss/applestoreww/1/JS-2.23.0/s17161285496742?AQB=1&ndh=1&pf=1&t=27%2F8%2F2026%2018%3A53%3A40%200%20240&fid=1B4CB418AB6B6BAE-2B5820343ED1C544&ce=UTF-8&cdp=2&cl=1800&pageName=airpods%20pro%20-%20overview%20%28ca%29&g=https%3A%2F%2Fwww.apple.com%2Fca%2Fairpods-pro%2F&cc=USD&events=event243%3D1.48%2Cevent244&h1=www.ca.airpodspro&l3=D%3Das_tex&v4=D%3DpageName&v14=en-ca&c34=noise%20control%20gallery&c35=1.48&c36=5&v54=D%3Dg&v97=s.tl-o&pe=lnk_o&pev2=section%20engagement&s=1440x900&c=24&j=1.6&v=N&k=Y&bw=1440&bh=900&lrt=231&AQE=1",
+  "kind": "image",
+  "type": "image/gif",
+  "bytes": 43
+ },
+ {
+  "url": "https://securemetrics.apple.com/b/ss/applestoreww/1/JS-2.23.0/s13602805113826?AQB=1&ndh=1&pf=1&t=27%2F8%2F2026%2018%3A53%3A43%200%20240&fid=1B4CB418AB6B6BAE-2B5820343ED1C544&ce=UTF-8&cdp=2&cl=1800&pageName=airpods%20pro%20-%20overview%20%28ca%29&g=https%3A%2F%2Fwww.apple.com%2Fca%2Fairpods-pro%2F&cc=USD&events=event243%3D3.88%2Cevent244&h1=www.ca.airpodspro&l3=D%3Das_tex&v4=D%3DpageName&v14=en-ca&c34=audio%20performance&c35=3.88&c36=6&v54=D%3Dg&v97=s.tl-o&pe=lnk_o&pev2=section%20engagement&s=1440x900&c=24&j=1.6&v=N&k=Y&bw=1440&bh=900&lrt=76&AQE=1",
+  "kind": "image",
+  "type": "image/gif",
+  "bytes": 43
+ },
+ {
+  "url": "https://securemetrics.apple.com/b/ss/applestoreww/1/JS-2.23.0/s12118089028777?AQB=1&pccr=true&vidn=355CCF3F4C4575AB-40000F2C806BBF10&ndh=1&pf=1&t=27%2F8%2F2026%2018%3A53%3A49%200%20240&fid=736A432AEFCA8A85-3D4DBCDFFB2CA170&ce=UTF-8&cdp=2&cl=1800&pageName=apple%20-%20index%2Ftab%20%28us%29&g=https%3A%2F%2Fwww.apple.com%2F&cc=USD&ch=www.us.homepage&server=ac-2.30.0&h1=www.us.homepage&v3=aos%3A%20us&l3=D%3Das_tex&c4=D%3Dg&v4=D%3DpageName&v14=en-us&c20=aos%3A%20us&v54=D%3Dg&v97=s.t-p&s=1440x900&c=24&j=1.6&v=N&k=Y&bw=1440&bh=900&AQE=1",
+  "kind": "image",
+  "type": "image/gif",
+  "bytes": 43
+ },
+ {
+  "url": "https://www.apple.com/v/homepage/images/iphone-duo/a/hero_iphone_duo_announce__fh4u8yzndpe2_largetall.jpg",
+  "kind": "image",
+  "type": "image/jpeg",
+  "bytes": 115271,
+  "saved": "assets/image-hero_iphone_duo_announce__fh4u8yzndpe2_largetall-a4f02dba.jpg"
+ },
+ {
+  "url": "https://www.apple.com/v/homepage/images/apple-watch-series-12/a/hero_apple_watch_series_12__n9rln7bzvwya_largetall.jpg",
+  "kind": "image",
+  "type": "image/jpeg",
+  "bytes": 60412,
+  "saved": "assets/image-ro_apple_watch_series_12__n9rln7bzvwya_largetall-cae7d2dc.jpg"
+ },
+ {
+  "url": "https://www.apple.com/v/homepage/images/logos/apple-watch-series-12/a/hero_logo_apple_watch_series_12__eze8r897c5me_large.png",
+  "kind": "image",
+  "type": "image/png",
+  "bytes": 3789
+ },
+ {
+  "url": "https://securemetrics.apple.com/b/ss/applestoreww/1/JS-2.23.0/s11563580481680?AQB=1&ndh=1&pf=1&t=27%2F8%2F2026%2018%3A53%3A54%200%20240&fid=736A432AEFCA8A85-3D4DBCDFFB2CA170&ce=UTF-8&cdp=2&cl=1800&pageName=apple%20-%20index%2Ftab%20%28us%29&g=https%3A%2F%2Fwww.apple.com%2F&cc=USD&events=event243%3D3.23%2Cevent244&h1=www.us.homepage&l3=D%3Das_tex&v4=D%3DpageName&v14=en-us&c34=hero-iphone-18-pro&c35=3.23&c36=1&v54=D%3Dg&v97=s.tl-o&pe=lnk_o&pev2=section%20engagement&s=1440x900&c=24&j=1.6&v=N&k=Y&bw=1440&bh=900&lrt=1582&AQE=1",
+  "kind": "image",
+  "type": "image/gif",
+  "bytes": 43
+ },
+ {
+  "url": "https://www.apple.com/v/homepage/images/logos/apple-watch-ultra-4/a/promo_logo_apple_watch_ultra_4__bc6ish8cjaeq_large.png",
+  "kind": "image",
+  "type": "image/png",
+  "bytes": 2141
+ },
+ {
+  "url": "https://www.apple.com/v/homepage/images/apple-watch-ultra-4/a/promo_apple_watch_ultra_4__e4r3qertak2u_large.jpg",
+  "kind": "image",
+  "type": "image/jpeg",
+  "bytes": 41689
+ },
+ {
+  "url": "https://www.apple.com/v/homepage/images/mac-mini/a/promo_mac_mini_m6__pwypzbjgopea_large.jpg",
+  "kind": "image",
+  "type": "image/jpeg",
+  "bytes": 23695
+ },
+ {
+  "url": "https://www.apple.com/v/homepage/images/ipad-air-m4/a/promo_ipad_air_m4__bgcv7t286k8y_large.jpg",
+  "kind": "image",
+  "type": "image/jpeg",
+  "bytes": 86212,
+  "saved": "assets/image-a-promo_ipad_air_m4__bgcv7t286k8y_large-09b3acad.jpg"
+ },
+ {
+  "url": "https://www.apple.com/v/homepage/images/macbook-air-m5/a/promo_macbook_air_m5__e5xk2yysqiie_large.jpg",
+  "kind": "image",
+  "type": "image/jpeg",
+  "bytes": 44775
+ },
+ {
+  "url": "https://securemetrics.apple.com/b/ss/applestoreww/1/JS-2.23.0/s16579736023790?AQB=1&ndh=1&pf=1&t=27%2F8%2F2026%2018%3A53%3A55%200%20240&fid=736A432AEFCA8A85-3D4DBCDFFB2CA170&ce=UTF-8&cdp=2&cl=1800&pageName=apple%20-%20index%2Ftab%20%28us%29&g=https%3A%2F%2Fwww.apple.com%2F&cc=USD&events=event243%3D1.22%2Cevent244&h1=www.us.homepage&l3=D%3Das_tex&v4=D%3DpageName&v14=en-us&c34=hero-iphone-duo&c35=1.22&c36=2&v54=D%3Dg&v97=s.tl-o&pe=lnk_o&pev2=section%20engagement&s=1440x900&c=24&j=1.6&v=N&k=Y&bw=1440&bh=900&lrt=64&AQE=1",
+  "kind": "image",
+  "type": "image/gif",
+  "bytes": 43
+ },
+ {
+  "url": "https://www.apple.com/v/homepage/images/logos/ipad-air-m4/a/promo_logo_ipad_air__dqdj4ni03quu_large.png",
+  "kind": "image",
+  "type": "image/png",
+  "bytes": 3106
+ },
+ {
+  "url": "https://www.apple.com/v/homepage/images/apple-upgrade/a/promo_apple_upgrade_startframe__e9bf3nb054ae_large.jpg",
+  "kind": "image",
+  "type": "image/jpeg",
+  "bytes": 11462
+ },
+ {
+  "url": "https://www.apple.com/v/homepage/images/apple-upgrade/a/promo_apple_upgrade__jvn6udm4tx2e_large.jpg",
+  "kind": "image",
+  "type": "image/jpeg",
+  "bytes": 26460
+ },
+ {
+  "url": "https://www.apple.com/v/homepage/images/apple-card/a/promo_apple_card__d8xz4kd4evwy_large.jpg",
+  "kind": "image",
+  "type": "image/jpeg",
+  "bytes": 34867
+ },
+ {
+  "url": "https://www.apple.com/105/media/us/home/2026/abb2ec52-6e62-4771-84e4-d1e689324d6d/anim/promo/large.mp4",
+  "kind": "video",
+  "type": "video/mp4",
+  "bytes": 223915,
+  "saved": "assets/video-promo-large-de9a3f3c.mp4",
+  "fetched_after": true
+ },
+ {
+  "url": "https://www.apple.com/v/homepage/images/logos/apple-upgrade/a/promo_logo_apple_upgrade__lwuohffdzjem_large.png",
+  "kind": "image",
+  "type": "image/png",
+  "bytes": 3298
+ },
+ {
+  "url": "https://www.apple.com/v/homepage/images/logos/apple-card/a/promo_logo_apple_card__28vxrcexz0ia_large.png",
+  "kind": "image",
+  "type": "image/png",
+  "bytes": 2083
+ },
+ {
+  "url": "https://securemetrics.apple.com/b/ss/applestoreww/1/JS-2.23.0/s13226533547971?AQB=1&ndh=1&pf=1&t=27%2F8%2F2026%2018%3A53%3A56%200%20240&fid=736A432AEFCA8A85-3D4DBCDFFB2CA170&ce=UTF-8&cdp=2&cl=1800&pageName=apple%20-%20index%2Ftab%20%28us%29&g=https%3A%2F%2Fwww.apple.com%2F&cc=USD&events=event243%3D1.23%2Cevent244&h1=www.us.homepage&l3=D%3Das_tex&v4=D%3DpageName&v14=en-us&c34=hero-apple-watch-series-12&c35=1.23&c36=3&v54=D%3Dg&v97=s.tl-o&pe=lnk_o&pev2=section%20engagement&s=1440x900&c=24&j=1.6&v=N&k=Y&bw=1440&bh=900&lrt=78&AQE=1",
+  "kind": "image",
+  "type": "image/gif",
+  "bytes": 43
+ },
+ {
+  "url": "https://www.apple.com/v/home/cj/images/tv-gallery/logo_hero_light__d7t8cya4x26a_small.png",
+  "kind": "image",
+  "type": "image/png",
+  "bytes": 424
+ },
+ {
+  "url": "https://is1-ssl.mzstatic.com/image/thumb/EJSCPD6sWV9Ib13RNrmy2g/220x54.png",
+  "kind": "image",
+  "type": "image/png",
+  "bytes": 11581
+ },
+ {
+  "url": "https://is1-ssl.mzstatic.com/image/thumb/Features/v4/47/76/ea/4776ea5e-5e00-a76b-c8f1-6fda44050f30/3dd9b6d8-a87a-4a15-80bb-0cc06dfa62d4.png/980x522sr.jpg",
+  "kind": "image",
+  "type": "image/jpeg",
+  "bytes": 145336,
+  "saved": "assets/image-d9b6d8-a87a-4a15-80bb-0cc06dfa62d4-png-980x522sr-44fb3995.jpg"
+ },
+ {
+  "url": "https://is1-ssl.mzstatic.com/image/thumb/oglUrIV-GAOPYCYKh5AlBQ/980x522sr.jpg",
+  "kind": "image",
+  "type": "image/jpeg",
+  "bytes": 132179,
+  "saved": "assets/image-oglUrIV-GAOPYCYKh5AlBQ-980x522sr-0d2b9e52.jpg"
+ },
+ {
+  "url": "https://is1-ssl.mzstatic.com/image/thumb/x5JjmiSD75wN12-HmmZRcg/980x522sr.jpg",
+  "kind": "image",
+  "type": "image/jpeg",
+  "bytes": 147546,
+  "saved": "assets/image-x5JjmiSD75wN12-HmmZRcg-980x522sr-66ef5ba5.jpg"
+ },
+ {
+  "url": "https://is1-ssl.mzstatic.com/image/thumb/Features221/v4/f0/ac/1e/f0ac1e58-0027-49d0-378e-68470edfb0ec/3b7d6fac-0061-401c-9716-742245053fd0.png/220x54.png",
+  "kind": "image",
+  "type": "image/png",
+  "bytes": 3556
+ },
+ {
+  "url": "https://is1-ssl.mzstatic.com/image/thumb/Zx5Sg1u1k0piIUXxTOWIYw/220x54.png",
+  "kind": "image",
+  "type": "image/png",
+  "bytes": 4536
+ },
+ {
+  "url": "https://is1-ssl.mzstatic.com/image/thumb/Cc6MMzxFzD1gVqnd6IslKA/220x54.png",
+  "kind": "image",
+  "type": "image/png",
+  "bytes": 4883
+ },
+ {
+  "url": "https://is1-ssl.mzstatic.com/image/thumb/eD8DZGJ170t3MyFhlWOkdw/980x522sr.jpg",
+  "kind": "image",
+  "type": "image/jpeg",
+  "bytes": 151344,
+  "saved": "assets/image-eD8DZGJ170t3MyFhlWOkdw-980x522sr-eb8520d5.jpg"
+ },
+ {
+  "url": "https://is1-ssl.mzstatic.com/image/thumb/Features/v4/78/57/f6/7857f6ec-a4ed-87dc-dea9-a6ed02888722/ebd59c17-8e95-49b1-aec0-44aec57388ee.png/980x522sr.jpg",
+  "kind": "image",
+  "type": "image/jpeg",
+  "bytes": 152885,
+  "saved": "assets/image-d59c17-8e95-49b1-aec0-44aec57388ee-png-980x522sr-cbcb6ac3.jpg"
+ },
+ {
+  "url": "https://is1-ssl.mzstatic.com/image/thumb/Kc1Xx3Z1QBOuXe1EHDu4TA/220x54.png",
+  "kind": "image",
+  "type": "image/png",
+  "bytes": 2949
+ },
+ {
+  "url": "https://is1-ssl.mzstatic.com/image/thumb/NYVrbe6J5p8oSnrx8VoJUA/980x522sr.jpg",
+  "kind": "image",
+  "type": "image/jpeg",
+  "bytes": 90198,
+  "saved": "assets/image-NYVrbe6J5p8oSnrx8VoJUA-980x522sr-314318b0.jpg"
+ },
+ {
+  "url": "https://is1-ssl.mzstatic.com/image/thumb/GuFO8-F50phJZZKeXV5YLA/220x54.png",
+  "kind": "image",
+  "type": "image/png",
+  "bytes": 6179
+ },
+ {
+  "url": "https://is1-ssl.mzstatic.com/image/thumb/ZUCp6pyyffalTQpg4UESLQ/980x522sr.jpg",
+  "kind": "image",
+  "type": "image/jpeg",
+  "bytes": 174869,
+  "saved": "assets/image-ZUCp6pyyffalTQpg4UESLQ-980x522sr-e3593b16.jpg"
+ },
+ {
+  "url": "https://is1-ssl.mzstatic.com/image/thumb/h3886zSp5gKViScZl44WTw/220x54.png",
+  "kind": "image",
+  "type": "image/png",
+  "bytes": 3383
+ },
+ {
+  "url": "https://is1-ssl.mzstatic.com/image/thumb/CqMFl0CvUAUE1axxV4k-ew/980x522sr.jpg",
+  "kind": "image",
+  "type": "image/jpeg",
+  "bytes": 181766,
+  "saved": "assets/image-CqMFl0CvUAUE1axxV4k-ew-980x522sr-6496cec6.jpg"
+ },
+ {
+  "url": "https://is1-ssl.mzstatic.com/image/thumb/vXNv4MQ8aLXIkWQTZxw-BQ/220x54.png",
+  "kind": "image",
+  "type": "image/png",
+  "bytes": 4713
+ },
+ {
+  "url": "https://is1-ssl.mzstatic.com/image/thumb/b-b9eb0IET479YbfP-t1cA/980x522sr.jpg",
+  "kind": "image",
+  "type": "image/jpeg",
+  "bytes": 127416,
+  "saved": "assets/image-b-b9eb0IET479YbfP-t1cA-980x522sr-a4813a13.jpg"
+ },
+ {
+  "url": "https://is1-ssl.mzstatic.com/image/thumb/2O76_V3dS7VrJAjsyXvY2Q/220x54.png",
+  "kind": "image",
+  "type": "image/png",
+  "bytes": 4871
+ },
+ {
+  "url": "https://is1-ssl.mzstatic.com/image/thumb/Features/v4/d2/c0/34/d2c034a9-4c6f-c97f-2cc8-85b056699f62/a6b27345-5c84-471f-99aa-c84fc695814e.png/196x196SC.DN01.jpg?l=en-US",
+  "kind": "image",
+  "type": "image/jpeg",
+  "bytes": 14807
+ },
+ {
+  "url": "https://is1-ssl.mzstatic.com/image/thumb/Features211/v4/55/2b/5f/552b5f86-46e6-d848-ee06-5395bf09c206/83e0ed3d-c824-4ed9-9572-ae9e784568cb.png/196x196sr.jpg",
+  "kind": "image",
+  "type": "image/jpeg",
+  "bytes": 16166
+ },
+ {
+  "url": "https://is1-ssl.mzstatic.com/image/thumb/Features/v4/da/39/f5/da39f55d-14f1-68df-21a7-c1fdd4de5303/f1a2cd59-4a5e-43c2-bb87-d3f4e1210317.png/196x196SC.DN01.jpg?l=en-US",
+  "kind": "image",
+  "type": "image/jpeg",
+  "bytes": 14647
+ },
+ {
+  "url": "https://is1-ssl.mzstatic.com/image/thumb/Features211/v4/5b/b3/4a/5bb34a60-695c-a96f-75ec-8a957fc2a20b/45899847-e52c-44a1-9ce5-09aedebb7a78.png/417x234.jpg",
+  "kind": "image",
+  "type": "image/jpeg",
+  "bytes": 30891
+ },
+ {
+  "url": "https://is1-ssl.mzstatic.com/image/thumb/Features221/v4/89/07/9c/89079c5b-29da-cd1f-4ce3-ad68f3d28a68/f0346506-4c9f-4be1-b275-11fa4004b103.png/417x234.jpg",
+  "kind": "image",
+  "type": "image/jpeg",
+  "bytes": 35552
+ },
+ {
+  "url": "https://is1-ssl.mzstatic.com/image/thumb/Features221/v4/c1/e6/09/c1e609c8-914d-6037-cda2-4cfdaf87a263/07eaa70a-574b-4abe-aea4-bcb530d837e3.png/417x234.jpg",
+  "kind": "image",
+  "type": "image/jpeg",
+  "bytes": 17803
+ },
+ {
+  "url": "https://is1-ssl.mzstatic.com/image/thumb/Features211/v4/53/55/d7/5355d758-e5b7-b406-f004-bb98d03ecb38/9388d284-2a0b-43e8-86e0-5852e8559d18.png/417x234.jpg",
+  "kind": "image",
+  "type": "image/jpeg",
+  "bytes": 38200
+ },
+ {
+  "url": "https://is1-ssl.mzstatic.com/image/thumb/Video221/v4/24/25/85/2425854a-14c7-fb09-533b-110aaf585363/HI_BW_0217_artwork_en_ID336111_0.png/417x234.jpg",
+  "kind": "image",
+  "type": "image/jpeg",
+  "bytes": 26700
+ },
+ {
+  "url": "https://is1-ssl.mzstatic.com/image/thumb/Features211/v4/2a/75/df/2a75df27-703b-4712-6d95-9c9e29ca1dc6/fa77ffdb-61aa-47e7-920a-7da1876f3929.png/417x234.jpg",
+  "kind": "image",
+  "type": "image/jpeg",
+  "bytes": 33138
+ },
+ {
+  "url": "https://securemetrics.apple.com/b/ss/applestoreww/1/JS-2.23.0/s11988437443097?AQB=1&ndh=1&pf=1&t=27%2F8%2F2026%2018%3A53%3A58%200%20240&fid=736A432AEFCA8A85-3D4DBCDFFB2CA170&ce=UTF-8&cdp=2&cl=1800&pageName=apple%20-%20index%2Ftab%20%28us%29&g=https%3A%2F%2Fwww.apple.com%2F&cc=USD&events=event243%3D1.22%2Cevent244&h1=www.us.homepage&l3=D%3Das_tex&v4=D%3DpageName&v14=en-us&c34=promo-macbook-air-m5&c35=1.22&c36=6&v54=D%3Dg&v97=s.tl-o&pe=lnk_o&pev2=section%20engagement&s=1440x900&c=24&j=1.6&v=N&k=Y&bw=1440&bh=900&lrt=76&AQE=1",
+  "kind": "image",
+  "type": "image/gif",
+  "bytes": 43
+ },
+ {
+  "url": "https://securemetrics.apple.com/b/ss/applestoreww/1/JS-2.23.0/s19855876635001?AQB=1&ndh=1&pf=1&t=27%2F8%2F2026%2018%3A53%3A58%200%20240&fid=736A432AEFCA8A85-3D4DBCDFFB2CA170&ce=UTF-8&cdp=2&cl=1800&pageName=apple%20-%20index%2Ftab%20%28us%29&g=https%3A%2F%2Fwww.apple.com%2F&cc=USD&events=event243%3D1.22%2Cevent244&h1=www.us.homepage&l3=D%3Das_tex&v4=D%3DpageName&v14=en-us&c34=promo-ipad-air-m4&c35=1.22&c36=7&v54=D%3Dg&v97=s.tl-o&pe=lnk_o&pev2=section%20engagement&s=1440x900&c=24&j=1.6&v=N&k=Y&bw=1440&bh=900&AQE=1",
+  "kind": "image",
+  "type": "image/gif",
+  "bytes": 43
+ },
+ {
+  "url": "https://securemetrics.apple.com/b/ss/applestoreww/1/JS-2.23.0/s13828028268581?AQB=1&ndh=1&pf=1&t=27%2F8%2F2026%2018%3A53%3A59%200%20240&fid=736A432AEFCA8A85-3D4DBCDFFB2CA170&ce=UTF-8&cdp=2&cl=1800&pageName=apple%20-%20index%2Ftab%20%28us%29&g=https%3A%2F%2Fwww.apple.com%2F&cc=USD&events=event243%3D1.27%2Cevent244&h1=www.us.homepage&l3=D%3Das_tex&v4=D%3DpageName&v14=en-us&c34=promo-apple-upgrade&c35=1.27&c36=8&v54=D%3Dg&v97=s.tl-o&pe=lnk_o&pev2=section%20engagement&s=1440x900&c=24&j=1.6&v=N&k=Y&bw=1440&bh=900&lrt=146&AQE=1",
+  "kind": "image",
+  "type": "image/gif",
+  "bytes": 43
+ },
+ {
+  "url": "https://securemetrics.apple.com/b/ss/applestoreww/1/JS-2.23.0/s1643811587421?AQB=1&ndh=1&pf=1&t=27%2F8%2F2026%2018%3A53%3A59%200%20240&fid=736A432AEFCA8A85-3D4DBCDFFB2CA170&ce=UTF-8&cdp=2&cl=1800&pageName=apple%20-%20index%2Ftab%20%28us%29&g=https%3A%2F%2Fwww.apple.com%2F&cc=USD&events=event243%3D1.27%2Cevent244&h1=www.us.homepage&l3=D%3Das_tex&v4=D%3DpageName&v14=en-us&c34=promo-apple-card&c35=1.27&c36=9&v54=D%3Dg&v97=s.tl-o&pe=lnk_o&pev2=section%20engagement&s=1440x900&c=24&j=1.6&v=N&k=Y&bw=1440&bh=900&AQE=1",
+  "kind": "image",
+  "type": "image/gif",
+  "bytes": 43
+ },
+ {
+  "url": "https://securemetrics.apple.com/b/ss/applestoreww/1/JS-2.23.0/s14037386970899?AQB=1&ndh=1&pf=1&t=27%2F8%2F2026%2018%3A53%3A59%200%20240&fid=736A432AEFCA8A85-3D4DBCDFFB2CA170&ce=UTF-8&cdp=2&cl=1800&pageName=apple%20-%20index%2Ftab%20%28us%29&g=https%3A%2F%2Fwww.apple.com%2F&cc=USD&events=event406&h1=www.us.homepage&l3=D%3Das_tex&v4=D%3DpageName&v14=en-us&v54=D%3Dg&v97=s.tl-o&pe=lnk_o&pev2=end%20of%20page&s=1440x900&c=24&j=1.6&v=N&k=Y&bw=1440&bh=900&lrt=185&AQE=1",
+  "kind": "image",
+  "type": "image/gif",
+  "bytes": 43
+ },
+ {
+  "url": "https://securemetrics.apple.com/b/ss/applestoreww/1/JS-2.23.0/s19902332174481?AQB=1&ndh=1&pf=1&t=27%2F8%2F2026%2018%3A54%3A0%200%20240&fid=736A432AEFCA8A85-3D4DBCDFFB2CA170&ce=UTF-8&cdp=2&cl=1800&pageName=apple%20-%20index%2Ftab%20%28us%29&g=https%3A%2F%2Fwww.apple.com%2F&cc=USD&events=event243%3D2.52%2Cevent244&h1=www.us.homepage&l3=D%3Das_tex&v4=D%3DpageName&v14=en-us&c34=endless-entertainment&c35=2.52&c36=10&v54=D%3Dg&v97=s.tl-o&pe=lnk_o&pev2=section%20engagement&s=1440x900&c=24&j=1.6&v=N&k=Y&bw=1440&bh=900&lrt=152&AQE=1",
+  "kind": "image",
+  "type": "image/gif",
+  "bytes": 43
+ },
+ {
+  "url": "https://securemetrics.apple.com/b/ss/applestoreww/1/JS-2.23.0/s12970986450748?AQB=1&ndh=1&pf=1&t=27%2F8%2F2026%2018%3A54%3A0%200%20240&fid=736A432AEFCA8A85-3D4DBCDFFB2CA170&ce=UTF-8&cdp=2&cl=1800&pageName=apple%20-%20index%2Ftab%20%28us%29&g=https%3A%2F%2Fwww.apple.com%2F&cc=USD&events=event243%3D1.33%2Cevent244&h1=www.us.homepage&l3=D%3Das_tex&v4=D%3DpageName&v14=en-us&c34=fam-gallery&c35=1.33&c36=12&v54=D%3Dg&v97=s.tl-o&pe=lnk_o&pev2=section%20engagement&s=1440x900&c=24&j=1.6&v=N&k=Y&bw=1440&bh=900&AQE=1",
+  "kind": "image",
+  "type": "image/gif",
+  "bytes": 43
+ },
+ {
+  "url": "https://www.apple.com/shop/mdp/echo/echo.png?app=com.apple.www.Store&pageViewId=8cc8dfg1tn-mukf0zlf&recordTime=1790549644084&referrer=&referer=&host=www.apple.com&pageHostname=www.apple.com&pageUrl=https://www.apple.com/store&pagePathname=/store&pageShopPath=/store&pageUrlParams=&eventType=pageview&environment=&format=common&region=amr&country=US&sf=us&segment=Consumer&locale=en-us&node=standard/home&pageResource=rs-merch-4&feature=store-home",
+  "kind": "image",
+  "type": "image/png",
+  "bytes": 298
+ },
+ {
+  "url": "https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/step1-chat-specialist_AV3?wid=108&hei=108&fmt=png-alpha&.v=VG1QV0dEVmFFbGlWeHJSNHZES2lmTmdmQTRXK0E1N3JTbXpVbXZRZmdFM2xPZFBFc0NlM0thN1AxUmdGV3ppS1JSOW5PYzUxT0dEclIzbzVKNW1KNHFIc1Z6YnIvdEY3LzUydTl3OVVKeG8",
+  "kind": "image",
+  "type": "image/png",
+  "bytes": 17177
+ },
+ {
+  "url": "https://securemetrics.apple.com/b/ss/applestoreww/1/JS-2.23.0/s12675994793358?AQB=1&pccr=true&vidn=355CCF465852B061-400013E2B44CFB88&ndh=1&pf=1&t=27%2F8%2F2026%2018%3A54%3A4%200%20240&fid=48E1A7746AC25643-2C818E56BB057C13&ce=UTF-8&cdp=2&cl=1800&pageName=AOS%3A%20homepage&g=https%3A%2F%2Fwww.apple.com%2Fstore&h.&architecture=x86&bitness=64&platformVersion=10_15_7&.h&cc=USD&ch=D%3Dh1&server=graf%409.8.0&h1=aos%3Ashop&l1=D%3Das_xs&v3=AOS%3A%20US%20Consumer&l3=D%3Das_tex&c4=D%3Dg&v4=D%3DpageName&c5=macintel&c8=AOS%3A%20home&c9=10.15.x&v14=en-us&c20=AOS%3A%20US%20Consumer&c25=direct%20entry&c40=10078&v54=D%3Dg&v97=s.t-p&s=1440x900&c=24&j=1.6&v=N&k=Y&bw=1440&bh=900&AQE=1",
+  "kind": "image",
+  "type": "image/gif",
+  "bytes": 43
+ },
+ {
+  "url": "https://www.apple.com/fxpmdp/ec/as/v1/echo.png?app=com.apple.www.Store&pageViewId=8cc8dfg1tn-mukf0zlf&recordTime=1790549644084&referrer=&referer=&host=www.apple.com&pageHostname=www.apple.com&pageUrl=https://www.apple.com/store&pagePathname=/store&pageShopPath=/store&pageUrlParams=&eventType=pageview&environment=&format=common&region=amr&country=US&sf=us&segment=Consumer&locale=en-us&node=standard/home&pageResource=rs-merch-4&feature=store-home",
+  "kind": "image",
+  "type": "image/png",
+  "bytes": 298
+ },
+ {
+  "url": "https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/MKD14?wid=400&hei=400&fmt=jpeg&qlt=90&.v=N2h5aXJ1UzhhZkZBdzZPbHFNVXVQdllvYS9naDJJdU9KTWdGWjhKWFRmSm9oZU53dUpSNDREN3kzS1ZxdTB3dkc2SS94Y3NuNHJ6WTBoSzRUUi9oWmc",
+  "kind": "image",
+  "type": "image/jpeg",
+  "bytes": 36207
+ },
+ {
+  "url": "https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/MK944?wid=400&hei=400&fmt=jpeg&qlt=90&.v=OWl4YnBIOURycDFJbXlPb0RoWWJZZllvYS9naDJJdU9KTWdGWjhKWFRmSnQydnRpRHU5Uy9kTG9scGY4KzlBS1RoUytEMDlJUUg1M2FZZWRmVHV5bmc",
+  "kind": "image",
+  "type": "image/jpeg",
+  "bytes": 14020
+ },
+ {
+  "url": "https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/store-card-40-accessories-202609?wid=800&hei=1000&fmt=webp&qlt=90&.v=K1NBYnFSRndoRHEyUklJLyttMlQ2TG1qbzh6M0pUN1JpZkczYjRybGZNUnFTRjNxbmh1UnU2R29ibGdpZUFXc25ZdDMremx3N21EQS9OQlBTRXgxeUp5dXpFTzJma0dsYURVWlNjRzA0b3hScUlPVWprbUpBaEFzSlFPM0dUcXg&traceId=1",
+  "kind": "image",
+  "type": "image/webp",
+  "bytes": 60390,
+  "saved": "assets/image-is-store-card-40-accessories-202609-3dabbdda.webp"
+ },
+ {
+  "url": "https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/MK854?wid=400&hei=400&fmt=jpeg&qlt=90&.v=QTM5c09jcUxEa0JFY2RzWDU5MkZYUFlvYS9naDJJdU9KTWdGWjhKWFRmS3F5b1hMVE5mTUVPc2xqOGlZQjhJMVJZbFhZYXpkSVluMUVjNEE4TlNEelE",
+  "kind": "image",
+  "type": "image/jpeg",
+  "bytes": 20024
+ },
+ {
+  "url": "https://securemetrics.apple.com/b/ss/applestoreww/1/JS-2.23.0/s1420931147933?AQB=1&ndh=1&pf=1&t=27%2F8%2F2026%2018%3A54%3A10%200%20240&fid=48E1A7746AC25643-2C818E56BB057C13&ce=UTF-8&cdp=2&cl=1800&pageName=AOS%3A%20homepage&g=https%3A%2F%2Fwww.apple.com%2Fstore&cc=USD&server=as-1.12.0&events=event243%3D5.56%2Cevent244&h1=aos%3Ashop&l1=D%3Das_xs&v3=AOS%3A%20US%20Consumer&l3=D%3Das_tex&c4=D%3Dg&v4=D%3DpageName&c5=macintel&c8=AOS%3A%20home&v14=en-us&c20=AOS%3A%20US%20Consumer&c34=shelf-0&c35=5.56&c36=1&c40=10078&v54=D%3Dg&v97=s.tl-o&pe=lnk_o&pev2=section%20engagement&s=1440x900&c=24&j=1.6&v=N&k=Y&bw=1440&bh=900&lrt=283&AQE=1",
+  "kind": "image",
+  "type": "image/gif",
+  "bytes": 43
+ },
+ {
+  "url": "https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/store-card-50-specialist-help-202512?wid=960&hei=1000&fmt=webp&qlt=90&.v=TkJLQU9OWTZMS1N4dlhoOWl3SEhrUkxnN3NTOHN5WTV1c3NEYkc1TXhDMzcydVEyUlBCcVdrTlBkR2FhK21pbGdpcjhyQnJrZTk3NDVpVGh0RDBPL2F4QUljQmVqbVJQUjNhWWMxZDJtSUs0cGR2RlBjQW9meUMyVmRrUStsS0I&traceId=1",
+  "kind": "image",
+  "type": "image/webp",
+  "bytes": 76002,
+  "saved": "assets/image-is-store-card-50-specialist-help-202512-477eaa02.webp"
+ },
+ {
+  "url": "https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/store-card-50-specialist-video-202609?wid=960&hei=1000&fmt=webp&qlt=90&.v=TkJLQU9OWTZMS1N4dlhoOWl3SEhrYnlpTHAvaU1TZWJjTXg3K2FoelBrWXZBcWg0NUNQNURSblhmSFVuWmNkcjhKazZ3eldNWjF4eFJ4OTNUaDNrTE84bWFqWVR4REw4TEdQdmNaWHhsWUl4RHN4dm1kTUpyNlp1d0NZKzQ1bTI&traceId=1",
+  "kind": "image",
+  "type": "image/webp",
+  "bytes": 23968
+ },
+ {
+  "url": "https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/store-card-50-taa-ai-202604?wid=960&hei=1000&fmt=webp&qlt=90&.v=cFEvalhFakpZVzg4RFZsWktqbXFNYnZ0eGJDYUF3MFBoaDZXSkNFUHdVMGYzUHRVc053YldlK2NuZForb0M1V1RVbGY1Uno3Zm5uM1BxeHV2clpndUszNFJmWXBYWTFIQU9YRkJ2NlRXOFE&traceId=1",
+  "kind": "image",
+  "type": "image/webp",
+  "bytes": 126916,
+  "saved": "assets/image-is-store-card-50-taa-ai-202604-a97c7e85.webp"
+ },
+ {
+  "url": "https://securemetrics.apple.com/b/ss/applestoreww/1/JS-2.23.0/s15008916267687?AQB=1&ndh=1&pf=1&t=27%2F8%2F2026%2018%3A54%3A11%200%20240&fid=48E1A7746AC25643-2C818E56BB057C13&ce=UTF-8&cdp=2&cl=1800&pageName=AOS%3A%20homepage&g=https%3A%2F%2Fwww.apple.com%2Fstore&cc=USD&server=as-1.12.0&events=event243%3D6.66%2Cevent244&h1=aos%3Ashop&l1=D%3Das_xs&v3=AOS%3A%20US%20Consumer&l3=D%3Das_tex&c4=D%3Dg&v4=D%3DpageName&c5=macintel&c8=AOS%3A%20home&v14=en-us&c20=AOS%3A%20US%20Consumer&c34=mzone%3Aaos_store_latest&c35=6.66&c36=2&c40=10078&v54=D%3Dg&v97=s.tl-o&pe=lnk_o&pev2=section%20engagement&s=1440x900&c=24&j=1.6&v=N&k=Y&bw=1440&bh=900&AQE=1",
+  "kind": "image",
+  "type": "image/gif",
+  "bytes": 43
+ },
+ {
+  "url": "https://securemetrics.apple.com/b/ss/applestoreww/1/JS-2.23.0/s16360686723325?AQB=1&ndh=1&pf=1&t=27%2F8%2F2026%2018%3A54%3A11%200%20240&fid=48E1A7746AC25643-2C818E56BB057C13&ce=UTF-8&cdp=2&cl=1800&pageName=AOS%3A%20homepage&g=https%3A%2F%2Fwww.apple.com%2Fstore&cc=USD&server=as-1.12.0&events=event243%3D1.32%2Cevent244&h1=aos%3Ashop&l1=D%3Das_xs&v3=AOS%3A%20US%20Consumer&l3=D%3Das_tex&c4=D%3Dg&v4=D%3DpageName&c5=macintel&c8=AOS%3A%20home&v14=en-us&c20=AOS%3A%20US%20Consumer&c34=mzone%3Aaos_store_story&c35=1.32&c36=3&c40=10078&v54=D%3Dg&v97=s.tl-o&pe=lnk_o&pev2=section%20engagement&s=1440x900&c=24&j=1.6&v=N&k=Y&bw=1440&bh=900&lrt=1&AQE=1",
+  "kind": "image",
+  "type": "image/gif",
+  "bytes": 43
+ },
+ {
+  "url": "https://securemetrics.apple.com/b/ss/applestoreww/1/JS-2.23.0/s1188787729092?AQB=1&ndh=1&pf=1&t=27%2F8%2F2026%2018%3A54%3A12%200%20240&fid=48E1A7746AC25643-2C818E56BB057C13&ce=UTF-8&cdp=2&cl=1800&pageName=AOS%3A%20homepage&g=https%3A%2F%2Fwww.apple.com%2Fstore&cc=USD&server=graf%409.8.0&events=event4&products=module.aso.store.the_latest.iphone_18pro.202609%3Bcontent%3B%3B%3B%3BeVar60%3DAOS_Store_Latest%7CeVar61%3DHdoAOZEQTgKkrm3LzrT9Yg%3AINLINE%7CeVar65%3D1%2F14%2Cmodule.aso.store.the_latest.iphone_ultra.202609%3Bcontent%3B%3B%3B%3BeVar60%3DAOS_Store_Latest%7CeVar61%3D5sDfTdQQRFeDjuUt7FTo6g%3AINLINE%7CeVar65%3D2%2F14%2Cmodule.aso.store.the_latest.apple_watch_s12.202609%3Bcontent%3B%3B%3B%3BeVar60%3DAOS_Store_Latest%7CeVar61%3DH2tKuDtpS_W9fTVhgkPs1Q%3AINLINE%7CeVar65%3D3%2F14&h1=aos%3Ashop&l1=D%3Das_xs&v3=AOS%3A%20US%20Consumer&l3=D%3Das_tex&c4=D%3Dg&v4=D%3DpageName&c5=macintel&c8=AOS%3A%20home&v14=en-us&c20=AOS%3A%20US%20Consumer&c40=10078&v54=D%3Dg&v97=s.tl-o&s=1440x900&c=24&j=1.6&v=N&k=Y&bw=1440&bh=900&AQE=1",
+  "kind": "image",
+  "type": "image/gif",
+  "bytes": 43
+ },
+ {
+  "url": "https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/store-card-40-applemusic-202609?wid=800&hei=1000&fmt=webp&qlt=90&.v=REFqMnc0RUtNcWNBem5LRlFGZ25lVnBDREdpM1ZWYnFOUHZEd2VEc2Mxbm45S05qekNUdVUwMVFyK1pKaERUd3lPWjFvdU5EZVdwUnRCZ2RHSDBFS29SU0YrbEdQaWNZOWZzT2VHbkhZUFM1dDgvV3BhU1hoSzFPUEZjam5HQ2g&traceId=1",
+  "kind": "image",
+  "type": "image/webp",
+  "bytes": 37262
+ },
+ {
+  "url": "https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/airpods-5-select-202609?wid=400&hei=400&fmt=jpeg&qlt=90&.v=eFJocjZCNlgzZlpSRHllMEpvT0N5eEZjNmJ2dXFURDFqZlZHVEo2R0NvQWNEOENNc3A4dkF0RFh0REsvbE5KaDFzbTBrZzVkZnR6bTJYY0pBQ2w2cWQwV280dS9aTG5xeUV0d1pVbGNjZzQ",
+  "kind": "image",
+  "type": "image/jpeg",
+  "bytes": 10703
+ },
+ {
+  "url": "https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/airpods-max-select-202409-midnight?wid=400&hei=400&fmt=jpeg&qlt=90&.v=azQxRkVJKzd6V3J0aGNqWFhLMzBmdmVWNWdHYnp5cHkwMldsSElEOHpydzZxenl2STByZjdmUGYvR3dmM2RON01LWlMyVmEreEd6UVBWaXRHdkpLMWppQWdEZjVIVUoweGVCQnUrWEowU1ZhN1ZHY2VKVGQ4Nmx6UkdSNXd0OGI",
+  "kind": "image",
+  "type": "image/jpeg",
+  "bytes": 22995
+ },
+ {
+  "url": "https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/airpods-pro-3-hero-select-202509?wid=400&hei=400&fmt=jpeg&qlt=90&.v=cmp4MmZ6OWxOeHNNTXh4SzlBNUpEb1RucE9zZTI5eEREaWZpY29lSld3eVRLNDVIb25yeWxTSzhxdXNNaFBBZmJGcXNRQnFCV0w3WVRjTExvdm1ic1YxRUxFRmRlWDBITzhnRmZ5OTRmaVdKTExiOEFsRmxtQ2Nua0tRSC83MkI",
+  "kind": "image",
+  "type": "image/jpeg",
+  "bytes": 13271
+ },
+ {
+  "url": "https://securemetrics.apple.com/b/ss/applestoreww/1/JS-2.23.0/s17477623172334?AQB=1&ndh=1&pf=1&t=27%2F8%2F2026%2018%3A54%3A13%200%20240&fid=48E1A7746AC25643-2C818E56BB057C13&ce=UTF-8&cdp=2&cl=1800&pageName=AOS%3A%20homepage&g=https%3A%2F%2Fwww.apple.com%2Fstore&cc=USD&server=as-1.12.0&events=event243%3D1.77%2Cevent244&h1=aos%3Ashop&l1=D%3Das_xs&v3=AOS%3A%20US%20Consumer&l3=D%3Das_tex&c4=D%3Dg&v4=D%3DpageName&c5=macintel&c8=AOS%3A%20home&v14=en-us&c20=AOS%3A%20US%20Consumer&c34=shelf-3&c35=1.77&c36=4&c40=10078&v54=D%3Dg&v97=s.tl-o&pe=lnk_o&pev2=section%20engagement&s=1440x900&c=24&j=1.6&v=N&k=Y&bw=1440&bh=900&AQE=1",
+  "kind": "image",
+  "type": "image/gif",
+  "bytes": 43
+ },
+ {
+  "url": "https://securemetrics.apple.com/b/ss/applestoreww/1/JS-2.23.0/s12392113651533?AQB=1&ndh=1&pf=1&t=27%2F8%2F2026%2018%3A54%3A13%200%20240&fid=48E1A7746AC25643-2C818E56BB057C13&ce=UTF-8&cdp=2&cl=1800&pageName=AOS%3A%20homepage&g=https%3A%2F%2Fwww.apple.com%2Fstore&cc=USD&server=graf%409.8.0&events=event4&products=module.aso.store.accessories_story.202609%3Bcontent%3B%3B%3B%3BeVar60%3DAOS_Store_Story%7CeVar61%3DIQv1HuNHR0eSr7pq4RmU9Q%3AINLINE%7CeVar65%3D1%2F12%2Cmodule.aso.standard.product.simple.33%3BMKD14%3B%3B%3B%3BeVar60%3DAOS_Store_Story%7CeVar61%3DIQv1HuNHR0eSr7pq4RmU9Q%3AINLINE%7CeVar65%3D2%2F12%2Cmodule.aso.standard.product.simple.33%3BMK944%3B%3B%3B%3BeVar60%3DAOS_Store_Story%7CeVar61%3DIQv1HuNHR0eSr7pq4RmU9Q%3AINLINE%7CeVar65%3D3%2F12%2Cmodule.aso.standard.product.simple.33%3BMK854%3B%3B%3B%3BeVar60%3DAOS_Store_Story%7CeVar61%3DIQv1HuNHR0eSr7pq4RmU9Q%3AINLINE%7CeVar65%3D4%2F12&h1=aos%3Ashop&l1=D%3Das_xs&v3=AOS%3A%20US%20Consumer&l3=D%3Das_tex&c4=D%3Dg&v4=D%3DpageName&c5=macintel&c8=AOS%3A%20home&v14=en-us&c20=AOS%3A%20US%20Consumer&c40=10078&v54=D%3Dg&v97=s.tl-o&s=1440x900&c=24&j=1.6&v=N&k=Y&bw=1440&bh=900&AQE=1",
+  "kind": "image",
+  "type": "image/gif",
+  "bytes": 43
+ },
+ {
+  "url": "https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/store-card-50-apple-intelligence-202609?wid=960&hei=1000&fmt=jpeg&qlt=90&.v=SFNxMjRYSTFLdjBJZG1UYjBKRUNDalZCM0g0MTRQL0NONjZoQUpUNEpyYVdEMXA0MWpoUGsyVlhVK0RESnBoeHAwckMxbExydC8yeDhtUjlFVHdKVnFPZGdrdkJYeDZmRHNaQ2JLUk0vWjZlZ1o3YzRHbjRxR1pKd2NYWGxuMTA",
+  "kind": "image",
+  "type": "image/jpeg",
+  "bytes": 127297,
+  "saved": "assets/image-is-store-card-50-apple-intelligence-202609-e3488fef.jpg"
+ },
+ {
+  "url": "https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/store-card-50-continuity-202609_GEO_US?wid=960&hei=1000&fmt=webp&qlt=90&.v=MkxpRXJEbEM4SjVucjFvcTdEU1BlNktGcElSZCtpUGVDcVhib0c0eEptbkFkWTlnaEhRWXFUU1Nhem4xR20wcHBxK0ZBNmxGbmUyUFZlUkRMaDBrbFNNMFp4YWR1N3E2b1dlVHpTc3F2TXdOOEcvS0M0OWFBQ2FJclFHb2VWSW0&traceId=1",
+  "kind": "image",
+  "type": "image/webp",
+  "bytes": 65028,
+  "saved": "assets/image-is-store-card-50-continuity-202609_GEO_US-b74209c6.webp"
+ },
+ {
+  "url": "https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/store-card-50-applecare-202609?wid=960&hei=1000&fmt=p-jpg&qlt=95&.v=SFNxMjRYSTFLdjBJZG1UYjBKRUNDZ0Z6cmtkamptY3RnWDhHQklKRlVnNEloZHRRYWt5UUpyTGVwNEhDZEV3VXg4ZHpEbm5XWGdaM3BiNVRDaG55UlB4RU8zVVBBTEJsd2gvZU9ZN2JGYVVVRk5BYjU4dkMrYjBKSjFqVXFOVGg",
+  "kind": "image",
+  "type": "image/jpeg",
+  "bytes": 113377,
+  "saved": "assets/image-is-store-card-50-applecare-202609-4130307c.jpg"
+ },
+ {
+  "url": "https://securemetrics.apple.com/b/ss/applestoreww/1/JS-2.23.0/s18501087976253?AQB=1&ndh=1&pf=1&t=27%2F8%2F2026%2018%3A54%3A14%200%20240&fid=48E1A7746AC25643-2C818E56BB057C13&ce=UTF-8&cdp=2&cl=1800&pageName=AOS%3A%20homepage&g=https%3A%2F%2Fwww.apple.com%2Fstore&cc=USD&server=as-1.12.0&events=event243%3D1.60%2Cevent244&h1=aos%3Ashop&l1=D%3Das_xs&v3=AOS%3A%20US%20Consumer&l3=D%3Das_tex&c4=D%3Dg&v4=D%3DpageName&c5=macintel&c8=AOS%3A%20home&v14=en-us&c20=AOS%3A%20US%20Consumer&c34=shelf-4&c35=1.60&c36=5&c40=10078&v54=D%3Dg&v97=s.tl-o&pe=lnk_o&pev2=section%20engagement&s=1440x900&c=24&j=1.6&v=N&k=Y&bw=1440&bh=900&AQE=1",
+  "kind": "image",
+  "type": "image/gif",
+  "bytes": 43
+ },
+ {
+  "url": "https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/iphone-card-40-carriertrade-202409?wid=800&hei=1014&fmt=webp&qlt=90&.v=cmVEYjlFVTUrZjdLT25ZZ2djOUZ2WTVRdHN0TWZxV3QyUGs3WkMzR0dyM1Nab1lJcUZwSFVRK1htYlNmZUtPTFNxVmFJL1p3SVNXWlA5RUhlWmdjY2ErK1U5TUo2UVYyTHd5LzN5eFFzZDdwL0d1c3NWVlpVcHFPcTQ2OUZwVTE&traceId=1",
+  "kind": "image",
+  "type": "image/webp",
+  "bytes": 13750
+ },
+ {
+  "url": "https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/store-card-40-business-202609_GEO_US?wid=800&hei=1000&fmt=webp&qlt=90&.v=TVRWamYxMHBJRG5zb0o5SDIweUVibmg3TktHdXNKK2FZZlhwV3k2WGg5Y3dMbFViczZ0TFhCZStvRUM4YWY1UWdpcjhyQnJrZTk3NDVpVGh0RDBPL1FybkdvS2U4d0FhRkRvRXFuOUliNzFnSG9kSmZ4R3dIa1FDV3FhRWtmNEk&traceId=1",
+  "kind": "image",
+  "type": "image/webp",
+  "bytes": 57798
+ },
+ {
+  "url": "https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/store-card-40-education-202609?wid=800&hei=1000&fmt=webp&qlt=90&.v=TysyM3c4L0xvQ1dZWVNWTXZ0ekxPT3FZdktzMlZ6T240YVluQWFKYXhUcjkvamYzRzRvcFlnajNacmhEOC9BeEZXZzlzM2cwVmJseGdsS3RYT09za3ZERG1mS2EyUTN1Q09mUmN2RHljNUIrYWpGdS9XeFgvbS9ITnNYOEhYaG4&traceId=1",
+  "kind": "image",
+  "type": "image/webp",
+  "bytes": 45186
+ },
+ {
+  "url": "https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/store-card-40-refurb-202408?wid=800&hei=1000&fmt=webp&qlt=90&.v=MTZ5STlsTFBndFBGTjdlaHEreGY1YTFsUjh2RWUzeU9adTZtZmNMZDNMVnd5b1hKY2V3T2V4alVLZTRFVTdOK1RVbGY1Uno3Zm5uM1BxeHV2clpndVBFcG82Z2ZoNURDamNUbHI2WWJrc2M&traceId=1",
+  "kind": "image",
+  "type": "image/webp",
+  "bytes": 22346
+ },
+ {
+  "url": "https://securemetrics.apple.com/b/ss/applestoreww/1/JS-2.23.0/s17928917171902?AQB=1&ndh=1&pf=1&t=27%2F8%2F2026%2018%3A54%3A14%200%20240&fid=48E1A7746AC25643-2C818E56BB057C13&ce=UTF-8&cdp=2&cl=1800&pageName=AOS%3A%20homepage&g=https%3A%2F%2Fwww.apple.com%2Fstore&cc=USD&server=as-1.12.0&events=event243%3D1.35%2Cevent244&h1=aos%3Ashop&l1=D%3Das_xs&v3=AOS%3A%20US%20Consumer&l3=D%3Das_tex&c4=D%3Dg&v4=D%3DpageName&c5=macintel&c8=AOS%3A%20home&v14=en-us&c20=AOS%3A%20US%20Consumer&c34=mzone%3Aaos_store_story2&c35=1.35&c36=6&c40=10078&v54=D%3Dg&v97=s.tl-o&pe=lnk_o&pev2=section%20engagement&s=1440x900&c=24&j=1.6&v=N&k=Y&bw=1440&bh=900&AQE=1",
+  "kind": "image",
+  "type": "image/gif",
+  "bytes": 43
+ },
+ {
+  "url": "https://securemetrics.apple.com/b/ss/applestoreww/1/JS-2.23.0/s16876906125129?AQB=1&ndh=1&pf=1&t=27%2F8%2F2026%2018%3A54%3A15%200%20240&fid=48E1A7746AC25643-2C818E56BB057C13&ce=UTF-8&cdp=2&cl=1800&pageName=AOS%3A%20homepage&g=https%3A%2F%2Fwww.apple.com%2Fstore&cc=USD&server=as-1.12.0&events=event243%3D1.37%2Cevent244&h1=aos%3Ashop&l1=D%3Das_xs&v3=AOS%3A%20US%20Consumer&l3=D%3Das_tex&c4=D%3Dg&v4=D%3DpageName&c5=macintel&c8=AOS%3A%20home&v14=en-us&c20=AOS%3A%20US%20Consumer&c34=shelf-6&c35=1.37&c36=7&c40=10078&v54=D%3Dg&v97=s.tl-o&pe=lnk_o&pev2=section%20engagement&s=1440x900&c=24&j=1.6&v=N&k=Y&bw=1440&bh=900&AQE=1",
+  "kind": "image",
+  "type": "image/gif",
+  "bytes": 43
+ },
+ {
+  "url": "https://securemetrics.apple.com/b/ss/applestoreww/1/JS-2.23.0/s19321212729916?AQB=1&ndh=1&pf=1&t=27%2F8%2F2026%2018%3A54%3A15%200%20240&fid=48E1A7746AC25643-2C818E56BB057C13&ce=UTF-8&cdp=2&cl=1800&pageName=AOS%3A%20homepage&g=https%3A%2F%2Fwww.apple.com%2Fstore&cc=USD&server=as-1.12.0&events=event406&h1=aos%3Ashop&l1=D%3Das_xs&v3=AOS%3A%20US%20Consumer&l3=D%3Das_tex&c4=D%3Dg&v4=D%3DpageName&c5=macintel&c8=AOS%3A%20home&v14=en-us&c20=AOS%3A%20US%20Consumer&c40=10078&v54=D%3Dg&v97=s.tl-o&pe=lnk_o&pev2=endOfPage&s=1440x900&c=24&j=1.6&v=N&k=Y&bw=1440&bh=900&AQE=1",
+  "kind": "image",
+  "type": "image/gif",
+  "bytes": 43
+ },
+ {
+  "url": "https://securemetrics.apple.com/b/ss/applestoreww/1/JS-2.23.0/s13954389641031?AQB=1&ndh=1&pf=1&t=27%2F8%2F2026%2018%3A54%3A16%200%20240&fid=48E1A7746AC25643-2C818E56BB057C13&ce=UTF-8&cdp=2&cl=1800&pageName=AOS%3A%20homepage&g=https%3A%2F%2Fwww.apple.com%2Fstore&cc=USD&server=graf%409.8.0&events=event4&products=module.aso.store.apple_music_offer.202609%3Bcontent%3B%3B%3B%3BeVar60%3DAOS_Store_Story2%7CeVar61%3DZ0KaOYIBS8SuBt67moC4Kg%3AINLINE%7CeVar65%3D1%2F8%2Cmodule.aso.standard.product.simple.33%3BMKFW4%3B%3B%3B%3BeVar60%3DAOS_Store_Story2%7CeVar61%3DZ0KaOYIBS8SuBt67moC4Kg%3AINLINE%7CeVar65%3D2%2F8%2Cmodule.aso.standard.product.simple.33%3BMFHP4%3B%3B%3B%3BeVar60%3DAOS_Store_Story2%7CeVar61%3DZ0KaOYIBS8SuBt67moC4Kg%3AINLINE%7CeVar65%3D3%2F8%2Cmodule.aso.standard.product.simple.33%3BMHWK4%3B%3B%3B%3BeVar60%3DAOS_Store_Story2%7CeVar61%3DZ0KaOYIBS8SuBt67moC4Kg%3AINLINE%7CeVar65%3D4%2F8&h1=aos%3Ashop&l1=D%3Das_xs&v3=AOS%3A%20US%20Consumer&l3=D%3Das_tex&c4=D%3Dg&v4=D%3DpageName&c5=macintel&c8=AOS%3A%20home&v14=en-us&c20=AOS%3A%20US%20Consumer&c40=10078&v54=D%3Dg&v97=s.tl-o&s=1440x900&c=24&j=1.6&v=N&k=Y&bw=1440&bh=900&lrt=1&AQE=1",
+  "kind": "image",
+  "type": "image/gif",
+  "bytes": 43
+ },
+ {
+  "url": "https://securemetrics.apple.com/b/ss/applestoreww/1/JS-2.23.0/s14703869808922?AQB=1&ndh=1&pf=1&t=27%2F8%2F2026%2018%3A54%3A17%200%20240&fid=48E1A7746AC25643-2C818E56BB057C13&ce=UTF-8&cdp=2&cl=1800&pageName=AOS%3A%20homepage&g=https%3A%2F%2Fwww.apple.com%2Fstore&cc=USD&server=as-1.12.0&events=event243%3D1.35%2Cevent244&h1=aos%3Ashop&l1=D%3Das_xs&v3=AOS%3A%20US%20Consumer&l3=D%3Das_tex&c4=D%3Dg&v4=D%3DpageName&c5=macintel&c8=AOS%3A%20home&v14=en-us&c20=AOS%3A%20US%20Consumer&c34=shelf-7&c35=1.35&c36=8&c40=10078&v54=D%3Dg&v97=s.tl-o&pe=lnk_o&pev2=section%20engagement&s=1440x900&c=24&j=1.6&v=N&k=Y&bw=1440&bh=900&lrt=1&AQE=1",
+  "kind": "image",
+  "type": "image/gif",
+  "bytes": 43
+ },
+ {
+  "url": "https://www.apple.com/shop/mdp/echo/echo.png?app=com.apple.www.Store&pageViewId=mezm2ooeue-mukf1exv&recordTime=1790549663972&referrer=&referer=&host=www.apple.com&pageHostname=www.apple.com&pageUrl=https://www.apple.com/shop/buy-mac&pagePathname=/shop/buy-mac&pageShopPath=/shop/buy-mac&pageUrlParams=&eventType=pageview&environment=&format=common&region=amr&country=US&sf=us&segment=Consumer&locale=en-us&node=standard/home/shop_mac&pageResource=rs-merch-4&feature=step0",
+  "kind": "image",
+  "type": "image/png",
+  "bytes": 298
+ },
+ {
+  "url": "https://www.apple.com/fxpmdp/ec/as/v1/echo.png?app=com.apple.www.Store&pageViewId=mezm2ooeue-mukf1exv&recordTime=1790549663972&referrer=&referer=&host=www.apple.com&pageHostname=www.apple.com&pageUrl=https://www.apple.com/shop/buy-mac&pagePathname=/shop/buy-mac&pageShopPath=/shop/buy-mac&pageUrlParams=&eventType=pageview&environment=&format=common&region=amr&country=US&sf=us&segment=Consumer&locale=en-us&node=standard/home/shop_mac&pageResource=rs-merch-4&feature=step0",
+  "kind": "image",
+  "type": "image/png",
+  "bytes": 298
+ },
+ {
+  "url": "https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/mba13-skyblue-select-202503_SW_COLOR?wid=32&hei=32&fmt=png-alpha&.v=M2RyY09CWXlTQUp1KzEveHR6VXNxckZUK08zZUpDWjVkdThxRjFOeXpiajJXRUU1Y2dmMGNMbnJtd3ZQZXJkZkhFUzJzeWNxdFZLbFVJWEt6ZkxSQ2VYVFZIbzFyVS8wbnBreWNxbUdjQTJWZWZKZEpnTUg2bTJtOU9qU1hvcWw",
+  "kind": "image",
+  "type": "image/png",
+  "bytes": 1695
+ },
+ {
+  "url": "https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/mac-card-100-customize-202603?wid=1960&hei=740&fmt=png-alpha&.v=WGVJR1JzeVlHQndDQ0hPeUcxZEhIVVNmTzIwVEdWL0ZUQlpNR2hpaFowcHJSYTIyTmVtUXQ0Q1I1cVhOOGlKMDAzOVFHb3N0MkVmS01ZcFh0d1Y4R2hlODcrV3lMcmtBTFFKYWh5cWxTS28",
+  "kind": "image",
+  "type": "image/png",
+  "bytes": 931249,
+  "saved": "assets/image-is-mac-card-100-customize-202603-b5bd4cc5.png"
+ },
+ {
+  "url": "https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/mba13-starlight-select-202503_SW_COLOR?wid=32&hei=32&fmt=png-alpha&.v=U3RnbTBEaGs0WGRSa05FY2NWZjZNYnRZWE8yTitQUnBsaDIyYUxJdEFnMDNMdDVveDRxUjZEMzlNKzB4Y3lXaFpYbzdpWndPdW13WVY2T1lHdnB1aEI0bURxcTJXOWZ5RXR6cmlXM3BKVzR6Tm43NHhoT0NSM25aQXRCUTFKT2s",
+  "kind": "image",
+  "type": "image/png",
+  "bytes": 1694
+ },
+ {
+  "url": "https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/imac-purple-selection-hero-202410_SW_COLOR?wid=32&hei=32&fmt=png-alpha&.v=blJ2cnVSWUNGcVEvNEZYbWJoWlU0alF0YU1UUnRIUUxCamprUlU3VDc5NGExWWkvSjlLd2lWZ1M0N0kxRjVGdUFob2lEelc0ajlLcGhUVS9aRjBUZW8wNzNNNS85cS9WbWhNYzFRd1FFM2JQRzAwa0hOQ0ZXTzJzeFZhamViVSs",
+  "kind": "image",
+  "type": "image/png",
+  "bytes": 2070
+ },
+ {
+  "url": "https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/macbook-neo-citrus-cto-hero-202603_SW_COLOR?wid=32&hei=32&fmt=png-alpha&.v=ZS94WjBVaXYyaDhYaDNHWk9mMHYyVDRHNC9ia01raHJHcTdxWFJxRjZ5RXd5dG5pbk1UTDN4QURRNmpyVTdEMW1TNk5ReHNJUDU3Y290emFpeE5nZkRJZkZoM2NEakJ3YXBmcmxLK250M1pUZzBmYnhlOUpiaGd4UUdsUVJuVzM",
+  "kind": "image",
+  "type": "image/png",
+  "bytes": 1845
+ },
+ {
+  "url": "https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/macbook-neo-indigo-cto-hero-202603_SW_COLOR?wid=32&hei=32&fmt=png-alpha&.v=a3VEZlRDT3pQeGVRbEFRMVc2RnhOd2FqNms1Mi9tbjEyYlJJV2g0T1UrSXd5dG5pbk1UTDN4QURRNmpyVTdEMW1TNk5ReHNJUDU3Y290emFpeE5nZkRJZkZoM2NEakJ3YXBmcmxLK250M1pUZzBmYnhlOUpiaGd4UUdsUVJuVzM",
+  "kind": "image",
+  "type": "image/png",
+  "bytes": 1781
+ },
+ {
+  "url": "https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/macbook-neo-blush-cto-hero-202603_SW_COLOR?wid=32&hei=32&fmt=png-alpha&.v=dzRGMnR1enNhSExNZW1pbWgxVFN0Smg4ZkJvQmJRckx1WVVlKzhOcVZjeCtCRlA5dzYzcGNKU0RnYlNYVWNyaEFob2lEelc0ajlLcGhUVS9aRjBUZWxuaFJPSHIvM1Z1czFTYm9OamJnWkxmU21Ya0NOSnQvRXlnOUIwaFdCaU0",
+  "kind": "image",
+  "type": "image/png",
+  "bytes": 1761
+ },
+ {
+  "url": "https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/mbp14-spaceblack-cto-hero-202410_SW_COLOR?wid=32&hei=32&fmt=png-alpha&.v=YnlWZDdpMFo0bUpJZnBpZjhKM2M3WmJldjZKNUozZEJDc2p3M25qTEh4MWFpQzY4QU1YNUEzRWZDMHpVRXBjSU4xU1Z0cFpWNm8yUlJuN1FJbVJwMUxhcjFkNzhqUTJoNkhreURSVEluTFFMMjdna1dVTUQ4S1BoY1RTMC92SWc",
+  "kind": "image",
+  "type": "image/png",
+  "bytes": 1429
+ },
+ {
+  "url": "https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/imac-blue-selection-hero-202410_SW_COLOR?wid=32&hei=32&fmt=png-alpha&.v=RU4xbVdCWHU2aklxeGVxWlM0WGpqblVNNWd2OEUrbEtmVUZjazJMajNVN25lSjJyZXpzbC9sTnlhY2RJL3Z1b2t0ekFGWTdKMENMdER2NlM3a2pob25qcjNwS2IzOXFTTEZSQUptNlpSeUVTdDhrWXp4eGpmYlNwbjFqODZTRjI",
+  "kind": "image",
+  "type": "image/png",
+  "bytes": 2234
+ },
+ {
+  "url": "https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/mba13-silver-select-202503_SW_COLOR?wid=32&hei=32&fmt=png-alpha&.v=cCtGdk55eHp5QXJpcHVMMTl2dWZRVTd6N3NGS052Vk8vV1djRWEyczF6ei9Gd1V3czBUajQ2VmJvRk1xYmRrbHAxemF2anFla0E2R0xKdlltYU9XUTM5VHdEbmxnTzhrUWhjU3pqd2d5MWwrYWpGdS9XeFgvbS9ITnNYOEhYaG4",
+  "kind": "image",
+  "type": "image/png",
+  "bytes": 660
+ },
+ {
+  "url": "https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/imac-pink-selection-hero-202410_SW_COLOR?wid=32&hei=32&fmt=png-alpha&.v=VDB2djlFR1EyMlZVVHZXT0hzcTdkSFVNNWd2OEUrbEtmVUZjazJMajNVN25lSjJyZXpzbC9sTnlhY2RJL3Z1b2t0ekFGWTdKMENMdER2NlM3a2pob25qcjNwS2IzOXFTTEZSQUptNlpSeUhyZFdieG1yNGNEcmNLUWdINFdSYkc",
+  "kind": "image",
+  "type": "image/png",
+  "bytes": 2258
+ },
+ {
+  "url": "https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/macbook-neo-silver-cto-hero-202603_SW_COLOR?wid=32&hei=32&fmt=png-alpha&.v=NkFjZXRHNmVHaGFnb01FcXZmUnVzUHM5cHhtYlllZHdrVjZSN3pXeDQ2OHd5dG5pbk1UTDN4QURRNmpyVTdEMW1TNk5ReHNJUDU3Y290emFpeE5nZkRJZkZoM2NEakJ3YXBmcmxLK250M2I0NVgzejJqRk5uRkhocmt5V1VDN1Q",
+  "kind": "image",
+  "type": "image/png",
+  "bytes": 1692
+ },
+ {
+  "url": "https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/mbp14-silver-cto-hero-202410_SW_COLOR?wid=32&hei=32&fmt=png-alpha&.v=VS9GZkg3REhOOHRkSTlzK0dOQWlHcFZZZTUyOTdqaENVejl2MW5jVnBGdHpQTUk3ZmtxeDJ4cUJsRkhrYnczSTd0SE55UnFaZ2ZuV2hRZXFXWlNLWDRTN1BXZDFUWERDREVvZXpacjE0VTVXdEdZKzhaSlVMMmlnemlsOVIvYXc",
+  "kind": "image",
+  "type": "image/png",
+  "bytes": 1563
+ },
+ {
+  "url": "https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/step1-chat-specialist_AV4?wid=108&hei=108&fmt=png-alpha&.v=VG1QV0dEVmFFbGlWeHJSNHZES2lmS1RyZWRMejQvTDY4cnlSK1VDSnZTemxPZFBFc0NlM0thN1AxUmdGV3ppS1JSOW5PYzUxT0dEclIzbzVKNW1KNG0yd3czZTNvL0hTaDRSZUJLVHlhZjQ",
+  "kind": "image",
+  "type": "image/png",
+  "bytes": 17511
+ },
+ {
+  "url": "https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/mba13-midnight-select-202503_SW_COLOR?wid=32&hei=32&fmt=png-alpha&.v=MWFRUnJZcWcrd0xyc0tIOUdIbnJlK0duSURuNUhkK2pOZnE1VnZHT1ZSVnpQTUk3ZmtxeDJ4cUJsRkhrYnczSTd0SE55UnFaZ2ZuV2hRZXFXWlNLWDVETmF1TzlyNzJBc3RpSHUzc0ZzV08zVW54TjdsYWM5YThUczNmYkY2VEE",
+  "kind": "image",
+  "type": "image/png",
+  "bytes": 1643
+ },
+ {
+  "url": "https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/mac-card-40-macbook-air-202503?wid=680&hei=528&fmt=webp-alpha&qlt=90&.v=dzRRdVl2UHpmd3BrL2dpaGRDY2RKN3dnWXpNRUFSbE1veTFaYXZqWDhWZ2w2T29GWFRmcGlRaHRKa2ZZeG54SFFUcmZyeDQwOGFDYVkxdC9kdiszb1NMRFRRcGUzWDFGbjRkYUxtVktvb1kzWmNMTjc0WDlDSFFaUU5CcHRIRXk&traceId=1",
+  "kind": "image",
+  "type": "image/webp",
+  "bytes": 35048
+ },
+ {
+  "url": "https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/mac-card-40-macbook-neo-202603?wid=680&hei=528&fmt=webp-alpha&qlt=90&.v=dzRRdVl2UHpmd3BrL2dpaGRDY2RKOFVIc0pMamhtQTdJT2hNaXc2a1F5UWw2T29GWFRmcGlRaHRKa2ZZeG54SFFUcmZyeDQwOGFDYVkxdC9kdiszb1kxV3RqZm1ldVZndzNLREl1dzJwclExV1dVWXdUcFBEZ2o0Ymo3aGgzelg&traceId=1",
+  "kind": "image",
+  "type": "image/webp",
+  "bytes": 9714
+ },
+ {
+  "url": "https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/mac-card-40-imac-202410?wid=680&hei=528&fmt=webp-alpha&qlt=90&.v=SXh2aE4zRm53L0l3NnhGK2wwZFpEeVFpZGxOY0d3emNHMmh4SnZVS1l0Q2VIaXc2MEw4bkw0YWl3NVB2MlBkalhWZFNDYjladVlCSEl1WU5zVlRjVXpycVdOYmtpUEFjN21XWnZGNTVHTG8&traceId=1",
+  "kind": "image",
+  "type": "image/webp",
+  "bytes": 11642
+ },
+ {
+  "url": "https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/mac-card-40-macbookpro-14-16-202410?wid=680&hei=528&fmt=webp-alpha&qlt=90&.v=dzRRdVl2UHpmd3BrL2dpaGRDY2RKL0tDcDdIN2J5MlRJbDZwdXNUam1wUDJ0SUdrYS9VNndoSUR6SjE2NTZ4Q29YazFiUXJYRGVHTUtSYzAvR0hEMG1DdE1qQStidG01WnZHR3RNUXYzb0NqYkZxRnBhd1FBK1RvZHJHZHgyY3M&traceId=1",
+  "kind": "image",
+  "type": "image/webp",
+  "bytes": 7054
+ },
+ {
+  "url": "https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/imac-yellow-selection-hero-202410_SW_COLOR?wid=32&hei=32&fmt=png-alpha&.v=K3J2WUwvMzZjOHpVeVJLUzVBN1FkelF0YU1UUnRIUUxCamprUlU3VDc5NGExWWkvSjlLd2lWZ1M0N0kxRjVGdUFob2lEelc0ajlLcGhUVS9aRjBUZW8wNzNNNS85cS9WbWhNYzFRd1FFM1lVaG9ZdUtYMEdkMGV6OWtLRFFTQkY",
+  "kind": "image",
+  "type": "image/png",
+  "bytes": 2261
+ },
+ {
+  "url": "https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/imac-silver-selection-hero-202410_SW_COLOR?wid=32&hei=32&fmt=png-alpha&.v=enBxTUNkT1VmUkd5OHhndWU3em54RFF0YU1UUnRIUUxCamprUlU3VDc5NGExWWkvSjlLd2lWZ1M0N0kxRjVGdUFob2lEelc0ajlLcGhUVS9aRjBUZW8wNzNNNS85cS9WbWhNYzFRd1FFM2JOdk5aVUlWc1VwZ0ZOdVA5ZE9YcnY",
+  "kind": "image",
+  "type": "image/png",
+  "bytes": 1563
+ },
+ {
+  "url": "https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/imac-green-selection-hero-202410_SW_COLOR?wid=32&hei=32&fmt=png-alpha&.v=OXBoKzFJb3BDZUpIOHZxVVpkMU9BWFplbWdSSm5yODRwMHFXK3h2VWxycGFpQzY4QU1YNUEzRWZDMHpVRXBjSU4xU1Z0cFpWNm8yUlJuN1FJbVJwMVB6c1RxR3RNcTVVSDVKQ3lkckRDSm9KNXlGNkZuL3Y5MWxTWjkxTWkrOVE",
+  "kind": "image",
+  "type": "image/png",
+  "bytes": 2268
+ },
+ {
+  "url": "https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/imac-orange-selection-hero-202410_SW_COLOR?wid=32&hei=32&fmt=png-alpha&.v=QVBJb01PbGhwQWFBOHJxY1RVYWoralF0YU1UUnRIUUxCamprUlU3VDc5NGExWWkvSjlLd2lWZ1M0N0kxRjVGdUFob2lEelc0ajlLcGhUVS9aRjBUZW8wNzNNNS85cS9WbWhNYzFRd1FFM1p1QmNEUHFmQlpWUFFwT3V3QkcxMkk",
+  "kind": "image",
+  "type": "image/png",
+  "bytes": 2298
+ },
+ {
+  "url": "https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/MXK73F_SW_COLOR?wid=32&hei=32&fmt=png-alpha&.v=MU5qM2M0WEt6cGNsaTRuS2hJWFo3MkVwM2FxSDVlQzBpRUdiYWZpalY5eWZEY0JCMmxibnk1SmdSTXBFWi9jMnBqUnhycU9IOUNKNndzNHlhTnI2Qnc",
+  "kind": "image",
+  "type": "image/png",
+  "bytes": 1329
+ },
+ {
+  "url": "https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/MXK83F_SW_COLOR?wid=32&hei=32&fmt=png-alpha&.v=UkhrRjd6SlYvVXhkT0ZXSW4rdWNwMkVwM2FxSDVlQzBpRUdiYWZpalY5eWZEY0JCMmxibnk1SmdSTXBFWi9jMitTc0xMZi9MemI3L2NCTEJES2M5TFE",
+  "kind": "image",
+  "type": "image/png",
+  "bytes": 1292
+ },
+ {
+  "url": "https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/MXK53_SW_COLOR?wid=32&hei=32&fmt=png-alpha&.v=aXJqWnNhUC95OEdFRHd2b2FjUElSVXVZbFJnaWZRWGhXYUNxcUhMUUl5UEhxZjQyanFrTDN5a241WlpqRHdlVHloU1NuY0NlR1VhbVNhQ3hBaVYxMXc",
+  "kind": "image",
+  "type": "image/png",
+  "bytes": 1329
+ },
+ {
+  "url": "https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/MXK63_SW_COLOR?wid=32&hei=32&fmt=png-alpha&.v=MWI0MGF3b0RGNmZxWTFhZ2wwekJNRXVZbFJnaWZRWGhXYUNxcUhMUUl5UEhxZjQyanFrTDN5a241WlpqRHdlVEFOREFhMFV3bUUrL2tEa3kxbWNsR2c",
+  "kind": "image",
+  "type": "image/png",
+  "bytes": 1292
+ },
+ {
+  "url": "https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/MXK93_SW_COLOR?wid=32&hei=32&fmt=png-alpha&.v=OTNNdmF4VFQrd05vYXc0dFhlUzJPVXVZbFJnaWZRWGhXYUNxcUhMUUl5UEhxZjQyanFrTDN5a241WlpqRHdlVERjVHhCQkhOK2JuM0YydktLQVRCcEE",
+  "kind": "image",
+  "type": "image/png",
+  "bytes": 1329
+ },
+ {
+  "url": "https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/MXKA3_SW_COLOR?wid=32&hei=32&fmt=png-alpha&.v=TTR0bjludjFqVGZqUVVUYk1ONFFsRXVZbFJnaWZRWGhXYUNxcUhMUUl5UEhxZjQyanFrTDN5a241WlpqRHdlVGtISnV5RjMvd21GaHdpdFdpbzRkbUE",
+  "kind": "image",
+  "type": "image/png",
+  "bytes": 1292
+ },
+ {
+  "url": "https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/HSLL2_SW_COLOR?wid=32&hei=32&fmt=png-alpha&.v=b1h2UC85czQvdXZZNTNIOHpEUUJuRXVZbFJnaWZRWGhXYUNxcUhMUUl5UEhxZjQyanFrTDN5a241WlpqRHdlVHZNYVp2Njl2dzNoSHdZWTRKc2Z0WHc",
+  "kind": "image",
+  "type": "image/png",
+  "bytes": 1455
+ },
+ {
+  "url": "https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/HS7W2_SW_COLOR?wid=32&hei=32&fmt=png-alpha&.v=STBSOTNSU1BPMmRDc3BXSXFpR09za3VZbFJnaWZRWGhXYUNxcUhMUUl5UEhxZjQyanFrTDN5a241WlpqRHdlVFh5aTZTU0ttYU1XaHpVbllSWXRwd2c",
+  "kind": "image",
+  "type": "image/png",
+  "bytes": 1183
+ },
+ {
+  "url": "https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/MDF14_SW_COLOR?wid=32&hei=32&fmt=png-alpha&.v=SXBQWXE4YnJZdXltd1ZxRXc5V3hqVXVZbFJnaWZRWGhXYUNxcUhMUUl5UEhxZjQyanFrTDN5a241WlpqRHdlVEd3VmI1UG96NEJvRU0valEvQ3F4RHc",
+  "kind": "image",
+  "type": "image/png",
+  "bytes": 1307
+ },
+ {
+  "url": "https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/MPL43_SW_COLOR?wid=32&hei=32&fmt=png-alpha&.v=UXZLcGtnSWVTNlRaTGVkbTFNY3ZkVXVZbFJnaWZRWGhXYUNxcUhMUUl5UHVnZHBjTzh5d2huWkZTclZJejBITEI1UW9DQ2RnVllrREVEQWx3MkRwOHc",
+  "kind": "image",
+  "type": "image/png",
+  "bytes": 992
+ },
+ {
+  "url": "https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/MUVQ3_SW_COLOR?wid=32&hei=32&fmt=png-alpha&.v=L1FnSldtN21OaG9NNk5vejN1Szd4MHVZbFJnaWZRWGhXYUNxcUhMUUl5UHVnZHBjTzh5d2huWkZTclZJejBITHZBMWhBMTRvV1RuQS9HditBbXo2Z0E",
+  "kind": "image",
+  "type": "image/png",
+  "bytes": 877
+ },
+ {
+  "url": "https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/MPL33_SW_COLOR?wid=32&hei=32&fmt=png-alpha&.v=Rk1hNnRPM2kvMGxGbkJyVEQrSGVRMHVZbFJnaWZRWGhXYUNxcUhMUUl5UHVnZHBjTzh5d2huWkZTclZJejBITFdJM3dkaVJRVGRpa204cWZhbkRIQ2c",
+  "kind": "image",
+  "type": "image/png",
+  "bytes": 1096
+ },
+ {
+  "url": "https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/MLYV3_SW_COLOR?wid=32&hei=32&fmt=png-alpha&.v=d0xhSVFWUGFpWnNvVmNrMUROS0FpRXVZbFJnaWZRWGhXYUNxcUhMUUl5UHVnZHBjTzh5d2huWkZTclZJejBITGVxakp5djgwUjRMc0RYak52b0pkNkE",
+  "kind": "image",
+  "type": "image/png",
+  "bytes": 1015
+ },
+ {
+  "url": "https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/MPL23_SW_COLOR?wid=32&hei=32&fmt=png-alpha&.v=OXA5MExaZFkzMHhzQ3J5SUYwKzZsRXVZbFJnaWZRWGhXYUNxcUhMUUl5UHVnZHBjTzh5d2huWkZTclZJejBITG01MlloWnovNUF2SytMRkwwRlJucnc",
+  "kind": "image",
+  "type": "image/png",
+  "bytes": 1071
+ },
+ {
+  "url": "https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/HSK72_SW_COLOR?wid=32&hei=32&fmt=png-alpha&.v=aHM4SncrMVV5WU1tV2kxUDVGVHN3MHVZbFJnaWZRWGhXYUNxcUhMUUl5UEhxZjQyanFrTDN5a241WlpqRHdlVDhpZUNBUUFaL0trQWdUOU9VelVwckE",
+  "kind": "image",
+  "type": "image/png",
+  "bytes": 1544
+ },
+ {
+  "url": "https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/HSM62_SW_COLOR?wid=32&hei=32&fmt=png-alpha&.v=SEtMU2Y4VGx6YzZnU2dERExYdHFJMHVZbFJnaWZRWGhXYUNxcUhMUUl5UEhxZjQyanFrTDN5a241WlpqRHdlVDVYK3lsVXhSMmlscEoxNTJhdTZXeHc",
+  "kind": "image",
+  "type": "image/png",
+  "bytes": 1630
+ },
+ {
+  "url": "https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/HSKV2_SW_COLOR?wid=32&hei=32&fmt=png-alpha&.v=OGZUcFNSNGhiYmk2ZFdMWk83bjJYVXVZbFJnaWZRWGhXYUNxcUhMUUl5UEhxZjQyanFrTDN5a241WlpqRHdlVEhvbVpQUzlINHFTRHFndmxST0M3RlE",
+  "kind": "image",
+  "type": "image/png",
+  "bytes": 1206
+ },
+ {
+  "url": "https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/HSKZ2_SW_COLOR?wid=32&hei=32&fmt=png-alpha&.v=VXRyQ2t3WXhuSHRmVE9QOVlKYlE3a3VZbFJnaWZRWGhXYUNxcUhMUUl5UEhxZjQyanFrTDN5a241WlpqRHdlVFJkakNacTVUaHdMK2dsaGJNbllmMUE",
+  "kind": "image",
+  "type": "image/png",
+  "bytes": 1512
+ },
+ {
+  "url": "https://securemetrics.apple.com/b/ss/applestoreww/1/JS-2.23.0/s19617060188073?AQB=1&pccr=true&vidn=355CCF511359726B-4000043C624DF2D9&ndh=1&pf=1&t=27%2F8%2F2026%2018%3A54%3A24%200%20240&fid=581AEC20785D0FCF-198AC43DE44BA6D2&ce=UTF-8&cdp=2&cl=1800&pageName=AOS%3A%20home%2Fshop_mac&g=https%3A%2F%2Fwww.apple.com%2Fshop%2Fbuy-mac&h.&architecture=x86&bitness=64&platformVersion=10_15_7&.h&cc=USD&ch=D%3Dh1&server=graf%409.8.0&h1=aos%3Ashop&l1=D%3Das_xs&v3=AOS%3A%20US%20Consumer&l3=D%3Das_tex&c4=D%3Dg&v4=D%3DpageName&c5=macintel&c8=AOS%3A%20Mac&c9=10.15.x&v14=en-us&c20=AOS%3A%20US%20Consumer&c25=direct%20entry&c40=10078&v54=D%3Dg&v97=s.t-p&s=1440x900&c=24&j=1.6&v=N&k=Y&bw=1440&bh=900&AQE=1",
+  "kind": "image",
+  "type": "image/gif",
+  "bytes": 43
+ },
+ {
+  "url": "https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/MHX64_SW_COLOR?wid=32&hei=32&fmt=png-alpha&.v=cG96M1BOOWJ6NTZ3dHZFbTBBalNGa3VZbFJnaWZRWGhXYUNxcUhMUUl5UEhxZjQyanFrTDN5a241WlpqRHdlVFdZbC9Qd0VVa1ZxZmNGTmNEVFBMQlE",
+  "kind": "image",
+  "type": "image/png",
+  "bytes": 1087
+ },
+ {
+  "url": "https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/MHX74_SW_COLOR?wid=32&hei=32&fmt=png-alpha&.v=OEZ6aHhWOGhJbmV1cXFXbUpseEgxa3VZbFJnaWZRWGhXYUNxcUhMUUl5UEhxZjQyanFrTDN5a241WlpqRHdlVHNBWG51TU1hbFFYOC9Vc1F0QU9JTnc",
+  "kind": "image",
+  "type": "image/png",
+  "bytes": 1445
+ },
+ {
+  "url": "https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/MHX84_SW_COLOR?wid=32&hei=32&fmt=png-alpha&.v=MXhsUW1HcEV2aHI3SFRTblc1ZG5vRXVZbFJnaWZRWGhXYUNxcUhMUUl5UEhxZjQyanFrTDN5a241WlpqRHdlVEtLSHlMVVlRRXd2Rk1wcFI2bU9wSVE",
+  "kind": "image",
+  "type": "image/png",
+  "bytes": 1461
+ },
+ {
+  "url": "https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/MHX94_SW_COLOR?wid=32&hei=32&fmt=png-alpha&.v=Q1NqNmpTekhEM3FQTnhxOGdRN05NVXVZbFJnaWZRWGhXYUNxcUhMUUl5UEhxZjQyanFrTDN5a241WlpqRHdlVHRaVE9HL01EVkNDZGNGWVZ2VGdqOWc",
+  "kind": "image",
+  "type": "image/png",
+  "bytes": 1489
+ },
+ {
+  "url": "https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/MK8Q4_SW_COLOR?wid=32&hei=32&fmt=png-alpha&.v=U21rY3RpM0NwL0xueTJ5UFlvY2Zma3VZbFJnaWZRWGhXYUNxcUhMUUl5UEhxZjQyanFrTDN5a241WlpqRHdlVDAyOS96MERKVVMvTStnZzJid1BIaWc",
+  "kind": "image",
+  "type": "image/png",
+  "bytes": 1567
+ },
+ {
+  "url": "https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/mac-card-40-mac-mini-202608?wid=680&hei=528&fmt=webp-alpha&qlt=90&.v=MEl2WkNZRmkzTGhzejQ0SHE3b3FoL3h0TlU4Vkg0S1ZyaFgzclFCZ0tyOUMxQXc4S3pBZE5lUDJlTzVYSUYydHY0MVFCSUNCeVRPb2RzNGdVbXhiNTVLeC83Y05DZHpXellSZk90VkQ5VlBBcUt3Rno1cFpXTVFlbE1hRjQ0OXY&traceId=1",
+  "kind": "image",
+  "type": "image/webp",
+  "bytes": 2812
+ },
+ {
+  "url": "https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/mac-card-50-upgrade-video-card-202607?wid=960&hei=1000&fmt=png-alpha&.v=WUI5KzIvN0FSdEZwdXU4cVpyZkF3N0ZkQjlBMmVhU3ZlVEN5V1Q4SllTMjRxUjBod0o4Ky9XbnVZc0hpc3BGajVWTTUydGFjaHVyNmxPYUZmTE1aZjAxbXEzQVhxelVGZUZsME9ZSUYrSG9GUm15UUx0bmRQVmVieElmL3QzTjg",
+  "kind": "image",
+  "type": "image/png",
+  "bytes": 1725545,
+  "saved": "assets/image-is-mac-card-50-upgrade-video-card-202607-249b71dc.png"
+ },
+ {
+  "url": "https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/mac-card-50-tradein-video-card-202405?wid=960&hei=1000&fmt=png-alpha&.v=bnBGZmQyZENCQjV2MDY0V0laRVBEUDNCU2VJaDFNK0RNZnB0MWJFTHY1d2NzUzFKVm1zRnByUUY2REZlU2UyRjVWTTUydGFjaHVyNmxPYUZmTE1aZjR3T1YxQk9BejJUSjhWSm1mcHpjS2pUOWcyL2RnbzB6aXFNcjF0cTVhOFg",
+  "kind": "image",
+  "type": "image/png",
+  "bytes": 1739081,
+  "saved": "assets/image-is-mac-card-50-tradein-video-card-202405-cb8c0fe2.png"
+ },
+ {
+  "url": "https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/mac-card-50-compare-models-202603?wid=960&hei=1000&fmt=webp&qlt=90&.v=VVlYUmhtQ01FUnVZSm9ubk84akVKQVhDbGhXa21pNVNBVURtbkZ6K0ZoSHpIR0l0TVpNQnJZb1NNY29pWWhnM3ZjRDZ3U3RCY3ZWM1JDUm5wVzZQNXJmM2dNTnRBQ1R4cGxoYkFsaEFKa1ZGc2xqUFBWcUM2ajhMUlFjTVB0OUI&traceId=1",
+  "kind": "image",
+  "type": "image/webp",
+  "bytes": 31170
+ },
+ {
+  "url": "https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/mac-card-50-whyswitch-202609_GEO_US?wid=960&hei=1000&fmt=webp-alpha&qlt=90&.v=YmR4ajRKeHZrUjhpcnkyZi82dWY5eHNIMUNxazJlZ2NNL0FiU3pEcGpNeFhuTTRtd2xSVWtmYmFrblI1clpGWmVoWFVKQXRjZEY1N0VYbCtYUENmcHFvSHphdyszeHBObUNiNWtRSFBzM1kzc0hrMDJDM0RYQloxNE1LbUVIa2U&traceId=1",
+  "kind": "image",
+  "type": "image/webp",
+  "bytes": 71768,
+  "saved": "assets/image-is-mac-card-50-whyswitch-202609_GEO_US-f602c086.webp"
+ },
+ {
+  "url": "https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/mac-card-50-apple-intelligence-202510?wid=960&hei=1000&fmt=webp&qlt=90&.v=TFU2UzByZjhMakduTVVUMVptdlJxS29iYW9Qd2NDSzB6MDd4Y1RDZWNGdy9ESkVJdWpDdDRmM2xuT3VSQktwQjhKazZ3eldNWjF4eFJ4OTNUaDNrTEFaUFdnUk5zY2x1UUlCNkR0M1A5dFEwbjQrMzRFWVdPN0lwUVZmbGRRZzE&traceId=1",
+  "kind": "image",
+  "type": "image/webp",
+  "bytes": 39334
+ },
+ {
+  "url": "https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/mac-card-50-apple-upgrade-202607?wid=960&hei=1000&fmt=webp&qlt=90&.v=TFU2UzByZjhMakduTVVUMVptdlJxUE9IMk5jZWtRa3hza0NrYkQ4djIxajJtaE9nejNBS0FrclhJMVJoVXB1MW5ZdDMremx3N21EQS9OQlBTRXgxeUR0ckhNZGQ1LzJ4Y1pDUFpRRzF1ajFoL1JoR3VOa0VmWDJJdkZCVjVxdkQ&traceId=1",
+  "kind": "image",
+  "type": "image/webp",
+  "bytes": 11522
+ },
+ {
+  "url": "https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/mac-card-50-tradein-202603?wid=960&hei=1000&fmt=webp&qlt=90&.v=bnBGZmQyZENCQjV2MDY0V0laRVBER1hHTmYyb3piY1Y0THVqMzBBNDVoTkx0QXRvdnJ4V1dBNW1Qd2w2K1l1dmk5SGhrZjlNVDEvQUJHaFZKbmlDaTlDRE1yRWJJdklzNS8vd3lTNFdNOUE&traceId=1",
+  "kind": "image",
+  "type": "image/webp",
+  "bytes": 29908
+ },
+ {
+  "url": "https://securemetrics.apple.com/b/ss/applestoreww/1/JS-2.23.0/s12439887994882?AQB=1&ndh=1&pf=1&t=27%2F8%2F2026%2018%3A54%3A32%200%20240&fid=581AEC20785D0FCF-198AC43DE44BA6D2&ce=UTF-8&cdp=2&cl=1800&pageName=AOS%3A%20home%2Fshop_mac&g=https%3A%2F%2Fwww.apple.com%2Fshop%2Fbuy-mac&cc=USD&server=as-1.12.0&events=event243%3D7.91%2Cevent244&h1=aos%3Ashop&l1=D%3Das_xs&v3=AOS%3A%20US%20Consumer&l3=D%3Das_tex&c4=D%3Dg&v4=D%3DpageName&c5=macintel&c8=AOS%3A%20Mac&v14=en-us&c20=AOS%3A%20US%20Consumer&c34=shelf-0&c35=7.91&c36=1&c40=10078&v54=D%3Dg&v97=s.tl-o&pe=lnk_o&pev2=section%20engagement&s=1440x900&c=24&j=1.6&v=N&k=Y&bw=1440&bh=900&lrt=1188&AQE=1",
+  "kind": "image",
+  "type": "image/gif",
+  "bytes": 43
+ },
+ {
+  "url": "https://www.apple.com/wss/fonts/SF-Pro-Display/v3/sf-pro-display_light.woff2",
+  "kind": "font",
+  "type": "font/woff2",
+  "bytes": 129624,
+  "saved": "assets/font-v3-sf-pro-display_light-be76bdbb.woff2"
+ },
+ {
+  "url": "https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/mac-card-50-apple-care-one-202601?wid=960&hei=1000&fmt=webp-alpha&qlt=90&.v=TFU2UzByZjhMakduTVVUMVptdlJxSmVIZ1VjVUh3QkdCN0FZQUR0SGxKcXh2dSsyQnY0dzFrQjVuY3QwQUw2UWJXc28vclFrMG5TV3RZd2tDdDg3MURsTzV3MTUvUGlsWUtDQzFJQ3NyajN5TmVKSW5tdVNZb2Jaa1pqRUxBTUY&traceId=1",
+  "kind": "image",
+  "type": "image/webp",
+  "bytes": 50378
+ },
+ {
+  "url": "https://securemetrics.apple.com/b/ss/applestoreww/1/JS-2.23.0/s12875991424374?AQB=1&ndh=1&pf=1&t=27%2F8%2F2026%2018%3A54%3A34%200%20240&fid=581AEC20785D0FCF-198AC43DE44BA6D2&ce=UTF-8&cdp=2&cl=1800&pageName=AOS%3A%20home%2Fshop_mac&g=https%3A%2F%2Fwww.apple.com%2Fshop%2Fbuy-mac&cc=USD&server=as-1.12.0&events=event243%3D1.35%2Cevent244&h1=aos%3Ashop&l1=D%3Das_xs&v3=AOS%3A%20US%20Consumer&l3=D%3Das_tex&c4=D%3Dg&v4=D%3DpageName&c5=macintel&c8=AOS%3A%20Mac&v14=en-us&c20=AOS%3A%20US%20Consumer&c34=shelf-1&c35=1.35&c36=2&c40=10078&v54=D%3Dg&v97=s.tl-o&pe=lnk_o&pev2=section%20engagement&s=1440x900&c=24&j=1.6&v=N&k=Y&bw=1440&bh=900&AQE=1",
+  "kind": "image",
+  "type": "image/gif",
+  "bytes": 43
+ },
+ {
+  "url": "https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/mac-card-40-accessories-202608?wid=800&hei=1000&fmt=p-jpg&qlt=95&.v=SERiTmx0NmpGNkFZc0x1Q0htTEM4YmFtS1J6VU1jS0s1UjdwaU5nbmlJWDkvamYzRzRvcFlnajNacmhEOC9BeHg4ZHpEbm5XWGdaM3BiNVRDaG55UktjZ2Z4eU1SaFN3N3lycG5abHJ4bmtXZEdHNUFPR0hYUU12cjI0VlFzM1A",
+  "kind": "image",
+  "type": "image/jpeg",
+  "bytes": 118006,
+  "saved": "assets/image-is-mac-card-40-accessories-202608-858724f3.jpg"
+ },
+ {
+  "url": "https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/MXK83F?wid=400&hei=400&fmt=jpeg&qlt=90&.v=MzdyQ3FoYzRPZVgvREJEVVE0RzBTZmp4ZTB5cUxpTnYwWHN5c0tmTmFJLzhDamdNaDFDWmJvQ0Y2TlBpeUl6K3YvakEyREp4Z25MS01EK3JpMklqalE",
+  "kind": "image",
+  "type": "image/jpeg",
+  "bytes": 22838
+ },
+ {
+  "url": "https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/MXK63?wid=400&hei=400&fmt=jpeg&qlt=90&.v=QXNyZUVaR2UzT1Y4dlE2TWlnejRIdllvYS9naDJJdU9KTWdGWjhKWFRmTGhtOWE0YThxS1czK3JNYk5zY1dEQ2MzdzE1a1FVV25NVWpPZ3M3ZmswYnc",
+  "kind": "image",
+  "type": "image/jpeg",
+  "bytes": 10402
+ },
+ {
+  "url": "https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/MXKA3?wid=400&hei=400&fmt=jpeg&qlt=90&.v=RERlc2NoNml6NVllQy85OTZMeTFyL1lvYS9naDJJdU9KTWdGWjhKWFRmTGhtOWE0YThxS1czK3JNYk5zY1dEQ05wQ0Z2bXFEZEZxVCtTRDVXcnZxcWc",
+  "kind": "image",
+  "type": "image/jpeg",
+  "bytes": 9199
+ },
+ {
+  "url": "https://securemetrics.apple.com/b/ss/applestoreww/1/JS-2.23.0/s1584017710270?AQB=1&ndh=1&pf=1&t=27%2F8%2F2026%2018%3A54%3A35%200%20240&fid=581AEC20785D0FCF-198AC43DE44BA6D2&ce=UTF-8&cdp=2&cl=1800&pageName=AOS%3A%20home%2Fshop_mac&g=https%3A%2F%2Fwww.apple.com%2Fshop%2Fbuy-mac&cc=USD&server=as-1.12.0&events=event243%3D1.44%2Cevent244&h1=aos%3Ashop&l1=D%3Das_xs&v3=AOS%3A%20US%20Consumer&l3=D%3Das_tex&c4=D%3Dg&v4=D%3DpageName&c5=macintel&c8=AOS%3A%20Mac&v14=en-us&c20=AOS%3A%20US%20Consumer&c34=shelf-2&c35=1.44&c36=3&c40=10078&v54=D%3Dg&v97=s.tl-o&pe=lnk_o&pev2=section%20engagement&s=1440x900&c=24&j=1.6&v=N&k=Y&bw=1440&bh=900&AQE=1",
+  "kind": "image",
+  "type": "image/gif",
+  "bytes": 43
+ },
+ {
+  "url": "https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/mac-card-50-applecare-202111?wid=960&hei=1000&fmt=webp&qlt=90&.v=TFU2UzByZjhMakduTVVUMVptdlJxQTl5OVBmci9OMFV3Z2dKUVFGaklJMEF3Wk1qdTlJUXpYbmUrMWJwLzZvbUR5ZVpDdUpVU08vSGU1ZXgwbmQ5RnByYUQyV1A3WjYyd3JTMm1WSERTUVk&traceId=1",
+  "kind": "image",
+  "type": "image/webp",
+  "bytes": 9926
+ },
+ {
+  "url": "https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/mac-card-50-personal-setup-202408?wid=960&hei=1000&fmt=webp&qlt=90&.v=VldzaTZGN2ZKTjE3aS9LYkJvNVBrNXVhYzZSS00wamVDb0ZNNWFzV3JMUDZBWUVjcmljc3ZVaUpFVUpOQy8zQ3ZjRDZ3U3RCY3ZWM1JDUm5wVzZQNWxPd2VpUDMzRVJ3QXpIZ3puYU8vbzhDWlpFVFpFK0JiODlEZjVhVnVDeWk&traceId=1",
+  "kind": "image",
+  "type": "image/webp",
+  "bytes": 26702
+ },
+ {
+  "url": "https://securemetrics.apple.com/b/ss/applestoreww/1/JS-2.23.0/s11253648121016?AQB=1&ndh=1&pf=1&t=27%2F8%2F2026%2018%3A54%3A36%200%20240&fid=581AEC20785D0FCF-198AC43DE44BA6D2&ce=UTF-8&cdp=2&cl=1800&pageName=AOS%3A%20home%2Fshop_mac&g=https%3A%2F%2Fwww.apple.com%2Fshop%2Fbuy-mac&cc=USD&server=as-1.12.0&events=event243%3D2.37%2Cevent244&h1=aos%3Ashop&l1=D%3Das_xs&v3=AOS%3A%20US%20Consumer&l3=D%3Das_tex&c4=D%3Dg&v4=D%3DpageName&c5=macintel&c8=AOS%3A%20Mac&v14=en-us&c20=AOS%3A%20US%20Consumer&c34=shelf-3&c35=2.37&c36=4&c40=10078&v54=D%3Dg&v97=s.tl-o&pe=lnk_o&pev2=section%20engagement&s=1440x900&c=24&j=1.6&v=N&k=Y&bw=1440&bh=900&AQE=1",
+  "kind": "image",
+  "type": "image/gif",
+  "bytes": 43
+ },
+ {
+  "url": "https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/mac-card-50-macos-202603?wid=960&hei=1000&fmt=webp&qlt=90&.v=QWFMNHZ5bExjZTh5ZGwrYzYxVWJVZ2NBK0RtTzFmT3IvSFhPditoN2RaVU1MUWFtZWpMbDBib05oM011eHN1eG1TR1FzNTk1RUZCQzAyT1Z6ZDV4Vk9Vck41QVZNVDBJaFRjKzBxZkpWMTA&traceId=1",
+  "kind": "image",
+  "type": "image/webp",
+  "bytes": 79638,
+  "saved": "assets/image-is-mac-card-50-macos-202603-58e5f46e.webp"
+ },
+ {
+  "url": "https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/mac-card-50-subscriptions-202605_GEO_US?wid=960&hei=1000&fmt=p-jpg&qlt=95&.v=THBxRG5BQnpiYWRCNG9pNHZTWFVNZHJHRGpndDdpWXhkdzJLRDZmV25aRHk2QTlCTzBxamVGek5OcTY0SVJwdHU2S1NDY0Mybzd2UUxDKzhkSmN0dEFTTWdLL2xrUmxCSzFHMVo3SzVGQyt0eHN4R1pPd01aYUFlNGl6Q2ZsdTM",
+  "kind": "image",
+  "type": "image/jpeg",
+  "bytes": 97832,
+  "saved": "assets/image-is-mac-card-50-subscriptions-202605_GEO_US-ef43867e.jpg"
+ },
+ {
+  "url": "https://securemetrics.apple.com/b/ss/applestoreww/1/JS-2.23.0/s13314473393610?AQB=1&ndh=1&pf=1&t=27%2F8%2F2026%2018%3A54%3A36%200%20240&fid=581AEC20785D0FCF-198AC43DE44BA6D2&ce=UTF-8&cdp=2&cl=1800&pageName=AOS%3A%20home%2Fshop_mac&g=https%3A%2F%2Fwww.apple.com%2Fshop%2Fbuy-mac&cc=USD&server=as-1.12.0&events=event243%3D1.38%2Cevent244&h1=aos%3Ashop&l1=D%3Das_xs&v3=AOS%3A%20US%20Consumer&l3=D%3Das_tex&c4=D%3Dg&v4=D%3DpageName&c5=macintel&c8=AOS%3A%20Mac&v14=en-us&c20=AOS%3A%20US%20Consumer&c34=mzone%3Aaos_macshoplob_story&c35=1.38&c36=5&c40=10078&v54=D%3Dg&v97=s.tl-o&pe=lnk_o&pev2=section%20engagement&s=1440x900&c=24&j=1.6&v=N&k=Y&bw=1440&bh=900&AQE=1",
+  "kind": "image",
+  "type": "image/gif",
+  "bytes": 43
+ },
+ {
+  "url": "https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/store-card-50-continuity-202609_GEO_US?wid=960&hei=1000&fmt=webp-alpha&qlt=90&.v=MkxpRXJEbEM4SjVucjFvcTdEU1BlNktGcElSZCtpUGVDcVhib0c0eEptbkFkWTlnaEhRWXFUU1Nhem4xR20wcHBxK0ZBNmxGbmUyUFZlUkRMaDBrbFYxWFVnbS9XYm1BUnlMbURiRlUzRk9OL3BZQkxKcjM2bHYwUWNpZFkxNFk&traceId=1",
+  "kind": "image",
+  "type": "image/webp",
+  "bytes": 65028,
+  "saved": "assets/image-is-store-card-50-continuity-202609_GEO_US-521fc9c3.webp"
+ },
+ {
+  "url": "https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/mac-card-40-education-202512?wid=800&hei=1000&fmt=webp&qlt=90&.v=VUt1T3g3WG83Q1dPVEs1dDFaZHdacnBGaW5TWEpvSm5jR29ZMURITXZPOGQxYXI4a0J1dmxHNzJaeEFoWmI5RER5ZVpDdUpVU08vSGU1ZXgwbmQ5RmtURVIyb2oxMFROQVRVL3N3TW1abnM&traceId=1",
+  "kind": "image",
+  "type": "image/webp",
+  "bytes": 40538
+ },
+ {
+  "url": "https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/mac-card-40-business-202506?wid=800&hei=1000&fmt=webp&qlt=90&.v=TnhQWVNpM3hsUmE1YlJOTTJnYm5mVUdCZTdVL3grY1JpM0hacFNZZmFrWnd5b1hKY2V3T2V4alVLZTRFVTdOK1RVbGY1Uno3Zm5uM1BxeHV2clpndU9Vc0JuM0pxR2ZGVWhuSWx6TVMxNGM&traceId=1",
+  "kind": "image",
+  "type": "image/webp",
+  "bytes": 71640,
+  "saved": "assets/image-is-mac-card-40-business-202506-c891420e.webp"
+ },
+ {
+  "url": "https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/mac-card-40-gov-202503?wid=800&hei=1000&fmt=webp&qlt=90&.v=ZTBVTXBCbUlFR0tzcUZHaFhibW5UVUxqZ3lDaGlIUCt6S3RkRDhPazgzT21yNFVEcVVXZDdZOVY1RU11SFNTVm9RUDJtbFZrQjV3NktpNTN0aENWcnVkMnJTRE5QbllCaG5ZMHBBRmRQVFE&traceId=1",
+  "kind": "image",
+  "type": "image/webp",
+  "bytes": 41780
+ },
+ {
+  "url": "https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/store-card-40-veteran-202509?wid=800&hei=1000&fmt=webp&qlt=90&.v=d01hbVp2TEdlMG9Memp2N1liaFpVK0VtZHJxNHNCcDlSRnVhZkNXeTJhc2QxYXI4a0J1dmxHNzJaeEFoWmI5RER5ZVpDdUpVU08vSGU1ZXgwbmQ5RmpJTUVjT25ibDZyOTBBbVdEZjZZdWc&traceId=1",
+  "kind": "image",
+  "type": "image/webp",
+  "bytes": 40000
+ },
+ {
+  "url": "https://securemetrics.apple.com/b/ss/applestoreww/1/JS-2.23.0/s17562468597056?AQB=1&ndh=1&pf=1&t=27%2F8%2F2026%2018%3A54%3A37%200%20240&fid=581AEC20785D0FCF-198AC43DE44BA6D2&ce=UTF-8&cdp=2&cl=1800&pageName=AOS%3A%20home%2Fshop_mac&g=https%3A%2F%2Fwww.apple.com%2Fshop%2Fbuy-mac&cc=USD&server=as-1.12.0&events=event243%3D1.40%2Cevent244&h1=aos%3Ashop&l1=D%3Das_xs&v3=AOS%3A%20US%20Consumer&l3=D%3Das_tex&c4=D%3Dg&v4=D%3DpageName&c5=macintel&c8=AOS%3A%20Mac&v14=en-us&c20=AOS%3A%20US%20Consumer&c34=shelf-5&c35=1.40&c36=6&c40=10078&v54=D%3Dg&v97=s.tl-o&pe=lnk_o&pev2=section%20engagement&s=1440x900&c=24&j=1.6&v=N&k=Y&bw=1440&bh=900&AQE=1",
+  "kind": "image",
+  "type": "image/gif",
+  "bytes": 43
+ },
+ {
+  "url": "https://securemetrics.apple.com/b/ss/applestoreww/1/JS-2.23.0/s13178099638146?AQB=1&ndh=1&pf=1&t=27%2F8%2F2026%2018%3A54%3A38%200%20240&fid=581AEC20785D0FCF-198AC43DE44BA6D2&ce=UTF-8&cdp=2&cl=1800&pageName=AOS%3A%20home%2Fshop_mac&g=https%3A%2F%2Fwww.apple.com%2Fshop%2Fbuy-mac&cc=USD&server=graf%409.8.0&events=event4&products=module.aso.shop_mac.accessories.202503%3Bcontent%3B%3B%3B%3BeVar60%3DAOS_MacShopLOB_Story%7CeVar61%3DLrxv4fovRQWCLxyczaPpmA%3AINLINE%7CeVar65%3D1%2F13%2Cmodule.aso.standard.product.simple.33%3BMXK83%3B%3B%3B%3BeVar60%3DAOS_MacShopLOB_Story%7CeVar61%3DLrxv4fovRQWCLxyczaPpmA%3AINLINE%7CeVar65%3D2%2F13%2Cmodule.aso.standard.product.simple.33%3BMXK63%3B%3B%3B%3BeVar60%3DAOS_MacShopLOB_Story%7CeVar61%3DLrxv4fovRQWCLxyczaPpmA%3AINLINE%7CeVar65%3D3%2F13%2Cmodule.aso.standard.product.simple.33%3BMXKA3%3B%3B%3B%3BeVar60%3DAOS_MacShopLOB_Story%7CeVar61%3DLrxv4fovRQWCLxyczaPpmA%3AINLINE%7CeVar65%3D4%2F13&h1=aos%3Ashop&l1=D%3Das_xs&v3=AOS%3A%20US%20Consumer&l3=D%3Das_tex&c4=D%3Dg&v4=D%3DpageName&c5=macintel&c8=AOS%3A%20Mac&v14=en-us&c20=AOS%3A%20US%20Consumer&c40=10078&v54=D%3Dg&v97=s.tl-o&s=1440x900&c=24&j=1.6&v=N&k=Y&bw=1440&bh=900&AQE=1",
+  "kind": "image",
+  "type": "image/gif",
+  "bytes": 43
+ },
+ {
+  "url": "https://securemetrics.apple.com/b/ss/applestoreww/1/JS-2.23.0/s12496598926393?AQB=1&ndh=1&pf=1&t=27%2F8%2F2026%2018%3A54%3A39%200%20240&fid=581AEC20785D0FCF-198AC43DE44BA6D2&ce=UTF-8&cdp=2&cl=1800&pageName=AOS%3A%20home%2Fshop_mac&g=https%3A%2F%2Fwww.apple.com%2Fshop%2Fbuy-mac&cc=USD&server=as-1.12.0&events=event406&h1=aos%3Ashop&l1=D%3Das_xs&v3=AOS%3A%20US%20Consumer&l3=D%3Das_tex&c4=D%3Dg&v4=D%3DpageName&c5=macintel&c8=AOS%3A%20Mac&v14=en-us&c20=AOS%3A%20US%20Consumer&c40=10078&v54=D%3Dg&v97=s.tl-o&pe=lnk_o&pev2=endOfPage&s=1440x900&c=24&j=1.6&v=N&k=Y&bw=1440&bh=900&AQE=1",
+  "kind": "image",
+  "type": "image/gif",
+  "bytes": 43
+ },
+ {
+  "url": "https://securemetrics.apple.com/b/ss/applestoreww/1/JS-2.23.0/s1734362513043?AQB=1&ndh=1&pf=1&t=27%2F8%2F2026%2018%3A54%3A39%200%20240&fid=581AEC20785D0FCF-198AC43DE44BA6D2&ce=UTF-8&cdp=2&cl=1800&pageName=AOS%3A%20home%2Fshop_mac&g=https%3A%2F%2Fwww.apple.com%2Fshop%2Fbuy-mac&cc=USD&server=as-1.12.0&events=event243%3D2.37%2Cevent244&h1=aos%3Ashop&l1=D%3Das_xs&v3=AOS%3A%20US%20Consumer&l3=D%3Das_tex&c4=D%3Dg&v4=D%3DpageName&c5=macintel&c8=AOS%3A%20Mac&v14=en-us&c20=AOS%3A%20US%20Consumer&c34=shelf-6&c35=2.37&c36=7&c40=10078&v54=D%3Dg&v97=s.tl-o&pe=lnk_o&pev2=section%20engagement&s=1440x900&c=24&j=1.6&v=N&k=Y&bw=1440&bh=900&AQE=1",
+  "kind": "image",
+  "type": "image/gif",
+  "bytes": 43
+ },
+ {
+  "url": "https://securemetrics.apple.com/b/ss/applestoreww/1/JS-2.23.0/s132958491174?AQB=1&ndh=1&pf=1&t=27%2F8%2F2026%2018%3A54%3A39%200%20240&fid=581AEC20785D0FCF-198AC43DE44BA6D2&ce=UTF-8&cdp=2&cl=1800&pageName=AOS%3A%20home%2Fshop_mac&g=https%3A%2F%2Fwww.apple.com%2Fshop%2Fbuy-mac&cc=USD&server=as-1.12.0&events=event243%3D1.35%2Cevent244&h1=aos%3Ashop&l1=D%3Das_xs&v3=AOS%3A%20US%20Consumer&l3=D%3Das_tex&c4=D%3Dg&v4=D%3DpageName&c5=macintel&c8=AOS%3A%20Mac&v14=en-us&c20=AOS%3A%20US%20Consumer&c34=shelf-7&c35=1.35&c36=8&c40=10078&v54=D%3Dg&v97=s.tl-o&pe=lnk_o&pev2=section%20engagement&s=1440x900&c=24&j=1.6&v=N&k=Y&bw=1440&bh=900&lrt=1&AQE=1",
+  "kind": "image",
+  "type": "image/gif",
+  "bytes": 43
+ },
+ {
+  "url": "https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/ipad-pro-11-select-wifi-spaceblack-202405_SW_COLOR?wid=32&hei=32&fmt=png-alpha&.v=cU5SNnZmTmg3VlFoaGg3dW5WUnQvOHpCNlo3Y2trYUx2VGtnRmoxbk1mQ2x3ZWY0OW00WVZYQ1NsNTlSc3FSeWlFN3lUb0NWUXZTcExoS1A0cEp2eFV1RGVGY05iMGVCVXhlTE1BQUZjMDJxMkZKNFpWZ1FTbDRJN3duS1U5a2Q",
+  "kind": "image",
+  "type": "image/png",
+  "bytes": 1498
+ },
+ {
+  "url": "https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/ipad-pro-11-select-wifi-silver-202405_SW_COLOR?wid=32&hei=32&fmt=png-alpha&.v=cU5SNnZmTmg3VlFoaGg3dW5WUnQvMkxGdWdkb2NmaG1yVzIvWDFuNS82L0tJdFV5Ni9ZTlFvQjRwaDNYVkZXY1M1aVZHQ0o5QmVGWm9LcW9jdEFqSThlcC9qYU9xUXZmS1NmbGxtTVBCNVBqYkRoMGpMVjFLSWx5TG5McHJOeXg",
+  "kind": "image",
+  "type": "image/png",
+  "bytes": 1681
+ },
+ {
+  "url": "https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/ipad-air-select-11in-wifi-blue-202405_SW_COLOR?wid=32&hei=32&fmt=png-alpha&.v=MHJ3M044Wm5ySDVTUVJHY090MTFQWFU0N1RjeHdyenY5U1BnMmlCT2FwYktJdFV5Ni9ZTlFvQjRwaDNYVkZXY1M1aVZHQ0o5QmVGWm9LcW9jdEFqSThlcC9qYU9xUXZmS1NmbGxtTVBCNVB4Y3BtNmJGby9BbHlZOHBRZ3dTYnE",
+  "kind": "image",
+  "type": "image/png",
+  "bytes": 1779
+ },
+ {
+  "url": "https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/ipad-2022-hero-silver-wifi-select_SW_COLOR?wid=32&hei=32&fmt=png-alpha&.v=MG1udWpyWFI4d3VJQmF2aGlucjRyYUtrNVcxNFM0TGJlbkh3VDIzWFBmZnZpRHVQeWlMTHFRRTkwYm16TXh3cEFob2lEelc0ajlLcGhUVS9aRjBUZWhUcU9lQkFPbUtybmVRN2s5TEZ6blpmZjVlOTFNaFpQd1lqWmFnTHVqS3c",
+  "kind": "image",
+  "type": "image/png",
+  "bytes": 1559
+ },
+ {
+  "url": "https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/ipad-air-select-11in-wifi-purple-202405_SW_COLOR?wid=32&hei=32&fmt=png-alpha&.v=MHJ3M044Wm5ySDVTUVJHY090MTFQWE5FL0E2Tm1WYVRteWtXVjllTmQrM3duU3EzOE9HaEM2UVdYdHQ5cHNrRzV1RzhBTGdUVFdOMGZkOEhKOXhhTTlOL1VCcUxMZGhIeWpHS1Y3Y0ZmQnEvaGM1dTlvM1pOS3JlTHg2c1NHRE4",
+  "kind": "image",
+  "type": "image/png",
+  "bytes": 1699
+ },
+ {
+  "url": "https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/ipad-air-select-11in-wifi-starlight-202405_SW_COLOR?wid=32&hei=32&fmt=png-alpha&.v=MHJ3M044Wm5ySDVTUVJHY090MTFQVWtSRUR3V1RTblN3TXd3RE5HclJweXIyWDFyYXhnQmZYdG9FOXNjWlpxRi94Y0ZNTE5FNCtPbFc2QlRLbTNaSmFkYzJyNDZucEFPaGl5YjJKbWpsa1A1UTlnTE5ma25kNlpObXZaMFRzcWFmbW94YnYxc1YvNXZ4emJGL0IxNFp3",
+  "kind": "image",
+  "type": "image/png",
+  "bytes": 1814
+ },
+ {
+  "url": "https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/ipad-2022-hero-blue-wifi-select_SW_COLOR?wid=32&hei=32&fmt=png-alpha&.v=ZDYzbWk1aEx5d0Zuc0F2SVU5OUdjYy9wVUc3NG9vOTVrUFpvbUpxSnRpSG5lSjJyZXpzbC9sTnlhY2RJL3Z1b2t0ekFGWTdKMENMdER2NlM3a2pob3YrOTNMYXRUeUdaV3VLamZKTTdXK1ZMZnhXR1h2akZiOTMyZ09FNHJMWnI",
+  "kind": "image",
+  "type": "image/png",
+  "bytes": 1838
+ },
+ {
+  "url": "https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/ipad-2022-hero-pink-wifi-select_SW_COLOR?wid=32&hei=32&fmt=png-alpha&.v=K1VRcjAwcUw4UURuam5iaHdRaWlCN0tBOFJ3LzNodzQ1dkdDd2I4ZTc4Ym5lSjJyZXpzbC9sTnlhY2RJL3Z1b2t0ekFGWTdKMENMdER2NlM3a2pob3YrOTNMYXRUeUdaV3VLamZKTTdXK1U5Nno5WmdxZUd6dit6YWZRcDVyOU8",
+  "kind": "image",
+  "type": "image/png",
+  "bytes": 1909
+ },
+ {
+  "url": "https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/ipad-2022-hero-yellow-wifi-select_SW_COLOR?wid=32&hei=32&fmt=png-alpha&.v=Q251SHhDYWdkSG14R3NzbW9vU1lxM0hEa2phNHR6TGgvaHgzbUc2R3J2dnZpRHVQeWlMTHFRRTkwYm16TXh3cEFob2lEelc0ajlLcGhUVS9aRjBUZWhUcU9lQkFPbUtybmVRN2s5TEZ6bllJbzhLYVVIOWdxS24wUHBKd0pudWc",
+  "kind": "image",
+  "type": "image/png",
+  "bytes": 1955
+ },
+ {
+  "url": "https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/ipad-air-select-11in-wifi-spacegray-202405_SW_COLOR?wid=32&hei=32&fmt=png-alpha&.v=MHJ3M044Wm5ySDVTUVJHY090MTFQWGFtQTR4eURwVEtjWkY3RWd1SXYwVVVNbUNyRU1hVXFjd2xpcEplalhQVC94Y0ZNTE5FNCtPbFc2QlRLbTNaSmFkYzJyNDZucEFPaGl5YjJKbWpsa1BKSThLbTloMmRjdTVuekkrdVhvZHBmbW94YnYxc1YvNXZ4emJGL0IxNFp3",
+  "kind": "image",
+  "type": "image/png",
+  "bytes": 1675
+ },
+ {
+  "url": "https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/ipad-mini-select-wifi-blue-202410_SW_COLOR?wid=32&hei=32&fmt=png-alpha&.v=NmJhVkxMSzd4RmRrSjJwN2s4VWJVMHBIYm5EcjF5ZHdTWjByNmplMHhtUWExWWkvSjlLd2lWZ1M0N0kxRjVGdUFob2lEelc0ajlLcGhUVS9aRjBUZXZEQ1FTNVYvWFlFUTV6QWZKTDg4UzJFMGt3SzNlWjN1VU11ci9kV3QxaTM",
+  "kind": "image",
+  "type": "image/png",
+  "bytes": 1753
+ },
+ {
+  "url": "https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/ipad-mini-select-wifi-purple-202410_SW_COLOR?wid=32&hei=32&fmt=png-alpha&.v=NmJhVkxMSzd4RmRrSjJwN2s4VWJVNzVFK2U2TjRHYmZNU1M0UzNyaEJrWFJucUtHWDFkcEIwZ2t4Ulpqblc2NU5SQnIzRnZJWE90ZUFZdkttK09qTjFLaThMVHV5M2RTQkFzTVFocUpQOTJlS2hMalVjWHJUUEJSVTBHdWVaMk4",
+  "kind": "image",
+  "type": "image/png",
+  "bytes": 1665
+ },
+ {
+  "url": "https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/ipad-mini-select-wifi-starlight-202410_SW_COLOR?wid=32&hei=32&fmt=png-alpha&.v=NmJhVkxMSzd4RmRrSjJwN2s4VWJVL1BpQlQwb3h0VkRmZ2J1a0V4U1RJT055WDhZOWZOS1ZKa3FHbGpBV0tzb1lTbmRxb2ZsNExTSVFadHArS05YM0o4TndFSGFWdWZMa21CRXlrUm45emJqMU9McVZRUjZLOVFGcVVOeFRVcXY",
+  "kind": "image",
+  "type": "image/png",
+  "bytes": 1795
+ },
+ {
+  "url": "https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/ipad-mini-select-wifi-spacegray-202410_SW_COLOR?wid=32&hei=32&fmt=png-alpha&.v=NmJhVkxMSzd4RmRrSjJwN2s4VWJVKzlBaHA1THNMUXlDa1dRMU1wTGcxYU55WDhZOWZOS1ZKa3FHbGpBV0tzb1lTbmRxb2ZsNExTSVFadHArS05YM0o4TndFSGFWdWZMa21CRXlrUm45emFjbjM1WWVWYzUxSDBKdjk1V0dHSys",
+  "kind": "image",
+  "type": "image/png",
+  "bytes": 1655
+ },
+ {
+  "url": "https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/MDEQ4_SW_COLOR?wid=32&hei=32&fmt=png-alpha&.v=clVCRUp1MENySUtHUkU2WXVDYjJ3MHVZbFJnaWZRWGhXYUNxcUhMUUl5UEhxZjQyanFrTDN5a241WlpqRHdlVE1IbytabmFiRHB3b29DQ2Z0SVBRV2c",
+  "kind": "image",
+  "type": "image/png",
+  "bytes": 1890
+ },
+ {
+  "url": "https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/MDEJ4_SW_COLOR?wid=32&hei=32&fmt=png-alpha&.v=aVdVdVU3YnRHQVJsc1NnWEpvRG4xVXVZbFJnaWZRWGhXYUNxcUhMUUl5UEhxZjQyanFrTDN5a241WlpqRHdlVEk3czE0WTJVV29PMzdqaUFoUFI0WGc",
+  "kind": "image",
+  "type": "image/png",
+  "bytes": 999
+ },
+ {
+  "url": "https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/MDEP4_SW_COLOR?wid=32&hei=32&fmt=png-alpha&.v=NSs3cFNxdVNVRHI2WUZDai9SRmJhVXVZbFJnaWZRWGhXYUNxcUhMUUl5UEhxZjQyanFrTDN5a241WlpqRHdlVG82ZkFBRHA2MXUvbmR5bStzdWgwQ1E",
+  "kind": "image",
+  "type": "image/png",
+  "bytes": 1945
+ },
+ {
+  "url": "https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/MDEN4_SW_COLOR?wid=32&hei=32&fmt=png-alpha&.v=R3h2bFdPUE5VS1FQK3FtTEZvSXIya3VZbFJnaWZRWGhXYUNxcUhMUUl5UEhxZjQyanFrTDN5a241WlpqRHdlVEswQ3J6N3c4Q2JIcFhWM0lBUy9ydlE",
+  "kind": "image",
+  "type": "image/png",
+  "bytes": 1961
+ },
+ {
+  "url": "https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/HSJY2_SW_COLOR?wid=32&hei=32&fmt=png-alpha&.v=Z2VTKzloTzhuRldKOTM3ODNOdm8yRXVZbFJnaWZRWGhXYUNxcUhMUUl5UEhxZjQyanFrTDN5a241WlpqRHdlVHkrcE9jbk9QSFdYNW1OYUNHSDZ6TlE",
+  "kind": "image",
+  "type": "image/png",
+  "bytes": 1432
+ },
+ {
+  "url": "https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/HSJZ2_SW_COLOR?wid=32&hei=32&fmt=png-alpha&.v=ODhWYkJDUUozZy9WS3lYdGVsKy9Ta3VZbFJnaWZRWGhXYUNxcUhMUUl5UEhxZjQyanFrTDN5a241WlpqRHdlVGZIb2RROHp6NXpwa295ekxXWE5lTEE",
+  "kind": "image",
+  "type": "image/png",
+  "bytes": 1624
+ },
+ {
+  "url": "https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/MWR43DK_SW_COLOR?wid=32&hei=32&fmt=png-alpha&.v=TXdER2x5OFN4d2p1Y2pGdzVOZk1adWJodkFDNEUwMWpkSDNmQnlmY1dqUFRmMUFhaXkzWVI4b3hpbGUzQlh3YVRWZGFlUVBEYVFvMnB0YzlRSVNGelE",
+  "kind": "image",
+  "type": "image/png",
+  "bytes": 1605
+ },
+ {
+  "url": "https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/MWR53CH_SW_COLOR?wid=32&hei=32&fmt=png-alpha&.v=Zkg4SXY4d3REM0k0SzZVUFA5NHFXZWJodkFDNEUwMWpkSDNmQnlmY1dqUFRmMUFhaXkzWVI4b3hpbGUzQlh3YTNUL0hQMjJLWUJoakI3UXNNMzR2Q1E",
+  "kind": "image",
+  "type": "image/png",
+  "bytes": 1624
+ },
+ {
+  "url": "https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/HS7J2_SW_COLOR?wid=32&hei=32&fmt=png-alpha&.v=eDJ3NnpwRVQ1TThaODFTT01naUhPRXVZbFJnaWZRWGhXYUNxcUhMUUl5UEhxZjQyanFrTDN5a241WlpqRHdlVEZKL2U5NVl3Z010QUZBbFpDSmVTQ2c",
+  "kind": "image",
+  "type": "image/png",
+  "bytes": 1256
+ },
+ {
+  "url": "https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/HS7H2_SW_COLOR?wid=32&hei=32&fmt=png-alpha&.v=dEZ0UXN1NXBwSWozbGlLTlJqT1dja3VZbFJnaWZRWGhXYUNxcUhMUUl5UEhxZjQyanFrTDN5a241WlpqRHdlVHQ5RmtEWVZhV2pZU3BUWlhrZktwdFE",
+  "kind": "image",
+  "type": "image/png",
+  "bytes": 1291
+ },
+ {
+  "url": "https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/MC2Q4_SW_COLOR?wid=32&hei=32&fmt=png-alpha&.v=ZDVac3A4QUZuR2Z1L293SDJlTTMxa3VZbFJnaWZRWGhXYUNxcUhMUUl5UEhxZjQyanFrTDN5a241WlpqRHdlVDVXcURVNTdNWjUwSTJLYTR0QWpEeVE",
+  "kind": "image",
+  "type": "image/png",
+  "bytes": 1338
+ },
+ {
+  "url": "https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/MC2V4_SW_COLOR?wid=32&hei=32&fmt=png-alpha&.v=WkFoM21CbjVVdVoyT2xpeW1Sb0FkRXVZbFJnaWZRWGhXYUNxcUhMUUl5UEhxZjQyanFrTDN5a241WlpqRHdlVEYxTE9ucnVDWWtQdElLNktsb3h2UXc",
+  "kind": "image",
+  "type": "image/png",
+  "bytes": 1388
+ },
+ {
+  "url": "https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/MC2U4_SW_COLOR?wid=32&hei=32&fmt=png-alpha&.v=OEdEM0NNNmRyS0tKTDJYeXg0YnRXa3VZbFJnaWZRWGhXYUNxcUhMUUl5UEhxZjQyanFrTDN5a241WlpqRHdlVHZzY3IycllqWkJVV0VNY1lWaXhidGc",
+  "kind": "image",
+  "type": "image/png",
+  "bytes": 1471
+ },
+ {
+  "url": "https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/MC2T4_SW_COLOR?wid=32&hei=32&fmt=png-alpha&.v=eEU1eHJ2S3hjVkFEb0RWeHVMM2tWMHVZbFJnaWZRWGhXYUNxcUhMUUl5UEhxZjQyanFrTDN5a241WlpqRHdlVDVXcURVNTdNWjUwSTJLYTR0QWpEeVE",
+  "kind": "image",
+  "type": "image/png",
+  "bytes": 1356
+ },
+ {
+  "url": "https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/HSE32_SW_COLOR?wid=32&hei=32&fmt=png-alpha&.v=NzBYQ28xZ2ZHT0dmOXluT3p4UDdMMHVZbFJnaWZRWGhXYUNxcUhMUUl5UEhxZjQyanFrTDN5a241WlpqRHdlVGRTNm1qaFprQTRsM0VwQVlLT2czQlE",
+  "kind": "image",
+  "type": "image/png",
+  "bytes": 1299
+ },
+ {
+  "url": "https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/HSE42_SW_COLOR?wid=32&hei=32&fmt=png-alpha&.v=dzBiRms0N0pERXZKUUVlb0FKcG8xa3VZbFJnaWZRWGhXYUNxcUhMUUl5UEhxZjQyanFrTDN5a241WlpqRHdlVEtsUjd6Tnp4NWNEVTdmVDZhTHZ2VEE",
+  "kind": "image",
+  "type": "image/png",
+  "bytes": 1087
+ },
+ {
+  "url": "https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/ipad-card-40-pro-202405?wid=680&hei=528&fmt=p-jpg&qlt=95&.v=aDFmUE8yL0ZIcG1CVlF3ejZoSTBUbTF4V1ZRMnQ3VUZxOW9XbE84blhkazJzUm9kdjFCbFNETWhUL0NFUjdrYUVnTTR0dy9GMG1wdkgrK3EyQ1ZzOVk5emI2RVlYSVRkMzZLOS9VQVhQeWM",
+  "kind": "image",
+  "type": "image/jpeg",
+  "bytes": 62117,
+  "saved": "assets/image-is-ipad-card-40-pro-202405-53a25815.jpg"
+ },
+ {
+  "url": "https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/ipad-card-40-air-202405?wid=680&hei=528&fmt=p-jpg&qlt=95&.v=U0psRWR6Z2xkY3dwRTZYSCtyQXNFVzF4V1ZRMnQ3VUZxOW9XbE84blhkazJzUm9kdjFCbFNETWhUL0NFUjdrYUVnTTR0dy9GMG1wdkgrK3EyQ1ZzOWE5aFE4VmtCSkdBUVZYOWx3MEhPK1E",
+  "kind": "image",
+  "type": "image/jpeg",
+  "bytes": 89995,
+  "saved": "assets/image-is-ipad-card-40-air-202405-1a6acc36.jpg"
+ },
+ {
+  "url": "https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/ipad-card-40-ipad-202410?wid=680&hei=528&fmt=p-jpg&qlt=95&.v=SFZodklRUStGeVJpUE9iYTA5SFFYbGwrSnJIWjJhMUN2SjF6Kysvd1dxdzgycjlDNGdlREhyeERCVjM1SXkycmorTlFRdUE1QXhRRzN4cmdvU2JhR29CQ1VSdXF0eklXUlZzZ1YxYUU2TWc",
+  "kind": "image",
+  "type": "image/jpeg",
+  "bytes": 46415
+ },
+ {
+  "url": "https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/ipad-card-40-ipad-mini-202410?wid=680&hei=528&fmt=p-jpg&qlt=95&.v=SFZodklRUStGeVJpUE9iYTA5SFFYckRXSmo5UmJSVFZrL2VnaTRyQWlQYkRiOENhazh5Y0NacmRZMFN0dVNvZzJTaS9RTTYzTWg5VUhTM1Ara0JyS1BaU2ZtcjFuMTU2NDJ5KzgwcGVpcEU",
+  "kind": "image",
+  "type": "image/jpeg",
+  "bytes": 41497
+ },
+ {
+  "url": "https://securemetrics.apple.com/b/ss/applestoreww/1/JS-2.23.0/s15802589151862?AQB=1&pccr=true&vidn=355CCF5B382058BF-40001E53445068A5&ndh=1&pf=1&t=27%2F8%2F2026%2018%3A54%3A46%200%20240&fid=61483390BAE7E1F1-1EE07E46E7770C9B&ce=UTF-8&cdp=2&cl=1800&pageName=AOS%3A%20home%2Fshop_ipad&g=https%3A%2F%2Fwww.apple.com%2Fshop%2Fbuy-ipad&h.&architecture=x86&bitness=64&platformVersion=10_15_7&.h&cc=USD&ch=D%3Dh1&server=graf%409.8.0&h1=aos%3Ashop&l1=D%3Das_xs&v3=AOS%3A%20US%20Consumer&l3=D%3Das_tex&c4=D%3Dg&v4=D%3DpageName&c5=macintel&c8=AOS%3A%20iPad&c9=10.15.x&v14=en-us&c20=AOS%3A%20US%20Consumer&c25=direct%20entry&c40=10078&v54=D%3Dg&v97=s.t-p&s=1440x900&c=24&j=1.6&v=N&k=Y&bw=1440&bh=900&AQE=1",
+  "kind": "image",
+  "type": "image/gif",
+  "bytes": 43
+ },
+ {
+  "url": "https://www.apple.com/shop/mdp/echo/echo.png?app=com.apple.www.Store&pageViewId=ncjjscc8sq-mukf1vh8&recordTime=1790549685405&referrer=&referer=&host=www.apple.com&pageHostname=www.apple.com&pageUrl=https://www.apple.com/shop/buy-ipad&pagePathname=/shop/buy-ipad&pageShopPath=/shop/buy-ipad&pageUrlParams=&eventType=pageview&environment=&format=common&region=amr&country=US&sf=us&segment=Consumer&locale=en-us&node=standard/home/shop_ipad&pageResource=rs-merch-4&feature=step0",
+  "kind": "image",
+  "type": "image/png",
+  "bytes": 298
+ },
+ {
+  "url": "https://www.apple.com/fxpmdp/ec/as/v1/echo.png?app=com.apple.www.Store&pageViewId=ncjjscc8sq-mukf1vh8&recordTime=1790549685405&referrer=&referer=&host=www.apple.com&pageHostname=www.apple.com&pageUrl=https://www.apple.com/shop/buy-ipad&pagePathname=/shop/buy-ipad&pageShopPath=/shop/buy-ipad&pageUrlParams=&eventType=pageview&environment=&format=common&region=amr&country=US&sf=us&segment=Consumer&locale=en-us&node=standard/home/shop_ipad&pageResource=rs-merch-4&feature=step0",
+  "kind": "image",
+  "type": "image/png",
+  "bytes": 298
+ },
+ {
+  "url": "https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/ipad-card-50-upgrade-video-card-202607?wid=960&hei=1000&fmt=png-alpha&.v=cDNsWS9nOGFmSmdlODloZ2NpVnNHRGkwaHNTZGRrRUZLMEcveDN4OVp6QVZ1TTJKSEhpVFFNMVZoVjBXN2YzVERqRlBHZUVBNDNOWURodnJuL3FXOFFSNFNrSitONGVlcFBUeTFXUElEYy9wZ1B5Q2VSSWxtVXBnYkRKYWovNFA",
+  "kind": "image",
+  "type": "image/png",
+  "bytes": 1725545,
+  "saved": "assets/image-is-ipad-card-50-upgrade-video-card-202607-3cd10efa.png"
+ },
+ {
+  "url": "https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/ipad-card-50-tradein-video-card-202405?wid=960&hei=1000&fmt=png-alpha&.v=d2QyQmhrRGxtdkU2ZW5uVDBRMHNEL1dKQUJoOWR6UmUzQ2RuL3JYUFAxU0tMUXlHNGt2MWswOUZpT0tSemlDaERqRlBHZUVBNDNOWURodnJuL3FXOGVvaWZpN2xBblk2Ty9ISlhIbms0ZGtnVStIYXJpT0hhd2cxbmFJTlg2Umw",
+  "kind": "image",
+  "type": "image/png",
+  "bytes": 1739081,
+  "saved": "assets/image-is-ipad-card-50-tradein-video-card-202405-824b6c3f.png"
+ },
+ {
+  "url": "https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/ipad-card-50-compare-202410?wid=960&hei=1000&fmt=p-jpg&qlt=95&.v=M3lSVmFUMUZBN2ROWUZKMWNoYUJPMVArK1BMQkNMdGlyQzh1ZkEyWXJpY2YzUHRVc053YldlK2NuZForb0M1V0tRNjVHZTlIV04vVjZjbEh0Rm5SYzNNUXpLcVIzNFk3K3pyYXpQZ2taZjA",
+  "kind": "image",
+  "type": "image/jpeg",
+  "bytes": 140045,
+  "saved": "assets/image-is-ipad-card-50-compare-202410-84e2a76f.jpg"
+ },
+ {
+  "url": "https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/ipad-card-50-ai-202503?wid=960&hei=1000&fmt=p-jpg&qlt=95&.v=UUlmQ1d1MmRxQjU4M1VWeFJ5VmZYK29SdGt5QTdaRWFxQnJpbit3ZTRoS3kvYVhHUzZnbTdlRlQ4aGhRUUYyVUNwdjgxNzdjcnlUVy83S0w5bWJ2Tm5DOUVIYnB5OWg3aytuZUtrK2haSkE",
+  "kind": "image",
+  "type": "image/jpeg",
+  "bytes": 181787,
+  "saved": "assets/image-is-ipad-card-50-ai-202503-929f5c54.jpg"
+ },
+ {
+  "url": "https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/ipad-card-50-specialist-video-202601?wid=1920&hei=2000&fmt=jpeg&qlt=90&.v=c1RGYjRQVDVMN3hGSzliYUNmUSs1bm1GMnNuei96WTNqTjYvWnVsK1FWOWtYL0VVSStmQU1KZEtIZU40azl5RG00SXc4OGpkT1FJVTFOWThQYVFrdHZ1TlY0OW1aSGR0UGhyWGZuQXRNYSszdng2NSsxT1JXcDlNMlE4ODVpWk0",
+  "kind": "image",
+  "type": "image/jpeg",
+  "bytes": 228832,
+  "saved": "assets/image-is-ipad-card-50-specialist-video-202601-33e436ca.jpg"
+ },
+ {
+  "url": "https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/ipad-card-50-apple-upgrade-202607?wid=960&hei=1000&fmt=p-jpg&qlt=95&.v=QkF3d3h0Wm10ZzJ3L2t5cnNXMkdiTlp6eE0wdnd0RVFKbHBwM001RXRDcGNMeUs4SlhmaWJHK3QrNS8ycTY4WlpwRE93ZVBDaGlEa25QZUpFTG9OUTFDc0t6RXZQL0JPNm9WR2hQZ01MdGZuNmthWVB4ZUFnSnpPVkg2b1hlSzQ",
+  "kind": "image",
+  "type": "image/jpeg",
+  "bytes": 50005
+ },
+ {
+  "url": "https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/ipad-card-50-trade-in-202405?wid=960&hei=1000&fmt=p-jpg&qlt=95&.v=d2QyQmhrRGxtdkU2ZW5uVDBRMHNEL09JL1lmWTJyYitoWTJVUGxoakpNMEF3Wk1qdTlJUXpYbmUrMWJwLzZvbTJTaS9RTTYzTWg5VUhTM1Ara0JyS1BEWitLSUJxTWIxd1NiRktDNHh5VjQ",
+  "kind": "image",
+  "type": "image/jpeg",
+  "bytes": 90762,
+  "saved": "assets/image-is-ipad-card-50-trade-in-202405-9088a003.jpg"
+ },
+ {
+  "url": "https://securemetrics.apple.com/b/ss/applestoreww/1/JS-2.23.0/s12526685618231?AQB=1&ndh=1&pf=1&t=27%2F8%2F2026%2018%3A54%3A54%200%20240&fid=61483390BAE7E1F1-1EE07E46E7770C9B&ce=UTF-8&cdp=2&cl=1800&pageName=AOS%3A%20home%2Fshop_ipad&g=https%3A%2F%2Fwww.apple.com%2Fshop%2Fbuy-ipad&cc=USD&server=as-1.12.0&events=event243%3D7.71%2Cevent244&h1=aos%3Ashop&l1=D%3Das_xs&v3=AOS%3A%20US%20Consumer&l3=D%3Das_tex&c4=D%3Dg&v4=D%3DpageName&c5=macintel&c8=AOS%3A%20iPad&v14=en-us&c20=AOS%3A%20US%20Consumer&c34=shelf-0&c35=7.71&c36=1&c40=10078&v54=D%3Dg&v97=s.tl-o&pe=lnk_o&pev2=section%20engagement&s=1440x900&c=24&j=1.6&v=N&k=Y&bw=1440&bh=900&lrt=522&AQE=1",
+  "kind": "image",
+  "type": "image/gif",
+  "bytes": 43
+ },
+ {
+  "url": "https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/ipad-card-50-engraving-202410?wid=960&hei=1000&fmt=p-jpg&qlt=95&.v=RGk4bzlYREc5bzlaZEIvci96NDZ1UnhqSW5KRW96cjJKREZYM2hOcHR5bWo2Z1ptREdBenZRTjZuSCtBemFnUTRHeXB5TnVsU3R6Qjd0Y2JzbURyWEtLbFZBWmZQemxRMzFiQ2NoZTZETHgrYWpGdS9XeFgvbS9ITnNYOEhYaG4",
+  "kind": "image",
+  "type": "image/jpeg",
+  "bytes": 112760,
+  "saved": "assets/image-is-ipad-card-50-engraving-202410-28bdee63.jpg"
+ },
+ {
+  "url": "https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/ipad-card-50-applecare-one-video-card-202511?wid=960&hei=1000&fmt=png-alpha&.v=QkF3d3h0Wm10ZzJ3L2t5cnNXMkdiRGU3b3lPQ2k0MUtJNTAwTWZBSzB1MG13VFNXYWVJcWpybTNpWHlYUHJnR0FNR1RJN3ZTRU0xNTN2dFc2ZitxSnA4TndFSGFWdWZMa21CRXlrUm45emJKbDA3OTRLdWoxYkwrandNMW5rT2k",
+  "kind": "image",
+  "type": "image/png",
+  "bytes": 1556398,
+  "saved": "assets/image-is-ipad-card-50-applecare-one-video-card-202511-6b28e48b.png"
+ },
+ {
+  "url": "https://securemetrics.apple.com/b/ss/applestoreww/1/JS-2.23.0/s14570542597119?AQB=1&ndh=1&pf=1&t=27%2F8%2F2026%2018%3A54%3A55%200%20240&fid=61483390BAE7E1F1-1EE07E46E7770C9B&ce=UTF-8&cdp=2&cl=1800&pageName=AOS%3A%20home%2Fshop_ipad&g=https%3A%2F%2Fwww.apple.com%2Fshop%2Fbuy-ipad&cc=USD&server=as-1.12.0&events=event243%3D1.35%2Cevent244&h1=aos%3Ashop&l1=D%3Das_xs&v3=AOS%3A%20US%20Consumer&l3=D%3Das_tex&c4=D%3Dg&v4=D%3DpageName&c5=macintel&c8=AOS%3A%20iPad&v14=en-us&c20=AOS%3A%20US%20Consumer&c34=shelf-1&c35=1.35&c36=2&c40=10078&v54=D%3Dg&v97=s.tl-o&pe=lnk_o&pev2=section%20engagement&s=1440x900&c=24&j=1.6&v=N&k=Y&bw=1440&bh=900&lrt=1&AQE=1",
+  "kind": "image",
+  "type": "image/gif",
+  "bytes": 43
+ },
+ {
+  "url": "https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/ipad-card-40-story-202410_GEO_US?wid=800&hei=1000&fmt=p-jpg&qlt=95&.v=NkNNeDUwRURoRjczV2JpeGx0N2VzMHhCZC95Y3RBYjVvM0s5U2Y2czJldHFTRjNxbmh1UnU2R29ibGdpZUFXc0prY3crUWRsN1dqVjRnMHR5S1hVbkRaWUhUZjlrTGtUQ3J4WFJ2a0RKQVZuYVAyTW9FekJHekpwYk5kVWhPN2Y",
+  "kind": "image",
+  "type": "image/jpeg",
+  "bytes": 115968,
+  "saved": "assets/image-is-ipad-card-40-story-202410_GEO_US-235c4b9c.jpg"
+ },
+ {
+  "url": "https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/MX2D3?wid=400&hei=400&fmt=jpeg&qlt=90&.v=RjlhOFBxWlM5RUNuemg5bVk0UkM1ZllvYS9naDJJdU9KTWdGWjhKWFRmTDg1MEFKWWNMUG9Rb3dXVmNIY08yN3BPSDJJa3AzaC96dU9WMVFWZ2lmZlE",
+  "kind": "image",
+  "type": "image/jpeg",
+  "bytes": 7081
+ },
+ {
+  "url": "https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/MDEQ4?wid=400&hei=400&fmt=jpeg&qlt=90&.v=UlhnRE5zUDhFWGdIdHhGZjBXUjNZL1lvYS9naDJJdU9KTWdGWjhKWFRmS2hCVGNYbDE0ZGxZZCsrejdWVk03blhyOTU0MDdBOGYrbnpMSVd5RkhXV2c",
+  "kind": "image",
+  "type": "image/jpeg",
+  "bytes": 10933
+ },
+ {
+  "url": "https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/MGYY4?wid=400&hei=400&fmt=jpeg&qlt=90&.v=cXE4eWx0VnJZVVhyNEgrSHdoTXBFL1lvYS9naDJJdU9KTWdGWjhKWFRmTDIxVS8wcGRSdlR3MXU5L0FlWS81Yy9tbVBaOEJXZFoxUWFzTHlRSm1CR1E",
+  "kind": "image",
+  "type": "image/jpeg",
+  "bytes": 32157
+ },
+ {
+  "url": "https://securemetrics.apple.com/b/ss/applestoreww/1/JS-2.23.0/s11966916774160?AQB=1&ndh=1&pf=1&t=27%2F8%2F2026%2018%3A54%3A56%200%20240&fid=61483390BAE7E1F1-1EE07E46E7770C9B&ce=UTF-8&cdp=2&cl=1800&pageName=AOS%3A%20home%2Fshop_ipad&g=https%3A%2F%2Fwww.apple.com%2Fshop%2Fbuy-ipad&cc=USD&server=as-1.12.0&events=event243%3D1.33%2Cevent244&h1=aos%3Ashop&l1=D%3Das_xs&v3=AOS%3A%20US%20Consumer&l3=D%3Das_tex&c4=D%3Dg&v4=D%3DpageName&c5=macintel&c8=AOS%3A%20iPad&v14=en-us&c20=AOS%3A%20US%20Consumer&c34=shelf-2&c35=1.33&c36=3&c40=10078&v54=D%3Dg&v97=s.tl-o&pe=lnk_o&pev2=section%20engagement&s=1440x900&c=24&j=1.6&v=N&k=Y&bw=1440&bh=900&AQE=1",
+  "kind": "image",
+  "type": "image/gif",
+  "bytes": 43
+ },
+ {
+  "url": "https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/ipad-card-50-applecare-202311_GEO_US?wid=960&hei=1000&fmt=p-jpg&qlt=95&.v=QkF3d3h0Wm10ZzJ3L2t5cnNXMkdiRXBmam9nUmR3bjF3REVTd3VJcEwybGliOTBDYU5saG5qVVFqcjlWTi9hWnFmS3YvQ0doSFZENndQR0J4TTRqbnpLSjUwMGVwY1Y2MG5oSi9mdUgvTkpXbW9naVRaYk52T0tGSVB4ZENRZWw",
+  "kind": "image",
+  "type": "image/jpeg",
+  "bytes": 33891
+ },
+ {
+  "url": "https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/ipad-card-50-setup-beyond-202408?wid=960&hei=1000&fmt=p-jpg&qlt=95&.v=Y2FBTVNSYktPQ3hOUm5wUVZBWW05WlQ5SkVLYlgwRTIrMkVCVDdQNDhGajJtaE9nejNBS0FrclhJMVJoVXB1MUprY3crUWRsN1dqVjRnMHR5S1hVbkI2NW1aN3VvVWZrazdOc2xHT20rL2w0QWI4N2RiSWRXTk0zNjRiMUdIY3M",
+  "kind": "image",
+  "type": "image/jpeg",
+  "bytes": 122039,
+  "saved": "assets/image-is-ipad-card-50-setup-beyond-202408-457dbc14.jpg"
+ },
+ {
+  "url": "https://securemetrics.apple.com/b/ss/applestoreww/1/JS-2.23.0/s1984165487846?AQB=1&ndh=1&pf=1&t=27%2F8%2F2026%2018%3A54%3A56%200%20240&fid=61483390BAE7E1F1-1EE07E46E7770C9B&ce=UTF-8&cdp=2&cl=1800&pageName=AOS%3A%20home%2Fshop_ipad&g=https%3A%2F%2Fwww.apple.com%2Fshop%2Fbuy-ipad&cc=USD&server=as-1.12.0&events=event243%3D1.32%2Cevent244&h1=aos%3Ashop&l1=D%3Das_xs&v3=AOS%3A%20US%20Consumer&l3=D%3Das_tex&c4=D%3Dg&v4=D%3DpageName&c5=macintel&c8=AOS%3A%20iPad&v14=en-us&c20=AOS%3A%20US%20Consumer&c34=shelf-3&c35=1.32&c36=4&c40=10078&v54=D%3Dg&v97=s.tl-o&pe=lnk_o&pev2=section%20engagement&s=1440x900&c=24&j=1.6&v=N&k=Y&bw=1440&bh=900&AQE=1",
+  "kind": "image",
+  "type": "image/gif",
+  "bytes": 43
+ },
+ {
+  "url": "https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/ipad-card-50-ipadOS-202510?wid=960&hei=1000&fmt=p-jpg&qlt=95&.v=dHRVd2pXOW5yTjVkK2x3R1o2RXdZWDhTNW8xSEpIb05ReGV4bUdFeUo4cEx0QXRvdnJ4V1dBNW1Qd2w2K1l1dlMwV0hhcmdVdXZzZ1NwTlFUaEgwTHdpMkV6V3I5cHpyWVJKbjZob0tadkk",
+  "kind": "image",
+  "type": "image/jpeg",
+  "bytes": 168553,
+  "saved": "assets/image-is-ipad-card-50-ipadOS-202510-1e07608f.jpg"
+ },
+ {
+  "url": "https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/ipad-card-50-subscriptions-202605_GEO_US?wid=960&hei=1000&fmt=p-jpg&qlt=95&.v=QXpjOVhQcms2dkVkWndobVROeENJemhGUktYeVR0aUd0NER6c1dVblhhQkl6RDgwZ2ZkekpZb2dCNDU4NlB1YVVrc1JZVkQ0S2s0elFpK2Y1K2lCS1NsOG1PN3FBRzN3cEphZ2ZrZllTNGF0ZXByczRhTE40d0UvR2ltOFZyQmI",
+  "kind": "image",
+  "type": "image/jpeg",
+  "bytes": 103079,
+  "saved": "assets/image-is-ipad-card-50-subscriptions-202605_GEO_US-7e3ca499.jpg"
+ },
+ {
+  "url": "https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/store-card-50-continuity-202609_GEO_US?wid=960&hei=1000&fmt=p-jpg&qlt=95&.v=MkxpRXJEbEM4SjVucjFvcTdEU1BlNktGcElSZCtpUGVDcVhib0c0eEptbkFkWTlnaEhRWXFUU1Nhem4xR20wcHN2Mmx4a3VvSnUzaFUvSVlVRUJkbE9GMXNhUmVHYkNXTlA4UU40UEZOL0ZVTFprc3BaYnljSUFEYzhHbllKZ00",
+  "kind": "image",
+  "type": "image/jpeg",
+  "bytes": 152846,
+  "saved": "assets/image-is-store-card-50-continuity-202609_GEO_US-d2772fa8.jpg"
+ },
+ {
+  "url": "https://securemetrics.apple.com/b/ss/applestoreww/1/JS-2.23.0/s13536981952171?AQB=1&ndh=1&pf=1&t=27%2F8%2F2026%2018%3A54%3A57%200%20240&fid=61483390BAE7E1F1-1EE07E46E7770C9B&ce=UTF-8&cdp=2&cl=1800&pageName=AOS%3A%20home%2Fshop_ipad&g=https%3A%2F%2Fwww.apple.com%2Fshop%2Fbuy-ipad&cc=USD&server=as-1.12.0&events=event243%3D1.33%2Cevent244&h1=aos%3Ashop&l1=D%3Das_xs&v3=AOS%3A%20US%20Consumer&l3=D%3Das_tex&c4=D%3Dg&v4=D%3DpageName&c5=macintel&c8=AOS%3A%20iPad&v14=en-us&c20=AOS%3A%20US%20Consumer&c34=mzone%3Aaos_ipadshoplob_story&c35=1.33&c36=5&c40=10078&v54=D%3Dg&v97=s.tl-o&pe=lnk_o&pev2=section%20engagement&s=1440x900&c=24&j=1.6&v=N&k=Y&bw=1440&bh=900&AQE=1",
+  "kind": "image",
+  "type": "image/gif",
+  "bytes": 43
+ },
+ {
+  "url": "https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/ipad-card-40-education-202405?wid=800&hei=1000&fmt=p-jpg&qlt=95&.v=UDBEVzZoRzJySHJxc1Vob2tuQURVaTZNSlJWWktSTTVOclMxdi80TE1TcjZXYXJlRUd1cTBYTnRnbTNlazIvMzRHeXB5TnVsU3R6Qjd0Y2JzbURyWExxNlZYZHZXTm9tMTA2SjVpZVpvYXArYWpGdS9XeFgvbS9ITnNYOEhYaG4",
+  "kind": "image",
+  "type": "image/jpeg",
+  "bytes": 155204,
+  "saved": "assets/image-is-ipad-card-40-education-202405-47a45381.jpg"
+ },
+ {
+  "url": "https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/ipad-card-40-business-202405?wid=800&hei=1000&fmt=jpeg&qlt=90&.v=ZjNrcjBZRW54aHFiRHhiVUNmSW54aktLVkF0YXVSbEZFdFcxNWM5OGlla2QxYXI4a0J1dmxHNzJaeEFoWmI5RHVUb3VPa2FUZVhQMFhDQnVBMWhwQS9yTmxkUjVHN0dGTXZnUzBWSWFpSzA",
+  "kind": "image",
+  "type": "image/jpeg",
+  "bytes": 76573,
+  "saved": "assets/image-is-ipad-card-40-business-202405-42c7a296.jpg"
+ },
+ {
+  "url": "https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/ipad-card-40-government-202405?wid=800&hei=1000&fmt=p-jpg&qlt=95&.v=d0tRUWR4NjRpdTJxMHd6UG4rVGFPS3R1bVlOK3ZQOXkwam9kMUkzQzBnWDkvamYzRzRvcFlnajNacmhEOC9BeHg4ZHpEbm5XWGdaM3BiNVRDaG55Uk9ncVQrRGNhOHhUajY1L040cmFBbXVIaWV5SG1KWWRSb1RMSkNqUDJYZHY",
+  "kind": "image",
+  "type": "image/jpeg",
+  "bytes": 78320,
+  "saved": "assets/image-is-ipad-card-40-government-202405-34d58fcf.jpg"
+ },
+ {
+  "url": "https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/store-card-40-veteran-202509?wid=800&hei=1000&fmt=p-jpg&qlt=95&.v=d01hbVp2TEdlMG9Memp2N1liaFpVK0VtZHJxNHNCcDlSRnVhZkNXeTJhc2QxYXI4a0J1dmxHNzJaeEFoWmI5RDJTaS9RTTYzTWg5VUhTM1Ara0JyS09TMGQyVTZTbVh5ekYyU1hDTHhHdE0",
+  "kind": "image",
+  "type": "image/jpeg",
+  "bytes": 119473,
+  "saved": "assets/image-is-store-card-40-veteran-202509-24f56405.jpg"
+ },
+ {
+  "url": "https://securemetrics.apple.com/b/ss/applestoreww/1/JS-2.23.0/s11340678911607?AQB=1&ndh=1&pf=1&t=27%2F8%2F2026%2018%3A54%3A59%200%20240&fid=61483390BAE7E1F1-1EE07E46E7770C9B&ce=UTF-8&cdp=2&cl=1800&pageName=AOS%3A%20home%2Fshop_ipad&g=https%3A%2F%2Fwww.apple.com%2Fshop%2Fbuy-ipad&cc=USD&server=as-1.12.0&events=event243%3D1.38%2Cevent244&h1=aos%3Ashop&l1=D%3Das_xs&v3=AOS%3A%20US%20Consumer&l3=D%3Das_tex&c4=D%3Dg&v4=D%3DpageName&c5=macintel&c8=AOS%3A%20iPad&v14=en-us&c20=AOS%3A%20US%20Consumer&c34=shelf-5&c35=1.38&c36=6&c40=10078&v54=D%3Dg&v97=s.tl-o&pe=lnk_o&pev2=section%20engagement&s=1440x900&c=24&j=1.6&v=N&k=Y&bw=1440&bh=900&lrt=1&AQE=1",
+  "kind": "image",
+  "type": "image/gif",
+  "bytes": 43
+ },
+ {
+  "url": "https://securemetrics.apple.com/b/ss/applestoreww/1/JS-2.23.0/s14778831554591?AQB=1&ndh=1&pf=1&t=27%2F8%2F2026%2018%3A54%3A59%200%20240&fid=61483390BAE7E1F1-1EE07E46E7770C9B&ce=UTF-8&cdp=2&cl=1800&pageName=AOS%3A%20home%2Fshop_ipad&g=https%3A%2F%2Fwww.apple.com%2Fshop%2Fbuy-ipad&cc=USD&server=graf%409.8.0&events=event4&products=module.aso.shop_ipad.accessories.202503%3Bcontent%3B%3B%3B%3BeVar60%3DAOS_iPadShopLOB_Story%7CeVar61%3D7w33y3aPSUKMaSougFXwrw%3AINLINE%7CeVar65%3D1%2F15%2Cmodule.aso.standard.product.simple.33%3BMX2D3%3B%3B%3B%3BeVar60%3DAOS_iPadShopLOB_Story%7CeVar61%3D7w33y3aPSUKMaSougFXwrw%3AINLINE%7CeVar65%3D2%2F15%2Cmodule.aso.standard.product.simple.33%3BMGYY4%3B%3B%3B%3BeVar60%3DAOS_iPadShopLOB_Story%7CeVar61%3D7w33y3aPSUKMaSougFXwrw%3AINLINE%7CeVar65%3D3%2F15%2Cmodule.aso.standard.product.simple.33%3BMDEQ4%3B%3B%3B%3BeVar60%3DAOS_iPadShopLOB_Story%7CeVar61%3D7w33y3aPSUKMaSougFXwrw%3AINLINE%7CeVar65%3D4%2F15&h1=aos%3Ashop&l1=D%3Das_xs&v3=AOS%3A%20US%20Consumer&l3=D%3Das_tex&c4=D%3Dg&v4=D%3DpageName&c5=macintel&c8=AOS%3A%20iPad&v14=en-us&c20=AOS%3A%20US%20Consumer&c40=10078&v54=D%3Dg&v97=s.tl-o&s=1440x900&c=24&j=1.6&v=N&k=Y&bw=1440&bh=900&AQE=1",
+  "kind": "image",
+  "type": "image/gif",
+  "bytes": 43
+ },
+ {
+  "url": "https://securemetrics.apple.com/b/ss/applestoreww/1/JS-2.23.0/s13545072598818?AQB=1&ndh=1&pf=1&t=27%2F8%2F2026%2018%3A55%3A0%200%20240&fid=61483390BAE7E1F1-1EE07E46E7770C9B&ce=UTF-8&cdp=2&cl=1800&pageName=AOS%3A%20home%2Fshop_ipad&g=https%3A%2F%2Fwww.apple.com%2Fshop%2Fbuy-ipad&cc=USD&server=as-1.12.0&events=event406&h1=aos%3Ashop&l1=D%3Das_xs&v3=AOS%3A%20US%20Consumer&l3=D%3Das_tex&c4=D%3Dg&v4=D%3DpageName&c5=macintel&c8=AOS%3A%20iPad&v14=en-us&c20=AOS%3A%20US%20Consumer&c40=10078&v54=D%3Dg&v97=s.tl-o&pe=lnk_o&pev2=endOfPage&s=1440x900&c=24&j=1.6&v=N&k=Y&bw=1440&bh=900&AQE=1",
+  "kind": "image",
+  "type": "image/gif",
+  "bytes": 43
+ },
+ {
+  "url": "https://securemetrics.apple.com/b/ss/applestoreww/1/JS-2.23.0/s15433280221603?AQB=1&ndh=1&pf=1&t=27%2F8%2F2026%2018%3A55%3A0%200%20240&fid=61483390BAE7E1F1-1EE07E46E7770C9B&ce=UTF-8&cdp=2&cl=1800&pageName=AOS%3A%20home%2Fshop_ipad&g=https%3A%2F%2Fwww.apple.com%2Fshop%2Fbuy-ipad&cc=USD&server=as-1.12.0&events=event243%3D2.32%2Cevent244&h1=aos%3Ashop&l1=D%3Das_xs&v3=AOS%3A%20US%20Consumer&l3=D%3Das_tex&c4=D%3Dg&v4=D%3DpageName&c5=macintel&c8=AOS%3A%20iPad&v14=en-us&c20=AOS%3A%20US%20Consumer&c34=shelf-6&c35=2.32&c36=7&c40=10078&v54=D%3Dg&v97=s.tl-o&pe=lnk_o&pev2=section%20engagement&s=1440x900&c=24&j=1.6&v=N&k=Y&bw=1440&bh=900&lrt=1&AQE=1",
+  "kind": "image",
+  "type": "image/gif",
+  "bytes": 43
+ },
+ {
+  "url": "https://securemetrics.apple.com/b/ss/applestoreww/1/JS-2.23.0/s14664963515988?AQB=1&ndh=1&pf=1&t=27%2F8%2F2026%2018%3A55%3A0%200%20240&fid=61483390BAE7E1F1-1EE07E46E7770C9B&ce=UTF-8&cdp=2&cl=1800&pageName=AOS%3A%20home%2Fshop_ipad&g=https%3A%2F%2Fwww.apple.com%2Fshop%2Fbuy-ipad&cc=USD&server=as-1.12.0&events=event243%3D1.33%2Cevent244&h1=aos%3Ashop&l1=D%3Das_xs&v3=AOS%3A%20US%20Consumer&l3=D%3Das_tex&c4=D%3Dg&v4=D%3DpageName&c5=macintel&c8=AOS%3A%20iPad&v14=en-us&c20=AOS%3A%20US%20Consumer&c34=shelf-7&c35=1.33&c36=8&c40=10078&v54=D%3Dg&v97=s.tl-o&pe=lnk_o&pev2=section%20engagement&s=1440x900&c=24&j=1.6&v=N&k=Y&bw=1440&bh=900&AQE=1",
+  "kind": "image",
+  "type": "image/gif",
+  "bytes": 43
+ }
+]

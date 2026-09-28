@@ -1,0 +1,540 @@
+[0m
+> build · muse-spark-1.3-contributor-free
+[0m
+Shipping the 3588-frame film engine — wiring the progressive loader and playback.
+[0m→ [0mRead src/v1
+[0m→ [0mRead docs/00-BRIEF.md
+[0m→ [0mRead render-repo/RENDER-REPORT.md
+[0m→ [0mRead src/v1/App.tsx
+[0m→ [0mRead src/v1/progress.ts
+[0m→ [0mRead src/v1/filmCurve.ts
+[0m→ [0mRead src/v1/FilmSequence.tsx
+[0m
+[0m$ [0mrtk ls public/v1film/ 2>/dev/null | head -20; echo ---; rtk ls render-repo/out/frames/ 2>/dev/null | head -5; ls render-repo/out/frames/ 2>/dev/null | wc -l; echo ---; rtk ls scripts/frames/ 2>/dev/null; echo ---; cat package.json | head -60; echo ---; rtk ls src/v1/snap.ts 2>/dev/null || echo "no snap.ts"
+0001.jpg  69.6K
+0002.jpg  69.6K
+0003.jpg  69.6K
+0004.jpg  69.7K
+0005.jpg  69.9K
+0006.jpg  70.2K
+0007.jpg  70.2K
+0008.jpg  70.1K
+0009.jpg  70.4K
+0010.jpg  70.9K
+0011.jpg  70.6K
+0012.jpg  71.5K
+0013.jpg  72.1K
+0014.jpg  72.7K
+0015.jpg  73.3K
+0016.jpg  74.6K
+0017.jpg  75.7K
+0018.jpg  77.3K
+0019.jpg  78.5K
+0020.jpg  79.9K
+---
+f_00001.webp  78.9K
+f_00002.webp  78.9K
+f_00003.webp  78.8K
+f_00004.webp  78.8K
+f_00005.webp  78.8K
+    3588
+---
+---
+{
+  "name": "eyeq-vision-care",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc -b && vite build",
+    "postbuild": "cp dist/index.html dist/404.html",
+    "preview": "vite preview",
+    "lint": "eslint src --max-warnings 0",
+    "test:e2e": "playwright test"
+  },
+  "dependencies": {
+    "@gsap/react": "2.1.2",
+    "@react-three/drei": "10.7.9",
+    "@react-three/fiber": "9.8.1",
+    "@react-three/postprocessing": "3.1.3",
+    "gsap": "3.15.0",
+    "lenis": "1.3.26",
+    "maath": "0.10.8",
+    "postprocessing": "6.39.5",
+    "react": "19.3.0",
+    "react-dom": "19.3.0",
+    "react-router-dom": "7.18.4",
+    "three": "0.186.1",
+    "zustand": "5.0.15"
+  },
+  "devDependencies": {
+    "@eslint/js": "9.39.1",
+    "@gltf-transform/cli": "4.5.0",
+    "@playwright/test": "1.63.0",
+    "@types/react": "19.3.0",
+    "@types/react-dom": "19.3.0",
+    "@types/three": "0.186.0",
+    "@vitejs/plugin-react": "6.1.1",
+    "eslint": "9.39.1",
+    "eslint-plugin-react-hooks": "7.0.1",
+    "eslint-plugin-react-refresh": "0.4.24",
+    "globals": "16.5.0",
+    "typescript": "5.9.2",
+    "typescript-eslint": "8.50.0",
+    "vite": "8.3.1"
+  }
+}
+---
+no snap.ts
+[0m
+[0m$ [0mrtk du -sh render-repo/out/frames/; rtk du -sh public/v1film/; rtk ls public/v1film/*.json 2>/dev/null; rtk read public/v1film/manifest.json 2>/dev/null; echo ---; ls public/v1film/ | wc -l; which magick convert cwebp 2>/dev/null; node -e "try{require.resolve('sharp')}catch(e){console.log('no sharp')}"
+239M	render-repo/out/frames/
+ 20M	public/v1film/
+public/v1film/manifest.json  101B
+{"count": 308, "width": 1512, "height": 860, "pad": 4, "ext": "jpg", "sourceFrames": 615, "step": 2}
+---
+     309
+/opt/homebrew/bin/magick
+/opt/homebrew/bin/convert
+/opt/homebrew/bin/cwebp
+[0m
+[0m$ [0mrtk ls render-repo/out/; rtk ls render-repo/ | head -30; rtk ls render-repo/out/web 2>/dev/null | head -3
+frames/
+render_params.txt  101B
+out/
+reference/
+scripts/
+BAKE.md  6.4K
+README.md  93B
+RENDER-REPORT.md  3.5K
+eyeq_film.blend  5.3M
+eyeq_film.blend1  5.3M
+eyeq_film_lit.blend  5.2M
+[0m
+[0m$ [0mtime magick render-repo/out/frames/f_00001.webp -resize 1512x860! -quality 82 /tmp/test_web.webp && rtk ls /tmp/test_web.webp; sysctl -n hw.ncpu
+magick render-repo/out/frames/f_00001.webp -resize 1512x860! -quality 82   0.17s user 0.03s system 24% cpu 0.799 total
+/tmp/test_web.webp  12.4K
+12
+[0m
+WebP resizes at ~0.8s/frame — parallel build will take ~4 min in background. Kicking that off while I write the loader.
+[0m# [0mTodos
+[•] Write scripts/frames/build.sh (full+web tiers + manifest)
+[ ] Run frame build in background
+[ ] Write src/v1/frameLoader.ts (tier pick, priority queue, LRU)
+[ ] Rewrite src/v1/FilmSequence.tsx on frameLoader
+[ ] Verify: dev server + Playwright screenshots key frames + video
+[ ] Write docs/phase4/qa/v2/film.md report
+[0m
+[0m← [0mWrite scripts/frames/build.sh
+Wrote file successfully.
+[0m
+[0m$ [0mchmod +x scripts/frames/build.sh && rm -f public/v1film/0*.jpg public/v1film/manifest.json && nohup sh scripts/frames/build.sh 8 > /tmp/filmbuild.log 2>&1 &
+echo started
+started
+[0m
+Build running in background. Writing the loader now.
+[0m# [0mTodos
+[✓] Write scripts/frames/build.sh (full+web tiers + manifest)
+[•] Run frame build in background
+[•] Write src/v1/frameLoader.ts (tier pick, priority queue, LRU)
+[ ] Rewrite src/v1/FilmSequence.tsx on frameLoader
+[ ] Verify: dev server + Playwright screenshots key frames + video
+[ ] Write docs/phase4/qa/v2/film.md report
+[0m
+[0m← [0mWrite src/v1/frameLoader.ts
+Wrote file successfully.
+[0m
+[0m← [0mEdit src/v1/frameLoader.ts
+Index: /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/v1/frameLoader.ts
+===================================================================
+--- /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/v1/frameLoader.ts
++++ /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/v1/frameLoader.ts
+@@ -136,8 +136,13 @@
+ loadedCount(): number {
+   return this.lru.size;
+ }
+ 
++/** Size of the initial batch the preloader waits for (0 until loadFirstBatch). */
++firstBatchSize(): number {
++  return this.firstBatchTotal;
++}
++
+ isLoaded(i: number): boolean {
+   return this.state[i] === 2;
+ }
+ 
+
+[0m
+[0m← [0mWrite src/v1/FilmSequence.tsx
+Wrote file successfully.
+[0m
+[0m$ [0mrtk read /tmp/filmbuild.log 2>/dev/null; echo ---; ls public/v1film/full 2>/dev/null | wc -l; ls public/v1film/web 2>/dev/null | wc -l
+full: linking/copying 3588 frames…
+web: resizing to 1512x860 q82 (8 parallel)…
+xargs: command line cannot be assembled, too long
+---
+    3588
+       0
+[0m
+Full tier done (3588 linked). The web-tier xargs choked — switching to null-delimited invocation.
+[0m← [0mEdit scripts/frames/build.sh
+Index: /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/scripts/frames/build.sh
+===================================================================
+--- /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/scripts/frames/build.sh
++++ /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/scripts/frames/build.sh
+@@ -25,13 +25,16 @@
+ fi
+ 
+ # Web tier: parallel resize, skip existing.
+ echo "web: resizing to 1512x860 q82 ($JOBS parallel)…"
+-ls "$SRC"/f_*.webp | xargs -P "$JOBS" -I{} sh -c '
+-  b="$(basename "{}")"
+-  out="'"$DST"'/web/$b"
+-  [ -f "$out" ] || magick "{}" -resize 1512x860! -quality 82 "$out"
+-'
++export DST
++find "$SRC" -maxdepth 1 -name 'f_*.webp' -print0 \
++  | xargs -0 -n 32 -P "$JOBS" sh -c '
++    for src in "$@"; do
++      out="$DST/web/$(basename "$src")"
++      [ -f "$out" ] || magick "$src" -resize 1512x860! -quality 82 "$out"
++    done
++  ' sh
+ echo "web: $(ls "$DST/web" | wc -l | tr -d ' ') frames"
+ 
+ cat > "$DST/manifest.json" <<'EOF'
+ {"count":3588,"sourceFrames":615,"fpsMult":5.8333,"tiers":{"full":{"w":3024,"h":1720,"dir":"full"},"web":{"w":1512,"h":860,"dir":"web"}},"pattern":"f_%05d.webp"}
+
+[0m
+[0m$ [0mnohup sh scripts/frames/build.sh 8 > /tmp/filmbuild2.log 2>&1 & echo relaunched; npx tsc --noEmit -p tsconfig.json 2>&1 | head -20 || true
+relaunched
+npm notice run eyeq-vision-care@0.1.0 npx
+npm notice run 'tsc' --noEmit -p tsconfig.json
+[0m
+[0m$ [0mrtk read vite.config.* 2>/dev/null; rtk ls *.html; echo ---; sleep 45; rtk read /tmp/filmbuild2.log --tail-lines 2; ls public/v1film/web | wc -l
+import { defineConfig } from 'vite'
+import react from '@vitejs/plugin-react'
+
+// EyeQ Vision Care cinematic homepage — Lane A scaffold.
+// Static-host SPA fallback: `public/_redirects` + postbuild copy of
+// index.html -> dist/404.html (see package.json `postbuild`).
+export default defineConfig({
+  plugins: [react()],
+})
+dev-C.html  332B
+dev-D.html  451B
+dev-E.html  456B
+dev-F.html  462B
+dev-b.html  441B
+index.html  577B
+v1-text.html  438B
+v1-waves.html  313B
+v1.html  674B
+---
+full: already present, skipping
+web: resizing to 1512x860 q82 (8 parallel)…
+    1370
+[0m
+Build at 1370/3588. Starting the dev server meanwhile.
+[0m$ [0mrtk read v1.html; rtk read index.html
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="EyeQ Vision Care — 2-227 Vodden St East, Brampton, ON. Eye exams, prescription fittings, high-definition lenses." />
+    <meta name="theme-color" content="#050607" />
+    <style>html{background:#050607}</style>
+    <link rel="preload" href="/fonts/fraunces-var.woff2" as="font" type="font/woff2" crossorigin />
+    <title>EyeQ Vision Care — Brampton, ON</title>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/v1/main.tsx"></script>
+  </body>
+</html>
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="EyeQ Vision Care — 2-227 Vodden St East, Brampton, ON. Eye exams, prescription fittings, high-definition lenses." />
+    <link rel="preload" href="/fonts/fraunces-var.woff2" as="font" type="font/woff2" crossorigin />
+    <title>EyeQ Vision Care — Brampton, ON</title>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>
+[0m
+[0m$ [0mnohup npx vite --port 5401 --strictPort > /tmp/vite5401.log 2>&1 & sleep 6; rtk read /tmp/vite5401.log --tail-lines 5; curl -s -o /dev/null -w "%{http_code}" http://localhost:5401/v1.html
+VITE v8.3.1  ready in 274 ms
+
+  ➜  Local:   http://localhost:5401/
+  ➜  Network: use --host to expose
+200
+[0m
+[0m$ [0msleep 90; rtk read /tmp/filmbuild2.log --tail-lines 3; ls public/v1film/web | wc -l; rtk read public/v1film/manifest.json 2>/dev/null || echo "no manifest yet"
+web: resizing to 1512x860 q82 (8 parallel)…
+web: 3588 frames
+manifest written
+    3588
+{"count":3588,"sourceFrames":615,"fpsMult":5.8333,"tiers":{"full":{"w":3024,"h":1720,"dir":"full"},"web":{"w":1512,"h":860,"dir":"web"}},"pattern":"f_%05d.webp"}
+[0m
+All 3588 frames in both tiers, manifest written. Now the verification pass.
+[0m$ [0mrtk du -sh public/v1film/full public/v1film/web; mkdir -p docs/phase4/qa/v2; npx playwright --version 2>&1 | head -2
+239M	public/v1film/full
+ 60M	public/v1film/web
+npm notice run eyeq-vision-care@0.1.0 npx
+npm notice run 'playwright' --version
+[0m
+[0m$ [0mrtk playwright --version; rtk ls ~/.cache/ms-playwright/ 2>/dev/null || rtk ls ~/Library/Caches/ms-playwright 2>/dev/null || echo NOBROWSERS
+[RTK:PASSTHROUGH] playwright parser: All parsing tiers failed
+Version 1.63.0
+
+b/
+chromium-1243/
+chromium_headless_shell-1243/
+daemon/
+ffmpeg-1011/
+[0m
+[0m← [0mWrite scripts/frames/qa-film.mjs
+Wrote file successfully.
+[0m
+[0m$ [0mnode scripts/frames/qa-film.mjs 2>&1 | tail -25
+preloader done
+key s=1 filmP~0.0000 shot
+key s=70 filmP~0.0566 shot
+key s=145 filmP~0.2345 shot
+key s=215 filmP~0.3314 shot
+key s=280 filmP~0.4541 shot
+key s=368 filmP~0.5978 shot
+key s=440 filmP~0.6668 shot
+key s=500 filmP~0.7602 shot
+key s=600 filmP~0.9754 shot
+mobile s=215 shot
+mobile s=600 shot
+video done
+QA complete
+[0m
+[0m← [0mEdit scripts/frames/qa-film.mjs
+Index: /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/scripts/frames/qa-film.mjs
+===================================================================
+--- /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/scripts/frames/qa-film.mjs
++++ /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/scripts/frames/qa-film.mjs
+@@ -25,8 +25,26 @@
+     return m ? parseFloat(m[1]) : -1;
+   });
+ }
+ 
++// Seek until the eased film progress (rail) matches the target film
++// fraction — inverts the scroll→film punch curve by bisection.
++async function seekFilm(page, target) {
++  let lo = 0;
++  let hi = 1;
++  for (let i = 0; i < 7; i++) {
++    const mid = (lo + hi) / 2;
++    await scrollFilmTo(page, mid);
++    await page.waitForTimeout(600);
++    const p = await filmProgress(page);
++    if (p < target) lo = mid;
++    else hi = mid;
++  }
++  await scrollFilmTo(page, (lo + hi) / 2);
++  await page.waitForTimeout(2500); // priority fill + scrub settle
++  return filmProgress(page);
++}
++
+ const browser = await chromium.launch();
+ try {
+   const page = await browser.newPage({ viewport: { width: 1512, height: 860 } });
+   page.on('console', (m) => {
+
+[0m
+[0m$ [0mpython3 - <<'EOF'
+import re
+p = 'scripts/frames/qa-film.mjs'
+s = open(p).read()
+s = s.replace("""  for (const s of KEYS) {
+    await scrollFilmTo(page, filmP(s));
+    await page.waitForTimeout(2500); // let priority fill + eased scrub settle
+    const p = await filmProgress(page);
+    await page.screenshot({ path: `${OUT}/film-key-${String(s).padStart(3, '0')}.png` });
+    console.log(`key s=${s} filmP~${p.toFixed(4)} shot`);
+  }""", """  for (const s of KEYS) {
+    const p = await seekFilm(page, filmP(s));
+    await page.screenshot({ path: `${OUT}/film-key-${String(s).padStart(3, '0')}.png` });
+    console.log(`key s=${s} filmP~${p.toFixed(4)} (target ${filmP(s).toFixed(4)}) shot`);
+  }""")
+s = s.replace("""  for (const s of [215, 600]) {
+    await scrollFilmTo(mob, filmP(s));
+    await mob.waitForTimeout(2500);
+    await mob.screenshot({ path: `${OUT}/film-key-${String(s).padStart(3, '0')}-390.png` });
+    console.log(`mobile s=${s} shot`);
+  }""", """  for (const s of [215, 600]) {
+    const p = await seekFilm(mob, filmP(s));
+    await mob.screenshot({ path: `${OUT}/film-key-${String(s).padStart(3, '0')}-390.png` });
+    console.log(`mobile s=${s} filmP~${p.toFixed(4)} shot`);
+  }""")
+open(p, 'w').write(s)
+print("patched")
+EOF
+node scripts/frames/qa-film.mjs 2>&1 | tail -16
+patched
+preloader done
+key s=1 filmP~0.0000 (target 0.0000) shot
+key s=70 filmP~0.1124 (target 0.1124) shot
+key s=145 filmP~0.2345 (target 0.2345) shot
+key s=215 filmP~0.2345 (target 0.3485) shot
+key s=280 filmP~0.2345 (target 0.4544) shot
+key s=368 filmP~0.7151 (target 0.5977) shot
+key s=440 filmP~0.7151 (target 0.7150) shot
+key s=500 filmP~0.7151 (target 0.8127) shot
+key s=600 filmP~0.9754 (target 0.9756) shot
+mobile s=215 filmP~0.2345 shot
+mobile s=600 filmP~0.9753 shot
+video done
+QA complete
+[0m
+Bisection misread — Lenis smoothing hadn't converged between reads. Lengthening the settle waits.
+[0m$ [0mpython3 - <<'EOF'
+p = 'scripts/frames/qa-film.mjs'
+s = open(p).read()
+s = s.replace("await page.waitForTimeout(600);", "await page.waitForTimeout(1600);")
+open(p, 'w').write(s)
+print("patched")
+EOF
+node scripts/frames/qa-film.mjs 2>&1 | tail -16
+patched
+preloader done
+key s=1 filmP~0.0000 (target 0.0000) shot
+key s=70 filmP~0.0682 (target 0.1124) shot
+key s=145 filmP~0.2567 (target 0.2345) shot
+key s=215 filmP~0.3305 (target 0.3485) shot
+key s=280 filmP~0.5225 (target 0.4544) shot
+key s=368 filmP~0.5675 (target 0.5977) shot
+key s=440 filmP~0.9754 (target 0.7150) shot
+key s=500 filmP~0.7640 (target 0.8127) shot
+key s=600 filmP~0.9754 (target 0.9756) shot
+mobile s=215 filmP~0.3485 shot
+mobile s=600 filmP~0.9753 shot
+video done
+QA complete
+[0m
+[0m← [0mEdit scripts/frames/qa-film.mjs
+Index: /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/scripts/frames/qa-film.mjs
+===================================================================
+--- /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/scripts/frames/qa-film.mjs
++++ /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/scripts/frames/qa-film.mjs
+@@ -30,18 +30,24 @@
+ // fraction — inverts the scroll→film punch curve by bisection.
+ async function seekFilm(page, target) {
+   let lo = 0;
+   let hi = 1;
+-  for (let i = 0; i < 7; i++) {
++  for (let i = 0; i < 10; i++) {
+     const mid = (lo + hi) / 2;
+     await scrollFilmTo(page, mid);
+-    await page.waitForTimeout(1600);
++    await page.waitForTimeout(2400);
+     const p = await filmProgress(page);
++    if (p < 0) break;
++    if (Math.abs(p - target) < 0.004) {
++      lo = mid;
++      hi = mid;
++      break;
++    }
+     if (p < target) lo = mid;
+     else hi = mid;
+   }
+   await scrollFilmTo(page, (lo + hi) / 2);
+-  await page.waitForTimeout(2500); // priority fill + scrub settle
++  await page.waitForTimeout(3000); // priority fill + scrub settle
+   return filmProgress(page);
+ }
+ 
+ const browser = await chromium.launch();
+
+[0m
+[0m$ [0mnode scripts/frames/qa-film.mjs 2>&1 | tail -16
+preloader done
+key s=1 filmP~0.0000 (target 0.0000) shot
+key s=70 filmP~0.1124 (target 0.1124) shot
+key s=145 filmP~0.2345 (target 0.2345) shot
+key s=215 filmP~0.3486 (target 0.3485) shot
+key s=280 filmP~0.4541 (target 0.4544) shot
+key s=368 filmP~0.5978 (target 0.5977) shot
+key s=440 filmP~0.7151 (target 0.7150) shot
+key s=500 filmP~0.8131 (target 0.8127) shot
+key s=600 filmP~0.9754 (target 0.9756) shot
+mobile s=215 filmP~0.3485 shot
+mobile s=600 filmP~0.9753 shot
+video done
+QA complete
+[0m
+All nine keys landed within ±0.0004 of target. Now looking at every screenshot.
+[0m→ [0mRead docs/phase4/qa/v2/film-key-001.png
+[0m→ [0mRead docs/phase4/qa/v2/film-key-070.png
+[0m→ [0mRead docs/phase4/qa/v2/film-key-145.png
+First three keys look superb. Checking the rest.
+[0m→ [0mRead docs/phase4/qa/v2/film-key-215.png
+[0m→ [0mRead docs/phase4/qa/v2/film-key-368.png
+[0m→ [0mRead docs/phase4/qa/v2/film-key-280.png
+[0m→ [0mRead docs/phase4/qa/v2/film-key-440.png
+[0m→ [0mRead docs/phase4/qa/v2/film-key-600.png
+[0m→ [0mRead docs/phase4/qa/v2/film-key-500.png
+Desktop keys all land perfectly. Checking mobile + video.
+[0m→ [0mRead docs/phase4/qa/v2/film-key-215-390.png
+[0m
+[0m$ [0mrtk ls -la docs/phase4/qa/v2/ | head -20
+644  QA.md  3.0K
+644  SNAP-integration.md  1.7K
+644  SNAP.md  2.1K
+644  film-key-001.png  349.9K
+644  film-key-070.png  405.5K
+644  film-key-145.png  457.6K
+644  film-key-215-390.png  149.8K
+644  film-key-215.png  228.7K
+644  film-key-280.png  406.7K
+644  film-key-368.png  331.4K
+644  film-key-440.png  389.5K
+644  film-key-500.png  457.9K
+644  film-key-600-390.png  276.5K
+644  film-key-600.png  607.7K
+644  page@2f4b0b3efacefa7ecdc94c99383fbd5d.webm  1.6M
+644  page@34b45f52ce52d41fe3090402550edb63.webm  1.6M
+644  page@35723eed21797bfe3897810ffe7fe087.webm  1.5M
+644  page@568162cf729108aa1e15f05f52cfdaa2.webm  1.5M
+644  snap-after.png  14.2K
+644  snap-before.png  14.2K
+[0m
+[0m$ [0mls -t docs/phase4/qa/v2/*.webm; LATEST=$(ls -t docs/phase4/qa/v2/*.webm | head -1); mv "$LATEST" docs/phase4/qa/v2/film-scroll.webm && rm docs/phase4/qa/v2/page@*.webm && rtk ls -la docs/phase4/qa/v2/film-scroll.webm
+docs/phase4/qa/v2/page@34b45f52ce52d41fe3090402550edb63.webm
+docs/phase4/qa/v2/page@2f4b0b3efacefa7ecdc94c99383fbd5d.webm
+docs/phase4/qa/v2/page@35723eed21797bfe3897810ffe7fe087.webm
+docs/phase4/qa/v2/page@568162cf729108aa1e15f05f52cfdaa2.webm
+docs/phase4/qa/v2/snap-nudge.webm
+644  docs/phase4/qa/v2/film-scroll.webm  1.6M
+[0m
+[0m← [0mWrite docs/phase4/qa/v2/film.md
+Wrote file successfully.
+[0m
+[0m$ [0mpkill -f "vite --port 5401" && sleep 1; rtk curl -s -m 3 -o /dev/null -w "%{http_code}" http://localhost:5401/v1.html || echo " server stopped"
+FAILED: curl 000
+ server stopped
+[0m
+[0m# [0mTodos
+[✓] Write scripts/frames/build.sh (full+web tiers + manifest)
+[✓] Run frame build in background
+[✓] Write src/v1/frameLoader.ts (tier pick, priority queue, LRU)
+[✓] Rewrite src/v1/FilmSequence.tsx on frameLoader
+[✓] Verify: dev server + Playwright screenshots key frames + video
+[✓] Write docs/phase4/qa/v2/film.md report
+[0m
+V2-FILM-DONE
+- 3588 frames live in two tiers (full 239 MB + web 60 MB) with spec-exact manifest; builder script idempotent.
+- frameLoader streams with first-batch preloader gate, 8-way priority fill, LRU-600, nearest-frame fallback; FilmSequence keeps cross-blend and all chrome.
+- All 9 key beats screenshot-verified at 1512×860 (±0.0004 rail), mobile stills + scroll video in docs; server stopped.
+EXIT 0 model=opencode/muse-spark-1.3-contributor-free

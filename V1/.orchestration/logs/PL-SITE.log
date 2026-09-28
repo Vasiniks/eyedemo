@@ -1,0 +1,40 @@
+[0m
+> build · muse-spark-1.3-contributor
+[0m
+[0m→ [0mRead docs/phase4
+[0m→ [0mRead docs/00-BRIEF.md
+[0m→ [0mRead docs/research/00-PHASE2-SYNTHESIS.md
+[0m→ [0mRead docs/research
+[0m→ [0mRead docs/research/C-link-inventory.md
+[0m→ [0mRead docs/research/A-website-audit.md
+[0m→ [0mRead docs/research/B-content-inventory.md
+[0m→ [0mRead docs/research/E-visual-references.md
+[0m→ [0mSkill "awwwards-playbook"
+[0m• [0mConsult interaction-designer[90m Interaction-Designer Agent[0m
+[0m• [0mConsult responsive-specialist[90m Responsive-Specialist Agent[0m
+[0m→ [0mSkill "no-ai-design-slop"
+[0m→ [0mSkill "cinematic-scroll-storytelling"
+[0m✓ [0mConsult interaction-designer[90m Interaction-Designer Agent[0m
+[0m✓ [0mConsult responsive-specialist[90m Responsive-Specialist Agent[0m
+[0m
+[0m← [0mWrite docs/phase4/PLAN-site-ia.md
+Wrote file successfully.
+[0m
+[0m← [0mWrite docs/phase4/PLAN-site-ia.md
+Wrote file successfully.
+[0m
+[0m→ [0mSkill "masked-reveal"
+[0m→ [0mSkill "marquee-loop"
+[0m
+[0m← [0mWrite docs/phase4/PLAN-site-ia.md
+Wrote file successfully.
+[0m
+Plan file complete: `docs/phase4/PLAN-site-ia.md`
+
+PHASE4-PLAN-SITE-DONE
+- Sitemap preserves Home/Services/Contact + policies + reachable `/frames` catalog (22), drops hidden cart/account and empty News, invents nothing.
+- Homepage = 9-beat film (80% dark → lens portal → 20% white practical) → opposing brand rails → About/Services/Lenses/Reviews/Visit in conversion order.
+- Persistent minimal header (logo + Book pill + menu) with skip-film control; full-screen menu; footer with policies + replay.
+- Return visitors skip the film via sessionStorage flag with replay affordance; transitions are 200ms crossfades.
+- Mobile keeps all beats reframed and shortened (700vh, single rail → horizontal marquee, native scroll); full reduced-motion/keyboard/SR parity specified.
+EXIT 0 model=meta/muse-spark-1.3-contributor

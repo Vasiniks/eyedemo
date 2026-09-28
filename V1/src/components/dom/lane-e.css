@@ -1,0 +1,1964 @@
+/* ==========================================================================
+ * EyeQ Vision Care — Lane E (DOM/copy) styles.
+ * Lives in src/components/dom/* (Lane E owns these files). Never touches
+ * src/styles/* (Lane A) or film.css (Lane B). Tokens: src/styles/tokens.css.
+ * Motion family: expo.out reveals, linear rails. Easing approx for expo.out:
+ * cubic-bezier(0.16, 1, 0.3, 1).
+ * ========================================================================== */
+
+.eyeq-e {
+  --eyeq-ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --eyeq-bed: #ece6d6; /* rail film-strip bed (Paper-dark, ART §4.4) */
+}
+
+/* ---- shared primitives ------------------------------------------------ */
+
+.eyeq-e__microcap {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.eyeq-e__microcap::after {
+  content: "";
+  display: block;
+  width: 24px;
+  height: 1px;
+  background: currentColor;
+  opacity: 0.5;
+}
+
+.eyeq-e__draft-tag {
+  font-family: var(--eyeq-font-ui);
+  font-size: 9px;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  border: 1px dashed currentColor;
+  border-radius: 2px;
+  padding: 2px 6px;
+  margin-left: 8px;
+  vertical-align: middle;
+  white-space: nowrap;
+  opacity: 0.75;
+}
+
+/* Masked word reveal (skill: masked-reveal). Words rise through overflow
+ * masks, stagger by word. JS adds .is-in when revealed; RM/static = plain. */
+.eyeq-e__mask {
+  display: inline-block;
+  overflow: hidden;
+  vertical-align: bottom;
+  padding-bottom: 0.08em;
+  margin-bottom: -0.08em;
+}
+.eyeq-e__mask > span {
+  display: inline-block;
+  transform: translateY(110%);
+  filter: blur(4px);
+  transition:
+    transform 0.8s var(--eyeq-ease-out),
+    filter 0.8s ease-out;
+  will-change: transform;
+}
+.is-in .eyeq-e__mask > span {
+  transform: translateY(0);
+  filter: blur(0);
+}
+
+/* Scroll reveal (IntersectionObserver adds .is-in once) */
+.eyeq-e__reveal {
+  opacity: 0;
+  transform: translateY(20px);
+  transition:
+    opacity 0.85s var(--eyeq-ease-out),
+    transform 0.85s var(--eyeq-ease-out);
+}
+.eyeq-e__reveal.is-in {
+  opacity: 1;
+  transform: none;
+}
+
+/* ---- Skip links -------------------------------------------------------- */
+
+.eyeq-skip {
+  position: fixed;
+  top: -100px;
+  left: 16px;
+  z-index: 200;
+  background: var(--eyeq-ink);
+  color: var(--eyeq-paper);
+  font-size: 14px;
+  font-weight: 500;
+  padding: 12px 18px;
+  border-radius: 2px;
+  text-decoration: none;
+  transition: top 0.2s ease-out;
+}
+.eyeq-skip:focus-visible {
+  top: 12px;
+}
+
+/* ---- Header ------------------------------------------------------------ */
+
+.eyeq-header {
+  position: fixed;
+  inset: 0 0 auto 0;
+  z-index: 100;
+  height: var(--eyeq-header-h);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 var(--eyeq-margin);
+  transition:
+    background-color 0.3s ease-out,
+    border-color 0.3s ease-out,
+    backdrop-filter 0.3s ease-out;
+  border-bottom: 1px solid transparent;
+}
+.eyeq-header--dark {
+  color: var(--eyeq-bone);
+  /* V3-MPAGE: over the film the bar must be transparent (never a lighter
+   * #0b–#10 seam over the film's pure black) — no blur, no hairline. */
+  background: transparent;
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+  border-bottom-color: transparent;
+}
+.eyeq-header--light {
+  color: var(--eyeq-ink);
+  /* Feedback E-round1 P0-2: over the white act the header is Paper (never a
+   * muddy grey bar) + Ink text/logo — with blur, scrolled or not. */
+  background: rgba(245, 241, 232, 0.82);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-bottom-color: var(--eyeq-hairline-light);
+}
+.eyeq-header.is-scrolled--dark {
+  /* V3-MPAGE: still over the film (theme dark) — stay transparent/#000 so no
+   * lighter blurred seam appears over pure-black frames. Inversion to the
+   * Paper bar happens via the --light theme, untouched below. */
+  background: transparent;
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+  border-bottom-color: transparent;
+}
+.eyeq-header--light.is-scrolled--light,
+.eyeq-header--light.is-scrolled--dark {
+  background: rgba(245, 241, 232, 0.82);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-bottom-color: var(--eyeq-hairline-light-strong);
+}
+.eyeq-header__brand {
+  display: inline-flex;
+  align-items: center;
+  line-height: 0;
+}
+.eyeq-header__brand img {
+  height: 30px;
+  width: auto;
+  display: block;
+}
+.eyeq-header__actions {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+.eyeq-header__book {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 44px;
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: inherit;
+  border: 1px solid currentColor;
+  border-radius: var(--eyeq-radius-pill);
+  padding: 10px 20px;
+  opacity: 0.92;
+  transition:
+    transform 0.16s ease-out,
+    opacity 0.2s ease-out;
+}
+/* 390px: brand + pill + menu must breathe — tighten the pill, keep 44px. */
+@media (max-width: 480px) {
+  .eyeq-header__actions {
+    gap: 10px;
+  }
+  .eyeq-header__book {
+    padding: 10px 14px;
+    font-size: 12px;
+  }
+  .eyeq-header__brand img {
+    height: 26px;
+  }
+}
+.eyeq-header__book:hover {
+  opacity: 1;
+}
+.eyeq-header__book:active {
+  transform: scale(0.97);
+}
+.eyeq-header__book .eyeq-arrow {
+  color: var(--eyeq-lamp-amber);
+}
+.eyeq-header__menu-btn {
+  width: 44px;
+  height: 44px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: none;
+  border: 1px solid currentColor;
+  border-radius: 50%;
+  color: inherit;
+  cursor: pointer;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  opacity: 0.92;
+}
+.eyeq-header__menu-btn:hover {
+  opacity: 1;
+}
+.eyeq-header__progress {
+  position: absolute;
+  left: 0;
+  bottom: -1px;
+  height: 2px;
+  width: 100%;
+  transform-origin: 0 50%;
+  background: var(--eyeq-lamp-amber);
+}
+
+/* Skip-film control: sticky bottom-centre during dark act only.
+ * V3-MPAGE: transparent over the film (no band behind it) — legibility from
+ * a text-shadow, never a lighter backdrop. */
+.eyeq-skipfilm {
+  position: fixed;
+  left: 50%;
+  bottom: 28px;
+  transform: translateX(-50%);
+  z-index: 100;
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid var(--eyeq-hairline-dark-strong);
+  color: var(--eyeq-bone-dim);
+  text-shadow: 0 1px 12px rgba(0, 0, 0, 0.8);
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  padding: 8px 4px;
+  min-height: 44px;
+  cursor: pointer;
+  transition:
+    opacity 0.2s ease-out,
+    visibility 0.2s ease-out;
+}
+.eyeq-skipfilm:hover {
+  color: var(--eyeq-bone);
+}
+/* Feedback E-round1 P0-3: faded (not unmounted) once the film is over, so it
+ * never overlaps white-act content. visibility flips with the fade. */
+.eyeq-skipfilm.is-hidden {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+/* Menu overlay: 100vw x 100dvh, crossfade + scale .97 */
+.eyeq-menu {
+  position: fixed;
+  inset: 0;
+  width: 100vw;
+  height: 100dvh;
+  z-index: 150;
+  background: var(--eyeq-void);
+  color: var(--eyeq-bone);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 0 var(--eyeq-margin);
+  opacity: 0;
+  transform: scale(0.97);
+  pointer-events: none;
+  transition:
+    opacity 0.25s ease-out,
+    transform 0.25s ease-out;
+}
+.eyeq-menu.is-open {
+  opacity: 1;
+  transform: none;
+  pointer-events: auto;
+}
+.eyeq-menu__close {
+  position: absolute;
+  top: 10px;
+  right: var(--eyeq-margin);
+  width: 44px;
+  height: 44px;
+  background: none;
+  border: 1px solid var(--eyeq-hairline-dark-strong);
+  border-radius: 50%;
+  color: var(--eyeq-bone);
+  cursor: pointer;
+  font-size: 16px;
+}
+.eyeq-menu__list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.eyeq-menu__list a {
+  color: var(--eyeq-bone);
+  text-decoration: none;
+  font-family: var(--eyeq-font-display);
+  font-weight: 300;
+  font-size: clamp(30px, 4.5vw, 52px);
+  line-height: 1.25;
+  letter-spacing: -0.02em;
+}
+.eyeq-menu__list a:hover {
+  text-decoration: underline;
+  text-underline-offset: 8px;
+  text-decoration-thickness: 1px;
+}
+.eyeq-menu__foot {
+  margin-top: 48px;
+  padding-top: 24px;
+  border-top: 1px solid var(--eyeq-hairline-dark);
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px 32px;
+  font-size: 14px;
+  color: var(--eyeq-bone-dim);
+}
+.eyeq-menu__foot a {
+  color: var(--eyeq-bone-dim);
+}
+.eyeq-menu__bookbar {
+  display: none;
+}
+@media (max-width: 600px) {
+  .eyeq-menu__bookbar {
+    display: block;
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 56px;
+    line-height: 56px;
+    text-align: center;
+    background: var(--eyeq-paper);
+    color: var(--eyeq-ink);
+    font-size: 14px;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-decoration: none;
+  }
+}
+
+/* ---- Chapter overlay (dark film beats) ---------------------------------- */
+
+.eyeq-chapters {
+  position: relative;
+}
+.eyeq-chapter {
+  margin: 0;
+  padding: 0 var(--eyeq-margin);
+  min-height: 60vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding-bottom: 12vh;
+}
+.eyeq-chapter__eyebrow {
+  max-width: 560px;
+  color: var(--eyeq-bone-dim);
+  margin: 0 0 12px;
+}
+.eyeq-chapter__display {
+  max-width: 560px;
+  margin: 0;
+  font-family: var(--eyeq-font-display);
+  font-weight: 300;
+  font-size: clamp(30px, 3.4vw, 48px);
+  line-height: 1.02;
+  letter-spacing: -0.02em;
+  color: var(--eyeq-bone);
+}
+/* Local contrast scrim: 120px behind copy only (never full-page blanket).
+ * V3-MPAGE: pure-black gradient so no lighter #050607 seam over pure-black film. */
+.eyeq-chapter__copy {
+  position: relative;
+  z-index: 1;
+  padding: 120px 0 0;
+  margin-top: -120px;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.55), rgba(0, 0, 0, 0));
+  pointer-events: none;
+}
+.eyeq-chapter__copy > * {
+  pointer-events: auto;
+}
+.eyeq-chapter--b7 {
+  align-items: center;
+  text-align: center;
+}
+.eyeq-chapter--b7 .eyeq-chapter__eyebrow,
+.eyeq-chapter--b7 .eyeq-chapter__display {
+  max-width: 640px;
+}
+.eyeq-chapter__lenslist {
+  list-style: none;
+  margin: 32px 0 0;
+  padding: 0;
+  max-width: 560px;
+}
+.eyeq-chapter__lenslist li {
+  font-size: 13px;
+  line-height: 1.5;
+  color: var(--eyeq-bone);
+  padding: 10px 0;
+  border-top: 1px solid var(--eyeq-hairline-dark);
+}
+.eyeq-chapter__lenslist li:last-child {
+  border-bottom: 1px solid var(--eyeq-hairline-dark);
+}
+.eyeq-chapter__lenslist .eyeq-reg {
+  font-size: 60%;
+}
+.eyeq-chapter__logosr {
+  list-style: none;
+  margin: 24px auto 0;
+  padding: 0;
+  max-width: 640px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 24px;
+  justify-content: center;
+  font-size: 13px;
+  color: var(--eyeq-bone-dim);
+}
+.eyeq-chapter__b7head {
+  max-width: 640px;
+  margin: 0 auto;
+  font-family: var(--eyeq-font-display);
+  font-weight: 300;
+  font-size: clamp(30px, 3.2vw, 38px);
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+  color: var(--eyeq-bone);
+}
+.eyeq-chapter__b7sub {
+  margin: 16px auto 0;
+  font-size: 16px;
+  color: var(--eyeq-bone-dim);
+}
+.eyeq-chapter__microlabel {
+  max-width: 560px;
+  margin: 0 0 12px;
+  color: var(--eyeq-bone-dim);
+}
+.eyeq-sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+/* Stacked (reduced-motion / no-JS) mode: every beat fully visible */
+.eyeq-chapters--stacked .eyeq-chapter {
+  opacity: 1 !important;
+  transform: none !important;
+}
+.eyeq-chapters--stacked .eyeq-e__mask > span {
+  transform: none;
+}
+
+/* ---- Booking CTA -------------------------------------------------------- */
+
+.eyeq-cta {
+  --eyeq-cta-h: 48px;
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  min-height: var(--eyeq-cta-h);
+  padding: 0 28px;
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  text-decoration: none;
+  border-radius: 2px;
+  transition: transform 0.3s var(--eyeq-ease-out);
+}
+.eyeq-cta--ink {
+  background: var(--eyeq-ink);
+  color: var(--eyeq-paper);
+}
+.eyeq-cta--paper {
+  background: var(--eyeq-paper);
+  color: var(--eyeq-ink);
+}
+.eyeq-cta .eyeq-arrow {
+  color: var(--eyeq-lamp-amber);
+  display: inline-block;
+  transition: transform 0.35s var(--eyeq-ease-out);
+}
+.eyeq-cta:hover .eyeq-arrow {
+  transform: translateX(6px);
+}
+.eyeq-cta__label {
+  display: inline-block;
+  overflow: hidden;
+  height: 1.4em;
+  line-height: 1.4em;
+}
+.eyeq-cta__label > span {
+  display: block;
+  transition: transform 0.4s var(--eyeq-ease-out);
+}
+.eyeq-cta:hover .eyeq-cta__label > span {
+  transform: translateY(-100%);
+}
+
+/* ---- White act ---------------------------------------------------------- */
+
+.eyeq-white {
+  background: var(--eyeq-paper);
+  color: var(--eyeq-ink);
+  padding: 112px 0;
+  scroll-margin-top: 56px;
+  /* HOME: contains the breakout book-exam band (100vw) — clip, not hidden,
+   * so no new scroll container is created and sticky descendants keep working. */
+  overflow-x: clip;
+}
+.eyeq-white__grid {
+  display: grid;
+  grid-template-columns: 1fr minmax(0, 640px) 1fr;
+  gap: 0 48px;
+  padding: 0 var(--eyeq-margin);
+  align-items: start;
+}
+.eyeq-white__col {
+  max-width: 640px;
+  margin: 0 auto;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.eyeq-white__logo {
+  height: 44px;
+  width: auto;
+  /* Feedback E-round1 P1-6: ≥32px air above and below the white-act logo. */
+  margin: 32px 0 0;
+}
+.eyeq-white__h1 {
+  margin: 32px 0 0;
+  max-width: 22ch;
+}
+.eyeq-white__cta {
+  margin-top: 32px;
+}
+.eyeq-white__ledger {
+  margin: 48px 0 0;
+  padding: 0;
+  list-style: none;
+  width: 100%;
+  text-align: left;
+  border-top: 1px solid var(--eyeq-hairline-light-strong);
+}
+.eyeq-white__ledger li {
+  display: flex;
+  justify-content: space-between;
+  gap: 24px;
+  padding: 14px 0;
+  border-bottom: 1px solid var(--eyeq-hairline-light);
+  font-size: 16px;
+}
+.eyeq-white__ledger dt,
+.eyeq-white__ledger .eyeq-ledger__k {
+  color: var(--eyeq-ink-muted);
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  padding-top: 4px;
+  flex: 0 0 96px;
+}
+.eyeq-white__ledger dd,
+.eyeq-white__ledger .eyeq-ledger__v {
+  margin: 0;
+  color: var(--eyeq-ink-body);
+  text-align: right;
+}
+.eyeq-white__ledger a {
+  color: var(--eyeq-ink-body);
+}
+.eyeq-white__map {
+  margin-top: 48px;
+  width: 100%;
+}
+@media (max-width: 1100px) {
+  .eyeq-white__grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Map: click-to-activate (C §5) */
+.eyeq-map {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  background: var(--eyeq-card-white);
+  border: 1px solid var(--eyeq-hairline-light);
+  border-radius: 2px;
+  overflow: hidden;
+}
+.eyeq-map iframe {
+  width: 100%;
+  height: 100%;
+  border: 0;
+  display: block;
+}
+/* F4-MAP: live-by-default + scroll-safe hint (hover/focus only, tiny). */
+.eyeq-map--live .eyeq-map__hint {
+  position: absolute;
+  left: 8px;
+  bottom: 8px;
+  max-width: max-content;
+  padding: 3px 8px;
+  font-size: 11px;
+  letter-spacing: 0.02em;
+  line-height: 1.4;
+  color: var(--eyeq-ink-muted);
+  background: color-mix(in srgb, var(--eyeq-card-white) 88%, transparent);
+  border: 1px solid var(--eyeq-hairline-light);
+  border-radius: 999px;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.18s ease;
+}
+.eyeq-map--live:hover .eyeq-map__hint,
+.eyeq-map--live:focus-within .eyeq-map__hint {
+  opacity: 1;
+}
+.eyeq-map--live.is-active .eyeq-map__hint {
+  opacity: 0;
+}
+@media (prefers-reduced-motion: reduce) {
+  .eyeq-map--live .eyeq-map__hint {
+    transition: none;
+  }
+}
+.eyeq-map__cover {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  background: var(--eyeq-card-white);
+  border: none;
+  width: 100%;
+  cursor: pointer;
+  color: var(--eyeq-ink-body);
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+}
+.eyeq-map__cover small {
+  font-weight: 400;
+  color: var(--eyeq-ink-muted);
+  letter-spacing: 0;
+}
+.eyeq-map__dirs {
+  display: inline-block;
+  margin-top: 16px;
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  color: var(--eyeq-ink);
+  text-underline-offset: 4px;
+}
+
+/* ---- Logo rails (dark film stock, E-round1 P0-1) ---------------------------
+ * Real FILM STOCK, not a grey-tile marquee: each rail is a continuous
+ * Void/Graphite-800 strip (~120px desktop) with sprocket perforations punched
+ * in Paper colour along both edges; light-knockout logos sit DIRECTLY on the
+ * dark base (no inner tile); frame numbers are 10px micro-caps in Bone-dim /
+ * Lamp-amber at 60%; faint 1px Steel-edge frame dividers; film grain ≤3%;
+ * top/bottom edges masked ≥120px into Paper. Motion (marquee-loop skill):
+ * 72px/s desktop / 44px/s mobile, opposing directions, linear, rAF-driven in
+ * LogoRails.tsx (two identical set copies; offset wraps over one set height).
+ * Deviation recorded: the §1-C8 "40–60% rail opacity" wash is dropped — a
+ * translucent Void strip over Paper read as the cheap grey the feedback
+ * rejected. Opacity now lives only in numbers/dividers/grain. */
+
+.eyeq-rails {
+  display: flex;
+  justify-content: center;
+  gap: 0;
+  width: 100%;
+}
+.eyeq-rail {
+  position: relative;
+  width: 120px;
+  flex: 0 0 120px;
+  background: var(--eyeq-void);
+  border-left: 1px solid rgba(75, 85, 99, 0.5);
+  border-right: 1px solid rgba(75, 85, 99, 0.5);
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+}
+/* F4-RAILS: on ≥1280px the aside is viewport-fixed — the strip runs the full
+ * viewport height so the loop reads
+ * continuously past the white act, alongside every section to the footer. */
+@media (min-width: 1280px) {
+  .v1-rail .eyeq-rail {
+    height: 100svh;
+  }
+  .v1-rail .eyeq-rail__body {
+    height: 100%;
+  }
+  .v1-rail .eyeq-rail__viewport {
+    height: 100%;
+  }
+}
+/* Film grain ≤3%: static turbulence dusted over the strip (texture, not art). */
+.eyeq-rail::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.03;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='120' height='120' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+/* Sprocket perforations: Paper-coloured blocks punched along both edges. */
+.eyeq-rail__edge {
+  width: 18px;
+  flex: 0 0 18px;
+  background-image: repeating-linear-gradient(
+    to bottom,
+    var(--eyeq-paper) 0 10px,
+    transparent 10px 34px
+  );
+  background-size: 8px 34px;
+  background-repeat: repeat-y;
+  background-position: center top;
+}
+.eyeq-rail__body {
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
+  overflow: hidden;
+}
+.eyeq-rail__viewport {
+  overflow: hidden;
+  flex: 1;
+  /* Edge mask ≥120px: the strip dissolves into Paper top and bottom. */
+  -webkit-mask-image: linear-gradient(to bottom, transparent, black 120px, black calc(100% - 120px), transparent);
+  mask-image: linear-gradient(to bottom, transparent, black 120px, black calc(100% - 120px), transparent);
+}
+.eyeq-rail__track {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 24px 0;
+  will-change: transform;
+}
+/* Measurable half-track: one full logo set (the loop wraps over its height) */
+.eyeq-rail__set {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.eyeq-rail__frame {
+  width: 96px;
+  padding: 18px 0 16px;
+  /* Faint frame divider: 1px Steel-edge at 30%. */
+  border-bottom: 1px solid rgba(75, 85, 99, 0.3);
+}
+.eyeq-rail__cell {
+  /* Logos sit DIRECTLY on the dark base — no inner tile. */
+  width: 96px;
+  min-height: 64px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px 10px;
+}
+.eyeq-rail__frame--hero .eyeq-rail__cell {
+  min-height: 96px;
+}
+.eyeq-rail__cell img {
+  max-width: 100%;
+  max-height: 100%;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  display: block;
+}
+.eyeq-rail__num {
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  color: rgba(197, 188, 166, 0.6);
+  text-align: center;
+  padding: 10px 0 0;
+}
+.eyeq-rail__frame--hero .eyeq-rail__num {
+  color: rgba(217, 164, 65, 0.6);
+}
+/* RM mobile grid: only below 768px (desktop RM uses the flank columns) */
+.eyeq-rails--mobile-static {
+  display: none;
+}
+@media (max-width: 767px) {
+  .eyeq-railside--static {
+    display: none;
+  }
+  .eyeq-rails--static {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .eyeq-rails--mobile-static {
+    display: block;
+  }
+}
+/* Static (reduced-motion) grid: 8 + 8 labelled */
+.eyeq-rails--static {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 16px;
+  padding: 0 var(--eyeq-margin);
+  max-width: 900px;
+  margin: 0 auto;
+}
+/* Static single-side column for the RM flank layout */
+.eyeq-railside--static {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  width: 120px;
+  padding: 24px 0;
+}
+.eyeq-railside--static figure {
+  margin: 0;
+  background: var(--eyeq-void);
+  border: 1px solid rgba(75, 85, 99, 0.5);
+  border-radius: 2px;
+  padding: 16px 10px;
+  text-align: center;
+}
+.eyeq-railside--static .eyeq-rail__cell {
+  background: none;
+  min-height: 0;
+}
+.eyeq-railside--static .eyeq-rail__num {
+  padding: 10px 0 0;
+}
+@media (max-width: 767px) {
+  .eyeq-railside--static {
+    display: none;
+  }
+  .eyeq-rails--static {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+.eyeq-rails--static figure {
+  margin: 0;
+  background: var(--eyeq-void);
+  border: 1px solid rgba(75, 85, 99, 0.5);
+  border-radius: 2px;
+  padding: 16px 12px;
+  text-align: center;
+}
+.eyeq-rails--static .eyeq-rail__cell {
+  width: 100%;
+  min-height: 64px;
+  margin: 0 auto;
+  background: none;
+}
+.eyeq-rails--static figcaption {
+  margin-top: 10px;
+  font-size: 12px;
+  color: rgba(197, 188, 166, 0.85);
+}
+/* Mobile: one 68px horizontal marquee, vertical pair hidden */
+.eyeq-rails--mobile {
+  display: none;
+}
+@media (max-width: 767px) {
+  /* Vertical rails are desktop-only (PLAN-MASTER §8): on mobile the white
+   * act is flanked by nothing — the single 68px horizontal marquee
+   * (.eyeq-rails--mobile) carries the marks below the white act. Without
+   * this the 120px flank strips overlay the 4-col content. */
+  .eyeq-rails--desktop {
+    display: none;
+  }
+  .eyeq-railside--static {
+    display: none;
+  }
+  .eyeq-rails--mobile {
+    display: block;
+    overflow: hidden;
+    background: var(--eyeq-void);
+    border-top: 1px solid rgba(75, 85, 99, 0.5);
+    border-bottom: 1px solid rgba(75, 85, 99, 0.5);
+    -webkit-mask-image: linear-gradient(to right, transparent, black 12%, black 88%, transparent);
+    mask-image: linear-gradient(to right, transparent, black 12%, black 88%, transparent);
+  }
+  .eyeq-rails--mobile .eyeq-rail__track--h {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    height: 68px;
+    width: max-content;
+    padding-left: 16px;
+    will-change: transform;
+  }
+  /* Measurable half-track incl. trailing gap = one seamless cycle.
+   * Both copies identical so wrapping by copy-0 width is invisible. */
+  .eyeq-rails--mobile .eyeq-rail__set--h {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 32px;
+    padding-right: 32px;
+  }
+  .eyeq-rails--mobile .eyeq-rail__cell {
+    width: auto;
+    min-height: 0;
+    height: 44px;
+    padding: 6px 14px;
+    flex: 0 0 auto;
+    background: none;
+  }
+  .eyeq-rails--mobile .eyeq-rail__cell img {
+    height: 100%;
+    width: auto;
+  }
+}
+@media (min-width: 768px) and (max-width: 1100px) {
+  .eyeq-section {
+    padding: 96px var(--eyeq-margin);
+  }
+  .eyeq-white {
+    padding: 96px 0;
+  }
+}
+@media (min-width: 768px) and (max-width: 1023px) {
+  .eyeq-rail {
+    width: 64px;
+    flex-basis: 64px;
+  }
+  .eyeq-rail__frame,
+  .eyeq-rail__cell {
+    width: 48px;
+  }
+  .eyeq-rail__cell {
+    min-height: 40px;
+    padding: 6px;
+  }
+  .eyeq-rail__edge {
+    width: 8px;
+    flex-basis: 8px;
+    background-size: 5px 34px;
+  }
+}
+
+/* ---- Rest-of-homepage sections (Paper until footer) ---------------------- */
+
+.eyeq-sections {
+  background: var(--eyeq-paper);
+  color: var(--eyeq-ink);
+}
+.eyeq-section {
+  padding: 112px var(--eyeq-margin);
+  border-top: 1px solid var(--eyeq-hairline-light);
+  max-width: 1280px;
+  margin: 0 auto;
+}
+@media (max-width: 767px) {
+  .eyeq-section {
+    padding: 64px 20px;
+  }
+  .eyeq-review--featured.eyeq-review {
+    padding: 28px 24px;
+  }
+  .eyeq-visit__card {
+    padding: 28px 24px;
+  }
+}
+.eyeq-section__eyebrow {
+  color: var(--eyeq-ink-muted);
+  margin: 0 0 12px;
+}
+.eyeq-section__h2 {
+  max-width: 560px;
+}
+.eyeq-section__lede {
+  max-width: 560px;
+  color: var(--eyeq-ink-body);
+  margin: 24px 0 0;
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+/* R1 About: asymmetric editorial + video */
+.eyeq-about__grid {
+  display: grid;
+  grid-template-columns: 5fr 7fr;
+  gap: 48px;
+  align-items: start;
+}
+@media (max-width: 900px) {
+  .eyeq-about__grid {
+    grid-template-columns: 1fr;
+  }
+}
+.eyeq-about__media {
+  position: relative;
+  border-radius: var(--eyeq-radius-media);
+  overflow: hidden;
+  background: var(--eyeq-ink);
+  aspect-ratio: 4 / 3;
+}
+.eyeq-about__media video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+.eyeq-about__play {
+  position: absolute;
+  inset: 0;
+  background: rgba(5, 6, 7, 0.35);
+  border: none;
+  color: var(--eyeq-paper);
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+}
+.eyeq-about__body p {
+  color: var(--eyeq-ink-body);
+  max-width: 60ch;
+}
+.eyeq-about__brampton {
+  margin-top: 32px;
+  padding-top: 24px;
+  border-top: 1px solid var(--eyeq-hairline-light-strong);
+}
+.eyeq-about__brampton p {
+  margin: 8px 0;
+}
+.eyeq-about__brampton address {
+  font-style: normal;
+  color: var(--eyeq-ink-body);
+}
+
+/* R2 Services précis: ledger rows 01–04, Fraunces numerals, sticky H2 */
+.eyeq-services__grid {
+  display: grid;
+  grid-template-columns: 4fr 8fr;
+  gap: 48px;
+  align-items: start;
+}
+@media (max-width: 900px) {
+  .eyeq-services__grid {
+    grid-template-columns: 1fr;
+  }
+}
+.eyeq-services__sticky {
+  position: sticky;
+  top: 96px;
+}
+.eyeq-services__rows {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  border-top: 1px solid var(--eyeq-hairline-light-strong);
+}
+.eyeq-services__rows li {
+  display: grid;
+  grid-template-columns: 64px 1fr;
+  gap: 24px;
+  padding: 32px 0;
+  border-bottom: 1px solid var(--eyeq-hairline-light);
+  align-items: baseline;
+}
+.eyeq-services__num {
+  font-family: var(--eyeq-font-display);
+  font-size: 28px;
+  font-weight: 400;
+  color: var(--eyeq-ink-muted);
+}
+.eyeq-services__name {
+  font-family: var(--eyeq-font-display);
+  font-size: 22px;
+  font-weight: 400;
+  margin: 0;
+  color: var(--eyeq-ink);
+}
+.eyeq-services__desc {
+  margin: 8px 0 0;
+  color: var(--eyeq-ink-body);
+  font-size: 15px;
+  max-width: 52ch;
+}
+.eyeq-services__more {
+  display: inline-block;
+  margin-top: 32px;
+  color: var(--eyeq-ink);
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  text-underline-offset: 4px;
+}
+
+/* R3 Lenses: single inverted block */
+.eyeq-lenses {
+  max-width: none;
+  background: var(--eyeq-stage);
+  color: var(--eyeq-bone);
+  border-top: none;
+}
+.eyeq-lenses__inner {
+  max-width: 1280px;
+  margin: 0 auto;
+}
+.eyeq-lenses__eyebrow {
+  color: var(--eyeq-bone-dim);
+}
+.eyeq-lenses__rows {
+  list-style: none;
+  margin: 48px 0 0;
+  padding: 0;
+  border-top: 1px solid var(--eyeq-hairline-dark-strong);
+}
+.eyeq-lenses__rows li {
+  padding: 20px 0;
+  border-bottom: 1px solid var(--eyeq-hairline-dark);
+}
+.eyeq-lenses__name {
+  font-family: var(--eyeq-font-display);
+  font-size: 22px;
+  font-weight: 400;
+  margin: 0;
+}
+.eyeq-lenses__name .eyeq-reg {
+  font-size: 60%;
+}
+.eyeq-lenses__desc {
+  margin: 8px 0 0;
+  font-size: 14px;
+  line-height: 1.55;
+  color: var(--eyeq-bone-dim);
+  max-width: 64ch;
+}
+.eyeq-lenses__more {
+  display: inline-block;
+  margin-top: 32px;
+  color: var(--eyeq-bone);
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  text-underline-offset: 4px;
+}
+
+/* R4 Reviews: 1 featured + 5 compact, no stars, no shadows */
+.eyeq-reviews__agg {
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+  margin-top: 16px;
+}
+.eyeq-reviews__score {
+  font-size: 48px;
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: -0.02em;
+}
+.eyeq-reviews__count {
+  color: var(--eyeq-ink-muted);
+  font-size: 14px;
+}
+.eyeq-reviews__grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0;
+  margin-top: 48px;
+  border-top: 1px solid var(--eyeq-hairline-light-strong);
+}
+@media (max-width: 900px) {
+  .eyeq-reviews__grid {
+    grid-template-columns: 1fr;
+  }
+}
+.eyeq-review {
+  margin: 0;
+  padding: 32px 32px 32px 0;
+  border-bottom: 1px solid var(--eyeq-hairline-light);
+}
+.eyeq-reviews__grid > :nth-child(even) .eyeq-review {
+  padding-left: 32px;
+  border-left: 1px solid var(--eyeq-hairline-light);
+}
+.eyeq-reviews__grid > :nth-child(odd) .eyeq-review {
+  padding-right: 32px;
+}
+.eyeq-reviews__grid > .eyeq-review--featured {
+  grid-column: 1 / -1;
+}
+@media (max-width: 900px) {
+  .eyeq-reviews__grid > :nth-child(even) .eyeq-review {
+    padding-left: 0;
+    border-left: none;
+  }
+  .eyeq-reviews__grid > :nth-child(odd) .eyeq-review {
+    padding-right: 0;
+  }
+}
+.eyeq-review--featured.eyeq-review {
+  grid-column: 1 / -1;
+  background: var(--eyeq-card-white);
+  border: 1px solid var(--eyeq-hairline-light);
+  border-radius: 2px;
+  padding: 40px;
+  margin-bottom: 8px;
+}
+.eyeq-review__mono {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: var(--eyeq-ink);
+  color: var(--eyeq-paper);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+}
+.eyeq-review__text {
+  margin: 16px 0 0;
+  color: var(--eyeq-ink-body);
+  font-size: 16px;
+  line-height: 1.6;
+  max-width: 62ch;
+}
+.eyeq-review--featured .eyeq-review__text {
+  font-size: 19px;
+  line-height: 1.55;
+}
+
+/* R5 Visit: split ledger + booking card */
+.eyeq-visit__grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 48px;
+  align-items: start;
+  margin-top: 48px;
+}
+@media (max-width: 900px) {
+  .eyeq-visit__grid {
+    grid-template-columns: 1fr;
+  }
+}
+.eyeq-visit__rows {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  border-top: 1px solid var(--eyeq-hairline-light-strong);
+}
+.eyeq-visit__rows li {
+  display: grid;
+  grid-template-columns: 96px 1fr;
+  gap: 24px;
+  padding: 16px 0;
+  border-bottom: 1px solid var(--eyeq-hairline-light);
+  font-size: 16px;
+  color: var(--eyeq-ink-body);
+}
+.eyeq-visit__rows .eyeq-ledger__k {
+  color: var(--eyeq-ink-muted);
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  padding-top: 4px;
+}
+.eyeq-visit__rows a {
+  color: var(--eyeq-ink-body);
+}
+.eyeq-visit__card {
+  background: var(--eyeq-card-white);
+  border: 1px solid var(--eyeq-hairline-light);
+  border-radius: 2px;
+  padding: 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  align-items: flex-start;
+}
+.eyeq-visit__card p {
+  margin: 0;
+  color: var(--eyeq-ink-body);
+}
+.eyeq-visit__card .eyeq-visit__email {
+  color: var(--eyeq-ink);
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+.eyeq-visit__map {
+  margin-top: 48px;
+}
+
+/* ---- Footer (Void) ------------------------------------------------------- */
+
+.eyeq-footer {
+  background: var(--eyeq-void);
+  color: var(--eyeq-bone);
+  padding: 72px var(--eyeq-margin) 32px;
+}
+.eyeq-footer__grid {
+  max-width: 1280px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 48px;
+}
+@media (max-width: 900px) {
+  .eyeq-footer__grid {
+    grid-template-columns: 1fr;
+  }
+}
+.eyeq-footer__store address {
+  font-style: normal;
+  color: var(--eyeq-bone-dim);
+  font-size: 14px;
+  line-height: 1.7;
+}
+.eyeq-footer__store a {
+  color: var(--eyeq-bone);
+}
+.eyeq-footer__policies {
+  border: none;
+  padding: 0;
+  margin: 24px 0 0;
+}
+.eyeq-footer__policies summary {
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  color: var(--eyeq-bone);
+  list-style: none;
+}
+.eyeq-footer__policies summary::-webkit-details-marker {
+  display: none;
+}
+.eyeq-footer__policies ul {
+  list-style: none;
+  margin: 12px 0 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.eyeq-footer__policies a {
+  color: var(--eyeq-bone-dim);
+  font-size: 14px;
+}
+.eyeq-footer__nav {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  align-items: flex-start;
+}
+.eyeq-footer__nav a,
+.eyeq-footer__nav button {
+  background: none;
+  border: none;
+  padding: 10px 0;
+  min-height: 44px;
+  color: var(--eyeq-bone-dim);
+  font-size: 14px;
+  cursor: pointer;
+  text-decoration: none;
+  font-family: inherit;
+}
+.eyeq-footer__nav a:hover,
+.eyeq-footer__nav button:hover {
+  color: var(--eyeq-bone);
+}
+.eyeq-footer__base {
+  max-width: 1280px;
+  margin: 48px auto 0;
+  padding-top: 24px;
+  border-top: 1px solid var(--eyeq-hairline-dark);
+  font-size: 13px;
+  color: var(--eyeq-bone-dim);
+}
+
+/* ---- WHITE polish: masked H1 split lines + optical settle -----------------
+ * Motion language (PLAN-MASTER §8): expo.out entrances 0.6–1.1s, line stagger
+ * 0.08–0.12s, masked lines yPercent 110→0, transforms/opacity only
+ * (the font-variation settle below is the one asked-for exception), RM static.
+ */
+.eyeq-white__h1 {
+  display: block;
+}
+.eyeq-white__h1 .wline-mask {
+  display: block;
+  overflow: hidden;
+  padding-bottom: 0.09em;
+  margin-bottom: -0.09em;
+}
+.eyeq-white__h1 .wline {
+  display: block;
+  transform: translateY(110%);
+  opacity: 0;
+  filter: blur(4px);
+  will-change: transform;
+  font-variation-settings: "opsz" 72, "SOFT" 50, "WONK" 1;
+}
+.eyeq-white__h1.is-in .wline {
+  transform: translateY(0);
+  opacity: 1;
+  filter: blur(0);
+  transition:
+    transform 1s var(--eyeq-ease-out),
+    opacity 0.7s ease-out,
+    filter 0.8s ease-out;
+}
+/* Line stagger 0.10s (within 0.08–0.12 band). */
+.eyeq-white__h1.is-in .wline-mask:nth-child(2) .wline {
+  transition-delay: 0.1s;
+}
+.eyeq-white__h1.is-in .wline-mask:nth-child(3) .wline {
+  transition-delay: 0.2s;
+}
+.eyeq-white__h1.is-in .wline-mask:nth-child(4) .wline {
+  transition-delay: 0.3s;
+}
+/* Optical settle: class kept as a hook; no visual change — the motion
+ * language is transforms/opacity only, so the H1 rests exactly where it
+ * lands (no post-settle font-variation drift). */
+.eyeq-white__h1.is-settled .wline {
+  font-variation-settings: "opsz" 72, "SOFT" 50, "WONK" 1;
+}
+.eyeq-white__microcap,
+.eyeq-white__logo {
+  opacity: 0;
+  transform: translateY(18px);
+  transition:
+    opacity 0.85s var(--eyeq-ease-out),
+    transform 0.85s var(--eyeq-ease-out);
+}
+.eyeq-white-act.is-in .eyeq-white__microcap,
+.eyeq-white-act.is-in .eyeq-white__logo {
+  opacity: 1;
+  transform: none;
+}
+.eyeq-white-act.is-in .eyeq-white__logo {
+  transition-delay: 0.08s;
+}
+
+/* ---- WHITE polish: CTA fill wipe + arrow travel (fine pointer only) ------- */
+.eyeq-cta {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+}
+.eyeq-cta::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background: #2a2b2e;
+  transform: scaleY(0);
+  transform-origin: 50% 100%;
+  transition: transform 0.4s var(--eyeq-ease-out);
+}
+.eyeq-cta--paper::before {
+  background: #e9e2d3;
+}
+.eyeq-cta__label,
+.eyeq-cta__arrows {
+  position: relative;
+  z-index: 1;
+}
+.eyeq-cta__arrows {
+  display: inline-grid;
+  overflow: hidden;
+  width: 1.2em;
+  height: 1.2em;
+  line-height: 1.2em;
+}
+.eyeq-cta__arrows > span {
+  grid-area: 1 / 1;
+  display: inline-block;
+  transition: transform 0.4s var(--eyeq-ease-out), opacity 0.3s ease-out;
+}
+.eyeq-cta__arrows > span:last-child {
+  transform: translateX(-130%);
+  opacity: 0;
+}
+@media (hover: hover) and (pointer: fine) {
+  .eyeq-cta:hover::before {
+    transform: scaleY(1);
+  }
+  .eyeq-cta:hover .eyeq-cta__arrows > span:first-child {
+    transform: translateX(130%);
+    opacity: 0;
+  }
+  .eyeq-cta:hover .eyeq-cta__arrows > span:last-child {
+    transform: none;
+    opacity: 1;
+  }
+}
+.eyeq-cta:active {
+  transform: scale(0.97);
+  transition: transform 0.16s ease-out;
+}
+
+/* ---- HOME: large book-exam band (client "add a LARGE Book exam") ------------
+ * Full-width Ink band carrying only the verbatim live CTA label. Large type,
+ * large tap target (72px desktop / 64px mobile, full row width). Motion is
+ * the CTA family language (fill wipe + arrow travel + ≤4px magnetic +
+ * press scale, transforms/opacity only); RM = static final state. */
+.eyeq-bookband {
+  max-width: none;
+  background: var(--eyeq-ink);
+  color: var(--eyeq-paper);
+  padding: 56px var(--eyeq-margin);
+}
+.eyeq-bookband__inner {
+  max-width: 880px;
+  margin: 0 auto;
+}
+.eyeq-cta--band {
+  --eyeq-cta-h: 72px;
+  width: 100%;
+  min-height: var(--eyeq-cta-h);
+  justify-content: center;
+  padding: 20px 32px;
+  font-size: clamp(16px, 1.6vw, 19px);
+  letter-spacing: 0.08em;
+  border-radius: 2px;
+}
+.eyeq-cta--band:focus-visible {
+  outline: 2px solid var(--eyeq-lamp-amber);
+  outline-offset: 4px;
+}
+/* Band label never wraps (the roll mask is exactly one line tall — a wrap
+ * would silently clip "TODAY!"). Fits: ~256px at 16px against ~279px. */
+.eyeq-cta--band .eyeq-cta__label {
+  white-space: nowrap;
+  flex-shrink: 1;
+  min-width: 0;
+}
+/* White-act dock: the band fills the column right after the film — full
+ * column width, 72px tall, Ink on Paper. (A viewport breakout was tried and
+ * reverted: the white column is not viewport-centred once the rail asides
+ * are in flow, so vw math mis-centres by ~200px. The pre-footer band carries
+ * the full-bleed moment instead.) */
+.eyeq-white__cta {
+  width: 100%;
+}
+.eyeq-white__cta .eyeq-bookband {
+  background: none;
+  padding: 0;
+}
+.eyeq-white__cta .eyeq-bookband__inner {
+  max-width: none;
+}
+@media (max-width: 767px) {
+  .eyeq-bookband {
+    padding: 40px 20px;
+  }
+  .eyeq-cta--band {
+    --eyeq-cta-h: 64px;
+    font-size: 15px;
+    letter-spacing: 0.06em;
+    padding: 18px 16px;
+    gap: 10px;
+  }
+}
+
+/* ---- HOME: featured brands + insurance name lists (B §9 / §5 verbatim) -----
+ * Ledger rows in the Services dialect (Fraunces numerals + name); names are
+ * unlinked plain text exactly as the logos are unlinked on the live site. */
+.eyeq-brands__list,
+.eyeq-insurance__list {
+  list-style: none;
+  margin: 48px 0 0;
+  padding: 0;
+  border-top: 1px solid var(--eyeq-hairline-light-strong);
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  column-gap: 48px;
+}
+@media (max-width: 700px) {
+  .eyeq-brands__list,
+  .eyeq-insurance__list {
+    grid-template-columns: 1fr;
+  }
+}
+.eyeq-brands__list li,
+.eyeq-insurance__list li {
+  display: grid;
+  grid-template-columns: 64px 1fr;
+  gap: 24px;
+  padding: 22px 0;
+  border-bottom: 1px solid var(--eyeq-hairline-light);
+  align-items: baseline;
+}
+.eyeq-brands__name {
+  font-family: var(--eyeq-font-display);
+  font-size: 22px;
+  font-weight: 400;
+  margin: 0;
+  color: var(--eyeq-ink);
+}
+/* Visit onward link (mirrors the Services "more" link dialect). */
+.eyeq-visit__contact {
+  display: inline-block;
+  margin-top: 32px;
+  color: var(--eyeq-ink);
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  text-underline-offset: 4px;
+}
+
+/* ---- WHITE polish: ledger hairline draws + staggered text ----------------- */
+.eyeq-ledger-draw {
+  position: relative;
+}
+.eyeq-ledger-draw > li {
+  position: relative;
+  opacity: 0;
+  transform: translateY(12px);
+  transition:
+    opacity 0.8s var(--eyeq-ease-out),
+    transform 0.8s var(--eyeq-ease-out);
+}
+.eyeq-ledger-draw > li::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -1px;
+  height: 1px;
+  background: currentColor;
+  opacity: 0.22;
+  transform: scaleX(0);
+  transform-origin: 0 50%;
+  transition: transform 0.9s var(--eyeq-ease-out);
+}
+.eyeq-ledger-draw.is-in > li {
+  opacity: 1;
+  transform: none;
+}
+.eyeq-ledger-draw.is-in > li::after {
+  transform: scaleX(1);
+}
+.eyeq-ledger-draw.is-in > li:nth-child(2) { transition-delay: 0.08s; }
+.eyeq-ledger-draw.is-in > li:nth-child(3) { transition-delay: 0.16s; }
+.eyeq-ledger-draw.is-in > li:nth-child(4) { transition-delay: 0.24s; }
+.eyeq-ledger-draw.is-in > li:nth-child(5) { transition-delay: 0.32s; }
+.eyeq-ledger-draw.is-in > li:nth-child(6) { transition-delay: 0.36s; }
+.eyeq-ledger-draw.is-in > li:nth-child(7) { transition-delay: 0.4s; }
+.eyeq-ledger-draw.is-in > li:nth-child(2)::after { transition-delay: 0.08s; }
+.eyeq-ledger-draw.is-in > li:nth-child(3)::after { transition-delay: 0.16s; }
+.eyeq-ledger-draw.is-in > li:nth-child(4)::after { transition-delay: 0.24s; }
+.eyeq-ledger-draw.is-in > li:nth-child(5)::after { transition-delay: 0.32s; }
+.eyeq-ledger-draw.is-in > li:nth-child(6)::after { transition-delay: 0.36s; }
+.eyeq-ledger-draw.is-in > li:nth-child(7)::after { transition-delay: 0.4s; }
+/* Keep the authored borders as the resting state; the draw is the entrance. */
+.eyeq-white__ledger.eyeq-ledger-draw > li,
+.eyeq-services__rows.eyeq-ledger-draw > li,
+.eyeq-visit__rows.eyeq-ledger-draw > li {
+  border-bottom-color: transparent;
+}
+.eyeq-white__ledger.eyeq-ledger-draw.is-in > li,
+.eyeq-services__rows.eyeq-ledger-draw.is-in > li,
+.eyeq-visit__rows.eyeq-ledger-draw.is-in > li {
+  border-bottom-color: var(--eyeq-hairline-light);
+}
+
+/* ---- WHITE polish: differentiated section entrances ------------------------
+ * About = clip wipe on media · Services = hairline ledger (above) + sticky H2
+ * Lenses = row clip wipes on the inverted block · Reviews = counter + card
+ * scale + stagger · Visit = ledger + card clip · Footer = rise + hairline.
+ * All expo.out 0.6–1.1s, once, transforms/opacity/clip only.
+ */
+.eyeq-e__reveal--clip {
+  opacity: 0;
+  clip-path: inset(0 0 100% 0);
+  transform: none;
+  transition:
+    clip-path 1s var(--eyeq-ease-out),
+    opacity 0.6s ease-out;
+}
+.eyeq-e__reveal--clip.is-in {
+  opacity: 1;
+  clip-path: inset(0 0 0% 0);
+}
+.eyeq-e__reveal--clip img,
+.eyeq-e__reveal--clip video {
+  transform: scale(1.04);
+  transition: transform 1s var(--eyeq-ease-out);
+}
+.eyeq-e__reveal--clip.is-in img,
+.eyeq-e__reveal--clip.is-in video {
+  transform: scale(1);
+}
+.eyeq-e__reveal--rise {
+  opacity: 0;
+  transform: translateY(24px);
+  transition:
+    opacity 0.8s var(--eyeq-ease-out),
+    transform 0.8s var(--eyeq-ease-out);
+}
+.eyeq-e__reveal--rise.is-in {
+  opacity: 1;
+  transform: none;
+}
+.eyeq-e__reveal--scale {
+  opacity: 0;
+  transform: scale(0.96);
+  transition:
+    opacity 0.9s var(--eyeq-ease-out),
+    transform 0.9s var(--eyeq-ease-out);
+}
+.eyeq-e__reveal--scale.is-in {
+  opacity: 1;
+  transform: none;
+}
+.eyeq-e__reveal--wipe {
+  opacity: 0;
+  clip-path: inset(0 100% 0 0);
+  transition:
+    clip-path 0.9s var(--eyeq-ease-out),
+    opacity 0.5s ease-out;
+}
+.eyeq-e__reveal--wipe.is-in {
+  opacity: 1;
+  clip-path: inset(0 0% 0 0);
+}
+/* Stagger helpers for review cards / lens rows (0.08 band). */
+.eyeq-stagger.is-in > *:nth-child(2) { transition-delay: 0.08s; }
+.eyeq-stagger.is-in > *:nth-child(3) { transition-delay: 0.16s; }
+.eyeq-stagger.is-in > *:nth-child(4) { transition-delay: 0.24s; }
+.eyeq-stagger.is-in > *:nth-child(5) { transition-delay: 0.32s; }
+.eyeq-stagger.is-in > *:nth-child(6) { transition-delay: 0.4s; }
+.eyeq-stagger.is-in > *:nth-child(7) { transition-delay: 0.48s; }
+/* Real counters: tabular, no layout shift. */
+.eyeq-reviews__score,
+.eyeq-reviews__countnum {
+  font-variant-numeric: tabular-nums;
+}
+/* Sticky section headers where it helps (Services + Visit ledger). */
+.eyeq-services__sticky {
+  position: sticky;
+  top: 96px;
+}
+.eyeq-visit__sticky {
+  position: sticky;
+  top: 96px;
+}
+@media (max-width: 900px) {
+  .eyeq-services__sticky,
+  .eyeq-visit__sticky {
+    position: static;
+  }
+}
+
+/* ---- WHITE polish: header smooth inversion + hide/show -------------------- */
+.eyeq-header {
+  transition:
+    background-color 0.5s var(--eyeq-ease-out),
+    color 0.5s var(--eyeq-ease-out),
+    border-color 0.5s var(--eyeq-ease-out),
+    transform 0.45s var(--eyeq-ease-out);
+}
+.eyeq-header.is-hiddenbar {
+  transform: translateY(-100%);
+}
+.eyeq-header__brand img {
+  transition: opacity 0.5s var(--eyeq-ease-out);
+}
+.eyeq-header--swap .eyeq-header__brand img {
+  opacity: 0;
+}
+@media (hover: hover) and (pointer: fine) {
+  .eyeq-header__book {
+    position: relative;
+    overflow: hidden;
+    isolation: isolate;
+    transition:
+      transform 0.16s ease-out,
+      color 0.35s var(--eyeq-ease-out),
+      border-color 0.35s var(--eyeq-ease-out);
+  }
+  .eyeq-header__book::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    background: currentColor;
+    opacity: 0.14;
+    transform: scaleX(0);
+    transform-origin: 0 50%;
+    transition: transform 0.35s var(--eyeq-ease-out);
+  }
+  .eyeq-header__book:hover::before {
+    transform: scaleX(1);
+  }
+  .eyeq-header__book:hover .eyeq-arrow {
+    transform: translateX(4px);
+  }
+  .eyeq-header__book .eyeq-arrow {
+    display: inline-block;
+    transition: transform 0.35s var(--eyeq-ease-out);
+  }
+}
+/* Menu links: hairline draw instead of a plain underline (less templated). */
+.eyeq-menu__list a {
+  background-image: linear-gradient(currentColor, currentColor);
+  background-size: 0% 1px;
+  background-repeat: no-repeat;
+  background-position: 0 92%;
+  transition: background-size 0.4s var(--eyeq-ease-out);
+}
+@media (hover: hover) and (pointer: fine) {
+  .eyeq-menu__list a:hover {
+    text-decoration: none;
+    background-size: 100% 1px;
+  }
+}
+/* 390px arrow: hidden AFTER the hover block so it wins at equal specificity
+ * on hover-capable narrow viewports (desktop-emulated 390 included). */
+@media (max-width: 480px) {
+  .eyeq-header__book .eyeq-arrow {
+    display: none;
+  }
+}
+
+/* ---- WHITE polish: film rails — velocity skew + ticking numbers ------------ */
+.eyeq-rail__track,
+.eyeq-rail__track--h {
+  will-change: transform;
+}
+.eyeq-rail__num {
+  font-variant-numeric: tabular-nums;
+  /* Ticking: numbers nudge with rail velocity (--rv from LogoRails rAF). */
+  transform: translateY(calc(var(--rv, 0) * 1px));
+  transition:
+    opacity 0.4s var(--eyeq-ease-out),
+    transform 0.4s var(--eyeq-ease-out);
+}
+.eyeq-rail--hot .eyeq-rail__num {
+  opacity: 1;
+}
+/* Footer entrance: rise + hairline draw. */
+.eyeq-footer__reveal {
+  opacity: 0;
+  transform: translateY(20px);
+  transition:
+    opacity 0.9s var(--eyeq-ease-out),
+    transform 0.9s var(--eyeq-ease-out);
+}
+.eyeq-footer__reveal.is-in {
+  opacity: 1;
+  transform: none;
+}
+.eyeq-footer__base {
+  position: relative;
+}
+.eyeq-footer__base::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: -1px;
+  height: 1px;
+  background: var(--eyeq-bone-dim);
+  opacity: 0.4;
+  transform: scaleX(0);
+  transform-origin: 0 50%;
+  transition: transform 1.1s var(--eyeq-ease-out);
+}
+.eyeq-footer.is-in .eyeq-footer__base::before {
+  transform: scaleX(1);
+}
+
+/* ---- Reduced motion: static everywhere (mirrors JS branch) -------------- */
+
+@media (prefers-reduced-motion: reduce) {
+  .eyeq-e__reveal,
+  .eyeq-e__mask > span,
+  .eyeq-white__h1 .wline,
+  .eyeq-white__microcap,
+  .eyeq-white__logo,
+  .eyeq-e__reveal--clip,
+  .eyeq-e__reveal--rise,
+  .eyeq-e__reveal--scale,
+  .eyeq-e__reveal--wipe,
+  .eyeq-ledger-draw > li,
+  .eyeq-footer__reveal {
+    opacity: 1 !important;
+    transform: none !important;
+    clip-path: none !important;
+    filter: none !important;
+    transition: none !important;
+  }
+  .eyeq-ledger-draw > li::after,
+  .eyeq-footer__base::before,
+  .eyeq-cta::before {
+    transform: none !important;
+    transition: none !important;
+  }
+  .eyeq-header {
+    transition: none;
+  }
+  .eyeq-rail__track,
+  .eyeq-rail__track--h {
+    animation: none;
+  }
+  .eyeq-cta__label > span,
+  .eyeq-cta__arrows > span {
+    transition: none !important;
+  }
+  .eyeq-cta:hover .eyeq-cta__label > span {
+    transform: none;
+  }
+  .eyeq-cta:hover .eyeq-cta__arrows > span:first-child {
+    transform: none;
+    opacity: 1;
+  }
+  .eyeq-cta:hover .eyeq-cta__arrows > span:last-child {
+    opacity: 0;
+  }
+}
