@@ -26,4 +26,4 @@ export const router = createBrowserRouter([
   { path: '/contact', element: <Navigate to="/pages/contact" replace /> },
   { path: '/policies/:policy', element: <Policies /> },
   { path: '/qa/tokens', element: <TokensQA /> },
-])
+], { basename: import.meta.env.BASE_URL })
