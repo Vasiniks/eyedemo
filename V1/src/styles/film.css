@@ -1,0 +1,119 @@
+/* EyeQ Vision Care — film (dark act) integration styles.
+ * Owner: Lane B (conductor/camera/portal). Do not move #film-pin heights or
+ * the .film-stage geometry without the conductor (they ARE the pin contract).
+ *
+ * Scroll architecture (PLAN-MASTER §6): #film-pin is the tall scroll region
+ * (800vh desk / 640 tablet / 560 mob) pinned by the master timeline;
+ * .film-stage is the viewport-locked viewport inside it (canvas + chapters).
+ * Chapter sections stack as full-viewport overlays in scrub mode and
+ * crossfade by master progress (JS-driven opacity/visibility); in static
+ * (reduced-motion) mode they flow normally, fully visible.
+ */
+
+#film-pin {
+  height: 800vh;
+  position: relative;
+  background: #050607;
+}
+
+@media (max-width: 1024px) {
+  #film-pin {
+    height: 640vh;
+  }
+}
+
+@media (max-width: 768px) {
+  #film-pin {
+    height: 560vh;
+  }
+}
+
+/* Reduced-motion: no pin, chapters stack in flow (ChapterOverlay stacked).
+ * The stage becomes a relative 100svh poster so the first chapters start
+ * BELOW the canvas instead of underneath it. */
+#film-pin.film--static {
+  height: auto;
+  min-height: 100svh;
+}
+
+#film-pin.film--static .film-stage {
+  position: relative;
+  height: 100vh;
+  height: 100svh;
+}
+
+/* Viewport-locked stage: absolute (NOT fixed — ScrollTrigger's pin re-contains
+ * fixed descendants to the full shell; absolute inset × 100svh inside the
+ * pinned trigger renders viewport-locked at 1× cost, see canvas API §6). */
+.film-stage {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  height: 100svh;
+  overflow: hidden;
+}
+
+/* Chapter overlay: full-viewport stack above the canvas (z-10), pointer-transparent
+ * (captions carry no links/buttons — logos/lens names are unlinked by contract). */
+#film-pin.film--scrub .eyeq-chapters {
+  position: absolute;
+  inset: 0;
+  height: 100vh;
+  height: 100svh;
+  z-index: 10;
+  pointer-events: none;
+}
+
+#film-pin.film--scrub .eyeq-chapter {
+  position: absolute;
+  inset: 0;
+  box-sizing: border-box;
+  min-height: 0;
+  height: 100%;
+  margin: 0;
+}
+
+/* Skip-film / anchor landings must clear the fixed header (64px desk/56 mob)
+ * so the white-act micro-cap + logo + H1 are never tucked underneath. */
+#white-act {
+  scroll-margin-top: 76px;
+}
+
+/* White act with flanking rails (brief §4Q: rails hug the LEFT and RIGHT page
+ * edges, centre content readable between them). Mirrors the Lane E harness
+ * geometry; mobile collapses to a single column (rails become the 68px
+ * horizontal strip below, CSS in lane-e.css). */
+.film-whitegrid {
+  display: grid;
+  grid-template-columns: auto minmax(0, 640px) auto;
+  width: 100%;
+  background: #f5f1e8;
+}
+
+.film-whitegrid__left {
+  justify-self: start;
+}
+
+.film-whitegrid__center {
+  justify-self: center;
+  width: 100%;
+  max-width: 640px;
+}
+
+.film-whitegrid__right {
+  justify-self: end;
+}
+
+@media (max-width: 767px) {
+  .film-whitegrid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  /* Animated flanks collapse into the 68px horizontal strip below; the
+   * reduced-motion static columns (.eyeq-railside--static) stay visible. */
+  .film-whitegrid__left .eyeq-railside,
+  .film-whitegrid__right .eyeq-railside {
+    display: none;
+  }
+}

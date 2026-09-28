@@ -1,0 +1,36 @@
+  mesh Mesh: tris=30940 verts=15693 morphPosCount=0 mat=Case_Graphite
+  mesh Mesh_1: tris=30940 verts=15693 morphPosCount=0 mat=Velvet_Oxblood
+  mesh Mesh_2: tris=1776 verts=1332 morphPosCount=0 mat=Case_EdgeMetal
+  mesh Case_Flap003: tris=23479 verts=14853 morphPosCount=4 mat=Case_Graphite
+  mesh Case_Flap003_1: tris=17640 verts=8962 morphPosCount=4 mat=Velvet_Oxblood
+  mesh Case_Flap003_2: tris=564 verts=564 morphPosCount=4 mat=Case_EdgeMetal
+  mesh Case_Flap003_3: tris=17337 verts=40083 morphPosCount=4 mat=Logo_Gloss
+  mesh Velvet_Cushion: tris=12814 verts=6600 morphPosCount=0 mat=Velvet_Oxblood
+FILE: /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/public/models/case.opt.glb (1467872 bytes)
+  nodes: Group:Scene, Object3D:Case_Root, Group:Case_Body, Mesh:Mesh, Mesh:Mesh_1, Mesh:Mesh_2, Group:Case_Flap, Mesh:Case_Flap003, Mesh:Case_Flap003_1, Mesh:Case_Flap003_2, Mesh:Case_Flap003_3, Mesh:Velvet_Cushion
+  morphs: Case_Flap003: [Open10, Open20, Open30, Open40] influences=[0, 0, 0, 0] ; Case_Flap003_1: [Open10, Open20, Open30, Open40] influences=[0, 0, 0, 0] ; Case_Flap003_2: [Open10, Open20, Open30, Open40] influences=[0, 0, 0, 0] ; Case_Flap003_3: [Open10, Open20, Open30, Open40] influences=[0, 0, 0, 0]
+  total tris: 135490
+  bbox min (m): -0.09000, -0.05438, -0.06014
+  bbox max (m): 0.10800, 0.06778, 0.06016
+  bbox size mm: 198.00 x 122.16 x 120.29
+  bbox center mm: 9.00, 6.70, 0.01
+
+  mesh G_Arm_L_1: tris=2884 verts=1711 morphPosCount=0 mat=00_Base.001
+  mesh G_Arm_L_2: tris=7080 verts=4008 morphPosCount=0 mat=04_T.001
+  mesh G_Arm_L_3: tris=160 verts=198 morphPosCount=0 mat=03_Steel.001
+  mesh G_Arm_R_1: tris=2884 verts=1711 morphPosCount=0 mat=00_Base.001
+  mesh G_Arm_R_2: tris=7080 verts=4007 morphPosCount=0 mat=04_T.001
+  mesh G_Arm_R_3: tris=160 verts=198 morphPosCount=0 mat=03_Steel.001
+  mesh G_Front_1: tris=25068 verts=16652 morphPosCount=0 mat=00_Base.001
+  mesh G_Front_2: tris=1014 verts=549 morphPosCount=0 mat=02_nose.001
+  mesh G_Lenses_1: tris=4792 verts=2524 morphPosCount=0 mat=01_Glasses.001
+  mesh G_Lenses_2: tris=1488 verts=924 morphPosCount=0 mat=01_Glasses_Side.001
+FILE: /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/public/models/glasses.opt.glb (394236 bytes)
+  nodes: Group:Scene, Object3D:G_Root, Group:G_Arm_L, Mesh:G_Arm_L_1, Mesh:G_Arm_L_2, Mesh:G_Arm_L_3, Group:G_Arm_R, Mesh:G_Arm_R_1, Mesh:G_Arm_R_2, Mesh:G_Arm_R_3, Group:G_Front, Mesh:G_Front_1, Mesh:G_Front_2, Group:G_Lenses, Mesh:G_Lenses_1, Mesh:G_Lenses_2
+  morphs: (none)
+  total tris: 52610
+  bbox min (m): -0.08336, -0.12783, -0.02056
+  bbox max (m): 0.07536, 0.01743, 0.02097
+  bbox size mm: 158.73 x 145.26 x 41.53
+  bbox center mm: -4.00, -55.20, 0.21
+

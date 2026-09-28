@@ -1,0 +1,3 @@
+LANE C — round 2 (fixes). Same files as before (src/canvas/CaseRig.tsx, GlassesRig.tsx, src/canvas/rigs/*, dev-C.html, src/__dev__/C/*).
+Read `docs/phase4/feedback/C-round1.md` completely (both sections) and implement the binding behaviour + automated checks. Your round-1 claim was rejected on screenshot evidence — prove the fix with the verify script AND screenshots from a fixed 3/4 camera AND a side camera at q = 0, 0.2, 0.3, 0.4, 0.5, 0.6, 0.8, 1.0 → `docs/phase4/qa/C/round2-*.png`. LOOK at every image; if any arm geometry is outside the frame's hinge or inside the case after q 0.4, fix before finishing.
+Also: shell outer material must stay neutral graphite (no pink/orange tint), nose pads must not glow pink (lower their emissive/sheen).

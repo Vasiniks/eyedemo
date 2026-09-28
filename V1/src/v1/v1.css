@@ -1,0 +1,328 @@
+/* V1-CORE — page + film styles. Tokens reused via var(); Paper #F5F1E8. */
+
+.v1 {
+  background: var(--eyeq-void);
+  color: var(--eyeq-bone);
+}
+
+/* ---- Film: pinned canvas section, 800vh desktop / 620vh mobile ---- */
+.v1-film {
+  position: relative;
+  height: 800vh;
+  background: var(--eyeq-void);
+  margin: 0;
+}
+@media (max-width: 767px) {
+  /* V3-MPAGE: 560vh→620vh so mobile ≈5–6 screens of scrub. */
+  .v1-film {
+    height: 620vh;
+  }
+}
+
+.v1-film__stage {
+  position: sticky;
+  top: 0;
+  height: 100svh;
+  overflow: hidden;
+  background: var(--eyeq-void);
+}
+
+.v1-film__canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  display: block;
+  will-change: transform;
+  transform-origin: 50% 50%;
+  /* Intro iris: closed on Void, opens when the stage goes .is-intro. */
+  clip-path: circle(38% at 50% 46%);
+  transition: clip-path 1.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.v1-film__stage.is-intro .v1-film__canvas {
+  clip-path: circle(75% at 50% 46%);
+}
+
+.v1-film__error {
+  position: absolute;
+  inset: 0;
+  background: var(--eyeq-void);
+}
+
+/* Overlays absolutely over the canvas; non-interactive by default. */
+.v1-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  pointer-events: none;
+}
+.v1-overlay--waves {
+  z-index: 2;
+}
+.v1-overlay--captions {
+  z-index: 3;
+}
+.v1-overlay > div {
+  position: absolute;
+  inset: 0;
+}
+
+/* ---- Preloader: 000→100 tabular counter on Void, then slow fade ---- */
+.v1-preloader {
+  position: absolute;
+  inset: 0;
+  z-index: 5;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  background: var(--eyeq-void);
+  transition: opacity 0.9s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.v1-preloader.is-done {
+  opacity: 0;
+  pointer-events: none;
+}
+.v1-preloader__count {
+  font-family: var(--eyeq-font-ui);
+  font-size: clamp(48px, 6vw, 96px);
+  line-height: 1;
+  letter-spacing: 0.02em;
+  color: var(--eyeq-bone);
+  margin: 0;
+  font-variant-numeric: tabular-nums;
+  font-feature-settings: "tnum" 1;
+}
+
+/* ---- Cinematic finish over the canvas (GPU-only overlays) ----
+ * Grain sits above waves/captions so the whole frame shares one finish;
+ * the tail state hides it before the Paper handoff. */
+.v1-finish {
+  position: absolute;
+  inset: 0;
+  z-index: 4;
+  pointer-events: none;
+}
+/* Animated grain, ≤4% opacity: tiny turbulence tile, transform jitter only. */
+.v1-finish--grain {
+  opacity: 0.035;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");
+  background-size: 140px 140px;
+  will-change: transform;
+  animation: v1-grain 0.9s steps(3) infinite;
+}
+@keyframes v1-grain {
+  0% { transform: translate3d(0, 0, 0); }
+  33% { transform: translate3d(-18px, 10px, 0); }
+  66% { transform: translate3d(12px, -14px, 0); }
+  100% { transform: translate3d(0, 0, 0); }
+}
+/* Soft vignette: darkens edges so captions hold contrast. */
+.v1-finish--vignette {
+  background: radial-gradient(
+    ellipse 120% 105% at 50% 46%,
+    transparent 58%,
+    rgba(5, 6, 7, 0.28) 100%
+  );
+}
+
+/* ---- Letterbox: subtle bars that ease open during the first beat ---- */
+.v1-letterbox {
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 6vh;
+  z-index: 3;
+  pointer-events: none;
+  overflow: hidden;
+}
+.v1-letterbox--top { top: 0; }
+.v1-letterbox--bot { bottom: 0; }
+.v1-letterbox__bar {
+  position: absolute;
+  inset: 0;
+  background: var(--eyeq-void);
+  will-change: transform;
+}
+.v1-letterbox--top .v1-letterbox__bar { transform-origin: 50% 0; }
+.v1-letterbox--bot .v1-letterbox__bar { transform-origin: 50% 100%; }
+
+/* ---- Paper veil: last ~3% crossfades to Paper for a seamless handoff ---- */
+.v1-veil {
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+  background: var(--eyeq-paper);
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+/* Tail state: stage sits on Paper so no Void edge can flash at the cut. */
+.v1-film__stage.is-tail {
+  background: var(--eyeq-paper);
+}
+.v1-film__stage.is-tail .v1-finish,
+.v1-film__stage.is-tail .v1-letterbox,
+.v1-film__stage.is-tail .v1-progress {
+  opacity: 0;
+  transition: opacity 0.4s ease-out;
+}
+
+/* ---- Thin scroll progress rail with ordinal chapter ticks (no text) ---- */
+.v1-progress {
+  position: absolute;
+  right: 14px;
+  top: 50%;
+  transform: translateY(-50%);
+  height: 38vh;
+  width: 18px;
+  z-index: 4;
+  pointer-events: none;
+}
+.v1-progress__track {
+  position: absolute;
+  right: 8px;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: rgba(233, 226, 211, 0.18);
+}
+.v1-progress__fill {
+  position: absolute;
+  inset: 0;
+  background: var(--eyeq-bone-dim);
+  transform: scaleY(0);
+  transform-origin: 50% 0;
+  will-change: transform;
+}
+.v1-progress__tick {
+  position: absolute;
+  right: 4px;
+  width: 10px;
+  height: 2px;
+  margin-top: -1px;
+  background: rgba(233, 226, 211, 0.42);
+}
+.v1-progress__tick:first-child,
+.v1-progress__tick:last-child {
+  background: var(--eyeq-lamp-amber);
+}
+
+@media (max-width: 767px) {
+  .v1-letterbox { height: 4vh; }
+  .v1-progress { right: 8px; height: 30vh; }
+}
+
+/* Reduced motion: static finish, no grain loop, no letterbox. */
+@media (prefers-reduced-motion: reduce) {
+  .v1-finish--grain { animation: none; }
+  .v1-letterbox { display: none; }
+  .v1-film__canvas { clip-path: none; transition: none; }
+}
+
+/* ---- Seamless handoff: white act on the same Paper, no gap ---- */
+.v1-whitewrap {
+  background: var(--eyeq-paper);
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) auto;
+  align-items: start;
+  margin: 0;
+}
+.v1-whitewrap > .eyeq-white {
+  min-width: 0;
+}
+.v1-rail {
+  /* F4-RAILS: full-length film strips — fixed at the viewport edges from the
+   * white act to the footer (the whitewrap grid is only as tall as the white
+   * act, so sticky could never run past it). The asides leave grid flow, so
+   * the auto tracks collapse and text columns keep full width — never
+   * overlapped. Visibility + the 200px footer fade are driven from
+   * LogoRails.tsx (.is-live + inline opacity/blur). */
+  position: fixed;
+  top: 0;
+  height: 100svh;
+  max-height: 100svh;
+  z-index: 5;
+  overflow: clip;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition:
+    opacity 0.35s ease-out,
+    visibility 0.35s,
+    filter 0.35s ease-out;
+}
+.v1-rail--left { left: 0; }
+.v1-rail--right { right: 0; }
+.v1-rail.is-live {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+}
+.v1-rail.is-fade {
+  opacity: 0;
+  visibility: hidden;
+  filter: blur(6px);
+}
+@media (min-width: 1280px) {
+  /* Gutters for the fixed strips: the white act keeps the exact clearances
+   * the old flank grid gave it — ledger text never slides under the film. */
+  .v1-whitewrap > .eyeq-white {
+    margin: 0 120px;
+  }
+}
+/* 768–1279px: side gutters are too narrow for edge-fixed strips — keep the
+ * original sticky-in-whitewrap rails (white act only, zero overlap). */
+@media (min-width: 768px) and (max-width: 1279px) {
+  .v1-rail {
+    align-self: start;
+    position: sticky;
+    height: auto;
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+    filter: none;
+    transition: none;
+  }
+}
+/* Mobile: vertical flank rails are hidden by lane-e.css; single strip below. */
+.v1-mobilestrip {
+  display: none;
+  background: var(--eyeq-paper);
+}
+@media (max-width: 767px) {
+  .v1-whitewrap {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .v1-rail {
+    display: none;
+  }
+  .v1-mobilestrip {
+    display: block;
+  }
+}
+
+/* ---- Reduced-motion stills ---- */
+.v1-stills {
+  background: var(--eyeq-void);
+  padding: 96px var(--eyeq-margin) 64px;
+  display: flex;
+  flex-direction: column;
+  gap: 48px;
+}
+.v1-still {
+  margin: 0;
+  position: relative;
+}
+.v1-still img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: var(--eyeq-radius-media);
+}
+.v1-still__caption {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}

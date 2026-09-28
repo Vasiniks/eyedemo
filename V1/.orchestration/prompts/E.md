@@ -1,0 +1,9 @@
+LETTER = E — VISUAL / DESIGN REFERENCE RESEARCH. Output: `docs/research/E-visual-references.md` + screenshots in `docs/research/screens/E/`.
+Objective: design-language research only (nothing will be copied). Research and actually visit (Playwright screenshots) real references for:
+- premium / luxury eyewear brand sites and campaigns (e.g. Jacques Marie Mage, Gentle Monster, Lindberg, Mykita, Cubitts, Ic! berlin, Moscot, Cartier/ Dior eyewear pages — verify each exists)
+- premium & aerodynamic glasses cases (industrial design references: thin aluminium/carbon/leather shells, clamshell and flap designs) — real products, with source URLs
+- luxury product reveal / cinematic product-film websites and Awwwards SOTD/Site-of-the-Month scroll experiences with 3D products
+- lens / optical transitions, portal transitions, spatial logo reveals, vertical logo rails / film-strip marquees
+Use the installed skills where helpful: load `awwwards-playbook`, `design-motion-principles`, `no-ai-design-slop`, `audit-ai-design-slop`, `cinematic-scroll-storytelling` via the skill tool and apply their criteria.
+For each reference: URL, screenshot, what is excellent about it specifically (object introduction, camera choreography, pacing, typography restraint, material realism, lighting, scroll interaction), and what NOT to take from it.
+Deliverable sections: ## Reference table · ## Case design language (proportions, materials, parting lines, flap types — with concrete recommendations for a THIN aerodynamic one-piece-flap case) · ## Velvet reference (what makes velvet read as velvet under light) · ## Typography direction (2–3 concrete font pairings available free/licensable, editorial, restrained) · ## Motion/pacing principles · ## Anti-patterns to avoid (AI slop list) · ## Original direction proposal for EyeQ (1 page).

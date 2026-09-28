@@ -1,0 +1,104 @@
+[0m
+> build · muse-spark-1.3-contributor
+[0m
+[0m→ [0mRead .
+[0m→ [0mRead docs
+[0m→ [0mRead docs/phase4
+[0m→ [0mRead docs/research
+[0m→ [0mRead docs/00-BRIEF.md
+[0m→ [0mRead docs/research/00-PHASE2-SYNTHESIS.md
+[0m→ [0mRead docs/research/B-content-inventory.md
+[0m→ [0mRead docs/phase4/PLAN-site-ia.md
+[0m→ [0mRead docs/phase4/PLAN-reference-teardowns.md
+[0m→ [0mRead docs/phase4/PLAN-art-direction.md
+[0m→ [0mRead docs/phase4/PLAN-architecture.md
+[0m→ [0mRead docs/phase4/PLAN-motion.md
+[0m→ [0mRead docs/research/G-glasses-model.md
+[0m→ [0mRead docs/research/F-3d-motion-tech.md
+[0m→ [0mRead docs/research/E-visual-references.md
+[0m→ [0mSkill "cinematic-gsap-lenis-motion-system"
+[0m→ [0mSkill "no-ai-design-slop"
+[0m→ [0mSkill "awwwards-playbook"
+[0m→ [0mSkill "cinematic-scroll-storytelling"
+[0m→ [0mSkill "gsap-scrolltrigger-storytelling"
+[0m→ [0mSkill "build-threejs-scroll-worlds"
+[0m→ [0mSkill "marquee-loop"
+[0m→ [0mSkill "masked-reveal"
+[0m→ [0mSkill "design-motion-principles"
+[0m→ [0mRead docs/research/C-link-inventory.md[90m [limit=80][0m
+[0m→ [0mRead docs/research/D-asset-inventory.md[90m [limit=80][0m
+[0m→ [0mRead docs/research/A-website-audit.md[90m [limit=60][0m
+[0m
+[0m# [0mTodos
+[•] Resolve conflicts across 5 plans + binding orchestrator decisions
+[ ] Write docs/phase4/PLAN-MASTER.md (beat table, tokens, sitemap, structure, perf, QA, build order)
+[ ] Write docs/phase4/COPY-DRAFTS.md (every drafted line as DRAFT)
+[0m
+[0m← [0mWrite docs/phase4/COPY-DRAFTS.md
+Wrote file successfully.
+[0m
+[0m# [0mTodos
+[✓] Resolve conflicts across 5 plans + binding orchestrator decisions
+[•] Write docs/phase4/PLAN-MASTER.md (beat table, tokens, sitemap, structure, perf, QA, build order)
+[✓] Write docs/phase4/COPY-DRAFTS.md (every drafted line as DRAFT)
+[0m
+[0m← [0mWrite docs/phase4/PLAN-MASTER.md
+Wrote file successfully.
+[0m
+[0m← [0mWrite docs/phase4/PLAN-MASTER.md
+Wrote file successfully.
+[0m
+[0m→ [0mRead docs/phase4/PLAN-MASTER.md[90m [limit=30, offset=1][0m
+[0m
+[0m$ [0mrtk ls -la "/Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/docs/phase4/" && rtk wc -l "/Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/docs/phase4/PLAN-MASTER.md" "/Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/docs/phase4/COPY-DRAFTS.md" && tail -5 "/Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/docs/phase4/PLAN-MASTER.md"
+644  COPY-DRAFTS.md  7.0K
+644  PLAN-MASTER.md  59.6K
+644  PLAN-architecture.md  34.5K
+644  PLAN-art-direction.md  31.4K
+644  PLAN-motion.md  32.8K
+644  PLAN-reference-teardowns.md  18.0K
+644  PLAN-site-ia.md  23.1K
+586 PLAN-MASTER.md
+63 COPY-DRAFTS.md
+Σ 649
+---
+
+*Interfaces: MOTION timings survive any conductor change (progress-relative); ART tokens §2 frozen;
+ARCH contracts §7 frozen; SITE copy/route constraints (§3–§4) non-negotiable. Coordinator merges;
+builders collide only via §12 lane files.*
+[0m
+[0m← [0mEdit docs/phase4/PLAN-MASTER.md
+Index: /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/docs/phase4/PLAN-MASTER.md
+===================================================================
+--- /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/docs/phase4/PLAN-MASTER.md
++++ /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/docs/phase4/PLAN-MASTER.md
+@@ -583,4 +583,13 @@
+ 
+ *Interfaces: MOTION timings survive any conductor change (progress-relative); ART tokens §2 frozen;
+ ARCH contracts §7 frozen; SITE copy/route constraints (§3–§4) non-negotiable. Coordinator merges;
+ builders collide only via §12 lane files.*
++
++---
++
++PHASE4-PLAN-MASTER-DONE
++- Merged 5 lane plans into one executable contract: 9-beat film (1000vh desk / 700vh mob, 80/20) with progress-mapped camera, 40° flap, staggered unfold, differentiated 8+8 spatial arrivals, bloom-to-Paper portal.
++- Locked tokens (Void/Bone/Paper/Ink + Lamp-amber; Fraunces + Inter), sitemap + 301s, file/component structure, perf tiers, and screenshot QA (12 stops × 3 viewports + RM + low-tier + Lighthouse).
++- Split steps 1–18 into 6 parallel lanes (A/B/C/D/E/F) with exclusive file ownership, per-lane acceptance, and per-lane screenshot gates converging on one integrator.
++- Resolved 16 conflicts explicitly (wave-2 depth, 40° flap, node names, 208mm reframe, fog scale, rails engine, reveal tokens, Lenis-on-touch, portal choreography, budgets).
++- All film lines are DRAFTs in COPY-DRAFTS.md; everything else verbatim from B or brief §2 — zero invented business content.
+
+[0m
+[0m# [0mTodos
+[✓] Resolve conflicts across 5 plans + binding orchestrator decisions
+[✓] Write docs/phase4/PLAN-MASTER.md (beat table, tokens, sitemap, structure, perf, QA, build order)
+[✓] Write docs/phase4/COPY-DRAFTS.md (every drafted line as DRAFT)
+[0m
+PHASE4-PLAN-MASTER-DONE
+- Merged 5 lane plans into one executable contract: 9-beat film (1000vh desk / 700vh mob, 80/20) with progress-mapped camera, 40° flap, staggered unfold, differentiated 8+8 spatial arrivals, bloom-to-Paper portal.
+- Locked tokens (Void/Bone/Paper/Ink + Lamp-amber; Fraunces + Inter), sitemap + 301s, file/component structure, perf tiers, and screenshot QA (12 stops × 3 viewports + RM + low-tier + Lighthouse).
+- Split steps 1–18 into 6 parallel lanes (A/B/C/D/E/F) with exclusive file ownership, per-lane acceptance, and per-lane screenshot gates converging on one integrator.
+- Resolved 16 conflicts explicitly (wave-2 depth, 40° flap, node names, 208mm reframe, fog scale, rails engine, reveal tokens, Lenis-on-touch, portal choreography, budgets).
+- All film lines are DRAFTs in COPY-DRAFTS.md; everything else verbatim from B or brief §2 — zero invented business content.
+
+Outputs: `docs/phase4/PLAN-MASTER.md` (587 lines, 16-row conflict table, unified beat table, tokens, sitemap, §5 asset contract against `Case_Body`/`Case_Flap`/`Velvet_Oxblood`/`G_Root`/`G_Lenses`/`G_Arm_R/L`, structure, vocabulary, tiers, a11y, QA harness, 18-step lane plan, anti-slop gates) + `docs/phase4/COPY-DRAFTS.md` (17 drafts D1–D17, all claim-free, + `[COPY NEEDED]` rollup). Planning only — no code, no Blender/assets touched.
+EXIT 0 model=meta/muse-spark-1.3-contributor

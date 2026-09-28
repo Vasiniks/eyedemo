@@ -1,0 +1,2065 @@
+[0m
+> build · muse-spark-1.3-contributor
+[0m
+[0m→ [0mRead docs/phase4/PLAN-MASTER.md
+[0m→ [0mRead docs/00-BRIEF.md
+[0m→ [0mRead docs/phase4/COPY-DRAFTS.md
+[0m→ [0mRead docs/phase4/PLAN-MASTER.md[90m [offset=477][0m
+[0m✱ [0mGlob "docs/phase4/PLAN-*.md"[90m 6 matches[0m
+[0m→ [0mRead .
+[0m→ [0mRead docs/phase3/PHASE3-REPORT.md
+[0m→ [0mRead docs/research/B-content-inventory.md
+[0m→ [0mRead public
+[0m→ [0mRead assets
+[0m→ [0mRead .orchestration
+[0m→ [0mRead public/models
+[0m→ [0mRead assets/web
+[0m→ [0mRead .orchestration/tmp
+[0m→ [0mRead assets/web/brands-light
+[0m→ [0mRead assets/web/insurance-light
+[0m
+[0m$ [0mrtk ls -lh public/models/; rtk ls -lh assets/web/brands-light/ assets/web/insurance-light/; rtk ls -lh assets/logo/ 2>&1; cat docs/phase4/requests/* 2>&1 | head -n 100; rtk ls docs/phase4/qa/ 2>&1
+644  case.glb  9.6M
+644  glasses.glb  1.3M
+644  maui-jim.png  44.2K
+644  miu-miu.png  42.6K
+644  oakley.png  16.0K
+644  persol.png  107.8K
+644  prada.png  32.4K
+644  ray-ban.png  84.8K
+644  tiffany.png  20.3K
+644  versace.png  15.7K
+644  canada-life-min.png  9.9K
+644  desjardins.png  53.3K
+644  empire-life.png  26.9K
+644  greenshield.png  3.7K
+644  ia-financial-group.png  51.8K
+644  manulife.png  6.9K
+644  mbc-logo-en.png  16.1K
+644  sun-life.png  15.7K
+... (2 filtered)
+[+2 hidden: rtk recall 51dda6ea5367]
+644  READY  0B
+644  eyeq-logo-mask.png  60.5K
+644  eyeq-logo-white.png  35.6K
+644  eyeq-logo-white@2x.png  35.3K
+644  eyeq-logo.svg  65.0K
+zsh:1: no matches found: docs/phase4/requests/*
+ls: docs/phase4/qa/: No such file or directory
+[0m
+[0m# [0mTodos
+[•] Inspect case.glb + glasses.glb (nodes, morphs, tris, sizes)
+[ ] Optimize case.glb → case.opt.glb ≤1.5MB (preserve morphs/nodes)
+[ ] Optimize glasses.glb → glasses.opt.glb ≤900KB
+[ ] Verify optimized GLBs load (three.js script: nodes, morphs, tris, bbox)
+[ ] Build logo atlases + JSON (brands 2048², insurers 2048×1024)
+[ ] Green-fringe 400% check + zoom crop
+[ ] Download studio HDRI → public/env + SOURCE.md
+[ ] Write docs/phase4/qa/D/ASSETS-REPORT.md, verify build
+[0m
+[0m$ [0mrtk ls -la public/models/ && rtk du -h public/models/* && node --version; npm --version; which magick; magick -version 2>&1 | head -n 3; python3 --version
+644  case.glb  9.6M
+644  glasses.glb  1.3M
+9.6M	public/models/case.glb
+1.3M	public/models/glasses.glb
+v24.18.0
+12.0.1
+/opt/homebrew/bin/magick
+Version: ImageMagick 7.1.2-27 Q16-HDRI aarch64 e4c2b403b:20260705 https://imagemagick.org
+Copyright: (C) 1999 ImageMagick Studio LLC
+License: https://imagemagick.org/license/
+Python 3.13.11
+[0m
+[0m$ [0mnpx -y @gltf-transform/cli@latest inspect public/models/case.glb 2>&1 | head -n 200
+npm warn deprecated glob@10.5.0: Old versions of glob are not supported, and contain widely publicized security vulnerabilities, which have been fixed in the current version. Please update. Support for old versions may be purchased (at exorbitant rates) by contacting i@izs.me
+npm notice run eyeq-vision-care@0.1.0 npx
+npm notice run 'gltf-transform' inspect public/models/case.glb
+
+ OVERVIEW
+ ────────────────────────────────────────────
+[90m┌────────────────────[39m[90m┬──────────────────────────────────────────────┐[39m
+[90m│[39m[31m key                [39m[90m│[39m[31m value                                        [39m[90m│[39m
+[90m├────────────────────[39m[90m┼──────────────────────────────────────────────┤[39m
+[90m│[39m version            [90m│[39m 2.0                                          [90m│[39m
+[90m├────────────────────[39m[90m┼──────────────────────────────────────────────┤[39m
+[90m│[39m generator          [90m│[39m Khronos glTF Blender I/O v5.0.21             [90m│[39m
+[90m├────────────────────[39m[90m┼──────────────────────────────────────────────┤[39m
+[90m│[39m extensionsUsed     [90m│[39m KHR_materials_clearcoat, KHR_materials_sheen [90m│[39m
+[90m├────────────────────[39m[90m┼──────────────────────────────────────────────┤[39m
+[90m│[39m extensionsRequired [90m│[39m none                                         [90m│[39m
+[90m└────────────────────[39m[90m┴──────────────────────────────────────────────┘[39m
+
+
+
+ SCENES
+ ────────────────────────────────────────────
+[90m┌───[39m[90m┬───────[39m[90m┬───────────[39m[90m┬─────────────────────────[39m[90m┬─────────────────────[39m[90m┬────────────────────[39m[90m┬───────────────────[39m[90m┬────────────────────────┐[39m
+[90m│[39m[31m # [39m[90m│[39m[31m name  [39m[90m│[39m[31m rootName  [39m[90m│[39m[31m bboxMin                 [39m[90m│[39m[31m bboxMax             [39m[90m│[39m[31m renderVertexCount¹ [39m[90m│[39m[31m uploadVertexCount [39m[90m│[39m[31m uploadNaiveVertexCount [39m[90m│[39m
+[90m├───[39m[90m┼───────[39m[90m┼───────────[39m[90m┼─────────────────────────[39m[90m┼─────────────────────[39m[90m┼────────────────────[39m[90m┼───────────────────[39m[90m┼────────────────────────┤[39m
+[90m│[39m 0 [90m│[39m Scene [90m│[39m Case_Root [90m│[39m -0.09, -0.01998, -0.035 [90m│[39m 0.108, 0.022, 0.035 [90m│[39m 406,470            [90m│[39m 103,780           [90m│[39m 103,780                [90m│[39m
+[90m└───[39m[90m┴───────[39m[90m┴───────────[39m[90m┴─────────────────────────[39m[90m┴─────────────────────[39m[90m┴────────────────────[39m[90m┴───────────────────[39m[90m┴────────────────────────┘[39m
+
+¹ Expected number of vertices processed by the vertex shader for one render
+  pass, without considering the vertex cache.
+
+² Expected number of vertices uploaded to GPU, assuming each Accessor
+  is uploaded only once. Actual number uploaded may be higher, 
+  dependent on the implementation and vertex buffer layout.
+
+³ Expected number of vertices uploaded to GPU, assuming each Primitive
+  is uploaded once, duplicating vertex attributes shared among Primitives.
+
+
+
+ MESHES
+ ────────────────────────────────────────────
+[90m┌───[39m[90m┬────────────────────[39m[90m┬───────────[39m[90m┬────────────────[39m[90m┬──────────────[39m[90m┬──────────[39m[90m┬─────────[39m[90m┬──────────────────────────────────────────[39m[90m┬───────────[39m[90m┬───────────┐[39m
+[90m│[39m[31m # [39m[90m│[39m[31m name               [39m[90m│[39m[31m mode      [39m[90m│[39m[31m meshPrimitives [39m[90m│[39m[31m glPrimitives [39m[90m│[39m[31m vertices [39m[90m│[39m[31m indices [39m[90m│[39m[31m attributes                               [39m[90m│[39m[31m instances [39m[90m│[39m[31m size¹     [39m[90m│[39m
+[90m├───[39m[90m┼────────────────────[39m[90m┼───────────[39m[90m┼────────────────[39m[90m┼──────────────[39m[90m┼──────────[39m[90m┼─────────[39m[90m┼──────────────────────────────────────────[39m[90m┼───────────[39m[90m┼───────────┤[39m
+[90m│[39m 0 [90m│[39m Mesh               [90m│[39m TRIANGLES [90m│[39m 3              [90m│[39m 63,656       [90m│[39m 32,718   [90m│[39m u16     [90m│[39m NORMAL:f32, POSITION:f32                 [90m│[39m 1         [90m│[39m 1.17 MB   [90m│[39m
+[90m├───[39m[90m┼────────────────────[39m[90m┼───────────[39m[90m┼────────────────[39m[90m┼──────────────[39m[90m┼──────────[39m[90m┼─────────[39m[90m┼──────────────────────────────────────────[39m[90m┼───────────[39m[90m┼───────────┤[39m
+[90m│[39m 1 [90m│[39m Case_Flap.003      [90m│[39m TRIANGLES [90m│[39m 4              [90m│[39m 59,020       [90m│[39m 64,462   [90m│[39m u16     [90m│[39m NORMAL:f32, POSITION:f32, TEXCOORD_0:f32 [90m│[39m 1         [90m│[39m 8.61 MB   [90m│[39m
+[90m├───[39m[90m┼────────────────────[39m[90m┼───────────[39m[90m┼────────────────[39m[90m┼──────────────[39m[90m┼──────────[39m[90m┼─────────[39m[90m┼──────────────────────────────────────────[39m[90m┼───────────[39m[90m┼───────────┤[39m
+[90m│[39m 2 [90m│[39m Velvet_Cushion.001 [90m│[39m TRIANGLES [90m│[39m 1              [90m│[39m 12,814       [90m│[39m 6,600    [90m│[39m u16     [90m│[39m NORMAL:f32, POSITION:f32                 [90m│[39m 1         [90m│[39m 235.28 KB [90m│[39m
+[90m└───[39m[90m┴────────────────────[39m[90m┴───────────[39m[90m┴────────────────[39m[90m┴──────────────[39m[90m┴──────────[39m[90m┴─────────[39m[90m┴──────────────────────────────────────────[39m[90m┴───────────[39m[90m┴───────────┘[39m
+
+⁴ size estimates GPU memory required by a mesh, in isolation. If accessors are
+  shared by other mesh primitives, but the meshes themselves are not reused, then
+  the sum of all mesh sizes will overestimate the asset's total size. See "dedup".
+
+
+
+ MATERIALS
+ ────────────────────────────────────────────
+[90m┌───[39m[90m┬────────────────[39m[90m┬───────────[39m[90m┬──────────[39m[90m┬───────────[39m[90m┬─────────────┐[39m
+[90m│[39m[31m # [39m[90m│[39m[31m name           [39m[90m│[39m[31m instances [39m[90m│[39m[31m textures [39m[90m│[39m[31m alphaMode [39m[90m│[39m[31m doubleSided [39m[90m│[39m
+[90m├───[39m[90m┼────────────────[39m[90m┼───────────[39m[90m┼──────────[39m[90m┼───────────[39m[90m┼─────────────┤[39m
+[90m│[39m 0 [90m│[39m Case_Graphite  [90m│[39m 2         [90m│[39m          [90m│[39m OPAQUE    [90m│[39m ✓           [90m│[39m
+[90m├───[39m[90m┼────────────────[39m[90m┼───────────[39m[90m┼──────────[39m[90m┼───────────[39m[90m┼─────────────┤[39m
+[90m│[39m 1 [90m│[39m Velvet_Oxblood [90m│[39m 3         [90m│[39m          [90m│[39m OPAQUE    [90m│[39m ✓           [90m│[39m
+[90m├───[39m[90m┼────────────────[39m[90m┼───────────[39m[90m┼──────────[39m[90m┼───────────[39m[90m┼─────────────┤[39m
+[90m│[39m 2 [90m│[39m Case_EdgeMetal [90m│[39m 2         [90m│[39m          [90m│[39m OPAQUE    [90m│[39m ✓           [90m│[39m
+[90m├───[39m[90m┼────────────────[39m[90m┼───────────[39m[90m┼──────────[39m[90m┼───────────[39m[90m┼─────────────┤[39m
+[90m│[39m 3 [90m│[39m Logo_Gloss     [90m│[39m 1         [90m│[39m          [90m│[39m OPAQUE    [90m│[39m ✓           [90m│[39m
+[90m└───[39m[90m┴────────────────[39m[90m┴───────────[39m[90m┴──────────[39m[90m┴───────────[39m[90m┴─────────────┘[39m
+
+
+
+ TEXTURES
+ ────────────────────────────────────────────
+No textures found.
+
+
+ ANIMATIONS
+ ────────────────────────────────────────────
+No animations found.
+[0m
+[0m$ [0mnpx -y @gltf-transform/cli@latest inspect public/models/case.glb --format json 2>/dev/null | python3 -c "import json,sys; d=json.load(sys.stdin); print(json.dumps({k:d[k] for k in d}, indent=2)[:8000])" 2>&1 | head -n 200
+# Also direct node/structure dump via python parsing glb json chunk
+python3 -c "
+import struct, json
+for f in ['public/models/case.glb','public/models/glasses.glb']:
+    with open(f,'rb') as fh:
+        magic=fh.read(4); ver=struct.unpack('<I',fh.read(4))[0]; ln=struct.unpack('<I',fh.read(4))[0]
+        cl=struct.unpack('<I',fh.read(4))[0]; ct=struct.unpack('<I',fh.read(4))[0]
+        j=json.loads(fh.read(cl).decode('utf-8'))
+        print('====',f,'====')
+        print('nodes:', [(i,n.get('name'),n.get('mesh'),n.get('children')) for i,n in enumerate(j.get('nodes',[]))])
+        print('meshes:', [(m.get('name'), len(m.get('primitives',[])), [p.get('material') for p in m.get('primitives',[])], ['targets:'+str(len(p.get('targets',[])))+':'+','.join(p.get('extras',{}).get('targetNames',[]) if isinstance(p.get('extras'),dict) else []) for p in m.get('primitives',[])]) for m in j.get('meshes',[])])
+        print('materials:', [m.get('name') for m in j.get('materials',[])])
+        print('extensionsUsed:', j.get('extensionsUsed'))
+        # morph target names?
+        for m in j.get('meshes',[]):
+            for p in m.get('primitives',[]):
+                if 'extras' in p: print(' prim extras:', p['extras'])
+                if 'targets' in p: print(' mesh',m.get('name'),'has',len(p['targets']),'targets')
+        print('mesh extras:', [m.get('extras') for m in j.get('meshes',[])])
+        print()
+"
+
+Traceback (most recent call last):
+  File "<string>", line 1, in <module>
+    import json,sys; d=json.load(sys.stdin); print(json.dumps({k:d[k] for k in d}, indent=2)[:8000])
+                       ~~~~~~~~~^^^^^^^^^^^
+  File "/Users/admin/.pyenv/versions/3.13.11/lib/python3.13/json/__init__.py", line 298, in load
+    return loads(fp.read(),
+        cls=cls, object_hook=object_hook,
+        parse_float=parse_float, parse_int=parse_int,
+        parse_constant=parse_constant, object_pairs_hook=object_pairs_hook, **kw)
+  File "/Users/admin/.pyenv/versions/3.13.11/lib/python3.13/json/__init__.py", line 352, in loads
+    return _default_decoder.decode(s)
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^
+  File "/Users/admin/.pyenv/versions/3.13.11/lib/python3.13/json/decoder.py", line 345, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+               ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/admin/.pyenv/versions/3.13.11/lib/python3.13/json/decoder.py", line 363, in raw_decode
+    raise JSONDecodeError("Expecting value", s, err.value) from None
+json.decoder.JSONDecodeError: Expecting value: line 2 column 1 (char 1)
+==== public/models/case.glb ====
+nodes: [(0, 'Case_Body', 0, None), (1, 'Case_Flap', 1, None), (2, 'Velvet_Cushion', 2, None), (3, 'Case_Root', None, [0, 1, 2])]
+meshes: [('Mesh', 3, [0, 1, 2], ['targets:0:', 'targets:0:', 'targets:0:']), ('Case_Flap.003', 4, [0, 1, 2, 3], ['targets:4:', 'targets:4:', 'targets:4:', 'targets:4:']), ('Velvet_Cushion.001', 1, [1], ['targets:0:'])]
+materials: ['Case_Graphite', 'Velvet_Oxblood', 'Case_EdgeMetal', 'Logo_Gloss']
+extensionsUsed: ['KHR_materials_clearcoat', 'KHR_materials_sheen']
+ mesh Case_Flap.003 has 4 targets
+ mesh Case_Flap.003 has 4 targets
+ mesh Case_Flap.003 has 4 targets
+ mesh Case_Flap.003 has 4 targets
+mesh extras: [None, {'targetNames': ['Open10', 'Open20', 'Open30', 'Open40']}, None]
+
+==== public/models/glasses.glb ====
+nodes: [(0, 'G_Arm_L', 0, None), (1, 'G_Arm_R', 1, None), (2, 'G_Front', 2, None), (3, 'G_Lenses', 3, None), (4, 'G_Root', None, [0, 1, 2, 3])]
+meshes: [('G_Arm_L', 3, [0, 1, 2], ['targets:0:', 'targets:0:', 'targets:0:']), ('G_Arm_R', 3, [0, 1, 2], ['targets:0:', 'targets:0:', 'targets:0:']), ('G_Front', 2, [0, 3], ['targets:0:', 'targets:0:']), ('G_Lenses', 2, [4, 5], ['targets:0:', 'targets:0:'])]
+materials: ['00_Base.001', '04_T.001', '03_Steel.001', '02_nose.001', '01_Glasses.001', '01_Glasses_Side.001']
+extensionsUsed: ['KHR_materials_clearcoat', 'KHR_materials_transmission', 'KHR_materials_ior']
+mesh extras: [None, None, None, None]
+[0m
+[0m$ [0mnpx -y @gltf-transform/cli@latest inspect public/models/glasses.glb 2>&1 | tail -n 80
+python3 -c "
+import struct, json
+for f in ['public/models/case.glb','public/models/glasses.glb']:
+    with open(f,'rb') as fh:
+        fh.read(12)
+        import struct
+        cl=struct.unpack('<I',fh.read(4))[0]; ct=struct.unpack('<I',fh.read(4))[0]
+        j=json.loads(fh.read(cl).decode('utf-8'))
+        print('====',f,'accessors====')
+        for i,a in enumerate(j.get('accessors',[])[:5]):
+            print(i,a)
+        print('total accessors',len(j.get('accessors',[])))
+        print('total bufferViews',len(j.get('bufferViews',[])))
+        # count tris
+        tris=0
+        for m in j.get('meshes',[]):
+            for p in m.get('primitives',[]):
+                idx=p.get('indices')
+                if idx is not None:
+                    acc=j['accessors'][idx]
+                    tris+=acc['count']//3
+                else:
+                    acc=j['accessors'][p['attributes']['POSITION']]
+                    tris+=acc['count']//3
+        print('total tris',tris)
+"
+ls -lh public/models/
+[90m│[39m version            [90m│[39m 2.0                                                                    [90m│[39m
+[90m├────────────────────[39m[90m┼────────────────────────────────────────────────────────────────────────┤[39m
+[90m│[39m generator          [90m│[39m Khronos glTF Blender I/O v5.0.21                                       [90m│[39m
+[90m├────────────────────[39m[90m┼────────────────────────────────────────────────────────────────────────┤[39m
+[90m│[39m extensionsUsed     [90m│[39m KHR_materials_clearcoat, KHR_materials_transmission, KHR_materials_ior [90m│[39m
+[90m├────────────────────[39m[90m┼────────────────────────────────────────────────────────────────────────┤[39m
+[90m│[39m extensionsRequired [90m│[39m none                                                                   [90m│[39m
+[90m└────────────────────[39m[90m┴────────────────────────────────────────────────────────────────────────┘[39m
+
+
+
+ SCENES
+ ────────────────────────────────────────────
+[90m┌───[39m[90m┬───────[39m[90m┬──────────[39m[90m┬──────────────────────────────[39m[90m┬───────────────────────────[39m[90m┬────────────────────[39m[90m┬───────────────────[39m[90m┬────────────────────────┐[39m
+[90m│[39m[31m # [39m[90m│[39m[31m name  [39m[90m│[39m[31m rootName [39m[90m│[39m[31m bboxMin                      [39m[90m│[39m[31m bboxMax                   [39m[90m│[39m[31m renderVertexCount¹ [39m[90m│[39m[31m uploadVertexCount [39m[90m│[39m[31m uploadNaiveVertexCount [39m[90m│[39m
+[90m├───[39m[90m┼───────[39m[90m┼──────────[39m[90m┼──────────────────────────────[39m[90m┼───────────────────────────[39m[90m┼────────────────────[39m[90m┼───────────────────[39m[90m┼────────────────────────┤[39m
+[90m│[39m 0 [90m│[39m Scene [90m│[39m G_Root   [90m│[39m -0.08336, -0.12783, -0.02056 [90m│[39m 0.07536, 0.01744, 0.02097 [90m│[39m 157,830            [90m│[39m 32,493            [90m│[39m 32,493                 [90m│[39m
+[90m└───[39m[90m┴───────[39m[90m┴──────────[39m[90m┴──────────────────────────────[39m[90m┴───────────────────────────[39m[90m┴────────────────────[39m[90m┴───────────────────[39m[90m┴────────────────────────┘[39m
+
+¹ Expected number of vertices processed by the vertex shader for one render
+  pass, without considering the vertex cache.
+
+² Expected number of vertices uploaded to GPU, assuming each Accessor
+  is uploaded only once. Actual number uploaded may be higher, 
+  dependent on the implementation and vertex buffer layout.
+
+³ Expected number of vertices uploaded to GPU, assuming each Primitive
+  is uploaded once, duplicating vertex attributes shared among Primitives.
+
+
+
+ MESHES
+ ────────────────────────────────────────────
+[90m┌───[39m[90m┬──────────[39m[90m┬───────────[39m[90m┬────────────────[39m[90m┬──────────────[39m[90m┬──────────[39m[90m┬─────────[39m[90m┬──────────────────────────────────────────[39m[90m┬───────────[39m[90m┬───────────┐[39m
+[90m│[39m[31m # [39m[90m│[39m[31m name     [39m[90m│[39m[31m mode      [39m[90m│[39m[31m meshPrimitives [39m[90m│[39m[31m glPrimitives [39m[90m│[39m[31m vertices [39m[90m│[39m[31m indices [39m[90m│[39m[31m attributes                               [39m[90m│[39m[31m instances [39m[90m│[39m[31m size¹     [39m[90m│[39m
+[90m├───[39m[90m┼──────────[39m[90m┼───────────[39m[90m┼────────────────[39m[90m┼──────────────[39m[90m┼──────────[39m[90m┼─────────[39m[90m┼──────────────────────────────────────────[39m[90m┼───────────[39m[90m┼───────────┤[39m
+[90m│[39m 0 [90m│[39m G_Arm_L  [90m│[39m TRIANGLES [90m│[39m 3              [90m│[39m 10,124       [90m│[39m 5,917    [90m│[39m u16     [90m│[39m NORMAL:f32, POSITION:f32, TEXCOORD_0:f32 [90m│[39m 1         [90m│[39m 250.09 KB [90m│[39m
+[90m├───[39m[90m┼──────────[39m[90m┼───────────[39m[90m┼────────────────[39m[90m┼──────────────[39m[90m┼──────────[39m[90m┼─────────[39m[90m┼──────────────────────────────────────────[39m[90m┼───────────[39m[90m┼───────────┤[39m
+[90m│[39m 1 [90m│[39m G_Arm_R  [90m│[39m TRIANGLES [90m│[39m 3              [90m│[39m 10,124       [90m│[39m 5,916    [90m│[39m u16     [90m│[39m NORMAL:f32, POSITION:f32, TEXCOORD_0:f32 [90m│[39m 1         [90m│[39m 250.06 KB [90m│[39m
+[90m├───[39m[90m┼──────────[39m[90m┼───────────[39m[90m┼────────────────[39m[90m┼──────────────[39m[90m┼──────────[39m[90m┼─────────[39m[90m┼──────────────────────────────────────────[39m[90m┼───────────[39m[90m┼───────────┤[39m
+[90m│[39m 2 [90m│[39m G_Front  [90m│[39m TRIANGLES [90m│[39m 2              [90m│[39m 26,082       [90m│[39m 17,212   [90m│[39m u16     [90m│[39m NORMAL:f32, POSITION:f32, TEXCOORD_0:f32 [90m│[39m 1         [90m│[39m 707.28 KB [90m│[39m
+[90m├───[39m[90m┼──────────[39m[90m┼───────────[39m[90m┼────────────────[39m[90m┼──────────────[39m[90m┼──────────[39m[90m┼─────────[39m[90m┼──────────────────────────────────────────[39m[90m┼───────────[39m[90m┼───────────┤[39m
+[90m│[39m 3 [90m│[39m G_Lenses [90m│[39m TRIANGLES [90m│[39m 2              [90m│[39m 6,280        [90m│[39m 3,448    [90m│[39m u16     [90m│[39m NORMAL:f32, POSITION:f32, TEXCOORD_0:f32 [90m│[39m 1         [90m│[39m 148.02 KB [90m│[39m
+[90m└───[39m[90m┴──────────[39m[90m┴───────────[39m[90m┴────────────────[39m[90m┴──────────────[39m[90m┴──────────[39m[90m┴─────────[39m[90m┴──────────────────────────────────────────[39m[90m┴───────────[39m[90m┴───────────┘[39m
+
+⁴ size estimates GPU memory required by a mesh, in isolation. If accessors are
+  shared by other mesh primitives, but the meshes themselves are not reused, then
+  the sum of all mesh sizes will overestimate the asset's total size. See "dedup".
+
+
+
+ MATERIALS
+ ────────────────────────────────────────────
+[90m┌───[39m[90m┬─────────────────────[39m[90m┬───────────[39m[90m┬──────────[39m[90m┬───────────[39m[90m┬─────────────┐[39m
+[90m│[39m[31m # [39m[90m│[39m[31m name                [39m[90m│[39m[31m instances [39m[90m│[39m[31m textures [39m[90m│[39m[31m alphaMode [39m[90m│[39m[31m doubleSided [39m[90m│[39m
+[90m├───[39m[90m┼─────────────────────[39m[90m┼───────────[39m[90m┼──────────[39m[90m┼───────────[39m[90m┼─────────────┤[39m
+[90m│[39m 0 [90m│[39m 00_Base.001         [90m│[39m 3         [90m│[39m          [90m│[39m OPAQUE    [90m│[39m ✓           [90m│[39m
+[90m├───[39m[90m┼─────────────────────[39m[90m┼───────────[39m[90m┼──────────[39m[90m┼───────────[39m[90m┼─────────────┤[39m
+[90m│[39m 1 [90m│[39m 04_T.001            [90m│[39m 2         [90m│[39m          [90m│[39m OPAQUE    [90m│[39m ✓           [90m│[39m
+[90m├───[39m[90m┼─────────────────────[39m[90m┼───────────[39m[90m┼──────────[39m[90m┼───────────[39m[90m┼─────────────┤[39m
+[90m│[39m 2 [90m│[39m 03_Steel.001        [90m│[39m 2         [90m│[39m          [90m│[39m OPAQUE    [90m│[39m ✓           [90m│[39m
+[90m├───[39m[90m┼─────────────────────[39m[90m┼───────────[39m[90m┼──────────[39m[90m┼───────────[39m[90m┼─────────────┤[39m
+[90m│[39m 3 [90m│[39m 02_nose.001         [90m│[39m 1         [90m│[39m          [90m│[39m BLEND     [90m│[39m ✓           [90m│[39m
+[90m├───[39m[90m┼─────────────────────[39m[90m┼───────────[39m[90m┼──────────[39m[90m┼───────────[39m[90m┼─────────────┤[39m
+[90m│[39m 4 [90m│[39m 01_Glasses.001      [90m│[39m 1         [90m│[39m          [90m│[39m OPAQUE    [90m│[39m ✓           [90m│[39m
+[90m├───[39m[90m┼─────────────────────[39m[90m┼───────────[39m[90m┼──────────[39m[90m┼───────────[39m[90m┼─────────────┤[39m
+[90m│[39m 5 [90m│[39m 01_Glasses_Side.001 [90m│[39m 1         [90m│[39m          [90m│[39m OPAQUE    [90m│[39m ✓           [90m│[39m
+[90m└───[39m[90m┴─────────────────────[39m[90m┴───────────[39m[90m┴──────────[39m[90m┴───────────[39m[90m┴─────────────┘[39m
+
+
+
+ TEXTURES
+ ────────────────────────────────────────────
+No textures found.
+
+
+ ANIMATIONS
+ ────────────────────────────────────────────
+No animations found.
+
+==== public/models/case.glb accessors====
+0 {'bufferView': 0, 'componentType': 5126, 'count': 15693, 'max': [0.10791701078414917, -8.742220234125853e-05, 0.03213956952095032], 'min': [-0.08992866426706314, -0.01998201757669449, -0.03488927334547043], 'type': 'VEC3'}
+1 {'bufferView': 1, 'componentType': 5126, 'count': 15693, 'type': 'VEC3'}
+2 {'bufferView': 2, 'componentType': 5123, 'count': 92820, 'type': 'SCALAR'}
+3 {'bufferView': 3, 'componentType': 5126, 'count': 15693, 'max': [0.10493696480989456, -7.97879692981951e-05, 0.030906423926353455], 'min': [-0.08699720352888107, -0.01798381470143795, -0.03331201151013374], 'type': 'VEC3'}
+4 {'bufferView': 4, 'componentType': 5126, 'count': 15693, 'type': 'VEC3'}
+total accessors 60
+total bufferViews 60
+total tris 135490
+==== public/models/glasses.glb accessors====
+0 {'bufferView': 0, 'componentType': 5126, 'count': 1711, 'max': [0.0018826574087142944, 0.0013306140899658203, 1.619383692741394e-05], 'min': [-0.008105427026748657, -0.004005692899227142, -0.07021132856607437], 'type': 'VEC3'}
+1 {'bufferView': 1, 'componentType': 5126, 'count': 1711, 'type': 'VEC3'}
+2 {'bufferView': 2, 'componentType': 5126, 'count': 1711, 'type': 'VEC2'}
+3 {'bufferView': 3, 'componentType': 5123, 'count': 8652, 'type': 'SCALAR'}
+4 {'bufferView': 4, 'componentType': 5126, 'count': 4008, 'max': [-0.004743903875350952, -0.0017769001424312592, -0.06897201389074326], 'min': [-0.009801529347896576, -0.03130630776286125, -0.13180144131183624], 'type': 'VEC3'}
+total accessors 40
+total bufferViews 40
+total tris 52610
+total 22248
+-rw-r--r--@ 1 admin  staff   9.6M Sep 27 20:25 case.glb
+-rw-r--r--@ 1 admin  staff   1.3M Sep 27 20:25 glasses.glb
+[0m
+[0m$ [0mnpx -y @gltf-transform/cli@latest --help 2>&1 | head -n 100
+npx -y @gltf-transform/cli@latest quantize --help 2>&1 | head -n 80
+npx -y @gltf-transform/cli@latest weld --help 2>&1 | head -n 80
+npx -y @gltf-transform/cli@latest meshopt --help 2>&1 | head -n 80
+npx -y @gltf-transform/cli@latest dedup --help 2>&1 | head -n 60
+npm notice run eyeq-vision-care@0.1.0 npx
+npm notice run 'gltf-transform' --help
+
+  gltf-transform 4.5.0 — Command-line interface (CLI) for the glTF Transform SDK.
+
+  USAGE 
+  
+    ▸ gltf-transform <command> [ARGUMENTS...] [OPTIONS...]
+
+
+  To run the most common optimizations in one easy step, use the 'optimize' command:
+  
+  ▸ gltf-transform optimize <input> <output> --compress draco --texture-compress webp
+  
+  Defaults in the 'optimize' command may not be ideal for all scenes. Some of its
+  features can be configured (optimize --help), or more advanced users may wish
+  to inspect their scenes then pick and choose optimizations.
+  
+  ▸ gltf-transform inspect <input>
+  
+  The report printed by the 'inspect' command should identify performance issues,
+  and whether the scene is generally geometry-heavy, texture-heavy, has too many
+  draw calls, etc. Apply individual commands below to deal with any of these
+  issues as needed.
+
+
+  COMMANDS — Type 'gltf-transform help <command>' to get some help about a command
+
+                                                                                                
+                                                                                                
+                                         🔎 INSPECT ──────────────────────────────────────────  
+    inspect                              Inspect contents of the model                          
+    validate                             Validate model against the glTF spec                   
+                                                                                                
+                                                                                                
+                                         📦 PACKAGE ──────────────────────────────────────────  
+    copy                                 Copy model with minimal changes                        
+    optimize                             Optimize model by all available methods                
+    merge                                Merge two or more models into one                      
+    partition                            Partition binary data into separate .bin files         
+    dedup                                Deduplicate accessors and textures                     
+    prune                                Remove unreferenced properties from the file           
+    gzip                                 Compress model with lossless gzip                      
+    xmp                                  Add or modify XMP metadata                             
+                                                                                                
+                                                                                                
+                                         🌍 SCENE ────────────────────────────────────────────  
+    center                               Center the scene at the origin, or above/below it      
+    instance                             Create GPU instances from shared mesh references       
+    flatten                              Flatten scene graph                                    
+    join                                 Join meshes and reduce draw calls                      
+                                                                                                
+                                                                                                
+                                         🫖  GEOMETRY ─────────────────────────────────────────  
+    draco                                Compress geometry with Draco                           
+    meshopt                              Compress geometry and animation with Meshopt           
+    quantize                             Quantize geometry, reducing precision and memory       
+    dequantize                           Dequantize geometry                                    
+    weld                                 Merge equivalent vertices to optimize geometry         
+    unweld                               De-index geometry, disconnecting any shared vertices   
+    tangents                             Generate MikkTSpace vertex tangents                    
+    unwrap                               Generate texcoords                                     
+    reorder                              Optimize vertex data for locality of reference         
+    simplify                             Simplify mesh, reducing number of vertices             
+                                                                                                
+                                                                                                
+                                         🎨 MATERIAL ─────────────────────────────────────────  
+    metalrough                           Convert materials from spec/gloss to metal/rough       
+    palette                              Creates palette textures and merges materials          
+    unlit                                Convert materials from metal/rough to unlit            
+                                                                                                
+                                                                                                
+                                         🖼  TEXTURE ──────────────────────────────────────────  
+    resize                               Resize PNG or JPEG textures                            
+    etc1s                                KTX + Basis ETC1S texture compression                  
+    uastc                                KTX + Basis UASTC texture compression                  
+    ktxdecompress                        KTX + Basis texture decompression                      
+    ktxfix                               Fixes common issues in KTX texture metadata            
+    avif                                 AVIF texture compression                               
+    webp                                 WebP texture compression                               
+    png                                  PNG texture compression                                
+    jpeg                                 JPEG texture compression                               
+                                                                                                
+                                                                                                
+                                         ⏯️ ANIMATION ────────────────────────────────────────  
+    resample                             Resample animations, losslessly deduplicating keyframes
+    sequence                             Animate node visibilities as a flipboard sequence      
+    sparse                               Reduces storage for zero-filled arrays                 
+
+  GLOBAL OPTIONS
+
+    -h, --help                           Display global help or command-related help.           
+    -V, --version                        Display version.                                       
+    -v, --verbose                        Verbose mode: will also output debug messages.         
+    --allow-net                          Allows reads from network requests.                    
+                                         boolean                                                
+    --vertex-layout <layout>             Vertex buffer layout preset.                           
+                                         one of "interleaved","separate", default: "interleaved"
+    --config <path>                      Installs custom commands or extensions. (EXPERIMENTAL) 
+
+npm notice run eyeq-vision-care@0.1.0 npx
+npm notice run 'gltf-transform' quantize --help
+
+  gltf-transform 4.5.0 — Command-line interface (CLI) for the glTF Transform SDK.
+
+  USAGE — quantize
+  
+    ▸ gltf-transform quantize <input> <output> [OPTIONS...]
+
+
+  Quantization is a simple type of compression taking 32-bit float vertex
+  attributes and storing them as 16-bit or 8-bit integers. A quantization factor
+  restoring the original value (with some error) is applied on the GPU, although
+  node scales and positions may also be changed to account for the quantization.
+  
+  Quantized vertex attributes require less space, both on disk and on the GPU.
+  Most vertex attribute types can be quantized from 8–16 bits, but are always
+  stored in 8- or 16-bit accessors. While a value quantized to 12 bits still
+  occupies 16 bits on disk, gzip (or other lossless compression) will be more
+  effective on values quantized to lower bit depths. As a result, the default
+  bit depths used by this command are generally between 8 and 16 bits.
+  
+  Bit depths for indices and JOINTS_* are determined automatically.
+  
+  Requires KHR_mesh_quantization support.
+
+
+  ARGUMENTS
+
+    <input>                              Path to read glTF 2.0 (.glb, .gltf) input              
+    <output>                             Path to write output                                   
+
+  OPTIONS
+
+    --pattern <pattern>                  Pattern for vertex attributes (case-insensitive glob)  
+                                         default: "*"                                           
+    --quantization-volume <volume>       Bounds for quantization grid.                          
+                                         one of "mesh","scene", default: "mesh"                 
+    --quantize-color <bits>              Precision for COLOR_* attributes.                      
+                                         number, default: 8                                     
+    --quantize-generic <bits>            Precision for custom (_*) attributes.                  
+                                         number, default: 12                                    
+    --quantize-normal <bits>             Precision for NORMAL and TANGENT attributes.           
+                                         number, default: 10                                    
+    --quantize-position <bits>           Precision for POSITION attributes.                     
+                                         number, default: 14                                    
+    --quantize-texcoord <bits>           Precision for TEXCOORD_* attributes.                   
+                                         number, default: 12                                    
+    --quantize-weight <bits>             Precision for WEIGHTS_* attributes.                    
+                                         number, default: 8                                     
+
+  GLOBAL OPTIONS
+
+    -h, --help                           Display global help or command-related help.           
+    -V, --version                        Display version.                                       
+    -v, --verbose                        Verbose mode: will also output debug messages.         
+    --allow-net                          Allows reads from network requests.                    
+                                         boolean                                                
+    --vertex-layout <layout>             Vertex buffer layout preset.                           
+                                         one of "interleaved","separate", default: "interleaved"
+    --config <path>                      Installs custom commands or extensions. (EXPERIMENTAL) 
+
+npm notice run eyeq-vision-care@0.1.0 npx
+npm notice run 'gltf-transform' weld --help
+
+  gltf-transform 4.5.0 — Command-line interface (CLI) for the glTF Transform SDK.
+
+  USAGE — weld
+  
+    ▸ gltf-transform weld <input> <output>
+
+
+  Welds mesh geometry, merging bitwise identical vertices. When merged and
+  indexed, data is shared more efficiently between vertices. File size
+  can be reduced, and the GPU uses the vertex cache more efficiently.
+
+
+  ARGUMENTS
+
+    <input>                              Path to read glTF 2.0 (.glb, .gltf) model              
+    <output>                             Path to write output                                   
+
+
+  GLOBAL OPTIONS
+
+    -h, --help                           Display global help or command-related help.           
+    -V, --version                        Display version.                                       
+    -v, --verbose                        Verbose mode: will also output debug messages.         
+    --allow-net                          Allows reads from network requests.                    
+                                         boolean                                                
+    --vertex-layout <layout>             Vertex buffer layout preset.                           
+                                         one of "interleaved","separate", default: "interleaved"
+    --config <path>                      Installs custom commands or extensions. (EXPERIMENTAL) 
+
+npm notice run eyeq-vision-care@0.1.0 npx
+npm notice run 'gltf-transform' meshopt --help
+
+  gltf-transform 4.5.0 — Command-line interface (CLI) for the glTF Transform SDK.
+
+  USAGE — meshopt
+  
+    ▸ gltf-transform meshopt <input> <output> [OPTIONS...]
+
+
+  Compress geometry, morph targets, and animation with Meshopt. Meshopt
+  compression decodes very quickly, and is best used in combination with a
+  lossless compression method like brotli or gzip.
+  
+  Compresses
+  - geometry (points, lines, triangle meshes)
+  - morph targets
+  - animation tracks
+  
+  Documentation
+  - https://gltf-transform.dev/classes/extensions.meshoptcompression.html
+  
+  References
+  - meshoptimizer: https://github.com/zeux/meshoptimizer
+  - EXT_meshopt_compression: https://github.com/KhronosGroup/gltf/blob/main/extensions/2.0/Vendor/EXT_meshopt_compression/
+
+
+  ARGUMENTS
+
+    <input>                              Path to read glTF 2.0 (.glb, .gltf) model              
+    <output>                             Path to write output                                   
+
+  OPTIONS
+
+    --level <level>                      Compression level.                                     
+                                         one of "medium","high", default: "high"                
+    --quantization-volume <volume>       Bounds for quantization grid.                          
+                                         one of "mesh","scene", default: "mesh"                 
+    --quantize-color <bits>              Precision for COLOR_* attributes.                      
+                                         number, default: 8                                     
+    --quantize-generic <bits>            Precision for custom (_*) attributes.                  
+                                         number, default: 12                                    
+    --quantize-normal <bits>             Precision for NORMAL and TANGENT attributes.           
+                                         number, default: 10                                    
+    --quantize-position <bits>           Precision for POSITION attributes.                     
+                                         number, default: 14                                    
+    --quantize-texcoord <bits>           Precision for TEXCOORD_* attributes.                   
+                                         number, default: 12                                    
+    --quantize-weight <bits>             Precision for WEIGHTS_* attributes.                    
+                                         number, default: 8                                     
+
+  GLOBAL OPTIONS
+
+    -h, --help                           Display global help or command-related help.           
+    -V, --version                        Display version.                                       
+    -v, --verbose                        Verbose mode: will also output debug messages.         
+    --allow-net                          Allows reads from network requests.                    
+                                         boolean                                                
+    --vertex-layout <layout>             Vertex buffer layout preset.                           
+                                         one of "interleaved","separate", default: "interleaved"
+    --config <path>                      Installs custom commands or extensions. (EXPERIMENTAL) 
+
+npm notice run eyeq-vision-care@0.1.0 npx
+npm notice run 'gltf-transform' dedup --help
+
+  gltf-transform 4.5.0 — Command-line interface (CLI) for the glTF Transform SDK.
+
+  USAGE — dedup
+  
+    ▸ gltf-transform dedup <input> <output> [OPTIONS...]
+
+
+  Deduplicate accessors, textures, materials, meshes, and skins. Some exporters or
+  pipeline processing may lead to multiple resources within a file containing
+  redundant copies of the same information. This functions scans for these cases
+  and merges the duplicates where possible, reducing file size. The process may
+  be very slow on large files with many accessors.
+  
+  Deduplication early in a pipeline may also help other optimizations, like
+  compression and instancing, to be more effective.
+
+
+  ARGUMENTS
+
+    <input>                              Path to read glTF 2.0 (.glb, .gltf) model              
+    <output>                             Path to write output                                   
+
+  OPTIONS
+
+    --accessors <accessors>              Remove duplicate accessors                             
+                                         boolean, default: true                                 
+    --materials <materials>              Remove duplicate materials                             
+                                         boolean, default: true                                 
+    --meshes <meshes>                    Remove duplicate meshes                                
+                                         boolean, default: true                                 
+    --skins <skins>                      Remove duplicate skins                                 
+                                         boolean, default: true                                 
+    --textures <textures>                Remove duplicate textures                              
+                                         boolean, default: true                                 
+
+  GLOBAL OPTIONS
+
+    -h, --help                           Display global help or command-related help.           
+    -V, --version                        Display version.                                       
+    -v, --verbose                        Verbose mode: will also output debug messages.         
+    --allow-net                          Allows reads from network requests.                    
+                                         boolean                                                
+    --vertex-layout <layout>             Vertex buffer layout preset.                           
+                                         one of "interleaved","separate", default: "interleaved"
+    --config <path>                      Installs custom commands or extensions. (EXPERIMENTAL)
+[0m
+[0m$ [0mnpx -y @gltf-transform/cli@latest simplify --help 2>&1 | head -n 80
+npx -y @gltf-transform/cli@latest reorder --help 2>&1 | head -n 60
+npx -y @gltf-transform/cli@latest optimize --help 2>&1 | head -n 120
+npm notice run eyeq-vision-care@0.1.0 npx
+npm notice run 'gltf-transform' simplify --help
+
+  gltf-transform 4.5.0 — Command-line interface (CLI) for the glTF Transform SDK.
+
+  USAGE — simplify
+  
+    ▸ gltf-transform simplify <input> <output> [OPTIONS...]
+
+
+  Simplify mesh, reducing number of vertices.
+  
+  Simplification algorithm producing meshes with fewer triangles and
+  vertices. Simplification is lossy, but the algorithm aims to
+  preserve visual quality as much as possible, for given parameters.
+  
+  The algorithm aims to reach the target --ratio, while minimizing error. If
+  error exceeds the specified --error threshold, the algorithm will quit
+  before reaching the target ratio. Examples:
+  
+  - ratio=0.5, error=0.001: Aims for 50% simplification, constrained to 0.1% error.
+  - ratio=0.5, error=1: Aims for 50% simplification, unconstrained by error.
+  - ratio=0.0, error=0.01: Aims for maximum simplification, constrained to 1% error.
+  
+  Topology, particularly split vertices, will also limit the simplifier. For
+  best results, apply a 'weld' operation before simplification.
+  
+  Based on the meshoptimizer library (https://github.com/zeux/meshoptimizer).
+
+
+  ARGUMENTS
+
+    <input>                              Path to read glTF 2.0 (.glb, .gltf) model              
+    <output>                             Path to write output                                   
+
+  OPTIONS
+
+    --error <error>                      Limit on error, as a fraction of mesh radius           
+                                         number, default: 0.0001                                
+    --lock-border <bool>                 Whether to lock topological borders of the mesh        
+                                         boolean                                                
+    --ratio <ratio>                      Target ratio (0–1) of vertices to keep                 
+                                         number, default: 0                                     
+
+  GLOBAL OPTIONS
+
+    -h, --help                           Display global help or command-related help.           
+    -V, --version                        Display version.                                       
+    -v, --verbose                        Verbose mode: will also output debug messages.         
+    --allow-net                          Allows reads from network requests.                    
+                                         boolean                                                
+    --vertex-layout <layout>             Vertex buffer layout preset.                           
+                                         one of "interleaved","separate", default: "interleaved"
+    --config <path>                      Installs custom commands or extensions. (EXPERIMENTAL) 
+
+npm notice run eyeq-vision-care@0.1.0 npx
+npm notice run 'gltf-transform' reorder --help
+
+  gltf-transform 4.5.0 — Command-line interface (CLI) for the glTF Transform SDK.
+
+  USAGE — reorder
+  
+    ▸ gltf-transform reorder <input> <output> [OPTIONS...]
+
+
+  Optimize vertex data for locality of reference.
+  
+  Choose whether the order should be optimal for transmission size (recommended for Web) or for GPU
+  rendering performance. When optimizing for transmission size, reordering is expected to be a pre-
+  processing step before applying Meshopt compression and lossless supercompression (such as gzip or
+  brotli). Reordering will only reduce size when used in combination with other compression methods.
+  
+  Based on the meshoptimizer library (https://github.com/zeux/meshoptimizer).
+
+
+  ARGUMENTS
+
+    <input>                              Path to read glTF 2.0 (.glb, .gltf) model              
+    <output>                             Path to write output                                   
+
+  OPTIONS
+
+    --target                             Whether to optimize for transmission size or GPU       
+                                         performance                                            
+                                         one of "size","performance", default: "size"           
+
+  GLOBAL OPTIONS
+
+    -h, --help                           Display global help or command-related help.           
+    -V, --version                        Display version.                                       
+    -v, --verbose                        Verbose mode: will also output debug messages.         
+    --allow-net                          Allows reads from network requests.                    
+                                         boolean                                                
+    --vertex-layout <layout>             Vertex buffer layout preset.                           
+                                         one of "interleaved","separate", default: "interleaved"
+    --config <path>                      Installs custom commands or extensions. (EXPERIMENTAL) 
+
+npm notice run eyeq-vision-care@0.1.0 npx
+npm notice run 'gltf-transform' optimize --help
+
+  gltf-transform 4.5.0 — Command-line interface (CLI) for the glTF Transform SDK.
+
+  USAGE — optimize
+  
+    ▸ gltf-transform optimize <input> <output> [OPTIONS...]
+
+
+  Optimize the model by all available methods. Combines many features of the
+  glTF Transform CLI into a single command for convenience and faster results.
+  For more control over the optimization process, consider running individual
+  commands or using the scripting API.
+
+
+  ARGUMENTS
+
+    <input>                              Path to read glTF 2.0 (.glb, .gltf) model              
+    <output>                             Path to write output                                   
+
+  OPTIONS
+
+    --compress <method>                  Floating point compression method. Draco compresses    
+                                         geometry; Meshopt and quantization compress geometry   
+                                         and animation.                                         
+                                         one of "draco","meshopt","quantize",false, default:    
+                                         "meshopt"                                              
+    --flatten <bool>                     Flatten scene graph.                                   
+                                         boolean, default: true                                 
+    --instance <bool>                    Use GPU instancing with shared mesh references.        
+                                         boolean, default: true                                 
+    --instance-min <min>                 Number of instances required for instancing.           
+                                         number, default: 5                                     
+    --join <bool>                        Join meshes and reduce draw calls. Requires            
+                                         `--flatten`.                                           
+                                         boolean, default: true                                 
+    --join-meshes <bool>                 Join distinct meshes and nodes. Requires `--join`.     
+                                         boolean, default: true                                 
+    --join-named <bool>                  Join named meshes and nodes. Requires `--join`.        
+                                         boolean, default: true                                 
+    --meshopt-level <level>              Meshopt compression level.                             
+                                         one of "medium","high", default: "high"                
+    --palette <bool>                     Creates palette textures and merges materials.         
+                                         boolean, default: true                                 
+    --palette-min <min>                  Minimum number of blocks in the palette texture. If    
+                                         fewer unique material values are found, no palettes    
+                                         will be generated.                                     
+                                         number, default: 5                                     
+    --prune <bool>                       Removes properties from the file if they are not       
+                                         referenced by a Scene.                                 
+                                         boolean, default: true                                 
+    --prune-attributes <bool>            Whether to prune unused vertex attributes.             
+                                         boolean, default: true                                 
+    --prune-solid-textures <bool>        Whether to prune solid (single-color) textures,        
+                                         converting them to material factors.                   
+                                         boolean, default: true                                 
+    --resample <bool>                    Resample animations, losslessly deduplicating keyframes
+                                         boolean, default: true                                 
+    --simplify <bool>                    Simplify mesh geometry with meshoptimizer.             
+                                         boolean, default: true                                 
+    --simplify-error <error>             Simplification error tolerance, as a fraction of mesh  
+                                         extent.                                                
+                                         number, default: 0.0001                                
+    --simplify-lock-border <bool>        Whether to lock topological borders of the mesh.       
+                                         boolean                                                
+    --simplify-ratio <ratio>             Target ratio (0–1) of vertices to keep.                
+                                         number, default: 0                                     
+    --sparse <bool>                      Reduces storage for zero-filled arrays. If disabled,   
+                                         existing accessors (sparse or not) are left unchanged. 
+                                         boolean, default: true                                 
+    --texture-compress <format>          Texture compression format. KTX2 optimizes VRAM usage  
+                                         and performance; AVIF and WebP optimize transmission   
+                                         size. Auto recompresses in original format.            
+                                         one of "ktx2","webp","avif","auto",false, default:     
+                                         "auto"                                                 
+    --texture-size <size>                Maximum texture dimensions, in pixels.                 
+                                         number, default: 2048                                  
+    --weld <bool>                        Merge equivalent vertices. Required when simplifying   
+                                         geometry.                                              
+                                         boolean, default: true                                 
+
+  GLOBAL OPTIONS
+
+    -h, --help                           Display global help or command-related help.           
+    -V, --version                        Display version.                                       
+    -v, --verbose                        Verbose mode: will also output debug messages.         
+    --allow-net                          Allows reads from network requests.                    
+                                         boolean                                                
+    --vertex-layout <layout>             Vertex buffer layout preset.                           
+                                         one of "interleaved","separate", default: "interleaved"
+    --config <path>                      Installs custom commands or extensions. (EXPERIMENTAL)
+[0m
+[0m$ [0mmkdir -p .orchestration/tmp/d1 && cp public/models/case.glb .orchestration/tmp/d1/case.orig.glb && cp public/models/glasses.glb .orchestration/tmp/d1/glasses.orig.glb && rtk ls -lh .orchestration/tmp/d1/
+644  case.orig.glb  9.6M
+644  glasses.orig.glb  1.3M
+[0m
+[0m$ [0mnpx -y @gltf-transform/cli@latest dedup .orchestration/tmp/d1/case.orig.glb .orchestration/tmp/d1/case.s1-dedup.glb 2>&1 | tail -n 5; rtk ls -lh .orchestration/tmp/d1/
+npx -y @gltf-transform/cli@latest weld .orchestration/tmp/d1/case.s1-dedup.glb .orchestration/tmp/d1/case.s2-weld.glb 2>&1 | tail -n 5; rtk ls -lh .orchestration/tmp/d1/
+npm notice run eyeq-vision-care@0.1.0 npx
+npm notice run 'gltf-transform' dedup .orchestration/tmp/d1/case.orig.glb .orchestration/tmp/d1/case.s1-dedup.glb
+info: case.orig.glb (10.02 MB) → case.s1-dedup.glb (10.02 MB)
+644  case.orig.glb  9.6M
+644  case.s1-dedup.glb  9.6M
+644  glasses.orig.glb  1.3M
+npm notice run eyeq-vision-care@0.1.0 npx
+npm notice run 'gltf-transform' weld .orchestration/tmp/d1/case.s1-dedup.glb .orchestration/tmp/d1/case.s2-weld.glb
+info: case.s1-dedup.glb (10.02 MB) → case.s2-weld.glb (10.02 MB)
+644  case.orig.glb  9.6M
+644  case.s1-dedup.glb  9.6M
+644  case.s2-weld.glb  9.6M
+644  glasses.orig.glb  1.3M
+[0m
+[0m$ [0mnpx -y @gltf-transform/cli@latest quantize .orchestration/tmp/d1/case.s2-weld.glb .orchestration/tmp/d1/case.s3-quant.glb --quantize-position 14 2>&1 | tail -n 5; rtk ls -lh .orchestration/tmp/d1/
+npx -y @gltf-transform/cli@latest meshopt .orchestration/tmp/d1/case.s3-quant.glb .orchestration/tmp/d1/case.s4-meshopt.glb --level high --quantize-position 14 2>&1 | tail -n 5; rtk ls -lh .orchestration/tmp/d1/
+npm notice run eyeq-vision-care@0.1.0 npx
+npm notice run 'gltf-transform' quantize .orchestration/tmp/d1/case.s2-weld.glb .orchestration/tmp/d1/case.s3-quant.glb --quantize-position 14
+info: prune: Removed types... Accessor (52)
+info: case.s2-weld.glb (10.02 MB) → case.s3-quant.glb (6.87 MB)
+644  case.orig.glb  9.6M
+644  case.s1-dedup.glb  9.6M
+644  case.s2-weld.glb  9.6M
+644  case.s3-quant.glb  6.6M
+644  glasses.orig.glb  1.3M
+npm notice run eyeq-vision-care@0.1.0 npx
+npm notice run 'gltf-transform' meshopt .orchestration/tmp/d1/case.s3-quant.glb .orchestration/tmp/d1/case.s4-meshopt.glb --level high --quantize-position 14
+info: prune: Removed types... Accessor (60)
+info: prune: Removed types... Accessor (44)
+info: case.s3-quant.glb (6.87 MB) → case.s4-meshopt.glb (1.54 MB)
+644  case.orig.glb  9.6M
+644  case.s1-dedup.glb  9.6M
+644  case.s2-weld.glb  9.6M
+644  case.s3-quant.glb  6.6M
+644  case.s4-meshopt.glb  1.5M
+644  glasses.orig.glb  1.3M
+[0m
+[0m$ [0mrtk ls -l .orchestration/tmp/d1/; python3 -c "
+import struct, json
+for f in ['.orchestration/tmp/d1/case.s3-quant.glb','.orchestration/tmp/d1/case.s4-meshopt.glb']:
+    with open(f,'rb') as fh:
+        fh.read(12)
+        cl=struct.unpack('<I',fh.read(4))[0]; ct=struct.unpack('<I',fh.read(4))[0]
+        j=json.loads(fh.read(cl).decode('utf-8'))
+        print('====',f,'====')
+        print('nodes:', [n.get('name') for n in j.get('nodes',[])])
+        print('materials:', [m.get('name') for m in j.get('materials',[])])
+        print('meshes:', [(m.get('name'), m.get('extras')) for m in j.get('meshes',[])])
+        print('extensionsUsed:', j.get('extensionsUsed'))
+        print('extensionsRequired:', j.get('extensionsRequired'))
+"
+
+644  case.orig.glb  9.6M
+644  case.s1-dedup.glb  9.6M
+644  case.s2-weld.glb  9.6M
+644  case.s3-quant.glb  6.6M
+644  case.s4-meshopt.glb  1.5M
+644  glasses.orig.glb  1.3M
+==== .orchestration/tmp/d1/case.s3-quant.glb ====
+nodes: ['Case_Body', 'Case_Flap', 'Velvet_Cushion', 'Case_Root']
+materials: ['Case_Graphite', 'Velvet_Oxblood', 'Case_EdgeMetal', 'Logo_Gloss']
+meshes: [('Mesh', None), ('Case_Flap.003', {'targetNames': ['Open10', 'Open20', 'Open30', 'Open40']}), ('Velvet_Cushion.001', None)]
+extensionsUsed: ['KHR_materials_clearcoat', 'KHR_materials_sheen', 'KHR_mesh_quantization']
+extensionsRequired: ['KHR_mesh_quantization']
+==== .orchestration/tmp/d1/case.s4-meshopt.glb ====
+nodes: ['Case_Body', 'Case_Flap', 'Velvet_Cushion', 'Case_Root']
+materials: ['Case_Graphite', 'Velvet_Oxblood', 'Case_EdgeMetal', 'Logo_Gloss']
+meshes: [('Mesh', None), ('Case_Flap.003', {'targetNames': ['Open10', 'Open20', 'Open30', 'Open40']}), ('Velvet_Cushion.001', None)]
+extensionsUsed: ['EXT_meshopt_compression', 'KHR_materials_clearcoat', 'KHR_materials_sheen', 'KHR_mesh_quantization']
+extensionsRequired: ['EXT_meshopt_compression', 'KHR_mesh_quantization']
+[0m
+[0m$ [0mrtk ls -l .orchestration/tmp/d1/; python3 -c "import os; p='.orchestration/tmp/d1/case.s4-meshopt.glb'; s=os.path.getsize(p); print(s, 'bytes =', s/1024/1024, 'MiB =', s/1000/1000, 'MB')"
+644  case.orig.glb  9.6M
+644  case.s1-dedup.glb  9.6M
+644  case.s2-weld.glb  9.6M
+644  case.s3-quant.glb  6.6M
+644  case.s4-meshopt.glb  1.5M
+644  glasses.orig.glb  1.3M
+1538328 bytes = 1.4670639038085938 MiB = 1.538328 MB
+[0m
+[0m$ [0mnpx -y @gltf-transform/cli@latest reorder .orchestration/tmp/d1/case.s2-weld.glb .orchestration/tmp/d1/case.s2b-reorder.glb --target size 2>&1 | tail -n 3
+npx -y @gltf-transform/cli@latest meshopt .orchestration/tmp/d1/case.s2b-reorder.glb .orchestration/tmp/d1/case.v2-meshopt.glb --level high --quantize-position 14 2>&1 | tail -n 3
+python3 -c "import os; p='.orchestration/tmp/d1/case.v2-meshopt.glb'; s=os.path.getsize(p); print('v2',s, s/1024/1024, s/1000/1000)"
+npm notice run 'gltf-transform' reorder .orchestration/tmp/d1/case.s2-weld.glb .orchestration/tmp/d1/case.s2b-reorder.glb --target size
+info: prune: Removed types... Accessor (60)
+info: case.s2-weld.glb (10.02 MB) → case.s2b-reorder.glb (10.02 MB)
+info: prune: Removed types... Accessor (60)
+info: prune: Removed types... Accessor (44)
+info: case.s2b-reorder.glb (10.02 MB) → case.v2-meshopt.glb (1.54 MB)
+v2 1539516 1.4681968688964844 1.539516
+[0m
+[0m$ [0mnpx -y @gltf-transform/cli@latest sparse --help 2>&1 | head -n 40
+npx -y @gltf-transform/cli@latest sparse .orchestration/tmp/d1/case.s3-quant.glb .orchestration/tmp/d1/case.s3b-sparse.glb 2>&1 | tail -n 3; python3 -c "import os; p='.orchestration/tmp/d1/case.s3b-sparse.glb'; s=os.path.getsize(p); print('sparse-after-quant',s, s/1024/1024)"
+npx -y @gltf-transform/cli@latest meshopt .orchestration/tmp/d1/case.s3b-sparse.glb .orchestration/tmp/d1/case.v3-meshopt.glb --level high --quantize-position 14 2>&1 | tail -n 3; python3 -c "import os; p='.orchestration/tmp/d1/case.v3-meshopt.glb'; s=os.path.getsize(p); print('v3',s, s/1024/1024, s/1000/1000)"
+npm notice run eyeq-vision-care@0.1.0 npx
+npm notice run 'gltf-transform' sparse --help
+
+  gltf-transform 4.5.0 — Command-line interface (CLI) for the glTF Transform SDK.
+
+  USAGE — sparse
+  
+    ▸ gltf-transform sparse <input> <output>
+
+
+  Scans all Accessors in the Document, detecting whether each Accessor would
+  benefit from sparse data storage. Currently, sparse data storage is used only
+  when many values (>= 1/3) are zeroes. Particularly for assets using morph
+  target ("shape key") animation, sparse data storage may significantly reduce
+  file sizes.
+
+
+  ARGUMENTS
+
+    <input>                              Path to read glTF 2.0 (.glb, .gltf) model              
+    <output>                             Path to write output                                   
+
+
+  GLOBAL OPTIONS
+
+    -h, --help                           Display global help or command-related help.           
+    -V, --version                        Display version.                                       
+    -v, --verbose                        Verbose mode: will also output debug messages.         
+    --allow-net                          Allows reads from network requests.                    
+                                         boolean                                                
+    --vertex-layout <layout>             Vertex buffer layout preset.                           
+                                         one of "interleaved","separate", default: "interleaved"
+    --config <path>                      Installs custom commands or extensions. (EXPERIMENTAL) 
+
+npm notice run eyeq-vision-care@0.1.0 npx
+npm notice run 'gltf-transform' sparse .orchestration/tmp/d1/case.s3-quant.glb .orchestration/tmp/d1/case.s3b-sparse.glb
+info: case.s3-quant.glb (6.87 MB) → case.s3b-sparse.glb (6.87 MB)
+sparse-after-quant 6869224 6.551002502441406
+info: prune: Removed types... Accessor (60)
+info: prune: Removed types... Accessor (44)
+info: case.s3b-sparse.glb (6.87 MB) → case.v3-meshopt.glb (1.54 MB)
+v3 1538328 1.4670639038085938 1.538328
+[0m
+[0m$ [0mnpx -y @gltf-transform/cli@latest meshopt .orchestration/tmp/d1/case.s2-weld.glb .orchestration/tmp/d1/case.v4-aggr.glb --level high --quantize-position 14 --quantize-normal 8 --quantize-texcoord 10 2>&1 | tail -n 3; python3 -c "import os; p='.orchestration/tmp/d1/case.v4-aggr.glb'; s=os.path.getsize(p); print('v4',s, s/1024/1024, s/1000/1000)"
+# also try quantize step with aggr then meshopt
+npx -y @gltf-transform/cli@latest quantize .orchestration/tmp/d1/case.s2-weld.glb .orchestration/tmp/d1/case.q-aggr.glb --quantize-position 14 --quantize-normal 8 --quantize-texcoord 10 2>&1 | tail -n 3
+npx -y @gltf-transform/cli@latest meshopt .orchestration/tmp/d1/case.q-aggr.glb .orchestration/tmp/d1/case.v5-aggr2.glb --level high --quantize-position 14 --quantize-normal 8 --quantize-texcoord 10 2>&1 | tail -n 3; python3 -c "import os; p='.orchestration/tmp/d1/case.v5-aggr2.glb'; s=os.path.getsize(p); print('v5',s, s/1024/1024, s/1000/1000)"
+info: prune: Removed types... Accessor (60)
+info: prune: Removed types... Accessor (44)
+info: case.s2-weld.glb (10.02 MB) → case.v4-aggr.glb (1.53 MB)
+v4 1534044 1.4629783630371094 1.5340440000000002
+npm notice run 'gltf-transform' quantize .orchestration/tmp/d1/case.s2-weld.glb .orchestration/tmp/d1/case.q-aggr.glb --quantize-position 14 --quantize-normal 8 --quantize-texcoord 10
+info: prune: Removed types... Accessor (52)
+info: case.s2-weld.glb (10.02 MB) → case.q-aggr.glb (5.42 MB)
+info: prune: Removed types... Accessor (60)
+info: prune: Removed types... Accessor (28)
+info: case.q-aggr.glb (5.42 MB) → case.v5-aggr2.glb (1.54 MB)
+v5 1535288 1.4641647338867188 1.535288
+[0m
+[0m$ [0mnpx -y @gltf-transform/cli@latest prune --help 2>&1 | head -n 60
+npm notice run eyeq-vision-care@0.1.0 npx
+npm notice run 'gltf-transform' prune --help
+
+  gltf-transform 4.5.0 — Command-line interface (CLI) for the glTF Transform SDK.
+
+  USAGE — prune
+  
+    ▸ gltf-transform prune <input> <output> [OPTIONS...]
+
+
+  Removes properties from the file if they are not referenced by a Scene. Helpful
+  when cleaning up after complex workflows or a faulty exporter. This function
+  may (conservatively) fail to identify some unused extension properties, such as
+  lights, but it will not remove anything that is still in use, even if used by
+  an extension. Animations are considered unused if they do not target any nodes
+  that are children of a scene.
+
+
+  ARGUMENTS
+
+    <input>                              Path to read glTF 2.0 (.glb, .gltf) model              
+    <output>                             Path to write output                                   
+
+  OPTIONS
+
+    --keep-attributes <keepAttributes>   Whether to keep unused vertex attributes               
+                                         boolean                                                
+    --keep-indices <keepIndices>         Whether to keep unused mesh indices                    
+                                         boolean                                                
+    --keep-leaves <keepLeaves>           Whether to keep empty leaf nodes                       
+                                         boolean                                                
+    --keep-solid-textures <keepSolidTex  Whether to keep solid (single-color) textures, or      
+    tures>                               convert to material factors                            
+                                         boolean                                                
+
+  GLOBAL OPTIONS
+
+    -h, --help                           Display global help or command-related help.           
+    -V, --version                        Display version.                                       
+    -v, --verbose                        Verbose mode: will also output debug messages.         
+    --allow-net                          Allows reads from network requests.                    
+                                         boolean                                                
+    --vertex-layout <layout>             Vertex buffer layout preset.                           
+                                         one of "interleaved","separate", default: "interleaved"
+    --config <path>                      Installs custom commands or extensions. (EXPERIMENTAL)
+[0m
+[0m$ [0mrtk ls .orchestration/tmp/d1/; rtk read .orchestration/tmp/d1/package.json 2>&1 || echo "no pkg"
+case.orig.glb  9.6M
+case.q-aggr.glb  5.2M
+case.s1-dedup.glb  9.6M
+case.s2-weld.glb  9.6M
+case.s2b-reorder.glb  9.6M
+case.s3-quant.glb  6.6M
+case.s3b-sparse.glb  6.6M
+case.s4-meshopt.glb  1.5M
+case.v2-meshopt.glb  1.5M
+case.v3-meshopt.glb  1.5M
+case.v4-aggr.glb  1.5M
+case.v5-aggr2.glb  1.5M
+glasses.orig.glb  1.3M
+cat: .orchestration/tmp/d1/package.json: No such file or directory (os error 2)
+no pkg
+[0m
+[0m$ [0mnpm init -y >/dev/null 2>&1 && npm pkg set type=module >/dev/null 2>&1 && npm install --no-audit --no-fund @gltf-transform/core@latest @gltf-transform/functions@latest meshoptimizer@latest 2>&1 | tail -n 5; rtk ls -lh
+added 21 packages in 1s
+644  case.orig.glb  9.6M
+644  case.q-aggr.glb  5.2M
+644  case.s1-dedup.glb  9.6M
+644  case.s2-weld.glb  9.6M
+644  case.s2b-reorder.glb  9.6M
+644  case.s3-quant.glb  6.6M
+644  case.s3b-sparse.glb  6.6M
+644  case.s4-meshopt.glb  1.5M
+644  case.v2-meshopt.glb  1.5M
+644  case.v3-meshopt.glb  1.5M
+644  case.v4-aggr.glb  1.5M
+644  case.v5-aggr2.glb  1.5M
+644  glasses.orig.glb  1.3M
+644  package-lock.json  25.2K
+644  package.json  336B
+... (1 filtered)
+[+1 hidden: rtk recall 6d55025d6531]
+[0m
+[0m← [0mWrite .orchestration/tmp/d1/strip-texcoord.mjs
+Wrote file successfully.
+[0m
+[0m$ [0mnode strip-texcoord.mjs case.s2-weld.glb case.s2c-notex.glb && rtk ls -lh case.s2c-notex.glb && npx -y @gltf-transform/cli@latest meshopt case.s2c-notex.glb case.v6-notex-meshopt.glb --level high --quantize-position 14 2>&1 | tail -n 3; python3 -c "import os; p='case.v6-notex-meshopt.glb'; s=os.path.getsize(p); print('v6',s, s/1024/1024, s/1000/1000)"
+Missing optional extension, "KHR_materials_clearcoat".
+Missing optional extension, "KHR_materials_sheen".
+removed TEXCOORD_0 from prims: 4
+prune: Removed types... Accessor (4)
+wrote case.s2c-notex.glb
+644  case.s2c-notex.glb  9.1M
+info: prune: Removed types... Accessor (56)
+info: prune: Removed types... Accessor (40)
+info: case.s2c-notex.glb (9.5 MB) → case.v6-notex-meshopt.glb (1.47 MB)
+v6 1469288 1.4012222290039062 1.469288
+[0m
+[0m$ [0mpython3 -c "
+import struct, json
+for f in ['case.v6-notex-meshopt.glb']:
+    with open(f,'rb') as fh:
+        fh.read(12)
+        cl=struct.unpack('<I',fh.read(4))[0]; ct=struct.unpack('<I',fh.read(4))[0]
+        j=json.loads(fh.read(cl).decode('utf-8'))
+        print('nodes:', [n.get('name') for n in j.get('nodes',[])])
+        print('materials:', [m.get('name') for m in j.get('materials',[])])
+        print('meshes:', [(m.get('name'), m.get('extras')) for m in j.get('meshes',[])])
+        print('extensionsUsed:', j.get('extensionsUsed'))
+        print('extensionsRequired:', j.get('extensionsRequired'))
+        tris=0
+        for m in j.get('meshes',[]):
+            for p in m.get('primitives',[]):
+                idx=p.get('indices')
+                if idx is not None:
+                    acc=j['accessors'][idx]
+                    tris+=acc['count']//3
+        print('total tris (indices count, compressed, may be quantized):', tris)
+        # check attributes remaining
+        for m in j.get('meshes',[]):
+            for p in m.get('primitives',[]):
+                print(m.get('name'), list(p.get('attributes',{}).keys()), 'targets:', len(p.get('targets',[])))
+"
+npx -y @gltf-transform/cli@latest inspect case.v6-notex-meshopt.glb 2>&1 | grep -A 30 MESHES | head -n 40
+nodes: ['Case_Body', 'Case_Flap', 'Velvet_Cushion', 'Case_Root']
+materials: ['Case_Graphite', 'Velvet_Oxblood', 'Case_EdgeMetal', 'Logo_Gloss']
+meshes: [('Mesh', None), ('Case_Flap.003', {'targetNames': ['Open10', 'Open20', 'Open30', 'Open40']}), ('Velvet_Cushion.001', None)]
+extensionsUsed: ['EXT_meshopt_compression', 'KHR_mesh_quantization']
+extensionsRequired: ['EXT_meshopt_compression', 'KHR_mesh_quantization']
+total tris (indices count, compressed, may be quantized): 135490
+Mesh ['NORMAL', 'POSITION'] targets: 0
+Mesh ['NORMAL', 'POSITION'] targets: 0
+Mesh ['NORMAL', 'POSITION'] targets: 0
+Case_Flap.003 ['NORMAL', 'POSITION'] targets: 4
+Case_Flap.003 ['NORMAL', 'POSITION'] targets: 4
+Case_Flap.003 ['NORMAL', 'POSITION'] targets: 4
+Case_Flap.003 ['NORMAL', 'POSITION'] targets: 4
+Velvet_Cushion.001 ['NORMAL', 'POSITION'] targets: 0
+ MESHES
+ ────────────────────────────────────────────
+[90m┌───[39m[90m┬────────────────────[39m[90m┬───────────[39m[90m┬────────────────[39m[90m┬──────────────[39m[90m┬──────────[39m[90m┬─────────[39m[90m┬───────────────────────────────────[39m[90m┬───────────[39m[90m┬───────────┐[39m
+[90m│[39m[31m # [39m[90m│[39m[31m name               [39m[90m│[39m[31m mode      [39m[90m│[39m[31m meshPrimitives [39m[90m│[39m[31m glPrimitives [39m[90m│[39m[31m vertices [39m[90m│[39m[31m indices [39m[90m│[39m[31m attributes                        [39m[90m│[39m[31m instances [39m[90m│[39m[31m size¹     [39m[90m│[39m
+[90m├───[39m[90m┼────────────────────[39m[90m┼───────────[39m[90m┼────────────────[39m[90m┼──────────────[39m[90m┼──────────[39m[90m┼─────────[39m[90m┼───────────────────────────────────[39m[90m┼───────────[39m[90m┼───────────┤[39m
+[90m│[39m 0 [90m│[39m Mesh               [90m│[39m TRIANGLES [90m│[39m 3              [90m│[39m 63,656       [90m│[39m 32,718   [90m│[39m u16     [90m│[39m NORMAL:i8_norm, POSITION:i16_norm [90m│[39m 1         [90m│[39m 676.4 KB  [90m│[39m
+[90m├───[39m[90m┼────────────────────[39m[90m┼───────────[39m[90m┼────────────────[39m[90m┼──────────────[39m[90m┼──────────[39m[90m┼─────────[39m[90m┼───────────────────────────────────[39m[90m┼───────────[39m[90m┼───────────┤[39m
+[90m│[39m 1 [90m│[39m Case_Flap.003      [90m│[39m TRIANGLES [90m│[39m 4              [90m│[39m 59,020       [90m│[39m 64,462   [90m│[39m u16     [90m│[39m NORMAL:i8_norm, POSITION:i16_norm [90m│[39m 1         [90m│[39m 3.25 MB   [90m│[39m
+[90m├───[39m[90m┼────────────────────[39m[90m┼───────────[39m[90m┼────────────────[39m[90m┼──────────────[39m[90m┼──────────[39m[90m┼─────────[39m[90m┼───────────────────────────────────[39m[90m┼───────────[39m[90m┼───────────┤[39m
+[90m│[39m 2 [90m│[39m Velvet_Cushion.001 [90m│[39m TRIANGLES [90m│[39m 1              [90m│[39m 12,814       [90m│[39m 6,600    [90m│[39m u16     [90m│[39m NORMAL:i8_norm, POSITION:i16_norm [90m│[39m 1         [90m│[39m 136.28 KB [90m│[39m
+[90m└───[39m[90m┴────────────────────[39m[90m┴───────────[39m[90m┴────────────────[39m[90m┴──────────────[39m[90m┴──────────[39m[90m┴─────────[39m[90m┴───────────────────────────────────[39m[90m┴───────────[39m[90m┴───────────┘[39m
+
+⁴ size estimates GPU memory required by a mesh, in isolation. If accessors are
+  shared by other mesh primitives, but the meshes themselves are not reused, then
+  the sum of all mesh sizes will overestimate the asset's total size. See "dedup".
+
+
+
+ MATERIALS
+ ────────────────────────────────────────────
+[90m┌───[39m[90m┬────────────────[39m[90m┬───────────[39m[90m┬──────────[39m[90m┬───────────[39m[90m┬─────────────┐[39m
+[90m│[39m[31m # [39m[90m│[39m[31m name           [39m[90m│[39m[31m instances [39m[90m│[39m[31m textures [39m[90m│[39m[31m alphaMode [39m[90m│[39m[31m doubleSided [39m[90m│[39m
+[90m├───[39m[90m┼────────────────[39m[90m┼───────────[39m[90m┼──────────[39m[90m┼───────────[39m[90m┼─────────────┤[39m
+[90m│[39m 0 [90m│[39m Case_Graphite  [90m│[39m 2         [90m│[39m          [90m│[39m OPAQUE    [90m│[39m ✓           [90m│[39m
+[90m├───[39m[90m┼────────────────[39m[90m┼───────────[39m[90m┼──────────[39m[90m┼───────────[39m[90m┼─────────────┤[39m
+[90m│[39m 1 [90m│[39m Velvet_Oxblood [90m│[39m 3         [90m│[39m          [90m│[39m OPAQUE    [90m│[39m ✓           [90m│[39m
+[90m├───[39m[90m┼────────────────[39m[90m┼───────────[39m[90m┼──────────[39m[90m┼───────────[39m[90m┼─────────────┤[39m
+[90m│[39m 2 [90m│[39m Case_EdgeMetal [90m│[39m 2         [90m│[39m          [90m│[39m OPAQUE    [90m│[39m ✓           [90m│[39m
+[90m├───[39m[90m┼────────────────[39m[90m┼───────────[39m[90m┼──────────[39m[90m┼───────────[39m[90m┼─────────────┤[39m
+[90m│[39m 3 [90m│[39m Logo_Gloss     [90m│[39m 1         [90m│[39m          [90m│[39m OPAQUE    [90m│[39m ✓           [90m│[39m
+[90m└───[39m[90m┴────────────────[39m[90m┴───────────[39m[90m┴──────────[39m[90m┴───────────[39m[90m┴─────────────┘[39m
+[0m
+[0m$ [0mnpm install --no-audit --no-fund @gltf-transform/extensions@latest 2>&1 | tail -n 3
+node -e "import('@gltf-transform/extensions').then(m=>console.log(Object.keys(m).slice(0,50)))"
+up to date in 812ms
+[
+  'ALL_EXTENSIONS',
+  'Anisotropy',
+  'Class',
+  'ClassProperty',
+  'Clearcoat',
+  'DiffuseTransmission',
+  'Dispersion',
+  'EXTMeshFeatures',
+  'EXTMeshGPUInstancing',
+  'EXTMeshoptCompression',
+  'EXTStructuralMetadata',
+  'EXTTextureAVIF',
+  'EXTTextureWebP',
+  'EmissiveStrength',
+  'Enum',
+  'EnumValue',
+  'FeatureID',
+  'FeatureIDTexture',
+  'Features',
+  'INSTANCE_ATTRIBUTE',
+  'IOR',
+  'InstancedMesh',
+  'Iridescence',
+  'KHRAccessorFloat16',
+  'KHRAccessorFloat64',
+  'KHRDracoMeshCompression',
+  'KHRLightsPunctual',
+  'KHRMaterialsAnisotropy',
+  'KHRMaterialsClearcoat',
+  'KHRMaterialsDiffuseTransmission',
+  'KHRMaterialsDispersion',
+  'KHRMaterialsEmissiveStrength',
+  'KHRMaterialsIOR',
+  'KHRMaterialsIridescence',
+  'KHRMaterialsPBRSpecularGlossiness',
+  'KHRMaterialsSheen',
+  'KHRMaterialsSpecular',
+  'KHRMaterialsTransmission',
+  'KHRMaterialsUnlit',
+  'KHRMaterialsVariants',
+  'KHRMaterialsVolume',
+  'KHRMeshPrimitiveRestart',
+  'KHRMeshQuantization',
+  'KHRNodeVisibility',
+  'KHRONOS_EXTENSIONS',
+  'KHRTextureBasisu',
+  'KHRTextureTransform',
+  'KHRXMP',
+  'Light',
+  'Mapping'
+]
+[0m
+[0m← [0mWrite .orchestration/tmp/d1/strip-texcoord.mjs
+Wrote file successfully.
+[0m
+[0m$ [0mnode strip-texcoord.mjs case.s2-weld.glb case.s2c-notex.glb 2>&1 | tail -n 5
+python3 -c "
+import struct, json
+with open('case.s2c-notex.glb','rb') as fh:
+    fh.read(12)
+    cl=struct.unpack('<I',fh.read(4))[0]; ct=struct.unpack('<I',fh.read(4))[0]
+    j=json.loads(fh.read(cl).decode('utf-8'))
+    print('extensionsUsed:', j.get('extensionsUsed'))
+    print('materials sample:', json.dumps(j.get('materials',[])[1], indent=2)[:2000])
+"
+removed TEXCOORD_0 from prims: 4
+prune: Removed types... Accessor (4)
+wrote case.s2c-notex.glb
+extensionsUsed: ['KHR_materials_clearcoat', 'KHR_materials_sheen']
+materials sample: {
+  "name": "Velvet_Oxblood",
+  "doubleSided": true,
+  "pbrMetallicRoughness": {
+    "metallicFactor": 0
+  },
+  "extensions": {
+    "KHR_materials_sheen": {
+      "sheenColorFactor": [
+        0.6000000238418579,
+        0.10000000149011612,
+        0.11999999731779099
+      ],
+      "sheenRoughnessFactor": 0.5
+    }
+  }
+}
+[0m
+[0m$ [0mnpx -y @gltf-transform/cli@latest meshopt case.s2c-notex.glb case.v6-notex-meshopt.glb --level high --quantize-position 14 2>&1 | tail -n 3; python3 -c "
+import struct, json, os
+p='case.v6-notex-meshopt.glb'; s=os.path.getsize(p); print('v6',s, s/1024/1024, s/1000/1000)
+with open(p,'rb') as fh:
+    fh.read(12)
+    cl=struct.unpack('<I',fh.read(4))[0]; ct=struct.unpack('<I',fh.read(4))[0]
+    j=json.loads(fh.read(cl).decode('utf-8'))
+    print('extensionsUsed:', j.get('extensionsUsed'))
+    print('extensionsRequired:', j.get('extensionsRequired'))
+    print('nodes:', [n.get('name') for n in j.get('nodes',[])])
+    print('materials:', [m.get('name') for m in j.get('materials',[])])
+    print('meshes:', [(m.get('name'), m.get('extras')) for m in j.get('meshes',[])])
+"
+info: prune: Removed types... Accessor (56)
+info: prune: Removed types... Accessor (40)
+info: case.s2c-notex.glb (9.5 MB) → case.v6-notex-meshopt.glb (1.47 MB)
+v6 1469588 1.4015083312988281 1.469588
+extensionsUsed: ['EXT_meshopt_compression', 'KHR_materials_clearcoat', 'KHR_materials_sheen', 'KHR_mesh_quantization']
+extensionsRequired: ['EXT_meshopt_compression', 'KHR_mesh_quantization']
+nodes: ['Case_Body', 'Case_Flap', 'Velvet_Cushion', 'Case_Root']
+materials: ['Case_Graphite', 'Velvet_Oxblood', 'Case_EdgeMetal', 'Logo_Gloss']
+meshes: [('Mesh', None), ('Case_Flap.003', {'targetNames': ['Open10', 'Open20', 'Open30', 'Open40']}), ('Velvet_Cushion.001', None)]
+[0m
+[0m$ [0mnpx -y @gltf-transform/cli@latest quantize case.s2c-notex.glb case.s3c-quant.glb --quantize-position 14 2>&1 | tail -n 3
+npx -y @gltf-transform/cli@latest meshopt case.s3c-quant.glb case.v7-fullchain.glb --level high --quantize-position 14 2>&1 | tail -n 3
+python3 -c "
+import os
+for p in ['case.v6-notex-meshopt.glb','case.s3c-quant.glb','case.v7-fullchain.glb']:
+    s=os.path.getsize(p); print(p,s, round(s/1024/1024,4), round(s/1000/1000,4))
+"
+npm notice run 'gltf-transform' quantize case.s2c-notex.glb case.s3c-quant.glb --quantize-position 14
+info: prune: Removed types... Accessor (48)
+info: case.s2c-notex.glb (9.5 MB) → case.s3c-quant.glb (6.61 MB)
+info: prune: Removed types... Accessor (56)
+info: prune: Removed types... Accessor (40)
+info: case.s3c-quant.glb (6.61 MB) → case.v7-fullchain.glb (1.47 MB)
+case.v6-notex-meshopt.glb 1469588 1.4015 1.4696
+case.s3c-quant.glb 6610912 6.3047 6.6109
+case.v7-fullchain.glb 1467872 1.3999 1.4679
+[0m
+[0m$ [0mnpx -y @gltf-transform/cli@latest dedup glasses.orig.glb g.s1-dedup.glb 2>&1 | tail -n 2
+npx -y @gltf-transform/cli@latest weld g.s1-dedup.glb g.s2-weld.glb 2>&1 | tail -n 2
+npx -y @gltf-transform/cli@latest quantize g.s2-weld.glb g.s3-quant.glb --quantize-position 14 2>&1 | tail -n 2
+npx -y @gltf-transform/cli@latest meshopt g.s3-quant.glb g.s4-meshopt.glb --level high --quantize-position 14 2>&1 | tail -n 2
+python3 -c "import os; [print(p, os.path.getsize(p), round(os.path.getsize(p)/1024,1)) for p in ['glasses.orig.glb','g.s1-dedup.glb','g.s2-weld.glb','g.s3-quant.glb','g.s4-meshopt.glb']]"
+# direct meshopt from weld (no separate quantize)
+npx -y @gltf-transform/cli@latest meshopt g.s2-weld.glb g.v2-direct.glb --level high --quantize-position 14 2>&1 | tail -n 2
+python3 -c "import os; p='g.v2-direct.glb'; print('direct', os.path.getsize(p))"
+npm notice run 'gltf-transform' dedup glasses.orig.glb g.s1-dedup.glb
+info: glasses.orig.glb (1.37 MB) → g.s1-dedup.glb (1.36 MB)
+npm notice run 'gltf-transform' weld g.s1-dedup.glb g.s2-weld.glb
+info: g.s1-dedup.glb (1.36 MB) → g.s2-weld.glb (1.36 MB)
+info: prune: Removed types... Accessor (27)
+info: g.s2-weld.glb (1.36 MB) → g.s3-quant.glb (1.05 MB)
+info: prune: Removed types... Accessor (17)
+info: g.s3-quant.glb (1.05 MB) → g.s4-meshopt.glb (394.24 KB)
+glasses.orig.glb 1365620 1333.6
+g.s1-dedup.glb 1364588 1332.6
+g.s2-weld.glb 1364236 1332.3
+g.s3-quant.glb 1054788 1030.1
+g.s4-meshopt.glb 394236 385.0
+info: prune: Removed types... Accessor (17)
+info: g.s2-weld.glb (1.36 MB) → g.v2-direct.glb (394.23 KB)
+direct 394228
+[0m
+[0m$ [0mpython3 -c "
+import struct, json
+for f in ['g.s4-meshopt.glb','g.v2-direct.glb']:
+    with open(f,'rb') as fh:
+        fh.read(12)
+        cl=struct.unpack('<I',fh.read(4))[0]; ct=struct.unpack('<I',fh.read(4))[0]
+        j=json.loads(fh.read(cl).decode('utf-8'))
+        print('====',f,'====')
+        print('nodes:', [n.get('name') for n in j.get('nodes',[])])
+        print('materials:', [m.get('name') for m in j.get('materials',[])])
+        print('extensionsUsed:', j.get('extensionsUsed'))
+"
+==== g.s4-meshopt.glb ====
+nodes: ['G_Arm_L', 'G_Arm_R', 'G_Front', 'G_Lenses', 'G_Root']
+materials: ['00_Base.001', '04_T.001', '03_Steel.001', '02_nose.001', '01_Glasses.001', '01_Glasses_Side.001']
+extensionsUsed: ['EXT_meshopt_compression', 'KHR_materials_clearcoat', 'KHR_materials_ior', 'KHR_materials_transmission', 'KHR_mesh_quantization']
+==== g.v2-direct.glb ====
+nodes: ['G_Arm_L', 'G_Arm_R', 'G_Front', 'G_Lenses', 'G_Root']
+materials: ['00_Base.001', '04_T.001', '03_Steel.001', '02_nose.001', '01_Glasses.001', '01_Glasses_Side.001']
+extensionsUsed: ['EXT_meshopt_compression', 'KHR_materials_clearcoat', 'KHR_materials_ior', 'KHR_materials_transmission', 'KHR_mesh_quantization']
+[0m
+[0m# [0mTodos
+[✓] Inspect case.glb + glasses.glb (nodes, morphs, tris, sizes)
+[•] Optimize case.glb → case.opt.glb ≤1.5MB (preserve morphs/nodes)
+[✓] Optimize glasses.glb → glasses.opt.glb ≤900KB
+[ ] Verify optimized GLBs load (three.js script: nodes, morphs, tris, bbox)
+[ ] Build logo atlases + JSON (brands 2048², insurers 2048×1024)
+[ ] Green-fringe 400% check + zoom crop
+[ ] Download studio HDRI → public/env + SOURCE.md
+[ ] Write docs/phase4/qa/D/ASSETS-REPORT.md, verify build
+[0m
+[0m$ [0mcp .orchestration/tmp/d1/case.v7-fullchain.glb public/models/case.opt.glb
+cp .orchestration/tmp/d1/g.s4-meshopt.glb public/models/glasses.opt.glb
+rtk ls -lh public/models/ && python3 -c "import os; [print(p, os.path.getsize('public/models/'+p)) for p in ['case.glb','case.opt.glb','glasses.glb','glasses.opt.glb']]"
+644  case.glb  9.6M
+644  case.opt.glb  1.4M
+644  glasses.glb  1.3M
+644  glasses.opt.glb  385.0K
+case.glb 10021468
+case.opt.glb 1467872
+glasses.glb 1365620
+glasses.opt.glb 394236
+[0m
+[0m$ [0mnpm install --no-audit --no-fund three@latest 2>&1 | tail -n 3; node -e "import('three').then(m=>console.log('three', m.REVISION))"
+added 1 package in 2s
+three 186
+[0m
+[0m← [0mWrite .orchestration/tmp/d1/verify-glbs.mjs
+Wrote file successfully.
+[0m
+[0m$ [0mnode verify-glbs.mjs 2>&1
+node:internal/modules/esm/resolve:271
+    throw new ERR_MODULE_NOT_FOUND(
+          ^
+
+Error [ERR_MODULE_NOT_FOUND]: Cannot find module '/Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/.orchestration/tmp/d1/node_modules/three/examples/jsm/libs/meshopt_decoder.js' imported from /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/.orchestration/tmp/d1/verify-glbs.mjs
+    at finalizeResolution (node:internal/modules/esm/resolve:271:11)
+    at moduleResolve (node:internal/modules/esm/resolve:865:10)
+    at defaultResolve (node:internal/modules/esm/resolve:992:11)
+    at #cachedDefaultResolve (node:internal/modules/esm/loader:701:20)
+    at #resolveAndMaybeBlockOnLoaderThread (node:internal/modules/esm/loader:721:38)
+    at ModuleLoader.resolveSync (node:internal/modules/esm/loader:759:56)
+    at #resolve (node:internal/modules/esm/loader:683:17)
+    at ModuleLoader.getOrCreateModuleJob (node:internal/modules/esm/loader:603:35)
+    at ModuleJob.syncLink (node:internal/modules/esm/module_job:163:33)
+    at ModuleJob.link (node:internal/modules/esm/module_job:253:17) {
+  code: 'ERR_MODULE_NOT_FOUND',
+  url: 'file:///Users/admin/Desktop/BUISNESS/EyeQ%20Vision%20Care/V1/.orchestration/tmp/d1/node_modules/three/examples/jsm/libs/meshopt_decoder.js'
+}
+
+Node.js v24.18.0
+[0m
+[0m$ [0mrtk ls node_modules/three/examples/jsm/libs/ 2>&1; rtk ls node_modules/meshoptimizer/ 2>&1 | head -n 20; node -e "import('meshoptimizer').then(m=>console.log(Object.keys(m)))" 2>&1 | head -n 20
+basis/
+draco/
+chevrotain.module.min.js  153.8K
+demuxer_mp4.js  3.4K
+fflate.module.js  87.3K
+ktx-parse.module.js  19.5K
+lil-gui.module.min.js  28.8K
+meshopt_clusterizer.module.js  34.6K
+meshopt_decoder.module.js  28.6K
+meshopt_simplifier.module.js  53.9K
+mikktspace.module.js  47.7K
+motion-controllers.module.js  13.2K
+potpack.module.js  3.9K
+stats.module.js  3.4K
+surfaceNet.js  5.4K
+tween.module.js  31.6K
+utif.module.js  98.5K
+zstddec.module.js  38.8K
+LICENSE.md  1.1K
+README.md  33.3K
+benchmark.js  3.6K
+index.d.ts  198B
+index.js  199B
+meshopt_clusterizer.d.ts  1.8K
+meshopt_clusterizer.js  31.3K
+meshopt_clusterizer.test.js  4.5K
+meshopt_decoder.cjs  28.7K
+meshopt_decoder.d.ts  870B
+meshopt_decoder.mjs  28.3K
+meshopt_decoder.test.js  15.8K
+meshopt_decoder_reference.js  15.2K
+meshopt_encoder.d.ts  1.4K
+meshopt_encoder.js  23.8K
+meshopt_encoder.test.js  8.2K
+meshopt_simplifier.d.ts  2.5K
+meshopt_simplifier.js  66.1K
+meshopt_simplifier.test.js  6.2K
+meshopt_tangents.d.ts  792B
+[
+  'MeshoptClusterizer',
+  'MeshoptDecoder',
+  'MeshoptEncoder',
+  'MeshoptSimplifier',
+  'MeshoptTangents'
+]
+[0m
+[0m← [0mEdit .orchestration/tmp/d1/verify-glbs.mjs
+Index: /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/.orchestration/tmp/d1/verify-glbs.mjs
+===================================================================
+--- /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/.orchestration/tmp/d1/verify-glbs.mjs
++++ /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/.orchestration/tmp/d1/verify-glbs.mjs
+@@ -1,9 +1,10 @@
+ import fs from 'node:fs';
+ import path from 'node:path';
+ import * as THREE from 'three';
+ import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js';
+-import { MeshoptDecoder } from 'three/examples/jsm/libs/meshopt_decoder.js';
++import { MeshoptDecoder } from 'meshoptimizer/meshopt_decoder.mjs';
++await MeshoptDecoder.ready;
+ 
+ const files = process.argv.slice(2);
+ if (!files.length) {
+   files.push(
+
+[0m
+[0m$ [0mnode verify-glbs.mjs 2>&1
+node:internal/modules/esm/resolve:314
+  return new ERR_PACKAGE_PATH_NOT_EXPORTED(
+         ^
+
+Error [ERR_PACKAGE_PATH_NOT_EXPORTED]: Package subpath './meshopt_decoder.mjs' is not defined by "exports" in /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/.orchestration/tmp/d1/node_modules/meshoptimizer/package.json imported from /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/.orchestration/tmp/d1/verify-glbs.mjs
+    at exportsNotFound (node:internal/modules/esm/resolve:314:10)
+    at packageExportsResolve (node:internal/modules/esm/resolve:662:9)
+    at packageResolve (node:internal/modules/esm/resolve:774:12)
+    at moduleResolve (node:internal/modules/esm/resolve:859:18)
+    at defaultResolve (node:internal/modules/esm/resolve:992:11)
+    at #cachedDefaultResolve (node:internal/modules/esm/loader:701:20)
+    at #resolveAndMaybeBlockOnLoaderThread (node:internal/modules/esm/loader:721:38)
+    at ModuleLoader.resolveSync (node:internal/modules/esm/loader:759:56)
+    at #resolve (node:internal/modules/esm/loader:683:17)
+    at ModuleLoader.getOrCreateModuleJob (node:internal/modules/esm/loader:603:35) {
+  code: 'ERR_PACKAGE_PATH_NOT_EXPORTED'
+}
+
+Node.js v24.18.0
+[0m
+[0m$ [0mcat node_modules/meshoptimizer/package.json | head -n 40
+rtk ls node_modules/three/examples/jsm/libs/meshopt_decoder.module.js 2>&1; head -n 30 node_modules/three/examples/jsm/libs/meshopt_decoder.module.js 2>&1 | head -n 30
+{
+	"name": "meshoptimizer",
+	"version": "1.3.0",
+	"description": "Mesh optimization library that makes meshes smaller and faster to render",
+	"author": "Arseny Kapoulkine",
+	"license": "MIT",
+	"bugs": "https://github.com/zeux/meshoptimizer/issues",
+	"homepage": "https://github.com/zeux/meshoptimizer",
+	"keywords": [
+		"compression",
+		"mesh"
+	],
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/zeux/meshoptimizer"
+	},
+	"files": [
+		"*.cjs",
+		"*.mjs",
+		"*.js",
+		"*.ts"
+	],
+	"type": "module",
+	"main": "index.js",
+	"types": "index.d.ts",
+	"exports": {
+		".": {
+			"types": "./index.d.ts",
+			"default": "./index.js"
+		},
+		"./encoder": {
+			"types": "./meshopt_encoder.d.ts",
+			"default": "./meshopt_encoder.js"
+		},
+		"./decoder": {
+			"types": "./meshopt_decoder.d.ts",
+			"default": "./meshopt_decoder.mjs"
+		},
+		"./simplifier": {
+			"types": "./meshopt_simplifier.d.ts",
+node_modules/three/examples/jsm/libs/meshopt_decoder.module.js  28.6K
+// This file is part of meshoptimizer library and is distributed under the terms of MIT License.
+// Copyright (C) 2016-2026, by Arseny Kapoulkine (arseny.kapoulkine@gmail.com)
+var MeshoptDecoder = (function () {
+	// Built with clang version 22.1.0-wasi-sdk
+	// Built from meshoptimizer 1.1
+	var wasm_base =
+		'b9H79Tebbbe8Fv9Gbb9Gvuuuuueu9Giuuub9Geueu9Giuuueuixkbeeeddddillviebeoweuecj:Gdkr;Neqo9TW9T9VV95dbH9F9F939H79T9F9J9H229F9Jt9VV7bb8A9TW79O9V9Wt9F9KW9J9V9KW9wWVtW949c919M9MWVbeY9TW79O9V9Wt9F9KW9J9V9KW69U9KW949c919M9MWVbdE9TW79O9V9Wt9F9KW9J9V9KW69U9KW949tWG91W9U9JWbiL9TW79O9V9Wt9F9KW9J9V9KWS9P2tWV9p9JtblK9TW79O9V9Wt9F9KW9J9V9KWS9P2tWV9r919HtbvL9TW79O9V9Wt9F9KW9J9V9KWS9P2tWVT949WboY9TW79O9V9Wt9F9KW9J9V9KWS9P2tWVJ9V29VVbrl79IV9Rbwq:VZkdbk:XYi5ud9:du8Jjjjjbcj;kb9Rgv8Kjjjjbc9:hodnalTmbcuhoaiRbbgrc;WeGc:Ge9hmbarcsGgwce0mbc9:hoalcufadcd4cbawEgDadfgrcKcaawEgqaraq0Egk6mbaicefhxcj;abad9Uc;WFbGcjdadca0EhmaialfgPar9Rgoadfhsavaoadz:jjjjbgzceVhHcbhOdndninaeaO9nmeaPax9RaD6mdamaeaO9RaOamfgoae6EgAcsfglc9WGhCabaOad2fhXaAcethQaxaDfhiaOaeaoaeao6E9RhLalcl4cifcd4hKazcj;cbfaAfhYcbh8AazcjdfhEaHh3incbh5dnawTmbaxa8Acd4fRbbh5kcbh8Eazcj;cbfhqinaih8Fdndndndna5a8Ecet4ciGgoc9:fPdebdkaPa8F9RaA6mrazcj;cbfa8EaA2fa8FaAz:jjjjb8Aa8FaAfhixdkazcj;cbfa8EaA2fcbaAz:kjjjb8Aa8FhixekaPa8F9RaK6mva8FaKfhidnaCTmbaPai9RcK6mbaocdtc:q:G:cjbfcj:G:cjbawEhaczhrcbhlinargoc9Wfghaqfhrdndndndndndnaaa8Fahco4fRbbalcoG4ciGcdtfydbPDbedvivvvlvkar9cb83bwar9cb83bbxlkarcbaiRbdai8Xbb9c:c:qj:bw9:9c:q;c1:I1e:d9c:b:c:e1z9:gg9cjjjjjz:dg8J9qE86bbaqaofgrcGfcbaicdfa8J9c8N1:NfghRbbag9cjjjjjw:dg8J9qE86bbarcVfcbaha8J9c8M1:NfghRbbag9cjjjjjl:dg8J9qE86bbarc7fcbaha8J9c8L1:NfghRbbag9cjjjjjd:dg8J9qE86bbarctfcbaha8J9c8K1:NfghRbbag9cjjjjje:dg8J9qE86bbarc91fcbaha8J9c8J1:NfghRbbag9cjjjj;ab:dg8J9qE86bbarc4fcbaha8J9cg1:NfghRbbag9cjjjja:dg8J9qE86bbarc93fcbaha8J9ch1:NfghRbbag9cjjjjz:dgg9qE86bbarc94fcbahag9ca1:NfghRbbai8Xbe9c:c:qj:bw9:9c:q;c1:I1e:d9c:b:c:e1z9:gg9cjjjjjz:dg8J9qE86bbarc95fcbaha8J9c8N1:NfgiRbbag9cjjjjjw:dg8J9qE86bbarc96fcbaia8J9c8M1:NfgiRbbag9cjjjjjl:dg8J9qE86bbarc97fcbaia8J9c8L1:NfgiRbbag9cjjjjjd:dg8J9qE86bbarc98fcbaia8J9c8K1:NfgiRbbag9cjjjjje:dg8J9qE86bbarc99fcbaia8J9c8J1:NfgiRbbag9cjjjj;ab:dg8J9qE86bbarc9:fcbaia8J9cg1:NfgiRbbag9cjjjja:dg8J9qE86bbarcufcbaia8J9ch1:NfgiRbbag9cjjjjz:dgg9qE86bbaiag9ca1:NfhixikaraiRblaiRbbghco4g8Ka8KciSg8KE86bbaqaofgrcGfaiclfa8Kfg8KRbbahcl4ciGg8La8LciSg8LE86bbarcVfa8Ka8Lfg8KRbbahcd4ciGg8La8LciSg8LE86bbarc7fa8Ka8Lfg8KRbbahciGghahciSghE86bbarctfa8Kahfg8KRbbaiRbeghco4g8La8LciSg8LE86bbarc91fa8Ka8Lfg8KRbbahcl4ciGg8La8LciSg8LE86bbarc4fa8Ka8Lfg8KRbbahcd4ciGg8La8LciSg8LE86bbarc93fa8Ka8Lfg8KRbbahciGghahciSghE86bbarc94fa8Kahfg8KRbbaiRbdghco4g8La8LciSg8LE86bbarc95fa8Ka8Lfg8KRbbahcl4ciGg8La8LciSg8LE86bbarc96fa8Ka8Lfg8KRbbahcd4ciGg8La8LciSg8LE86bbarc97fa8Ka8Lfg8KRbbahciGghahciSghE86bbarc98fa8KahfghRbbaiRbigico4g8Ka8KciSg8KE86bbarc99faha8KfghRbbaicl4ciGg8Ka8KciSg8KE86bbarc9:faha8KfghRbbaicd4ciGg8Ka8KciSg8KE86bbarcufaha8KfgrRbbaiciGgiaiciSgiE86bbaraifhixdkaraiRbwaiRbbghcl4g8Ka8KcsSg8KE86bbaqaofgrcGfaicwfa8Kfg8KRbbahcsGghahcsSghE86bbarcVfa8KahfghRbbaiRbeg8Kcl4g8La8LcsSg8LE86bbarc7faha8LfghRbba8KcsGg8Ka8KcsSg8KE86bbarctfaha8KfghRbbaiRbdg8Kcl4g8La8LcsSg8LE86bbarc91faha8LfghRbba8KcsGg8Ka8KcsSg8KE86bbarc4faha8KfghRbbaiRbig8Kcl4g8La8LcsSg8LE86bbarc93faha8LfghRbba8KcsGg8Ka8KcsSg8KE86bbarc94faha8KfghRbbaiRblg8Kcl4g8La8LcsSg8LE86bbarc95faha8LfghRbba8KcsGg8Ka8KcsSg8KE86bbarc96faha8KfghRbbaiRbvg8Kcl4g8La8LcsSg8LE86bbarc97faha8LfghRbba8KcsGg8Ka8KcsSg8KE86bbarc98faha8KfghRbbaiRbog8Kcl4g8La8LcsSg8LE86bbarc99faha8LfghRbba8KcsGg8Ka8KcsSg8KE86bbarc9:faha8KfghRbbaiRbrgicl4g8Ka8KcsSg8KE86bbarcufaha8KfgrRbbaicsGgiaicsSgiE86bbaraifhixekarai8Pbw83bwarai8Pbb83bbaiczfhikdnaoaC9pmbalcdfhlaoczfhraPai9RcL0mekkaoaC6moaimexokaCmva8FTmvkaqaAfhqa8Ecefg8Ecl9hmbkdndndndnawTmbasa8Acd4fRbbgociGPlbedrbkaATmdaza8Afh8Fazcj;cbfhhcbh8EaEhaina8FRbbhraahocbhlinaoahalfRbbgqce4cbaqceG9R7arfgr86bbaoadfhoaAalcefgl9hmbkaacefhaa8Fcefh8FahaAfhha8Ecefg8Ecl9hmbxikkaATmeaza8Afhaazcj;cbfhhcbhoceh8EaYh8FinaEaofhlaa8Vbbhrcbhoinala8FaofRbbcwtahaofRbbgqVc;:FiGce4cbaqceG9R7arfgr87bbaladfhlaLaocefgofmbka8FaQfh8FcdhoaacdfhaahaQfhha8EceGhlcbh8EalmbxdkkaATmbaocl4h8Eaza8AfRbbhqcwhoa3hlinalRbbaotaqVhqalcefhlaocwfgoca9hmbkcbhhaEh8FaYhainazcj;cbfahfRbbhrcwhoaahlinalRbbaotarVhralaAfhlaocwfgoca9hmbkara8E94aq7hqcbhoa8Fhlinalaqao486bbalcefhlaocwfgoca9hmbka8Fadfh8FaacefhaahcefghaA9hmbkkaEclfhEa3clfh3a8Aclfg8Aad6mbkaXazcjdfaAad2z:jjjjb8AazazcjdfaAcufad2fadz:jjjjb8AaAaOfhOaihxaimbkc9:hoxdkcbc99aPax9RakSEhoxekc9:hokavcj;kbf8Kjjjjbaok:ysezu8Jjjjjbc;ae9Rgv8Kjjjjbc9:hodnalaeci9UgrcHf6mbcuhoaiRbbgwc;WeGc;Ge9hmbawcsGgDce0mbavc;abfcFecjez:kjjjb8Aav9cu83iUav9cu83i8Wav9cu83iyav9cu83iaav9cu83iKav9cu83izav9cu83iwav9cu83ibaialfc9WfhqaicefgwarfhldnaeTmbcmcsaDceSEhkcbhxcbhmcbhrcbhicbhoindnalaq9nmbc9:hoxikdndnawRbbgDc;Ve0mbavc;abfaoaDcu7gPcl4fcsGcitfgsydlhzasydbhHdndnaDcsGgsak9pmbavaiaPfcsGcdtfydbaxasEhDaxasTgOfhxxekdndnascsSmbcehOasc987asamffcefhDxekalcefhDal8SbbgscFeGhPdndnascu9mmbaDhlxekalcvfhlaPcFbGhPcrhsdninaD8SbbgOcFbGastaPVhPaOcu9kmeaDcefhDascrfgsc8J9hmbxdkkaDcefhlkcehOaPce4cbaPceG9R7amfhDkaDhmkavc;abfaocitfgsaDBdbasazBdlavaicdtfaDBdbavc;abfaocefcsGcitfgsaHBdbasaDBdlaocdfhoaOaifhidnadcd9hmbabarcetfgsaH87ebasclfaD87ebascdfaz87ebxdkabarcdtfgsaHBdbascwfaDBdbasclfazBdbxekdnaDcpe0mbavaiaqaDcsGfRbbgscl4gP9RcsGcdtfydbaxcefgOaPEhDavaias9RcsGcdtfydbaOaPTgzfgOascsGgPEhsaPThPdndnadcd9hmbabarcetfgHax87ebaHclfas87ebaHcdfaD87ebxekabarcdtfgHaxBdbaHcwfasBdbaHclfaDBdbkavaicdtfaxBdbavc;abfaocitfgHaDBdbaHaxBdlavaicefgicsGcdtfaDBdbavc;abfaocefcsGcitfgHasBdbaHaDBdlavaiazfgicsGcdtfasBdbavc;abfaocdfcsGcitfgDaxBdbaDasBdlaocifhoaiaPfhiaOaPfhxxekaxcbalRbbgsEgHaDc;:eSgDfhOascsGhAdndnascl4gCmbaOcefhzxekaOhzavaiaC9RcsGcdtfydbhOkdndnaAmbazcefhxxekazhxavaias9RcsGcdtfydbhzkdndnaDTmbalcefhDxekalcdfhDal8SbegPcFeGhsdnaPcu9kmbalcofhHascFbGhscrhldninaD8SbbgPcFbGaltasVhsaPcu9kmeaDcefhDalcrfglc8J9hmbkaHhDxekaDcefhDkasce4cbasceG9R7amfgmhHkdndnaCcsSmbaDhsxekaDcefhsaD8SbbglcFeGhPdnalcu9kmbaDcvfhOaPcFbGhPcrhldninas8SbbgDcFbGaltaPVhPaDcu9kmeascefhsalcrfglc8J9hmbkaOhsxekascefhskaPce4cbaPceG9R7amfgmhOkdndnaAcsSmbashlxekascefhlas8SbbgDcFeGhPdnaDcu9kmbascvfhzaPcFbGhPcrhDdninal8SbbgscFbGaDtaPVhPascu9kmealcefhlaDcrfgDc8J9hmbkazhlxekalcefhlkaPce4cbaPceG9R7amfgmhzkdndnadcd9hmbabarcetfgDaH87ebaDclfaz87ebaDcdfaO87ebxekabarcdtfgDaHBdbaDcwfazBdbaDclfaOBdbkavc;abfaocitfgDaOBdbaDaHBdlavaicdtfaHBdbavc;abfaocefcsGcitfgDazBdbaDaOBdlavaicefgicsGcdtfaOBdbavc;abfaocdfcsGcitfgDaHBdbaDazBdlavaiaCTaCcsSVfgicsGcdtfazBdbaiaATaAcsSVfhiaocifhokawcefhwaocsGhoaicsGhiarcifgrae6mbkkcbc99alaqSEhokavc;aef8Kjjjjbaok:clevu8Jjjjjbcz9Rhvdnalaecvf9pmbc9:skdnaiRbbc;:eGc;qeSmbcuskav9cb83iwaicefhoaialfc98fhrdnaeTmbdnadcdSmbcbhwindnaoar6mbc9:skaocefhlao8SbbgicFeGhddndnaicu9mmbalhoxekaocvfhoadcFbGhdcrhidninal8SbbgDcFbGaitadVhdaDcu9kmealcefhlaicrfgic8J9hmbxdkkalcefhokabawcdtfadc8Etc8F91adcd47avcwfadceGcdtVglydbfgiBdbalaiBdbawcefgwae9hmbxdkkcbhwindnaoar6mbc9:skaocefhlao8SbbgicFeGhddndnaicu9mmbalhoxekaocvfhoadcFbGhdcrhidninal8SbbgDcFbGaitadVhdaDcu9kmealcefhlaicrfgic8J9hmbxdkkalcefhokabawcetfadc8Etc8F91adcd47avcwfadceGcdtVglydbfgi87ebalaiBdbawcefgwae9hmbkkcbc99aoarSEk:Lvoeue99dud99eud99dndnadcl9hmbaeTmeindndnabcdfgd8Sbb:Yab8Sbbgi:Ygl:l:tabcefgv8Sbbgo:Ygr:l:tgwJbb;:9cawawNJbbbbawawJbbbb9GgDEgq:mgkaqaicb9iEalMgwawNakaqaocb9iEarMgqaqNMM:r:vglNJbbbZJbbb:;aDEMgr:lJbbb9p9DTmbar:Ohixekcjjjj94hikadai86bbdndnaqalNJbbbZJbbb:;aqJbbbb9GEMgq:lJbbb9p9DTmbaq:Ohdxekcjjjj94hdkavad86bbdndnawalNJbbbZJbbb:;awJbbbb9GEMgw:lJbbb9p9DTmbaw:Ohdxekcjjjj94hdkabad86bbabclfhbaecufgembxdkkaeTmbindndnabclfgd8Ueb:Yab8Uebgi:Ygl:l:tabcdfgv8Uebgo:Ygr:l:tgwJb;:FSawawNJbbbbawawJbbbb9GgDEgq:mgkaqaicb9iEalMgwawNakaqaocb9iEarMgqaqNMM:r:vglNJbbbZJbbb:;aDEMgr:lJbbb9p9DTmbar:Ohixekcjjjj94hikadai87ebdndnaqalNJbbbZJbbb:;aqJbbbb9GEMgq:lJbbb9p9DTmbaq:Ohdxekcjjjj94hdkavad87ebdndnawalNJbbbZJbbb:;awJbbbb9GEMgw:lJbbb9p9DTmbaw:Ohdxekcjjjj94hdkabad87ebabcwfhbaecufgembkkk:4ioiue99dud99dud99dnaeTmbcbhiabhlindndnal8Uebgv:YgoJ:ji:1Salcof8UebgrciVgw:Y:vgDNJbbbZJbbb:;avcu9kEMgq:lJbbb9p9DTmbaq:Ohkxekcjjjj94hkkalclf8Uebhvalcdf8UebhxalarcefciGcetfak87ebdndnax:YgqaDNJbbbZJbbb:;axcu9kEMgm:lJbbb9p9DTmbam:Ohxxekcjjjj94hxkabaiarciGgkfcd7cetfax87ebdndnav:YgmaDNJbbbZJbbb:;avcu9kEMgP:lJbbb9p9DTmbaP:Ohvxekcjjjj94hvkalarcufciGcetfav87ebdndnawaw2:ZgPaPMaoaoN:taqaqN:tamamN:tgoJbbbbaoJbbbb9GE:raDNJbbbZMgD:lJbbb9p9DTmbaD:Ohrxekcjjjj94hrkalakcetfar87ebalcwfhlaiclfhiaecufgembkkk9mbdnadcd4ae2gdTmbinababydbgecwtcw91:Yaece91cjjj98Gcjjj;8if::NUdbabclfhbadcufgdmbkkk:Tvirud99eudndnadcl9hmbaeTmeindndnabRbbgiabcefgl8Sbbgvabcdfgo8Sbbgrf9R:YJbbuJabcifgwRbbgdce4adVgDcd4aDVgDcl4aDVgD:Z:vgqNJbbbZMgk:lJbbb9p9DTmbak:Ohxxekcjjjj94hxkaoax86bbdndnaraif:YaqNJbbbZMgk:lJbbb9p9DTmbak:Ohoxekcjjjj94hokalao86bbdndnavaifar9R:YaqNJbbbZMgk:lJbbb9p9DTmbak:Ohixekcjjjj94hikabai86bbdndnaDadcetGadceGV:ZaqNJbbbZMgq:lJbbb9p9DTmbaq:Ohdxekcjjjj94hdkawad86bbabclfhbaecufgembxdkkaeTmbindndnab8Vebgiabcdfgl8Uebgvabclfgo8Uebgrf9R:YJbFu9habcofgw8Vebgdce4adVgDcd4aDVgDcl4aDVgDcw4aDVgD:Z:vgqNJbbbZMgk:lJbbb9p9DTmbak:Ohxxekcjjjj94hxkaoax87ebdndnaraif:YaqNJbbbZMgk:lJbbb9p9DTmbak:Ohoxekcjjjj94hokalao87ebdndnavaifar9R:YaqNJbbbZMgk:lJbbb9p9DTmbak:Ohixekcjjjj94hikabai87ebdndnaDadcetGadceGV:ZaqNJbbbZMgq:lJbbb9p9DTmbaq:Ohdxekcjjjj94hdkawad87ebabcwfhbaecufgembkkk9teiucbcbyd:K:G:cjbgeabcifc98GfgbBd:K:G:cjbdndnabZbcztgd9nmbcuhiabad9RcFFifcz4nbcuSmekaehikaik;LeeeudndnaeabVciGTmbabhixekdndnadcz9pmbabhixekabhiinaiaeydbBdbaiclfaeclfydbBdbaicwfaecwfydbBdbaicxfaecxfydbBdbaeczfheaiczfhiadc9Wfgdcs0mbkkadcl6mbinaiaeydbBdbaeclfheaiclfhiadc98fgdci0mbkkdnadTmbinaiaeRbb86bbaicefhiaecefheadcufgdmbkkabk;aeedudndnabciGTmbabhixekaecFeGc:b:c:ew2hldndnadcz9pmbabhixekabhiinaialBdbaicxfalBdbaicwfalBdbaiclfalBdbaiczfhiadc9Wfgdcs0mbkkadcl6mbinaialBdbaiclfhiadc98fgdci0mbkkdnadTmbinaiae86bbaicefhiadcufgdmbkkabkk83dbcj:Gdk8Kbbbbdbbblbbbwbbbbbbbebbbdbbblbbbwbbbbc:K:Gdkl8W:qbb'; // embed! base
+	var wasm_simd =
+		'b9H79TebbbeKl9Gbb9Gvuuuuueu9Giuuub9Geueuixkbbebeeddddilve9Weeeviebeoweuecj:Gdkr;Neqo9TW9T9VV95dbH9F9F939H79T9F9J9H229F9Jt9VV7bb8A9TW79O9V9Wt9F9KW9J9V9KW9wWVtW949c919M9MWVbdY9TW79O9V9Wt9F9KW9J9V9KW69U9KW949c919M9MWVblE9TW79O9V9Wt9F9KW9J9V9KW69U9KW949tWG91W9U9JWbvL9TW79O9V9Wt9F9KW9J9V9KWS9P2tWV9p9JtboK9TW79O9V9Wt9F9KW9J9V9KWS9P2tWV9r919HtbrL9TW79O9V9Wt9F9KW9J9V9KWS9P2tWVT949WbwY9TW79O9V9Wt9F9KW9J9V9KWS9P2tWVJ9V29VVbDl79IV9Rbqq:W9Dklbzik94evu8Jjjjjbcz9Rhbcbheincbhdcbhiinabcwfadfaicjuaead4ceGglE86bbaialfhiadcefgdcw9hmbkaeai86b:q:W:cjbaecitab8Piw83i:q:G:cjbaecefgecjd9hmbkk:JBl8Aud97dur978Jjjjjbcj;kb9Rgv8Kjjjjbc9:hodnalTmbcuhoaiRbbgrc;WeGc:Ge9hmbarcsGgwce0mbc9:hoalcufadcd4cbawEgDadfgrcKcaawEgqaraq0Egk6mbaialfgxar9RhodnadTgmmbavaoad;8qbbkaicefhPcj;abad9Uc;WFbGcjdadca0EhsdndndnadTmbaoadfhzcbhHinaeaH9nmdaxaP9RaD6miabaHad2fhOaPaDfhAasaeaH9RaHasfae6EgCcsfgocl4cifcd4hXavcj;cbfaoc9WGgQcetfhLavcj;cbfaQci2fhKavcj;cbfaQfhYcbh8Aaoc;ab6hEincbh3dnawTmbaPa8Acd4fRbbh3kcbh5avcj;cbfh8Eindndndndna3a5cet4ciGgoc9:fPdebdkaxaA9RaQ6mwdnaQTmbavcj;cbfa5aQ2faAaQ;8qbbkaAaCfhAxdkaQTmeavcj;cbfa5aQ2fcbaQ;8kbxekaxaA9RaX6moaoclVcbawEhraAaXfhocbhidnaEmbaxao9Rc;Gb6mbcbhlina8EalfhidndndndndndnaAalco4fRbbgqciGarfPDbedibledibkaipxbbbbbbbbbbbbbbbbpklbxlkaiaopbblaopbbbg8Fclp:mea8FpmbzeHdOiAlCvXoQrLg8Fcdp:mea8FpmbzeHdOiAlCvXoQrLpxiiiiiiiiiiiiiiiip9ogapxiiiiiiiiiiiiiiiip8Jg8Fp5b9cjF;8;4;W;G;ab9:9cU1:Nghcitpbi:q:G:cjbahRb:q:W:cjbghpsa8Fp5e9cjF;8;4;W;G;ab9:9cU1:Nggcitpbi:q:G:cjbp9UpmbedilvorzHOACXQLpPaaa8Fp9spklbahaoclffagRb:q:W:cjbfhoxikaiaopbbwaopbbbg8Fclp:mea8FpmbzeHdOiAlCvXoQrLpxssssssssssssssssp9ogapxssssssssssssssssp8Jg8Fp5b9cjF;8;4;W;G;ab9:9cU1:Nghcitpbi:q:G:cjbahRb:q:W:cjbghpsa8Fp5e9cjF;8;4;W;G;ab9:9cU1:Nggcitpbi:q:G:cjbp9UpmbedilvorzHOACXQLpPaaa8Fp9spklbahaocwffagRb:q:W:cjbfhoxdkaiaopbbbpklbaoczfhoxekaiaopbbdaoRbbghcitpbi:q:G:cjbahRb:q:W:cjbghpsaoRbeggcitpbi:q:G:cjbp9UpmbedilvorzHOACXQLpPpklbahaocdffagRb:q:W:cjbfhokdndndndndndnaqcd4ciGarfPDbedibledibkaiczfpxbbbbbbbbbbbbbbbbpklbxlkaiczfaopbblaopbbbg8Fclp:mea8FpmbzeHdOiAlCvXoQrLg8Fcdp:mea8FpmbzeHdOiAlCvXoQrLpxiiiiiiiiiiiiiiiip9ogapxiiiiiiiiiiiiiiiip8Jg8Fp5b9cjF;8;4;W;G;ab9:9cU1:Nghcitpbi:q:G:cjbahRb:q:W:cjbghpsa8Fp5e9cjF;8;4;W;G;ab9:9cU1:Nggcitpbi:q:G:cjbp9UpmbedilvorzHOACXQLpPaaa8Fp9spklbahaoclffagRb:q:W:cjbfhoxikaiczfaopbbwaopbbbg8Fclp:mea8FpmbzeHdOiAlCvXoQrLpxssssssssssssssssp9ogapxssssssssssssssssp8Jg8Fp5b9cjF;8;4;W;G;ab9:9cU1:Nghcitpbi:q:G:cjbahRb:q:W:cjbghpsa8Fp5e9cjF;8;4;W;G;ab9:9cU1:Nggcitpbi:q:G:cjbp9UpmbedilvorzHOACXQLpPaaa8Fp9spklbahaocwffagRb:q:W:cjbfhoxdkaiczfaopbbbpklbaoczfhoxekaiczfaopbbdaoRbbghcitpbi:q:G:cjbahRb:q:W:cjbghpsaoRbeggcitpbi:q:G:cjbp9UpmbedilvorzHOACXQLpPpklbahaocdffagRb:q:W:cjbfhokdndndndndndnaqcl4ciGarfPDbedibledibkaicafpxbbbbbbbbbbbbbbbbpklbxlkaicafaopbblaopbbbg8Fclp:mea8FpmbzeHdOiAlCvXoQrLg8Fcdp:mea8FpmbzeHdOiAlCvXoQrLpxiiiiiiiiiiiiiiiip9ogapxiiiiiiiiiiiiiiiip8Jg8Fp5b9cjF;8;4;W;G;ab9:9cU1:Nghcitpbi:q:G:cjbahRb:q:W:cjbghpsa8Fp5e9cjF;8;4;W;G;ab9:9cU1:Nggcitpbi:q:G:cjbp9UpmbedilvorzHOACXQLpPaaa8Fp9spklbahaoclffagRb:q:W:cjbfhoxikaicafaopbbwaopbbbg8Fclp:mea8FpmbzeHdOiAlCvXoQrLpxssssssssssssssssp9ogapxssssssssssssssssp8Jg8Fp5b9cjF;8;4;W;G;ab9:9cU1:Nghcitpbi:q:G:cjbahRb:q:W:cjbghpsa8Fp5e9cjF;8;4;W;G;ab9:9cU1:Nggcitpbi:q:G:cjbp9UpmbedilvorzHOACXQLpPaaa8Fp9spklbahaocwffagRb:q:W:cjbfhoxdkaicafaopbbbpklbaoczfhoxekaicafaopbbdaoRbbghcitpbi:q:G:cjbahRb:q:W:cjbghpsaoRbeggcitpbi:q:G:cjbp9UpmbedilvorzHOACXQLpPpklbahaocdffagRb:q:W:cjbfhokdndndndndndnaqco4arfPDbedibledibkaic8Wfpxbbbbbbbbbbbbbbbbpklbxlkaic8Wfaopbblaopbbbg8Fclp:mea8FpmbzeHdOiAlCvXoQrLg8Fcdp:mea8FpmbzeHdOiAlCvXoQrLpxiiiiiiiiiiiiiiiip9ogapxiiiiiiiiiiiiiiiip8Jg8Fp5b9cjF;8;4;W;G;ab9:9cU1:Ngicitpbi:q:G:cjbaiRb:q:W:cjbgipsa8Fp5e9cjF;8;4;W;G;ab9:9cU1:Ngqcitpbi:q:G:cjbp9UpmbedilvorzHOACXQLpPaaa8Fp9spklbaiaoclffaqRb:q:W:cjbfhoxikaic8Wfaopbbwaopbbbg8Fclp:mea8FpmbzeHdOiAlCvXoQrLpxssssssssssssssssp9ogapxssssssssssssssssp8Jg8Fp5b9cjF;8;4;W;G;ab9:9cU1:Ngicitpbi:q:G:cjbaiRb:q:W:cjbgipsa8Fp5e9cjF;8;4;W;G;ab9:9cU1:Ngqcitpbi:q:G:cjbp9UpmbedilvorzHOACXQLpPaaa8Fp9spklbaiaocwffaqRb:q:W:cjbfhoxdkaic8Wfaopbbbpklbaoczfhoxekaic8WfaopbbdaoRbbgicitpbi:q:G:cjbaiRb:q:W:cjbgipsaoRbegqcitpbi:q:G:cjbp9UpmbedilvorzHOACXQLpPpklbaiaocdffaqRb:q:W:cjbfhokalc;abfhialcjefaQ0meaihlaxao9Rc;Fb0mbkkdnaiaQ9pmbaici4hlinaxao9RcK6mwa8EaifhqdndndndndndnaAaico4fRbbalcoG4ciGarfPDbedibledibkaqpxbbbbbbbbbbbbbbbbpkbbxlkaqaopbblaopbbbg8Fclp:mea8FpmbzeHdOiAlCvXoQrLg8Fcdp:mea8FpmbzeHdOiAlCvXoQrLpxiiiiiiiiiiiiiiiip9ogapxiiiiiiiiiiiiiiiip8Jg8Fp5b9cjF;8;4;W;G;ab9:9cU1:Nghcitpbi:q:G:cjbahRb:q:W:cjbghpsa8Fp5e9cjF;8;4;W;G;ab9:9cU1:Nggcitpbi:q:G:cjbp9UpmbedilvorzHOACXQLpPaaa8Fp9spkbbahaoclffagRb:q:W:cjbfhoxikaqaopbbwaopbbbg8Fclp:mea8FpmbzeHdOiAlCvXoQrLpxssssssssssssssssp9ogapxssssssssssssssssp8Jg8Fp5b9cjF;8;4;W;G;ab9:9cU1:Nghcitpbi:q:G:cjbahRb:q:W:cjbghpsa8Fp5e9cjF;8;4;W;G;ab9:9cU1:Nggcitpbi:q:G:cjbp9UpmbedilvorzHOACXQLpPaaa8Fp9spkbbahaocwffagRb:q:W:cjbfhoxdkaqaopbbbpkbbaoczfhoxekaqaopbbdaoRbbghcitpbi:q:G:cjbahRb:q:W:cjbghpsaoRbeggcitpbi:q:G:cjbp9UpmbedilvorzHOACXQLpPpkbbahaocdffagRb:q:W:cjbfhokalcdfhlaiczfgiaQ6mbkkaohAaoTmoka8EaQfh8Ea5cefg5cl9hmbkdndndndnawTmbaza8Acd4fRbbglciGPlbedwbkaQTmdavcjdfa8Afhlava8Afpbdbh8Jcbhoinalavcj;cbfaofpblbg8KaYaofpblbg8LpmbzeHdOiAlCvXoQrLg8MaLaofpblbg8NaKaofpblbgypmbzeHdOiAlCvXoQrLg8PpmbezHdiOAlvCXorQLg8Fcep9Ta8Fpxeeeeeeeeeeeeeeeegap9op9Hp9rg8Fa8Jp9Ug8Jp9Abbbaladfgla8Ja8Fa8Fpmlvorlvorlvorlvorp9Ug8Jp9Abbbaladfgla8Ja8Fa8FpmwDqkwDqkwDqkwDqkp9Ug8Jp9Abbbaladfgla8Ja8Fa8FpmxmPsxmPsxmPsxmPsp9Ug8Jp9Abbbaladfgla8Ja8Ma8PpmwDKYqk8AExm35Ps8E8Fg8Fcep9Ta8Faap9op9Hp9rg8Fp9Ug8Jp9Abbbaladfgla8Ja8Fa8Fpmlvorlvorlvorlvorp9Ug8Jp9Abbbaladfgla8Ja8Fa8FpmwDqkwDqkwDqkwDqkp9Ug8Jp9Abbbaladfgla8Ja8Fa8FpmxmPsxmPsxmPsxmPsp9Ug8Jp9Abbbaladfgla8Ja8Ka8LpmwKDYq8AkEx3m5P8Es8Fg8Ka8NaypmwKDYq8AkEx3m5P8Es8Fg8LpmbezHdiOAlvCXorQLg8Fcep9Ta8Faap9op9Hp9rg8Fp9Ug8Jp9Abbbaladfgla8Ja8Fa8Fpmlvorlvorlvorlvorp9Ug8Jp9Abbbaladfgla8Ja8Fa8FpmwDqkwDqkwDqkwDqkp9Ug8Jp9Abbbaladfgla8Ja8Fa8FpmxmPsxmPsxmPsxmPsp9Ug8Jp9Abbbaladfgla8Ja8Ka8LpmwDKYqk8AExm35Ps8E8Fg8Fcep9Ta8Faap9op9Hp9rg8Fp9Ugap9Abbbaladfglaaa8Fa8Fpmlvorlvorlvorlvorp9Ugap9Abbbaladfglaaa8Fa8FpmwDqkwDqkwDqkwDqkp9Ugap9Abbbaladfglaaa8Fa8FpmxmPsxmPsxmPsxmPsp9Ug8Jp9AbbbaladfhlaoczfgoaQ6mbxikkaQTmeavcjdfa8Afhlava8Afpbdbh8Jcbhoinalavcj;cbfaofpblbg8KaYaofpblbg8LpmbzeHdOiAlCvXoQrLg8MaLaofpblbg8NaKaofpblbgypmbzeHdOiAlCvXoQrLg8PpmbezHdiOAlvCXorQLg8Fcep:nea8Fpxebebebebebebebebgap9op:bep9rg8Fa8Jp:oeg8Jp9Abbbaladfgla8Ja8Fa8Fpmlvorlvorlvorlvorp:oeg8Jp9Abbbaladfgla8Ja8Fa8FpmwDqkwDqkwDqkwDqkp:oeg8Jp9Abbbaladfgla8Ja8Fa8FpmxmPsxmPsxmPsxmPsp:oeg8Jp9Abbbaladfgla8Ja8Ma8PpmwDKYqk8AExm35Ps8E8Fg8Fcep:nea8Faap9op:bep9rg8Fp:oeg8Jp9Abbbaladfgla8Ja8Fa8Fpmlvorlvorlvorlvorp:oeg8Jp9Abbbaladfgla8Ja8Fa8FpmwDqkwDqkwDqkwDqkp:oeg8Jp9Abbbaladfgla8Ja8Fa8FpmxmPsxmPsxmPsxmPsp:oeg8Jp9Abbbaladfgla8Ja8Ka8LpmwKDYq8AkEx3m5P8Es8Fg8Ka8NaypmwKDYq8AkEx3m5P8Es8Fg8LpmbezHdiOAlvCXorQLg8Fcep:nea8Faap9op:bep9rg8Fp:oeg8Jp9Abbbaladfgla8Ja8Fa8Fpmlvorlvorlvorlvorp:oeg8Jp9Abbbaladfgla8Ja8Fa8FpmwDqkwDqkwDqkwDqkp:oeg8Jp9Abbbaladfgla8Ja8Fa8FpmxmPsxmPsxmPsxmPsp:oeg8Jp9Abbbaladfgla8Ja8Ka8LpmwDKYqk8AExm35Ps8E8Fg8Fcep:nea8Faap9op:bep9rg8Fp:oegap9Abbbaladfglaaa8Fa8Fpmlvorlvorlvorlvorp:oegap9Abbbaladfglaaa8Fa8FpmwDqkwDqkwDqkwDqkp:oegap9Abbbaladfglaaa8Fa8FpmxmPsxmPsxmPsxmPsp:oeg8Jp9AbbbaladfhlaoczfgoaQ6mbxdkkaQTmbcbhocbalcl4gl9Rc8FGhiavcjdfa8Afhrava8Afpbdbhainaravcj;cbfaofpblbg8JaYaofpblbg8KpmbzeHdOiAlCvXoQrLg8LaLaofpblbg8MaKaofpblbg8NpmbzeHdOiAlCvXoQrLgypmbezHdiOAlvCXorQLg8Faip:Rea8Falp:Tep9qg8Faap9rgap9Abbbaradfgraaa8Fa8Fpmlvorlvorlvorlvorp9rgap9Abbbaradfgraaa8Fa8FpmwDqkwDqkwDqkwDqkp9rgap9Abbbaradfgraaa8Fa8FpmxmPsxmPsxmPsxmPsp9rgap9Abbbaradfgraaa8LaypmwDKYqk8AExm35Ps8E8Fg8Faip:Rea8Falp:Tep9qg8Fp9rgap9Abbbaradfgraaa8Fa8Fpmlvorlvorlvorlvorp9rgap9Abbbaradfgraaa8Fa8FpmwDqkwDqkwDqkwDqkp9rgap9Abbbaradfgraaa8Fa8FpmxmPsxmPsxmPsxmPsp9rgap9Abbbaradfgraaa8Ja8KpmwKDYq8AkEx3m5P8Es8Fg8Ja8Ma8NpmwKDYq8AkEx3m5P8Es8Fg8KpmbezHdiOAlvCXorQLg8Faip:Rea8Falp:Tep9qg8Fp9rgap9Abbbaradfgraaa8Fa8Fpmlvorlvorlvorlvorp9rgap9Abbbaradfgraaa8Fa8FpmwDqkwDqkwDqkwDqkp9rgap9Abbbaradfgraaa8Fa8FpmxmPsxmPsxmPsxmPsp9rgap9Abbbaradfgraaa8Ja8KpmwDKYqk8AExm35Ps8E8Fg8Faip:Rea8Falp:Tep9qg8Fp9rgap9Abbbaradfgraaa8Fa8Fpmlvorlvorlvorlvorp9rgap9Abbbaradfgraaa8Fa8FpmwDqkwDqkwDqkwDqkp9rgap9Abbbaradfgraaa8Fa8FpmxmPsxmPsxmPsxmPsp9rgap9AbbbaradfhraoczfgoaQ6mbkka8Aclfg8Aad6mbkdnaCad2goTmbaOavcjdfao;8qbbkdnammbavavcjdfaCcufad2fad;8qbbkaCaHfhHc9:hoaAhPaAmbxlkkaeTmbaDalfhrcbhocuhlinaralaD9RglfaD6mdasaeao9Raoasfae6Eaofgoae6mbkaial9RhPkcbc99axaP9RakSEhoxekc9:hokavcj;kbf8Kjjjjbaokwbz:bjjjbkNsezu8Jjjjjbc;ae9Rgv8Kjjjjbc9:hodnalaeci9UgrcHf6mbcuhoaiRbbgwc;WeGc;Ge9hmbawcsGgDce0mbavc;abfcFecje;8kbav9cu83iUav9cu83i8Wav9cu83iyav9cu83iaav9cu83iKav9cu83izav9cu83iwav9cu83ibaialfc9WfhqaicefgwarfhldnaeTmbcmcsaDceSEhkcbhxcbhmcbhrcbhicbhoindnalaq9nmbc9:hoxikdndnawRbbgDc;Ve0mbavc;abfaoaDcu7gPcl4fcsGcitfgsydlhzasydbhHdndnaDcsGgsak9pmbavaiaPfcsGcdtfydbaxasEhDaxasTgOfhxxekdndnascsSmbcehOasc987asamffcefhDxekalcefhDal8SbbgscFeGhPdndnascu9mmbaDhlxekalcvfhlaPcFbGhPcrhsdninaD8SbbgOcFbGastaPVhPaOcu9kmeaDcefhDascrfgsc8J9hmbxdkkaDcefhlkcehOaPce4cbaPceG9R7amfhDkaDhmkavc;abfaocitfgsaDBdbasazBdlavaicdtfaDBdbavc;abfaocefcsGcitfgsaHBdbasaDBdlaocdfhoaOaifhidnadcd9hmbabarcetfgsaH87ebasclfaD87ebascdfaz87ebxdkabarcdtfgsaHBdbascwfaDBdbasclfazBdbxekdnaDcpe0mbavaiaqaDcsGfRbbgscl4gP9RcsGcdtfydbaxcefgOaPEhDavaias9RcsGcdtfydbaOaPTgzfgOascsGgPEhsaPThPdndnadcd9hmbabarcetfgHax87ebaHclfas87ebaHcdfaD87ebxekabarcdtfgHaxBdbaHcwfasBdbaHclfaDBdbkavaicdtfaxBdbavc;abfaocitfgHaDBdbaHaxBdlavaicefgicsGcdtfaDBdbavc;abfaocefcsGcitfgHasBdbaHaDBdlavaiazfgicsGcdtfasBdbavc;abfaocdfcsGcitfgDaxBdbaDasBdlaocifhoaiaPfhiaOaPfhxxekaxcbalRbbgsEgHaDc;:eSgDfhOascsGhAdndnascl4gCmbaOcefhzxekaOhzavaiaC9RcsGcdtfydbhOkdndnaAmbazcefhxxekazhxavaias9RcsGcdtfydbhzkdndnaDTmbalcefhDxekalcdfhDal8SbegPcFeGhsdnaPcu9kmbalcofhHascFbGhscrhldninaD8SbbgPcFbGaltasVhsaPcu9kmeaDcefhDalcrfglc8J9hmbkaHhDxekaDcefhDkasce4cbasceG9R7amfgmhHkdndnaCcsSmbaDhsxekaDcefhsaD8SbbglcFeGhPdnalcu9kmbaDcvfhOaPcFbGhPcrhldninas8SbbgDcFbGaltaPVhPaDcu9kmeascefhsalcrfglc8J9hmbkaOhsxekascefhskaPce4cbaPceG9R7amfgmhOkdndnaAcsSmbashlxekascefhlas8SbbgDcFeGhPdnaDcu9kmbascvfhzaPcFbGhPcrhDdninal8SbbgscFbGaDtaPVhPascu9kmealcefhlaDcrfgDc8J9hmbkazhlxekalcefhlkaPce4cbaPceG9R7amfgmhzkdndnadcd9hmbabarcetfgDaH87ebaDclfaz87ebaDcdfaO87ebxekabarcdtfgDaHBdbaDcwfazBdbaDclfaOBdbkavc;abfaocitfgDaOBdbaDaHBdlavaicdtfaHBdbavc;abfaocefcsGcitfgDazBdbaDaOBdlavaicefgicsGcdtfaOBdbavc;abfaocdfcsGcitfgDaHBdbaDazBdlavaiaCTaCcsSVfgicsGcdtfazBdbaiaATaAcsSVfhiaocifhokawcefhwaocsGhoaicsGhiarcifgrae6mbkkcbc99alaqSEhokavc;aef8Kjjjjbaok:clevu8Jjjjjbcz9Rhvdnalaecvf9pmbc9:skdnaiRbbc;:eGc;qeSmbcuskav9cb83iwaicefhoaialfc98fhrdnaeTmbdnadcdSmbcbhwindnaoar6mbc9:skaocefhlao8SbbgicFeGhddndnaicu9mmbalhoxekaocvfhoadcFbGhdcrhidninal8SbbgDcFbGaitadVhdaDcu9kmealcefhlaicrfgic8J9hmbxdkkalcefhokabawcdtfadc8Etc8F91adcd47avcwfadceGcdtVglydbfgiBdbalaiBdbawcefgwae9hmbxdkkcbhwindnaoar6mbc9:skaocefhlao8SbbgicFeGhddndnaicu9mmbalhoxekaocvfhoadcFbGhdcrhidninal8SbbgDcFbGaitadVhdaDcu9kmealcefhlaicrfgic8J9hmbxdkkalcefhokabawcetfadc8Etc8F91adcd47avcwfadceGcdtVglydbfgi87ebalaiBdbawcefgwae9hmbkkcbc99aoarSEk;Toio97eue97aec98Ghedndnadcl9hmbaeTmecbhdinababpbbbgicKp:RecKp:Sep;6eglaicwp:RecKp:Sep;6ealp;Geaiczp:RecKp:Sep;6egvp;Gep;Kep;Legopxbbbbbbbbbbbbbbbbp:2egralpxbbbjbbbjbbbjbbbjgwp9op9rp;Keglpxbb;:9cbb;:9cbb;:9cbb;:9calalp;Meaoaop;Meavaravawp9op9rp;Keglalp;Mep;Kep;Kep;Jep;Negvp;Mepxbbn0bbn0bbn0bbn0grp;KepxFbbbFbbbFbbbFbbbp9oaipxbbbFbbbFbbbFbbbFp9op9qalavp;Mearp;Kecwp:RepxbFbbbFbbbFbbbFbbp9op9qaoavp;Mearp;Keczp:RepxbbFbbbFbbbFbbbFbp9op9qpkbbabczfhbadclfgdae6mbxdkkaeTmbcbhdinabczfgDaDpbbbgipxbbbbbbFFbbbbbbFFgwp9oabpbbbgoaipmbediwDqkzHOAKY8AEgvczp:Reczp:Sep;6eglaoaipmlvorxmPsCXQL358E8FpxFubbFubbFubbFubbp9op;6eavczp:Sep;6egvp;Gealp;Gep;Kep;Legipxbbbbbbbbbbbbbbbbp:2egralpxbbbjbbbjbbbjbbbjgqp9op9rp;Keglpxb;:FSb;:FSb;:FSb;:FSalalp;Meaiaip;Meavaravaqp9op9rp;Keglalp;Mep;Kep;Kep;Jep;Negvp;Mepxbbn0bbn0bbn0bbn0grp;KepxFFbbFFbbFFbbFFbbp9oaiavp;Mearp;Keczp:Rep9qgialavp;Mearp;KepxFFbbFFbbFFbbFFbbp9oglpmwDKYqk8AExm35Ps8E8Fp9qpkbbabaoawp9oaialpmbezHdiOAlvCXorQLp9qpkbbabcafhbadclfgdae6mbkkk;2ileue97euo97dnaec98GgiTmbcbheinabcKfpx:ji:1S:ji:1S:ji:1S:ji:1SabpbbbglabczfgvpbbbgopmlvorxmPsCXQL358E8Fgrczp:Segwpxibbbibbbibbbibbbp9qp;6egDp;NegqaDaDp;MegDaDp;KealaopmbediwDqkzHOAKY8AEgDczp:Reczp:Sep;6eglalp;MeaDczp:Sep;6egoaop;Mearczp:Reczp:Sep;6egrarp;Mep;Kep;Kep;Lepxbbbbbbbbbbbbbbbbp:4ep;Jep;Mepxbbn0bbn0bbn0bbn0gDp;KepxFFbbFFbbFFbbFFbbgkp9oaqaop;MeaDp;Keczp:Rep9qgoaqalp;MeaDp;Keakp9oaqarp;MeaDp;Keczp:Rep9qgDpmwDKYqk8AExm35Ps8E8Fglp5eawclp:RegqpEi:T:j83ibavalp5baqpEd:T:j83ibabcwfaoaDpmbezHdiOAlvCXorQLgDp5eaqpEe:T:j83ibabaDp5baqpEb:T:j83ibabcafhbaeclfgeai6mbkkkuee97dnadcd4ae2c98GgeTmbcbhdinababpbbbgicwp:Recwp:Sep;6eaicep:SepxbbjFbbjFbbjFbbjFp9opxbbjZbbjZbbjZbbjZp:Uep;Mepkbbabczfhbadclfgdae6mbkkk:Sodw97euaec98Ghedndnadcl9hmbaeTmecbhdinabpxbbuJbbuJbbuJbbuJabpbbbgicKp:TeglaicYp:Tep9qgvcdp:Teavp9qgvclp:Teavp9qgop;6ep;Negvaicwp:RecKp:SegraipxFbbbFbbbFbbbFbbbgwp9ogDp:Uep;6ep;Mepxbbn0bbn0bbn0bbn0gqp;Kecwp:RepxbFbbbFbbbFbbbFbbp9oavaDarp:Xeaiczp:RecKp:Segip:Uep;6ep;Meaqp;Keawp9op9qavaDaraip:Uep:Xep;6ep;Meaqp;Keczp:RepxbbFbbbFbbbFbbbFbp9op9qavaoalcep:Rep9oalpxebbbebbbebbbebbbp9op9qp;6ep;Meaqp;KecKp:Rep9qpkbbabczfhbadclfgdae6mbxdkkaeTmbcbhdinabczfgkpxbFu9hbFu9hbFu9hbFu9habpbbbglakpbbbgrpmlvorxmPsCXQL358E8Fgvczp:TegqavcHp:Tep9qgicdp:Teaip9qgiclp:Teaip9qgicwp:Teaip9qgop;6ep;NegialarpmbediwDqkzHOAKY8AEgDpxFFbbFFbbFFbbFFbbglp9ograDczp:Segwp:Ueavczp:Reczp:SegDp:Xep;6ep;Mepxbbn0bbn0bbn0bbn0gvp;Kealp9oaiarawaDp:Uep:Xep;6ep;Meavp;Keczp:Rep9qgwaiaoaqcep:Rep9oaqpxebbbebbbebbbebbbp9op9qp;6ep;Meavp;Keczp:ReaiaDarp:Uep;6ep;Meavp;Kealp9op9qgipmwDKYqk8AExm35Ps8E8FpkbbabawaipmbezHdiOAlvCXorQLpkbbabcafhbadclfgdae6mbkkk9teiucbcbydj:G:cjbgeabcifc98GfgbBdj:G:cjbdndnabZbcztgd9nmbcuhiabad9RcFFifcz4nbcuSmekaehikaikkxebcj:Gdklz:zbb'; // embed! simd
+
+	var detector = new Uint8Array([
+		0, 97, 115, 109, 1, 0, 0, 0, 1, 4, 1, 96, 0, 0, 3, 3, 2, 0, 0, 5, 3, 1, 0, 1, 12, 1, 0, 10, 22, 2, 12, 0, 65, 0, 65, 0, 65, 0, 252, 10, 0, 0,
+		11, 7, 0, 65, 0, 253, 15, 26, 11,
+	]);
+	var wasmpack = new Uint8Array([
+		32, 0, 65, 2, 1, 106, 34, 33, 3, 128, 11, 4, 13, 64, 6, 253, 10, 7, 15, 116, 127, 5, 8, 12, 40, 16, 19, 54, 20, 9, 27, 255, 113, 17, 42, 67,
+		24, 23, 146, 148, 18, 14, 22, 45, 70, 69, 56, 114, 101, 21, 25, 63, 75, 136, 108, 28, 118, 29, 73, 115,
+	]);
+
+	if (typeof WebAssembly !== 'object') {
+		return {
+			supported: false,
+		};
+	}
+
+	var wasm = WebAssembly.validate(detector) ? unpack(wasm_simd) : unpack(wasm_base);
+
+	var instance;
+
+	var ready = WebAssembly.instantiate(wasm, {}).then(function (result) {
+[0m
+[0m← [0mEdit .orchestration/tmp/d1/verify-glbs.mjs
+Index: /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/.orchestration/tmp/d1/verify-glbs.mjs
+===================================================================
+--- /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/.orchestration/tmp/d1/verify-glbs.mjs
++++ /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/.orchestration/tmp/d1/verify-glbs.mjs
+@@ -1,10 +1,9 @@
+ import fs from 'node:fs';
+ import path from 'node:path';
+ import * as THREE from 'three';
+ import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js';
+-import { MeshoptDecoder } from 'meshoptimizer/meshopt_decoder.mjs';
+-await MeshoptDecoder.ready;
++import { MeshoptDecoder } from 'three/examples/jsm/libs/meshopt_decoder.module.js';
+ 
+ const files = process.argv.slice(2);
+ if (!files.length) {
+   files.push(
+
+[0m
+[0m$ [0mnode verify-glbs.mjs 2>&1
+mesh Mesh: tris=30940 verts=15693 morphPosCount=0 mat=Case_Graphite
+  mesh Mesh_1: tris=30940 verts=15693 morphPosCount=0 mat=Velvet_Oxblood
+  mesh Mesh_2: tris=1776 verts=1332 morphPosCount=0 mat=Case_EdgeMetal
+  mesh Case_Flap003: tris=23479 verts=14853 morphPosCount=4 mat=Case_Graphite
+  mesh Case_Flap003_1: tris=17640 verts=8962 morphPosCount=4 mat=Velvet_Oxblood
+  mesh Case_Flap003_2: tris=564 verts=564 morphPosCount=4 mat=Case_EdgeMetal
+  mesh Case_Flap003_3: tris=17337 verts=40083 morphPosCount=4 mat=Logo_Gloss
+  mesh Velvet_Cushion: tris=12814 verts=6600 morphPosCount=0 mat=Velvet_Oxblood
+FILE: /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/public/models/case.opt.glb (1467872 bytes)
+  nodes: Group:Scene, Object3D:Case_Root, Group:Case_Body, Mesh:Mesh, Mesh:Mesh_1, Mesh:Mesh_2, Group:Case_Flap, Mesh:Case_Flap003, Mesh:Case_Flap003_1, Mesh:Case_Flap003_2, Mesh:Case_Flap003_3, Mesh:Velvet_Cushion
+  morphs: Case_Flap003: [Open10, Open20, Open30, Open40] influences=[0, 0, 0, 0] ; Case_Flap003_1: [Open10, Open20, Open30, Open40] influences=[0, 0, 0, 0] ; Case_Flap003_2: [Open10, Open20, Open30, Open40] influences=[0, 0, 0, 0] ; Case_Flap003_3: [Open10, Open20, Open30, Open40] influences=[0, 0, 0, 0]
+  total tris: 135490
+  bbox min (m): -0.09000, -0.05438, -0.06014
+  bbox max (m): 0.10800, 0.06778, 0.06016
+  bbox size mm: 198.00 x 122.16 x 120.29
+  bbox center mm: 9.00, 6.70, 0.01
+
+  mesh G_Arm_L_1: tris=2884 verts=1711 morphPosCount=0 mat=00_Base.001
+  mesh G_Arm_L_2: tris=7080 verts=4008 morphPosCount=0 mat=04_T.001
+  mesh G_Arm_L_3: tris=160 verts=198 morphPosCount=0 mat=03_Steel.001
+  mesh G_Arm_R_1: tris=2884 verts=1711 morphPosCount=0 mat=00_Base.001
+  mesh G_Arm_R_2: tris=7080 verts=4007 morphPosCount=0 mat=04_T.001
+  mesh G_Arm_R_3: tris=160 verts=198 morphPosCount=0 mat=03_Steel.001
+  mesh G_Front_1: tris=25068 verts=16652 morphPosCount=0 mat=00_Base.001
+  mesh G_Front_2: tris=1014 verts=549 morphPosCount=0 mat=02_nose.001
+  mesh G_Lenses_1: tris=4792 verts=2524 morphPosCount=0 mat=01_Glasses.001
+  mesh G_Lenses_2: tris=1488 verts=924 morphPosCount=0 mat=01_Glasses_Side.001
+FILE: /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/public/models/glasses.opt.glb (394236 bytes)
+  nodes: Group:Scene, Object3D:G_Root, Group:G_Arm_L, Mesh:G_Arm_L_1, Mesh:G_Arm_L_2, Mesh:G_Arm_L_3, Group:G_Arm_R, Mesh:G_Arm_R_1, Mesh:G_Arm_R_2, Mesh:G_Arm_R_3, Group:G_Front, Mesh:G_Front_1, Mesh:G_Front_2, Group:G_Lenses, Mesh:G_Lenses_1, Mesh:G_Lenses_2
+  morphs: (none)
+  total tris: 52610
+  bbox min (m): -0.08336, -0.12783, -0.02056
+  bbox max (m): 0.07536, 0.01743, 0.02097
+  bbox size mm: 158.73 x 145.26 x 41.53
+  bbox center mm: -4.00, -55.20, 0.21
+[0m
+[0m# [0mTodos
+[✓] Inspect case.glb + glasses.glb (nodes, morphs, tris, sizes)
+[✓] Optimize case.glb → case.opt.glb ≤1.5MB (preserve morphs/nodes)
+[✓] Optimize glasses.glb → glasses.opt.glb ≤900KB
+[✓] Verify optimized GLBs load (three.js script: nodes, morphs, tris, bbox)
+[•] Build logo atlases + JSON (brands 2048², insurers 2048×1024)
+[ ] Green-fringe 400% check + zoom crop
+[ ] Download studio HDRI → public/env + SOURCE.md
+[ ] Write docs/phase4/qa/D/ASSETS-REPORT.md, verify build
+[0m
+[0m$ [0mfor f in assets/web/brands-light/*.png assets/web/insurance-light/*.png; do magick identify -format "%f %wx%h %A %m %z-bit\n" "$f"; done
+# check alpha / colors
+magick identify -verbose assets/web/brands-light/persol.png 2>&1 | grep -E "Alpha|Type|Channel|Geometry|Colorspace" | head -n 20
+maui-jim.png 960x496 Blend PNG 8-bit
+miu-miu.png 3684x571 Blend PNG 8-bit
+oakley.png 960x361 Blend PNG 8-bit
+persol.png 3222x2016 Blend PNG 8-bit
+prada.png 2277x354 Blend PNG 8-bit
+ray-ban.png 2400x1198 Blend PNG 8-bit
+tiffany.png 1280x156 Blend PNG 8-bit
+versace.png 1230x272 Blend PNG 8-bit
+canada-life-min.png 537x188 Blend PNG 8-bit
+desjardins.png 894x194 Blend PNG 8-bit
+empire-life.png 1280x407 Blend PNG 8-bit
+greenshield.png 331x72 Blend PNG 8-bit
+ia-financial-group.png 1600x874 Blend PNG 8-bit
+manulife.png 738x141 Blend PNG 8-bit
+mbc-logo-en.png 1600x240 Blend PNG 8-bit
+sun-life.png 800x196 Blend PNG 8-bit
+  Geometry: 3222x2016+0+0
+  Colorspace: sRGB
+  Type: PaletteAlpha
+  Base type: TrueColorAlpha
+  Channels: 4.0
+  Channel depth:
+    Alpha: 8-bit
+  Channel statistics:
+    Alpha:
+  Alpha: srgba(242,240,236,0)   #F2F0EC00
+[0m
+[0m$ [0mpython3 -c "import PIL; print(PIL.__version__)" 2>&1; pip list 2>/dev/null | rtk grep -i pillow
+12.2.0
+pillow                               12.2.0
+[0m
+[0m← [0mWrite .orchestration/tmp/d1/build-atlases.py
+Wrote file successfully.
+[0m
+[0m$ [0mpython3 .orchestration/tmp/d1/build-atlases.py 2>&1; rtk ls -lh public/web/
+brands [0] maui-jim: src 960x496 aspect 1.935 -> drawn 805x416 at (109,48) cell (0,0,1024x512)
+brands [1] ray-ban: src 2400x1198 aspect 2.003 -> drawn 833x416 at (1119,48) cell (1024,0,1024x512)
+brands [2] prada: src 2277x354 aspect 6.432 -> drawn 928x144 at (48,696) cell (0,512,1024x512)
+brands [3] miu-miu: src 3684x571 aspect 6.452 -> drawn 928x144 at (1072,696) cell (1024,512,1024x512)
+brands [4] persol: src 3222x2016 aspect 1.598 -> drawn 665x416 at (179,1072) cell (0,1024,1024x512)
+brands [5] oakley: src 960x361 aspect 2.659 -> drawn 928x349 at (1072,1105) cell (1024,1024,1024x512)
+brands [6] tiffany: src 1280x156 aspect 8.205 -> drawn 928x113 at (48,1735) cell (0,1536,1024x512)
+brands [7] versace: src 1230x272 aspect 4.522 -> drawn 928x205 at (1072,1689) cell (1024,1536,1024x512)
+saved /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/public/web/atlas-brands.png (2048x2048) 499712 bytes
+saved /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/public/web/atlas-brands.json
+insurers [0] sun-life: src 800x196 aspect 4.082 -> drawn 448x110 at (32,201) cell (0,0,512x512)
+insurers [1] medavie-blue-cross: src 1600x240 aspect 6.667 -> drawn 448x67 at (544,222) cell (512,0,512x512)
+insurers [2] manulife: src 738x141 aspect 5.234 -> drawn 448x86 at (1056,213) cell (1024,0,512x512)
+insurers [3] greenshield: src 331x72 aspect 4.597 -> drawn 448x97 at (1568,207) cell (1536,0,512x512)
+insurers [4] canada-life: src 537x188 aspect 2.856 -> drawn 448x157 at (32,689) cell (0,512,512x512)
+insurers [5] desjardins: src 894x194 aspect 4.608 -> drawn 448x97 at (544,719) cell (512,512,512x512)
+insurers [6] ia-financial-group: src 1600x874 aspect 1.831 -> drawn 448x245 at (1056,645) cell (1024,512,512x512)
+insurers [7] empire-life: src 1280x407 aspect 3.145 -> drawn 448x142 at (1568,697) cell (1536,512,512x512)
+saved /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/public/web/atlas-insurers.png (2048x1024) 226875 bytes
+saved /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/public/web/atlas-insurers.json
+755  brands-light/
+755  insurance-light/
+644  atlas-brands.json  5.7K
+644  atlas-brands.png  488.0K
+644  atlas-insurers.json  5.8K
+644  atlas-insurers.png  221.6K
+[0m
+[0m$ [0mrtk ls -lh public/web/brands-light/ public/web/insurance-light/ 2>&1 | head -n 30
+rtk ls -lh assets/web/brands-light/ | head -n 12
+public/web/brands-light/:
+total 0
+
+public/web/insurance-light/:
+total 0
+644  maui-jim.png  44.2K
+644  miu-miu.png  42.6K
+644  oakley.png  16.0K
+644  persol.png  107.8K
+644  prada.png  32.4K
+644  ray-ban.png  84.8K
+644  tiffany.png  20.3K
+644  versace.png  15.7K
+[0m
+[0m← [0mWrite .orchestration/tmp/d1/fringe-check.py
+Wrote file successfully.
+[0m
+[0m$ [0mpython3 .orchestration/tmp/d1/fringe-check.py 2>&1; rtk ls -lh docs/phase4/qa/D/
+=== /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/public/web/atlas-brands.png (2048, 2048)
+atlas-brands.png: edge px n=138721 mean RGB=(241,239,235) greenish=123 (0%) dark=997 (0%)
+brands-persol-edge: edge px n=402 mean RGB=(243,241,236) greenish=0 (0%) dark=0 (0%)
+saved /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/docs/phase4/qa/D/brands-persol-edge@400.png + /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/docs/phase4/qa/D/brands-persol-edge@400-on-void.png (persol top-left edge, detailed strokes)
+brands-tiffany-edge: edge px n=3475 mean RGB=(244,242,239) greenish=2 (0%) dark=3 (0%)
+saved /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/docs/phase4/qa/D/brands-tiffany-edge@400.png + /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/docs/phase4/qa/D/brands-tiffany-edge@400-on-void.png (tiffany thin strokes full-row slice)
+=== /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/public/web/atlas-insurers.png (2048, 1024)
+atlas-insurers.png: edge px n=79707 mean RGB=(242,240,236) greenish=80 (0%) dark=192 (0%)
+insurers-ia-edge: edge px n=2595 mean RGB=(242,239,236) greenish=2 (0%) dark=8 (0%)
+saved /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/docs/phase4/qa/D/insurers-ia-edge@400.png + /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/docs/phase4/qa/D/insurers-ia-edge@400-on-void.png (ia-financial tallest logo edge)
+insurers-mbc-edge: edge px n=3434 mean RGB=(242,240,237) greenish=1 (0%) dark=21 (0%)
+saved /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/docs/phase4/qa/D/insurers-mbc-edge@400.png + /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/docs/phase4/qa/D/insurers-mbc-edge@400-on-void.png (medavie thin letterforms slice)
+done
+644  brands-persol-edge@400-on-void.png  4.4K
+644  brands-persol-edge@400.png  3.9K
+644  brands-tiffany-edge@400-on-void.png  8.1K
+644  brands-tiffany-edge@400.png  9.8K
+644  insurers-ia-edge@400-on-void.png  14.1K
+644  insurers-ia-edge@400.png  17.1K
+644  insurers-mbc-edge@400-on-void.png  9.6K
+644  insurers-mbc-edge@400.png  11.3K
+[0m
+[0m→ [0mRead docs/phase4/qa/D/brands-tiffany-edge@400-on-void.png
+[0m→ [0mRead docs/phase4/qa/D/insurers-ia-edge@400-on-void.png
+[0m
+[0m# [0mTodos
+[✓] Inspect case.glb + glasses.glb (nodes, morphs, tris, sizes)
+[✓] Optimize case.glb → case.opt.glb ≤1.5MB (preserve morphs/nodes)
+[✓] Optimize glasses.glb → glasses.opt.glb ≤900KB
+[✓] Verify optimized GLBs load (three.js script: nodes, morphs, tris, bbox)
+[✓] Build logo atlases + JSON (brands 2048², insurers 2048×1024)
+[✓] Green-fringe 400% check + zoom crop
+[•] Download studio HDRI → public/env + SOURCE.md
+[ ] Write docs/phase4/qa/D/ASSETS-REPORT.md, verify build
+[0m
+[0m$ [0mrtk curl -sL "https://api.polyhaven.com/api/v1/assets?t=hdris" -o /tmp/ph_hdris.json --max-time 30; python3 -c "
+import json
+try:
+    d=json.load(open('/tmp/ph_hdris.json'))
+    print(type(d), len(d) if isinstance(d,(list,dict)) else '')
+    if isinstance(d,dict):
+        ks=list(d.keys())[:30]; print(ks)
+except Exception as e:
+    print('err',e)
+    print(open('/tmp/ph_hdris.json').read()[:500])
+"
+err Expecting value: line 1 column 1 (char 0)
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Error</title>
+</head>
+<body>
+<pre>Cannot GET /api/v1/assets</pre>
+</body>
+</html>
+[0m
+[0m$ [0mfor u in "https://dl.polyhaven.org/file/ph-assets/HDRIs/hdr/1k/studio_small_09_1k.hdr" "https://dl.polyhaven.org/file/ph-assets/HDRIs/hdr/1k/studio_small_03_1k.hdr"; do echo "== $u"; rtk curl -sIL "$u" --max-time 20 | head -n 15; done
+== https://dl.polyhaven.org/file/ph-assets/HDRIs/hdr/1k/studio_small_09_1k.hdr
+HTTP/2 200 
+date: Mon, 28 Sep 2026 00:38:49 GMT
+content-type: image/vnd.radiance
+content-length: 1615248
+strict-transport-security: max-age=63072000
+x-bz-file-name: HDRIs/hdr/1k/studio_small_09_1k.hdr
+x-bz-file-id: 4_z953a9952635e1b337796081d_f1050c19d81bfdd82_d20240315_m075926_c002_v0203006_t0042_u01710489566209
+x-bz-content-sha1: 47c871ff152774fe6abefdce6cf2abea4d1b62c0
+x-bz-upload-timestamp: 1710489566209
+accept-ranges: bytes
+x-bz-info-src_last_modified_millis: 1710489501862
+cache-control: max-age=14400
+access-control-allow-origin: *
+age: 774918
+last-modified: Sat, 19 Sep 2026 01:23:30 GMT
+== https://dl.polyhaven.org/file/ph-assets/HDRIs/hdr/1k/studio_small_03_1k.hdr
+HTTP/2 200 
+date: Mon, 28 Sep 2026 00:38:49 GMT
+content-type: image/vnd.radiance
+content-length: 1686299
+strict-transport-security: max-age=63072000
+x-bz-file-name: HDRIs/hdr/1k/studio_small_03_1k.hdr
+x-bz-file-id: 4_z953a9952635e1b337796081d_f115e2c094ea46bb4_d20240315_m075632_c002_v0001094_t0007_u01710489392995
+x-bz-content-sha1: 03ab79dfa3a637dd1d0d07813b25ea55a2850e1b
+x-bz-upload-timestamp: 1710489392995
+accept-ranges: bytes
+x-bz-info-src_last_modified_millis: 1710489191932
+cache-control: max-age=14400
+access-control-allow-origin: *
+age: 345755
+last-modified: Thu, 24 Sep 2026 00:36:14 GMT
+[0m
+[0m$ [0mfor id in studio_small_02 studio_small_03 studio_small_05 studio_small_07 studio_small_08 studio_small_09 photo_studio_01 studio_softbox; do u="https://dl.polyhaven.org/file/ph-assets/HDRIs/hdr/1k/${id}_1k.hdr"; len=$(rtk curl -sIL "$u" --max-time 15 | grep -i content-length | tr -d '\r' | awk '{print $2}'); echo "$id $len"; done
+studio_small_02 1701272
+studio_small_03 1686299
+studio_small_05 1723695
+studio_small_07 1654093
+studio_small_08 1508872
+studio_small_09 1615248
+photo_studio_01 1597273
+studio_softbox 94
+[0m
+[0m% [0mWebFetch https://polyhaven.com/a/studio_small_08
+[0m
+[0m$ [0mmkdir -p public/env && rtk curl -sL "https://dl.polyhaven.org/file/ph-assets/HDRIs/hdr/1k/studio_small_08_1k.hdr" -o public/env/studio_small_08_1k.hdr --max-time 120; rtk ls -lh public/env/; python3 -c "import os; s=os.path.getsize('public/env/studio_small_08_1k.hdr'); print(s, round(s/1024/1024,3), 'MiB')"; head -c 200 public/env/studio_small_08_1k.hdr | strings | head -n 10; file public/env/studio_small_08_1k.hdr 2>&1 || magick identify public/env/studio_small_08_1k.hdr 2>&1 | head -n 5
+644  studio_small_08_1k.hdr  1.4M
+1508872 1.439 MiB
+#?RADIANCE
+FORMAT=32-bit_rle_rgbe
+-Y 512 +X 1024
+�����
+�����
+���������
+public/env/studio_small_08_1k.hdr: Radiance HDR image data
+[0m
+[0m← [0mWrite public/env/SOURCE.md
+Wrote file successfully.
+[0m
+[0m$ [0mrtk ls -la; cat package.json 2>&1 | head -n 30; node .orchestration/tmp/d1/verify-glbs.mjs > .orchestration/tmp/d1/verify-output.txt 2>&1; cat .orchestration/tmp/d1/verify-output.txt
+755  .claude/
+755  .design/
+755  .orchestration/
+755  .playwright-mcp/
+755  assets/
+755  blender/
+755  dist/
+755  docs/
+755  node_modules/
+755  public/
+755  scripts/
+755  src/
+644  .gitignore  18B
+644  eslint.config.js  725B
+644  index.html  577B
+644  package-lock.json  212.0K
+644  package.json  1.2K
+644  playwright.config.ts  679B
+644  tsconfig.app.json  659B
+644  tsconfig.json  119B
+644  tsconfig.node.json  587B
+644  vite.config.ts  325B
+{
+  "name": "eyeq-vision-care",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc -b && vite build",
+    "postbuild": "cp dist/index.html dist/404.html",
+    "preview": "vite preview",
+    "lint": "eslint src --max-warnings 0",
+    "test:e2e": "playwright test"
+  },
+  "dependencies": {
+    "@gsap/react": "2.1.2",
+    "@react-three/drei": "10.7.9",
+    "@react-three/fiber": "9.8.1",
+    "@react-three/postprocessing": "3.1.3",
+    "gsap": "3.15.0",
+    "lenis": "1.3.26",
+    "maath": "0.10.8",
+    "postprocessing": "6.39.5",
+    "react": "19.3.0",
+    "react-dom": "19.3.0",
+    "react-router-dom": "7.18.4",
+    "three": "0.186.1",
+    "zustand": "5.0.15"
+  },
+  "devDependencies": {
+    "@eslint/js": "9.39.1",
+  mesh Mesh: tris=30940 verts=15693 morphPosCount=0 mat=Case_Graphite
+  mesh Mesh_1: tris=30940 verts=15693 morphPosCount=0 mat=Velvet_Oxblood
+  mesh Mesh_2: tris=1776 verts=1332 morphPosCount=0 mat=Case_EdgeMetal
+  mesh Case_Flap003: tris=23479 verts=14853 morphPosCount=4 mat=Case_Graphite
+  mesh Case_Flap003_1: tris=17640 verts=8962 morphPosCount=4 mat=Velvet_Oxblood
+  mesh Case_Flap003_2: tris=564 verts=564 morphPosCount=4 mat=Case_EdgeMetal
+  mesh Case_Flap003_3: tris=17337 verts=40083 morphPosCount=4 mat=Logo_Gloss
+  mesh Velvet_Cushion: tris=12814 verts=6600 morphPosCount=0 mat=Velvet_Oxblood
+FILE: /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/public/models/case.opt.glb (1467872 bytes)
+  nodes: Group:Scene, Object3D:Case_Root, Group:Case_Body, Mesh:Mesh, Mesh:Mesh_1, Mesh:Mesh_2, Group:Case_Flap, Mesh:Case_Flap003, Mesh:Case_Flap003_1, Mesh:Case_Flap003_2, Mesh:Case_Flap003_3, Mesh:Velvet_Cushion
+  morphs: Case_Flap003: [Open10, Open20, Open30, Open40] influences=[0, 0, 0, 0] ; Case_Flap003_1: [Open10, Open20, Open30, Open40] influences=[0, 0, 0, 0] ; Case_Flap003_2: [Open10, Open20, Open30, Open40] influences=[0, 0, 0, 0] ; Case_Flap003_3: [Open10, Open20, Open30, Open40] influences=[0, 0, 0, 0]
+  total tris: 135490
+  bbox min (m): -0.09000, -0.05438, -0.06014
+  bbox max (m): 0.10800, 0.06778, 0.06016
+  bbox size mm: 198.00 x 122.16 x 120.29
+  bbox center mm: 9.00, 6.70, 0.01
+
+  mesh G_Arm_L_1: tris=2884 verts=1711 morphPosCount=0 mat=00_Base.001
+  mesh G_Arm_L_2: tris=7080 verts=4008 morphPosCount=0 mat=04_T.001
+  mesh G_Arm_L_3: tris=160 verts=198 morphPosCount=0 mat=03_Steel.001
+  mesh G_Arm_R_1: tris=2884 verts=1711 morphPosCount=0 mat=00_Base.001
+  mesh G_Arm_R_2: tris=7080 verts=4007 morphPosCount=0 mat=04_T.001
+  mesh G_Arm_R_3: tris=160 verts=198 morphPosCount=0 mat=03_Steel.001
+  mesh G_Front_1: tris=25068 verts=16652 morphPosCount=0 mat=00_Base.001
+  mesh G_Front_2: tris=1014 verts=549 morphPosCount=0 mat=02_nose.001
+  mesh G_Lenses_1: tris=4792 verts=2524 morphPosCount=0 mat=01_Glasses.001
+  mesh G_Lenses_2: tris=1488 verts=924 morphPosCount=0 mat=01_Glasses_Side.001
+FILE: /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/public/models/glasses.opt.glb (394236 bytes)
+  nodes: Group:Scene, Object3D:G_Root, Group:G_Arm_L, Mesh:G_Arm_L_1, Mesh:G_Arm_L_2, Mesh:G_Arm_L_3, Group:G_Arm_R, Mesh:G_Arm_R_1, Mesh:G_Arm_R_2, Mesh:G_Arm_R_3, Group:G_Front, Mesh:G_Front_1, Mesh:G_Front_2, Group:G_Lenses, Mesh:G_Lenses_1, Mesh:G_Lenses_2
+  morphs: (none)
+  total tris: 52610
+  bbox min (m): -0.08336, -0.12783, -0.02056
+  bbox max (m): 0.07536, 0.01743, 0.02097
+  bbox size mm: 158.73 x 145.26 x 41.53
+  bbox center mm: -4.00, -55.20, 0.21
+[0m
+[0m$ [0mnpm run build 2>&1 | tail -n 20
+npm notice run eyeq-vision-care@0.1.0 build
+npm notice run tsc -b && vite build
+vite v8.3.1 building client environment for production...
+transforming...
+✓ 35 modules transformed.
+rendering chunks...
+computing gzip size...
+dist/index.html                   0.67 kB │ gzip:   0.39 kB
+dist/assets/index-v9PCrI6H.css    2.78 kB │ gzip:   1.11 kB
+dist/assets/index-D4_tTxhy.js   317.57 kB │ gzip: 100.48 kB
+
+✓ built in 427ms
+npm notice run eyeq-vision-care@0.1.0 postbuild
+npm notice run cp dist/index.html dist/404.html
+[0m
+[0m$ [0mpython3 -c "
+from PIL import Image
+for p in ['public/web/atlas-brands.png','public/web/atlas-insurers.png']:
+    im=Image.open(p)
+    im.thumbnail((800,800))
+    out='/tmp/'+p.split('/')[-1].replace('.png','-preview.png')
+    im.save('/tmp/'+p.split('/')[-1].replace('.png','-preview.png'))
+    print(out, im.size)
+"
+magick montage docs/phase4/qa/D/brands-tiffany-edge@400-on-void.png docs/phase4/qa/D/brands-persol-edge@400-on-void.png docs/phase4/qa/D/insurers-ia-edge@400-on-void.png docs/phase4/qa/D/insurers-mbc-edge@400-on-void.png -tile 2x2 -geometry +4+4 -background "#050607" docs/phase4/qa/D/fringe-contact-sheet.png
+rtk ls -lh docs/phase4/qa/D/
+/tmp/atlas-brands-preview.png (800, 800)
+/tmp/atlas-insurers-preview.png (800, 400)
+montage: unable to read font `' @ error/annotate.c/RenderFreetype/1665.
+644  brands-persol-edge@400-on-void.png  4.4K
+644  brands-persol-edge@400.png  3.9K
+644  brands-tiffany-edge@400-on-void.png  8.1K
+644  brands-tiffany-edge@400.png  9.8K
+644  fringe-contact-sheet.png  38.6K
+644  insurers-ia-edge@400-on-void.png  14.1K
+644  insurers-ia-edge@400.png  17.1K
+644  insurers-mbc-edge@400-on-void.png  9.6K
+644  insurers-mbc-edge@400.png  11.3K
+[0m
+[0m→ [0mRead docs/phase4/qa/D/fringe-contact-sheet.png
+[0m
+[0m$ [0mpython3 -c "
+import os
+for p in ['public/models/case.glb','public/models/case.opt.glb','public/models/glasses.glb','public/models/glasses.opt.glb','public/web/atlas-brands.png','public/web/atlas-insurers.png','public/env/studio_small_08_1k.hdr']:
+    s=os.path.getsize(p); print(f'{p}: {s} bytes ({s/1024:.1f} KiB, {s/1024/1024:.3f} MiB)')
+"
+cat public/web/atlas-brands.json | python3 -c "import json,sys; d=json.load(sys.stdin); print('brands meta:', json.dumps(d['meta'])); [print(l['id'], l['content_px'], round(l['aspect'],3)) for l in d['logos']]"
+cat public/web/atlas-insurers.json | python3 -c "import json,sys; d=json.load(sys.stdin); print('insurers meta:', json.dumps(d['meta'])); [print(l['id'], l['content_px'], round(l['aspect'],3)) for l in d['logos']]"
+public/models/case.glb: 10021468 bytes (9786.6 KiB, 9.557 MiB)
+public/models/case.opt.glb: 1467872 bytes (1433.5 KiB, 1.400 MiB)
+public/models/glasses.glb: 1365620 bytes (1333.6 KiB, 1.302 MiB)
+public/models/glasses.opt.glb: 394236 bytes (385.0 KiB, 0.376 MiB)
+public/web/atlas-brands.png: 499712 bytes (488.0 KiB, 0.477 MiB)
+public/web/atlas-insurers.png: 226875 bytes (221.6 KiB, 0.216 MiB)
+public/env/studio_small_08_1k.hdr: 1508872 bytes (1473.5 KiB, 1.439 MiB)
+brands meta: {"atlas": "atlas-brands.png", "width": 2048, "height": 2048, "cols": 2, "rows": 4, "cell": {"w": 1024, "h": 512}, "padding": 48, "fit": "contain", "alpha": "straight (non-premultiplied)", "uv_origin": "bottom-left (three.js convention); pixel rects top-left origin"}
+maui-jim {'x': 109, 'y': 48, 'w': 805, 'h': 416} 1.935
+ray-ban {'x': 1119, 'y': 48, 'w': 833, 'h': 416} 2.003
+prada {'x': 48, 'y': 696, 'w': 928, 'h': 144} 6.432
+miu-miu {'x': 1072, 'y': 696, 'w': 928, 'h': 144} 6.452
+persol {'x': 179, 'y': 1072, 'w': 665, 'h': 416} 1.598
+oakley {'x': 1072, 'y': 1105, 'w': 928, 'h': 349} 2.659
+tiffany {'x': 48, 'y': 1735, 'w': 928, 'h': 113} 8.205
+versace {'x': 1072, 'y': 1689, 'w': 928, 'h': 205} 4.522
+insurers meta: {"atlas": "atlas-insurers.png", "width": 2048, "height": 1024, "cols": 4, "rows": 2, "cell": {"w": 512, "h": 512}, "padding": 32, "fit": "contain", "alpha": "straight (non-premultiplied)", "uv_origin": "bottom-left (three.js convention); pixel rects top-left origin"}
+sun-life {'x': 32, 'y': 201, 'w': 448, 'h': 110} 4.082
+medavie-blue-cross {'x': 544, 'y': 222, 'w': 448, 'h': 67} 6.667
+manulife {'x': 1056, 'y': 213, 'w': 448, 'h': 86} 5.234
+greenshield {'x': 1568, 'y': 207, 'w': 448, 'h': 97} 4.597
+canada-life {'x': 32, 'y': 689, 'w': 448, 'h': 157} 2.856
+desjardins {'x': 544, 'y': 719, 'w': 448, 'h': 97} 4.608
+ia-financial-group {'x': 1056, 'y': 645, 'w': 448, 'h': 245} 1.831
+empire-life {'x': 1568, 'y': 697, 'w': 448, 'h': 142} 3.145
+[0m
+[0m# [0mTodos
+[✓] Inspect case.glb + glasses.glb (nodes, morphs, tris, sizes)
+[✓] Optimize case.glb → case.opt.glb ≤1.5MB (preserve morphs/nodes)
+[✓] Optimize glasses.glb → glasses.opt.glb ≤900KB
+[✓] Verify optimized GLBs load (three.js script: nodes, morphs, tris, bbox)
+[✓] Build logo atlases + JSON (brands 2048², insurers 2048×1024)
+[✓] Green-fringe 400% check + zoom crop
+[✓] Download studio HDRI → public/env + SOURCE.md
+[•] Write docs/phase4/qa/D/ASSETS-REPORT.md, verify build
+[0m
+[0m← [0mWrite docs/phase4/qa/D/ASSETS-REPORT.md
+Wrote file successfully.
+[0m
+[0m$ [0mcp .orchestration/tmp/d1/verify-output.txt docs/phase4/qa/D/verify-glbs-output.txt
+cp .orchestration/tmp/d1/verify-glbs.mjs docs/phase4/qa/D/verify-glbs.mjs
+rtk ls -lh docs/phase4/qa/D/ public/models/ public/web/atlas-* public/env/
+npm run build 2>&1 | tail -n 4
+644  public/web/atlas-brands.json  5.7K
+644  public/web/atlas-brands.png  488.0K
+644  public/web/atlas-insurers.json  5.8K
+644  public/web/atlas-insurers.png  221.6K
+644  ASSETS-REPORT.md  10.1K
+644  brands-persol-edge@400-on-void.png  4.4K
+644  brands-persol-edge@400.png  3.9K
+644  brands-tiffany-edge@400-on-void.png  8.1K
+644  brands-tiffany-edge@400.png  9.8K
+644  fringe-contact-sheet.png  38.6K
+644  insurers-ia-edge@400-on-void.png  14.1K
+644  insurers-ia-edge@400.png  17.1K
+644  insurers-mbc-edge@400-on-void.png  9.6K
+644  insurers-mbc-edge@400.png  11.3K
+644  verify-glbs-output.txt  2.6K
+644  verify-glbs.mjs  2.7K
+644  SOURCE.md  876B
+644  studio_small_08_1k.hdr  1.4M
+644  case.glb  9.6M
+644  case.opt.glb  1.4M
+644  glasses.glb  1.3M
+644  glasses.opt.glb  385.0K
+... (3 filtered)
+[+3 hidden: rtk recall 1b29f2efcb9c]
+
+✓ built in 266ms
+npm notice run eyeq-vision-care@0.1.0 postbuild
+npm notice run cp dist/index.html dist/404.html
+[0m
+[0m# [0mTodos
+[✓] Inspect case.glb + glasses.glb (nodes, morphs, tris, sizes)
+[✓] Optimize case.glb → case.opt.glb ≤1.5MB (preserve morphs/nodes)
+[✓] Optimize glasses.glb → glasses.opt.glb ≤900KB
+[✓] Verify optimized GLBs load (three.js script: nodes, morphs, tris, bbox)
+[✓] Build logo atlases + JSON (brands 2048², insurers 2048×1024)
+[✓] Green-fringe 400% check + zoom crop
+[✓] Download studio HDRI → public/env + SOURCE.md
+[✓] Write docs/phase4/qa/D/ASSETS-REPORT.md, verify build
+[0m
+PHASE4-D1-DONE
+
+1. `case.opt.glb` 1,467,872 B (was 10,021,468) — tris 135,490 unchanged, nodes + 4 morphs `Open10..40` + 4 materials verified via three.js load.
+2. `glasses.opt.glb` 394,236 B (was 1,365,620) — tris 52,610 unchanged, all 5 nodes + 6 materials intact, no simplification.
+3. Atlases `atlas-brands.png` 2048² + `atlas-insurers.png` 2048×1024 with UV/aspect JSONs; straight alpha, contain-fit cells, correct 8-orders.
+4. Green-fringe 400% check passes (edge mean RGB ~242, 0% green/dark); crops + contact sheet in `docs/phase4/qa/D/`, visually inspected.
+5. HDRI `studio_small_08_1k.hdr` (CC0, Sergej Majboroda, Poly Haven) + `SOURCE.md`; `npm run build` passes.
+6. Known issues: opt files need meshopt+quant decoders self-hosted; case Box3 Y/Z include morph extremes (frame on 198 mm); `public/web/*-light/` dirs empty (see report §8).
+EXIT 0 model=meta/muse-spark-1.3-contributor

@@ -1,0 +1,83 @@
+/* EyeQ Vision Care — Lane B harness styles (owns this file).
+ * Mirrors the #film-pin shell contract (§6: 800vh desk / 560 mob / 640 tablet)
+ * so the isolated page reproduces real pin geometry. */
+
+html,
+body {
+  margin: 0;
+  background: var(--eyeq-void);
+  color: var(--eyeq-bone);
+}
+
+/* Pin shell: heights owned by Lane B (dimensions), applied here for the
+ * harness. Real Home value goes to film.css via requests/B-film-integration. */
+#film-pin {
+  height: 800vh;
+  position: relative;
+}
+
+@media (max-width: 1024px) {
+  #film-pin {
+    height: 640vh;
+  }
+}
+
+@media (max-width: 768px) {
+  #film-pin {
+    height: 560vh;
+  }
+}
+
+#film-hud {
+  position: fixed;
+  top: 12px;
+  right: 12px;
+  z-index: 50;
+  font: 12px/1.5 ui-monospace, monospace;
+  color: var(--eyeq-bone-dim);
+  background: rgba(5, 6, 7, 0.72);
+  border: 1px solid var(--eyeq-hairline-dark);
+  border-radius: 2px;
+  padding: 10px 12px;
+  width: 220px;
+}
+
+#film-hud strong {
+  color: var(--eyeq-bone);
+}
+
+#film-hud input[type='range'] {
+  width: 100%;
+  margin: 8px 0 4px;
+}
+
+#film-hud .hud-beats {
+  display: flex;
+  gap: 4px;
+  flex-wrap: wrap;
+}
+
+#film-hud .hud-beats button {
+  font: inherit;
+  color: var(--eyeq-bone);
+  background: transparent;
+  border: 1px solid var(--eyeq-hairline-dark-strong);
+  border-radius: 2px;
+  padding: 2px 6px;
+  cursor: pointer;
+}
+
+#film-hud .hud-eyebrow {
+  margin-top: 6px;
+  font-size: 11px;
+  letter-spacing: 0.08em;
+}
+
+#white-stub {
+  position: relative;
+  z-index: 10;
+  background: var(--eyeq-paper);
+  color: var(--eyeq-ink);
+  min-height: 200vh;
+  padding: 20vh var(--eyeq-margin);
+}

@@ -1,0 +1,187 @@
+/* ==========================================================================
+ * EyeQ Vision Care — design tokens (PLAN-MASTER §2, byte-exact, frozen)
+ * Lane A owns styles/*. Coordinator-only changes.
+ * Retired live-site colors (NEVER use): #FFDE59, #A42325/#B9272A, #EE9441,
+ * #028989, gradient banner art.
+ * ========================================================================== */
+
+:root {
+  /* 2.1 Color */
+  --eyeq-void: #050607;          /* page base, film stage, fog match */
+  --eyeq-stage: #0a0c0e;         /* sticky canvas bg, black section alt */
+  --eyeq-graphite-800: #121519;  /* card fill on black, dark ledger rows */
+  --eyeq-graphite-700: #1b2027;  /* case mid-tone ref, dark UI fills */
+  --eyeq-graphite-600: #262d36;  /* case edge-highlight ref, strong hairlines */
+  --eyeq-steel-edge: #4b5563;    /* 1px edges / chamfer catchlights only */
+  --eyeq-muted-on-dark: #8f97a3; /* captions on black only, min 13px */
+  --eyeq-velvet-shadow: #22060a; /* velvet fold shadow (3D base) */
+  --eyeq-oxblood: #4b0f16;       /* velvet mid-tone; beats 2-3 only */
+  --eyeq-oxblood-lift: #641420;  /* velvet fold highlight (3D only, no DOM) */
+  --eyeq-sheen: #8e2e38;         /* lamp-catch tint, render only (no DOM) */
+  --eyeq-bone: #e9e2d3;          /* primary text on black */
+  --eyeq-bone-dim: #c5bca6;      /* secondary on black; micro-caps */
+  --eyeq-paper: #f5f1e8;         /* white-act bg; landing color, never #FFF */
+  --eyeq-card-white: #ffffff;    /* booking card, inputs, featured review */
+  --eyeq-ink: #131417;           /* primary text on light */
+  --eyeq-ink-body: #2a2b2e;      /* body on light */
+  --eyeq-ink-muted: #5e5b54;     /* meta on light, min 14px */
+  --eyeq-lamp-amber: #d9a441;    /* sole accent, <2% viewport */
+
+  /* Hairlines (1px, no shadows/blur) */
+  --eyeq-hairline-dark: rgba(233, 226, 211, 0.14);
+  --eyeq-hairline-dark-strong: rgba(233, 226, 211, 0.24);
+  --eyeq-hairline-light: rgba(19, 20, 23, 0.14);
+  --eyeq-hairline-light-strong: rgba(19, 20, 23, 0.22);
+
+  /* 2.2 Type */
+  --eyeq-font-display: "Fraunces", "Georgia", serif;
+  --eyeq-font-ui: "Inter", "Helvetica Neue", "Arial", sans-serif;
+  --eyeq-display-size: clamp(48px, 6vw, 96px);
+  --eyeq-h2-size: clamp(30px, 3.4vw, 48px);
+  --eyeq-h1-mobile-max: 3rem;
+
+  /* 2.3 Grid / spacing / radii */
+  --eyeq-margin: clamp(32px, 4vw, 72px);
+  --eyeq-gutter: 24px;
+  --eyeq-radius-card: 2px;
+  --eyeq-radius-media: 8px;
+  --eyeq-radius-pill: 999px;
+  --eyeq-header-h: 64px;
+}
+
+/* ---- Self-hosted fonts (latin subsets, font-display: swap) ----
+ * Files: public/fonts/fraunces-var.woff2 (65.8K), fraunces-italic-var.woff2
+ * (79.8K), inter-var.woff2 (71.3K) = 216.9K total. §5 budget (120K) exceeded:
+ * variable files replace ~9 static instances; accepted, recorded in
+ * src/README-LANES.md. Google serves Fraunces/Inter with opsz+wght axes only;
+ * SOFT/WONK below are ignored gracefully until a fuller file lands. */
+@font-face {
+  font-family: "Fraunces";
+  font-style: normal;
+  font-weight: 300 400;
+  font-display: swap;
+  src: url("/fonts/fraunces-var.woff2") format("woff2");
+}
+@font-face {
+  font-family: "Fraunces";
+  font-style: italic;
+  font-weight: 300 400;
+  font-display: swap;
+  src: url("/fonts/fraunces-italic-var.woff2") format("woff2");
+}
+@font-face {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 400 600;
+  font-display: swap;
+  src: url("/fonts/inter-var.woff2") format("woff2");
+}
+
+/* ---- Base ---- */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  background: var(--eyeq-void);
+  color: var(--eyeq-bone);
+  font-family: var(--eyeq-font-ui);
+  font-size: 16px;
+  line-height: 1.6;
+  letter-spacing: -0.01em;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Display face: Fraunces 300, opsz 72, SOFT 50, WONK 1, tracking -0.02em */
+.eyeq-display,
+h1.eyeq-h1,
+h2.eyeq-h2 {
+  font-family: var(--eyeq-font-display);
+  font-weight: 300;
+  letter-spacing: -0.02em;
+  font-variation-settings: "opsz" 72, "SOFT" 50, "WONK" 1;
+}
+.eyeq-display {
+  font-size: var(--eyeq-display-size);
+  line-height: 0.98;
+}
+h1.eyeq-h1 {
+  font-size: var(--eyeq-display-size);
+  line-height: 0.98;
+  margin: 0;
+}
+h2.eyeq-h2 {
+  font-size: var(--eyeq-h2-size);
+  line-height: 1.02;
+  margin: 0;
+}
+
+/* Micro-cap restraint device: 11px Inter 500 upper +0.18em, 12px gap + hairline */
+.eyeq-microcap {
+  font-family: var(--eyeq-font-ui);
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  line-height: 1.4;
+}
+.eyeq-microcap--dark {
+  color: var(--eyeq-bone-dim);
+}
+.eyeq-microcap--light {
+  color: var(--eyeq-ink-muted);
+}
+
+/* Tabular numerals */
+.eyeq-numerals {
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+}
+
+/* Focus: 2px Lamp-amber, offset 2px (PLAN-MASTER §10) */
+:focus-visible {
+  outline: 2px solid var(--eyeq-lamp-amber);
+  outline-offset: 2px;
+}
+
+/* 100svh pin shell base (PLAN-MASTER §6: #film-pin 800vh desk / 560 mob) */
+#film-pin {
+  position: relative;
+  min-height: 100svh;
+  background: var(--eyeq-void);
+}
+
+/* Reduced motion: kill smooth scroll + pins (Lane B mirrors in JS, §10) */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* Mobile type overrides (§2.2: H1 36px/36, H2 22px, body 15px/24) */
+@media (max-width: 767px) {
+  :root {
+    --eyeq-header-h: 56px;
+  }
+  body {
+    font-size: 15px;
+    line-height: 1.6;
+  }
+  h1.eyeq-h1 {
+    font-size: clamp(2.25rem, 9.2vw + 1rem, 3rem);
+    line-height: 1;
+  }
+  h2.eyeq-h2 {
+    font-size: 22px;
+  }
+}

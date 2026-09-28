@@ -1,0 +1,377 @@
+[0m
+> build · muse-spark-1.3-contributor
+[0m
+[0m→ [0mRead .
+[0m→ [0mSkill "systematic-debugging"
+[0m→ [0mRead package.json
+[0m→ [0mRead docs/phase4/qa/v3/ORCHESTRATOR-NOTES.md
+[0m✱ [0mGlob "src/v1/*"[90m 19 matches[0m
+[0m→ [0mRead src/v1/captions.css
+[0m→ [0mRead src/v1/BrandWaves.tsx
+[0m→ [0mRead src/v1/side.css
+[0m→ [0mRead src/v1/waves.css
+[0m→ [0mRead src/v1/SidePanels.tsx
+[0m→ [0mRead src/v1/FilmCaptions.tsx
+[0m→ [0mRead src/v1/v1.css
+[0m→ [0mRead src/v1/sideCopy.ts
+[0m→ [0mRead src/v1/dev-waves.tsx
+[0m→ [0mRead v1.html
+[0m→ [0mRead playwright.config.ts
+[0m→ [0mRead vite.config.ts
+[0m→ [0mRead qa-v3-probe.mjs
+[0m
+[0m# [0mTodos
+[•] Fix side.css margin+clip + BrandWaves constellation + perf
+[ ] Serve 5704 + verify 1512x860 Playwright + LOOK
+[ ] Stop server + write docs/phase4/qa/v3/F4-MFILM.md
+[0m
+[0m← [0mEdit src/v1/side.css
+Index: /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/v1/side.css
+===================================================================
+--- /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/v1/side.css
++++ /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/v1/side.css
+@@ -23,9 +23,14 @@
+ 
+ .sd {
+   position: absolute;
+   top: 50%;
+-  /* Outer ~36%: 6% margin + ~30% column, capped so lines stay short. */
++  /* Outer ~36%: 6% margin + ~30% column, capped so lines stay short.
++   * F4-MFILM: enforce ≥6% inner margin + never clip (border-box +
++   * overflow visible; masks carry bleed padding so first glyphs
++   * like '4.9'/'GOOGLE' can never touch the viewport edge). */
++  box-sizing: border-box;
++  overflow: visible;
+   width: min(30%, 360px);
+   max-width: 36%;
+   will-change: opacity, transform;
+   /* Local read-aid over any frame; no blanket scrims. */
+
+[0m
+[0m← [0mEdit src/v1/side.css
+Index: /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/v1/side.css
+===================================================================
+--- /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/v1/side.css
++++ /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/v1/side.css
+@@ -49,12 +49,16 @@
+ .sd--docktop {
+   top: 15%;
+ }
+ 
+-/* Overflow-hidden line masks; inner spans rise 110%→0. */
++/* Overflow-hidden line masks; inner spans rise 110%→0.
++ * F4-MFILM: bleed padding (margin pulls it back) so overflow:hidden
++ * never clips first/last glyphs or italic overhangs. */
+ .sd__mask {
+   display: block;
+   overflow: hidden;
++  padding: 0.12em 14px 0.14em 6px;
++  margin: 0 -14px 0 -6px;
+ }
+ .sd__mask > span {
+   display: block;
+   will-change: opacity, transform;
+
+[0m
+[0m← [0mEdit src/v1/side.css
+Index: /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/v1/side.css
+===================================================================
+--- /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/v1/side.css
++++ /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/v1/side.css
+@@ -194,10 +194,10 @@
+ @media (max-width: 767px) {
+   .sd,
+   .sd--left,
+   .sd--right {
+-    left: 20px;
+-    right: 20px;
++    left: 24px;
++    right: 24px;
+     top: auto;
+     bottom: 11vh;
+     width: auto;
+     max-width: none;
+
+[0m
+[0m← [0mEdit src/v1/BrandWaves.tsx
+Index: /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/v1/BrandWaves.tsx
+===================================================================
+--- /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/v1/BrandWaves.tsx
++++ /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/v1/BrandWaves.tsx
+@@ -19,27 +19,27 @@
+   depth: Depth; z: number; src: string; alt: string; wave: 1 | 2;
+ };
+ 
+ const BRANDS: Slot[] = [
+-  { x: 68, y: 35, depth: "near", z: 0,    src: "/web/brands-light/maui-jim.png", alt: "Maui Jim",  wave: 1 },
+-  { x: 82, y: 32, depth: "mid",  z: -120, src: "/web/brands-light/ray-ban.png",  alt: "Ray-Ban",   wave: 1 },
+-  { x: 90, y: 44, depth: "far",  z: -160, src: "/web/brands-light/prada.png",    alt: "Prada",     wave: 1 },
+-  { x: 76, y: 49, depth: "near", z: 0,    src: "/web/brands-light/miu-miu.png",  alt: "Miu Miu",   wave: 1 },
+-  { x: 66, y: 60, depth: "mid",  z: -120, src: "/web/brands-light/persol.png",   alt: "Persol",    wave: 1 },
+-  { x: 85, y: 58, depth: "far",  z: -160, src: "/web/brands-light/oakley.png",   alt: "Oakley",    wave: 1 },
+-  { x: 73, y: 72, depth: "mid",  z: -120, src: "/web/brands-light/tiffany.png",  alt: "Tiffany & Co.", wave: 1 },
+-  { x: 89, y: 74, depth: "far",  z: -160, src: "/web/brands-light/versace.png",  alt: "Versace",   wave: 1 },
++  { x: 68, y: 31, depth: "near", z: 0,    src: "/web/brands-light/maui-jim.png", alt: "Maui Jim",  wave: 1 },
++  { x: 80, y: 36, depth: "mid",  z: -120, src: "/web/brands-light/ray-ban.png",  alt: "Ray-Ban",   wave: 1 },
++  { x: 86, y: 47, depth: "far",  z: -160, src: "/web/brands-light/prada.png",    alt: "Prada",     wave: 1 },
++  { x: 70, y: 52, depth: "near", z: 0,    src: "/web/brands-light/miu-miu.png",  alt: "Miu Miu",   wave: 1 },
++  { x: 77, y: 62, depth: "mid",  z: -120, src: "/web/brands-light/persol.png",   alt: "Persol",    wave: 1 },
++  { x: 85, y: 65, depth: "far",  z: -160, src: "/web/brands-light/oakley.png",   alt: "Oakley",    wave: 1 },
++  { x: 66, y: 74, depth: "mid",  z: -120, src: "/web/brands-light/tiffany.png",  alt: "Tiffany & Co.", wave: 1 },
++  { x: 79, y: 78, depth: "far",  z: -160, src: "/web/brands-light/versace.png",  alt: "Versace",   wave: 1 },
+ ];
+ 
+ const INSURERS: Slot[] = [
+-  { x: 13, y: 35, depth: "near", z: 0,    src: "/web/insurance-light/sun-life.png",           alt: "Sun Life", wave: 2 },
+-  { x: 27, y: 32, depth: "mid",  z: -120, src: "/web/insurance-light/mbc-logo-en.png",        alt: "Medavie Blue Cross", wave: 2 },
+-  { x: 10, y: 47, depth: "far",  z: -160, src: "/web/insurance-light/manulife.png",           alt: "Manulife", wave: 2 },
+-  { x: 25, y: 49, depth: "near", z: 0,    src: "/web/insurance-light/greenshield.png",        alt: "GreenShield", wave: 2 },
+-  { x: 14, y: 60, depth: "mid",  z: -120, src: "/web/insurance-light/canada-life-min.png",    alt: "Canada Life", wave: 2 },
+-  { x: 29, y: 58, depth: "far",  z: -160, src: "/web/insurance-light/desjardins.png",         alt: "Desjardins", wave: 2 },
+-  { x: 11, y: 72, depth: "mid",  z: -120, src: "/web/insurance-light/ia-financial-group.png", alt: "iA Financial Group", wave: 2 },
+-  { x: 27, y: 74, depth: "far",  z: -160, src: "/web/insurance-light/empire-life.png", alt: "Empire Life", wave: 2 },
++  { x: 32, y: 31, depth: "near", z: 0,    src: "/web/insurance-light/sun-life.png",           alt: "Sun Life", wave: 2 },
++  { x: 20, y: 36, depth: "mid",  z: -120, src: "/web/insurance-light/mbc-logo-en.png",        alt: "Medavie Blue Cross", wave: 2 },
++  { x: 14, y: 47, depth: "far",  z: -160, src: "/web/insurance-light/manulife.png",           alt: "Manulife", wave: 2 },
++  { x: 30, y: 52, depth: "near", z: 0,    src: "/web/insurance-light/greenshield.png",        alt: "GreenShield", wave: 2 },
++  { x: 23, y: 62, depth: "mid",  z: -120, src: "/web/insurance-light/canada-life-min.png",    alt: "Canada Life", wave: 2 },
++  { x: 15, y: 65, depth: "far",  z: -160, src: "/web/insurance-light/desjardins.png",         alt: "Desjardins", wave: 2 },
++  { x: 33, y: 74, depth: "mid",  z: -120, src: "/web/insurance-light/ia-financial-group.png", alt: "iA Financial Group", wave: 2 },
++  { x: 21, y: 78, depth: "far",  z: -160, src: "/web/insurance-light/empire-life.png", alt: "Empire Life", wave: 2 },
+ ];
+ 
+ const F = (s: number): number => (s - 1) / 614;
+ /* Whole-beat windows: wave 1 owns 215–325, wave 2 owns 411–470. */
+
+[0m
+[0m← [0mEdit src/v1/BrandWaves.tsx
+Index: /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/v1/BrandWaves.tsx
+===================================================================
+--- /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/v1/BrandWaves.tsx
++++ /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/v1/BrandWaves.tsx
+@@ -65,11 +65,13 @@
+ const clamp01 = (v: number) => (v < 0 ? 0 : v > 1 ? 1 : v);
+ const easeOutExpo = (t: number) => (t <= 0 ? 0 : t >= 1 ? 1 : 1 - Math.pow(2, -10 * t));
+ 
+ /* Depth system: size ratio in CSS (near 1.0 / mid 0.72 / far 0.5).
+- * Settled opacity ≥ 0.9 on every tier; near logos ≈150–190px @1512. */
+-const DEPTH_OP: Record<Depth, number> = { near: 0.96, mid: 0.93, far: 0.9 };
+-const DEPTH_BLUR: Record<Depth, number> = { near: 0, mid: 0.6, far: 1.4 };
++ * F4-MFILM: far softer via opacity 0.75 + 1.2px static blur on the far
++ * tier ONLY (3 logos/wave ≤4-filter budget); mid/near use opacity only.
++ * Near logos ≈150–190px @1512. */
++const DEPTH_OP: Record<Depth, number> = { near: 0.96, mid: 0.88, far: 0.75 };
++const DEPTH_BLUR: Record<Depth, number> = { near: 0, mid: 0, far: 1.2 };
+ const DEPTH_DRIFT: Record<Depth, number> = { near: 6, mid: 4, far: 2.5 };
+ 
+ function useViewport() {
+   const [s, setS] = useState(() => ({
+
+[0m
+[0m← [0mEdit src/v1/BrandWaves.tsx
+Index: /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/v1/BrandWaves.tsx
+===================================================================
+--- /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/v1/BrandWaves.tsx
++++ /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/v1/BrandWaves.tsx
+@@ -174,13 +174,13 @@
+ const streakOp = Math.min(0.9, speed * 1.1) * (1 - exitT);
+ const showStreak = !reduced && t < 0.92 && exitT < 0.5 && streakLen > 4;
+ const ang = (Math.atan2(((50 - by) / 100) * H, ((50 - bx) / 100) * W) * 180) / Math.PI;
+ 
+-/* Exit: rush past camera — scale up + blur + fade. Blur capped at 8px
+- * (perf); fade carries the exit so the rush reads clean, never smeary. */
++/* Exit: rush past camera — scale up + fade. No exit blur filter
++ * (F4-MFILM perf: transforms/opacity only; static far-tier blur is the
++ * sole filter, 3 logos/wave, so ≤4 filtered elements at once). */
+ const exitScale = 1 + exitT * 2;
+-const exitBlur = exitT * 8;
+-const totalBlur = reduced ? 0 : DEPTH_BLUR[slot.depth] + exitBlur;
++const totalBlur = reduced ? 0 : DEPTH_BLUR[slot.depth];
+ 
+ return (
+   <div
+     className="bw-item"
+@@ -191,14 +191,18 @@
+   >
+     <div
+       className={`bw-logo bw-${slot.depth}${settled && exitT <= 0 && !reduced ? " is-settled" : ""}`}
+       style={
+-        exitT > 0 || totalBlur > 0
++        exitT > 0
+           ? {
+               transform: `translate(-50%,-50%) scale(${exitScale.toFixed(3)})`,
+-              filter: `drop-shadow(0 0 14px rgba(233,226,211,0.18)) blur(${totalBlur.toFixed(2)}px)`,
+             }
+-          : undefined
++          : totalBlur > 0
++            ? {
++                transform: `translate(-50%,-50%)`,
++                filter: `blur(${totalBlur.toFixed(2)}px)`,
++              }
++            : undefined
+       }
+     >
+       {showStreak && (
+         <div className="bw-streak" aria-hidden
+
+[0m
+[0m← [0mEdit src/v1/waves.css
+Index: /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/v1/waves.css
+===================================================================
+--- /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/v1/waves.css
++++ /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/v1/waves.css
+@@ -36,9 +36,10 @@
+   width: 100%;
+   height: auto;
+   user-select: none;
+   -webkit-user-drag: none;
+-  filter: drop-shadow(0 0 14px rgba(233, 226, 211, 0.18));
++  /* F4-MFILM perf: no per-logo filter (was drop-shadow ×8); far-tier
++   * softness comes from opacity 0.75 + the single far blur in TSX. */
+ }
+ /* Velocity streak: thin warm-white gradient trail along the travel ray,
+  * anchored at the logo, extending back toward screen centre. Length ∝ velocity.
+  * Two-stop falloff (hot head → soft tail) so the trail melts, never cuts. */
+
+[0m
+[0m# [0mTodos
+[✓] Fix side.css margin+clip + BrandWaves constellation + perf
+[•] Serve 5704 + verify 1512x860 Playwright + LOOK
+[ ] Stop server + write docs/phase4/qa/v3/F4-MFILM.md
+[0m
+[0m$ [0mnpx vite --port 5704 --strictPort --host 127.0.0.1 > /tmp/mfilm-5704.log 2>&1 & echo $!
+77065
+[0m
+[0m$ [0msleep 4 && rtk curl -s -o /dev/null -w "%{http_code}" http://127.0.0.1:5704/v1.html && npx tsc --noEmit -p tsconfig.app.json 2>&1 | head -20; echo TSC_DONE
+FAILED: curl 000
+TSC_DONE
+[0m
+[0m$ [0mrtk read /tmp/mfilm-5704.log; echo ---; rtk curl -s -o /dev/null -w "%{http_code}\n" http://127.0.0.1:5704/v1.html
+npm notice run eyeq-vision-care@0.1.0 npx
+npm notice run 'vite' --port 5704 --strictPort --host 127.0.0.1
+---
+FAILED: curl 000
+[0m
+[0m$ [0msleep 3; rtk read /tmp/mfilm-5704.log; rtk curl -s -o /dev/null -w "%{http_code}\n" http://127.0.0.1:5704/v1.html
+npm notice run eyeq-vision-care@0.1.0 npx
+npm notice run 'vite' --port 5704 --strictPort --host 127.0.0.1
+
+  VITE v8.3.1  ready in 405 ms
+
+  ➜  Local:   http://127.0.0.1:5704/
+200
+[0m
+[0m→ [0mRead v1-waves.html
+[0m
+[0m$ [0mnode --input-type=module -e "
+import { chromium } from 'playwright';
+const b = await chromium.launch();
+const pg = (await b.newContext({ viewport: { width: 1512, height: 860 } })).newPage ? null : null;
+await b.close();
+" 2>&1 | head -5; echo OK
+OK
+[0m
+[0m$ [0mnode --input-type=module -e "
+import { chromium } from 'playwright';
+const b = await chromium.launch();
+const ctx = await b.newContext({ viewport: { width: 1512, height: 860 } });
+const p = await ctx.newPage();
+const errs = [];
+p.on('pageerror', e => errs.push(e.message));
+for (const [tag, prog] of [['w1hold', (320-1)/614], ['w2hold', (467-1)/614]]) {
+  await p.goto('http://127.0.0.1:5704/v1-waves.html?p=' + prog.toFixed(4), { waitUntil: 'domcontentloaded' });
+  await p.waitForTimeout(2500);
+  await p.screenshot({ path: '/tmp/mfilm-' + tag + '-1512.png' });
+  const boxes = await p.evaluate(() => [...document.querySelectorAll('.bw-logo')].map(el => {
+    const r = el.getBoundingClientRect();
+    const cs = getComputedStyle(el);
+    return { cls: el.className, x: Math.round(r.left), w: Math.round(r.width), op: cs.opacity, filt: cs.filter };
+  }));
+  console.log(tag, JSON.stringify(boxes));
+}
+console.log('ERRS:', errs.length ? errs : 'none');
+await b.close();
+"
+w1hold [{"cls":"bw-logo bw-near","x":944,"w":400,"op":"1","filt":"none"},{"cls":"bw-logo bw-mid","x":1178,"w":251,"op":"1","filt":"none"},{"cls":"bw-logo bw-far","x":1302,"w":166,"op":"1","filt":"none"},{"cls":"bw-logo bw-near","x":984,"w":400,"op":"1","filt":"none"},{"cls":"bw-logo bw-mid","x":1128,"w":251,"op":"1","filt":"none"},{"cls":"bw-logo bw-far","x":1284,"w":166,"op":"1","filt":"none"},{"cls":"bw-logo bw-mid","x":921,"w":251,"op":"1","filt":"none"},{"cls":"bw-logo bw-far","x":1184,"w":166,"op":"1","filt":"none"}]
+w2hold [{"cls":"bw-logo bw-near","x":-3597,"w":3614,"op":"1","filt":"none"},{"cls":"bw-logo bw-mid","x":-2008,"w":1279,"op":"1","filt":"none"},{"cls":"bw-logo bw-far","x":-1809,"w":756,"op":"1","filt":"none"},{"cls":"bw-logo bw-near","x":-3924,"w":3614,"op":"1","filt":"none"},{"cls":"bw-logo bw-mid","x":-1778,"w":1279,"op":"1","filt":"none"},{"cls":"bw-logo bw-far","x":-1744,"w":756,"op":"1","filt":"none"},{"cls":"bw-logo bw-mid","x":-1100,"w":1279,"op":"1","filt":"none"},{"cls":"bw-logo bw-far","x":-1368,"w":756,"op":"1","filt":"none"}]
+ERRS: none
+[0m
+[0m$ [0mnode --input-type=module -e "
+import { chromium } from 'playwright';
+const b = await chromium.launch();
+const ctx = await b.newContext({ viewport: { width: 1512, height: 860 } });
+const p = await ctx.newPage();
+const errs = [];
+p.on('pageerror', e => errs.push(e.message));
+for (const [tag, src] of [['w1set', 303], ['w2set', 455]]) {
+  const prog = ((src-1)/614).toFixed(4);
+  await p.goto('http://127.0.0.1:5704/v1-waves.html?p=' + prog, { waitUntil: 'domcontentloaded' });
+  await p.waitForTimeout(2500);
+  await p.screenshot({ path: '/tmp/mfilm-' + tag + '-1512.png' });
+  const boxes = await p.evaluate(() => [...document.querySelectorAll('.bw-item')].map(el => {
+    const logo = el.firstElementChild;
+    const r = logo.getBoundingClientRect();
+    const cs = getComputedStyle(el);
+    const lcs = getComputedStyle(logo);
+    return { cls: logo.className.replace('bw-logo ',''), cx: Math.round(r.left + r.width/2), cy: Math.round(r.top + r.height/2), w: Math.round(r.width), op: cs.opacity, filt: lcs.filter.slice(0,24) };
+  }));
+  console.log(tag, JSON.stringify(boxes));
+}
+console.log('ERRS:', errs.length ? errs : 'none');
+await b.close();
+"
+w1set [{"cls":"bw-near is-settled","cx":1033,"cy":264,"w":169,"op":"0.96","filt":"none"},{"cls":"bw-mid is-settled","cx":1167,"cy":321,"w":110,"op":"0.88","filt":"none"},{"cls":"bw-far is-settled","cx":1229,"cy":402,"w":74,"op":"0.75","filt":"blur(1.2px)"},{"cls":"bw-near is-settled","cx":1056,"cy":445,"w":169,"op":"0.96","filt":"none"},{"cls":"bw-mid is-settled","cx":1128,"cy":523,"w":110,"op":"0.88","filt":"none"},{"cls":"bw-far is-settled","cx":1218,"cy":537,"w":74,"op":"0.75","filt":"blur(1.2px)"},{"cls":"bw-mid is-settled","cx":971,"cy":611,"w":110,"op":"0.88","filt":"none"},{"cls":"bw-far","cx":1172,"cy":657,"w":79,"op":"0.75","filt":"blur(1.2px)"}]
+w2set [{"cls":"bw-near is-settled","cx":488,"cy":265,"w":169,"op":"0.96","filt":"none"},{"cls":"bw-mid is-settled","cx":349,"cy":321,"w":110,"op":"0.88","filt":"none"},{"cls":"bw-far is-settled","cx":279,"cy":402,"w":74,"op":"0.75","filt":"blur(1.2px)"},{"cls":"bw-near is-settled","cx":451,"cy":445,"w":169,"op":"0.96","filt":"none"},{"cls":"bw-mid is-settled","cx":391,"cy":523,"w":110,"op":"0.88","filt":"none"},{"cls":"bw-far is-settled","cx":294,"cy":537,"w":74,"op":"0.75","filt":"blur(1.2px)"},{"cls":"bw-mid is-settled","cx":521,"cy":612,"w":110,"op":"0.88","filt":"none"},{"cls":"bw-far is-settled","cx":373,"cy":638,"w":74,"op":"0.75","filt":"blur(1.2px)"}]
+ERRS: none
+[0m
+[0m→ [0mRead /tmp/mfilm-w1set-1512.png
+[0m→ [0mRead /tmp/mfilm-w2set-1512.png
+[0m
+[0m$ [0mnode --input-type=module -e "
+import { chromium } from 'playwright';
+const b = await chromium.launch();
+const ctx = await b.newContext({ viewport: { width: 1512, height: 860 } });
+const p = await ctx.newPage();
+await p.goto('http://127.0.0.1:5704/v1.html', { waitUntil: 'domcontentloaded' });
+try { await p.waitForSelector('.v1-film__stage.is-intro', { timeout: 60000 }); console.log('intro OK'); }
+catch { console.log('intro TIMEOUT'); }
+const geo = await p.evaluate(() => { const s = document.querySelector('.v1-film'); return s ? { top: s.offsetTop, dist: s.offsetHeight - innerHeight } : null; });
+console.log('geo', JSON.stringify(geo));
+if (geo) {
+  const y = Math.round(geo.top + 0.10 * geo.dist);
+  await p.evaluate(yy => window.scrollTo({ top: yy, behavior: 'auto' }), y);
+  await p.waitForTimeout(5000);
+  const info = await p.evaluate(() => {
+    const els = [...document.querySelectorAll('.sd')];
+    return els.map(el => { const r = el.getBoundingClientRect(); return { cls: el.className, left: Math.round(r.left), right: Math.round(r.right), op: getComputedStyle(el).opacity }; });
+  });
+  console.log('panels', JSON.stringify(info));
+  await p.screenshot({ path: '/tmp/mfilm-side-1512.png' });
+}
+await b.close();
+"
+intro OK
+geo {"top":0,"dist":6020}
+panels [{"cls":"sd sd--left","left":91,"right":451,"op":"1"}]
+[0m
+[0m→ [0mRead /tmp/mfilm-side-1512.png
+[0m
+[0m$ [0mkill 77065 2>/dev/null; sleep 1; rtk curl -s -o /dev/null -w "%{http_code}\n" --max-time 3 http://127.0.0.1:5704/v1.html || echo STOPPED
+FAILED: curl 000
+STOPPED
+[0m
+[0m# [0mTodos
+[✓] Fix side.css margin+clip + BrandWaves constellation + perf
+[✓] Serve 5704 + verify 1512x860 Playwright + LOOK
+[•] Stop server + write docs/phase4/qa/v3/F4-MFILM.md
+[0m
+[0m← [0mWrite docs/phase4/qa/v3/F4-MFILM.md
+Wrote file successfully.
+[0m
+[0m# [0mTodos
+[✓] Fix side.css margin+clip + BrandWaves constellation + perf
+[✓] Serve 5704 + verify 1512x860 Playwright + LOOK
+[✓] Stop server + write docs/phase4/qa/v3/F4-MFILM.md
+[0m
+F4-MFILM-DONE
+EXIT 0 model=meta/muse-spark-1.3-contributor

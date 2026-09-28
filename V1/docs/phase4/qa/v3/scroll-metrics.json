@@ -1,0 +1,196 @@
+{
+  "beats": {
+    "vw": 1512,
+    "vh": 860,
+    "dist": 6020,
+    "rows": [
+      {
+        "beat": "birdseye",
+        "dSrc": 29,
+        "px": 283,
+        "per100": 10.25,
+        "ease": "linear"
+      },
+      {
+        "beat": "tilt",
+        "dSrc": 40,
+        "px": 385,
+        "per100": 10.38,
+        "ease": "power2.inOut"
+      },
+      {
+        "beat": "takeout",
+        "dSrc": 75,
+        "px": 722,
+        "per100": 10.38,
+        "ease": "linear"
+      },
+      {
+        "beat": "expand",
+        "dSrc": 70,
+        "px": 674,
+        "per100": 10.38,
+        "ease": "power2.inOut"
+      },
+      {
+        "beat": "heroHold",
+        "dSrc": 20,
+        "px": 181,
+        "per100": 11.07,
+        "ease": "linear"
+      },
+      {
+        "beat": "spin",
+        "dSrc": 90,
+        "px": 867,
+        "per100": 10.38,
+        "ease": "power3.inOut"
+      },
+      {
+        "beat": "spinHold",
+        "dSrc": 0,
+        "px": 60,
+        "per100": 0,
+        "ease": "linear"
+      },
+      {
+        "beat": "burst",
+        "dSrc": 25,
+        "px": 241,
+        "per100": 10.38,
+        "ease": "expo.inOut"
+      },
+      {
+        "beat": "ring",
+        "dSrc": 36,
+        "px": 349,
+        "per100": 10.31,
+        "ease": "linear"
+      },
+      {
+        "beat": "collapse",
+        "dSrc": 25,
+        "px": 241,
+        "per100": 10.38,
+        "ease": "power3.inOut"
+      },
+      {
+        "beat": "sweep",
+        "dSrc": 59,
+        "px": 572,
+        "per100": 10.32,
+        "ease": "power3.inOut"
+      },
+      {
+        "beat": "sweepHold",
+        "dSrc": 0,
+        "px": 48,
+        "per100": 0,
+        "ease": "linear"
+      },
+      {
+        "beat": "zoom",
+        "dSrc": 63,
+        "px": 608,
+        "per100": 10.36,
+        "ease": "expo.inOut"
+      },
+      {
+        "beat": "dissolve",
+        "dSrc": 27,
+        "px": 259,
+        "per100": 10.43,
+        "ease": "power2.inOut"
+      },
+      {
+        "beat": "endcard",
+        "dSrc": 55,
+        "px": 530,
+        "per100": 10.38,
+        "ease": "linear"
+      }
+    ]
+  },
+  "keys": {
+    "keys": [
+      {
+        "src": 1,
+        "frac": 0,
+        "y": 0,
+        "winFrac": 0.0277,
+        "winPx": 167
+      },
+      {
+        "src": 70,
+        "frac": 0.111,
+        "y": 668,
+        "winFrac": 0.0277,
+        "winPx": 167
+      },
+      {
+        "src": 145,
+        "frac": 0.231,
+        "y": 1391,
+        "winFrac": 0.028,
+        "winPx": 169
+      },
+      {
+        "src": 215,
+        "frac": 0.343,
+        "y": 2065,
+        "winFrac": 0.0255,
+        "winPx": 154
+      },
+      {
+        "src": 280,
+        "frac": 0.445,
+        "y": 2679,
+        "winFrac": 0.0255,
+        "winPx": 154
+      },
+      {
+        "src": 368,
+        "frac": 0.596,
+        "y": 3588,
+        "winFrac": 0.0291,
+        "winPx": 175
+      },
+      {
+        "src": 440,
+        "frac": 0.7122,
+        "y": 4288,
+        "winFrac": 0.0265,
+        "winPx": 159
+      },
+      {
+        "src": 500,
+        "frac": 0.8181,
+        "y": 4925,
+        "winFrac": 0.0265,
+        "winPx": 159
+      },
+      {
+        "src": 600,
+        "frac": 0.976,
+        "y": 5876,
+        "winFrac": 0.0395,
+        "winPx": 238
+      }
+    ]
+  },
+  "lenisSrc": {
+    "lerp": ".11",
+    "wheelMultiplier": "1",
+    "touchMultiplier": "1.2",
+    "syncTouch": "false",
+    "hasDuration": false
+  },
+  "shots": [
+    "scroll-hero-1512.png",
+    "scroll-hero-1920.png (filmDist=7560px ≈ 7.0 screens)",
+    "scroll-hero-1024.png (filmDist=5376px ≈ 7.0 screens)",
+    "scroll-hero-390.png (filmDist=3882px ≈ 4.6 screens)"
+  ],
+  "errors": [],
+  "settledY": 2065
+}

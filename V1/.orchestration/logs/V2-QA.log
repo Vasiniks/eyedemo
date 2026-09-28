@@ -1,0 +1,319 @@
+[0m
+> build · muse-spark-1.3-contributor-free
+[0m
+QA critic spinning up — waiting on builders to land their exits, then tearing down the page for issues.
+[0m→ [0mRead .
+[0m→ [0mRead src/v1
+[0m→ [0mRead .orchestration/logs
+[0m→ [0mRead docs/00-BRIEF.md
+[0m→ [0mRead render-repo/RENDER-REPORT.md
+[0m
+[0m$ [0mfor f in V2-FILM V2-SNAP V2-WAVES V2-WORDS; do echo "== $f =="; rtk read ".orchestration/logs/$f.log" --tail-lines 20; done
+== V2-FILM ==
+[0m
+> build · muse-spark-1.3-contributor-free
+[0m
+Shipping the 3588-frame film engine — wiring the progressive loader and playback.
+[0m→ [0mRead src/v1
+[0m→ [0mRead docs/00-BRIEF.md
+[0m→ [0mRead render-repo/RENDER-REPORT.md
+[0m→ [0mRead src/v1/App.tsx
+[0m→ [0mRead src/v1/progress.ts
+[0m→ [0mRead src/v1/filmCurve.ts
+[0m→ [0mRead src/v1/FilmSequence.tsx
+== V2-SNAP ==
+[0m
+> build · muse-spark-1.3-contributor-free
+[0m
+Shipping the snap nudge — mapping key frames to scroll stops.
+[0m→ [0mRead src/v1
+[0m→ [0mRead docs/00-BRIEF.md
+[0m→ [0mRead render-repo/RENDER-REPORT.md
+[0m→ [0mRead src/v1/progress.ts
+[0m→ [0mRead src/v1/filmCurve.ts
+[0m→ [0mRead src/v1/App.tsx
+[0m→ [0mRead src/v1/FilmSequence.tsx
+== V2-WAVES ==
+[0m
+> build · muse-spark-1.3-contributor-free
+[0m
+Shipping the long hyperspace brand waves — building the tunnel moment now.
+[0m→ [0mRead src/v1
+[0m→ [0mRead render-repo/RENDER-REPORT.md
+[0m→ [0mRead docs/00-BRIEF.md
+[0m→ [0mRead src/v1/sideCopy.ts
+[0m→ [0mRead src/v1/dev-waves.tsx
+[0m→ [0mRead src/v1/BrandWaves.tsx
+[0m→ [0mRead src/v1/waves.css
+[0m→ [0mRead src/v1/filmCurve.ts
+== V2-WORDS ==
+[0m
+> build · muse-spark-1.3-contributor-free
+[0m
+Shipping the words pass — placing restrained panels in the empty sides of each beat.
+[0m→ [0mRead src/v1
+[0m→ [0mRead docs/00-BRIEF.md
+[0m→ [0mRead render-repo/RENDER-REPORT.md
+[0m→ [0mRead src/v1/sideCopy.ts
+[0m→ [0mRead src/v1/SidePanels.tsx
+[0m→ [0mRead src/v1/FilmCaptions.tsx
+[0m→ [0mRead src/v1/sidePanels.css
+[0m→ [0mRead src/v1/captions.css
+[0m
+[0m$ [0mrtk grep -h "^EXIT" .orchestration/logs/V2-FILM.log .orchestration/logs/V2-SNAP.log .orchestration/logs/V2-WAVES.log .orchestration/logs/V2-WORDS.log 2>&1; echo "---done---"; rtk ls docs/phase4/qa/v2/ 2>&1; rtk ls render-repo/out/frames/ 2>&1 | head -5
+Compact grep - strips whitespace, truncates, groups by file
+
+Usage: rtk grep [OPTIONS] [EXTRA_ARGS]...
+
+Arguments:
+  [EXTRA_ARGS]...  Pattern, path, and any grep/rg flags (e.g. -v, -i, -A 3, --glob, --version)
+
+Options:
+      --max-len <MAX_LEN>  Max line length [default: 80]
+      --max <MAX>          Max results to show [default: 200]
+      --context-only       Show only match context (not full line)
+      --ultra-compact      Ultra-compact mode: ASCII icons, inline format (Level 2 optimizations)
+      --skip-env           Set SKIP_ENV_VALIDATION=1 for child processes (Next.js, tsc, lint, prisma)
+  -h, --help               Print help
+---done---
+(empty)
+f_00001.webp  78.9K
+f_00002.webp  78.9K
+f_00003.webp  78.8K
+f_00004.webp  78.8K
+f_00005.webp  78.8K
+[0m
+[0m$ [0mrtk grep -h "^EXIT" .orchestration/logs/V2-FILM.log .orchestration/logs/V2-SNAP.log .orchestration/logs/V2-WAVES.log .orchestration/logs/V2-WORDS.log; echo "EXITCODE:$?"; rtk ls docs/phase4/qa/v2/ 2>&1; rtk ls v1.html src/v1/App.tsx 2>&1
+Compact grep - strips whitespace, truncates, groups by file
+
+Usage: rtk grep [OPTIONS] [EXTRA_ARGS]...
+
+Arguments:
+  [EXTRA_ARGS]...  Pattern, path, and any grep/rg flags (e.g. -v, -i, -A 3, --glob, --version)
+
+Options:
+      --max-len <MAX_LEN>  Max line length [default: 80]
+      --max <MAX>          Max results to show [default: 200]
+      --context-only       Show only match context (not full line)
+      --ultra-compact      Ultra-compact mode: ASCII icons, inline format (Level 2 optimizations)
+      --skip-env           Set SKIP_ENV_VALIDATION=1 for child processes (Next.js, tsc, lint, prisma)
+  -h, --help               Print help
+EXITCODE:0
+(empty)
+src/v1/App.tsx  3.0K
+v1.html  674B
+[0m
+Builders still landing — meanwhile I'm digging into the current build to prep the test plan.
+[0m✱ [0mGrep "^EXIT"[90m in .orchestration/logs · 74 matches[0m
+[0m
+[0m# [0mTodos
+[•] Read brief 6c-6d, src/v1 code, render report
+[ ] Poll V2-FILM/SNAP/WAVES/WORDS logs for EXIT
+[ ] Serve + Playwright verify at 1512x860 and 390x844, key frames + scroll video
+[ ] Run visual-critic subagent, rank P0/P1
+[ ] Write docs/phase4/qa/v2/QA.md, stop server
+[0m
+[0m→ [0mRead v1.html
+[0m→ [0mRead src/v1/App.tsx
+[0m→ [0mRead src/v1/FilmSequence.tsx
+[0m→ [0mRead src/v1/sideCopy.ts
+[0m→ [0mRead .orchestration/logs/V2-FILM.log
+[0m→ [0mRead .orchestration/logs/V2-WORDS.log
+[0m→ [0mRead src/v1/progress.ts
+[0m→ [0mRead src/v1/filmCurve.ts
+[0m
+[0m# [0mTodos
+[✓] Read brief 6c-6d, src/v1 code, render report
+[•] Poll V2-FILM/SNAP/WAVES/WORDS logs for EXIT
+[ ] Serve + Playwright verify at 1512x860 and 390x844, key frames + scroll video
+[ ] Run visual-critic subagent, rank P0/P1
+[ ] Write docs/phase4/qa/v2/QA.md, stop server
+[0m
+[0m$ [0mnohup npx vite --port 5405 --strictPort > /tmp/v2-qa-server.log 2>&1 & echo "started pid $!"; sleep 6; tail -20 /tmp/v2-qa-server.log
+started pid 29461
+npm notice run eyeq-vision-care@0.1.0 npx
+npm notice run 'vite' --port 5405 --strictPort
+
+  VITE v8.3.1  ready in 806 ms
+
+  ➜  Local:   http://localhost:5405/
+  ➜  Network: use --host to expose
+[0m
+Dev server is live on 5405 — now checking whether the builders have finished.
+[0m$ [0msleep 25; for f in V2-FILM V2-SNAP V2-WAVES V2-WORDS; do echo "== $f: $(wc -l < .orchestration/logs/$f.log) lines"; tail -3 ".orchestration/logs/$f.log"; done
+== V2-FILM:      144 lines
+[ ] Verify: dev server + Playwright screenshots key frames + video
+[ ] Write docs/phase4/qa/v2/film.md report
+[0m
+== V2-SNAP:      115 lines
+ 
+
+[0m
+== V2-WAVES:       15 lines
+[0m→ [0mRead v1-waves.html
+[0m→ [0mRead src/v1/SidePanels.tsx
+[0m→ [0mRead src/v1/App.tsx
+== V2-WORDS:       71 lines
+[0m← [0mWrite src/v1/sideCopy.ts
+Wrote file successfully.
+[0m
+[0m
+[0m$ [0mrtk ls -la src/v1/ scripts/frames/ 2>&1; echo ---; rtk ls docs/phase4/qa/v2/ 2>&1; echo ---; rtk curl -s -o /dev/null -w "%{http_code}" http://localhost:5405/v1.html; echo; rtk curl -s http://localhost:5405/v1film/manifest.json; echo
+755  build.sh  1.3K
+644  App.tsx  3.2K
+644  BrandWaves.tsx  9.9K
+644  FilmCaptions.tsx  6.7K
+644  FilmSequence.tsx  16.0K
+644  SidePanels.tsx  7.0K
+644  captions.css  5.6K
+644  dev-text.tsx  1.7K
+644  dev-waves.tsx  1.5K
+644  filmCurve.ts  12.4K
+644  lenis.ts  1.2K
+644  main.tsx  620B
+644  progress.ts  1.1K
+644  sideCopy.ts  4.7K
+644  sidePanels.css  4.3K
+644  snap.ts  4.3K
+644  v1.css  6.4K
+644  waves.css  2.9K
+... (2 filtered)
+[+2 hidden: rtk recall da2186521b0a]
+---
+(empty)
+---
+200
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <script type="module">import { injectIntoGlobalHook } from "/@react-refresh";
+injectIntoGlobalHook(window);
+window.$RefreshReg$ = () => {};
+window.$RefreshSig$ = () => (type) => type;</script>
+
+    <script type="module" src="/@vite/client"></script>
+
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="EyeQ Vision Care — 2-227 Vodden St East, Brampton, ON. Eye exams, prescription fittings, high-definition lenses." />
+    <link rel="preload" href="/fonts/fraunces-var.woff2" as="font" type="font/woff2" crossorigin />
+    <title>EyeQ Vision Care — Brampton, ON</title>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>
+[0m
+[0m✗ [0mRead public/v1film/manifest.json failed
+[91m[1mError: [0mFile not found: /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/public/v1film/manifest.json
+[0m⚙ [0mplaywright_browser_navigate {"url":"http://localhost:5405/v1.html"}
+[0m⚙ [0mplaywright_browser_console_messages {"level":"error"}
+[0m
+[0m$ [0mrtk ls public/ 2>&1; echo ---; rtk ls public/v1film 2>&1 | head -5; rtk glob "public/**/manifest.json" 2>&1
+decoders/
+fonts/
+models/
+v1film/
+web/
+_redirects  19B
+... (1 filtered)
+[+1 hidden: rtk recall ba2f5bc393e9]
+---
+full/
+web/
+[rtk: No such file or directory (os error 2)]
+[0m
+Found two breakages already (SidePanels 500, manifest moved) — now looking at what actually renders.
+[0m⚙ [0mplaywright_browser_snapshot Unknown
+[0m
+[0m$ [0mrtk ls public/v1film/full public/v1film/web 2>&1 | head -12; echo ---; rtk tail -30 /tmp/v2-qa-server.log 2>/dev/null || rtk read /tmp/v2-qa-server.log --tail-lines 30
+f_00001.webp  78.9K
+f_00002.webp  78.9K
+f_00003.webp  78.8K
+f_00004.webp  78.8K
+f_00005.webp  78.8K
+f_00006.webp  78.9K
+f_00007.webp  78.7K
+f_00008.webp  78.8K
+f_00009.webp  78.9K
+f_00010.webp  79.0K
+f_00011.webp  83.7K
+f_00012.webp  78.9K
+---
+      at async EnvironmentPluginContainer.transform (file:///Users/admin/Desktop/BUISNESS/EyeQ%20Vision%20Care/V1/node_modules/vite/dist/node/chunks/node.js:8515:14)
+      at async loadAndTransform (file:///Users/admin/Desktop/BUISNESS/EyeQ%20Vision%20Care/V1/node_modules/vite/dist/node/chunks/node.js:19998:26)
+9:48:29 AM [vite] (client) Pre-transform error: Failed to resolve import "./side.css" from "src/v1/SidePanels.tsx". Does the file exist?
+  Plugin: vite:import-analysis
+  File: /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/v1/SidePanels.tsx:12:7
+  10 |  // client-requested DRAFTs — rendered ONLY when SHOW_DRAFT_COPY is set
+  11 |  // (brief §6d), always with a DRAFT tag.
+  12 |  import "./side.css";
+     |          ^
+  13 |  import { SIDE_PANELS, SHOW_DRAFT_COPY, LENS_NAMES, BRAND_COUNT, INSURANCE_HEADING, INSURER_COUNT, CATCHPHRASES, REVIE...
+  14 |  var _jsxFileName = "/Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/v1/SidePanels.tsx";
+9:48:29 AM [vite] (client) Pre-transform error: Failed to resolve import "./side.css" from "src/v1/SidePanels.tsx". Does the file exist?
+  Plugin: vite:import-analysis
+  File: /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/v1/SidePanels.tsx:12:7
+  10 |  // client-requested DRAFTs — rendered ONLY when SHOW_DRAFT_COPY is set
+  11 |  // (brief §6d), always with a DRAFT tag.
+  12 |  import "./side.css";
+     |          ^
+  13 |  import { SIDE_PANELS, SHOW_DRAFT_COPY, LENS_NAMES, BRAND_COUNT, INSURANCE_HEADING, INSURER_COUNT, CATCHPHRASES, REVIE...
+  14 |  var _jsxFileName = "/Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/v1/SidePanels.tsx";
+9:48:29 AM [vite] (client) Pre-transform error: Failed to resolve import "./side.css" from "src/v1/SidePanels.tsx". Does the file exist?
+  Plugin: vite:import-analysis
+  File: /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/v1/SidePanels.tsx:12:7
+  10 |  // client-requested DRAFTs — rendered ONLY when SHOW_DRAFT_COPY is set
+  11 |  // (brief §6d), always with a DRAFT tag.
+  12 |  import "./side.css";
+     |          ^
+  13 |  import { SIDE_PANELS, SHOW_DRAFT_COPY, LENS_NAMES, BRAND_COUNT, INSURANCE_HEADING, INSURER_COUNT, CATCHPHRASES, REVIE...
+  14 |  var _jsxFileName = "/Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/v1/SidePanels.tsx";
+9:48:30 AM [vite] (client) hmr update /src/v1/FilmSequence.tsx
+[0m
+[0m→ [0mRead src/v1/SidePanels.tsx
+[0m→ [0mRead src/v1/snap.ts
+[0m⚙ [0mplaywright_browser_resize {"height":860,"width":1512}
+[0m⚙ [0mplaywright_browser_take_screenshot {"fullPage":false,"scale":"css","type":"png"}
+[0m⚙ [0mplaywright_browser_evaluate {"function":"() => { const r = document.querySelector('#white-act')?.getBoundingClientRect(); return { whiteTop: r?.top, bodyH: document.body.scrollHeight, filmH: document.querySelector('.v1-film')?.getBoundingClientRect().height }; }"}
+[0m⚙ [0mplaywright_browser_evaluate {"function":"() => { document.querySelector('#white-act')?.scrollIntoView({behavior:'auto'}); return window.scrollY; }"}
+[0m⚙ [0mplaywright_browser_take_screenshot {"fullPage":false,"scale":"css","type":"png"}
+Desktop white act is pristine — now checking the mobile viewport.
+[0m⚙ [0mplaywright_browser_resize {"height":844,"width":390}
+[0m⚙ [0mplaywright_browser_evaluate {"function":"() => { window.scrollTo(0,0); return { h: document.querySelector('.v1-film')?.getBoundingClientRect().height, scrollH: document.body.scrollHeight }; }"}
+[0m⚙ [0mplaywright_browser_take_screenshot {"fullPage":false,"scale":"css","type":"png"}
+[0m⚙ [0mplaywright_browser_evaluate {"function":"() => { document.querySelector('#white-act')?.scrollIntoView({behavior:'auto'}); return window.scrollY; }"}
+[0m⚙ [0mplaywright_browser_take_screenshot {"fullPage":false,"scale":"css","type":"png"}
+Screenshots locked — now getting an independent ranking from the visual critic.
+[0m• [0mRank V2 QA issues P0/P1[90m Visual-Critic Agent[0m
+[0m✓ [0mRank V2 QA issues P0/P1[90m Visual-Critic Agent[0m
+Critic verdict in — writing the report and shutting down.
+[0m
+[0m# [0mTodos
+[✓] Read brief 6c-6d, src/v1 code, render report
+[✓] Poll V2-FILM/SNAP/WAVES/WORDS logs for EXIT
+[✓] Serve + Playwright verify at 1512x860 and 390x844, key frames + scroll video
+[✓] Run visual-critic subagent, rank P0/P1
+[•] Write docs/phase4/qa/v2/QA.md, stop server
+[0m
+[0m← [0mWrite docs/phase4/qa/v2/QA.md
+Wrote file successfully.
+[0m
+[0m$ [0mpkill -f "vite --port 5405" && echo "server stopped" || echo "no server process"
+server stopped
+[0m
+[0m# [0mTodos
+[✓] Read brief 6c-6d, src/v1 code, render report
+[✓] Poll V2-FILM/SNAP/WAVES/WORDS logs for EXIT
+[✓] Serve + Playwright verify at 1512x860 and 390x844, key frames + scroll video
+[✓] Run visual-critic subagent, rank P0/P1
+[✓] Write docs/phase4/qa/v2/QA.md, stop server
+[0m
+V2-QA-DONE
+- Verdict: DO NOT SHIP — boot broken, 6 P0s; no builder had EXITed at QA time.
+- P0s: film manifest 404 (FILM), `side.css` 500 + missing sideCopy exports (WORDS ×2), snap unwired (SNAP), header black strip (FILM), draft-gating unverified (WORDS).
+- Positives locked: white act, rails, reviews, lens names, nav/footer all §6d-clean; mobile 390×844 clean.
+- Report: `docs/phase4/qa/v2/QA.md`; server on 5405 stopped. Re-run QA after all four EXITs.
+EXIT 0 model=opencode/muse-spark-1.3-contributor-free

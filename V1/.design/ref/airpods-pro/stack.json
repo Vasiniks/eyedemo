@@ -1,0 +1,517 @@
+{
+ "stack": {
+  "libs": {
+   "split_text_blocks": 3
+  },
+  "canvases": [],
+  "videos": [
+   {
+    "src": "",
+    "autoplay": false,
+    "loop": false,
+    "muted": true,
+    "w": 1260
+   },
+   {
+    "src": "",
+    "autoplay": false,
+    "loop": false,
+    "muted": true,
+    "w": 1260
+   },
+   {
+    "src": "https://www.apple.com/105/media/us/airpods-pro/2025/7acffb13-4adb-40b1-9393-8f1c99bc6c90/anim/initial/large.mp4",
+    "autoplay": false,
+    "loop": false,
+    "muted": true,
+    "w": 1728
+   },
+   {
+    "src": "https://www.apple.com/105/media/us/airpods-pro/2025/7acffb13-4adb-40b1-9393-8f1c99bc6c90/anim/fit-feel/large.mp4",
+    "autoplay": false,
+    "loop": false,
+    "muted": true,
+    "w": 0
+   },
+   {
+    "src": "https://www.apple.com/105/media/us/airpods-pro/2025/7acffb13-4adb-40b1-9393-8f1c99bc6c90/anim/heart-rate/large.mp4",
+    "autoplay": false,
+    "loop": false,
+    "muted": true,
+    "w": 0
+   },
+   {
+    "src": "https://www.apple.com/105/media/us/airpods-pro/2025/7acffb13-4adb-40b1-9393-8f1c99bc6c90/anim/touch-controls/large.mp4",
+    "autoplay": false,
+    "loop": false,
+    "muted": true,
+    "w": 0
+   },
+   {
+    "src": "https://www.apple.com/105/media/us/airpods-pro/2025/7acffb13-4adb-40b1-9393-8f1c99bc6c90/anim/case/large.mp4",
+    "autoplay": false,
+    "loop": false,
+    "muted": true,
+    "w": 0
+   },
+   {
+    "src": "blob:https://www.apple.com/5cb10e6c-4669-496e-b696-4991f30b5fa3",
+    "autoplay": false,
+    "loop": false,
+    "muted": true,
+    "w": 1260
+   },
+   {
+    "src": "https://www.apple.com/105/media/us/airpods-pro/2025/ab88f834-9c62-4bab-8cf8-f5e866987d6e/anim/battery/large.mp4",
+    "autoplay": false,
+    "loop": false,
+    "muted": true,
+    "w": 372
+   },
+   {
+    "src": "https://www.apple.com/105/media/us/airpods-pro/2025/7acffb13-4adb-40b1-9393-8f1c99bc6c90/anim/hearing-protection/large.mp4",
+    "autoplay": false,
+    "loop": false,
+    "muted": true,
+    "w": 372
+   },
+   {
+    "src": "https://www.apple.com/105/media/us/airpods-pro/2025/7acffb13-4adb-40b1-9393-8f1c99bc6c90/anim/connectivity/large.mp4",
+    "autoplay": false,
+    "loop": false,
+    "muted": true,
+    "w": 1260
+   }
+  ],
+  "fonts": [
+   "SF Pro Display 600 normal",
+   "SF Pro Text 300 normal",
+   "SF Pro Text 400 normal",
+   "SF Pro Text 600 normal",
+   "SF Pro Icons 300 normal",
+   "SF Pro Icons 400 normal",
+   "SF Pro Icons 600 normal"
+  ],
+  "bodyCursor": "auto",
+  "docHeight": 29235,
+  "title": "AirPods Pro 3 - Apple",
+  "rafCallsSoFar": 2477,
+  "raf_calls_per_sec": 0
+ },
+ "gl_renderer": "ANGLE (Apple, ANGLE Metal Renderer: Apple M2 Pro, Unspecified Version)",
+ "phases_done": [
+  "scroll motion map",
+  "hover + cursor",
+  "pointer probe",
+  "states",
+  "page transitions",
+  "continuous scroll",
+  "crawl (5 pages)"
+ ],
+ "phases_cut": [],
+ "bundles": {
+  "keyword_hits": {
+   "Observer": 616,
+   "THREE": 242,
+   "WebGLRenderer": 6,
+   "ogl": 8,
+   "matter": 60,
+   "rive": 177,
+   "Points": 74,
+   "requestAnimationFrame": 492,
+   "IntersectionObserver": 16,
+   "clip-path": 425,
+   "mix-blend-mode": 6
+  },
+  "gsap_eases": [
+   [
+    "ease-out",
+    4
+   ]
+  ],
+  "durations": [
+   [
+    "320",
+    325
+   ],
+   [
+    "0",
+    106
+   ],
+   [
+    ".32",
+    94
+   ],
+   [
+    ".24",
+    78
+   ],
+   [
+    ".5",
+    69
+   ],
+   [
+    "1",
+    57
+   ],
+   [
+    ".12",
+    56
+   ],
+   [
+    "400",
+    48
+   ],
+   [
+    "200",
+    42
+   ],
+   [
+    "100",
+    35
+   ],
+   [
+    "300",
+    34
+   ],
+   [
+    "380",
+    33
+   ],
+   [
+    ".15",
+    28
+   ],
+   [
+    "260",
+    27
+   ],
+   [
+    "280",
+    27
+   ]
+  ],
+  "staggers": [],
+  "scroll_starts": [
+   [
+    "t - 100vh",
+    32
+   ],
+   [
+    "t - 200vh",
+    20
+   ],
+   [
+    "a0t - 100vh",
+    16
+   ],
+   [
+    "(b - 100vh) + 20px",
+    8
+   ],
+   [
+    "t + 60h - 100vh",
+    8
+   ],
+   [
+    "0 + ",
+    8
+   ],
+   [
+    "t - css(--parallax-start)",
+    4
+   ],
+   [
+    "t - 150vh",
+    4
+   ],
+   [
+    "a0t - ${this._triggerDistance}",
+    4
+   ],
+   [
+    "a0t - 200vh",
+    4
+   ],
+   [
+    "t - 85vh",
+    4
+   ],
+   [
+    "t - 100vh + 60h",
+    4
+   ],
+   [
+    "t - 100vh + 100a0h",
+    4
+   ],
+   [
+    "a0t - css(--r-localnav-height)",
+    4
+   ],
+   [
+    "start",
+    4
+   ]
+  ],
+  "scroll_ends": [
+   [
+    "b + 100vh",
+    20
+   ],
+   [
+    "a0b",
+    12
+   ],
+   [
+    "a0b - 100vh",
+    8
+   ],
+   [
+    "t - 20px",
+    8
+   ],
+   [
+    "b + 100%",
+    8
+   ],
+   [
+    "b - 50vh",
+    8
+   ],
+   [
+    "t + css(--parallax-end)",
+    4
+   ],
+   [
+    "b + 50vh",
+    4
+   ],
+   [
+    "a0b + 100vh",
+    4
+   ],
+   [
+    "t + 100a0h",
+    4
+   ],
+   [
+    "a0b - css(--r-localnav-height)",
+    4
+   ],
+   [
+    "end",
+    4
+   ],
+   [
+    "right",
+    2
+   ]
+  ],
+  "scrub_values": [],
+  "css_eases": [
+   [
+    "cubic-bezier(0.4, 0, 0.6, 1)",
+    1564
+   ],
+   [
+    "cubic-bezier(.4,0,.6,1)",
+    1054
+   ],
+   [
+    "cubic-bezier(0, 0, 0.2, 1)",
+    570
+   ],
+   [
+    "cubic-bezier(.25,.1,.3,1)",
+    169
+   ],
+   [
+    "cubic-bezier(0.28, 0.11, 0.32, 1)",
+    72
+   ],
+   [
+    "cubic-bezier(0.4, 0, 0.3, 2)",
+    30
+   ],
+   [
+    "cubic-bezier(1,.1,0,.3)",
+    17
+   ],
+   [
+    "cubic-bezier(0,0,.2,1)",
+    16
+   ],
+   [
+    "cubic-bezier(0,0,0.5,1)",
+    14
+   ],
+   [
+    "cubic-bezier(0.3,2,0.5,1)",
+    14
+   ],
+   [
+    "cubic-bezier(0.42, 0, 0.58, 1)",
+    12
+   ],
+   [
+    "cubic-bezier(0.25,0.1,0,1)",
+    12
+   ],
+   [
+    "cubic-bezier(0.4, 0.1, 0.4, 1)",
+    12
+   ],
+   [
+    "cubic-bezier(1, 0.1, 0, 0.3)",
+    12
+   ],
+   [
+    "cubic-bezier(0,0,.5,1)",
+    12
+   ]
+  ],
+  "lenis_options": [],
+  "scrolltrigger_snippets": []
+ },
+ "cursor": {
+  "custom_cursor": false,
+  "css_cursor": "auto"
+ },
+ "pointer": [
+  {
+   "at": "top",
+   "reactive_cells": [],
+   "ambient_cells": [],
+   "moved_elements": []
+  },
+  {
+   "at": "mid-page",
+   "reactive_cells": [],
+   "ambient_cells": [],
+   "moved_elements": []
+  }
+ ],
+ "pages": [
+  {
+   "url": "https://www.apple.com/ca/airpods-pro/",
+   "slug": "ca-airpods-pro",
+   "title": "AirPods Pro 3 - Apple (CA)",
+   "docHeight": 27381,
+   "libs": {
+    "split_text_blocks": 9
+   },
+   "canvases": 0,
+   "screenshots": 11
+  },
+  {
+   "url": "https://www.apple.com/",
+   "slug": "root",
+   "title": "Apple",
+   "docHeight": 6080,
+   "libs": {
+    "split_text_blocks": 1
+   },
+   "canvases": 0,
+   "screenshots": 8
+  },
+  {
+   "url": "https://www.apple.com/us/shop/goto/store",
+   "slug": "us-shop-goto-store",
+   "title": "Apple Store Online - Apple",
+   "docHeight": 13318,
+   "libs": {
+    "split_text_blocks": 2
+   },
+   "canvases": 0,
+   "screenshots": 11
+  },
+  {
+   "url": "https://www.apple.com/us/shop/goto/buy_mac",
+   "slug": "us-shop-goto-buy-mac",
+   "title": "Buy Mac - Apple",
+   "docHeight": 7685,
+   "libs": {
+    "split_text_blocks": 2
+   },
+   "canvases": 0,
+   "screenshots": 10
+  },
+  {
+   "url": "https://www.apple.com/us/shop/goto/buy_ipad",
+   "slug": "us-shop-goto-buy-ipad",
+   "title": "Buy iPad - Apple",
+   "docHeight": 7665,
+   "libs": {
+    "split_text_blocks": 2
+   },
+   "canvases": 0,
+   "screenshots": 10
+  }
+ ],
+ "pages_found": 491,
+ "transitions": [
+  {
+   "to": "https://www.apple.com/ca/airpods-pro/",
+   "client_side": true,
+   "frames": [
+    "states/transition1-100ms.jpg",
+    "states/transition1-300ms.jpg",
+    "states/transition1-600ms.jpg",
+    "states/transition1-1000ms.jpg",
+    "states/transition1-1600ms.jpg"
+   ],
+   "back": [
+    "states/transition1-back-150ms.jpg",
+    "states/transition1-back-600ms.jpg"
+   ]
+  },
+  {
+   "to": "https://www.apple.com/",
+   "client_side": true,
+   "frames": [
+    "states/transition2-100ms.jpg",
+    "states/transition2-300ms.jpg",
+    "states/transition2-600ms.jpg",
+    "states/transition2-1000ms.jpg",
+    "states/transition2-1600ms.jpg"
+   ],
+   "back": [
+    "states/transition2-back-150ms.jpg",
+    "states/transition2-back-600ms.jpg"
+   ]
+  },
+  {
+   "to": "https://www.apple.com/us/shop/goto/store",
+   "client_side": true,
+   "frames": [
+    "states/transition3-100ms.jpg",
+    "states/transition3-300ms.jpg",
+    "states/transition3-600ms.jpg",
+    "states/transition3-1000ms.jpg",
+    "states/transition3-1600ms.jpg"
+   ],
+   "back": [
+    "states/transition3-back-150ms.jpg",
+    "states/transition3-back-600ms.jpg"
+   ]
+  }
+ ],
+ "transition": {
+  "to": "https://www.apple.com/ca/airpods-pro/",
+  "client_side": true,
+  "frames": [
+   "states/transition1-100ms.jpg",
+   "states/transition1-300ms.jpg",
+   "states/transition1-600ms.jpg",
+   "states/transition1-1000ms.jpg",
+   "states/transition1-1600ms.jpg"
+  ],
+  "back": [
+   "states/transition1-back-150ms.jpg",
+   "states/transition1-back-600ms.jpg"
+  ]
+ },
+ "intro_ready_ms": 700,
+ "virtual_scroll": false
+}

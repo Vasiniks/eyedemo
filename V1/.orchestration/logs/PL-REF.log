@@ -1,0 +1,147 @@
+[0m
+> build · muse-spark-1.3-contributor
+[0m
+[0m→ [0mRead docs/00-BRIEF.md
+[0m→ [0mRead docs/research/00-PHASE2-SYNTHESIS.md
+[0m→ [0mRead docs/research/E-visual-references.md
+[0m→ [0mSkill "visual-fidelity"
+[0m→ [0mRead docs/research/F-3d-motion-tech.md
+[0m
+[0m$ [0mrtk ls "docs/phase4/" 2>&1; echo "---"; rtk ls ".design/" 2>&1; echo "---"; rtk ls "docs/research/" 2>&1; echo "---"; echo $VF; rtk ls ~/.agents/skills/visual-fidelity/scripts/ 2>&1 | head -30
+(empty)
+---
+ls: .design/: No such file or directory
+---
+screens/
+00-PHASE2-SYNTHESIS.md  4.5K
+A-website-audit.md  12.8K
+B-content-inventory.md  17.0K
+C-link-inventory.md  15.6K
+D-asset-inventory.md  21.3K
+E-visual-references.md  28.2K
+F-3d-motion-tech.md  55.5K
+G-glasses-model.md  13.4K
+---
+
+browser.mjs  1.5K
+capture.mjs  6.8K
+compare.mjs  9.2K
+feel.mjs  13.3K
+package-lock.json  1.7K
+package.json  209B
+teardown.mjs  68.7K
+track.mjs  2.4K
+vf  1.0K
+vf.cmd  144B
+vf.mjs  1.5K
+... (1 filtered)
+[+1 hidden: rtk recall 6d55025d6531]
+[0m
+[0m• [0mTeardown AirPods scroll film[90m Reference-Analyst Agent[0m
+[0m• [0mTeardown Vision Pro portal[90m Reference-Analyst Agent[0m
+[0m• [0mTeardown Realevate marquee[90m Reference-Analyst Agent[0m
+[0m✓ [0mTeardown Realevate marquee[90m Reference-Analyst Agent[0m
+[0m✓ [0mTeardown AirPods scroll film[90m Reference-Analyst Agent[0m
+[0m✓ [0mTeardown Vision Pro portal[90m Reference-Analyst Agent[0m
+[0m
+[0m$ [0mrtk ls docs/phase4/ 2>&1; echo "---"; rtk ls .design/ref/ 2>&1; echo "---"; rtk ls .design/ref/airpods-pro/ 2>&1 | head -20; echo "---"; rtk ls .design/ref/vision-pro/ 2>&1 | head -20; echo "---"; rtk ls .design/ref/realevate/ 2>&1 | head -20
+PLAN-architecture.md  34.5K
+PLAN-art-direction.md  31.4K
+PLAN-motion.md  32.8K
+PLAN-site-ia.md  27.0K
+---
+airpods-pro/
+realevate/
+vision-pro/
+1024x768.json  5.8K
+1024x768.png  326.9K
+1440x900.json  4.5K
+1440x900.png  475.7K
+1920x1080.json  4.6K
+1920x1080.png  663.4K
+390x844.json  3.6K
+390x844.png  210.9K
+430x932.json  3.6K
+430x932.png  285.2K
+768x1024.json  6.6K
+768x1024.png  316.2K
+capture.summary.json  1.0K
+---
+assets/
+intro/
+pages/
+progress/
+shaders/
+states/
+steps/
+assets.json  177.6K
+fonts.css  2.0K
+fonts.json  2.4K
+hover.json  1.6K
+motion.json  4.0K
+scroll-sheet-01.png  655.9K
+scroll-sheet-02.png  510.1K
+scroll-sheet-03.png  218.4K
+stack.json  8.5K
+states.json  348B
+teardown.md  9.1K
+three.json  99B
+---
+assets/
+intro/
+pages/
+progress/
+shaders/
+states/
+steps/
+assets.json  192.3K
+fonts.css  2.2K
+fonts.json  2.7K
+hover.json  1.6K
+motion.json  437B
+scroll-sheet-01.png  1.6M
+scroll-sheet-02.png  1.3M
+scroll-sheet-03.png  416.7K
+stack.json  12.6K
+states.json  203B
+teardown.md  8.0K
+three.json  99B
+---
+assets/
+intro/
+pages/
+progress/
+shaders/
+states/
+steps/
+assets.json  13.9K
+fonts.css  534B
+fonts.json  574B
+hover.json  1.6K
+motion.json  1.8K
+scroll-sheet-01.png  119.4K
+stack.json  4.5K
+states.json  2B
+teardown.md  6.0K
+three.json  99B
+[0m
+[0m← [0mWrite docs/phase4/PLAN-reference-teardowns.md
+Wrote file successfully.
+[0m
+[0m← [0mWrite docs/phase4/PLAN-reference-teardowns.md
+Wrote file successfully.
+[0m
+[0m← [0mWrite docs/phase4/PLAN-reference-teardowns.md
+Wrote file successfully.
+[0m
+[0m← [0mWrite docs/phase4/PLAN-reference-teardowns.md
+Wrote file successfully.
+[0m
+PHASE4-PLAN-REF-DONE
+Summary:
+- Tore down 3 live refs (AirPods Pro, Vision Pro, Realevate); artifacts in .design/ref/*.
+- Key finding: Apple pages use sticky + video chapters, zero GSAP pins/scrubs/WebGL.
+- Measured wins: Realevate marquee formula + 90° rail rotation; Vision Pro iris shader.
+- Adopt: chapter pacing, marquee engine, clip-wipe tokens, iris-math-only portal.
+- Guard: original composition only; never quote unmeasured pins/scrubs/PBR values.
+EXIT 0 model=meta/muse-spark-1.3-contributor

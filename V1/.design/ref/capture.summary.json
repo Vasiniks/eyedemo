@@ -1,0 +1,74 @@
+[
+ {
+  "label": "1920x1080",
+  "elements": 12,
+  "docHeight": 1080,
+  "fonts": [
+   "Inter",
+   "Barlow Condensed",
+   "GTStandard-M"
+  ],
+  "errors": 1,
+  "overflow": 0
+ },
+ {
+  "label": "1440x900",
+  "elements": 12,
+  "docHeight": 900,
+  "fonts": [
+   "Inter",
+   "Barlow Condensed",
+   "GTStandard-M"
+  ],
+  "errors": 0,
+  "overflow": 0
+ },
+ {
+  "label": "1024x768",
+  "elements": 15,
+  "docHeight": 768,
+  "fonts": [
+   "Inter",
+   "Barlow Condensed",
+   "GTStandard-M"
+  ],
+  "errors": 0,
+  "overflow": 0
+ },
+ {
+  "label": "768x1024",
+  "elements": 17,
+  "docHeight": 3915,
+  "fonts": [
+   "Inter",
+   "Barlow Condensed",
+   "GTStandard-M"
+  ],
+  "errors": 0,
+  "overflow": 0
+ },
+ {
+  "label": "430x932",
+  "elements": 11,
+  "docHeight": 4954,
+  "fonts": [
+   "Inter",
+   "Barlow Condensed",
+   "GTStandard-M"
+  ],
+  "errors": 0,
+  "overflow": 0
+ },
+ {
+  "label": "390x844",
+  "elements": 11,
+  "docHeight": 5029,
+  "fonts": [
+   "Inter",
+   "Barlow Condensed",
+   "GTStandard-M"
+  ],
+  "errors": 0,
+  "overflow": 0
+ }
+]

@@ -1,0 +1,1142 @@
+[0m
+> build · muse-spark-1.3-contributor
+[0m
+[0m→ [0mRead .
+[0m→ [0mRead package.json
+[0m→ [0mRead src/v1/lenis.ts
+[0m→ [0mRead src/v1/progress.ts
+[0m→ [0mRead src/v1/filmCurve.ts
+[0m→ [0mRead src/v1/snap.ts
+[0m→ [0mRead src/v1
+[0m→ [0mRead vite.config.ts
+[0m→ [0mRead v1.html
+[0m→ [0mRead src/v1/FilmSequence.tsx
+[0m→ [0mRead src/v1/App.tsx
+[0m
+[0m$ [0mrtk grep -r "virtualScroll\|virtual-scroll" node_modules/lenis/dist/types* 2>/dev/null | head -n 80; echo ---; rtk ls node_modules/lenis/dist/ | head
+zsh:1: no matches found: node_modules/lenis/dist/types*
+---
+nuxt/
+lenis-react.d.ts  3.1K
+lenis-react.mjs  5.1K
+lenis-react.mjs.map  9.5K
+lenis-snap.d.ts  4.3K
+lenis-snap.js  10.4K
+lenis-snap.js.map  19.7K
+lenis-snap.min.js  5.7K
+lenis-snap.min.js.map  19.3K
+lenis-snap.mjs  10.0K
+[0m
+[0m$ [0mpython3 -c "import pathlib, re; t=(pathlib.Path('node_modules/lenis/dist/lenis.d.ts').read_text()); print(t[:8000])"
+//#region packages/core/src/dimensions.d.ts
+/**
+ * Dimensions class to handle the size of the content and wrapper
+ *
+ * @example
+ * const dimensions = new Dimensions(wrapper, content)
+ * dimensions.on('resize', (e) => {
+ *   console.log(e.width, e.height)
+ * })
+ */
+declare class Dimensions {
+  private wrapper;
+  private content;
+  width: number;
+  height: number;
+  scrollHeight: number;
+  scrollWidth: number;
+  private debouncedResize?;
+  private wrapperResizeObserver?;
+  private contentResizeObserver?;
+  constructor(wrapper: HTMLElement | Window | Element, content: HTMLElement | Element, {
+    autoResize,
+    debounce: debounceValue
+  }?: {
+    autoResize?: boolean | undefined;
+    debounce?: number | undefined;
+  });
+  destroy(): void;
+  resize: () => void;
+  onWrapperResize: () => void;
+  onContentResize: () => void;
+  get limit(): {
+    x: number;
+    y: number;
+  };
+}
+//#endregion
+//#region packages/core/src/types.d.ts
+type OnUpdateCallback = (value: number, completed: boolean) => void;
+type OnStartCallback = () => void;
+type FromToOptions = {
+  /**
+   * Linear interpolation (lerp) intensity (between 0 and 1)
+   * @default 0.1
+   */
+  lerp?: number;
+  /**
+   * The duration of the scroll animation (in s)
+   * @default 1
+   */
+  duration?: number;
+  /**
+   * The easing function to use for the scroll animation
+   * @default (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t))
+   */
+  easing?: EasingFunction;
+  /**
+   * Called when the scroll starts
+   */
+  onStart?: OnStartCallback;
+  /**
+   * Called when the scroll progress changes
+   */
+  onUpdate?: OnUpdateCallback;
+};
+type UserData = Record<string, unknown>;
+type Scrolling = boolean | 'native' | 'smooth';
+type LenisEvent = 'scroll' | 'virtual-scroll';
+type ScrollCallback = (lenis: Lenis) => void;
+type VirtualScrollCallback = (data: VirtualScrollData) => void;
+type VirtualScrollData = {
+  deltaX: number;
+  deltaY: number;
+  event: WheelEvent | TouchEvent;
+};
+type Orientation = 'vertical' | 'horizontal';
+type GestureOrientation = 'vertical' | 'horizontal' | 'both';
+type EasingFunction = (time: number) => number;
+type ScrollToOptions = {
+  /**
+   * The offset to apply to the target value
+   * @default 0
+   */
+  offset?: number;
+  /**
+   * Skip the animation and jump to the target value immediately
+   * @default false
+   */
+  immediate?: boolean;
+  /**
+   * Lock the scroll to the target value
+   * @default false
+   */
+  lock?: boolean;
+  /**
+   * The duration of the scroll animation (in s)
+   */
+  duration?: number;
+  /**
+   * The easing function to use for the scroll animation
+   * @default (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t))
+   */
+  easing?: EasingFunction;
+  /**
+   * Linear interpolation (lerp) intensity (between 0 and 1)
+   * @default 0.1
+   */
+  lerp?: number;
+  /**
+   * Called when the scroll starts
+   */
+  onStart?: (lenis: Lenis) => void;
+  /**
+   * Called when the scroll completes
+   */
+  onComplete?: (lenis: Lenis) => void;
+  /**
+   * Scroll even if stopped
+   * @default false
+   */
+  force?: boolean;
+  /**
+   * Scroll initiated from outside of the lenis instance
+   * @default false
+   */
+  programmatic?: boolean;
+  /**
+   * User data that will be forwarded through the scroll event
+   */
+  userData?: UserData;
+};
+type LenisOptions = {
+  /**
+   * The element that will be used as the scroll container
+   * @default window
+   */
+  wrapper?: Window | HTMLElement | Element;
+  /**
+   * The element that contains the content that will be scrolled, usually `wrapper`'s direct child
+   * @default document.documentElement
+   */
+  content?: HTMLElement | Element;
+  /**
+   * The element that will listen to `wheel` and `touch` events
+   * @default window
+   */
+  eventsTarget?: Window | HTMLElement | Element;
+  /**
+   * Smooth the scroll initiated by `wheel` events
+   * @default true
+   */
+  smoothWheel?: boolean;
+  /**
+   * Mimic touch device scroll while allowing scroll sync
+   * @default false
+   */
+  syncTouch?: boolean;
+  /**
+   * Linear interpolation (lerp) intensity (between 0 and 1)
+   * @default 0.075
+   */
+  syncTouchLerp?: number;
+  /**
+   * Manage the the strength of `syncTouch` inertia
+   * @default 1.7
+   */
+  touchInertiaExponent?: number;
+  /**
+   * Scroll duration in seconds
+   */
+  duration?: number;
+  /**
+   * Scroll easing function
+   * @default (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t))
+   */
+  easing?: EasingFunction;
+  /**
+   * Linear interpolation (lerp) intensity (between 0 and 1)
+   * @default 0.1
+   */
+  lerp?: number;
+  /**
+   * Enable infinite scrolling
+   * @default false
+   */
+  infinite?: boolean;
+  /**
+   * The orientation of the scrolling. Can be `vertical` or `horizontal`
+   * @default vertical
+   */
+  orientation?: Orientation;
+  /**
+   * The orientation of the gestures. Can be `vertical`, `horizontal` or `both`
+   * @default vertical
+   */
+  gestureOrientation?: GestureOrientation;
+  /**
+   * The multiplier to use for touch events
+   * @default 1
+   */
+  touchMultiplier?: number;
+  /**
+   * The multiplier to use for mouse wheel events
+   * @default 1
+   */
+  wheelMultiplier?: number;
+  /**
+   * Resize instance automatically
+   * @default true
+   */
+  autoResize?: boolean;
+  /**
+   * Manually prevent scroll to be smoothed based on elements traversed by events
+   */
+  prevent?: (node: HTMLElement) => boolean;
+  /**
+   * Manually modify the events before they get consumed
+   */
+  virtualScroll?: (data: VirtualScrollData) => boolean;
+  /**
+   * Wether or not to enable overscroll on a nested Lenis instance, similar to CSS overscroll-behavior (https://developer.mozilla.org/en-US/docs/Web/CSS/overscroll-behavior)
+   * @default true
+   */
+  overscroll?: boolean;
+  /**
+   * If `true`, Lenis will automatically run `requestAnimationFrame` loop
+   * @default false
+   */
+  autoRaf?: boolean;
+  /**
+   * If `true`, Lenis will handle anchor links automatically
+   * @default false
+   */
+  anchors?: boolean | ScrollToOptions;
+  /**
+   * If `true`, Lenis will automatically start/stop based on wrapper's overflow property
+   * @default false
+   */
+  autoToggle?: boolean;
+  /**
+   * If `true`, Lenis will allow nested scroll
+   * @default false
+   */
+  allowNestedScroll?: boolean;
+  /**
+   * @deprecated use `naiveDimensions` instead
+   */
+  __experimental__naiveDimensions?: boolean;
+  /**
+   * If `true`, Lenis will use naive dimensions calculation, be careful this has a performance impact
+   * @default false
+   */
+  naiveDimensions?: boolean;
+  /**
+   * If `true`, Lenis will stop inertia when an internal link is clicked
+   * @default false
+   */
+  stopInertiaOnNavigate?: boolean;
+  /**
+   * If `true`, Lenis will honor the user's `prefers-reduced-motion` setting: smoothing is disabled (`lerp` forced to `1` so scroll tracks the input device 1:1) and programmatic scrolls become instant, while scroll keeps running on the main thread
+   * @default true
+   */
+  respectReducedMotion?: boolean;
+};
+declare global {
+  interface Window {
+    lenisVersion: string;
+    lenis: {
+      version?: string;
+      horizontal?: boolean;
+      snap?: boolean;
+      touch?: boolean;
+    };
+  }
+}
+//#endregion
+//#region packages/core/src/lenis.d.ts
+type OptionalPick<T, F extends keyof T> = Omit<T, F> & Partial<Pick<T, F>>;
+declare class Lenis {
+  private _isScrolling;
+  private _isStopped;
+  private _isLocked;
+  private _preventNextNativeScrollEvent;
+  private _resetVelocityTimeout;
+  private _rafId;
+  private _isDraggingSelection;
+  private readonly reducedMotionMediaQuery;
+  /**
+   * Whether or not the user is touching the screen
+   */
+  isTouching?: boolean;
+  /**
+   * Whether or not the device is running iOS
+   */
+  isIos: boolean;
+  /**
+   * The time in ms since the lenis instance was created
+   */
+  time: number;
+  /**
+   * User data that will be forwarded through the scroll event
+   *
+   * @example
+   * lenis.scrollTo(100, {
+   *   userData: {
+   *     foo: 'bar'
+   *   }
+   * })
+   */
+  userData: UserData;
+  /**
+   * The last velocity of the scroll
+   */
+  lastVelocity: number;
+  /**
+   * Th
+[0m
+[0m$ [0mpython3 -c "import pathlib; t=pathlib.Path('node_modules/lenis/dist/lenis.mjs').read_text(); i=t.find('virtualScroll'); print(t[max(0,i-2000):i+2000])"
+y: deltaY
+		};
+		this.emitter.emit("scroll", {
+			deltaX,
+			deltaY,
+			event
+		});
+	};
+	onTouchEnd = (event) => {
+		this.emitter.emit("scroll", {
+			deltaX: this.lastDelta.x,
+			deltaY: this.lastDelta.y,
+			event
+		});
+	};
+	/** Event handler for 'wheel' event */
+	onWheel = (event) => {
+		let { deltaX, deltaY, deltaMode } = event;
+		const multiplierX = getDeltaMultiplier(deltaMode, this.window.width);
+		const multiplierY = getDeltaMultiplier(deltaMode, this.window.height);
+		deltaX *= multiplierX;
+		deltaY *= multiplierY;
+		deltaX *= this.options.wheelMultiplier;
+		deltaY *= this.options.wheelMultiplier;
+		this.emitter.emit("scroll", {
+			deltaX,
+			deltaY,
+			event
+		});
+	};
+	onWindowResize = () => {
+		this.window = {
+			width: window.innerWidth,
+			height: window.innerHeight
+		};
+	};
+};
+//#endregion
+//#region packages/core/src/lenis.ts
+const defaultEasing = (t) => Math.min(1, 1.001 - 2 ** (-10 * t));
+var Lenis = class {
+	_isScrolling = false;
+	_isStopped = false;
+	_isLocked = false;
+	_preventNextNativeScrollEvent = false;
+	_resetVelocityTimeout = null;
+	_rafId = null;
+	_isDraggingSelection = false;
+	reducedMotionMediaQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
+	/**
+	* Whether or not the user is touching the screen
+	*/
+	isTouching;
+	/**
+	* Whether or not the device is running iOS
+	*/
+	isIos;
+	/**
+	* The time in ms since the lenis instance was created
+	*/
+	time = 0;
+	/**
+	* User data that will be forwarded through the scroll event
+	*
+	* @example
+	* lenis.scrollTo(100, {
+	*   userData: {
+	*     foo: 'bar'
+	*   }
+	* })
+	*/
+	userData = {};
+	/**
+	* The last velocity of the scroll
+	*/
+	lastVelocity = 0;
+	/**
+	* The current velocity of the scroll
+	*/
+	velocity = 0;
+	/**
+	* The direction of the scroll
+	*/
+	direction = 0;
+	/**
+	* The options passed to the lenis instance
+	*/
+	options;
+	/**
+	* The target scroll value
+	*/
+	targetScroll;
+	/**
+	* The animated scroll value
+	*/
+	animatedScroll;
+	animate = new Animate();
+	emitter = new Emitter();
+	dimensions;
+	virtualScroll;
+	constructor({ wrapper = window, content = document.documentElement, eventsTarget = wrapper, smoothWheel = true, syncTouch = false, syncTouchLerp = .075, touchInertiaExponent = 1.7, duration, easing, lerp = .1, infinite = false, orientation = "vertical", gestureOrientation = orientation === "horizontal" ? "both" : "vertical", touchMultiplier = 1, wheelMultiplier = 1, autoResize = true, prevent, virtualScroll, overscroll = true, autoRaf = false, anchors = false, autoToggle = false, allowNestedScroll = false, __experimental__naiveDimensions = false, naiveDimensions = __experimental__naiveDimensions, stopInertiaOnNavigate = false, respectReducedMotion = true } = {}) {
+		window.lenisVersion = version;
+		if (!window.lenis) window.lenis = {};
+		window.lenis.version = version;
+		if (orientation === "horizontal") window.lenis.horizontal = true;
+		if (syncTouch === true) window.lenis.touch = true;
+		this.isIos = /(iPad|iPhone|iPod)/g.test(navigator.userAgent);
+		if (!wrapper || wrapper === document.documentElement) wrapper = window;
+		if (typeof duration === "number" && typeof easing !== "function") easing = defaultEasing;
+		else if (typeof easing === "function" && typeof duration !== "number") duration = 1;
+		this.options = {
+			wrapper,
+			content,
+			eventsTarget,
+			smoothWheel,
+			syncTouch,
+			syncTouchLerp,
+			touchInertiaExponent,
+			duration,
+			easing,
+			lerp,
+			infinite,
+			gestureOrientation,
+			orientation,
+			touchMultiplier,
+			wheelMultiplier,
+			autoResize,
+			prevent,
+			virtualScroll,
+			overscroll,
+			autoRaf,
+			anchors,
+			autoToggle,
+			allowNestedScroll,
+			naiveDimensions,
+			stopInertiaOnNavigate,
+			respectReducedMotion
+		};
+		this.dimensions = new Dimensions(wrapper, content, { autoResize });
+		this.updateClassName();
+		this.targetScroll = this.animatedScroll = this.actualScroll;
+		this.options.wrapper.addEventListener("scroll", this.onNativeScroll);
+		this.options.wrapper.addEventListener("scrollend", this.onScrollEnd, { capture:
+[0m
+[0m$ [0mpython3 -c "import pathlib; t=pathlib.Path('node_modules/lenis/dist/lenis.mjs').read_text(); i=t.find('onVirtualScroll'); print(t[max(0,i-500):i+3000])"
+ptions.wrapper.addEventListener("scroll", this.onNativeScroll);
+		this.options.wrapper.addEventListener("scrollend", this.onScrollEnd, { capture: true });
+		if (this.options.anchors || this.options.stopInertiaOnNavigate) this.options.wrapper.addEventListener("click", this.onClick);
+		this.options.wrapper.addEventListener("pointerdown", this.onPointerDown);
+		this.virtualScroll = new VirtualScroll(eventsTarget, {
+			touchMultiplier,
+			wheelMultiplier
+		});
+		this.virtualScroll.on("scroll", this.onVirtualScroll);
+		if (this.options.autoToggle) {
+			this.checkOverflow();
+			this.rootElement.addEventListener("transitionend", this.onTransitionEnd);
+		}
+		if (this.options.autoRaf) this._rafId = requestAnimationFrame(this.raf);
+	}
+	/**
+	* Destroy the lenis instance, remove all event listeners and clean up the class name
+	*/
+	destroy() {
+		this.emitter.destroy();
+		this.options.wrapper.removeEventListener("scroll", this.onNativeScroll);
+		this.options.wrapper.removeEventListener("scrollend", this.onScrollEnd, { capture: true });
+		this.options.wrapper.removeEventListener("pointerdown", this.onPointerDown);
+		if (this.options.anchors || this.options.stopInertiaOnNavigate) this.options.wrapper.removeEventListener("click", this.onClick);
+		this.virtualScroll.destroy();
+		this.dimensions.destroy();
+		this.cleanUpClassName();
+		if (this._rafId) cancelAnimationFrame(this._rafId);
+	}
+	on(event, callback) {
+		return this.emitter.on(event, callback);
+	}
+	off(event, callback) {
+		return this.emitter.off(event, callback);
+	}
+	onScrollEnd = (e) => {
+		if (!(e instanceof CustomEvent)) {
+			if (this.isScrolling === "smooth" || this.isScrolling === false) e.stopPropagation();
+		}
+	};
+	dispatchScrollendEvent = () => {
+		this.options.wrapper.dispatchEvent(new CustomEvent("scrollend", {
+			bubbles: this.options.wrapper === window,
+			detail: { lenisScrollEnd: true }
+		}));
+	};
+	get overflow() {
+		const property = this.isHorizontal ? "overflow-x" : "overflow-y";
+		return getComputedStyle(this.rootElement)[property];
+	}
+	checkOverflow() {
+		if (["hidden", "clip"].includes(this.overflow)) this.internalStop();
+		else this.internalStart();
+	}
+	onTransitionEnd = (event) => {
+		if (event.propertyName?.includes("overflow") && event.target === this.rootElement) this.checkOverflow();
+	};
+	setScroll(scroll) {
+		if (this.isHorizontal) this.options.wrapper.scrollTo({
+			left: scroll,
+			behavior: "instant"
+		});
+		else this.options.wrapper.scrollTo({
+			top: scroll,
+			behavior: "instant"
+		});
+	}
+	onClick = (event) => {
+		const linkElementsUrls = event.composedPath().filter((node) => node instanceof HTMLAnchorElement && node.href).map((element) => new URL(element.href));
+		const currentUrl = new URL(window.location.href);
+		if (this.options.anchors) {
+			const anchorElementUrl = linkElementsUrls.find((targetUrl) => currentUrl.host === targetUrl.host && currentUrl.pathname === targetUrl.pathname && targetUrl.hash);
+			if (anchorElementUrl) {
+				const options = typeof this.options.anchors === "object" && this.options.anchors ? this.options.anchors : void 0;
+				const target = decodeURIComponent(anchorElementUrl.hash);
+				this.scrollTo(target, options);
+				return;
+			}
+		}
+		if (this.options.stopInertiaOnNavigate) {
+			if (linkElementsUrls.some((targetUrl) => currentUrl.host === targetUrl.host && currentUrl.pathname !== targetUrl.pathname)) {
+				this.reset();
+				return;
+			}
+		}
+	};
+	onPointerDown = (event) => {
+		if (event.button === 1) this.reset();
+	};
+	isTouchOnSelec
+[0m
+[0m$ [0mpython3 -c "import pathlib; t=pathlib.Path('node_modules/lenis/dist/lenis.mjs').read_text(); i=t.find('onVirtualScroll ='); print(t[max(0,i-200):i+2500])"
+X - first.left, touch.clientY - first.top) <= HANDLE_RADIUS;
+		const nearEnd = Math.hypot(touch.clientX - last.right, touch.clientY - last.bottom) <= HANDLE_RADIUS;
+		return nearStart || nearEnd;
+	}
+	onVirtualScroll = (data) => {
+		if (typeof this.options.virtualScroll === "function" && this.options.virtualScroll(data) === false) return;
+		const { deltaX, deltaY, event } = data;
+		this.emitter.emit("virtual-scroll", {
+			deltaX,
+			deltaY,
+			event
+		});
+		if (event.ctrlKey) return;
+		if (event.lenisStopPropagation) return;
+		const isTouch = event.type.includes("touch");
+		const isWheel = event.type.includes("wheel");
+		if (isTouch && this.isIos) {
+			if (event.type === "touchstart") this._isDraggingSelection = this.isTouchOnSelectionHandle(event);
+			if (this._isDraggingSelection) {
+				if (event.type === "touchend") this._isDraggingSelection = false;
+				return;
+			}
+		}
+		this.isTouching = event.type === "touchstart" || event.type === "touchmove";
+		const isClickOrTap = deltaX === 0 && deltaY === 0;
+		if (this.options.syncTouch && isTouch && event.type === "touchstart" && isClickOrTap && !this.isStopped && !this.isLocked) {
+			this.reset();
+			return;
+		}
+		const isUnknownGesture = this.options.gestureOrientation === "vertical" && deltaY === 0 || this.options.gestureOrientation === "horizontal" && deltaX === 0;
+		if (isClickOrTap || isUnknownGesture) return;
+		let composedPath = event.composedPath();
+		composedPath = composedPath.slice(0, composedPath.indexOf(this.rootElement));
+		const prevent = this.options.prevent;
+		const gestureOrientation = Math.abs(deltaX) >= Math.abs(deltaY) ? "horizontal" : "vertical";
+		if (composedPath.find((node) => node instanceof HTMLElement && (typeof prevent === "function" && prevent?.(node) || node.hasAttribute?.("data-lenis-prevent") || gestureOrientation === "vertical" && node.hasAttribute?.("data-lenis-prevent-vertical") || gestureOrientation === "horizontal" && node.hasAttribute?.("data-lenis-prevent-horizontal") || isTouch && node.hasAttribute?.("data-lenis-prevent-touch") || isWheel && node.hasAttribute?.("data-lenis-prevent-wheel") || this.options.allowNestedScroll && this.hasNestedScroll(node, {
+			deltaX,
+			deltaY
+		})))) return;
+		if (this.isStopped || this.isLocked) {
+			if (event.cancelable) event.preventDefault();
+			return;
+		}
+		if (!(this.options.syncTouch && isTouch || this.options.smoothWheel && isWheel)) {
+			this.isScrolling = "native";
+			this.animate.stop();
+			event.lenisStopPropagation = true;
+			return;
+		}
+		let delta = deltaY;
+		if (this.options.gestureOrientation === "both") delta = Math.abs(deltaY) > Math.abs(deltaX) ? deltaY : deltaX;
+		else if (this.options.gestureOrientation === "hor
+[0m
+[0m# [0mTodos
+[•] Clamp+gates in lenis.ts, helpers in filmCurve.ts, gate-aware snap.ts, dwell log in progress.ts
+[ ] Fast-flick Playwright verify at 1512x860 + screenshot
+[ ] Stop server, write docs/phase4/qa/v3/F4-SCROLL.md, end F4-SCROLL-DONE
+[0m
+[0m$ [0mpython3 -c "import pathlib; t=pathlib.Path('node_modules/lenis/dist/lenis.mjs').read_text(); import re; idx=[m.start() for m in re.finditer('options\.lerp', t)]; print(idx[:10]); print(t[idx[0]-400:idx[0]+400] if idx else 'none')"
+<string>:1: SyntaxWarning: invalid escape sequence '\.'
+[20326, 23231]
+		const isSyncTouch = isTouch && this.options.syncTouch;
+		const hasTouchInertia = isTouch && event.type === "touchend";
+		if (hasTouchInertia) delta = Math.sign(delta) * Math.abs(this.velocity) ** this.options.touchInertiaExponent;
+		this.scrollTo(this.targetScroll + delta, {
+			programmatic: false,
+			...isSyncTouch ? { lerp: hasTouchInertia ? this.options.syncTouchLerp : 1 } : {
+				lerp: this.options.lerp,
+				duration: this.options.duration,
+				easing: this.options.easing
+			}
+		});
+	};
+	/**
+	* Force lenis to recalculate the dimensions
+	*/
+	resize() {
+		this.dimensions.resize();
+		this.animatedScroll = this.targetScroll = this.actualScroll;
+		this.emit();
+	}
+	emit() {
+		this.emitter.emit("scroll", this);
+	}
+	onNativeScroll = () => {
+		if (this._resetVelocityTimeout !== null) {
+			cle
+[0m
+[0m← [0mEdit src/v1/filmCurve.ts
+Index: /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/v1/filmCurve.ts
+===================================================================
+--- /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/v1/filmCurve.ts
++++ /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/v1/filmCurve.ts
+@@ -309,17 +309,18 @@
+   return SNAP_SOURCE_KEYS.map(snapSourceToScroll);
+ }
+ 
+ /**
+- * Capture window for key `i` (scroll-fraction units): ≈¼ of the gap to the
+- * nearest neighbouring key (V3-SCROLL: tightened from ⅓ for a subtler nudge).
+- * The nudge only fires inside this window.
++ * Gate window for key `i` (scroll-fraction units): ±⅛ of the gap to the
++ * nearest neighbouring key (V3-SCROLL gates). Inside this window fast
++ * flicks are scaled down so every key moment decelerates — distinct from
++ * the wider snap capture window (≈¼ gap) used by the idle nudge.
+  */
+-export function snapCaptureWindow(i: number): number {
++export function snapGateWindow(i: number): number {
+   const keys = snapKeyScrolls();
+   const k = keys[i];
+   const gaps: number[] = [];
+   if (i > 0) gaps.push(k - keys[i - 1]);
+   if (i < keys.length - 1) gaps.push(keys[i + 1] - k);
+   const nearest = Math.min(...gaps);
+-  return nearest / 4;
++  return nearest / 8;
+ }
+
+[0m
+[0m← [0mEdit src/v1/filmCurve.ts
+Index: /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/v1/filmCurve.ts
+===================================================================
+--- /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/v1/filmCurve.ts
++++ /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/v1/filmCurve.ts
+@@ -309,8 +309,23 @@
+   return SNAP_SOURCE_KEYS.map(snapSourceToScroll);
+ }
+ 
+ /**
++ * Capture window for key `i` (scroll-fraction units): ≈¼ of the gap to the
++ * nearest neighbouring key (V3-SCROLL: tightened from ⅓ for a subtler nudge).
++ * The nudge only fires inside this window.
++ */
++export function snapCaptureWindow(i: number): number {
++  const keys = snapKeyScrolls();
++  const k = keys[i];
++  const gaps: number[] = [];
++  if (i > 0) gaps.push(k - keys[i - 1]);
++  if (i < keys.length - 1) gaps.push(keys[i + 1] - k);
++  const nearest = Math.min(...gaps);
++  return nearest / 4;
++}
++
++/**
+  * Gate window for key `i` (scroll-fraction units): ±⅛ of the gap to the
+  * nearest neighbouring key (V3-SCROLL gates). Inside this window fast
+  * flicks are scaled down so every key moment decelerates — distinct from
+  * the wider snap capture window (≈¼ gap) used by the idle nudge.
+
+[0m
+[0m← [0mWrite src/v1/lenis.ts
+Wrote file successfully.
+[0m
+[0m← [0mEdit src/v1/snap.ts
+Index: /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/v1/snap.ts
+===================================================================
+--- /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/v1/snap.ts
++++ /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/v1/snap.ts
+@@ -12,9 +12,9 @@
+ // require Lenis to report not-scrolling with ~zero velocity, and on touch
+ // devices we additionally require a quiet period after the last touchend so
+ // mobile flings glide to rest untouched.
+ import type Lenis from 'lenis';
+-import { ensureLenis } from './lenis';
++import { ensureLenis, isScrollGateActive } from './lenis';
+ import { snapKeyScrolls, snapCaptureWindow } from './filmCurve';
+ 
+ const IDLE_MS = 160;
+ const RETRY_MS = 120;
+
+[0m
+[0m← [0mEdit src/v1/snap.ts
+Index: /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/v1/snap.ts
+===================================================================
+--- /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/v1/snap.ts
++++ /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/v1/snap.ts
+@@ -99,8 +99,13 @@
+ 
+ const onIdle = () => {
+   idleTimer = null;
+   if (disposed || snapping) return;
++  // V3-SCROLL gate: let the soft hold breathe — never nudge mid-gate.
++  if (isScrollGateActive()) {
++    scheduleIdle(RETRY_MS);
++    return;
++  }
+   // Still gliding (momentum / fling)? Back off and re-check — never snap
+   // mid-motion.
+   if (!isSettled()) {
+     scheduleIdle(RETRY_MS);
+
+[0m
+[0m← [0mEdit src/v1/progress.ts
+Index: /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/v1/progress.ts
+===================================================================
+--- /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/v1/progress.ts
++++ /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/v1/progress.ts
+@@ -4,10 +4,99 @@
+ 
+ let p = 0;
+ const listeners = new Set<() => void>();
+ 
++// V3-SCROLL — beat dwell log (QA: fast flicks must hold every key beat
++// ≥250 ms). Film progress partitions into one zone per snap key (nearest
++// key-film wins); time spent per zone accumulates here for Playwright to
++// read via `window.__v1BeatDwells`. Pure observation — no scroll shaping.
++import {
++  SNAP_SOURCE_KEYS,
++  sourceToFilm,
++  resolveFilmSpace,
++  V2_FILM_MANIFEST,
++} from './filmCurve';
++
++const KEY_FILMS: number[] = (() => {
++  try {
++    const space = resolveFilmSpace(V2_FILM_MANIFEST);
++    return SNAP_SOURCE_KEYS.map((s) => sourceToFilm(s, space));
++  } catch {
++    return [];
++  }
++})();
++
++const beatDwellMs: number[] = SNAP_SOURCE_KEYS.map(() => 0);
++let beatZone = -1;
++let beatZoneSince = 0;
++
++function nowMs(): number {
++  try {
++    return performance.now();
++  } catch {
++    return Date.now();
++  }
++}
++
++function zoneOf(v: number): number {
++  if (KEY_FILMS.length === 0) return -1;
++  let best = 0;
++  let bestD = Infinity;
++  for (let i = 0; i < KEY_FILMS.length; i++) {
++    const d = Math.abs(v - KEY_FILMS[i]);
++    if (d < bestD) {
++      bestD = d;
++      best = i;
++    }
++  }
++  return best;
++}
++
++function trackBeatDwell(v: number): void {
++  const z = zoneOf(v);
++  const t = nowMs();
++  if (beatZone < 0) {
++    beatZone = z;
++    beatZoneSince = t;
++    return;
++  }
++  if (z !== beatZone) {
++    if (beatZone >= 0 && beatZone < beatDwellMs.length) {
++      beatDwellMs[beatZone] += Math.max(0, t - beatZoneSince);
++    }
++    beatZone = z;
++    beatZoneSince = t;
++  }
++}
++
++/** Per-key accumulated on-screen time (ms); includes the open zone. */
++export function getBeatDwells(): Array<{ source: number; dwellMs: number }> {
++  const t = nowMs();
++  return SNAP_SOURCE_KEYS.map((source, i) => ({
++    source,
++    dwellMs: Math.round(beatDwellMs[i] + (i === beatZone ? Math.max(0, t - beatZoneSince) : 0)),
++  }));
++}
++
++/** Reset the dwell log (tests only). */
++export function resetBeatDwells(): void {
++  for (let i = 0; i < beatDwellMs.length; i++) beatDwellMs[i] = 0;
++  beatZone = zoneOf(p);
++  beatZoneSince = nowMs();
++}
++
++try {
++  (window as unknown as { __v1BeatDwells?: () => unknown }).__v1BeatDwells =
++    getBeatDwells as unknown as () => unknown;
++  (window as unknown as { __v1ResetBeats?: () => unknown }).__v1ResetBeats =
++    resetBeatDwells as unknown as () => unknown;
++} catch {
++  /* SSR / tests without window */
++}
++
+ export function setFilmProgress(v: number): void {
+   const nv = Math.max(0, Math.min(1, v));
++  trackBeatDwell(nv);
+   if (Math.abs(nv - p) < 0.0005) return;
+   p = nv;
+   listeners.forEach((l) => l());
+ }
+
+[0m
+[0m→ [0mRead src/v1/progress.ts
+[0m
+[0m← [0mEdit src/v1/progress.ts
+Index: /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/v1/progress.ts
+===================================================================
+--- /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/v1/progress.ts
++++ /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/v1/progress.ts
+@@ -1,21 +1,22 @@
+ // V1-CORE — tiny external film-progress store.
+ // FilmSequence writes; BrandWaves / FilmCaptions / Header read.
+ import { useSyncExternalStore } from 'react';
++import {
++  SNAP_SOURCE_KEYS,
++  sourceToFilm,
++  resolveFilmSpace,
++  V2_FILM_MANIFEST,
++  CHAPTER_TICKS,
++} from './filmCurve';
+ 
+ let p = 0;
+ const listeners = new Set<() => void>();
+ 
+ // V3-SCROLL — beat dwell log (QA: fast flicks must hold every key beat
+ // ≥250 ms). Film progress partitions into one zone per snap key (nearest
+ // key-film wins); time spent per zone accumulates here for Playwright to
+ // read via `window.__v1BeatDwells`. Pure observation — no scroll shaping.
+-import {
+-  SNAP_SOURCE_KEYS,
+-  sourceToFilm,
+-  resolveFilmSpace,
+-  V2_FILM_MANIFEST,
+-} from './filmCurve';
+ 
+ const KEY_FILMS: number[] = (() => {
+   try {
+     const space = resolveFilmSpace(V2_FILM_MANIFEST);
+
+[0m
+[0m← [0mEdit src/v1/progress.ts
+Index: /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/v1/progress.ts
+===================================================================
+--- /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/v1/progress.ts
++++ /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/v1/progress.ts
+@@ -122,7 +122,5 @@
+ 
+ // POLISH-FILM — ordinal chapter ticks for the film progress rail.
+ // Fractions only (no labels, no text); derived from the CURVE beat table so
+ // the rail and the scroll→film pacing share one source of truth.
+-import { CHAPTER_TICKS } from './filmCurve';
+-
+ export const FILM_CHAPTERS: readonly number[] = CHAPTER_TICKS;
+
+[0m
+[0m$ [0mnpx tsc --noEmit -p tsconfig.app.json 2>&1 | head -n 30
+npm notice run eyeq-vision-care@0.1.0 npx
+npm notice run 'tsc' --noEmit -p tsconfig.app.json
+[0m
+[0m$ [0mnohup npx vite --port 5702 --strictPort > /tmp/v1-scroll-5702.log 2>&1 & echo $!
+78149
+[0m
+[0m$ [0msleep 4 && rtk read /tmp/v1-scroll-5702.log --tail-lines 20
+npm notice run eyeq-vision-care@0.1.0 npx
+npm notice run 'vite' --port 5702 --strictPort
+
+  VITE v8.3.1  ready in 249 ms
+
+  ➜  Local:   http://localhost:5702/
+  ➜  Network: use --host to expose
+[0m
+[0m# [0mTodos
+[✓] Clamp+gates in lenis.ts, helpers in filmCurve.ts, gate-aware snap.ts, dwell log in progress.ts
+[•] Fast-flick Playwright verify at 1512x860 + screenshot
+[ ] Stop server, write docs/phase4/qa/v3/F4-SCROLL.md, end F4-SCROLL-DONE
+[0m
+[0m$ [0mpython3 - <<'EOF'
+import pathlib
+p = pathlib.Path('/tmp/v1-scroll-flick.mjs')
+p.write_text('''import { chromium } from 'playwright';
+const b = await chromium.launch();
+const pg = await b.newPage({ viewport: { width: 1512, height: 860 } });
+const errs = [];
+pg.on('pageerror', e => errs.push(String(e)));
+await pg.goto('http://localhost:5702/v1.html', { waitUntil: 'load', timeout: 45000 });
+await pg.waitForSelector('.v1-film', { timeout: 30000 });
+// let film boot (manifest + first batch + intro)
+await pg.waitForTimeout(9000);
+const hasHooks = await pg.evaluate(() => typeof window.__v1BeatDwells === 'function');
+console.log('beatHooks:', hasHooks);
+// reset dwell log, then fast flicks through the whole film
+await pg.evaluate(() => window.__v1ResetBeats && window.__v1ResetBeats());
+const filmBox = await pg.evaluate(() => {
+  const s = document.querySelector('.v1-film');
+  return { top: s.offsetTop, h: s.offsetHeight, vh: window.innerHeight };
+});
+console.log('film:', JSON.stringify(filmBox));
+const dist = filmBox.h - filmBox.vh;
+// fast flicks: big wheel deltas that previously skipped beats
+for (let i = 0; i < 40; i++) {
+  await pg.mouse.wheel(0, 900);
+  await pg.waitForTimeout(120);
+  const y = await pg.evaluate(() => window.scrollY);
+  if (y >= filmBox.top + dist - 2) break;
+}
+// settle through gates/snaps
+await pg.waitForTimeout(2500);
+const dwells = await pg.evaluate(() => window.__v1BeatDwells ? window.__v1BeatDwells() : null);
+console.log('dwells:', JSON.stringify(dwells));
+const min = Math.min(...dwells.map(d => d.dwellMs));
+console.log('minDwellMs:', min);
+console.log('allGte250:', dwells.every(d => d.dwellMs >= 250));
+console.log('pageerrors:', JSON.stringify(errs.slice(0, 5)));
+await pg.screenshot({ path: '/tmp/v1-scroll-verify.png' });
+await b.close();
+if (!dwells.every(d => d.dwellMs >= 250)) process.exit(2);
+''')
+print('written')
+EOF
+node /tmp/v1-scroll-flick.mjs
+written
+node:internal/modules/package_json_reader:301
+  throw new ERR_MODULE_NOT_FOUND(packageName, fileURLToPath(base), null);
+        ^
+
+Error [ERR_MODULE_NOT_FOUND]: Cannot find package 'playwright' imported from /private/tmp/v1-scroll-flick.mjs
+    at Object.getPackageJSONURL (node:internal/modules/package_json_reader:301:9)
+    at packageResolve (node:internal/modules/esm/resolve:768:81)
+    at moduleResolve (node:internal/modules/esm/resolve:859:18)
+    at defaultResolve (node:internal/modules/esm/resolve:992:11)
+    at #cachedDefaultResolve (node:internal/modules/esm/loader:701:20)
+    at #resolveAndMaybeBlockOnLoaderThread (node:internal/modules/esm/loader:721:38)
+    at ModuleLoader.resolveSync (node:internal/modules/esm/loader:759:56)
+    at #resolve (node:internal/modules/esm/loader:683:17)
+    at ModuleLoader.getOrCreateModuleJob (node:internal/modules/esm/loader:603:35)
+    at ModuleJob.syncLink (node:internal/modules/esm/module_job:163:33) {
+  code: 'ERR_MODULE_NOT_FOUND'
+}
+
+Node.js v24.18.0
+[0m
+[0m$ [0mcp /tmp/v1-scroll-flick.mjs ./qa-scroll-flick.tmp.mjs && node ./qa-scroll-flick.tmp.mjs; echo EXIT=$?; rm -f ./qa-scroll-flick.tmp.mjs
+beatHooks: true
+film: {"top":0,"h":6880,"vh":860}
+dwells: [{"source":1,"dwellMs":1871},{"source":70,"dwellMs":2513},{"source":145,"dwellMs":2894},{"source":215,"dwellMs":2112},{"source":280,"dwellMs":0},{"source":368,"dwellMs":0},{"source":440,"dwellMs":0},{"source":500,"dwellMs":0},{"source":600,"dwellMs":0}]
+minDwellMs: 0
+allGte250: false
+pageerrors: []
+EXIT=2
+[0m
+[0m$ [0mpython3 - <<'EOF'
+import pathlib
+p = pathlib.Path('qa-scroll-flick.tmp.mjs')
+p.write_text('''import { chromium } from 'playwright';
+const b = await chromium.launch();
+const pg = await b.newPage({ viewport: { width: 1512, height: 860 } });
+const errs = [];
+pg.on('pageerror', e => errs.push(String(e)));
+await pg.goto('http://localhost:5702/v1.html', { waitUntil: 'load', timeout: 45000 });
+await pg.waitForSelector('.v1-film', { timeout: 30000 });
+await pg.waitForTimeout(9000);
+await pg.evaluate(() => window.__v1ResetBeats && window.__v1ResetBeats());
+const filmBox = await pg.evaluate(() => {
+  const s = document.querySelector('.v1-film');
+  return { top: s.offsetTop, h: s.offsetHeight, vh: window.innerHeight };
+});
+const dist = filmBox.h - filmBox.vh;
+for (let i = 0; i < 220; i++) {
+  await pg.mouse.wheel(0, 900);
+  await pg.waitForTimeout(100);
+  const y = await pg.evaluate(() => window.scrollY);
+  if (y >= filmBox.top + dist - 2) { console.log('reached bottom at iter', i); break; }
+}
+await pg.waitForTimeout(2500);
+const dwells = await pg.evaluate(() => window.__v1BeatDwells ? window.__v1BeatDwells() : null);
+console.log('dwells:', JSON.stringify(dwells));
+console.log('minDwellMs:', Math.min(...dwells.map(d => d.dwellMs)));
+console.log('allGte250:', dwells.every(d => d.dwellMs >= 250));
+console.log('pageerrors:', JSON.stringify(errs.slice(0, 5)));
+await pg.screenshot({ path: '/tmp/v1-scroll-verify.png' });
+await b.close();
+if (!dwells.every(d => d.dwellMs >= 250)) process.exit(2);
+''')
+print('ok')
+EOF
+node qa-scroll-flick.tmp.mjs; echo EXIT=$?; rm -f qa-scroll-flick.tmp.mjs
+ok
+reached bottom at iter 137
+dwells: [{"source":1,"dwellMs":1649},{"source":70,"dwellMs":2201},{"source":145,"dwellMs":2349},{"source":215,"dwellMs":2750},{"source":280,"dwellMs":1916},{"source":368,"dwellMs":2783},{"source":440,"dwellMs":2167},{"source":500,"dwellMs":2384},{"source":600,"dwellMs":4966}]
+minDwellMs: 1649
+allGte250: true
+pageerrors: []
+EXIT=0
+[0m
+[0m→ [0mRead /tmp/v1-scroll-verify.png
+[0m
+[0m$ [0mkill 78149 2>/dev/null; sleep 1; rtk ls docs/phase4/qa/v3/ 2>/dev/null || echo NO_DIR
+MPAGE.md  4.4K
+ORCHESTRATOR-NOTES.md  2.2K
+PERF.md  4.0K
+SCROLL.md  4.8K
+mfilm-sweep-1512.webm  2.1M
+mfilm-waves-ring-gap-1512.png  15.4K
+mfilm-waves-w1-flight-1512.png  89.9K
+mfilm-waves-w1-hold-1512.png  80.5K
+mfilm-waves-w1-hold-1920.png  90.5K
+mfilm-waves-w1-hold-390.png  39.2K
+mfilm-waves-w2-flight-1512.png  81.4K
+mfilm-waves-w2-hold-1512.png  71.3K
+mfilm-waves-w2-hold-390.png  34.6K
+mfilm-words-s1-1512.png  232.8K
+mfilm-words-s1-390.png  103.6K
+mfilm-words-s100-1512.png  223.4K
+mfilm-words-s100-390.png  96.8K
+mfilm-words-s145-1512.png  243.2K
+mfilm-words-s185-1024.png  61.6K
+mfilm-words-s185-1512.png  90.4K
+mfilm-words-s185-1920.png  99.4K
+mfilm-words-s185-390.png  34.1K
+mfilm-words-s215-1512.png  54.9K
+mfilm-words-s280-1512.png  127.4K
+mfilm-words-s368-1512.png  107.3K
+mfilm-words-s440-1512.png  110.3K
+mfilm-words-s440-390.png  38.6K
+mfilm-words-s500-1512.png  96.8K
+mfilm-words-s600-1512.png  173.2K
+mfilm-words-s70-1512.png  237.4K
+mfilm.md  4.0K
+mpage-foot-1024.png  41.4K
+mpage-foot-1512.png  44.4K
+mpage-foot-1920.png  53.8K
+mpage-foot-390.png  42.8K
+mpage-foot-768.png  48.5K
+mpage-full-1024.png  632.8K
+mpage-full-1512.png  727.6K
+mpage-full-1920.png  1.1M
+mpage-full-390.png  349.5K
+mpage-full-768.png  620.7K
+mpage-scroll-1512.webm  2.4M
+mpage-top-1024.png  298.8K
+mpage-top-1512.png  351.1K
+mpage-top-1920.png  497.0K
+mpage-top-390.png  202.0K
+mpage-top-768.png  397.4K
+mpage-white-1024.png  202.2K
+mpage-white-1512.png  234.2K
+mpage-white-1920.png  299.8K
+... (12 more)
+[+12 hidden: rtk recall ccd9c78a067e]
+[0m
+[0m← [0mWrite docs/phase4/qa/v3/F4-SCROLL.md
+Wrote file successfully.
+[0m
+[0m# [0mTodos
+[✓] Clamp+gates in lenis.ts, helpers in filmCurve.ts, gate-aware snap.ts, dwell log in progress.ts
+[✓] Fast-flick Playwright verify at 1512x860 + screenshot
+[✓] Stop server, write docs/phase4/qa/v3/F4-SCROLL.md, end F4-SCROLL-DONE
+[0m
+F4-SCROLL-DONE
+EXIT 0 model=meta/muse-spark-1.3-contributor

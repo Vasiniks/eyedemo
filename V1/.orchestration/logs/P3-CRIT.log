@@ -1,0 +1,64 @@
+[0m
+> build · muse-spark-1.3-contributor
+[0m
+[0m# [0mTodos
+[•] Read brief, research, phase3 report docs
+[ ] Look at all c_*.png shots
+[ ] Dispatch threejs-art-director + visual-critic subagents in parallel
+[ ] Write docs/phase3/CRITIQUE.md (max 25 findings) + DONE line
+[0m
+[0m→ [0mRead docs/00-BRIEF.md
+[0m→ [0mRead docs/research/F-3d-motion-tech.md
+[0m→ [0mRead docs/research/G-glasses-model.md
+[0m→ [0mRead docs/research/E-visual-references.md
+[0m→ [0mRead docs/phase3/PHASE3-REPORT.md
+[0m→ [0mRead docs/research/D-asset-inventory.md
+[0m→ [0mRead docs/phase3/shots
+[0m→ [0mRead docs/phase3/shots/c_half.png
+[0m→ [0mRead docs/phase3/shots/c_open.png
+[0m→ [0mRead docs/phase3/shots/c_logo_rake.png
+[0m→ [0mRead docs/phase3/shots/c_closed_hero.png
+[0m→ [0mRead docs/phase3/shots/c_side_profile.png
+[0m
+[0m# [0mTodos
+[✓] Read brief, research, phase3 report docs
+[✓] Look at all c_*.png shots
+[•] Dispatch threejs-art-director + visual-critic subagents in parallel
+[ ] Write docs/phase3/CRITIQUE.md (max 25 findings) + DONE line
+[0m
+[0m→ [0mSkill "blender-hard-surface-modeling"
+[0m→ [0mSkill "no-ai-design-slop"
+[0m→ [0mSkill "iterate-until-verified"
+[0m→ [0mSkill "visual-fidelity"
+[0m→ [0mSkill "threejs-scenes"
+[0m• [0mArt-direct staging critique[90m Threejs-Art-Director Agent[0m
+[0m• [0mIndustrial design critique[90m Visual-Critic Agent[0m
+[0m✓ [0mIndustrial design critique[90m Visual-Critic Agent[0m
+[0m✓ [0mArt-direct staging critique[90m Threejs-Art-Director Agent[0m
+[0m
+[0m# [0mTodos
+[✓] Read brief, research, phase3 report docs
+[✓] Look at all c_*.png shots
+[✓] Dispatch threejs-art-director + visual-critic subagents in parallel
+[•] Write docs/phase3/CRITIQUE.md (max 25 findings) + DONE line
+[0m
+[0m← [0mWrite docs/phase3/CRITIQUE.md
+Wrote file successfully.
+[0m
+[0m# [0mTodos
+[✓] Read brief, research, phase3 report docs
+[✓] Look at all c_*.png shots
+[✓] Dispatch threejs-art-director + visual-critic subagents in parallel
+[✓] Write docs/phase3/CRITIQUE.md (max 25 findings) + DONE line
+[0m
+Using iterate-until-verified + visual-fidelity + no-ai-design-slop to critique; staged via threejs-art-director and visual-critic subagents.
+
+Wrote `docs/phase3/CRITIQUE.md` (20 findings: 7×P0, 8×P1, 5×P2, each with image + numbered fix + MODEL/WEB owner). No Blender used, no files edited except output.
+
+PHASE3-CRIT-DONE
+- P0: lenses black holes, crown blown plastic, 223mm oversize, satin velvet, flat logo, clamshell read, empty tail
+- P1: dead side elevation, illegible half-beat, high open camera, pebble section, pinched tail, hinge plausibility, flat cushion
+- P2: 88k vs 40k tris / 10.2MB, grey-vs-black BG, missing flank text, gloss contrast, EEVEE/Cycles risk
+- Split: geometry slim/depth/folds/gap to MODEL; exposure/strips/framing/sheen to Phase 4 WEB
+- Sources: both subagent passes merged, brief §6/§6b + E/F/G/D grounded
+EXIT 0 model=meta/muse-spark-1.3-contributor

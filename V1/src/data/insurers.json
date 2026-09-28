@@ -1,0 +1,16 @@
+{
+  "source": "docs/research/B-content-inventory.md §5 — services page insurance section, display order. Never assert direct billing (brief §6c.7).",
+  "heading": "We Accept Most Major Insurance Plans",
+  "headingAltCaps": "WE ACCEPT MOST MAJOR INSURANCE PLANS",
+  "ariaLabel": "Accepted insurance plans",
+  "insurers": [
+    { "name": "Sun Life", "file": "/web/insurance-light/sun-life.png", "alt": "Sun Life", "hero": true },
+    { "name": "Medavie Blue Cross", "file": "/web/insurance-light/mbc-logo-en.png", "alt": "Medavie Blue Cross" },
+    { "name": "Manulife", "file": "/web/insurance-light/manulife.png", "alt": "Manulife" },
+    { "name": "GreenShield", "file": "/web/insurance-light/greenshield.png", "alt": "GreenShield" },
+    { "name": "Canada Life", "file": "/web/insurance-light/canada-life-min.png", "alt": "Canada Life" },
+    { "name": "Desjardins", "file": "/web/insurance-light/desjardins.png", "alt": "Desjardins" },
+    { "name": "IA Financial Group", "file": "/web/insurance-light/ia-financial-group.png", "alt": "IA Financial Group" },
+    { "name": "Empire Life", "file": "/web/insurance-light/empire-life.png", "alt": "Empire Life" }
+  ]
+}

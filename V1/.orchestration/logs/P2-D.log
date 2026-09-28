@@ -1,0 +1,607 @@
+[0m
+> build · muse-spark-1.3-contributor
+[0m
+[0m→ [0mRead docs/00-BRIEF.md
+[0m
+[0m# [0mTodos
+[•] Inspect workspace + check status of docs/research, assets/source
+[ ] Browser audit eyeqoptical.ca (all pages) + Shopify JSON/sitemap
+[ ] Identify + download logo variants (max res, prefer SVG)
+[ ] Download brand + insurance logos
+[ ] Download imagery + record fonts/colors
+[ ] Verify files + write D-asset-inventory.md manifest
+[0m
+[0m→ [0mRead .
+[0m→ [0mRead docs
+[0m→ [0mRead assets
+[0m→ [0mRead docs/research
+[0m→ [0mRead assets/source
+[0m
+[0m# [0mTodos
+[✓] Inspect workspace + check status of docs/research, assets/source
+[•] Browser audit eyeqoptical.ca (all pages) + Shopify JSON/sitemap
+[ ] Identify + download logo variants (max res, prefer SVG)
+[ ] Download brand + insurance logos
+[ ] Download imagery + record fonts/colors
+[ ] Verify files + write D-asset-inventory.md manifest
+[0m
+[0m✗ [0mplaywright_browser_tabs {"action":"list"} failed
+[91m[1mError: [0m### Error
+Error: Browser is already in use for /Users/admin/Library/Caches/ms-playwright-mcp/mcp-chrome-062bebd, use --isolated to run multiple instances of the same browser
+[0m⚙ [0mchrome-devtools_list_pages Unknown
+[0m⚙ [0mchrome-devtools_navigate_page {"pageId":1,"type":"url","url":"https://eyeqoptical.ca/"}
+[0m⚙ [0mchrome-devtools_take_snapshot {"pageId":1}
+[0m• [0mShopify JSON + sitemap harvest[90m General Agent[0m
+[0m• [0mBrand/insurance logo hunt[90m General Agent[0m
+[0m✓ [0mBrand/insurance logo hunt[90m General Agent[0m
+[0m✓ [0mShopify JSON + sitemap harvest[90m General Agent[0m
+[0m⚙ [0mchrome-devtools_evaluate_script {"function":"() => { const out={}; out.url=location.href; out.title=document.title; const metas=[...document.querySelectorAll('meta')].map(m=>({name:m.getAttribute('name'),prop:m.getAttribute('property'),content:(m.getAttribute('content')||'').slice(0,300)})); out.metas=metas; out.links=[...document.querySelectorAll('link[rel*=\\\"icon\\\"],link[rel=\\\"apple-touch-icon\\\"],link[rel=\\\"canonical\\\"]')].map(l=>({rel:l.rel,href:l.href})); out.imgs=[...document.querySelectorAll('img')].map(i=>({src:i.currentSrc||i.src,alt:i.alt,w:i.naturalWidth,h:i.naturalHeight})); out.videos=[...document.querySelectorAll('video,source')].map(v=>v.src||v.currentSrc); out.cssVars=[]; try{for(const s of document.styleSheets){let rules;try{rules=s.cssRules}catch(e){continue} for(const r of rules){if(r.style){for(const p of r.style){if(p.startsWith('--')) out.cssVars.push(p+': '+r.style.getPropertyValue(p))}} if(out.cssVars.length>200) break}}}catch(e){out.cssVarsErr=String(e)} return out; }","pageId":1}
+[0m⚙ [0mchrome-devtools_evaluate_script {"function":"() => { const fonts=new Set(); document.fonts.forEach(f=>fonts.add(f.family+' '+f.weight+' '+f.style+' '+f.status)); const els=[...document.querySelectorAll('h1,h2,body,a,button,p')].slice(0,30).map(e=>({tag:e.tagName,text:(e.textContent||'').slice(0,40),font:getComputedStyle(e).fontFamily,size:getComputedStyle(e).fontSize,weight:getComputedStyle(e).fontWeight})); const fontLinks=[...document.querySelectorAll('link[rel*=\\\"font\\\"],link[as=\\\"font\\\"],style')].map(l=>l.outerHTML.slice(0,400)); const perf=[...performance.getEntriesByType('resource')].filter(r=>/font|woff|ttf|otf/i.test(r.name)).map(r=>r.name); return {fonts:[...fonts],samples:els,perf}; }","pageId":1}
+[0m⚙ [0mchrome-devtools_navigate_page {"pageId":1,"type":"url","url":"https://eyeqoptical.ca/pages/services"}
+[0m⚙ [0mchrome-devtools_take_snapshot {"pageId":1}
+[0m⚙ [0mchrome-devtools_evaluate_script {"function":"() => { const imgs=[...document.querySelectorAll('img')].map(i=>({src:i.currentSrc||i.src,alt:i.alt,w:i.naturalWidth,h:i.naturalHeight})); const bgs=[...document.querySelectorAll('[style*=\\\"background\\\"]')].slice(0,10).map(e=>e.outerHTML.slice(0,300)); return {count:imgs.length,imgs}; }","pageId":1}
+[0m⚙ [0mchrome-devtools_navigate_page {"pageId":1,"type":"url","url":"https://eyeqoptical.ca/pages/contact"}
+[0m⚙ [0mchrome-devtools_evaluate_script {"function":"() => { const imgs=[...document.querySelectorAll('img')].map(i=>({src:i.currentSrc||i.src,alt:i.alt,w:i.naturalWidth,h:i.naturalHeight})); const txt=document.body.innerText.slice(0,2000); return {imgs,txt}; }","pageId":1}
+[0m⚙ [0mchrome-devtools_navigate_page {"pageId":1,"type":"url","url":"https://eyeqoptical.ca/"}
+[0m⚙ [0mchrome-devtools_evaluate_script {"function":"() => { window.scrollTo(0, document.body.scrollHeight*0.55); return document.body.innerHTML.length; }","pageId":1}
+[0m✗ [0mblender_get_viewport_screenshot {"max_size":800,"user_prompt":"identify and DOWNLOAD the real assets from https://eyeqoptical.ca/ (all pages)"} failed
+[91m[1mError: [0mError executing tool get_viewport_screenshot: Screenshot failed: Could not connect to Blender. Make sure the Blender addon is running.
+[0m⚙ [0mchrome-devtools_take_screenshot {"pageId":1}
+[0m
+[0m# [0mTodos
+[✓] Inspect workspace + check status of docs/research, assets/source
+[✓] Browser audit eyeqoptical.ca (all pages) + Shopify JSON/sitemap
+[•] Identify + download logo variants (max res, prefer SVG)
+[ ] Download brand + insurance logos
+[ ] Download imagery + record fonts/colors
+[ ] Verify files + write D-asset-inventory.md manifest
+[0m
+[0m$ [0mrtk ls "/Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/assets/source" && mkdir -p "/Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/assets/source/logo" "/Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/assets/source/brands" "/Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/assets/source/insurance" "/Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/assets/source/imagery" "/Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/assets/source/imagery/products" "/Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/assets/source/other" && rtk ls -R "/Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/assets/source"
+(empty)
+brands/
+imagery/
+insurance/
+logo/
+other/
+products/
+... (6 filtered)
+[+6 hidden: rtk recall f5323b8022ca]
+[0m
+[0m$ [0mrtk ls -R "/Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/assets/source"
+brands/
+imagery/
+insurance/
+logo/
+other/
+products/
+... (6 filtered)
+[+6 hidden: rtk recall f5323b8022ca]
+[0m
+[0m$ [0mrtk ls -R "/Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/assets/source"; echo "---"; rtk ls "/Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/assets/source/imagery"
+brands/
+imagery/
+insurance/
+logo/
+other/
+products/
+... (6 filtered)
+[+6 hidden: rtk recall f5323b8022ca]
+---
+products/
+[0m
+[0m$ [0mrtk ls -R "/Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/assets/source"
+brands/
+imagery/
+insurance/
+logo/
+other/
+products/
+... (6 filtered)
+[+6 hidden: rtk recall f5323b8022ca]
+[0m
+[0m$ [0mrtk ls -R "/Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/assets/source"
+brands/
+imagery/
+insurance/
+logo/
+other/
+products/
+... (6 filtered)
+[+6 hidden: rtk recall f5323b8022ca]
+[0m
+[0m→ [0mRead assets/source
+[0m→ [0mRead assets/source/imagery
+[0m
+[0m$ [0mUA="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36" && BASE="/Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/assets/source" && rtk curl -sL -A "$UA" "https://eyeqoptical.ca/cdn/shop/files/Untitled_design__2_-removebg-preview.png?v=1785791870" -o "$BASE/logo/eyeq-logo-header-original.png" && rtk ls -l "$BASE/logo" && file "$BASE/logo"/*
+644  eyeq-logo-header-original.png  81.7K
+/Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/assets/source/logo/eyeq-logo-header-original.png: PNG image data, 800 x 373, 8-bit/color RGBA, non-interlaced
+[0m
+[0m$ [0mUA="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36"
+BASE="/Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/assets/source"
+rtk curl -sL -A "$UA" "https://eyeqoptical.ca/cdn/shop/files/Maui-jim-logo-brandlogos_net_l6tmirejv_svg.png?v=1781814450" -o "$BASE/brands/maui-jim.png" & 
+rtk curl -sL -A "$UA" "https://eyeqoptical.ca/cdn/shop/files/ray-ban-logo-black-and-white.png?v=1781814247" -o "$BASE/brands/ray-ban.png" & 
+rtk curl -sL -A "$UA" "https://eyeqoptical.ca/cdn/shop/files/prada-logo-png-transparent.png?v=1781814007" -o "$BASE/brands/prada.png" & 
+rtk curl -sL -A "$UA" "https://eyeqoptical.ca/cdn/shop/files/Miu-Miu-logo.png?v=1781814175" -o "$BASE/brands/miu-miu.png" & 
+rtk curl -sL -A "$UA" "https://eyeqoptical.ca/cdn/shop/files/Persol-logo.png?v=1781814304" -o "$BASE/brands/persol.png" & 
+rtk curl -sL -A "$UA" "https://eyeqoptical.ca/cdn/shop/files/Oakley_logo_svg.png?v=1781814387" -o "$BASE/brands/oakley.png" & 
+rtk curl -sL -A "$UA" "https://eyeqoptical.ca/cdn/shop/files/Tiffany_Logo_svg_aa50c7c9-65bb-47f5-b249-c7e80c58182a.png?v=1781814586" -o "$BASE/brands/tiffany.png" & 
+rtk curl -sL -A "$UA" "https://eyeqoptical.ca/cdn/shop/files/Versace.png?v=1781814081" -o "$BASE/brands/versace.png" & 
+wait
+rtk ls -l "$BASE/brands"
+file "$BASE/brands"/*
+644  maui-jim.png  140.4K
+644  miu-miu.png  20.6K
+644  oakley.png  12.2K
+644  persol.png  50.8K
+644  prada.png  49.4K
+644  ray-ban.png  75.6K
+644  tiffany.png  20.4K
+644  versace.png  22.8K
+/Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/assets/source/brands/maui-jim.png: PNG image data, 960 x 496, 8-bit/color RGBA, non-interlaced
+/Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/assets/source/brands/miu-miu.png:  PNG image data, 3840 x 2160, 4-bit colormap, non-interlaced
+/Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/assets/source/brands/oakley.png:   PNG image data, 960 x 361, 8-bit gray+alpha, non-interlaced
+/Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/assets/source/brands/persol.png:   PNG image data, 3840 x 2160, 4-bit colormap, non-interlaced
+/Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/assets/source/brands/prada.png:    PNG image data, 2400 x 2400, 8-bit/color RGBA, non-interlaced
+/Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/assets/source/brands/ray-ban.png:  PNG image data, 2400 x 2400, 8-bit gray+alpha, non-interlaced
+/Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/assets/source/brands/tiffany.png:  PNG image data, 1280 x 156, 8-bit/color RGBA, non-interlaced
+/Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/assets/source/brands/versace.png:  PNG image data, 1686 x 756, 8-bit/color RGBA, non-interlaced
+[0m
+[0m$ [0mUA="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36"
+BASE="/Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/assets/source"
+rtk curl -sL -A "$UA" "https://eyeqoptical.ca/cdn/shop/files/images.png?v=1786132899" -o "$BASE/insurance/insurance-01-images.png" &
+rtk curl -sL -A "$UA" "https://eyeqoptical.ca/cdn/shop/files/mbc-logo-en.svg?v=1786132976" -o "$BASE/insurance/mbc-logo-en.svg" &
+rtk curl -sL -A "$UA" "https://eyeqoptical.ca/cdn/shop/files/images_1fe4cef6-c639-4c8c-8277-f04c0fb8fa8d.png?v=1786135405" -o "$BASE/insurance/insurance-03-images-uuid.png" &
+rtk curl -sL -A "$UA" "https://eyeqoptical.ca/cdn/shop/files/images_1.png?v=1786135474" -o "$BASE/insurance/insurance-04-images-1.png" &
+rtk curl -sL -A "$UA" "https://eyeqoptical.ca/cdn/shop/files/canada-life-min.webp?v=1786135820" -o "$BASE/insurance/canada-life-min.webp" &
+rtk curl -sL -A "$UA" "https://eyeqoptical.ca/cdn/shop/files/8a63a471d047967a05c5e2649717127e.webp?v=1786135752" -o "$BASE/insurance/desjardins.webp" &
+rtk curl -sL -A "$UA" "https://eyeqoptical.ca/cdn/shop/files/IA_Financial_Group_logo.svg?v=1786135883" -o "$BASE/insurance/ia-financial-group.svg" &
+rtk curl -sL -A "$UA" "https://eyeqoptical.ca/cdn/shop/files/6530bc6ea88e2cc9d0944c5a_1280px-Empire_Life_logo_svg.png?v=1786135979" -o "$BASE/insurance/empire-life.png" &
+wait
+rtk ls -l "$BASE/insurance"
+file "$BASE/insurance"/*
+644  canada-life-min.webp  56.2K
+644  desjardins.webp  26.1K
+644  empire-life.png  37.7K
+644  ia-financial-group.svg  5.8K
+644  insurance-01-images.png  9.3K
+644  insurance-03-images-uuid.png  4.8K
+644  insurance-04-images-1.png  3.0K
+644  mbc-logo-en.svg  3.9K
+/Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/assets/source/insurance/canada-life-min.webp:         PNG image data, 537 x 188, 8-bit/color RGBA, non-interlaced
+/Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/assets/source/insurance/desjardins.webp:              JPEG image data, Exif standard: [TIFF image data, little-endian, direntries=6, orientation=upper-left, xresolution=86, yresolution=94, resolutionunit=2, hostcomputer=imagery4], progressive, precision 8, 1024x320, components 3
+/Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/assets/source/insurance/empire-life.png:              PNG image data, 1280 x 407, 8-bit/color RGBA, non-interlaced
+/Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/assets/source/insurance/ia-financial-group.svg:       SVG Scalable Vector Graphics image
+/Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/assets/source/insurance/insurance-01-images.png:      PNG image data, 800 x 196, 8-bit colormap, non-interlaced
+/Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/assets/source/insurance/insurance-03-images-uuid.png: PNG image data, 738 x 141, 8-bit colormap, non-interlaced
+/Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/assets/source/insurance/insurance-04-images-1.png:    PNG image data, 381 x 132, 8-bit colormap, non-interlaced
+/Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/assets/source/insurance/mbc-logo-en.svg:              SVG Scalable Vector Graphics image
+[0m
+[0m→ [0mRead assets/source/insurance/insurance-03-images-uuid.png
+[0m→ [0mRead assets/source/insurance/insurance-04-images-1.png
+[0m→ [0mRead assets/source/insurance/insurance-01-images.png
+[0m
+[0m$ [0mBASE="/Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/assets/source/insurance"
+rtk mv "$BASE/insurance-01-images.png" "$BASE/sun-life.png"
+rtk mv "$BASE/insurance-03-images-uuid.png" "$BASE/manulife.png"
+rtk mv "$BASE/insurance-04-images-1.png" "$BASE/greenshield.png"
+rtk ls -l "$BASE"
+head -c 600 "$BASE/mbc-logo-en.svg"; echo; echo "---"; head -c 600 "$BASE/ia-financial-group.svg"
+644  canada-life-min.webp  56.2K
+644  desjardins.webp  26.1K
+644  empire-life.png  37.7K
+644  greenshield.png  3.0K
+644  ia-financial-group.svg  5.8K
+644  manulife.png  4.8K
+644  mbc-logo-en.svg  3.9K
+644  sun-life.png  9.3K
+<svg xmlns="http://www.w3.org/2000/svg" id="a5446c50-d59a-4603-83f7-24e2b58c5fcf" data-name="Layer 1" width="770.3" height="115.5" viewBox="0 0 770.3 115.5">
+  <defs>
+    <style>
+      .a1f08931-eea5-4f17-ba0e-81f2a30d92cb {
+        fill: #0094d7;
+      }
+    </style>
+  </defs>
+  <title>mbc-logo-2</title>
+  <polygon class="a1f08931-eea5-4f17-ba0e-81f2a30d92cb" points="82.8 0 32.7 0 32.7 33 0 33 0 82.8 32.7 82.8 32.7 115.5 82.8 115.5 82.8 82.8 115.5 82.8 115.5 33 82.8 33 82.8 0"></polygon>
+  <path class="a1f08931-eea5-4f17-ba0e-81f2a30d92cb" d="M136,33.1h43.9c12.2,0,18.1,3.3,18.1,13s-3.1,10.2-7
+---
+<svg xmlns="http://www.w3.org/2000/svg" width="232.59818" height="127" viewBox="0 0 61.541598 33.602082" version="1.1" id="svg8">
+  <defs id="defs2">
+    <clipPath id="clipPath316" clipPathUnits="userSpaceOnUse">
+      <path id="path314" d="M 362,32.548 H 583.832 V 58.736 H 362 Z"></path>
+    </clipPath>
+    <style id="style1599">.logo-ia-1{fill:#003da5;}.logo-ia-2{fill:#7c878e;}.logo-ia-3{fill:#2f4995;}</style>
+  </defs>
+  
+  <metadata id="metadata5">
+    
+      
+        image/svg+xml
+        
+        
+      
+    
+  </metadata>
+  <g id="layer1" transform="translate(242.17288,-307.14867)">
+[0m
+[0m→ [0mRead assets/source/insurance/canada-life-min.webp
+[0m→ [0mRead assets/source/insurance/desjardins.webp
+[0m→ [0mRead assets/source/insurance/empire-life.png
+[0m
+[0m$ [0mUA="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36"
+BASE="/Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/assets/source"
+rtk curl -sL -A "$UA" "https://eyeqoptical.ca/cdn/shop/files/Untitled_design_5.png?v=1785793562" -o "$BASE/imagery/hero-glasses-stack-original.png" &
+rtk curl -sL -A "$UA" "https://eyeqoptical.ca/cdn/shop/files/heropic.webp?v=1786146260" -o "$BASE/imagery/heropic-original.webp" &
+rtk curl -sL -A "$UA" "https://eyeqoptical.ca/cdn/shop/files/polarized-lenses.jpg?v=1786146584" -o "$BASE/imagery/polarized-lenses-original.jpg" &
+rtk curl -sL -A "$UA" "https://eyeqoptical.ca/cdn/shop/files/Copy_of_eyeqburlington_3.png?v=1786130135" -o "$BASE/imagery/eyeqburlington-3-original.png" &
+rtk curl -sL -A "$UA" "https://eyeqoptical.ca/cdn/shop/files/Copy_of_eyeqburlington_4.png?v=1786142392" -o "$BASE/imagery/eyeqburlington-4-original.png" &
+rtk curl -sL -A "$UA" "https://eyeqoptical.ca/cdn/shop/files/Copy_of_Untitled_Design.png?v=1786131893" -o "$BASE/imagery/services-graphic-1-original.png" &
+rtk curl -sL -A "$UA" "https://eyeqoptical.ca/cdn/shop/files/Copy_of_Untitled_Design_1.png?v=1786132298" -o "$BASE/imagery/services-graphic-2-original.png" &
+rtk curl -sL -A "$UA" "https://eyeqoptical.ca/cdn/shop/files/REBAJAS_2024.jpg?v=1786132555" -o "$BASE/imagery/rebajas-2024-original.jpg" &
+rtk curl -sL -A "$UA" "https://eyeqoptical.ca/cdn/shop/files/download.jpg?v=1786132646" -o "$BASE/imagery/download-original.jpg" &
+rtk curl -sL -A "$UA" "https://eyeqoptical.ca/cdn/shop/files/7121d93d-48e5-4130-b028-77e548d8db2a.png?v=1786146120" -o "$BASE/imagery/services-wide-original.png" &
+wait
+rtk ls -l "$BASE/imagery"
+file "$BASE/imagery"/*
+755  products/
+644  download-original.jpg  64.2K
+644  eyeqburlington-3-original.png  1.4M
+644  eyeqburlington-4-original.png  1.3M
+644  hero-glasses-stack-original.png  2.5M
+644  heropic-original.webp  161.4K
+644  polarized-lenses-original.jpg  128.3K
+644  rebajas-2024-original.jpg  75.9K
+644  services-graphic-1-original.png  9.7M
+644  services-graphic-2-original.png  5.6M
+644  services-wide-original.png  447.6K
+/Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/assets/source/imagery/download-original.jpg:           JPEG image data, JFIF standard 1.01, resolution (DPI), density 72x72, segment length 16, Exif Standard: [TIFF image data, little-endian, direntries=1, hostcomputer=imagery4], progressive, precision 8, 688x1024, components 3
+/Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/assets/source/imagery/eyeqburlington-3-original.png:   PNG image data, 2000 x 714, 8-bit/color RGB, non-interlaced
+/Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/assets/source/imagery/eyeqburlington-4-original.png:   PNG image data, 2000 x 714, 8-bit/color RGB, non-interlaced
+/Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/assets/source/imagery/hero-glasses-stack-original.png: PNG image data, 4096 x 3816, 8-bit/color RGB, non-interlaced
+/Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/assets/source/imagery/heropic-original.webp:           JPEG image data, Exif standard: [TIFF image data, little-endian, direntries=6, orientation=upper-left, xresolution=86, yresolution=94, resolutionunit=2, hostcomputer=imagery4], progressive, precision 8, 2600x993, components 3
+/Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/assets/source/imagery/polarized-lenses-original.jpg:   JPEG image data, JFIF standard 1.01, aspect ratio, density 1x1, segment length 16, Exif Standard: [TIFF image data, little-endian, direntries=1, hostcomputer=imagery4], baseline, precision 8, 1600x1050, components 3
+/Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/assets/source/imagery/products:                        directory
+/Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/assets/source/imagery/rebajas-2024-original.jpg:       JPEG image data, JFIF standard 1.01, resolution (DPI), density 72x72, segment length 16, Exif Standard: [TIFF image data, big-endian, direntries=4, xresolution=62, yresolution=70, resolutionunit=2, hostcomputer=imagery4], progressive, precision 8, 736x920, components 3
+/Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/assets/source/imagery/services-graphic-1-original.png: PNG image data, 4096 x 3816, 8-bit/color RGB, non-interlaced
+/Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/assets/source/imagery/services-graphic-2-original.png: PNG image data, 4096 x 3816, 8-bit/color RGB, non-interlaced
+/Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/assets/source/imagery/services-wide-original.png:      PNG image data, 1000 x 562, 8-bit/color RGBA, non-interlaced
+[0m
+[0m$ [0mUA="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36"
+P="https://cdn.shopify.com/s/files/1/0667/0372/0728/files"
+D="/Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/assets/source/imagery/products"
+rtk curl -sL -A "$UA" "$P/0PR_15WS__09Q5S0__STD__shad__fr.png?v=1787428657" -o "$D/prada-pr-15ws-fr.png" &
+rtk curl -sL -A "$UA" "$P/0PO3272S__95_31__P21__shad__fr.png?v=1787428584" -o "$D/persol-po3272s-fr.png" &
+rtk curl -sL -A "$UA" "$P/0PO3210S__95_31__P21__shad__fr.png?v=1787428271" -o "$D/persol-po3210s-fr.png" &
+rtk curl -sL -A "$UA" "$P/0PO2803S__95_58__P21__shad__fr.png?v=1787428080" -o "$D/persol-po2803s-fr.png" &
+rtk curl -sL -A "$UA" "$P/0PO0649__95_S3__P21__shad__fr.png?v=1787427419" -o "$D/persol-po0649-fr.png" &
+rtk curl -sL -A "$UA" "$P/0RX5228__2000__EXT__shad__fr.png?v=1787427012" -o "$D/rayban-rx5228-fr.png" &
+rtk curl -sL -A "$UA" "$P/0RX6513__2994__P21__shad__fr.png?v=1787426706" -o "$D/rayban-rx6513-fr.png" &
+rtk curl -sL -A "$UA" "$P/0RX6489__2500__EXT__shad__fr.png?v=1787426384" -o "$D/rayban-rx6489-fr.png" &
+rtk curl -sL -A "$UA" "$P/0RX5154__2000__EXT__shad__fr.png?v=1787425076" -o "$D/rayban-rx5154-fr.png" &
+rtk curl -sL -A "$UA" "$P/0RX3927V__2500__EXT__shad__fr.png?v=1787424768" -o "$D/rayban-rx3927v-fr.png" &
+rtk curl -sL -A "$UA" "$P/0RB3928__001_S2__P21__shad__fr.png?v=1787415374" -o "$D/rayban-rb3928-fr.png" &
+rtk curl -sL -A "$UA" "$P/0RB3927__001_31__P21__shad__fr.png?v=1787414998" -o "$D/rayban-rb3927-fr.png" &
+wait
+rtk ls -l "$D" | head -30
+644  persol-po0649-fr.png  3.1M
+644  persol-po2803s-fr.png  2.7M
+644  persol-po3210s-fr.png  2.7M
+644  persol-po3272s-fr.png  3.3M
+644  prada-pr-15ws-fr.png  4.9M
+644  rayban-rb3927-fr.png  2.3M
+644  rayban-rb3928-fr.png  2.4M
+644  rayban-rx3927v-fr.png  2.1M
+644  rayban-rx5154-fr.png  2.8M
+644  rayban-rx5228-fr.png  1.5M
+644  rayban-rx6489-fr.png  1.6M
+644  rayban-rx6513-fr.png  2.0M
+[0m
+[0m$ [0mUA="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36"
+P="https://cdn.shopify.com/s/files/1/0667/0372/0728/files"
+D="/Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/assets/source/imagery/products"
+rtk curl -sL -A "$UA" "$P/0RB4925__601_7__P21__shad__fr.png?v=1787414767" -o "$D/rayban-rb4925-fr.png" &
+rtk curl -sL -A "$UA" "$P/0RB4547__601_58__P21__shad__fr.png?v=1787414597" -o "$D/rayban-rb4547-fr.png" &
+rtk curl -sL -A "$UA" "$P/0RB4340__601_58__STD__noshad__fr.png?v=1787414208" -o "$D/rayban-rb4340-fr.png" &
+rtk curl -sL -A "$UA" "$P/0RB2140__129431__P21__shad__fr.png?v=1787414073" -o "$D/rayban-rb2140-fr.png" &
+rtk curl -sL -A "$UA" "$P/0RB4165__622_T3__RBE__shad__fr.png?v=1787413947" -o "$D/rayban-rb4165-fr.png" &
+rtk curl -sL -A "$UA" "$P/0RB4171__622_T3__RBE__shad__fr.png?v=1787413805" -o "$D/rayban-rb4171f-fr.png" &
+rtk curl -sL -A "$UA" "$P/0RB3016__901_58__STD__noshad__fr.png?v=1787413653" -o "$D/rayban-rb3016-fr.png" &
+rtk curl -sL -A "$UA" "$P/0RB3025__L0205__RBE__shad__fr.png?v=1787413518" -o "$D/rayban-rb3025-fr.png" &
+rtk curl -sL -A "$UA" "$P/0RB3721__186_87__P21__shad__fr.png?v=1787413334" -o "$D/rayban-rb3721-fr.png" &
+rtk curl -sL -A "$UA" "$P/0RB2132__901_58__STD__shad__fr.png?v=1787353825" -o "$D/rayban-rb2132-fr.png" &
+wait
+rtk ls -l "$D"
+file "$D"/* | head -30
+644  persol-po0649-fr.png  3.1M
+644  persol-po2803s-fr.png  2.7M
+644  persol-po3210s-fr.png  2.7M
+644  persol-po3272s-fr.png  3.3M
+644  prada-pr-15ws-fr.png  4.9M
+644  rayban-rb2132-fr.png  4.2M
+644  rayban-rb2140-fr.png  2.6M
+644  rayban-rb3016-fr.png  3.4M
+644  rayban-rb3025-fr.png  1.0M
+644  rayban-rb3721-fr.png  2.9M
+644  rayban-rb3927-fr.png  2.3M
+644  rayban-rb3928-fr.png  2.4M
+644  rayban-rb4165-fr.png  1.1M
+644  rayban-rb4171f-fr.png  1.1M
+644  rayban-rb4340-fr.png  3.4M
+644  rayban-rb4547-fr.png  3.1M
+644  rayban-rb4925-fr.png  3.3M
+644  rayban-rx3927v-fr.png  2.1M
+644  rayban-rx5154-fr.png  2.8M
+644  rayban-rx5228-fr.png  1.5M
+644  rayban-rx6489-fr.png  1.6M
+644  rayban-rx6513-fr.png  2.0M
+/Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/assets/source/imagery/products/persol-po0649-fr.png:  PNG image data, 3768 x 1884, 8-bit/color RGBA, non-interlaced
+/Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/assets/source/imagery/products/persol-po2803s-fr.png: PNG image data, 3768 x 1884, 8-bit/color RGBA, non-interlaced
+/Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/assets/source/imagery/products/persol-po3210s-fr.png: PNG image data, 3768 x 1884, 8-bit/color RGBA, non-interlaced
+/Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/assets/source/imagery/products/persol-po3272s-fr.png: PNG image data, 3768 x 1884, 8-bit/color RGBA, non-interlaced
+/Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/assets/source/imagery/products/prada-pr-15ws-fr.png:  PNG image data, 3768 x 1884, 8-bit/color RGBA, non-interlaced
+/Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/assets/source/imagery/products/rayban-rb2132-fr.png:  PNG image data, 3768 x 1884, 8-bit/color RGBA, non-interlaced
+/Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/assets/source/imagery/products/rayban-rb2140-fr.png:  PNG image data, 3768 x 1884, 8-bit/color RGBA, non-interlaced
+/Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/assets/source/imagery/products/rayban-rb3016-fr.png:  PNG image data, 3768 x 1884, 8-bit/color RGBA, non-interlaced
+/Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/assets/source/imagery/products/rayban-rb3025-fr.png:  PNG image data, 2090 x 1357, 8-bit/color RGBA, non-interlaced
+/Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/assets/source/imagery/products/rayban-rb3721-fr.png:  PNG image data, 3768 x 1884, 8-bit/color RGBA, non-interlaced
+/Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/assets/source/imagery/products/rayban-rb3927-fr.png:  PNG image data, 3768 x 1884, 8-bit/color RGBA, non-interlaced
+/Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/assets/source/imagery/products/rayban-rb3928-fr.png:  PNG image data, 3768 x 1884, 8-bit/color RGBA, non-interlaced
+/Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/assets/source/imagery/products/rayban-rb4165-fr.png:  PNG image data, 2090 x 1357, 8-bit/color RGBA, non-interlaced
+/Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/assets/source/imagery/products/rayban-rb4171f-fr.png: PNG image data, 2090 x 1357, 8-bit/color RGBA, non-interlaced
+/Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/assets/source/imagery/products/rayban-rb4340-fr.png:  PNG image data, 3768 x 1884, 8-bit/color RGBA, non-interlaced
+/Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/assets/source/imagery/products/rayban-rb4547-fr.png:  PNG image data, 3768 x 1884, 8-bit/color RGBA, non-interlaced
+/Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/assets/source/imagery/products/rayban-rb4925-fr.png:  PNG image data, 3768 x 1884, 8-bit/color RGBA, non-interlaced
+/Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/assets/source/imagery/products/rayban-rx3927v-fr.png: PNG image data, 3768 x 1884, 8-bit/color RGBA, non-interlaced
+/Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/assets/source/imagery/products/rayban-rx5154-fr.png:  PNG image data, 3768 x 1884, 8-bit/color RGBA, non-interlaced
+/Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/assets/source/imagery/products/rayban-rx5228-fr.png:  PNG image data, 3768 x 1884, 8-bit/color RGBA, non-interlaced
+/Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/assets/source/imagery/products/rayban-rx6489-fr.png:  PNG image data, 3768 x 1884, 8-bit/color RGBA, non-interlaced
+/Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/assets/source/imagery/products/rayban-rx6513-fr.png:  PNG image data, 3768 x 1884, 8-bit/color RGBA, non-interlaced
+[0m
+[0m$ [0mUA="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36"
+BASE="/Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/assets/source"
+rtk curl -sL -A "$UA" "https://cdn.shopify.com/s/files/1/0667/0372/0728/collections/Ray-Ban_logo_svg.webp?v=1787353996" -o "$BASE/brands/ray-ban-collection.webp" &
+rtk curl -sL -A "$UA" "https://cdn.shopify.com/s/files/1/0667/0372/0728/collections/Persol-logo.png?v=1787427241" -o "$BASE/brands/persol-collection.png" &
+rtk curl -sL -A "$UA" "https://cdn.shopify.com/s/files/1/0667/0372/0728/collections/prada-logo-png-transparent.png?v=1787428768" -o "$BASE/brands/prada-collection.png" &
+rtk curl -sL -A "$UA" "https://eyeqoptical.ca/cdn/shop/files/preview_images/79805717509b43fe9c4059d4b634357b.thumbnail.0000000000.jpg?v=1785881452" -o "$BASE/other/video-poster.jpg" &
+rtk curl -sI -A "$UA" "https://eyeqoptical.ca/favicon.ico" | head -5 &
+wait
+file "$BASE/brands"/ray-ban-collection.webp "$BASE/brands"/persol-collection.png "$BASE/brands"/prada-collection.png "$BASE/other"/video-poster.jpg
+HTTP/2 404 
+date: Sun, 27 Sep 2026 22:13:25 GMT
+content-length: 0
+x-xss-protection: 1; mode=block
+x-permitted-cross-domain-policies: none
+
+
+
+
+/Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/assets/source/brands/ray-ban-collection.webp: PNG image data, 1920 x 1034, 8-bit/color RGBA, non-interlaced
+/Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/assets/source/brands/persol-collection.png:   PNG image data, 3840 x 2160, 4-bit colormap, non-interlaced
+/Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/assets/source/brands/prada-collection.png:    PNG image data, 2400 x 2400, 8-bit/color RGBA, non-interlaced
+/Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/assets/source/other/video-poster.jpg:         JPEG image data, Exif standard: [TIFF image data, little-endian, direntries=6, orientation=upper-left, xresolution=86, yresolution=94, resolutionunit=2, hostcomputer=imagery4], progressive, precision 8, 800x800, components 3
+[0m
+[0m$ [0mpython3 -c "
+from PIL import Image
+import os, glob
+base='/Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/assets/source'
+for f in sorted(glob.glob(base+'/**/*.*', recursive=True)):
+    if os.path.isdir(f): continue
+    rel=f.replace(base+'/','')
+    try:
+        im=Image.open(f)
+        w,h=im.size
+        mode=im.mode
+        has_alpha='yes' if (mode in ('RGBA','LA') or (mode=='P' and 'transparency' in im.info)) else ('check' if mode=='P' else 'no')
+        # sample corners for transparency check on RGBA
+        extra=''
+        if mode=='RGBA':
+            px=im.load()
+            corners=[px[0,0][3],px[w-1,0][3],px[0,h-1][3],px[w-1,h-1][3]]
+            extra=' corners_alpha='+str(corners)
+        # dominant color: resize small, most common
+        small=im.convert('RGB').resize((8,8))
+        from collections import Counter
+        c=Counter(small.getdata()).most_common(3)
+        print(f'{rel} | {w}x{h} | {mode} | alpha={has_alpha}{extra} | top3={c}')
+    except Exception as e:
+        print(f'{rel} | ERROR {e}')
+"
+<string>:22: DeprecationWarning: Image.Image.getdata is deprecated and will be removed in Pillow 14 (2027-10-15). Use get_flattened_data instead.
+/Users/admin/.pyenv/versions/3.13.11/lib/python3.13/site-packages/PIL/Image.py:1137: UserWarning: Palette images with Transparency expressed in bytes should be converted to RGBA images
+  warnings.warn(
+brands/maui-jim.png | 960x496 | RGBA | alpha=yes corners_alpha=[0, 0, 0, 0] | top3=[((0, 0, 0), 18), ((1, 3, 7), 2), ((3, 11, 24), 2)]
+brands/miu-miu.png | 3840x2160 | P | alpha=yes | top3=[((71, 112, 76), 36), ((71, 113, 76), 2), ((71, 113, 77), 2)]
+brands/oakley.png | 960x361 | LA | alpha=yes | top3=[((0, 0, 0), 64)]
+brands/persol-collection.png | 3840x2160 | P | alpha=yes | top3=[((71, 112, 76), 14), ((71, 113, 76), 4), ((71, 111, 76), 3)]
+brands/persol.png | 3840x2160 | P | alpha=yes | top3=[((71, 112, 76), 14), ((71, 113, 76), 4), ((71, 111, 76), 3)]
+brands/prada-collection.png | 2400x2400 | RGBA | alpha=yes corners_alpha=[0, 0, 0, 0] | top3=[((0, 0, 0), 64)]
+brands/prada.png | 2400x2400 | RGBA | alpha=yes corners_alpha=[0, 0, 0, 0] | top3=[((0, 0, 0), 64)]
+brands/ray-ban-collection.webp | 1920x1034 | RGBA | alpha=yes corners_alpha=[255, 255, 153, 153] | top3=[((237, 29, 36), 11), ((238, 29, 36), 4), ((236, 29, 36), 2)]
+brands/ray-ban.png | 2400x2400 | LA | alpha=yes | top3=[((0, 0, 0), 64)]
+brands/tiffany.png | 1280x156 | RGBA | alpha=yes corners_alpha=[0, 0, 0, 0] | top3=[((0, 0, 0), 62), ((1, 1, 1), 1), ((3, 3, 3), 1)]
+brands/versace.png | 1686x756 | RGBA | alpha=yes corners_alpha=[0, 0, 0, 0] | top3=[((255, 255, 255), 36), ((254, 254, 254), 3), ((209, 209, 209), 2)]
+imagery/download-original.jpg | 688x1024 | RGB | alpha=no | top3=[((73, 69, 62), 1), ((62, 62, 56), 1), ((79, 64, 53), 1)]
+imagery/eyeqburlington-3-original.png | 2000x714 | RGB | alpha=no | top3=[((174, 170, 149), 2), ((173, 168, 149), 2), ((179, 174, 154), 1)]
+imagery/eyeqburlington-4-original.png | 2000x714 | RGB | alpha=no | top3=[((159, 157, 141), 1), ((181, 180, 167), 1), ((167, 158, 145), 1)]
+imagery/hero-glasses-stack-original.png | 4096x3816 | RGB | alpha=no | top3=[((255, 222, 89), 31), ((255, 223, 89), 4), ((255, 224, 89), 3)]
+imagery/heropic-original.webp | 2600x993 | RGB | alpha=no | top3=[((218, 128, 149), 3), ((189, 155, 185), 3), ((165, 171, 197), 3)]
+imagery/polarized-lenses-original.jpg | 1600x1050 | RGB | alpha=no | top3=[((70, 91, 106), 1), ((101, 123, 139), 1), ((94, 111, 126), 1)]
+imagery/products/persol-po0649-fr.png | 3768x1884 | RGBA | alpha=yes corners_alpha=[0, 0, 0, 0] | top3=[((0, 0, 0), 28), ((44, 52, 55), 2), ((53, 56, 57), 2)]
+imagery/products/persol-po2803s-fr.png | 3768x1884 | RGBA | alpha=yes corners_alpha=[0, 0, 0, 0] | top3=[((0, 0, 0), 30), ((8, 8, 9), 2), ((1, 1, 1), 2)]
+imagery/products/persol-po3210s-fr.png | 3768x1884 | RGBA | alpha=yes corners_alpha=[0, 0, 0, 0] | top3=[((0, 0, 0), 28), ((20, 20, 20), 2), ((9, 9, 9), 2)]
+imagery/products/persol-po3272s-fr.png | 3768x1884 | RGBA | alpha=yes corners_alpha=[0, 0, 0, 0] | top3=[((0, 0, 0), 24), ((1, 1, 1), 6), ((10, 10, 10), 2)]
+imagery/products/prada-pr-15ws-fr.png | 3768x1884 | RGBA | alpha=yes corners_alpha=[0, 0, 0, 0] | top3=[((246, 246, 246), 6), ((247, 247, 247), 4), ((243, 243, 243), 2)]
+imagery/products/rayban-rb2132-fr.png | 3768x1884 | RGBA | alpha=yes corners_alpha=[0, 0, 0, 0] | top3=[((255, 255, 255), 20), ((232, 232, 232), 2), ((231, 231, 231), 2)]
+imagery/products/rayban-rb2140-fr.png | 3768x1884 | RGBA | alpha=yes corners_alpha=[0, 0, 0, 0] | top3=[((0, 0, 0), 28), ((39, 39, 39), 2), ((23, 23, 23), 2)]
+imagery/products/rayban-rb3016-fr.png | 3768x1884 | RGBA | alpha=yes corners_alpha=[0, 0, 0, 0] | top3=[((255, 255, 255), 24), ((244, 244, 244), 5), ((254, 254, 254), 2)]
+imagery/products/rayban-rb3025-fr.png | 2090x1357 | RGBA | alpha=yes corners_alpha=[0, 0, 0, 0] | top3=[((255, 255, 255), 24), ((249, 248, 245), 2), ((255, 254, 252), 2)]
+imagery/products/rayban-rb3721-fr.png | 3768x1884 | RGBA | alpha=yes corners_alpha=[60, 60, 0, 0] | top3=[((0, 0, 0), 12), ((3, 3, 3), 7), ((2, 2, 2), 3)]
+imagery/products/rayban-rb3927-fr.png | 3768x1884 | RGBA | alpha=yes corners_alpha=[0, 0, 0, 0] | top3=[((0, 0, 0), 28), ((5, 4, 5), 2), ((28, 25, 19), 2)]
+imagery/products/rayban-rb3928-fr.png | 3768x1884 | RGBA | alpha=yes corners_alpha=[0, 0, 0, 0] | top3=[((0, 0, 0), 32), ((5, 5, 4), 2), ((28, 27, 24), 2)]
+imagery/products/rayban-rb4165-fr.png | 2090x1357 | RGBA | alpha=yes corners_alpha=[0, 0, 0, 0] | top3=[((255, 255, 255), 22), ((251, 251, 251), 3), ((250, 250, 250), 2)]
+imagery/products/rayban-rb4171f-fr.png | 2090x1357 | RGBA | alpha=yes corners_alpha=[0, 0, 0, 0] | top3=[((255, 255, 255), 23), ((250, 250, 250), 6), ((100, 101, 102), 2)]
+imagery/products/rayban-rb4340-fr.png | 3768x1884 | RGBA | alpha=yes corners_alpha=[0, 0, 0, 0] | top3=[((255, 255, 255), 24), ((244, 244, 244), 5), ((254, 254, 254), 2)]
+imagery/products/rayban-rb4547-fr.png | 3768x1884 | RGBA | alpha=yes corners_alpha=[59, 59, 0, 0] | top3=[((0, 0, 0), 12), ((3, 3, 3), 7), ((2, 2, 2), 4)]
+imagery/products/rayban-rb4925-fr.png | 3768x1884 | RGBA | alpha=yes corners_alpha=[0, 0, 0, 0] | top3=[((0, 0, 0), 19), ((0, 2, 5), 2), ((3, 4, 5), 2)]
+imagery/products/rayban-rx3927v-fr.png | 3768x1884 | RGBA | alpha=yes corners_alpha=[0, 0, 0, 0] | top3=[((255, 255, 255), 18), ((68, 68, 69), 2), ((69, 69, 70), 2)]
+imagery/products/rayban-rx5154-fr.png | 3768x1884 | RGBA | alpha=yes corners_alpha=[0, 0, 0, 0] | top3=[((255, 255, 255), 21), ((253, 253, 253), 5), ((254, 254, 254), 5)]
+imagery/products/rayban-rx5228-fr.png | 3768x1884 | RGBA | alpha=yes corners_alpha=[0, 0, 0, 0] | top3=[((255, 255, 255), 22), ((254, 254, 254), 3), ((158, 158, 158), 3)]
+imagery/products/rayban-rx6489-fr.png | 3768x1884 | RGBA | alpha=yes corners_alpha=[0, 0, 0, 0] | top3=[((255, 255, 255), 21), ((250, 248, 243), 2), ((251, 251, 251), 2)]
+imagery/products/rayban-rx6513-fr.png | 3768x1884 | RGBA | alpha=yes corners_alpha=[0, 0, 0, 0] | top3=[((0, 0, 0), 34), ((74, 74, 73), 2), ((146, 146, 145), 2)]
+imagery/rebajas-2024-original.jpg | 736x920 | RGB | alpha=no | top3=[((175, 176, 250), 1), ((180, 176, 248), 1), ((189, 180, 251), 1)]
+imagery/services-graphic-1-original.png | 4096x3816 | RGB | alpha=no | top3=[((15, 17, 18), 1), ((22, 22, 21), 1), ((80, 50, 34), 1)]
+imagery/services-graphic-2-original.png | 4096x3816 | RGB | alpha=no | top3=[((49, 68, 107), 2), ((47, 64, 101), 1), ((56, 77, 117), 1)]
+imagery/services-wide-original.png | 1000x562 | RGBA | alpha=yes corners_alpha=[255, 255, 255, 255] | top3=[((2, 137, 137), 2), ((4, 137, 138), 1), ((2, 138, 137), 1)]
+insurance/canada-life-min.webp | 537x188 | RGBA | alpha=yes corners_alpha=[0, 0, 0, 0] | top3=[((255, 255, 255), 15), ((237, 241, 238), 2), ((216, 141, 158), 1)]
+insurance/desjardins.webp | 1024x320 | RGB | alpha=no | top3=[((255, 255, 255), 30), ((214, 234, 226), 3), ((210, 232, 223), 3)]
+insurance/empire-life.png | 1280x407 | RGBA | alpha=yes corners_alpha=[0, 0, 0, 0] | top3=[((0, 0, 0), 8), ((0, 5, 8), 2), ((0, 56, 82), 2)]
+insurance/greenshield.png | 381x132 | P | alpha=check | top3=[((255, 255, 255), 37), ((238, 243, 243), 2), ((247, 250, 249), 2)]
+insurance/ia-financial-group.svg | ERROR cannot identify image file '/Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/assets/source/insurance/ia-financial-group.svg'
+insurance/manulife.png | 738x141 | P | alpha=check | top3=[((255, 255, 255), 7), ((254, 254, 254), 5), ((112, 208, 162), 2)]
+insurance/mbc-logo-en.svg | ERROR cannot identify image file '/Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/assets/source/insurance/mbc-logo-en.svg'
+insurance/sun-life.png | 800x196 | P | alpha=check | top3=[((255, 255, 255), 11), ((251, 252, 252), 2), ((241, 244, 245), 2)]
+logo/eyeq-logo-header-original.png | 800x373 | RGBA | alpha=yes corners_alpha=[0, 0, 0, 0] | top3=[((0, 0, 0), 21), ((3, 3, 3), 10), ((2, 2, 2), 7)]
+other/video-poster.jpg | 800x800 | RGB | alpha=no | top3=[((125, 117, 116), 1), ((125, 118, 115), 1), ((123, 118, 115), 1)]
+[0m
+[0m→ [0mRead assets/source/brands/miu-miu.png
+[0m→ [0mRead assets/source/brands/persol.png
+[0m→ [0mRead assets/source/logo/eyeq-logo-header-original.png
+[0m
+[0m$ [0mpython3 -c "
+from PIL import Image
+for n in ['brands/miu-miu.png','brands/persol.png','brands/maui-jim.png','brands/oakley.png','brands/ray-ban.png','brands/prada.png','brands/tiffany.png','brands/versace.png','logo/eyeq-logo-header-original.png']:
+    p='/Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/assets/source/'+n
+    im=Image.open(p)
+    print(n, im.mode, im.size, 'transparency' in im.info and im.info.get('transparency'), 'tRNS' if 'transparency' in im.info else '')
+    rgba=im.convert('RGBA')
+    w,h=rgba.size
+    print('  corner',rgba.getpixel((5,5)),'center',rgba.getpixel((w//2,h//2)),'edge-mid',rgba.getpixel((w//2,5)))
+"
+brands/miu-miu.png P (3840, 2160) b'\x00\xe2\xbb$\x0e\x8fhF' tRNS
+  corner (71, 112, 76, 0) center (71, 112, 76, 0) edge-mid (71, 112, 76, 0)
+brands/persol.png P (3840, 2160) b'\x00\xce*\x96^' tRNS
+  corner (71, 112, 76, 0) center (71, 112, 76, 0) edge-mid (71, 112, 76, 0)
+brands/maui-jim.png RGBA (960, 496) False 
+  corner (0, 0, 0, 0) center (0, 0, 0, 0) edge-mid (0, 0, 0, 0)
+brands/oakley.png LA (960, 361) False 
+  corner (0, 0, 0, 0) center (0, 0, 0, 0) edge-mid (0, 0, 0, 255)
+brands/ray-ban.png LA (2400, 2400) False 
+  corner (0, 0, 0, 0) center (0, 0, 0, 0) edge-mid (0, 0, 0, 0)
+brands/prada.png RGBA (2400, 2400) False 
+  corner (0, 0, 0, 0) center (0, 0, 0, 255) edge-mid (0, 0, 0, 0)
+brands/tiffany.png RGBA (1280, 156) False 
+  corner (0, 0, 0, 255) center (0, 0, 0, 255) edge-mid (0, 0, 0, 0)
+brands/versace.png RGBA (1686, 756) False 
+  corner (255, 255, 255, 0) center (0, 0, 0, 255) edge-mid (255, 255, 255, 0)
+logo/eyeq-logo-header-original.png RGBA (800, 373) False 
+  corner (0, 0, 0, 0) center (0, 0, 0, 0) edge-mid (0, 0, 0, 0)
+[0m
+[0m→ [0mRead assets/source/brands/ray-ban.png
+[0m→ [0mRead assets/source/brands/tiffany.png
+[0m→ [0mRead assets/source/brands/maui-jim.png
+[0m
+[0m$ [0mpython3 -c "
+from PIL import Image
+import glob, os
+base='/Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/assets/source'
+for f in sorted(glob.glob(base+'/brands/*')+glob.glob(base+'/logo/*')+glob.glob(base+'/insurance/*')):
+    try:
+        im=Image.open(f).convert('RGBA')
+        w,h=im.size
+        # bbox of non-transparent
+        alpha=im.split()[3]
+        bbox=alpha.getbbox()
+        # mean color of opaque pixels
+        import collections
+        px=[p[:3] for p in im.getdata() if p[3]>128]
+        if px:
+            n=len(px)
+            mr=sum(p[0] for p in px)//n; mg=sum(p[1] for p in px)//n; mb=sum(p[2] for p in px)//n
+            print(os.path.basename(f), f'{w}x{h}', 'inkbbox='+str(bbox), f'opaque_px={n}', f'mean_ink=#{mr:02X}{mg:02X}{mb:02X}')
+        else:
+            print(os.path.basename(f), f'{w}x{h}', 'FULLY TRANSPARENT? bbox='+str(bbox))
+    except Exception as e:
+        print(os.path.basename(f),'ERR',e)
+"
+<string>:14: DeprecationWarning: Image.Image.getdata is deprecated and will be removed in Pillow 14 (2027-10-15). Use get_flattened_data instead.
+maui-jim.png 960x496 inkbbox=(0, 0, 960, 496) opaque_px=78169 mean_ink=#5A537D
+miu-miu.png 3840x2160 inkbbox=(149, 803, 3691, 1353) opaque_px=900525 mean_ink=#010000
+oakley.png 960x361 inkbbox=(0, 0, 960, 361) opaque_px=97234 mean_ink=#000000
+persol-collection.png 3840x2160 inkbbox=(369, 109, 3467, 2047) opaque_px=1482937 mean_ink=#221E1F
+persol.png 3840x2160 inkbbox=(369, 109, 3467, 2047) opaque_px=1482937 mean_ink=#221E1F
+prada-collection.png 2400x2400 inkbbox=(105, 1030, 2295, 1370) opaque_px=290688 mean_ink=#000000
+prada.png 2400x2400 inkbbox=(105, 1030, 2295, 1370) opaque_px=290688 mean_ink=#000000
+ray-ban-collection.webp 1920x1034 inkbbox=(0, 0, 1920, 1034) opaque_px=1722059 mean_ink=#EC1C24
+ray-ban.png 2400x2400 inkbbox=(35, 624, 2365, 1776) opaque_px=496932 mean_ink=#000000
+tiffany.png 1280x156 inkbbox=(3, 1, 1277, 155) opaque_px=40061 mean_ink=#000000
+versace.png 1686x756 inkbbox=(252, 247, 1434, 509) opaque_px=136152 mean_ink=#000000
+canada-life-min.webp 537x188 inkbbox=(2, 2, 534, 187) opaque_px=40029 mean_ink=#B94358
+desjardins.webp 1024x320 inkbbox=(0, 0, 1024, 320) opaque_px=327680 mean_ink=#E0EFE9
+empire-life.png 1280x407 inkbbox=(0, 1, 1280, 407) opaque_px=187643 mean_ink=#3A816F
+greenshield.png 381x132 inkbbox=(0, 0, 381, 132) opaque_px=50292 mean_ink=#E6EEED
+ia-financial-group.svg ERR cannot identify image file '/Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/assets/source/insurance/ia-financial-group.svg'
+manulife.png 738x141 inkbbox=(0, 0, 738, 141) opaque_px=104058 mean_ink=#B8C5BF
+mbc-logo-en.svg ERR cannot identify image file '/Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/assets/source/insurance/mbc-logo-en.svg'
+sun-life.png 800x196 inkbbox=(0, 0, 800, 196) opaque_px=156800 mean_ink=#DBDFD5
+eyeq-logo-header-original.png 800x373 inkbbox=(15, 20, 797, 323) opaque_px=56271 mean_ink=#010101
+[0m
+[0m$ [0mpython3 -c "
+import re
+for n in ['mbc-logo-en.svg','ia-financial-group.svg']:
+    p='/Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/assets/source/insurance/'+n
+    t=open(p,encoding='utf-8',errors='replace').read()
+    fills=sorted(set(re.findall(r'fill:\s*(#[0-9a-fA-F]{3,8})',t)) | set(re.findall(r'fill=\"(#[0-9a-fA-F]{3,8})\"',t)))
+    print(n, len(t), 'chars; fills:', fills)
+    print(t[:300].replace(chr(10),' '))
+    print('---')
+"
+mbc-logo-en.svg 4015 chars; fills: ['#0094d7']
+<svg xmlns="http://www.w3.org/2000/svg" id="a5446c50-d59a-4603-83f7-24e2b58c5fcf" data-name="Layer 1" width="770.3" height="115.5" viewBox="0 0 770.3 115.5">   <defs>     <style>       .a1f08931-eea5-4f17-ba0e-81f2a30d92cb {         fill: #0094d7;       }     </style>   </defs>   <title>mbc-logo-2</
+---
+ia-financial-group.svg 5954 chars; fills: ['#003da5', '#2f4995', '#7c878e']
+<svg xmlns="http://www.w3.org/2000/svg" width="232.59818" height="127" viewBox="0 0 61.541598 33.602082" version="1.1" id="svg8">   <defs id="defs2">     <clipPath id="clipPath316" clipPathUnits="userSpaceOnUse">       <path id="path314" d="M 362,32.548 H 583.832 V 58.736 H 362 Z"></path>     </clip
+---
+[0m
+[0m→ [0mRead assets/source/imagery/heropic-original.webp
+[0m→ [0mRead assets/source/imagery/eyeqburlington-3-original.png
+[0m→ [0mRead assets/source/imagery/polarized-lenses-original.jpg
+[0m→ [0mRead assets/source/imagery/services-graphic-1-original.png
+[0m
+[0m$ [0mBASE="/Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/assets/source"
+find "$BASE" -type f | wc -l
+rtk du -sh "$BASE" "$BASE"/*
+53
+ 95M	/Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/assets/source
+600K	/Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/assets/source/brands
+ 94M	/Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/assets/source/imagery
+164K	/Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/assets/source/insurance
+ 84K	/Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/assets/source/logo
+ 76K	/Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/assets/source/other
+[0m
+[0m# [0mTodos
+[✓] Inspect workspace + check status of docs/research, assets/source
+[✓] Browser audit eyeqoptical.ca (all pages) + Shopify JSON/sitemap
+[✓] Identify + download logo variants (max res, prefer SVG)
+[✓] Download brand + insurance logos
+[✓] Download imagery + record fonts/colors
+[•] Verify files + write D-asset-inventory.md manifest
+[0m
+[0m← [0mWrite docs/research/D-asset-inventory.md
+Wrote file successfully.
+[0m
+[0m# [0mTodos
+[✓] Inspect workspace + check status of docs/research, assets/source
+[✓] Browser audit eyeqoptical.ca (all pages) + Shopify JSON/sitemap
+[✓] Identify + download logo variants (max res, prefer SVG)
+[✓] Download brand + insurance logos
+[✓] Download imagery + record fonts/colors
+[✓] Verify files + write D-asset-inventory.md manifest
+[0m
+PHASE2-D-DONE
+- 53 files (~95MB) in assets/source/ + manifest docs/research/D-asset-inventory.md; all verified open, 0 failures.
+- Logo: single black-on-transparent 800×373 PNG, no SVG/favicon/og:image (favicon 404); needs light variant for black scene.
+- Brands: all 8 homepage marks are dark-on-transparent (need light variants); insurance: 8 logos incl. 3 visually ID'd (Sun Life/Manulife/GreenShield), 2 true SVGs.
+- Imagery: hero stack, 9 services images, 22 product fronts (3768px), video URL recorded; fonts Inter/Barlow Condensed/GTStandard-M; maroon #A42325 + hero yellow #FFDE59.
+- Gaps: no logo SVG, white-assuming logos, .webp-ext-with-PNG/JPEG-data quirks, palette-alpha green-box trap, Gucci text-only.
+EXIT 0 model=meta/muse-spark-1.3-contributor

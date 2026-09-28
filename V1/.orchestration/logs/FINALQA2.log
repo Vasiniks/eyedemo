@@ -1,0 +1,171 @@
+[0m
+> build · muse-spark-1.3-contributor
+[0m
+[0m→ [0mSkill "browser-testing-with-devtools"
+[0m→ [0mSkill "web-perf"
+[0m
+[0m# [0mTodos
+[ ] Setup prod server :5720 (vite build + preview)
+[ ] Film scroll fluidity 1512x860 trace + flick beats
+[ ] Mobile 390x844 checks (subject, overlays, collisions)
+[ ] Content completeness vs B-content-inventory + CTAs/map/captions
+[ ] Lighthouse mobile+desktop + console errors
+[ ] Write docs/phase4/qa/v3/FINAL-QA.md + FINALQA2-DONE
+[0m
+[0m→ [0mRead .
+[0m→ [0mRead docs/phase4/qa/v3
+[0m→ [0mRead package.json
+[0m→ [0mRead docs/research/B-content-inventory.md
+[0m
+[0m# [0mTodos
+[•] Setup prod server :5720 (vite build + preview)
+[ ] Film scroll fluidity 1512x860 trace + flick beats
+[ ] Mobile 390x844 checks (subject, overlays, collisions)
+[ ] Content completeness vs B-content-inventory + CTAs/map/captions
+[ ] Lighthouse mobile+desktop + console errors
+[ ] Write docs/phase4/qa/v3/FINAL-QA.md + FINALQA2-DONE
+[0m
+[0m$ [0mnpx vite build 2>&1 | tail -20; rtk ls docs/phase4/qa/v3/finalqa/ 2>&1 || echo "no finalqa dir"
+rendering chunks...
+computing gzip size...
+dist/index.html                   0.93 kB │ gzip:   0.51 kB
+dist/assets/index-D75pDj9-.css   60.84 kB │ gzip:  11.44 kB
+dist/assets/index-Cr-tThlP.js   578.92 kB │ gzip: 189.12 kB
+
+[plugin builtin:vite-reporter] 
+(!) Some chunks are larger than 500 kB after minification. Consider:
+- Using dynamic import() to code-split the application
+- Use build.rolldownOptions.output.codeSplitting to improve chunking: https://rolldown.rs/reference/OutputOptions.codeSplitting
+- Adjust chunk size limit for this warning via build.chunkSizeWarningLimit.
+✓ built in 38.46s
+[33m[PLUGIN_TIMINGS] [0mJavaScript callbacks ran for 38.3s of this 38.5s build (100%).
+The slowest callbacks, timed inside each callback (the wait before a callback starts is excluded, the time it awaits is included):
+  - plugin vite:prepare-out-dir renderStart (98%, 37.8s, 1 call)
+Additional callback time came from the callbacks below and from callbacks under 1s.
+1 callback is listed without a time. Its calls overlapped, so the time inside one call includes work from other calls. To find its cost, profile the build with `node --cpu-prof`:
+  - plugin vite:css transform (13 calls)
+See https://rolldown.rs/reference/InputOptions.checks#bundlertimings for more details.
+
+ls: docs/phase4/qa/v3/finalqa/: No such file or directory
+no finalqa dir
+[0m
+[0m$ [0mmkdir -p "docs/phase4/qa/v3/finalqa" && (npx vite preview --port 5720 --strictPort > docs/phase4/qa/v3/finalqa/preview-5720.log 2>&1 &) && sleep 3 && curl -s -o /dev/null -w "%{http_code}" http://localhost:5720/ && echo " preview-up"
+000
+[0m
+[0m$ [0mrtk read "docs/phase4/qa/v3/finalqa/preview-5720.log"; echo "---"; ps aux | grep -i vite | head -20; lsof -i :5720 || ss -tlnp 2>&1 | head
+---
+admin            55029  33.5  1.3 509249072 216336   ??  SN    2:01PM   0:16.35 opencode run -m meta/muse-spark-1.3-contributor --auto --dir /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1 --title FINALQA2 Final QA for the EyeQ site, READ-ONLY (edit only docs/phase4/qa/v3/FINAL-QA.md + scratch scripts under docs/phase4/qa/v3/finalqa/). HARD TIME BOX 12 min — write the report before the box ends even if partial. Fan out with the task tool. ID=FINALQA2 (port 5720). Serve with 'npx vite build && npx vite preview --port 5720 --strictPort' (production build).\012Pages: '/', '/pages/services', '/pages/contact'. Priority: (1) homepage film scroll fluidity at 1512×860 (Chrome trace of a full scroll: frame p50/p95, long tasks, blanks; fast flick shows each key beat ≥250 ms); (2) mobile 390×844 (subject never cut, overlays in bands, no collisions); (3) content completeness vs docs/research/B-content-inventory.md for all 3 pages + nothing not on the live site; large Book-exam CTAs present with the exact booking URL; map loaded; no pause buttons; no invented captions; (4) Lighthouse mobile+desktop for '/'; console errors. Rank P0/P1 with file + fix. End with FINALQA2-DONE.
+admin            57477   1.8  0.0 435308384   2640   ??  SNs   2:03PM   0:00.01 /bin/zsh -c rtk read "docs/phase4/qa/v3/finalqa/preview-5720.log"; echo "---"; ps aux | grep -i vite | head -20; lsof -i :5720 || ss -tlnp 2>&1 | head
+admin            27440   0.0  0.1 445728816   9872   ??  SN   11:23AM   0:20.24 node /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/node_modules/.bin/vite --port 5709 --strictPort
+admin            20305   0.0  0.0 436229120   1872   ??  SN   11:22AM   0:00.91 npm exec vite --port 5709 --strictPort     
+admin            17286   0.0  0.1 445725632  10064   ??  SN   11:19AM   0:40.65 node ./node_modules/.bin/vite --port 5710 --strictPort
+admin            16898   0.0  0.0 445730336   8112   ??  SN   11:19AM   0:19.91 node /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/node_modules/.bin/vite --port 5173
+admin            16521   0.0  0.0 436221232   1872   ??  SN   11:19AM   0:00.44 npm exec vite --port 5173    
+admin             1647   0.0  0.0 445704912   2672   ??  SN   11:06AM   0:06.66 node /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/node_modules/.bin/vite preview --port 5706 --strictPort --host 127.0.0.1
+admin             1606   0.0  0.0 436221168   1872   ??  SN   11:06AM   0:00.37 npm exec vite preview --port 5706 --strictPort --host 127.0.0.1        
+admin            98815   0.0  0.1 445732896  10640   ??  SN   11:03AM   0:21.74 node /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/node_modules/.bin/vite --port 5708 --strictPort
+admin            78415   0.0  0.0 445765184   8128   ??  SN   10:44AM   0:20.61 node /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/node_modules/.bin/vite --port 5705 --strictPort --host 127.0.0.1
+admin            78366   0.0  0.0 436221408   1824   ??  SN   10:44AM   0:00.48 npm exec vite --port 5705 --strictPort --host 127.0.0.1       
+admin            69381   0.0  0.0 445730960   8240   ??  SN   10:37AM   0:20.58 node /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/node_modules/.bin/vite --port 5602 --strictPort
+admin            68941   0.0  0.0 436229264   1824   ??  SN   10:36AM   0:00.81 npm exec vite --port 5602 --strictPort     
+admin            44536   0.0  0.0 445722544   8320   ??  SN   10:21AM   0:47.80 node /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/node_modules/.bin/vite --port 5505 --strictPort
+admin            44489   0.0  0.0 436213552   1824   ??  SN   10:21AM   0:00.34 npm exec vite --port 5505 --strictPort     
+admin            13467   0.0  0.0 445749920   8128   ??  SN   10:11AM   0:36.17 node /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/node_modules/.bin/vite --port 5501 --strictPort
+admin            13303   0.0  0.0 436229280   1824   ??  SN   10:11AM   0:00.48 npm exec vite --port 5501 --strictPort     
+admin            78080   0.0  0.0 445723904   8144   ??  SN   10:04AM   0:28.98 node /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/node_modules/.bin/vite --port 5503 --strictPort
+admin            78049   0.0  0.0 436217056   1824   ??  SN   10:04AM   0:00.34 npm exec vite --port 5503 --strictPort     
+zsh:1: command not found: ss
+[0m
+[0m$ [0mnohup npx vite preview --port 5720 --strictPort --host 127.0.0.1 > "docs/phase4/qa/v3/finalqa/preview-5720.log" 2>&1 & sleep 5; curl -s -o /dev/null -w "%{http_code}\n" http://127.0.0.1:5720/; ls -la "docs/phase4/qa/v3/finalqa/"
+000
+total 8
+drwxr-xr-x@   3 admin  staff    96 Sep 28 14:03 .
+drwxr-xr-x@ 179 admin  staff  5728 Sep 28 14:03 ..
+-rw-r--r--@   1 admin  staff   114 Sep 28 14:04 preview-5720.log
+[0m
+[0m→ [0mRead docs/phase4/qa/v3/finalqa/preview-5720.log
+[0m
+[0m$ [0msleep 2; curl -v http://127.0.0.1:5720/ 2>&1 | head -30; echo "---ps---"; ps aux | grep "5720" | head
+% Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0*   Trying 127.0.0.1:5720...
+* Connected to 127.0.0.1 (127.0.0.1) port 5720
+> GET / HTTP/1.1
+> Host: 127.0.0.1:5720
+> User-Agent: curl/8.7.1
+> Accept: */*
+> 
+* Request completely sent off
+< HTTP/1.1 200 OK
+< Vary: Origin
+< Content-Type: text/html
+< Cache-Control: no-cache
+< Etag: W/"3a4-gqOb05Y+tMjKblwf5m8j77TKuyw"
+< Date: Mon, 28 Sep 2026 18:04:14 GMT
+< Connection: keep-alive
+< Keep-Alive: timeout=5
+< Content-Length: 932
+< 
+{ [932 bytes data]
+100   932  100   932    0     0  42588      0 --:--:-- --:--:-- --:--:-- 42363100   932  100   932    0     0  42491      0 --:--:-- --:--:-- --:--:-- 42363
+* Connection #0 to host 127.0.0.1 left intact
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="EyeQ Vision Care — 2-227 Vodden St East, Brampton, ON. Eye exams, prescription fittings, high-definition lenses." />
+    <meta name="theme-color" content="#050607" />
+---ps---
+admin            55029   7.1  1.1 509249632 180912   ??  SN    2:01PM   0:19.33 opencode run -m meta/muse-spark-1.3-contributor --auto --dir /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1 --title FINALQA2 Final QA for the EyeQ site, READ-ONLY (edit only docs/phase4/qa/v3/FINAL-QA.md + scratch scripts under docs/phase4/qa/v3/finalqa/). HARD TIME BOX 12 min — write the report before the box ends even if partial. Fan out with the task tool. ID=FINALQA2 (port 5720). Serve with 'npx vite build && npx vite preview --port 5720 --strictPort' (production build).\012Pages: '/', '/pages/services', '/pages/contact'. Priority: (1) homepage film scroll fluidity at 1512×860 (Chrome trace of a full scroll: frame p50/p95, long tasks, blanks; fast flick shows each key beat ≥250 ms); (2) mobile 390×844 (subject never cut, overlays in bands, no collisions); (3) content completeness vs docs/research/B-content-inventory.md for all 3 pages + nothing not on the live site; large Book-exam CTAs present with the exact booking URL; map loaded; no pause buttons; no invented captions; (4) Lighthouse mobile+desktop for '/'; console errors. Rank P0/P1 with file + fix. End with FINALQA2-DONE.
+admin            57862   0.0  0.0 410059936    144   ??  SN    2:04PM   0:00.00 grep 5720
+admin            57829   0.0  0.0 435308400   2192   ??  SNs   2:04PM   0:00.01 /bin/zsh -c sleep 2; curl -v http://127.0.0.1:5720/ 2>&1 | head -30; echo "---ps---"; ps aux | grep "5720" | head
+admin            57685   0.0  0.3 445712384  57136   ??  SN    2:04PM   0:00.27 node /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/node_modules/.bin/vite preview --port 5720 --strictPort --host 127.0.0.1
+admin            57606   0.0  0.2 436234752  34800   ??  SN    2:03PM   0:00.59 npm exec vite preview --port 5720 --strictPort --host 127.0.0.1
+[0m
+[0m# [0mTodos
+[✓] Setup prod server :5720 (vite build + preview)
+[•] Film scroll fluidity 1512x860 trace + flick beats
+[•] Mobile 390x844 checks (subject, overlays, collisions)
+[•] Content completeness vs B-content-inventory + CTAs/map/captions
+[•] Lighthouse mobile+desktop + console errors
+[ ] Write docs/phase4/qa/v3/FINAL-QA.md + FINALQA2-DONE
+[0m
+[0m• [0mFilm scroll fluidity QA[90m General Agent[0m
+[0m• [0mMobile 390x844 QA[90m General Agent[0m
+[0m• [0mContent completeness QA[90m General Agent[0m
+[0m• [0mLighthouse + console QA[90m General Agent[0m
+[0m✓ [0mLighthouse + console QA[90m General Agent[0m
+[0m✓ [0mFilm scroll fluidity QA[90m General Agent[0m
+[0m✓ [0mContent completeness QA[90m General Agent[0m
+[0m✓ [0mMobile 390x844 QA[90m General Agent[0m
+[0m
+[0m# [0mTodos
+[✓] Setup prod server :5720 (vite build + preview)
+[✓] Film scroll fluidity 1512x860 trace + flick beats
+[✓] Mobile 390x844 checks (subject, overlays, collisions)
+[✓] Content completeness vs B-content-inventory + CTAs/map/captions
+[✓] Lighthouse mobile+desktop + console errors
+[•] Write docs/phase4/qa/v3/FINAL-QA.md + FINALQA2-DONE
+[0m
+[0m← [0mWrite docs/phase4/qa/v3/FINAL-QA.md
+Wrote file successfully.
+[0m
+[0m# [0mTodos
+[✓] Setup prod server :5720 (vite build + preview)
+[✓] Film scroll fluidity 1512x860 trace + flick beats
+[✓] Mobile 390x844 checks (subject, overlays, collisions)
+[✓] Content completeness vs B-content-inventory + CTAs/map/captions
+[✓] Lighthouse mobile+desktop + console errors
+[✓] Write docs/phase4/qa/v3/FINAL-QA.md + FINALQA2-DONE
+[0m
+Report written to `docs/phase4/qa/v3/FINAL-QA.md` (prod build :5720, 4 parallel probes).
+
+- Film 1512×860: p50 8.3ms/p95 9.3ms, 0 long tasks, 1×600ms hitch; all beats hit, flick PASS, no blanks.
+- Mobile 390×844: all 3 pages PASS, no cut/collision/h-scroll.
+- Content: H1/about/services/lenses/insurance/reviews/brands PASS; CTAs exact Deen URL (6/4/3×); map Y/Y/N; no pause buttons; no invented captions. Known rebrand deviations flagged (Vodden address, hours, CTA wording, Tiffany & Co., lens précis).
+- Lighthouse `/`: Desktop 82/100/96/92, Mobile 87/100/96/92; CLS 0; console clean (1 flaky Maps Jwt error, preload warn, 36 unsized images); no 4xx/5xx.
+- P0: none. P1: robots.txt, unsized images, services no-map, Tiffany naming, 600ms hitch, rebrand sign-off — all with file+fix in report.
+
+FINALQA2-DONE
+EXIT 0 model=meta/muse-spark-1.3-contributor

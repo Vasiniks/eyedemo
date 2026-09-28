@@ -1,0 +1,7 @@
+[     215ms] [ERROR] Failed to load resource: the server responded with a status of 500 (Internal Server Error) @ http://localhost:5405/src/v1/SidePanels.tsx?t=1790603297813:0
+[     382ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:5405/favicon.ico:0
+[     506ms] [ERROR] Failed to load resource: the server responded with a status of 500 (Internal Server Error) @ http://localhost:5405/src/v1/SidePanels.tsx?t=1790603305416:0
+[    3508ms] [WARNING] The resource http://localhost:5405/fonts/fraunces-var.woff2 was preloaded using link preload but not used within a few seconds from the window's load event. Please make sure it has an appropriate `as` value and it is preloaded intentionally. @ http://localhost:5405/v1.html:0
+[    4947ms] [ERROR] Failed to load resource: the server responded with a status of 500 (Internal Server Error) @ http://localhost:5405/src/v1/SidePanels.tsx?t=1790603309928:0
+[    5230ms] [INFO] %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold @ http://localhost:5405/node_modules/.vite/deps/react-dom_client.js?v=9b3fa9bc:15557
+[  185367ms] [LOG] [vite] server connection lost. Polling for restart... @ http://localhost:5405/@vite/client:1030

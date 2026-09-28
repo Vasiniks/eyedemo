@@ -1,0 +1,33 @@
+[      80ms] [INFO] %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold @ http://localhost:5202/node_modules/.vite/deps/react-dom_client.js?v=9b3fa9bc:15557
+[   50573ms] ReferenceError: sx is not defined
+    at LogoItem (http://localhost:5202/src/v1/BrandWaves.tsx?t=1790563059183:186:13)
+    at Object.react_stack_bottom_frame (http://localhost:5202/node_modules/.vite/deps/react-dom_client.js?v=9b3fa9bc:13895:12)
+    at renderWithHooks (http://localhost:5202/node_modules/.vite/deps/react-dom_client.js?v=9b3fa9bc:4153:19)
+    at updateFunctionComponent (http://localhost:5202/node_modules/.vite/deps/react-dom_client.js?v=9b3fa9bc:5528:16)
+    at beginWork (http://localhost:5202/node_modules/.vite/deps/react-dom_client.js?v=9b3fa9bc:6144:20)
+    at runWithFiberInDEV (http://localhost:5202/node_modules/.vite/deps/react-dom_client.js?v=9b3fa9bc:697:66)
+    at performUnitOfWork (http://localhost:5202/node_modules/.vite/deps/react-dom_client.js?v=9b3fa9bc:8901:92)
+    at workLoopSync (http://localhost:5202/node_modules/.vite/deps/react-dom_client.js?v=9b3fa9bc:8797:37)
+    at renderRootSync (http://localhost:5202/node_modules/.vite/deps/react-dom_client.js?v=9b3fa9bc:8781:6)
+    at performWorkOnRoot (http://localhost:5202/node_modules/.vite/deps/react-dom_client.js?v=9b3fa9bc:8468:27)
+[   50531ms] [WARNING] %s
+
+%s
+ An error occurred in the <LogoItem> component. Consider adding an error boundary to your tree to customize error handling behavior.
+Visit https://react.dev/link/error-boundaries to learn more about error boundaries. @ http://localhost:5202/@vite/client:298
+[   54787ms] ReferenceError: sx is not defined
+    at LogoItem (http://localhost:5202/src/v1/BrandWaves.tsx?t=1790563063670:186:13)
+    at Object.react_stack_bottom_frame (http://localhost:5202/node_modules/.vite/deps/react-dom_client.js?v=9b3fa9bc:13895:12)
+    at renderWithHooks (http://localhost:5202/node_modules/.vite/deps/react-dom_client.js?v=9b3fa9bc:4153:19)
+    at updateFunctionComponent (http://localhost:5202/node_modules/.vite/deps/react-dom_client.js?v=9b3fa9bc:5528:16)
+    at beginWork (http://localhost:5202/node_modules/.vite/deps/react-dom_client.js?v=9b3fa9bc:6144:20)
+    at runWithFiberInDEV (http://localhost:5202/node_modules/.vite/deps/react-dom_client.js?v=9b3fa9bc:697:66)
+    at performUnitOfWork (http://localhost:5202/node_modules/.vite/deps/react-dom_client.js?v=9b3fa9bc:8901:92)
+    at workLoopSync (http://localhost:5202/node_modules/.vite/deps/react-dom_client.js?v=9b3fa9bc:8797:37)
+    at renderRootSync (http://localhost:5202/node_modules/.vite/deps/react-dom_client.js?v=9b3fa9bc:8781:6)
+    at performWorkOnRoot (http://localhost:5202/node_modules/.vite/deps/react-dom_client.js?v=9b3fa9bc:8468:27)
+[   54774ms] [WARNING] %s
+
+%s
+ An error occurred in the <LogoItem> component. Consider adding an error boundary to your tree to customize error handling behavior.
+Visit https://react.dev/link/error-boundaries to learn more about error boundaries. @ http://localhost:5202/@vite/client:298

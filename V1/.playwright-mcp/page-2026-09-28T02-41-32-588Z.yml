@@ -1,0 +1,7 @@
+- generic [ref=e1]:
+  - generic [ref=e2]:
+    - generic [aria-hidden]:
+      - generic: EYEQ VISION CARE
+  - generic [ref=e3]:
+    - strong [ref=e4]: p 0.020
+    - slider "Film progress" [ref=e5]: "20"

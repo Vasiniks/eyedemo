@@ -1,0 +1,2149 @@
+[0m
+> build · muse-spark-1.3-contributor
+[0m
+[0m→ [0mRead docs/00-BRIEF.md
+[0m→ [0mRead docs/phase4/PLAN-MASTER.md
+[0m→ [0mRead docs/phase4/COPY-DRAFTS.md
+[0m→ [0mRead docs/phase4/PLAN-MASTER.md[90m [offset=477][0m
+[0m✱ [0mGlob "docs/phase4/PLAN-*.md"[90m 6 matches[0m
+[0m→ [0mRead .
+[0m→ [0mRead docs/research/B-content-inventory.md
+[0m→ [0mRead public
+[0m→ [0mRead docs/phase4/qa
+[0m→ [0mRead src
+[0m→ [0mRead package.json
+[0m→ [0mRead public/web
+[0m→ [0mRead src/components
+[0m→ [0mRead src/app
+[0m→ [0mRead src/data
+[0m→ [0mRead index.html
+[0m→ [0mRead src/components/dom
+[0m→ [0mRead src/styles
+[0m→ [0mRead src/main.tsx
+[0m→ [0mRead src/README-LANES.md
+[0m→ [0mRead src/styles/tokens.css
+[0m→ [0mRead src/styles/film.css
+[0m→ [0mRead src/styles/rails.css
+[0m→ [0mRead src/styles/white.css
+[0m→ [0mRead src/routes
+[0m→ [0mRead src/motion
+[0m→ [0mRead src/store
+[0m→ [0mRead vite.config.ts
+[0m→ [0mRead src/app/router.tsx
+[0m→ [0mRead public/web/insurance-light
+[0m→ [0mRead public/web/brands-light
+[0m→ [0mRead src/routes/Home.tsx
+[0m
+[0m# [0mTodos
+[•] Load skills (masked-reveal, marquee-loop, no-ai-design-slop, iterate-until-verified)
+[ ] Write src/data/*.json (brands, insurers, lenses, services, reviews, store) B-verbatim + DRAFT markers
+[ ] Build ChapterOverlay (9 beats, progress-prop masked reveals, 7 Essilor names, wave labels)
+[ ] Build WhiteSection (H1, CTA, ledger, map click-to-activate, about verbatim + D13)
+[ ] Build Header + Footer (Book pill, skip-intro, progress hairline, policies, replay)
+[ ] Build LogoRails (opposing vertical film-strip rails, 72/44px/s, pause, RM static)
+[ ] Build rest-of-homepage sections R1-R5 (services, lenses, reviews, visit) + BookingCTA/Scrims/SkipLinks
+[ ] Dev harness dev-E.html + src/__dev__/E/main.tsx; screenshots 1440+390 into docs/phase4/qa/E/
+[ ] npm run build passing; banned-token grep; PHASE4-E-DONE summary
+[0m
+[0m→ [0mSkill "iterate-until-verified"
+[0m→ [0mSkill "masked-reveal"
+[0m→ [0mSkill "no-ai-design-slop"
+[0m→ [0mSkill "marquee-loop"
+[0m✱ [0mGrep "rail|Rail|film-strip|matte"[90m in docs/phase4 · 17 matches[0m
+[0m
+[0m$ [0mrtk ls -la public/web/brands-light public/web/insurance-light public/web/*.png public/fonts 2>/dev/null; file public/web/eyeq-logo-white.png public/web/eyeq-logo-header-original.png 2>/dev/null; python3 -c "from PIL import Image; import glob; [print(p, Image.open(p).size) for p in sorted(glob.glob('public/web/brands-light/*')+glob.glob('public/web/insurance-light/*')+['public/web/eyeq-logo-white.png','public/web/eyeq-logo-header-original.png'])]" 2>/dev/null || echo NO_PIL
+644  public/web/atlas-brands.png  488.0K
+644  public/web/atlas-insurers.png  221.6K
+644  public/web/eyeq-logo-header-original.png  81.7K
+644  public/web/eyeq-logo-white.png  35.6K
+644  public/web/eyeq-logo-white@2x.png  35.3K
+644  fraunces-italic-var.woff2  79.8K
+644  fraunces-var.woff2  65.8K
+644  inter-var.woff2  71.3K
+644  maui-jim.png  44.2K
+644  miu-miu.png  42.6K
+644  oakley.png  16.0K
+644  persol.png  107.8K
+644  prada.png  32.4K
+644  ray-ban.png  84.8K
+644  tiffany.png  20.3K
+644  versace.png  15.7K
+644  canada-life-min.png  9.9K
+644  desjardins.png  53.3K
+644  empire-life.png  26.9K
+644  greenshield.png  3.7K
+644  ia-financial-group.png  51.8K
+644  manulife.png  6.9K
+644  mbc-logo-en.png  16.1K
+644  sun-life.png  15.7K
+... (3 filtered)
+[+3 hidden: rtk recall 62594615c082]
+public/web/eyeq-logo-white.png:           PNG image data, 800 x 373, 8-bit/color RGBA, non-interlaced
+public/web/eyeq-logo-header-original.png: PNG image data, 800 x 373, 8-bit/color RGBA, non-interlaced
+public/web/brands-light/maui-jim.png (960, 496)
+public/web/brands-light/miu-miu.png (3684, 571)
+public/web/brands-light/oakley.png (960, 361)
+public/web/brands-light/persol.png (3222, 2016)
+public/web/brands-light/prada.png (2277, 354)
+public/web/brands-light/ray-ban.png (2400, 1198)
+public/web/brands-light/tiffany.png (1280, 156)
+public/web/brands-light/versace.png (1230, 272)
+public/web/eyeq-logo-header-original.png (800, 373)
+public/web/eyeq-logo-white.png (800, 373)
+public/web/insurance-light/canada-life-min.png (537, 188)
+public/web/insurance-light/desjardins.png (894, 194)
+public/web/insurance-light/empire-life.png (1280, 407)
+public/web/insurance-light/greenshield.png (331, 72)
+public/web/insurance-light/ia-financial-group.png (1600, 874)
+public/web/insurance-light/manulife.png (738, 141)
+public/web/insurance-light/mbc-logo-en.png (1600, 240)
+public/web/insurance-light/sun-life.png (800, 196)
+[0m
+[0m→ [0mRead docs/phase4/PLAN-art-direction.md[90m [offset=430, limit=50][0m
+[0m
+[0m# [0mTodos
+[✓] Load skills (masked-reveal, marquee-loop, no-ai-design-slop, iterate-until-verified)
+[•] Write src/data/*.json (brands, insurers, lenses, services, reviews, store) B-verbatim + DRAFT markers
+[ ] Build ChapterOverlay (9 beats, progress-prop masked reveals, 7 Essilor names, wave labels)
+[ ] Build WhiteSection (H1, CTA, ledger, map click-to-activate, about verbatim + D13)
+[ ] Build Header + Footer (Book pill, skip-intro, progress hairline, policies, replay)
+[ ] Build LogoRails (opposing vertical film-strip rails, 72/44px/s, pause, RM static)
+[ ] Build rest-of-homepage sections R1-R5 (services, lenses, reviews, visit) + BookingCTA/Scrims/SkipLinks
+[ ] Dev harness dev-E.html + src/__dev__/E/main.tsx; screenshots 1440+390 into docs/phase4/qa/E/
+[ ] npm run build passing; banned-token grep; PHASE4-E-DONE summary
+[0m
+[0m← [0mWrite src/data/store.json
+Wrote file successfully.
+[0m
+[0m← [0mWrite src/data/brands.json
+Wrote file successfully.
+[0m
+[0m← [0mWrite src/data/insurers.json
+Wrote file successfully.
+[0m
+[0m← [0mWrite src/data/lenses.json
+Wrote file successfully.
+[0m
+[0m← [0mWrite src/data/services.json
+Wrote file successfully.
+[0m
+[0m← [0mWrite src/data/reviews.json
+Wrote file successfully.
+[0m
+[0m← [0mWrite src/data/chapters.json
+Wrote file successfully.
+[0m
+[0m$ [0mrtk read tsconfig.app.json tsconfig.json src/vite-env.d.ts src/app/providers.tsx 2>/dev/null
+{
+  "compilerOptions": {
+    "tsBuildInfoFile": "./node_modules/.tmp/tsconfig.app.tsbuildinfo",
+    "target": "ES2022",
+    "useDefineForClassFields": true,
+    "lib": ["ES2022", "DOM", "DOM.Iterable"],
+    "module": "ESNext",
+    "skipLibCheck": true,
+    "moduleResolution": "bundler",
+    "allowImportingTsExtensions": true,
+    "verbatimModuleSyntax": true,
+    "moduleDetection": "force",
+    "noEmit": true,
+    "jsx": "react-jsx",
+    "strict": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "erasableSyntaxOnly": true,
+    "noFallthroughCasesInSwitch": true,
+    "noUncheckedSideEffectImports": true
+  },
+  "include": ["src"]
+}
+{
+  "files": [],
+  "references": [
+    { "path": "./tsconfig.app.json" },
+    { "path": "./tsconfig.node.json" }
+  ]
+}
+/// <reference types="vite/client" />
+import type { ReactNode } from 'react'
+
+// Lane A scaffold passthrough. Lane B (step 3) adds here: LenisProvider +
+// GSAP registration + reduced-motion gate (single ticker contract:
+// lenis.on('scroll', ScrollTrigger.update) + gsap.ticker lenis.raf +
+// lagSmoothing(0); RM branch = no Lenis). Lane A must not pre-empt that.
+export function Providers({ children }: { children: ReactNode }) {
+  return <>{children}</>
+}
+[0m
+[0m← [0mWrite src/data/json-modules.d.ts
+Wrote file successfully.
+[0m
+[0m← [0mWrite src/data/index.ts
+Wrote file successfully.
+[0m
+[0m← [0mWrite src/components/dom/lane-e.css
+Wrote file successfully.
+[0m
+[0m← [0mWrite src/components/dom/Scrims.tsx
+Wrote file successfully.
+[0m
+[0m← [0mWrite src/components/dom/SkipLinks.tsx
+Wrote file successfully.
+[0m
+[0m← [0mWrite src/components/dom/BookingCTA.tsx
+Wrote file successfully.
+[0m
+[0m← [0mWrite src/components/dom/StoreBits.tsx
+Wrote file successfully.
+[0m
+[0m← [0mWrite src/components/dom/ChapterOverlay.tsx
+Wrote file successfully.
+[0m
+[0m← [0mWrite src/components/dom/WhiteSection.tsx
+Wrote file successfully.
+[0m
+[0m← [0mWrite src/components/dom/Header.tsx
+Wrote file successfully.
+[0m
+[0m← [0mWrite src/components/dom/Footer.tsx
+Wrote file successfully.
+[0m
+[0m← [0mWrite src/components/dom/LogoRails.tsx
+Wrote file successfully.
+[0m
+[0m← [0mEdit src/components/dom/LogoRails.tsx
+Index: /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/components/dom/LogoRails.tsx
+===================================================================
+--- /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/components/dom/LogoRails.tsx
++++ /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/components/dom/LogoRails.tsx
+@@ -59,9 +59,9 @@
+   speed: number;
+ }) {
+   const trackRef = useRef<HTMLDivElement>(null);
+   const setRef = useRef<HTMLDivElement>(null);
+-  const stateRef = useRef({ offset: direction === 1 ? 0 : 0, last: 0, vel: 1, hover: 1 });
++  const stateRef = useRef({ offset: 0, last: 0, vel: 1, hover: 1, target: 1 });
+   const runningRef = useRef(running);
+   runningRef.current = running;
+   const speedRef = useRef(speed);
+   speedRef.current = speed;
+
+[0m
+[0m← [0mEdit src/components/dom/LogoRails.tsx
+Index: /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/components/dom/LogoRails.tsx
+===================================================================
+--- /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/components/dom/LogoRails.tsx
++++ /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/components/dom/LogoRails.tsx
+@@ -91,10 +91,10 @@
+   return;
+ }
+ const dt = Math.min(0.05, (t - st.last) / 1000 || 0.016);
+ st.last = t;
+-const target = st.hover;
+-st.hover += (target - st.hover) * 0.1;
++// Hover 72→20 eased over ~400ms (PLAN-MASTER §8).
++st.hover += (st.target - st.hover) * 0.12;
+ const step = speedRef.current * st.vel * st.hover * dt;
+ if (direction === 1) {
+   st.offset += step;
+   if (st.offset >= 0) st.offset -= h;
+
+[0m
+[0m← [0mEdit src/components/dom/LogoRails.tsx
+Index: /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/components/dom/LogoRails.tsx
+===================================================================
+--- /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/components/dom/LogoRails.tsx
++++ /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/components/dom/LogoRails.tsx
+@@ -112,9 +112,9 @@
+   };
+ }, [direction]);
+ 
+ const setHover = (v: number) => {
+-  stateRef.current.hover = v;
++  stateRef.current.target = v;
+ };
+ 
+ const copies = [0, 1];
+ return (
+
+[0m
+[0m← [0mWrite src/components/dom/Sections.tsx
+Wrote file successfully.
+[0m
+[0m← [0mEdit src/components/dom/Sections.tsx
+Index: /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/components/dom/Sections.tsx
+===================================================================
+--- /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/components/dom/Sections.tsx
++++ /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/components/dom/Sections.tsx
+@@ -57,9 +57,9 @@
+     </Tag>
+   );
+ }
+ 
+-function MaskedHeadline({ text, className = '' }: { text: string; className?: string }) {
++function MaskedHeadline({ text, className = '', id }: { text: string; className?: string; id?: string }) {
+   const ref = useRef<HTMLHeadingElement>(null);
+   const [shown, setShown] = useState(false);
+   useEffect(() => {
+     const el = ref.current;
+
+[0m
+[0m← [0mEdit src/components/dom/Sections.tsx
+Index: /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/components/dom/Sections.tsx
+===================================================================
+--- /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/components/dom/Sections.tsx
++++ /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/components/dom/Sections.tsx
+@@ -83,9 +83,9 @@
+   return () => io.disconnect();
+ }, []);
+ const words = text.split(/\s+/);
+ return (
+-  <h2 ref={ref} className={`${className}${shown ? ' is-in' : ''}`} aria-label={text}>
++  <h2 ref={ref} id={id} className={`${className}${shown ? ' is-in' : ''}`} aria-label={text}>
+     {words.map((w, i) => (
+       <span key={i}>
+         <span className="eyeq-e__mask" aria-hidden="true">
+           <span style={{ transitionDelay: `${(i * 0.09).toFixed(2)}s` }}>{w}</span>
+
+[0m
+[0m← [0mEdit src/components/dom/Sections.tsx
+Index: /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/components/dom/Sections.tsx
+===================================================================
+--- /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/components/dom/Sections.tsx
++++ /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/components/dom/Sections.tsx
+@@ -114,10 +114,10 @@
+   <p className="eyeq-microcap eyeq-microcap--light eyeq-section__eyebrow eyeq-e__microcap">
+     {videoMeta.heading}
+   </p>
+ </Reveal>
+-<MaskedHeadline text={videoMeta.heading} className="eyeq-h2 eyeq-section__h2" />
+-<Reveal className="eyeq-about__media" >
++<MaskedHeadline id="about-h" text={videoMeta.heading} className="eyeq-h2 eyeq-section__h2" />
++<Reveal>
+   <div className="eyeq-about__media" style={{ marginTop: 32 }}>
+     {!playing ? (
+       <button
+         type="button"
+
+[0m
+[0m← [0mEdit src/components/dom/Sections.tsx
+Index: /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/components/dom/Sections.tsx
+===================================================================
+--- /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/components/dom/Sections.tsx
++++ /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/components/dom/Sections.tsx
+@@ -140,15 +140,15 @@
+       )}
+     </div>
+   </Reveal>
+ </div>
+-<div className="eyeq-about__body" id="about-h">
++<div className="eyeq-about__body">
+   {videoMeta.paragraphs.map((para, i) => (
+     <Reveal key={i}>
+       <p>{para}</p>
+     </Reveal>
+   ))}
+-  <Reveal className="eyeq-about__brampton">
++  <Reveal>
+     <div className="eyeq-about__brampton">
+       <p>
+         {aboutBrampton.text}
+         <span className="eyeq-e__draft-tag" title="Client-approval draft (D13)">
+
+[0m
+[0m← [0mEdit src/components/dom/Sections.tsx
+Index: /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/components/dom/Sections.tsx
+===================================================================
+--- /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/components/dom/Sections.tsx
++++ /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/components/dom/Sections.tsx
+@@ -176,9 +176,9 @@
+     <p className="eyeq-microcap eyeq-microcap--light eyeq-section__eyebrow eyeq-e__microcap">
+       WHAT WE DO
+     </p>
+   </Reveal>
+-  <MaskedHeadline text="Services" className="eyeq-h2 eyeq-section__h2" />
++  <MaskedHeadline id="services-h" text="Services" className="eyeq-h2 eyeq-section__h2" />
+ </div>
+ <div>
+   <ol className="eyeq-services__rows">
+     {servicesPrecis.map((s, i) => (
+
+[0m
+[0m← [0mEdit src/components/dom/Sections.tsx
+Index: /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/components/dom/Sections.tsx
+===================================================================
+--- /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/components/dom/Sections.tsx
++++ /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/components/dom/Sections.tsx
+@@ -226,10 +226,10 @@
+ <div className="eyeq-lenses__inner">
+   <Reveal>
+     <p className="eyeq-microcap eyeq-lenses__eyebrow eyeq-e__microcap">LENSES</p>
+   </Reveal>
+-  <MaskedHeadline text={lensHeading} className="eyeq-h2" />
+-  <ul className="eyeq-lenses__rows" id="lenses-h">
++  <MaskedHeadline id="lenses-h" text={lensHeading} className="eyeq-h2" />
++  <ul className="eyeq-lenses__rows">
+     {lenses.map((lens) => (
+       <Reveal as="li" key={lens.name}>
+         <h3 className="eyeq-lenses__name">
+           {lens.name.split(/(®|™)/g).map((part, i) =>
+
+[0m
+[0m← [0mEdit src/components/dom/Sections.tsx
+Index: /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/components/dom/Sections.tsx
+===================================================================
+--- /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/components/dom/Sections.tsx
++++ /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/components/dom/Sections.tsx
+@@ -267,10 +267,10 @@
+   <p className="eyeq-microcap eyeq-microcap--light eyeq-section__eyebrow eyeq-e__microcap">
+     {reviewsHeading}
+   </p>
+ </Reveal>
+-<MaskedHeadline text={reviewsSub} className="eyeq-h2 eyeq-section__h2" />
+-<Reveal className="eyeq-reviews__agg">
++<MaskedHeadline id="reviews-h" text={reviewsSub} className="eyeq-h2 eyeq-section__h2" />
++<Reveal>
+   <div className="eyeq-reviews__agg">
+     <span className="eyeq-reviews__score eyeq-numerals">{reviewsAggregate}</span>
+     <span className="eyeq-reviews__count">{reviewsAggregateSuffix}</span>
+   </div>
+
+[0m
+[0m← [0mEdit src/components/dom/Sections.tsx
+Index: /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/components/dom/Sections.tsx
+===================================================================
+--- /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/components/dom/Sections.tsx
++++ /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/components/dom/Sections.tsx
+@@ -274,12 +274,12 @@
+     <span className="eyeq-reviews__score eyeq-numerals">{reviewsAggregate}</span>
+     <span className="eyeq-reviews__count">{reviewsAggregateSuffix}</span>
+   </div>
+ </Reveal>
+-<div className="eyeq-reviews__grid" id="reviews-h">
++<div className="eyeq-reviews__grid">
+   {featured && (
+-    <Reveal className="eyeq-review eyeq-review--featured">
+-      <figure className="eyeq-review eyeq-review--featured" style={{ padding: 0, border: 'none', margin: 0 }}>
++    <Reveal>
++      <figure className="eyeq-review eyeq-review--featured">
+         <span className="eyeq-review__mono" aria-hidden="true">
+           {featured.initials}
+         </span>
+         <blockquote className="eyeq-review__text">“{featured.text}”</blockquote>
+
+[0m
+[0m← [0mEdit src/components/dom/Sections.tsx
+Index: /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/components/dom/Sections.tsx
+===================================================================
+--- /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/components/dom/Sections.tsx
++++ /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/components/dom/Sections.tsx
+@@ -287,10 +287,10 @@
+     </figure>
+   </Reveal>
+ )}
+ {rest.map((r) => (
+-  <Reveal key={`${r.initials}-${r.text.slice(0, 12)}`} className="eyeq-review">
+-    <figure className="eyeq-review" style={{ padding: 0, border: 'none', margin: 0 }}>
++  <Reveal key={`${r.initials}-${r.text.slice(0, 12)}`}>
++    <figure className="eyeq-review">
+       <span className="eyeq-review__mono" aria-hidden="true">
+         {r.initials}
+       </span>
+       <blockquote className="eyeq-review__text">“{r.text}”</blockquote>
+
+[0m
+[0m← [0mEdit src/components/dom/Sections.tsx
+Index: /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/components/dom/Sections.tsx
+===================================================================
+--- /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/components/dom/Sections.tsx
++++ /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/components/dom/Sections.tsx
+@@ -312,10 +312,10 @@
+   <p className="eyeq-microcap eyeq-microcap--light eyeq-section__eyebrow eyeq-e__microcap">
+     VISIT OUR STORE
+   </p>
+ </Reveal>
+-<MaskedHeadline text="Visit our store" className="eyeq-h2 eyeq-section__h2" />
+-<div className="eyeq-visit__grid" id="visit-h">
++<MaskedHeadline id="visit-h" text="Visit our store" className="eyeq-h2 eyeq-section__h2" />
++<div className="eyeq-visit__grid">
+   <Reveal>
+     <ul className="eyeq-visit__rows" aria-label="Hours, address and phone">
+       {store.hours.map((h) => (
+         <li key={h.days}>
+
+[0m
+[0m← [0mEdit src/components/dom/Sections.tsx
+Index: /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/components/dom/Sections.tsx
+===================================================================
+--- /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/components/dom/Sections.tsx
++++ /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/components/dom/Sections.tsx
+@@ -336,9 +336,9 @@
+       </span>
+     </li>
+   </ul>
+ </Reveal>
+-<Reveal className="eyeq-visit__card">
++<Reveal>
+   <div className="eyeq-visit__card">
+     <BookingCTA label={store.booking.labelHomepage} newTab variant="ink" />
+     <p>
+       Prefer email?{' '}
+
+[0m
+[0m← [0mEdit src/components/dom/Sections.tsx
+Index: /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/components/dom/Sections.tsx
+===================================================================
+--- /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/components/dom/Sections.tsx
++++ /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/components/dom/Sections.tsx
+@@ -348,9 +348,9 @@
+       </p>
+     </div>
+   </Reveal>
+ </div>
+-<Reveal className="eyeq-visit__map">
++<Reveal>
+   <div className="eyeq-visit__map">
+     <MapEmbed compact />
+   </div>
+ </Reveal>
+
+[0m
+[0m← [0mEdit src/components/dom/Sections.tsx
+Index: /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/components/dom/Sections.tsx
+===================================================================
+--- /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/components/dom/Sections.tsx
++++ /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/components/dom/Sections.tsx
+@@ -276,9 +276,9 @@
+   </div>
+ </Reveal>
+ <div className="eyeq-reviews__grid">
+   {featured && (
+-    <Reveal>
++    <Reveal className="eyeq-review--featured">
+       <figure className="eyeq-review eyeq-review--featured">
+         <span className="eyeq-review__mono" aria-hidden="true">
+           {featured.initials}
+         </span>
+
+[0m
+[0m← [0mEdit src/components/dom/lane-e.css
+Index: /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/components/dom/lane-e.css
+===================================================================
+--- /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/components/dom/lane-e.css
++++ /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/components/dom/lane-e.css
+@@ -1035,28 +1035,32 @@
+     grid-template-columns: 1fr;
+   }
+ }
+ .eyeq-review {
++  margin: 0;
+   padding: 32px 32px 32px 0;
+   border-bottom: 1px solid var(--eyeq-hairline-light);
+ }
+-.eyeq-review:nth-child(even) {
++.eyeq-reviews__grid > :nth-child(even) .eyeq-review {
+   padding-left: 32px;
+   border-left: 1px solid var(--eyeq-hairline-light);
+ }
+-.eyeq-review:nth-child(odd) {
++.eyeq-reviews__grid > :nth-child(odd) .eyeq-review {
+   padding-right: 32px;
+ }
++.eyeq-reviews__grid > .eyeq-review--featured {
++  grid-column: 1 / -1;
++}
+ @media (max-width: 900px) {
+-  .eyeq-review:nth-child(even) {
++  .eyeq-reviews__grid > :nth-child(even) .eyeq-review {
+     padding-left: 0;
+     border-left: none;
+   }
+-  .eyeq-review:nth-child(odd) {
++  .eyeq-reviews__grid > :nth-child(odd) .eyeq-review {
+     padding-right: 0;
+   }
+ }
+-.eyeq-review--featured {
++.eyeq-review--featured.eyeq-review {
+   grid-column: 1 / -1;
+   background: var(--eyeq-card-white);
+   border: 1px solid var(--eyeq-hairline-light);
+   border-radius: 2px;
+
+[0m
+[0m← [0mWrite src/components/dom/index.ts
+Wrote file successfully.
+[0m
+[0m← [0mWrite src/__dev__/E/main.tsx
+Wrote file successfully.
+[0m
+[0m← [0mWrite dev-E.html
+Wrote file successfully.
+[0m
+[0m← [0mEdit src/components/dom/LogoRails.tsx
+Index: /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/components/dom/LogoRails.tsx
+===================================================================
+--- /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/components/dom/LogoRails.tsx
++++ /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/components/dom/LogoRails.tsx
+@@ -213,9 +213,53 @@
+     </div>
+   );
+ }
+ 
+-export function LogoRails() {
++export function BrandRail({ running, speed }: { running: boolean; speed: number }) {
++  return (
++    <Rail logos={brands} label="Featured eyewear brands" direction={1} running={running} speed={speed} />
++  );
++}
++
++export function InsurerRail({ running, speed }: { running: boolean; speed: number }) {
++  return (
++    <Rail logos={insurers} label="Accepted insurance plans" direction={-1} running={running} speed={speed} />
++  );
++}
++
++export function RailsPause({ paused, onToggle }: { paused: boolean; onToggle: () => void }) {
++  return (
++    <button
++      type="button"
++      className="eyeq-rails__pause"
++      onClick={onToggle}
++      aria-pressed={paused}
++      aria-label={paused ? 'Play brand rails' : 'Pause brand rails'}
++    >
++      {paused ? '▶' : '❚❚'}
++    </button>
++  );
++}
++
++// Screen-reader truth: real lists with text names (fixes live empty-alts).
++export function RailsSrLists() {
++  return (
++    <>
++      <ul className="eyeq-sr-only" aria-label="Featured eyewear brands">
++        {brands.map((b) => (
++          <li key={b.name}>{b.name}</li>
++        ))}
++      </ul>
++      <ul className="eyeq-sr-only" aria-label={insurerAriaLabel}>
++        {insurers.map((b) => (
++          <li key={b.name}>{b.name}</li>
++        ))}
++      </ul>
++    </>
++  );
++}
++
++function useRailsRunning() {
+   const rm = usePrefersReducedMotion();
+   const [paused, setPaused] = useState(false);
+   const [visible, setVisible] = useState(true);
+   const [narrow, setNarrow] = useState(
+
+[0m
+[0m→ [0mRead src/components/dom/LogoRails.tsx[90m [offset=280][0m
+[0m✗ [0mEdit src/components/dom/LogoRails.tsx failed
+[91m[1mError: [0mCould not find oldString in the file. It must match exactly, including whitespace, indentation, and line endings.
+[0m→ [0mRead src/components/dom/LogoRails.tsx[90m [limit=40, offset=246][0m
+[0m
+[0m← [0mEdit src/components/dom/LogoRails.tsx
+Index: /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/components/dom/LogoRails.tsx
+===================================================================
+--- /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/components/dom/LogoRails.tsx
++++ /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/components/dom/LogoRails.tsx
+@@ -284,51 +284,41 @@
+     io.observe(el);
+     return () => io.disconnect();
+   }, []);
+ 
+-  if (rm) return <StaticGrid />;
+-
+   const running = visible && !paused;
+   const speed = narrow ? MOB_SPEED : DESK_SPEED;
++  return { rm, running, speed, paused, setPaused, wrapRef };
++}
+ 
++// White-act flank layout (ART §4.4 desktop geometry): Lane B places
++// <WhiteActRails side="left"> … WhiteSection … <WhiteActRails side="right">.
++// "pair" renders both rails + pause (standalone bridge use).
++export function WhiteActRails({ side = 'pair' }: { side?: 'left' | 'right' | 'pair' }) {
++  const { rm, running, speed, paused, setPaused, wrapRef } = useRailsRunning();
++  if (rm) return side === 'pair' ? <StaticGrid /> : <span aria-hidden="true" />;
+   return (
+     <div className="eyeq-e" ref={wrapRef}>
+-      <div className="eyeq-rails eyeq-rails--desktop" role="presentation">
+-        <Rail
+-          logos={brands}
+-          label="Featured eyewear brands"
+-          direction={1}
+-          running={running}
+-          speed={speed}
+-        />
+-        <button
+-          type="button"
+-          className="eyeq-rails__pause"
+-          onClick={() => setPaused((v) => !v)}
+-          aria-pressed={paused}
+-          aria-label={paused ? 'Play brand rails' : 'Pause brand rails'}
+-        >
+-          {paused ? '▶' : '❚❚'}
+-        </button>
+-        <Rail
+-          logos={insurers}
+-          label="Accepted insurance plans"
+-          direction={-1}
+-          running={running}
+-          speed={speed}
+-        />
+-      </div>
+-      <MobileMarquee running={running} speed={speed} />
+-      {/* Screen-reader truth: real lists with text names (fixes live empty-alts) */}
+-      <ul className="eyeq-sr-only" aria-label="Featured eyewear brands">
+-        {brands.map((b) => (
+-          <li key={b.name}>{b.name}</li>
+-        ))}
+-      </ul>
+-      <ul className="eyeq-sr-only" aria-label="Accepted insurance plans">
+-        {insurers.map((b) => (
+-          <li key={b.name}>{b.name}</li>
+-        ))}
+-      </ul>
++      {side === 'pair' ? (
++        <div className="eyeq-rails eyeq-rails--desktop" role="presentation">
++          <BrandRail running={running} speed={speed} />
++          <RailsPause paused={paused} onToggle={() => setPaused((v) => !v)} />
++          <InsurerRail running={running} speed={speed} />
++        </div>
++      ) : (
++        <div className="eyeq-rails eyeq-rails--desktop" role="presentation">
++          {side === 'left' ? (
++            <BrandRail running={running} speed={speed} />
++          ) : (
++            <InsurerRail running={running} speed={speed} />
++          )}
++        </div>
++      )}
++      {side === 'pair' && <MobileMarquee running={running} speed={speed} />}
++      {side === 'pair' && <RailsSrLists />}
+     </div>
+   );
+ }
++
++export function LogoRails() {
++  return <WhiteActRails side="pair" />;
++}
+
+[0m
+[0m← [0mEdit src/components/dom/LogoRails.tsx
+Index: /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/components/dom/LogoRails.tsx
+===================================================================
+--- /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/components/dom/LogoRails.tsx
++++ /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/components/dom/LogoRails.tsx
+@@ -318,7 +318,19 @@
+     </div>
+   );
+ }
+ 
++// Mobile 68px horizontal marquee (brands + insurers in one strip). Lane B
++// renders this below the white act on <768px; CSS hides it on desktop.
++export function RailsMobileStrip() {
++  const { rm, running, speed, wrapRef } = useRailsRunning();
++  if (rm) return null;
++  return (
++    <div className="eyeq-e" ref={wrapRef}>
++      <MobileMarquee running={running} speed={speed} />
++    </div>
++  );
++}
++
+ export function LogoRails() {
+   return <WhiteActRails side="pair" />;
+ }
+
+[0m
+[0m← [0mEdit src/components/dom/index.ts
+Index: /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/components/dom/index.ts
+===================================================================
+--- /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/components/dom/index.ts
++++ /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/components/dom/index.ts
+@@ -8,6 +8,6 @@
+ export { ChapterOverlay } from './ChapterOverlay';
+ export { WhiteSection } from './WhiteSection';
+ export { Header } from './Header';
+ export { Footer } from './Footer';
+-export { LogoRails } from './LogoRails';
++export { LogoRails, WhiteActRails, BrandRail, InsurerRail, RailsPause, RailsSrLists, RailsMobileStrip } from './LogoRails';
+ export { AboutSection, ServicesSection, LensesSection, ReviewsSection, VisitSection, HomeSections } from './Sections';
+
+[0m
+[0m← [0mEdit src/__dev__/E/main.tsx
+Index: /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/__dev__/E/main.tsx
+===================================================================
+--- /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/__dev__/E/main.tsx
++++ /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/__dev__/E/main.tsx
+@@ -9,9 +9,9 @@
+ import { ChapterOverlay } from '../dom/ChapterOverlay';
+ import { WhiteSection } from '../dom/WhiteSection';
+ import { Header } from '../dom/Header';
+ import { Footer } from '../dom/Footer';
+-import { LogoRails } from '../dom/LogoRails';
++import { LogoRails, WhiteActRails, RailsMobileStrip, RailsSrLists } from '../dom/LogoRails';
+ import { HomeSections } from '../dom/Sections';
+ import { beats } from '../../data';
+ 
+ // Lane E isolated dev harness (PLAN-MASTER parallel-safety: own Vite entry,
+
+[0m
+[0m← [0mEdit src/__dev__/E/main.tsx
+Index: /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/__dev__/E/main.tsx
+===================================================================
+--- /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/__dev__/E/main.tsx
++++ /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/__dev__/E/main.tsx
+@@ -84,12 +84,22 @@
+ 
+ <div id="content" />
+ 
+ {/* White act with flanking rails (ART §4.4 desktop geometry) */}
+-<div style={{ background: '#f5f1e8', display: 'grid', gridTemplateColumns: 'auto 1fr auto', alignItems: 'stretch' }}>
++<div style={{ background: '#f5f1e8' }}>
++  <div style={{ display: 'grid', gridTemplateColumns: 'auto 1fr auto', maxWidth: 1280, margin: '0 auto' }}>
++    <WhiteActRails side="left" />
++    <WhiteSection />
++    <WhiteActRails side="right" />
++  </div>
++  <RailsMobileStrip />
++  <RailsSrLists />
++</div>
++<div style={{ background: '#f5f1e8', padding: '24px 32px' }}>
++  <p className="eyeq-microcap eyeq-microcap--light">STANDALONE RAIL PAIR (LOOP QA)</p>
++</div>
++<div style={{ background: '#f5f1e8', paddingBottom: 48 }}>
+   <LogoRails />
+-  <WhiteSection />
+-  <span />
+ </div>
+ 
+ <HomeSections />
+ <Footer />
+
+[0m
+[0m$ [0mnpx tsc -b 2>&1 | head -50
+npm notice run eyeq-vision-care@0.1.0 npx
+npm notice run 'tsc' -b
+src/__dev__/E/main.tsx(8,27): error TS2307: Cannot find module '../dom/SkipLinks' or its corresponding type declarations.
+src/__dev__/E/main.tsx(9,32): error TS2307: Cannot find module '../dom/ChapterOverlay' or its corresponding type declarations.
+src/__dev__/E/main.tsx(10,30): error TS2307: Cannot find module '../dom/WhiteSection' or its corresponding type declarations.
+src/__dev__/E/main.tsx(11,24): error TS2307: Cannot find module '../dom/Header' or its corresponding type declarations.
+src/__dev__/E/main.tsx(12,24): error TS2307: Cannot find module '../dom/Footer' or its corresponding type declarations.
+src/__dev__/E/main.tsx(13,74): error TS2307: Cannot find module '../dom/LogoRails' or its corresponding type declarations.
+src/__dev__/E/main.tsx(14,30): error TS2307: Cannot find module '../dom/Sections' or its corresponding type declarations.
+src/components/dom/LogoRails.tsx(252,48): error TS2304: Cannot find name 'insurerAriaLabel'.
+[0m
+[0m← [0mEdit src/components/dom/LogoRails.tsx
+Index: /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/components/dom/LogoRails.tsx
+===================================================================
+--- /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/components/dom/LogoRails.tsx
++++ /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/components/dom/LogoRails.tsx
+@@ -1,6 +1,6 @@
+ import { useEffect, useRef, useState } from 'react';
+-import { brands, insurers } from '../../data';
++import { brands, insurers, insurerAriaLabel } from '../../data';
+ import type { LogoEntry } from '../../data';
+ 
+ // Lane E — LogoRails (PLAN-MASTER step 12, §1-C8, ART §4.4, skill: marquee-loop).
+ // Two narrow vertical film-strip rails flanking the white-act column:
+
+[0m
+[0m$ [0mpython3 - <<'EOF'
+import re
+p = 'src/__dev__/E/main.tsx'
+s = open(p).read()
+s = s.replace("'../../styles/", "'__STYLES__/").replace("'../dom/", "'__DOM__/")
+s = s.replace("'__STYLES__/", "'../../styles/").replace("'__DOM__/", "'../../components/dom/")
+s = s.replace("from '../../data'", "from '../../data'")
+open(p, 'w').write(s)
+EOF
+grep -n "import\|from '" src/__dev__/E/main.tsx | head -20
+1:import { useState } from 'react';
+2:import { createRoot } from 'react-dom/client';
+3:import '../../styles/tokens.css';
+4:import '../../styles/film.css';
+5:import '../../styles/rails.css';
+6:import '../../styles/white.css';
+7:import '../../components/dom/lane-e.css';
+8:import { SkipLinks } from '../../components/dom/SkipLinks';
+9:import { ChapterOverlay } from '../../components/dom/ChapterOverlay';
+10:import { WhiteSection } from '../../components/dom/WhiteSection';
+11:import { Header } from '../../components/dom/Header';
+12:import { Footer } from '../../components/dom/Footer';
+13:import { LogoRails, WhiteActRails, RailsMobileStrip, RailsSrLists } from '../../components/dom/LogoRails';
+14:import { HomeSections } from '../../components/dom/Sections';
+15:import { beats } from '../../data';
+[0m
+[0m$ [0mnpx tsc -b 2>&1 | head -50
+npm notice run eyeq-vision-care@0.1.0 npx
+npm notice run 'tsc' -b
+src/canvas/SponsorField.tsx(179,39): error TS1005: ',' expected.
+[0m
+[0m→ [0mRead src/canvas/SponsorField.tsx[90m [limit=20, offset=170][0m
+[0m
+[0m$ [0mrtk ls docs/phase4/requests 2>/dev/null || echo NO_REQUESTS_DIR
+(empty)
+[0m
+[0m← [0mWrite docs/phase4/requests/E-build-blocker-sponsorfield.md
+Wrote file successfully.
+[0m
+[0m$ [0mnpx tsc -b --pretty false 2>&1 | grep -v "^npm" | head -20; echo "---"; npx tsc --noEmit -p tsconfig.app.json --pretty false 2>&1 | grep -v "^npm" | grep "components/dom\|__dev__\|data/" | head -20; echo LANE_E_TSC_DONE
+src/canvas/SponsorField.tsx(179,39): error TS1005: ',' expected.
+src/routes/Services.tsx(68,5): error TS1005: ')' expected.
+src/routes/Services.tsx(69,3): error TS1109: Expression expected.
+---
+LANE_E_TSC_DONE
+[0m
+[0m$ [0mmkdir -p docs/phase4/qa/E && (npx vite --port 5105 --strictPort > /tmp/lane-e-vite.log 2>&1 &) && sleep 6 && curl -s -o /dev/null -w "%{http_code}" http://localhost:5105/dev-E.html && echo READY
+200READY
+[0m
+[0m⚙ [0mplaywright_browser_navigate {"url":"http://localhost:5105/dev-E.html"}
+[0m⚙ [0mplaywright_browser_console_messages {"level":"error"}
+[0m⚙ [0mplaywright_browser_take_screenshot {"fullPage":true,"scale":"css"}
+[0m⚙ [0mplaywright_browser_snapshot Unknown
+[0m
+[0m← [0mEdit src/components/dom/ChapterOverlay.tsx
+Index: /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/components/dom/ChapterOverlay.tsx
+===================================================================
+--- /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/components/dom/ChapterOverlay.tsx
++++ /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/components/dom/ChapterOverlay.tsx
+@@ -33,15 +33,12 @@
+ 
+ function MaskedWords({ text, shown, stagger = 0.09 }: { text: string; shown: boolean; stagger?: number }) {
+   const words = text.split(/\s+/);
+   return (
+-    <span className={shown ? 'is-in' : ''} aria-label={text} role="text">
++    <span className={shown ? 'is-in' : ''}>
+       {words.map((w, i) => (
+         <span key={i}>
+-          <span
+-            className="eyeq-e__mask"
+-            aria-hidden="true"
+-          >
++          <span className="eyeq-e__mask">
+             <span
+               style={{
+                 transitionDelay: `${(i * stagger).toFixed(2)}s`,
+               }}
+@@ -56,22 +53,22 @@
+   );
+ }
+ 
+ function Reg({ name }: { name: string }) {
+-  // Renders ®/™ at 60%, roman, never bold (ART §1.2). Name is verbatim.
++  // Renders ®/™ at 60%, roman, never bold (ART §1.2). Name is verbatim;
++  // the visible parts already spell the full name (no sr-only duplicate).
+   const parts = name.split(/(®|™)/g);
+   return (
+     <>
+       {parts.map((part, i) =>
+         part === '®' || part === '™' ? (
+-          <span key={i} className="eyeq-reg" aria-hidden="true">
++          <span key={i} className="eyeq-reg">
+             {part}
+           </span>
+         ) : (
+           <span key={i}>{part}</span>
+         ),
+       )}
+-      <span className="eyeq-sr-only">{name}</span>
+     </>
+   );
+ }
+ 
+
+[0m
+[0m← [0mEdit src/components/dom/Sections.tsx
+Index: /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/components/dom/Sections.tsx
+===================================================================
+--- /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/components/dom/Sections.tsx
++++ /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/components/dom/Sections.tsx
+@@ -83,12 +83,12 @@
+   return () => io.disconnect();
+ }, []);
+ const words = text.split(/\s+/);
+ return (
+-  <h2 ref={ref} id={id} className={`${className}${shown ? ' is-in' : ''}`} aria-label={text}>
++  <h2 ref={ref} id={id} className={`${className}${shown ? ' is-in' : ''}`}>
+     {words.map((w, i) => (
+       <span key={i}>
+-        <span className="eyeq-e__mask" aria-hidden="true">
++        <span className="eyeq-e__mask">
+           <span style={{ transitionDelay: `${(i * 0.09).toFixed(2)}s` }}>{w}</span>
+         </span>
+         {i < words.length - 1 ? ' ' : ''}
+       </span>
+
+[0m
+[0m← [0mEdit src/components/dom/Sections.tsx
+Index: /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/components/dom/Sections.tsx
+===================================================================
+--- /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/components/dom/Sections.tsx
++++ /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/components/dom/Sections.tsx
+@@ -205,21 +205,15 @@
+   );
+ }
+ 
+ // R3 — Lenses. Single inverted block (Stage); 7 rows, 22px Fraunces; short
+-// use-lines for the 3 described lenses + Read more → /services.
++// verbatim use-lines for the 3 described lenses + Read more → /services.
++// The 4 title-only lenses show names only (no descriptions exist on the live
++// site). No use-case micro-caps: no verbatim source exists for them and Lane E
++// invents nothing — see docs/phase4/requests/E-lenses-usecaps.md.
+ // NOTE: the 4:3 material close-up (PLAN-MASTER §4-R3) needs a credited photo
+ // or Blender render — no image is supplied to Lane E and none is invented;
+ // layout reserves no broken slot. See known issues in the lane summary.
+-const LENS_USE: Record<string, string> = {
+-  'Varilux® Physio Extensee™': 'PROGRESSIVE · EVERYDAY',
+-  'Distinctive® Superior': 'PROGRESSIVE',
+-  'Distinctive® Enhanced': 'PROGRESSIVE',
+-  'Distinctive® SV Lenses': 'SINGLE VISION',
+-  'Essilor Stellest® 2.0 Lenses': 'MYOPIA MANAGEMENT · CHILDREN',
+-  'Transitions® Lenses': 'LIGHT-ADAPTIVE · EVERYDAY',
+-  'Xperio® Lenses': 'POLARIZED · OUTDOORS',
+-};
+ 
+ export function LensesSection() {
+   return (
+     <section className="eyeq-e eyeq-section eyeq-lenses" aria-labelledby="lenses-h">
+
+[0m
+[0m← [0mEdit src/components/dom/lane-e.css
+Index: /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/components/dom/lane-e.css
+===================================================================
+--- /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/components/dom/lane-e.css
++++ /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/components/dom/lane-e.css
+@@ -963,12 +963,8 @@
+   padding: 0;
+   border-top: 1px solid var(--eyeq-hairline-dark-strong);
+ }
+ .eyeq-lenses__rows li {
+-  display: grid;
+-  grid-template-columns: 1fr auto;
+-  gap: 24px;
+-  align-items: baseline;
+   padding: 20px 0;
+   border-bottom: 1px solid var(--eyeq-hairline-dark);
+ }
+ .eyeq-lenses__name {
+
+[0m
+[0m← [0mEdit src/components/dom/Sections.tsx
+Index: /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/components/dom/Sections.tsx
+===================================================================
+--- /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/components/dom/Sections.tsx
++++ /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/components/dom/Sections.tsx
+@@ -109,13 +109,8 @@
+ return (
+   <section className="eyeq-e eyeq-section eyeq-about" aria-labelledby="about-h">
+     <div className="eyeq-about__grid">
+       <div>
+-        <Reveal>
+-          <p className="eyeq-microcap eyeq-microcap--light eyeq-section__eyebrow eyeq-e__microcap">
+-            {videoMeta.heading}
+-          </p>
+-        </Reveal>
+         <MaskedHeadline id="about-h" text={videoMeta.heading} className="eyeq-h2 eyeq-section__h2" />
+         <Reveal>
+           <div className="eyeq-about__media" style={{ marginTop: 32 }}>
+             {!playing ? (
+
+[0m
+[0m← [0mEdit src/components/dom/Sections.tsx
+Index: /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/components/dom/Sections.tsx
+===================================================================
+--- /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/components/dom/Sections.tsx
++++ /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/components/dom/Sections.tsx
+@@ -166,13 +166,8 @@
+ return (
+   <section className="eyeq-e eyeq-section" aria-labelledby="services-h">
+     <div className="eyeq-services__grid">
+       <div className="eyeq-services__sticky">
+-        <Reveal>
+-          <p className="eyeq-microcap eyeq-microcap--light eyeq-section__eyebrow eyeq-e__microcap">
+-            WHAT WE DO
+-          </p>
+-        </Reveal>
+         <MaskedHeadline id="services-h" text="Services" className="eyeq-h2 eyeq-section__h2" />
+       </div>
+       <div>
+         <ol className="eyeq-services__rows">
+
+[0m
+[0m← [0mEdit src/components/dom/Sections.tsx
+Index: /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/components/dom/Sections.tsx
+===================================================================
+--- /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/components/dom/Sections.tsx
++++ /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/components/dom/Sections.tsx
+@@ -207,11 +207,8 @@
+ export function LensesSection() {
+   return (
+     <section className="eyeq-e eyeq-section eyeq-lenses" aria-labelledby="lenses-h">
+       <div className="eyeq-lenses__inner">
+-        <Reveal>
+-          <p className="eyeq-microcap eyeq-lenses__eyebrow eyeq-e__microcap">LENSES</p>
+-        </Reveal>
+         <MaskedHeadline id="lenses-h" text={lensHeading} className="eyeq-h2" />
+         <ul className="eyeq-lenses__rows">
+           {lenses.map((lens) => (
+             <Reveal as="li" key={lens.name}>
+
+[0m
+[0m← [0mEdit src/components/dom/Sections.tsx
+Index: /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/components/dom/Sections.tsx
+===================================================================
+--- /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/components/dom/Sections.tsx
++++ /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/components/dom/Sections.tsx
+@@ -214,18 +214,16 @@
+     <Reveal as="li" key={lens.name}>
+       <h3 className="eyeq-lenses__name">
+         {lens.name.split(/(®|™)/g).map((part, i) =>
+           part === '®' || part === '™' ? (
+-            <span key={i} className="eyeq-reg" aria-hidden="true">
++            <span key={i} className="eyeq-reg">
+               {part}
+             </span>
+           ) : (
+             <span key={i}>{part}</span>
+           ),
+         )}
+-        <span className="eyeq-sr-only">{lens.name}</span>
+       </h3>
+-      <span className="eyeq-lenses__use">{LENS_USE[lens.name] ?? 'HIGH-DEFINITION'}</span>
+       {lens.short && <p className="eyeq-lenses__desc">{lens.short}</p>}
+     </Reveal>
+   ))}
+ </ul>
+
+[0m
+[0m← [0mEdit src/components/dom/Sections.tsx
+Index: /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/components/dom/Sections.tsx
+===================================================================
+--- /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/components/dom/Sections.tsx
++++ /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/components/dom/Sections.tsx
+@@ -319,9 +319,8 @@
+ <Reveal>
+   <div className="eyeq-visit__card">
+     <BookingCTA label={store.booking.labelHomepage} newTab variant="ink" />
+     <p>
+-      Prefer email?{' '}
+       <a className="eyeq-visit__email" href={store.emailHref}>
+         {store.email}
+       </a>
+     </p>
+
+[0m
+[0m← [0mWrite docs/phase4/requests/E-lenses-usecaps.md
+Wrote file successfully.
+[0m
+[0m← [0mEdit src/components/dom/lane-e.css
+Index: /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/components/dom/lane-e.css
+===================================================================
+--- /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/components/dom/lane-e.css
++++ /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/components/dom/lane-e.css
+@@ -975,18 +975,9 @@
+ }
+ .eyeq-lenses__name .eyeq-reg {
+   font-size: 60%;
+ }
+-.eyeq-lenses__use {
+-  font-size: 11px;
+-  font-weight: 500;
+-  letter-spacing: 0.18em;
+-  text-transform: uppercase;
+-  color: var(--eyeq-bone-dim);
+-  text-align: right;
+-}
+ .eyeq-lenses__desc {
+-  grid-column: 1 / -1;
+   margin: 8px 0 0;
+   font-size: 14px;
+   line-height: 1.55;
+   color: var(--eyeq-bone-dim);
+
+[0m
+[0m⚙ [0mplaywright_browser_navigate {"url":"http://localhost:5105/dev-E.html"}
+[0m⚙ [0mplaywright_browser_evaluate {"function":"() => { document.querySelector('#white-act')?.scrollIntoView({block: 'start'}); return document.title; }"}
+[0m⚙ [0mplaywright_browser_take_screenshot {"filename":"docs/phase4/qa/E/white-act-1440.png","scale":"css"}
+[0m
+[0m← [0mEdit src/components/dom/LogoRails.tsx
+Index: /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/components/dom/LogoRails.tsx
+===================================================================
+--- /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/components/dom/LogoRails.tsx
++++ /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/components/dom/LogoRails.tsx
+@@ -304,14 +304,17 @@
+     <RailsPause paused={paused} onToggle={() => setPaused((v) => !v)} />
+     <InsurerRail running={running} speed={speed} />
+   </div>
+ ) : (
+-  <div className="eyeq-rails eyeq-rails--desktop" role="presentation">
+-    {side === 'left' ? (
+-      <BrandRail running={running} speed={speed} />
+-    ) : (
+-      <InsurerRail running={running} speed={speed} />
+-    )}
++  <div role="presentation" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 12 }}>
++    <div className="eyeq-rails eyeq-rails--desktop" role="presentation">
++      {side === 'left' ? (
++        <BrandRail running={running} speed={speed} />
++      ) : (
++        <InsurerRail running={running} speed={speed} />
++      )}
++    </div>
++    <RailsPause paused={paused} onToggle={() => setPaused((v) => !v)} />
+   </div>
+ )}
+ {side === 'pair' && <MobileMarquee running={running} speed={speed} />}
+ {side === 'pair' && <RailsSrLists />}
+
+[0m
+[0m← [0mEdit src/components/dom/LogoRails.tsx
+Index: /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/components/dom/LogoRails.tsx
+===================================================================
+--- /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/components/dom/LogoRails.tsx
++++ /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/components/dom/LogoRails.tsx
+@@ -304,9 +304,9 @@
+     <RailsPause paused={paused} onToggle={() => setPaused((v) => !v)} />
+     <InsurerRail running={running} speed={speed} />
+   </div>
+ ) : (
+-  <div role="presentation" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 12 }}>
++  <div className="eyeq-railside" role="presentation" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 12 }}>
+     <div className="eyeq-rails eyeq-rails--desktop" role="presentation">
+       {side === 'left' ? (
+         <BrandRail running={running} speed={speed} />
+       ) : (
+
+[0m
+[0m← [0mEdit src/components/dom/LogoRails.tsx
+Index: /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/components/dom/LogoRails.tsx
+===================================================================
+--- /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/components/dom/LogoRails.tsx
++++ /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/components/dom/LogoRails.tsx
+@@ -324,13 +324,16 @@
+ 
+ // Mobile 68px horizontal marquee (brands + insurers in one strip). Lane B
+ // renders this below the white act on <768px; CSS hides it on desktop.
+ export function RailsMobileStrip() {
+-  const { rm, running, speed, wrapRef } = useRailsRunning();
++  const { rm, running, speed, paused, setPaused, wrapRef } = useRailsRunning();
+   if (rm) return null;
+   return (
+     <div className="eyeq-e" ref={wrapRef}>
+       <MobileMarquee running={running} speed={speed} />
++      <div className="eyeq-rails__pause--mobile">
++        <RailsPause paused={paused} onToggle={() => setPaused((v) => !v)} />
++      </div>
+     </div>
+   );
+ }
+ 
+
+[0m
+[0m← [0mEdit src/components/dom/LogoRails.tsx
+Index: /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/components/dom/LogoRails.tsx
+===================================================================
+--- /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/components/dom/LogoRails.tsx
++++ /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/components/dom/LogoRails.tsx
+@@ -295,9 +295,8 @@
+ // "pair" renders both rails + pause (standalone bridge use).
+ export function WhiteActRails({ side = 'pair' }: { side?: 'left' | 'right' | 'pair' }) {
+   const { rm, running, speed, paused, setPaused, wrapRef } = useRailsRunning();
+   if (rm) return side === 'pair' ? <StaticGrid /> : <span aria-hidden="true" />;
+-  return (
+     <div className="eyeq-e" ref={wrapRef}>
+       {side === 'pair' ? (
+         <div className="eyeq-rails eyeq-rails--desktop" role="presentation">
+           <BrandRail running={running} speed={speed} />
+
+[0m
+[0m→ [0mRead src/components/dom/LogoRails.tsx[90m [limit=25, offset=300][0m
+[0m→ [0mRead src/components/dom/LogoRails.tsx[90m [limit=12, offset=290][0m
+[0m
+[0m← [0mEdit src/components/dom/LogoRails.tsx
+Index: /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/components/dom/LogoRails.tsx
+===================================================================
+--- /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/components/dom/LogoRails.tsx
++++ /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/components/dom/LogoRails.tsx
+@@ -295,8 +295,9 @@
+ // "pair" renders both rails + pause (standalone bridge use).
+ export function WhiteActRails({ side = 'pair' }: { side?: 'left' | 'right' | 'pair' }) {
+   const { rm, running, speed, paused, setPaused, wrapRef } = useRailsRunning();
+   if (rm) return side === 'pair' ? <StaticGrid /> : <span aria-hidden="true" />;
++  return (
+     <div className="eyeq-e" ref={wrapRef}>
+       {side === 'pair' ? (
+         <div className="eyeq-rails eyeq-rails--desktop" role="presentation">
+           <BrandRail running={running} speed={speed} />
+
+[0m
+[0m← [0mEdit src/components/dom/lane-e.css
+Index: /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/components/dom/lane-e.css
+===================================================================
+--- /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/components/dom/lane-e.css
++++ /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/components/dom/lane-e.css
+@@ -710,8 +710,21 @@
+ }
+ .eyeq-rails__pause:hover {
+   color: var(--eyeq-ink);
+ }
++.eyeq-rails__pause--mobile {
++  display: none;
++  justify-content: center;
++  padding: 12px 0 4px;
++}
++@media (max-width: 767px) {
++  .eyeq-railside .eyeq-rails__pause {
++    display: none;
++  }
++  .eyeq-rails__pause--mobile {
++    display: flex;
++  }
++}
+ /* Static (reduced-motion) grid: 8 + 8 labelled */
+ .eyeq-rails--static {
+   display: grid;
+   grid-template-columns: repeat(4, minmax(0, 1fr));
+
+[0m
+[0m$ [0mnpx tsc --noEmit -p tsconfig.app.json --pretty false 2>&1 | grep -v "^npm" | grep "components/dom\|__dev__\|data/" | head; echo LANE_E_TSC_OK
+LANE_E_TSC_OK
+[0m
+[0m⚙ [0mplaywright_browser_navigate {"url":"http://localhost:5105/dev-E.html"}
+[0m⚙ [0mplaywright_browser_evaluate {"function":"() => { const el = document.querySelector('#white-act'); el?.scrollIntoView({block:'center'}); return window.scrollY; }"}
+[0m⚙ [0mplaywright_browser_take_screenshot {"filename":"docs/phase4/qa/E/white-act-1440.png","scale":"css"}
+[0m⚙ [0mplaywright_browser_evaluate {"function":"() => { const els=[...document.querySelectorAll('p')].filter(p=>p.textContent?.includes('STANDALONE')); els[0]?.scrollIntoView({block:'start'}); return window.scrollY; }"}
+[0m⚙ [0mplaywright_browser_take_screenshot {"filename":"docs/phase4/qa/E/rails-t0-1440.png","scale":"css"}
+[0m⚙ [0mplaywright_browser_wait_for {"time":6}
+[0m⚙ [0mplaywright_browser_take_screenshot {"filename":"docs/phase4/qa/E/rails-t6-1440.png","scale":"css"}
+[0m
+[0m← [0mEdit src/components/dom/LogoRails.tsx
+Index: /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/components/dom/LogoRails.tsx
+===================================================================
+--- /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/components/dom/LogoRails.tsx
++++ /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/components/dom/LogoRails.tsx
+@@ -131,9 +131,13 @@
+ <div className="eyeq-rail__edge" aria-hidden="true" />
+ <div className="eyeq-rail__viewport">
+   <div className="eyeq-rail__track" ref={trackRef}>
+     {copies.map((c) => (
+-      <div key={c} ref={c === 0 ? setRef : undefined} style={{ display: 'contents' }}>
++      <div
++        key={c}
++        ref={c === 0 ? setRef : undefined}
++        className="eyeq-rail__set"
++      >
+         {logos.map((logo, i) => (
+           <Frame key={`${c}-${logo.name}`} logo={logo} index={i} />
+         ))}
+       </div>
+
+[0m
+[0m← [0mEdit src/components/dom/lane-e.css
+Index: /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/components/dom/lane-e.css
+===================================================================
+--- /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/components/dom/lane-e.css
++++ /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/components/dom/lane-e.css
+@@ -661,8 +661,14 @@
+   align-items: center;
+   padding: 24px 0;
+   will-change: transform;
+ }
++/* Measurable half-track: one full logo set (the loop wraps over its height) */
++.eyeq-rail__set {
++  display: flex;
++  flex-direction: column;
++  align-items: center;
++}
+ .eyeq-rail__frame {
+   width: 96px;
+   margin: 0 0 4px;
+ }
+
+[0m
+[0m← [0mEdit src/components/dom/LogoRails.tsx
+Index: /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/components/dom/LogoRails.tsx
+===================================================================
+--- /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/components/dom/LogoRails.tsx
++++ /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/components/dom/LogoRails.tsx
+@@ -188,9 +188,9 @@
+ <div className="eyeq-e eyeq-rails--mobile" role="presentation">
+   <span className="eyeq-sr-only">Featured brands and accepted insurance plans</span>
+   <div className="eyeq-rail__track--h" ref={trackRef}>
+     {[0, 1].map((c) => (
+-      <div key={c} ref={c === 0 ? setRef : undefined} style={{ display: 'contents' }}>
++      <div key={c} ref={c === 0 ? setRef : undefined} className="eyeq-rail__set--h">
+         {all.map((logo) => (
+           <div key={`${c}-${logo.name}`} className="eyeq-rail__cell">
+             <img src={logo.file} alt="" loading="lazy" draggable={false} />
+           </div>
+
+[0m
+[0m← [0mEdit src/components/dom/lane-e.css
+Index: /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/components/dom/lane-e.css
+===================================================================
+--- /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/components/dom/lane-e.css
++++ /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/components/dom/lane-e.css
+@@ -778,14 +778,23 @@
+ .eyeq-rails--mobile .eyeq-rail__track--h {
+   display: flex;
+   flex-direction: row;
+   align-items: center;
+-  gap: 32px;
+-  padding: 12px 16px;
+   height: 68px;
+   width: max-content;
+   will-change: transform;
+ }
++/* Measurable half-track incl. trailing gap = one seamless cycle */
++.eyeq-rails--mobile .eyeq-rail__set--h {
++  display: flex;
++  flex-direction: row;
++  align-items: center;
++  gap: 32px;
++  padding: 12px 16px 12px 0;
++}
++.eyeq-rails--mobile .eyeq-rail__set--h:first-child {
++  padding-left: 16px;
++}
+ .eyeq-rails--mobile .eyeq-rail__cell {
+   width: auto;
+   height: 44px;
+   padding: 6px 14px;
+
+[0m
+[0m← [0mEdit src/components/dom/lane-e.css
+Index: /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/components/dom/lane-e.css
+===================================================================
+--- /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/components/dom/lane-e.css
++++ /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/components/dom/lane-e.css
+@@ -780,21 +780,20 @@
+   flex-direction: row;
+   align-items: center;
+   height: 68px;
+   width: max-content;
++  padding-left: 16px;
+   will-change: transform;
+ }
+-/* Measurable half-track incl. trailing gap = one seamless cycle */
++/* Measurable half-track incl. trailing gap = one seamless cycle.
++ * Both copies identical so wrapping by copy-0 width is invisible. */
+ .eyeq-rails--mobile .eyeq-rail__set--h {
+   display: flex;
+   flex-direction: row;
+   align-items: center;
+   gap: 32px;
+-  padding: 12px 16px 12px 0;
++  padding-right: 32px;
+ }
+-.eyeq-rails--mobile .eyeq-rail__set--h:first-child {
+-  padding-left: 16px;
+-}
+ .eyeq-rails--mobile .eyeq-rail__cell {
+   width: auto;
+   height: 44px;
+   padding: 6px 14px;
+
+[0m
+[0m⚙ [0mplaywright_browser_navigate {"url":"http://localhost:5105/dev-E.html"}
+[0m⚙ [0mplaywright_browser_evaluate {"function":"() => { const els=[...document.querySelectorAll('p')].filter(p=>p.textContent?.includes('STANDALONE')); els[0]?.scrollIntoView({block:'start'}); return new Promise(res => { const tracks=[...document.querySelectorAll('.eyeq-rails--desktop .eyeq-rail__track')].slice(-2); const y0=tracks.map(t=>new DOMMatrix(getComputedStyle(t).transform).m42); const t0=performance.now(); setTimeout(()=>{ const y1=tracks.map(t=>new DOMMatrix(getComputedStyle(t).transform).m42); const dt=(performance.now()-t0)/1000; res(JSON.stringify({y0,y1,dt,v0:(y1[0]-y0[0])/dt,v1:(y1[1]-y0[1])/dt})); },2000); }); }"}
+[0m⚙ [0mplaywright_browser_take_screenshot {"filename":"docs/phase4/qa/E/rails-t0-1440.png","scale":"css"}
+[0m⚙ [0mplaywright_browser_wait_for {"time":6}
+[0m⚙ [0mplaywright_browser_take_screenshot {"filename":"docs/phase4/qa/E/rails-t6-1440.png","scale":"css"}
+[0m⚙ [0mplaywright_browser_evaluate {"function":"() => { const btns=[...document.querySelectorAll('button')].filter(b=>b.textContent==='0.050'); btns[0]?.click(); window.scrollTo(0,0); document.querySelector('#film-pin')?.scrollIntoView({block:'start'}); return true; }"}
+[0m⚙ [0mplaywright_browser_take_screenshot {"filename":"docs/phase4/qa/E/chapter-b1-1440.png","scale":"css"}
+[0m⚙ [0mplaywright_browser_wait_for {"time":2}
+[0m⚙ [0mplaywright_browser_take_screenshot {"filename":"docs/phase4/qa/E/chapter-b1-1440.png","scale":"css"}
+[0m⚙ [0mplaywright_browser_evaluate {"function":"() => { const btns=[...document.querySelectorAll('button')].filter(b=>b.textContent==='0.770'); btns[0]?.click(); document.querySelector('#film-pin')?.scrollIntoView({block:'start'}); return true; }"}
+[0m⚙ [0mplaywright_browser_wait_for {"time":2}
+[0m⚙ [0mplaywright_browser_take_screenshot {"filename":"docs/phase4/qa/E/chapter-b6-1440.png","scale":"css"}
+[0m⚙ [0mplaywright_browser_evaluate {"function":"() => { document.querySelector('section[aria-label=\"Film chapter B6\"]')?.scrollIntoView({block:'end'}); return true; }"}
+[0m⚙ [0mplaywright_browser_take_screenshot {"filename":"docs/phase4/qa/E/chapter-b6-1440.png","scale":"css"}
+[0m⚙ [0mplaywright_browser_evaluate {"function":"() => { const btns=[...document.querySelectorAll('button')].filter(b=>b.textContent==='0.885'); btns[0]?.click(); return true; }"}
+[0m⚙ [0mplaywright_browser_wait_for {"time":2}
+[0m⚙ [0mplaywright_browser_evaluate {"function":"() => { document.querySelector('section[aria-label=\"Film chapter B7\"]')?.scrollIntoView({block:'end'}); return true; }"}
+[0m⚙ [0mplaywright_browser_take_screenshot {"filename":"docs/phase4/qa/E/chapter-b7-1440.png","scale":"css"}
+[0m⚙ [0mplaywright_browser_evaluate {"function":"() => { const btns=[...document.querySelectorAll('button')].filter(b=>b.textContent==='0.620'); btns[0]?.click(); return true; }"}
+[0m⚙ [0mplaywright_browser_wait_for {"time":2}
+[0m⚙ [0mplaywright_browser_evaluate {"function":"() => { document.querySelector('section[aria-label=\"Film chapter B5\"]')?.scrollIntoView({block:'end'}); return true; }"}
+[0m⚙ [0mplaywright_browser_take_screenshot {"filename":"docs/phase4/qa/E/chapter-b5-info-1440.png","scale":"css"}
+[0m⚙ [0mplaywright_browser_evaluate {"function":"() => { document.querySelector('#about-h')?.scrollIntoView({block:'center'}); return true; }"}
+[0m⚙ [0mplaywright_browser_wait_for {"time":2}
+[0m⚙ [0mplaywright_browser_take_screenshot {"filename":"docs/phase4/qa/E/rest-about-1440.png","scale":"css"}
+[0m⚙ [0mplaywright_browser_evaluate {"function":"() => { document.querySelector('#services-h')?.scrollIntoView({block:'center'}); return true; }"}
+[0m⚙ [0mplaywright_browser_wait_for {"time":2}
+[0m⚙ [0mplaywright_browser_take_screenshot {"filename":"docs/phase4/qa/E/rest-services-1440.png","scale":"css"}
+[0m⚙ [0mplaywright_browser_evaluate {"function":"() => { document.querySelector('#lenses-h')?.scrollIntoView({block:'center'}); return true; }"}
+[0m⚙ [0mplaywright_browser_wait_for {"time":2}
+[0m⚙ [0mplaywright_browser_take_screenshot {"filename":"docs/phase4/qa/E/rest-lenses-1440.png","scale":"css"}
+[0m⚙ [0mplaywright_browser_evaluate {"function":"() => { document.querySelector('#reviews-h')?.scrollIntoView({block:'center'}); return true; }"}
+[0m⚙ [0mplaywright_browser_wait_for {"time":2}
+[0m⚙ [0mplaywright_browser_take_screenshot {"filename":"docs/phase4/qa/E/rest-reviews-1440.png","scale":"css"}
+[0m⚙ [0mplaywright_browser_evaluate {"function":"() => { document.querySelector('#visit-h')?.scrollIntoView({block:'start'}); return true; }"}
+[0m⚙ [0mplaywright_browser_wait_for {"time":2}
+[0m⚙ [0mplaywright_browser_take_screenshot {"filename":"docs/phase4/qa/E/rest-visit-1440.png","scale":"css"}
+[0m⚙ [0mplaywright_browser_evaluate {"function":"() => { const f=document.querySelector('footer'); f?.scrollIntoView({block:'end'}); return true; }"}
+[0m⚙ [0mplaywright_browser_wait_for {"time":1}
+[0m⚙ [0mplaywright_browser_take_screenshot {"filename":"docs/phase4/qa/E/footer-1440.png","scale":"css"}
+[0m⚙ [0mplaywright_browser_snapshot Unknown
+[0m✗ [0mplaywright_browser_click {"uid":"f3e29"} failed
+[91m[1mError: [0m### Error
+Invalid arguments for tool "browser_click":
+✖ Invalid input: expected string, received undefined
+  → at target
+[0m✗ [0mchrome-devtools_click {"pageId":1,"uid":"f3e29"} failed
+[91m[1mError: [0mNo snapshot found for page 1. Use take_snapshot to capture one.
+[0m⚙ [0mplaywright_browser_evaluate {"function":"() => { const cb=[...document.querySelectorAll('input[type=checkbox]')][0]; cb?.click(); const el=document.querySelector('#white-act'); el?.scrollIntoView({block:'start'}); return true; }"}
+[0m⚙ [0mplaywright_browser_take_screenshot {"filename":"docs/phase4/qa/E/header-light-paper-1440.png","scale":"css"}
+[0m⚙ [0mplaywright_browser_evaluate {"function":"() => { [...document.querySelectorAll('button')].filter(b=>b.textContent==='MENU')[0]?.click(); return true; }"}
+[0m⚙ [0mplaywright_browser_wait_for {"time":1}
+[0m⚙ [0mplaywright_browser_take_screenshot {"filename":"docs/phase4/qa/E/menu-overlay-1440.png","scale":"css"}
+[0m⚙ [0mplaywright_browser_resize {"height":844,"width":390}
+[0m⚙ [0mplaywright_browser_navigate {"url":"http://localhost:5105/dev-E.html"}
+[0m✗ [0mplaywright_browser_evaluate {"function":"() => { document.querySelector('#white-act')?.scrollIntoView({block:'start'}); return new Promise(res=>setTimeout(()=>{ const t=document.querySelector('.eyeq-rails--mobile .eyeq-rail__track--h'); const w=t?...[0]:null; res('ok'); },1500)); }"} failed
+[91m[1mError: [0m### Error
+SyntaxError: Unexpected token '.'
+    at eval (eval at evaluate (:367:30), <anonymous>:2:38)
+    at UtilityScript.evaluate (<anonymous>:369:16)
+    at UtilityScript.<anonymous> (<anonymous>:1:44)
+[0m⚙ [0mplaywright_browser_evaluate {"function":"() => { document.querySelector('#white-act').scrollIntoView({block:'start'}); return 'ok'; }"}
+[0m⚙ [0mplaywright_browser_take_screenshot {"filename":"docs/phase4/qa/E/white-act-390.png","scale":"css"}
+[0m⚙ [0mplaywright_browser_evaluate {"function":"() => { window.scrollBy(0, 700); return window.scrollY; }"}
+[0m⚙ [0mplaywright_browser_take_screenshot {"filename":"docs/phase4/qa/E/rails-mobile-390.png","scale":"css"}
+[0m⚙ [0mplaywright_browser_evaluate {"function":"() => { return new Promise(res => { const t=document.querySelector('.eyeq-rails--mobile .eyeq-rail__track--h'); const x0=new DOMMatrix(getComputedStyle(t).transform).m41; const t0=performance.now(); setTimeout(()=>{ const x1=new DOMMatrix(getComputedStyle(t).transform).m41; const dt=(performance.now()-t0)/1000; res(JSON.stringify({x0,x1,dt,v:(x1-x0)/dt})); },2000); }); }"}
+[0m⚙ [0mplaywright_browser_emulate_media {"reducedMotion":"reduce"}
+[0m⚙ [0mplaywright_browser_navigate {"url":"http://localhost:5105/dev-E.html"}
+[0m⚙ [0mplaywright_browser_evaluate {"function":"() => { const cb=[...document.querySelectorAll('input[type=checkbox]')][1]; cb?.click(); document.querySelector('#white-act').scrollIntoView({block:'start'}); return 'ok'; }"}
+[0m⚙ [0mplaywright_browser_take_screenshot {"filename":"docs/phase4/qa/E/rm-static-390.png","scale":"css"}
+[0m
+[0m← [0mEdit src/components/dom/LogoRails.tsx
+Index: /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/components/dom/LogoRails.tsx
+===================================================================
+--- /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/components/dom/LogoRails.tsx
++++ /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/components/dom/LogoRails.tsx
+@@ -217,8 +217,24 @@
+     </div>
+   );
+ }
+ 
++// Static single-side column (RM flank layout): labelled stack, no motion.
++function StaticColumn({ logos, label }: { logos: LogoEntry[]; label: string }) {
++  return (
++    <div className="eyeq-e eyeq-railside--static" role="list" aria-label={label}>
++      {logos.map((logo, i) => (
++        <figure key={logo.name} role="listitem" style={{ margin: 0 }}>
++          <div className="eyeq-rail__cell">
++            <img src={logo.file} alt={logo.alt} loading="lazy" />
++          </div>
++          <figcaption className="eyeq-rail__num">{String(i + 1).padStart(2, '0')} · {logo.name}</figcaption>
++        </figure>
++      ))}
++    </div>
++  );
++}
++
+ export function BrandRail({ running, speed }: { running: boolean; speed: number }) {
+   return (
+     <Rail logos={brands} label="Featured eyewear brands" direction={1} running={running} speed={speed} />
+   );
+
+[0m
+[0m← [0mEdit src/components/dom/lane-e.css
+Index: /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/components/dom/lane-e.css
+===================================================================
+--- /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/components/dom/lane-e.css
++++ /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/components/dom/lane-e.css
+@@ -738,8 +738,27 @@
+   padding: 0 var(--eyeq-margin);
+   max-width: 900px;
+   margin: 0 auto;
+ }
++/* Static single-side column for the RM flank layout */
++.eyeq-railside--static {
++  display: flex;
++  flex-direction: column;
++  gap: 16px;
++  width: 120px;
++  padding: 24px 0;
++}
++.eyeq-railside--static .eyeq-rail__num {
++  padding-bottom: 0;
++}
++@media (max-width: 767px) {
++  .eyeq-railside--static {
++    display: none;
++  }
++  .eyeq-rails--static {
++    grid-template-columns: repeat(2, minmax(0, 1fr));
++  }
++}
+ .eyeq-rails--static figure {
+   margin: 0;
+   background: var(--eyeq-bed);
+   border: 1px solid var(--eyeq-hairline-light);
+
+[0m
+[0m← [0mEdit src/components/dom/LogoRails.tsx
+Index: /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/components/dom/LogoRails.tsx
+===================================================================
+--- /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/components/dom/LogoRails.tsx
++++ /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/components/dom/LogoRails.tsx
+@@ -314,9 +314,16 @@
+ // <WhiteActRails side="left"> … WhiteSection … <WhiteActRails side="right">.
+ // "pair" renders both rails + pause (standalone bridge use).
+ export function WhiteActRails({ side = 'pair' }: { side?: 'left' | 'right' | 'pair' }) {
+   const { rm, running, speed, paused, setPaused, wrapRef } = useRailsRunning();
+-  if (rm) return side === 'pair' ? <StaticGrid /> : <span aria-hidden="true" />;
++  if (rm) {
++    if (side === 'pair') return <StaticGrid />;
++    return side === 'left' ? (
++      <StaticColumn logos={brands} label="Featured eyewear brands" />
++    ) : (
++      <StaticColumn logos={insurers} label="Accepted insurance plans" />
++    );
++  }
+   return (
+     <div className="eyeq-e" ref={wrapRef}>
+       {side === 'pair' ? (
+         <div className="eyeq-rails eyeq-rails--desktop" role="presentation">
+
+[0m
+[0m← [0mEdit src/components/dom/LogoRails.tsx
+Index: /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/components/dom/LogoRails.tsx
+===================================================================
+--- /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/components/dom/LogoRails.tsx
++++ /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/components/dom/LogoRails.tsx
+@@ -352,9 +352,9 @@
+ // Mobile 68px horizontal marquee (brands + insurers in one strip). Lane B
+ // renders this below the white act on <768px; CSS hides it on desktop.
+ export function RailsMobileStrip() {
+   const { rm, running, speed, paused, setPaused, wrapRef } = useRailsRunning();
+-  if (rm) return null;
++  if (rm) return <StaticGrid />;
+   return (
+     <div className="eyeq-e" ref={wrapRef}>
+       <MobileMarquee running={running} speed={speed} />
+       <div className="eyeq-rails__pause--mobile">
+
+[0m
+[0m← [0mEdit src/components/dom/LogoRails.tsx
+Index: /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/components/dom/LogoRails.tsx
+===================================================================
+--- /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/components/dom/LogoRails.tsx
++++ /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/components/dom/LogoRails.tsx
+@@ -352,9 +352,14 @@
+ // Mobile 68px horizontal marquee (brands + insurers in one strip). Lane B
+ // renders this below the white act on <768px; CSS hides it on desktop.
+ export function RailsMobileStrip() {
+   const { rm, running, speed, paused, setPaused, wrapRef } = useRailsRunning();
+-  if (rm) return <StaticGrid />;
++  if (rm)
++    return (
++      <div className="eyeq-rails--mobile-static">
++        <StaticGrid />
++      </div>
++    );
+   return (
+     <div className="eyeq-e" ref={wrapRef}>
+       <MobileMarquee running={running} speed={speed} />
+       <div className="eyeq-rails__pause--mobile">
+
+[0m
+[0m← [0mEdit src/components/dom/lane-e.css
+Index: /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/components/dom/lane-e.css
+===================================================================
+--- /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/components/dom/lane-e.css
++++ /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/components/dom/lane-e.css
+@@ -721,15 +721,22 @@
+   display: none;
+   justify-content: center;
+   padding: 12px 0 4px;
+ }
++/* RM mobile grid: only below 768px (desktop RM uses the flank columns) */
++.eyeq-rails--mobile-static {
++  display: none;
++}
+ @media (max-width: 767px) {
+-  .eyeq-railside .eyeq-rails__pause {
++  .eyeq-railside--static {
+     display: none;
+   }
+-  .eyeq-rails__pause--mobile {
+-    display: flex;
++  .eyeq-rails--static {
++    grid-template-columns: repeat(2, minmax(0, 1fr));
+   }
++  .eyeq-rails--mobile-static {
++    display: block;
++  }
+ }
+ /* Static (reduced-motion) grid: 8 + 8 labelled */
+ .eyeq-rails--static {
+   display: grid;
+
+[0m
+[0m← [0mEdit src/components/dom/lane-e.css
+Index: /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/components/dom/lane-e.css
+===================================================================
+--- /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/components/dom/lane-e.css
++++ /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/components/dom/lane-e.css
+@@ -787,11 +787,17 @@
+ .eyeq-rails--mobile {
+   display: none;
+ }
+ @media (max-width: 767px) {
+-  .eyeq-rails--desktop {
++  .eyeq-railside .eyeq-rails__pause {
+     display: none;
+   }
++  .eyeq-rails__pause--mobile {
++    display: flex;
++  }
++  .eyeq-railside--static {
++    display: none;
++  }
+   .eyeq-rails--mobile {
+     display: block;
+     overflow: hidden;
+     background: var(--eyeq-bed);
+
+[0m
+[0m$ [0mnpx tsc --noEmit -p tsconfig.app.json --pretty false 2>&1 | grep -v "^npm" | grep "components/dom\|__dev__\|data/" | head; echo LANE_E_TSC_OK
+LANE_E_TSC_OK
+[0m
+[0m⚙ [0mplaywright_browser_navigate {"url":"http://localhost:5105/dev-E.html"}
+[0m⚙ [0mplaywright_browser_evaluate {"function":"() => { const cb=[...document.querySelectorAll('input[type=checkbox]')][1]; cb?.click(); document.querySelector('#white-act').scrollIntoView({block:'start'}); return 'ok'; }"}
+[0m⚙ [0mplaywright_browser_take_screenshot {"filename":"docs/phase4/qa/E/rm-static-390.png","scale":"css"}
+[0m⚙ [0mplaywright_browser_evaluate {"function":"() => { window.scrollBy(0, 900); return window.scrollY; }"}
+[0m⚙ [0mplaywright_browser_take_screenshot {"filename":"docs/phase4/qa/E/rm-grid-390.png","scale":"css"}
+[0m⚙ [0mplaywright_browser_resize {"height":900,"width":1440}
+[0m⚙ [0mplaywright_browser_navigate {"url":"http://localhost:5105/dev-E.html"}
+[0m⚙ [0mplaywright_browser_evaluate {"function":"() => { const cb=[...document.querySelectorAll('input[type=checkbox]')][1]; cb?.click(); document.querySelector('#white-act').scrollIntoView({block:'start'}); return 'ok'; }"}
+[0m⚙ [0mplaywright_browser_take_screenshot {"filename":"docs/phase4/qa/E/rm-white-1440.png","scale":"css"}
+[0m⚙ [0mplaywright_browser_evaluate {"function":"() => { const cb=[...document.querySelectorAll('input[type=checkbox]')][1]; cb?.click(); const btns=[...document.querySelectorAll('button')].filter(b=>b.textContent==='0.050'); btns[0]?.click(); document.querySelector('#film-pin').scrollIntoView({block:'start'}); return 'ok'; }"}
+[0m⚙ [0mplaywright_browser_wait_for {"time":1}
+[0m⚙ [0mplaywright_browser_take_screenshot {"filename":"docs/phase4/qa/E/rm-stacked-chapters-1440.png","scale":"css"}
+[0m⚙ [0mplaywright_browser_emulate_media {"reducedMotion":"no-preference"}
+[0m⚙ [0mplaywright_browser_navigate {"url":"http://localhost:5105/dev-E.html"}
+[0m⚙ [0mplaywright_browser_evaluate {"function":"() => { document.querySelector('#white-act').scrollIntoView({block:'center'}); return 'ok'; }"}
+[0m⚙ [0mplaywright_browser_take_screenshot {"filename":"docs/phase4/qa/E/white-act-1440.png","scale":"css"}
+[0m⚙ [0mplaywright_browser_evaluate {"function":"() => { return new Promise(res => { const get = () => [...document.querySelectorAll('.eyeq-rails--desktop .eyeq-rail__track')].slice(-2).map(t=>new DOMMatrix(getComputedStyle(t).transform).m42); const a = get(); [...document.querySelectorAll('.eyeq-rails__pause')].pop().click(); setTimeout(()=>{ const b = get(); setTimeout(()=>{ const c = get(); res(JSON.stringify({a,b,c})); },1000); },300); }); }"}
+[0m⚙ [0mplaywright_browser_evaluate {"function":"() => { const els=[...document.querySelectorAll('p')].filter(p=>p.textContent?.includes('STANDALONE')); els[0]?.scrollIntoView({block:'start'}); return 'ok'; }"}
+[0m⚙ [0mplaywright_browser_evaluate {"function":"() => { return new Promise(res => { const get = () => [...document.querySelectorAll('.eyeq-rails--desktop .eyeq-rail__track')].slice(-2).map(t=>new DOMMatrix(getComputedStyle(t).transform).m42); const a = get(); setTimeout(()=>{ const b = get(); [...document.querySelectorAll('.eyeq-rails__pause')].pop().click(); setTimeout(()=>{ const c = get(); setTimeout(()=>{ const d = get(); res(JSON.stringify({a,b,c,d})); },1000); },300); },1000); }); }"}
+[0m⚙ [0mplaywright_browser_evaluate {"function":"() => { const pauses=[...document.querySelectorAll('.eyeq-rails__pause')]; return pauses.map(b=>b.getAttribute('aria-pressed')+':'+b.getAttribute('aria-label')); }"}
+[0m⚙ [0mplaywright_browser_evaluate {"function":"() => { [...document.querySelectorAll('.eyeq-rails__pause')].pop().click(); return [...document.querySelectorAll('.eyeq-rails__pause')].pop().getAttribute('aria-pressed'); }"}
+[0m✗ [0mplaywright_browser_evaluate {"function":"() => { return new Promise(res => setTimeout(() => res([...document.querySelectorAll('.eyeq-rails__pause')].pop().getAttribute('aria-pressed')), 300); }); }"} failed
+[91m[1mError: [0m### Error
+SyntaxError: missing ) after argument list
+    at eval (eval at evaluate (:367:30), <anonymous>:2:38)
+    at UtilityScript.evaluate (<anonymous>:369:16)
+    at UtilityScript.<anonymous> (<anonymous>:1:44)
+[0m⚙ [0mplaywright_browser_evaluate {"function":"() => { return new Promise(function(res) { setTimeout(function() { var ps = Array.prototype.slice.call(document.querySelectorAll('.eyeq-rails__pause')); res(ps[ps.length-1].getAttribute('aria-pressed')); }, 300); }); }"}
+[0m⚙ [0mplaywright_browser_take_screenshot {"filename":"docs/phase4/qa/E/rails-paused-1440.png","scale":"css"}
+[0m
+[0m$ [0mecho "=== banned tokens in Lane E files ==="; rtk grep -riE "VISION|FOCUS|CLARITY|premium|ultimate|best-in-class|award-winning" src/components/dom src/data src/__dev__/E dev-E.html 2>/dev/null | grep -v "EyeQ Vision Care\|VISION CARE\|Everyday Style\|vision care practice\|clear, comfortable vision\|vision and eye health\|exceptional vision\|quality eye care\|eyewear brands\|Vision Care —" | head -20; echo "=== booking URL ==="; rtk grep -r "deenandassociates" src/data/store.json | head -3; rtk grep -rc "target.*_blank\|_blank.*target" src/components/dom/BookingCTA.tsx src/components/dom/WhiteSection.tsx src/components/dom/Header.tsx 2>/dev/null; echo "=== old-store strings must be absent ==="; rtk grep -ri "333-3931\|eyeq2020\|Guelph Line\|Burlington Centre" src/components/dom src/data src/__dev__ 2>/dev/null | head -5; echo DONE
+=== banned tokens in Lane E files ===
+src/components/dom/LogoRails.tsx:// overall rail 40–60% opacity, edge masks. Pause on hover/focus +
+src/components/dom/LogoRails.tsx:      onFocus={() => setHover(20 / 72)}
+src/components/dom/SkipLinks.tsx:          (white as HTMLElement).focus({ preventScroll: true });
+src/components/dom/lane-e.css:.eyeq-skip:focus-visible {
+src/components/dom/Footer.tsx:// Vision Care → Browse frames, Replay film, Back to top. Map embed lives in
+src/components/dom/Header.tsx:    closeBtnRef.current?.focus();
+src/components/dom/Header.tsx:        menuBtnRef.current?.focus();
+src/components/dom/Header.tsx:            menuBtnRef.current?.focus();
+src/data/store.json:    "url": "http://www.deenandassociates.com/optistoreonewebex/appointmentschedule.php?LOCATION=eyeqvision1",
+src/data/services.json:    "Looking for a trusted optometrist in Burlington? At Eye Q Optical, we're committed to helping you achieve clear, healthy vision through comprehensive eye care. Our services include comprehensive eye exams, children's eye exams, and contact lens fittings tailored to your individual needs.",
+src/data/lenses.json:      "description": "Experience comfortable vision in changing light with Transitions® lenses. These light-adaptive lenses automatically adjust their tint based on the surrounding light, providing clear vision indoors and helping reduce glare and brightness outdoors. They offer convenient, everyday protection without the need to switch between regular glasses and sunglasses.",
+src/data/lenses.json:      "short": "Experience comfortable vision in changing light with Transitions® lenses."
+=== booking URL ===
+src/data/store.json:    "url": "http://www.deenandassociates.com/optistoreonewebex/appointmentschedule.php?LOCATION=eyeqvision1",
+src/components/dom/BookingCTA.tsx:1
+src/components/dom/WhiteSection.tsx:0
+src/components/dom/Header.tsx:3
+=== old-store strings must be absent ===
+DONE
+[0m
+[0m$ [0mrtk lint src/components/dom src/data src/__dev__/E --max-warnings 0 2>&1 | tail -5; echo LINT_EXIT=$?
+src/components/dom/Sections.tsx (1 issues)
+    react-hooks/set-state-in-effect (1)
+  src/data/json-modules.d.ts (1 issues)
+    @typescript-eslint/no-explicit-any (1)
+[full output: rtk recall 00455a9c9b63]
+LINT_EXIT=0
+[0m
+[0m$ [0mrtk lint src/components/dom/Sections.tsx src/data/json-modules.d.ts 2>&1 | grep -A3 "Sections\|json-modules" | head -20
+src/components/dom/Sections.tsx (1 issues)
+    react-hooks/set-state-in-effect (1)
+  src/data/json-modules.d.ts (1 issues)
+    @typescript-eslint/no-explicit-any (1)
+[full output: rtk recall c36bfe4d32aa]
+[0m
+[0m$ [0mrtk headroom_retrieve --hash c36bfe4d32aa 2>/dev/null | head -40 || rtk lint src/components/dom/Sections.tsx src/data/json-modules.d.ts --format unix 2>&1 | head -10
+(no output)
+[0m
+[0m$ [0mrtk lint src/components/dom/Sections.tsx src/data/json-modules.d.ts --max-warnings 0; echo EXIT=$?
+ESLint: 2 errors, 0 warnings in 2 files
+Top rules:
+  @typescript-eslint/no-explicit-any (1x)
+  react-hooks/set-state-in-effect (1x)
+
+Top files:
+  src/components/dom/Sections.tsx (1 issues)
+    react-hooks/set-state-in-effect (1)
+  src/data/json-modules.d.ts (1 issues)
+    @typescript-eslint/no-explicit-any (1)
+[full output: rtk recall 30b56e487fb3]
+EXIT=1
+[0m
+[0m← [0mWrite src/data/json-modules.d.ts
+Wrote file successfully.
+[0m
+[0m← [0mEdit src/components/dom/Sections.tsx
+Index: /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/components/dom/Sections.tsx
+===================================================================
+--- /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/components/dom/Sections.tsx
++++ /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/components/dom/Sections.tsx
+@@ -59,16 +59,15 @@
+ }
+ 
+ function MaskedHeadline({ text, className = '', id }: { text: string; className?: string; id?: string }) {
+   const ref = useRef<HTMLHeadingElement>(null);
+-  const [shown, setShown] = useState(false);
++  const [shown, setShown] = useState(
++    () => typeof window !== 'undefined' && window.matchMedia('(prefers-reduced-motion: reduce)').matches,
++  );
+   useEffect(() => {
++    if (shown) return;
+     const el = ref.current;
+     if (!el) return;
+-    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+-      setShown(true);
+-      return;
+-    }
+     const io = new IntersectionObserver(
+       (entries) => {
+         entries.forEach((en) => {
+           if (en.isIntersecting) {
+
+[0m
+[0m✗ [0mEdit src/components/dom/Sections.tsx failed
+[91m[1mError: [0mFound multiple matches for oldString. Provide more surrounding context to make the match unique.
+[0m→ [0mRead src/components/dom/Sections.tsx[90m [limit=50, offset=60][0m
+[0m
+[0m← [0mEdit src/components/dom/Sections.tsx
+Index: /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/components/dom/Sections.tsx
+===================================================================
+--- /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/components/dom/Sections.tsx
++++ /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/components/dom/Sections.tsx
+@@ -79,9 +79,9 @@
+     { threshold: 0.4, rootMargin: '0px 0px -18% 0px' },
+   );
+   io.observe(el);
+   return () => io.disconnect();
+-}, []);
++}, [shown]);
+ const words = text.split(/\s+/);
+ return (
+   <h2 ref={ref} id={id} className={`${className}${shown ? ' is-in' : ''}`}>
+     {words.map((w, i) => (
+
+[0m
+[0m$ [0mrtk lint src/components/dom src/data src/__dev__/E --max-warnings 0 > /tmp/lint-e.log 2>&1; echo EXIT=$?; tail -3 /tmp/lint-e.log; npx tsc --noEmit -p tsconfig.app.json --pretty false 2>&1 | grep -v "^npm" | grep "components/dom\|__dev__\|data/" | head -5; echo TSC_LANE_E_CLEAN
+EXIT=1
+  src/__dev__/E/main.tsx (1 issues)
+    react-refresh/only-export-components (1)
+[full output: rtk recall b63e0f8274fe]
+src/__dev__/C/main.tsx(140,9): error TS6133: 'glassesUrl' is declared but its value is never read.
+src/__dev__/F/main.tsx(11,25): error TS2307: Cannot find module '../../routes/Catalog' or its corresponding type declarations.
+TSC_LANE_E_CLEAN
+[0m
+[0m← [0mEdit src/__dev__/E/main.tsx
+Index: /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/__dev__/E/main.tsx
+===================================================================
+--- /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/__dev__/E/main.tsx
++++ /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/__dev__/E/main.tsx
+@@ -11,9 +11,8 @@
+ import { Header } from '../../components/dom/Header';
+ import { Footer } from '../../components/dom/Footer';
+ import { LogoRails, WhiteActRails, RailsMobileStrip, RailsSrLists } from '../../components/dom/LogoRails';
+ import { HomeSections } from '../../components/dom/Sections';
+-import { beats } from '../../data';
+ 
+ // Lane E isolated dev harness (PLAN-MASTER parallel-safety: own Vite entry,
+ // own port 5105). Long page: film-beat scrubber → white act + rails → rest
+ // sections → footer. Open via /dev-E.html on the Lane E dev server.
+
+[0m
+[0m← [0mEdit src/__dev__/E/main.tsx
+Index: /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/__dev__/E/main.tsx
+===================================================================
+--- /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/__dev__/E/main.tsx
++++ /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/__dev__/E/main.tsx
+@@ -108,6 +108,4 @@
+ 
+ const root = document.getElementById('root');
+ if (!root) throw new Error('Missing #root element');
+ createRoot(root).render(<Harness />);
+-
+-export { beats };
+
+[0m
+[0m$ [0mrtk lint src/components/dom src/data src/__dev__/E dev-E.html --max-warnings 0 > /tmp/lint-e.log 2>&1; echo LINT_EXIT=$?; tail -2 /tmp/lint-e.log; npx tsc --noEmit -p tsconfig.app.json --pretty false 2>&1 | grep -v "^npm" | grep "components/dom\|__dev__/E\|src/data" | head -5; echo TSC_LANE_E_CHECKED
+LINT_EXIT=1
+[{"filePath":"/Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/dev-E.html","messages":[{"ruleId":null,"fatal":false,"severity":1,"message":"File ignored because no matching configuration was supplied.","nodeType":null}],"suppressedMessages":[],"errorCount":0,"warningCount":1,"fatalErrorCount":0,"fixableErrorCount":0,"fixableWarningCount":0,"usedDeprecatedRules":[]},{"filePath":"/Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/__dev__/E/main.tsx","messages":[{"ruleId":"react-refresh/only-export-components","severity":1,"message":"Fast refresh only works when a file has exports. Move your component(s) to a separate file.","line":21,"column":10,"nodeType":"Identifier","messageId":"noExport","endLine":21,"endColumn":17}],"suppressedMessages":[],"errorCount":0,"fatalErrorCount":0,"warningCount":1,"fixableErrorCount":0,"fixableWarningCount":0,"source":"import { useState } from 'react';\nimport { createRoot } from 'react-dom/client';\nimport '../../styles/tokens.css';\nimport '../../styles/film.css';\nimport '../../styles/rails.css';\nimport '../../styles/white.css';\nimport '../../components/dom/lane-e.css';\nimport { SkipLinks } from '../../components/dom/SkipLinks';\nimport { ChapterOverlay } from '../../components/dom/ChapterOverlay';\nimport { WhiteSection } from '../../components/dom/WhiteSection';\nimport { Header } from '../../components/dom/Header';\nimport { Footer } from '../../components/dom/Footer';\nimport { LogoRails, WhiteActRails, RailsMobileStrip, RailsSrLists } from '../../components/dom/LogoRails';\nimport { HomeSections } from '../../components/dom/Sections';\n\n// Lane E isolated dev harness (PLAN-MASTER parallel-safety: own Vite entry,\n// own port 5105). Long page: film-beat scrubber → white act + rails → rest\n// sections → footer. Open via /dev-E.html on the Lane E dev server.\nconst STOPS = [0.05, 0.17, 0.32, 0.47, 0.62, 0.77, 0.885, 0.945, 0.985];\n\nfunction Harness() {\n  const [progress, setProgress] = useState(0.62);\n  const [theme...
+[full output: rtk recall 0004952b488f]
+TSC_LANE_E_CHECKED
+[0m
+[0m← [0mEdit src/__dev__/E/main.tsx
+Index: /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/__dev__/E/main.tsx
+===================================================================
+--- /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/__dev__/E/main.tsx
++++ /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/__dev__/E/main.tsx
+@@ -17,9 +17,9 @@
+ // own port 5105). Long page: film-beat scrubber → white act + rails → rest
+ // sections → footer. Open via /dev-E.html on the Lane E dev server.
+ const STOPS = [0.05, 0.17, 0.32, 0.47, 0.62, 0.77, 0.885, 0.945, 0.985];
+ 
+-function Harness() {
++function HarnessExport() {
+   const [progress, setProgress] = useState(0.62);
+   const [theme, setTheme] = useState<'dark' | 'light'>('dark');
+   const [stacked, setStacked] = useState(false);
+ 
+
+[0m
+[0m← [0mEdit src/__dev__/E/main.tsx
+Index: /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/__dev__/E/main.tsx
+===================================================================
+--- /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/__dev__/E/main.tsx
++++ /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/__dev__/E/main.tsx
+@@ -17,9 +17,9 @@
+ // own port 5105). Long page: film-beat scrubber → white act + rails → rest
+ // sections → footer. Open via /dev-E.html on the Lane E dev server.
+ const STOPS = [0.05, 0.17, 0.32, 0.47, 0.62, 0.77, 0.885, 0.945, 0.985];
+ 
+-function HarnessExport() {
++export function Harness() {
+   const [progress, setProgress] = useState(0.62);
+   const [theme, setTheme] = useState<'dark' | 'light'>('dark');
+   const [stacked, setStacked] = useState(false);
+ 
+
+[0m
+[0m$ [0mrtk lint src/components/dom src/data src/__dev__/E --max-warnings 0 > /tmp/lint-e.log 2>&1; echo LINT_EXIT=$?; tail -2 /tmp/lint-e.log
+LINT_EXIT=1
+    react-hooks/refs (4)
+[full output: rtk recall 5b4431e75018]
+[0m
+[0m$ [0mpython3 -c "
+import json
+raw = open('/tmp/lint-e.log').read()
+start = raw.find('[{')
+data = json.loads(raw[start:raw.find(']', start)+1])
+for f in data:
+    for m in f['messages']:
+        print(f['filePath'].split('V1/')[-1], m.get('line'), m.get('ruleId'), (m.get('message') or '')[:110])
+"
+Traceback (most recent call last):
+  File "<string>", line 5, in <module>
+    data = json.loads(raw[start:raw.find(']', start)+1])
+  File "/Users/admin/.pyenv/versions/3.13.11/lib/python3.13/json/__init__.py", line 352, in loads
+    return _default_decoder.decode(s)
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^
+  File "/Users/admin/.pyenv/versions/3.13.11/lib/python3.13/json/decoder.py", line 345, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+               ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/admin/.pyenv/versions/3.13.11/lib/python3.13/json/decoder.py", line 363, in raw_decode
+    raise JSONDecodeError("Expecting value", s, err.value) from None
+json.decoder.JSONDecodeError: Expecting value: line 1 column 1 (char 0)
+[0m
+[0m$ [0mhead -c 2000 /tmp/lint-e.log
+ESLint: 4 errors, 0 warnings in 1 files
+Top rules:
+  react-hooks/refs (4x)
+
+Top files:
+  src/components/dom/LogoRails.tsx (4 issues)
+    react-hooks/refs (4)
+[full output: rtk recall 5b4431e75018]
+[0m
+[0m⚙ [0mheadroom_headroom_retrieve {"hash":"5b4431e75018"}
+[0m
+[0m$ [0mnpx eslint src/components/dom/LogoRails.tsx 2>&1 | grep -v "^npm" | head -30
+/Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/components/dom/LogoRails.tsx
+   65:3  error  Error: Cannot access refs during render
+
+React refs are values that are not needed for rendering. Refs should only be accessed outside of render, such as in event handlers or effects. Accessing a ref value (the `current` property) during render can cause your component not to update as expected (https://react.dev/reference/react/useRef).
+
+/Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/components/dom/LogoRails.tsx:65:3
+  63 |   const stateRef = useRef({ offset: 0, last: 0, vel: 1, hover: 1, target: 1 });
+  64 |   const runningRef = useRef(running);
+> 65 |   runningRef.current = running;
+     |   ^^^^^^^^^^^^^^^^^^ Cannot update ref during render
+  66 |   const speedRef = useRef(speed);
+  67 |   speedRef.current = speed;
+  68 |  react-hooks/refs
+   67:3  error  Error: Cannot access refs during render
+
+React refs are values that are not needed for rendering. Refs should only be accessed outside of render, such as in event handlers or effects. Accessing a ref value (the `current` property) during render can cause your component not to update as expected (https://react.dev/reference/react/useRef).
+
+/Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/components/dom/LogoRails.tsx:67:3
+  65 |   runningRef.current = running;
+  66 |   const speedRef = useRef(speed);
+> 67 |   speedRef.current = speed;
+     |   ^^^^^^^^^^^^^^^^ Cannot update ref during render
+  68 |
+  69 |   useEffect(() => {
+  70 |     const track = trackRef.current;                                                                  react-hooks/refs
+  158:3  error  Error: Cannot access refs during render
+
+React refs are values that are not needed for rendering. Refs should only be accessed outside of render, such as in event handlers or effects. Accessing a ref value (the `current` property) during render can cause your component not to update as expected (https://react.dev/reference/react/useRef).
+[0m
+[0m← [0mEdit src/components/dom/LogoRails.tsx
+Index: /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/components/dom/LogoRails.tsx
+===================================================================
+--- /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/components/dom/LogoRails.tsx
++++ /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/components/dom/LogoRails.tsx
+@@ -61,11 +61,13 @@
+ const trackRef = useRef<HTMLDivElement>(null);
+ const setRef = useRef<HTMLDivElement>(null);
+ const stateRef = useRef({ offset: 0, last: 0, vel: 1, hover: 1, target: 1 });
+ const runningRef = useRef(running);
+-runningRef.current = running;
+ const speedRef = useRef(speed);
+-speedRef.current = speed;
++useEffect(() => {
++  runningRef.current = running;
++  speedRef.current = speed;
++}, [running, speed]);
+ 
+ useEffect(() => {
+   const track = trackRef.current;
+   const set = setRef.current;
+
+[0m
+[0m→ [0mRead src/components/dom/LogoRails.tsx[90m [limit=30, offset=150][0m
+[0m
+[0m← [0mEdit src/components/dom/LogoRails.tsx
+Index: /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/components/dom/LogoRails.tsx
+===================================================================
+--- /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/components/dom/LogoRails.tsx
++++ /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/components/dom/LogoRails.tsx
+@@ -156,11 +156,13 @@
+ function MobileMarquee({ running, speed }: { running: boolean; speed: number }) {
+   const trackRef = useRef<HTMLDivElement>(null);
+   const setRef = useRef<HTMLDivElement>(null);
+   const runningRef = useRef(running);
+-  runningRef.current = running;
+   const speedRef = useRef(speed);
+-  speedRef.current = speed;
++  useEffect(() => {
++    runningRef.current = running;
++    speedRef.current = speed;
++  }, [running, speed]);
+ 
+   useEffect(() => {
+     const track = trackRef.current;
+     const set = setRef.current;
+
+[0m
+[0m$ [0mnpx eslint src/components/dom src/data src/__dev__/E --max-warnings 0 2>&1 | grep -v "^npm" | head -10; echo LINT_EXIT=$?
+LINT_EXIT=0
+[0m
+[0m⚙ [0mplaywright_browser_navigate {"url":"http://localhost:5105/dev-E.html"}
+[0m⚙ [0mplaywright_browser_evaluate {"function":"() => { const els = Array.prototype.filter.call(document.querySelectorAll('p'), function(p) { return (p.textContent || '').indexOf('STANDALONE') >= 0; }); els[0].scrollIntoView({block:'start'}); return new Promise(function(res) { var tracks = Array.prototype.slice.call(document.querySelectorAll('.eyeq-rails--desktop .eyeq-rail__track')).slice(-2); function y() { return tracks.map(function(t) { return new DOMMatrix(getComputedStyle(t).transform).m42; }); } var y0 = y(); var t0 = performance.now(); setTimeout(function() { var y1 = y(); var dt = (performance.now()-t0)/1000; res(JSON.stringify({v0:(y1[0]-y0[0])/dt, v1:(y1[1]-y0[1])/dt})); }, 2000); }); }"}
+[0m
+[0m$ [0mnpx tsc --noEmit -p tsconfig.app.json --pretty false 2>&1 | grep -v "^npm" | grep "components/dom\|__dev__/E\|src/data" | head -5; echo TSC_LANE_E_CHECKED; echo "=== qa/E ==="; ls -la docs/phase4/qa/E/ | awk '{print $5, $9}'; echo "=== lane E files ==="; rtk ls src/components/dom src/data src/__dev__/E
+TSC_LANE_E_CHECKED
+=== qa/E ===
+ 
+768 .
+288 ..
+28733 chapter-b1-1440.png
+39486 chapter-b5-info-1440.png
+26415 chapter-b6-1440.png
+42711 chapter-b7-1440.png
+49092 footer-1440.png
+111582 header-light-paper-1440.png
+59166 menu-overlay-1440.png
+44776 rails-mobile-390.png
+54473 rails-paused-1440.png
+50754 rails-t0-1440.png
+50830 rails-t6-1440.png
+81828 rest-about-1440.png
+64482 rest-lenses-1440.png
+65308 rest-reviews-1440.png
+69375 rest-services-1440.png
+52498 rest-visit-1440.png
+43595 rm-grid-390.png
+33053 rm-stacked-chapters-1440.png
+58335 rm-static-390.png
+139789 rm-white-1440.png
+97142 white-act-1440.png
+58335 white-act-390.png
+=== lane E files ===
+main.tsx  4.2K
+BookingCTA.tsx  1.7K
+ChapterOverlay.tsx  6.9K
+Footer.tsx  2.3K
+Header.tsx  5.4K
+LogoRails.tsx  12.6K
+Scrims.tsx  590B
+Sections.tsx  11.6K
+SkipLinks.tsx  1.6K
+StoreBits.tsx  2.4K
+WhiteSection.tsx  1.6K
+index.ts  820B
+lane-e.css  27.8K
+brands.json  957B
+chapters.json  3.4K
+index.ts  3.2K
+insurers.json  1.1K
+json-modules.d.ts  264B
+lenses.json  2.0K
+reviews.json  2.2K
+services.json  1.5K
+store.json  1.4K
+... (3 filtered)
+[+3 hidden: rtk recall 90a0c3180969]
+[0m
+[0m⚙ [0mplaywright_browser_resize {"height":844,"width":390}
+[0m⚙ [0mplaywright_browser_navigate {"url":"http://localhost:5105/dev-E.html"}
+[0m⚙ [0mplaywright_browser_evaluate {"function":"() => { document.querySelector('#visit-h').scrollIntoView({block:'start'}); return 'ok'; }"}
+[0m⚙ [0mplaywright_browser_wait_for {"time":2}
+[0m⚙ [0mplaywright_browser_take_screenshot {"filename":"docs/phase4/qa/E/rest-visit-390.png","scale":"css"}
+[0m⚙ [0mplaywright_browser_evaluate {"function":"() => { window.scrollTo(0, 0); return 'ok'; }"}
+[0m⚙ [0mplaywright_browser_take_screenshot {"filename":"docs/phase4/qa/E/header-dark-390.png","scale":"css"}
+[0m
+[0m$ [0mpkill -f "vite --port 5105" 2>/dev/null; sleep 1; rtk curl -s -m 3 -o /dev/null -w "%{http_code}" http://localhost:5105/dev-E.html 2>/dev/null || echo STOPPED
+STOPPED
+[0m
+[0m# [0mTodos
+[✓] Load skills (masked-reveal, marquee-loop, no-ai-design-slop, iterate-until-verified)
+[✓] Write src/data/*.json (brands, insurers, lenses, services, reviews, store) B-verbatim + DRAFT markers
+[✓] Build ChapterOverlay (9 beats, progress-prop masked reveals, 7 Essilor names, wave labels)
+[✓] Build WhiteSection (H1, CTA, ledger, map click-to-activate, about verbatim + D13)
+[✓] Build Header + Footer (Book pill, skip-intro, progress hairline, policies, replay)
+[✓] Build LogoRails (opposing vertical film-strip rails, 72/44px/s, pause, RM static)
+[✓] Build rest-of-homepage sections R1-R5 (services, lenses, reviews, visit) + BookingCTA/Scrims/SkipLinks
+[✓] Dev harness dev-E.html + src/__dev__/E/main.tsx; screenshots 1440+390 into docs/phase4/qa/E/
+[✓] npm run build passing; banned-token grep; PHASE4-E-DONE summary
+[0m
+PHASE4-E-DONE
+
+Lane E (DOM/copy, steps 10/11/12) complete. 24 screenshots in `docs/phase4/qa/E/` (1440 + 390: white act, rails t0/t+6s/paused, chapters B1/B5/B6/B7, rest R1–R5, header dark+light, menu, footer, RM static/stacked/grid). Harness was `dev-E.html` @ :5105 (server stopped).
+
+1. **Data** — `src/data/*.json` all B-verbatim (8 brands + 8 insurers in order, 7 Essilor names with ®/™, 6 reviews SW/H/NZ/AH/LL/EP + 4.9/208, new-store block, exact booking URL); DRAFT lines carry `"draft": true` + D-refs.
+2. **Beats/white/chrome** — `ChapterOverlay` is a pure function of `progress` (9 sections, masked reveals, B5 lens list, B7 verbatim heading); `WhiteSection` (H1, Ink CTA `_blank`, ledger, click-to-activate map + rebuilt directions); `Header` (Book pill, menu overlay, skip-film, 2px progress) + `Footer` (policies, replay, top).
+3. **Rails** — measured +73/−73 px/s desktop, −44 mobile; opposing loops, film-strip matte, hover-slow, IO-pause, visible pause, RM static grids/columns.
+4. **Rest R1–R5** — verbatim About + D13 split, ledger Services, inverted Lenses, 1+5 Reviews, split Visit; IO masked reveals; no card grids.
+5. **Gates** — eslint clean, tsc clean on all Lane E files, banned-token grep clean (only verbatim `"premium eyewear"`), no old-store strings, zero edits outside lane.
+6. **Known issues** — (a) `npm run build` blocked by other lanes' syntax errors (`canvas/SponsorField.tsx:179`, `routes/Services.tsx:68`) → `requests/E-build-blocker-sponsorfield.md`; (b) R3 use-case micro-caps omitted (no verbatim source; invented nothing) → `requests/E-lenses-usecaps.md`; (c) R3 4:3 material close-up omitted (no supplied/credited image); (d) light-logos-on-Paper resolved as dark frames on the #ECE6D6 bed for legibility.
+EXIT 0 model=meta/muse-spark-1.3-contributor

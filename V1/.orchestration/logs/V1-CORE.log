@@ -1,0 +1,447 @@
+[0m
+> build · muse-spark-1.3-contributor
+[0m
+[0m→ [0mRead src/main.tsx
+[0m→ [0mRead docs/00-BRIEF.md
+[0m→ [0mRead public/v1film/manifest.json
+[0m→ [0mRead src/components/dom/index.ts
+[0m✗ [0mRead src/v1/App.tsx failed
+[91m[1mError: [0mFile not found: /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/v1/App.tsx
+[0m✗ [0mRead v1.html failed
+[91m[1mError: [0mFile not found: /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/v1.html
+[0m→ [0mRead src/styles/tokens.css
+[0m→ [0mRead src/components/dom/Header.tsx
+[0m✗ [0mRead src/v1/main.tsx failed
+[91m[1mError: [0mFile not found: /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/v1/main.tsx
+[0m→ [0mRead src/components/dom/WhiteSection.tsx
+[0m→ [0mRead src/components/dom/Sections.tsx
+[0m✱ [0mGlob "src/v1/*"[90m 0 matches[0m
+[0m→ [0mRead index.html
+[0m→ [0mRead package.json
+[0m→ [0mRead src/components/dom/LogoRails.tsx[90m [limit=80][0m
+[0m→ [0mRead src/components/dom/Footer.tsx[90m [limit=60][0m
+[0m→ [0mRead vite.config.ts
+[0m✱ [0mGrep "export function (LogoRails|WhiteActRails|Footer|Header|WhiteSection|HomeSections)"[90m in src/components/dom · 6 matches[0m
+[0m→ [0mRead src/components/dom/LogoRails.tsx[90m [offset=300, limit=79][0m
+[0m→ [0mRead src/app/providers.tsx
+[0m✱ [0mGrep "\.eyeq-(rails|railside|white|header|footer|sections)[^{]*\{"[90m in src/components/dom/lane-e.css · 71 matches[0m
+[0m→ [0mRead src/components/dom/lane-e.css[90m [limit=30, offset=99][0m
+[0m→ [0mRead src/components/dom/lane-e.css[90m [limit=30, offset=506][0m
+[0m→ [0mRead src/components/dom/lane-e.css[90m [limit=60, offset=843][0m
+[0m→ [0mRead src/components/dom/lane-e.css[90m [limit=40, offset=645][0m
+[0m
+[0m# [0mTodos
+[•] Write v1.html + src/v1/* (progress, main, FilmSequence, App, v1.css, placeholders)
+[ ] Dev server + Playwright QA screenshots at p=0,.15,.3,.5,.65,.8,.95 + white section
+[ ] Look at screenshots, fix issues, stop server
+[0m
+[0m$ [0mmkdir -p src/v1 docs/phase4/qa && rtk ls src/v1 public/v1film | head -20
+0001.jpg  7.8K
+0002.jpg  8.4K
+0003.jpg  8.3K
+0004.jpg  8.4K
+0005.jpg  8.5K
+0006.jpg  8.7K
+0007.jpg  8.8K
+0008.jpg  9.1K
+0009.jpg  9.1K
+0010.jpg  9.2K
+0011.jpg  9.3K
+0012.jpg  9.5K
+0013.jpg  9.6K
+0014.jpg  9.5K
+0015.jpg  9.6K
+0016.jpg  9.7K
+0017.jpg  10.1K
+0018.jpg  10.5K
+0019.jpg  10.9K
+0020.jpg  11.3K
+[0m
+[0m← [0mWrite v1.html
+Wrote file successfully.
+[0m
+[0m← [0mWrite src/v1/progress.ts
+Wrote file successfully.
+[0m
+[0m← [0mWrite src/v1/BrandWaves.tsx
+Wrote file successfully.
+[0m
+[0m← [0mWrite src/v1/FilmCaptions.tsx
+Wrote file successfully.
+[0m
+[0m← [0mWrite src/v1/FilmSequence.tsx
+Wrote file successfully.
+[0m
+[0m← [0mEdit src/v1/FilmSequence.tsx
+Index: /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/v1/FilmSequence.tsx
+===================================================================
+--- /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/v1/FilmSequence.tsx
++++ /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/v1/FilmSequence.tsx
+@@ -4,9 +4,9 @@
+ import { useEffect, useRef, useState } from 'react';
+ import gsap from 'gsap';
+ import { ScrollTrigger } from 'gsap/ScrollTrigger';
+ import Lenis from 'lenis';
+-import { setFilmProgress } from './progress';
++import { setFilmProgress, useFilmProgress } from './progress';
+ import { BrandWaves } from './BrandWaves';
+ import { FilmCaptions } from './FilmCaptions';
+ 
+ gsap.registerPlugin(ScrollTrigger);
+
+[0m
+[0m← [0mEdit src/v1/FilmSequence.tsx
+Index: /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/v1/FilmSequence.tsx
+===================================================================
+--- /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/v1/FilmSequence.tsx
++++ /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/v1/FilmSequence.tsx
+@@ -274,15 +274,13 @@
+ }
+ 
+ // Thin wrappers so overlay components re-render only via the progress store.
+ function OverlayWaves() {
+-  const { useFilmProgress } = require('./progress') as typeof import('./progress');
+   const p = useFilmProgress();
+   return <BrandWaves progress={p} />;
+ }
+ 
+ function OverlayCaptions() {
+-  const { useFilmProgress } = require('./progress') as typeof import('./progress');
+   const p = useFilmProgress();
+   return <FilmCaptions progress={p} />;
+ }
+ 
+
+[0m
+[0m← [0mEdit src/v1/FilmSequence.tsx
+Index: /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/v1/FilmSequence.tsx
+===================================================================
+--- /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/v1/FilmSequence.tsx
++++ /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/v1/FilmSequence.tsx
+@@ -92,8 +92,9 @@
+ let cancelled = false;
+ let raf = 0;
+ let lenis: Lenis | null = null;
+ let st: ScrollTrigger | null = null;
++let rafLenis: ((time: number) => void) | null = null;
+ const frames: (HTMLImageElement | null)[] = [];
+ let count = 0;
+ let fw = 16;
+ let fh = 9;
+
+[0m
+[0m← [0mEdit src/v1/FilmSequence.tsx
+Index: /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/v1/FilmSequence.tsx
+===================================================================
+--- /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/v1/FilmSequence.tsx
++++ /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/v1/FilmSequence.tsx
+@@ -161,9 +161,9 @@
+ 
+ // Lenis smooth scroll (lerp 0.09) wired to ScrollTrigger.
+ lenis = new Lenis({ lerp: 0.09 });
+ lenis.on('scroll', ScrollTrigger.update);
+-const rafLenis = (time: number) => {
++rafLenis = (time: number) => {
+   lenis?.raf(time * 1000);
+ };
+ gsap.ticker.add(rafLenis);
+ gsap.ticker.lagSmoothing(0);
+
+[0m
+[0m← [0mEdit src/v1/FilmSequence.tsx
+Index: /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/v1/FilmSequence.tsx
+===================================================================
+--- /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/v1/FilmSequence.tsx
++++ /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/v1/FilmSequence.tsx
+@@ -238,12 +238,10 @@
+ return () => {
+   cancelled = true;
+   cancelAnimationFrame(raf);
+   gsap.ticker.remove(tick);
++  if (rafLenis) gsap.ticker.remove(rafLenis);
+   st?.kill();
+-  st = null;
+-  // Remove the lenis raf added above by reference.
+-  gsap.ticker.getAll().forEach(() => undefined);
+   lenis?.destroy();
+   lenis = null;
+   window.removeEventListener('resize', resize);
+ };
+
+[0m
+[0m← [0mWrite src/v1/App.tsx
+Wrote file successfully.
+[0m
+[0m← [0mWrite src/v1/main.tsx
+Wrote file successfully.
+[0m
+[0m← [0mWrite src/v1/v1.css
+Wrote file successfully.
+[0m
+[0m$ [0mnpx vite --port 5201 --strictPort > /tmp/v1-5201.log 2>&1 & echo "started $!"
+started 78634
+[0m
+[0m$ [0msleep 6 && rtk read /tmp/v1-5201.log --tail-lines 5 && rtk curl -s -o /dev/null -w "%{http_code}" http://localhost:5201/v1.html
+VITE v8.3.1  ready in 462 ms
+
+  ➜  Local:   http://localhost:5201/
+  ➜  Network: use --host to expose
+200
+[0m
+[0m$ [0mrtk playwright --version && rtk ls ~/.cache/ms-playwright 2>/dev/null | head
+[RTK:PASSTHROUGH] playwright parser: All parsing tiers failed
+Version 1.63.0
+[0m
+[0m$ [0mrtk ls ~/.cache/ms-playwright 2>/dev/null; echo "---"; ls node_modules/.bin | rtk grep -i play
+---
+playwright
+playwright-core
+[0m
+[0m$ [0mrtk ls ~/.cache/ms-playwright/ 2>&1 | head; which chromium chromium-browser google-chrome google-chrome-stable 2>&1 | head
+ls: /Users/admin/.cache/ms-playwright/: No such file or directory
+chromium not found
+chromium-browser not found
+google-chrome not found
+google-chrome-stable not found
+[0m
+[0m$ [0mnpx playwright install chromium --only-shell 2>&1 | tail -3
+npm notice run eyeq-vision-care@0.1.0 npx
+npm notice run 'playwright' install chromium --only-shell
+[0m
+[0m$ [0mrtk ls ~/.cache/ms-playwright/ 2>&1; node -e "const {chromium}=require('playwright-core'); chromium.launch().then(async b=>{console.log('OK',b.version()); await b.close();}).catch(e=>console.log('FAIL',e.message.split('\n')[0]))"
+ls: /Users/admin/.cache/ms-playwright/: No such file or directory
+OK 153.0.8010.12
+[0m
+[0m← [0mWrite qa-core.mjs
+Wrote file successfully.
+[0m
+[0m$ [0mnode qa-core.mjs 2>&1 | tail -20
+NOTE: preloader did not report done in 60s
+node:internal/modules/run_main:107
+    triggerUncaughtException(
+    ^
+
+page.evaluate: TypeError: Cannot read properties of null (reading 'getBoundingClientRect')
+    at eval (eval at evaluate (:311:30), <anonymous>:3:16)
+    at UtilityScript.evaluate (<anonymous>:313:16)
+    at UtilityScript.<anonymous> (<anonymous>:1:44)
+    at /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/qa-core.mjs:20:25 {
+  log: []
+}
+
+Node.js v24.18.0
+[0m
+[0m$ [0mnode -e "
+const {chromium} = require('playwright-core');
+(async()=>{
+const b=await chromium.launch();
+const p=await b.newPage();
+p.on('console',m=>console.log('['+m.type()+']',m.text().slice(0,300)));
+p.on('pageerror',e=>console.log('[pageerror]',String(e).slice(0,500)));
+p.on('requestfailed',r=>console.log('[reqfail]',r.url().slice(0,120), r.failure()?.errorText));
+await p.goto('http://localhost:5201/v1.html',{waitUntil:'networkidle'});
+await p.waitForTimeout(4000);
+console.log('root children:', await p.evaluate(()=>document.getElementById('root')?.childElementCount));
+console.log('body html head:', await p.evaluate(()=>document.body.innerHTML.slice(0,400)));
+await b.close();
+})();
+" 2>&1 | head -30
+[debug] [vite] connecting...
+[debug] [vite] connected.
+[pageerror] SyntaxError: The requested module '/src/v1/BrandWaves.tsx' does not provide an export named 'BrandWaves'
+[warning] The resource http://localhost:5201/fonts/fraunces-var.woff2 was preloaded using link preload but not used within a few seconds from the window's load event. Please make sure it has an appropriate `as` value and it is preloaded intentionally.
+root children: 0
+body html head: 
+    <div id="root"></div>
+    <script type="module" src="/src/v1/main.tsx?t=1790562834910"></script>
+[0m
+[0m→ [0mRead src/v1/BrandWaves.tsx[90m [limit=40][0m
+[0m→ [0mRead src/v1/FilmCaptions.tsx[90m [limit=40][0m
+[0m✱ [0mGrep "export (function|const|default)"[90m in src/v1 · 10 matches[0m
+[0m
+[0m← [0mEdit src/v1/FilmSequence.tsx
+Index: /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/v1/FilmSequence.tsx
+===================================================================
+--- /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/v1/FilmSequence.tsx
++++ /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/v1/FilmSequence.tsx
+@@ -5,10 +5,10 @@
+ import gsap from 'gsap';
+ import { ScrollTrigger } from 'gsap/ScrollTrigger';
+ import Lenis from 'lenis';
+ import { setFilmProgress, useFilmProgress } from './progress';
+-import { BrandWaves } from './BrandWaves';
+-import { FilmCaptions } from './FilmCaptions';
++import BrandWaves from './BrandWaves';
++import FilmCaptions from './FilmCaptions';
+ 
+ gsap.registerPlugin(ScrollTrigger);
+ 
+ type Manifest = { count: number; width: number; height: number; pad: number; ext: string };
+
+[0m
+[0m$ [0mnode qa-core.mjs 2>&1 | tail -20
+film geom {"top":0,"height":7200,"vh":900}
+shot p0
+shot p15
+shot p30
+shot p50
+shot p65
+shot p80
+shot p95
+CONSOLE ERRORS: none
+[0m
+[0m→ [0mRead docs/phase4/qa/v1/core-p30.png
+[0m→ [0mRead docs/phase4/qa/v1/core-p0.png
+[0m→ [0mRead docs/phase4/qa/v1/core-p95.png
+[0m→ [0mRead docs/phase4/qa/v1/core-p65.png
+[0m→ [0mRead docs/phase4/qa/v1/core-p80.png
+[0m→ [0mRead docs/phase4/qa/v1/core-white.png
+[0m
+[0m← [0mEdit src/v1/App.tsx
+Index: /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/v1/App.tsx
+===================================================================
+--- /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/v1/App.tsx
++++ /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/v1/App.tsx
+@@ -11,9 +11,9 @@
+   HomeSections,
+   Footer,
+ } from '../components/dom/index';
+ import { FilmSequence } from './FilmSequence';
+-import { useFilmProgress } from './progress';
++import { getFilmProgress, useFilmProgress } from './progress';
+ 
+ export default function App() {
+   const p = useFilmProgress();
+   const [theme, setTheme] = useState<'dark' | 'light'>('dark');
+
+[0m
+[0m→ [0mRead docs/phase4/qa/v1/core-footer.png
+[0m
+[0m← [0mEdit src/v1/App.tsx
+Index: /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/v1/App.tsx
+===================================================================
+--- /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/v1/App.tsx
++++ /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/v1/App.tsx
+@@ -20,11 +20,14 @@
+ 
+ useEffect(() => {
+   const onScroll = () => {
+     const white = document.querySelector('#white-act');
+-    if (!white) return;
+-    const top = (white as HTMLElement).getBoundingClientRect().top;
+-    setTheme(top <= 64 ? 'light' : 'dark');
++    const whiteTop = white
++      ? (white as HTMLElement).getBoundingClientRect().top
++      : Number.POSITIVE_INFINITY;
++    // Light once the white act scrolls under the header — or while the
++    // film itself shows the paper-white end card (p >= 0.87).
++    setTheme(whiteTop <= 64 || getFilmProgress() >= 0.87 ? 'light' : 'dark');
+   };
+   onScroll();
+   window.addEventListener('scroll', onScroll, { passive: true });
+   return () => window.removeEventListener('scroll', onScroll);
+
+[0m
+[0m← [0mEdit src/v1/App.tsx
+Index: /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/v1/App.tsx
+===================================================================
+--- /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/v1/App.tsx
++++ /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/v1/App.tsx
+@@ -11,9 +11,9 @@
+   HomeSections,
+   Footer,
+ } from '../components/dom/index';
+ import { FilmSequence } from './FilmSequence';
+-import { getFilmProgress, useFilmProgress } from './progress';
++import { getFilmProgress, subscribeFilmProgress, useFilmProgress } from './progress';
+ 
+ export default function App() {
+   const p = useFilmProgress();
+   const [theme, setTheme] = useState<'dark' | 'light'>('dark');
+
+[0m
+[0m← [0mEdit src/v1/App.tsx
+Index: /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/v1/App.tsx
+===================================================================
+--- /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/v1/App.tsx
++++ /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/v1/App.tsx
+@@ -29,9 +29,14 @@
+     setTheme(whiteTop <= 64 || getFilmProgress() >= 0.87 ? 'light' : 'dark');
+   };
+   onScroll();
+   window.addEventListener('scroll', onScroll, { passive: true });
+-  return () => window.removeEventListener('scroll', onScroll);
++  // Re-evaluate while the eased film progress settles after scroll stops.
++  const unsub = subscribeFilmProgress(onScroll);
++  return () => {
++    window.removeEventListener('scroll', onScroll);
++    unsub();
++  };
+ }, []);
+ 
+ const skipToWhite = () => {
+   document.querySelector('#white-act')?.scrollIntoView({ behavior: 'auto' });
+
+[0m
+[0m$ [0mnode -e "
+const {chromium} = require('playwright-core');
+(async()=>{
+const b=await chromium.launch();
+const p=await b.newPage({viewport:{width:1440,height:900}});
+const errs=[];
+p.on('pageerror',e=>errs.push(String(e).slice(0,200)));
+await p.goto('http://localhost:5201/v1.html',{waitUntil:'networkidle'});
+try{await p.waitForSelector('.v1-preloader.is-done',{timeout:60000});}catch{console.log('PRELOADER TIMEOUT');}
+const g=await p.evaluate(()=>{const el=document.querySelector('.v1-film');const r=el.getBoundingClientRect();return{top:r.top+window.scrollY,height:r.height,vh:window.innerHeight};});
+await p.evaluate((y)=>window.scrollTo(0,y), g.top+0.95*(g.height-g.vh));
+await p.waitForTimeout(2200);
+await p.screenshot({path:'docs/phase4/qa/v1/core-p95.png'});
+console.log('header class:', await p.evaluate(()=>document.querySelector('.eyeq-header')?.className));
+console.log('errs:', errs.length?errs:'none');
+await b.close();
+})();
+" 2>&1 | tail -5
+header class: eyeq-header eyeq-header--light is-scrolled--light
+errs: none
+[0m
+[0m→ [0mRead docs/phase4/qa/v1/core-p95.png
+[0m
+[0m$ [0mnode -e "
+const {chromium} = require('playwright-core');
+(async()=>{
+const b=await chromium.launch();
+const p=await b.newPage({viewport:{width:390,height:844}});
+const errs=[];
+p.on('pageerror',e=>errs.push(String(e).slice(0,200)));
+await p.goto('http://localhost:5201/v1.html',{waitUntil:'networkidle'});
+try{await p.waitForSelector('.v1-preloader.is-done',{timeout:60000});}catch{console.log('PRELOADER TIMEOUT');}
+await p.waitForTimeout(800);
+console.log('film height:', await p.evaluate(()=>document.querySelector('.v1-film')?.getBoundingClientRect().height), 'expected ~', 5.6*844);
+await p.screenshot({path:'docs/phase4/qa/v1/core-mobile-top.png'});
+await p.evaluate(()=>document.querySelector('#white-act')?.scrollIntoView());
+await p.waitForTimeout(1200);
+await p.screenshot({path:'docs/phase4/qa/v1/core-mobile-white.png'});
+console.log('errs:', errs.length?errs:'none');
+await b.close();
+})();
+" 2>&1 | tail -4
+film height: 4726.390625 expected ~ 4726.4
+errs: none
+[0m
+[0m→ [0mRead docs/phase4/qa/v1/core-mobile-white.png
+[0m
+[0m$ [0mrm qa-core.mjs && kill 78634 2>/dev/null; sleep 1; rtk curl -s -o /dev/null -w "%{http_code}" --max-time 3 http://localhost:5201/v1.html || rtk echo "server stopped"
+FAILED: curl 000
+server stopped
+[0m
+[0m# [0mTodos
+[✓] Write v1.html + src/v1/* (progress, main, FilmSequence, App, v1.css, placeholders)
+[✓] Dev server + Playwright QA screenshots at p=0,.15,.3,.5,.65,.8,.95 + white section
+[✓] Look at screenshots, fix issues, stop server
+[0m
+V1-CORE-DONE
+- Pinned canvas film (800vh/560vh mobile) with runtime manifest, full preload counter on Void, cover-fit DPR draw, Lenis 0.09 + ScrollTrigger scrub; progress via `progress.ts` store.
+- Overlays wired to live `BrandWaves`/`FilmCaptions` (default imports; placeholders retired when agents landed real files, untouched).
+- Lane E assembly with seamless Paper handoff; header flips to light theme on the paper-white end card (p≥0.87) as well as the white act.
+- QA: 7 film beats + white + footer + 2 mobile shots in `docs/phase4/qa/v1/`, zero console errors; server stopped.
+EXIT 0 model=meta/muse-spark-1.3-contributor

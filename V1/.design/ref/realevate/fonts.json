@@ -1,0 +1,23 @@
+[
+ {
+  "family": "Google Sans",
+  "weight": "500",
+  "style": "normal",
+  "url": "https://realevate.agency/fonts/sans-latin.woff2",
+  "saved": "assets/font-fonts-sans-latin-6d379bda.woff2"
+ },
+ {
+  "family": "Roslindale Display",
+  "weight": "300",
+  "style": "normal",
+  "url": "https://realevate.agency/fonts/serif.woff2",
+  "saved": "assets/font-fonts-serif-6122821f.woff2"
+ },
+ {
+  "family": "Monument Extended",
+  "weight": "400",
+  "style": "normal",
+  "url": "https://realevate.agency/fonts/extended.woff2",
+  "saved": "assets/font-fonts-extended-e21864b2.woff2"
+ }
+]

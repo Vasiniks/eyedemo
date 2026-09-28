@@ -1,0 +1,14 @@
+{
+  "source": "docs/research/B-content-inventory.md §9 — homepage OUR FEATURED EYEWEAR BRANDS strip, DOM order. Logos unlinked as today. Single-color light knockouts per brief §6c.2.",
+  "heading": "OUR FEATURED EYEWEAR BRANDS",
+  "brands": [
+    { "name": "Maui Jim", "file": "/web/brands-light/maui-jim.png", "alt": "Maui Jim" },
+    { "name": "Ray-Ban", "file": "/web/brands-light/ray-ban.png", "alt": "Ray-Ban", "hero": true },
+    { "name": "Prada", "file": "/web/brands-light/prada.png", "alt": "Prada" },
+    { "name": "Miu Miu", "file": "/web/brands-light/miu-miu.png", "alt": "Miu Miu" },
+    { "name": "Persol", "file": "/web/brands-light/persol.png", "alt": "Persol" },
+    { "name": "Oakley", "file": "/web/brands-light/oakley.png", "alt": "Oakley" },
+    { "name": "Tiffany & Co.", "file": "/web/brands-light/tiffany.png", "alt": "Tiffany & Co." },
+    { "name": "Versace", "file": "/web/brands-light/versace.png", "alt": "Versace" }
+  ]
+}

@@ -1,0 +1,199 @@
+{
+ "scroll_linked": [],
+ "reveals": [
+  {
+   "el": "span",
+   "text": "Dust, sweat, and water resistance",
+   "cls": "control-item-label typography-all-access-pass-pv-item-label",
+   "at_step": 4,
+   "prop": "opacity",
+   "from": {
+    "transform": "none",
+    "opacity": 0
+   },
+   "to": {
+    "transform": "none",
+    "opacity": 1
+   },
+   "timing": {
+    "duration_ms": 700,
+    "ease": "power3.out"
+   }
+  },
+  {
+   "el": "span",
+   "text": "Force sensor with volume swipe",
+   "cls": "control-item-label typography-all-access-pass-pv-item-label",
+   "at_step": 4,
+   "prop": "opacity",
+   "from": {
+    "transform": "matrix(1, 0, 0, 1, 0, -6.18515)",
+    "opacity": 0.003
+   },
+   "to": {
+    "transform": "matrix(1, 0, 0, 1, 0, 0)",
+    "opacity": 1
+   },
+   "timing": {
+    "duration_ms": 900,
+    "ease": "power1.out"
+   }
+  },
+  {
+   "el": "div",
+   "text": "Intelligent noise control The best thingyou’ve n",
+   "cls": "section-header-intro",
+   "at_step": 6,
+   "prop": "opacity",
+   "from": {
+    "transform": "matrix(1, 0, 0, 1, 0, 1.65052)",
+    "opacity": 0.753
+   },
+   "to": {
+    "transform": "none",
+    "opacity": 1
+   },
+   "timing": {
+    "duration_ms": 300,
+    "ease": "linear"
+   }
+  },
+  {
+   "el": "figure",
+   "text": "Removes up to 2x more unwanted noise than AirPod",
+   "cls": "stat ric-large-offset-1 ric-small-offset-0 ric-large-3 ric-m",
+   "at_step": 8,
+   "prop": "opacity",
+   "from": {
+    "transform": "matrix(1, 0, 0, 1, 0, 2.72579)",
+    "opacity": 0.699
+   },
+   "to": {
+    "transform": "none",
+    "opacity": 1
+   },
+   "timing": {
+    "duration_ms": 500,
+    "ease": "power4.out"
+   }
+  },
+  {
+   "el": "figure",
+   "text": "Removes up to 4x more unwanted noise than origin",
+   "cls": "stat ric-large-offset-1 ric-small-offset-0 ric-large-3 ric-m",
+   "at_step": 8,
+   "prop": "opacity",
+   "from": {
+    "transform": "matrix(1, 0, 0, 1, 0, 10.9617)",
+    "opacity": 0.397
+   },
+   "to": {
+    "transform": "none",
+    "opacity": 1
+   },
+   "timing": {
+    "duration_ms": 900,
+    "ease": "power4.out"
+   }
+  },
+  {
+   "el": "li",
+   "text": "New ultra-low-noise microphones. Using advanced ",
+   "cls": "card-container caption-tile gallery-item background-alt item",
+   "at_step": 9,
+   "prop": "opacity",
+   "from": {
+    "transform": "matrix(1, 0, 0, 1, 0, 0.0414563)",
+    "opacity": 0.882
+   },
+   "to": {
+    "transform": "none",
+    "opacity": 1
+   },
+   "timing": {
+    "duration_ms": 300,
+    "ease": "linear"
+   }
+  },
+  {
+   "el": "li",
+   "text": "Voice Isolation. AirPods Pro 3 reduce background",
+   "cls": "card-container caption-tile gallery-item background-alt item",
+   "at_step": 9,
+   "prop": "opacity",
+   "from": {
+    "transform": "matrix(1, 0, 0, 1, 0, 3.47248)",
+    "opacity": 0.665
+   },
+   "to": {
+    "transform": "none",
+    "opacity": 1
+   },
+   "timing": {
+    "duration_ms": 400,
+    "ease": "power2.out"
+   }
+  },
+  {
+   "el": "li",
+   "text": "Adaptive Audio. AirPods Pro 3 combine Active Noi",
+   "cls": "card-container caption-tile gallery-item background-alt item",
+   "at_step": 9,
+   "prop": "opacity",
+   "from": {
+    "transform": "matrix(1, 0, 0, 1, 0, 12.4137)",
+    "opacity": 0.36
+   },
+   "to": {
+    "transform": "none",
+    "opacity": 1
+   },
+   "timing": {
+    "duration_ms": 800,
+    "ease": "power3.out"
+   }
+  },
+  {
+   "el": "li",
+   "text": "Conversation Awareness. AirPods Pro 3 can detect",
+   "cls": "card-container caption-tile gallery-item background-alt item",
+   "at_step": 9,
+   "prop": "opacity",
+   "from": {
+    "transform": "matrix(1, 0, 0, 1, 0, 23.432)",
+    "opacity": 0.132
+   },
+   "to": {
+    "transform": "none",
+    "opacity": 1
+   },
+   "timing": {
+    "duration_ms": 1000,
+    "ease": "power2.out"
+   }
+  }
+ ],
+ "pinned": [],
+ "fixed": [
+  {
+   "el": "div",
+   "text": "",
+   "cls": "globalnav-curtain"
+  },
+  {
+   "el": "div",
+   "text": "AirPods Pro 3 Local Nav Menu Local Nav Menu Over",
+   "cls": "ac-ln-wrapper"
+  },
+  {
+   "el": "div",
+   "text": "",
+   "cls": "ac-ln-background"
+  },
+  {
+   "el": "div",
+   "text": "AirPods Pro 3 Local Nav Menu Local Nav Menu Over",
+   "cls": "ac-ln-content"
+  }
+ ]
+}

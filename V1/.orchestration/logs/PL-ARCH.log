@@ -1,0 +1,81 @@
+[0m
+> build · muse-spark-1.3-contributor
+[0m
+[0m→ [0mRead docs/phase4
+[0m→ [0mRead docs/00-BRIEF.md
+[0m→ [0mRead docs/research/00-PHASE2-SYNTHESIS.md
+[0m→ [0mRead docs/research
+[0m→ [0mRead docs/research/F-3d-motion-tech.md
+[0m→ [0mRead docs/research/E-visual-references.md
+[0m→ [0mRead docs/research/B-content-inventory.md
+[0m→ [0mRead docs/research/F-3d-motion-tech.md[90m [offset=311][0m
+[0m→ [0mRead docs/research/D-asset-inventory.md
+[0m→ [0mRead docs/research/G-glasses-model.md
+[0m
+[0m# [0mTodos
+[✓] Read brief + synthesis + F/E/B/D/G research
+[•] Dispatch frontend-architect + load skills + Context7/Github survey
+[ ] Write docs/phase4/PLAN-architecture.md (7 sections)
+[0m
+[0m• [0mConsult frontend-architect[90m Frontend-Architect Agent[0m
+[0m→ [0mSkill "build-threejs-scroll-worlds"
+[0m→ [0mSkill "cinematic-gsap-lenis-motion-system"
+[0m→ [0mSkill "awwwards-playbook"
+[0m⚙ [0mcontext7_resolve-library-id {"libraryName":"Lenis smooth scroll","query":"Lenis GSAP ticker integration ScrollTrigger sync React"}
+[0m⚙ [0mcontext7_resolve-library-id {"libraryName":"React Three Fiber","query":"R3F Canvas frameloop useFrame scroll-driven camera with GSAP ScrollTrigger progress ref"}
+[0m✓ [0mConsult frontend-architect[90m Frontend-Architect Agent[0m
+[0m⚙ [0mgithub_search_repositories {"minimal_output":true,"perPage":10,"query":"react-three-fiber gsap scrolltrigger scroll camera","sort":"stars"}
+[0m⚙ [0mgithub_search_repositories {"minimal_output":true,"perPage":10,"query":"lenis react three fiber scroll","sort":"stars"}
+[0m⚙ [0mcontext7_query-docs {"libraryId":"/darkroomengineering/lenis","query":"Lenis GSAP ScrollTrigger integration single ticker lenis.raf React autoRaf false"}
+[0m⚙ [0mcontext7_query-docs {"libraryId":"/pmndrs/react-three-fiber","query":"frameloop demand vs always, useFrame reading external GSAP ScrollTrigger progress via ref without React re-renders"}
+[0m⚙ [0mgithub_search_repositories {"minimal_output":true,"perPage":8,"query":"MeshTransmissionMaterial glass refraction lens","sort":"stars"}
+[0m⚙ [0mgithub_search_repositories {"minimal_output":true,"perPage":8,"query":"hyperspace warp speed lines threejs shader","sort":"stars"}
+[0m⚙ [0mgithub_search_repositories {"minimal_output":true,"perPage":5,"query":"pmndrs drei","sort":"stars"}
+[0m⚙ [0mgithub_get_file_contents {"owner":"pmndrs","path":"src/core/MeshTransmissionMaterial.tsx","repo":"drei"}
+[0m⚙ [0mgithub_get_file_contents {"owner":"darkroomengineering","path":"README.md","repo":"lenis"}
+[0m⚙ [0mgithub_get_file_contents {"owner":"pmndrs","path":"docs/advanced/scaling-performance.mdx","repo":"react-three-fiber"}
+[0m⚙ [0mgithub_get_file_contents {"owner":"14islands","path":"src","repo":"r3f-scroll-rig"}
+[0m⚙ [0mgithub_search_repositories {"minimal_output":true,"perPage":5,"query":"react-fast-marquee infinite marquee","sort":"stars"}
+[0m⚙ [0mgithub_get_file_contents {"owner":"mrdoob","path":"examples/webgl_materials_physical_transmission.html","repo":"three.js"}
+[0m⚙ [0mgithub_get_file_contents {"owner":"pmndrs","path":"src/core/Lightformer.tsx","repo":"drei"}
+[0m⚙ [0mgithub_get_file_contents {"owner":"pmndrs","path":"README.md","repo":"react-three-next"}
+[0m⚙ [0mgithub_search_repositories {"minimal_output":true,"perPage":5,"query":"starfield warp hyperspace three.js","sort":"stars"}
+[0m⚙ [0mgithub_search_repositories {"minimal_output":true,"perPage":5,"query":"marquee react infinite scroll","sort":"stars"}
+[0m⚙ [0mgithub_get_file_contents {"owner":"pmndrs","path":"README.md","repo":"react-postprocessing"}
+[0m⚙ [0mgithub_search_repositories {"minimal_output":true,"perPage":5,"query":"scroll-driven camera threejs gsap ScrollTrigger pin","sort":"stars"}
+[0m⚙ [0mgithub_search_repositories {"minimal_output":true,"perPage":5,"query":"fast-marquee","sort":"stars"}
+[0m⚙ [0mgithub_get_file_contents {"owner":"justin-chu","path":"src/components/Marquee.tsx","repo":"react-fast-marquee"}
+[0m✗ [0mgithub_get_file_contents {"owner":"pmndrs","path":"src/core/useGLTF.tsx","repo":"drei"} failed
+[91m[1mError: [0mFailed to get file contents. The path does not point to a file or directory, or the file does not exist in the repository.
+[0m✗ [0mgithub_get_file_contents {"owner":"pmndrs","path":"src/loaders/useGLTF.tsx","repo":"drei"} failed
+[91m[1mError: [0mFailed to get file contents. The path does not point to a file or directory, or the file does not exist in the repository.
+[0m⚙ [0mgithub_search_code {"perPage":8,"query":"hyperspace warp speed lines threejs"}
+[0m✗ [0mgithub_get_file_contents {"owner":"pmndrs","path":"src/loaders","repo":"drei"} failed
+[91m[1mError: [0mFailed to get file contents. The path does not point to a file or directory, or the file does not exist in the repository.
+[0m✗ [0mgithub_get_file_contents {"owner":"DavidHDev","path":"src/ts-defaults/Backgrounds/Hyperspeed","repo":"react-bits"} failed
+[91m[1mError: [0mFailed to get file contents. The path does not point to a file or directory, or the file does not exist in the repository.
+[0m⚙ [0mgithub_search_code {"perPage":10,"query":"Hyperspeed repo:DavidHDev/react-bits"}
+[0m✗ [0mgithub_get_file_contents {"owner":"pmndrs","path":"core/useGLTF.ts","repo":"drei"} failed
+[91m[1mError: [0mFailed to get file contents. The path does not point to a file or directory, or the file does not exist in the repository.
+[0m⚙ [0mgithub_get_file_contents {"owner":"pmndrs","path":"src/core","repo":"drei"}
+[0m
+[0m# [0mTodos
+[✓] Read brief + synthesis + F/E/B/D/G research
+[✓] Dispatch frontend-architect + load skills + Context7/Github survey
+[•] Write docs/phase4/PLAN-architecture.md (7 sections)
+[0m
+[0m← [0mWrite docs/phase4/PLAN-architecture.md
+Wrote file successfully.
+[0m
+[0m# [0mTodos
+[✓] Read brief + synthesis + F/E/B/D/G research
+[✓] Dispatch frontend-architect + load skills + Context7/Github survey
+[✓] Write docs/phase4/PLAN-architecture.md (7 sections)
+[0m
+PHASE4-PLAN-ARCH-DONE
+
+- `docs/phase4/PLAN-architecture.md` written: stack confirmed (Vite+React19+R3F, +react-router for 8 reachable routes), full folder/component/scene-graph spec, master-timeline label table with camera endpoints.
+- Single-conductor rule normative: one Lenis, one GSAP ticker, one timeline → mutable ref into `useFrame`; ScrollControls/second-ticker bans recorded as P0 violations.
+- Asset pipeline (meshopt/KTX2, 2 atlases, weight-based preloader), 4 performance tiers with DPR/post budgets, Playwright 12-stop QA harness into `docs/phase4/qa/`.
+- 11 repos actually opened and cited with borrow/avoid per file; build order 1–18 with critical path and file-ownership lanes for parallel builders.
+EXIT 0 model=meta/muse-spark-1.3-contributor

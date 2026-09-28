@@ -1,0 +1,43 @@
+{
+  "scale_applied": 0.0898709044980406,
+  "recenter_lens_centre_m": [
+    7.347940845647827e-05,
+    -0.020694289356470108,
+    0.06116364896297455
+  ],
+  "pivots_m": {
+    "L": [
+      -0.060835354030132294,
+      -0.007855351082980633,
+      -0.010059189051389694
+    ],
+    "R": [
+      0.06068838760256767,
+      -0.007855360396206379,
+      -0.010059189051389694
+    ]
+  },
+  "fold_deg": {
+    "R": 98,
+    "L": 98,
+    "cost": 3280,
+    "note": "R=+Zrot, L=-Zrot; right under, left over"
+  },
+  "intersect_fold1": {
+    "armR_armL": 0,
+    "armR_lensR": 0,
+    "armR_lensL": 0,
+    "armL_lensR": 0,
+    "armL_lensL": 0,
+    "armR_front": 328,
+    "armL_front": 328
+  },
+  "tris": {
+    "G_Front": 26082,
+    "G_Lens_L": 3140,
+    "G_Lens_R": 3140,
+    "G_Arm_L": 10124,
+    "G_Arm_R": 10124,
+    "TOTAL": 52610
+  }
+}

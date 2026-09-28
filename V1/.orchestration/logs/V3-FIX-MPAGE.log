@@ -1,0 +1,206 @@
+[0m
+> build · muse-spark-1.3-contributor-free
+[0m
+Fix MPAGE inbound — tightening header scrims and mobile film pin.
+[0m# [0mTodos
+[•] Read ORCHESTRATOR-NOTES.md + QA.md for MPAGE scope
+[ ] Inspect owned files (dom/**, App.tsx, v1.css)
+[ ] Fix header/scrim transparency + inversion + 620vh pin
+[ ] Verify Playwright 1512x860, 390x844 (+1920/1024) with screenshots
+[ ] Write FIX-MPAGE.md, stop server, end DONE
+[0m
+[0m→ [0mRead .
+[0m✗ [0mRead docs/phase4/qa/v3/QA.md failed
+[91m[1mError: [0mFile not found: /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/docs/phase4/qa/v3/QA.md
+[0m→ [0mRead docs/phase4/qa/v3/ORCHESTRATOR-NOTES.md
+[0m→ [0mRead src/v1/v1.css
+[0m→ [0mRead src/v1/App.tsx
+[0m✱ [0mGlob "src/components/dom/**/*"[90m 12 matches[0m
+[0m→ [0mRead src/components/dom/Scrims.tsx
+[0m→ [0mRead src/components/dom/Header.tsx
+[0m→ [0mRead src/components/dom/index.ts
+[0m✱ [0mGrep "eyeq-header|eyeq-skipfilm|eyeq-menu"[90m in src · 63 matches[0m
+[0m→ [0mRead src/components/dom/lane-e.css[90m [limit=280, offset=90][0m
+Found the seam sources — checking how the scrims composite over the film.
+[0m→ [0mRead src/styles/tokens.css
+[0m✱ [0mGrep "BottomScrim|CopyScrim|eyeq-void|skipfilm.*back|scrim"[90m in src · 26 matches[0m
+[0m→ [0mRead src/v1/side.css
+[0m→ [0mRead src/components/dom/ChapterOverlay.tsx
+[0m→ [0mRead src/components/dom/lane-e.css[90m [limit=120, offset=356][0m
+[0m
+[0m# [0mTodos
+[✓] Read ORCHESTRATOR-NOTES.md + QA.md for MPAGE scope
+[✓] Inspect owned files (dom/**, App.tsx, v1.css)
+[•] Fix header/scrim transparency + inversion + 620vh pin
+[ ] Verify Playwright 1512x860, 390x844 (+1920/1024) with screenshots
+[ ] Write FIX-MPAGE.md, stop server, end DONE
+[0m
+[0m← [0mEdit src/components/dom/lane-e.css
+Index: /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/components/dom/lane-e.css
+===================================================================
+--- /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/components/dom/lane-e.css
++++ /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/components/dom/lane-e.css
+@@ -116,8 +116,14 @@
+   border-bottom: 1px solid transparent;
+ }
+ .eyeq-header--dark {
+   color: var(--eyeq-bone);
++  /* V3-MPAGE: over the film the bar must be transparent (never a lighter
++   * #0b–#10 seam over the film's pure black) — no blur, no hairline. */
++  background: transparent;
++  backdrop-filter: none;
++  -webkit-backdrop-filter: none;
++  border-bottom-color: transparent;
+ }
+ .eyeq-header--light {
+   color: var(--eyeq-ink);
+   /* Feedback E-round1 P0-2: over the white act the header is Paper (never a
+
+[0m
+[0m← [0mEdit src/components/dom/lane-e.css
+Index: /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/components/dom/lane-e.css
+===================================================================
+--- /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/components/dom/lane-e.css
++++ /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/components/dom/lane-e.css
+@@ -133,12 +133,15 @@
+   -webkit-backdrop-filter: blur(20px);
+   border-bottom-color: var(--eyeq-hairline-light);
+ }
+ .eyeq-header.is-scrolled--dark {
+-  background: rgba(5, 6, 7, 0.55);
+-  backdrop-filter: blur(20px);
+-  -webkit-backdrop-filter: blur(20px);
+-  border-bottom-color: var(--eyeq-hairline-dark);
++  /* V3-MPAGE: still over the film (theme dark) — stay transparent/#000 so no
++   * lighter blurred seam appears over pure-black frames. Inversion to the
++   * Paper bar happens via the --light theme, untouched below. */
++  background: transparent;
++  backdrop-filter: none;
++  -webkit-backdrop-filter: none;
++  border-bottom-color: transparent;
+ }
+ .eyeq-header--light.is-scrolled--light,
+ .eyeq-header--light.is-scrolled--dark {
+   background: rgba(245, 241, 232, 0.82);
+
+[0m
+[0m← [0mEdit src/components/dom/lane-e.css
+Index: /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/components/dom/lane-e.css
+===================================================================
+--- /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/components/dom/lane-e.css
++++ /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/components/dom/lane-e.css
+@@ -390,15 +390,16 @@
+   line-height: 1.02;
+   letter-spacing: -0.02em;
+   color: var(--eyeq-bone);
+ }
+-/* Local contrast scrim: 120px behind copy only (never full-page blanket) */
++/* Local contrast scrim: 120px behind copy only (never full-page blanket).
++ * V3-MPAGE: pure-black gradient so no lighter #050607 seam over pure-black film. */
+ .eyeq-chapter__copy {
+   position: relative;
+   z-index: 1;
+   padding: 120px 0 0;
+   margin-top: -120px;
+-  background: linear-gradient(to top, rgba(5, 6, 7, 0.55), rgba(5, 6, 7, 0));
++  background: linear-gradient(to top, rgba(0, 0, 0, 0.55), rgba(0, 0, 0, 0));
+   pointer-events: none;
+ }
+ .eyeq-chapter__copy > * {
+   pointer-events: auto;
+
+[0m
+[0m← [0mEdit src/components/dom/lane-e.css
+Index: /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/components/dom/lane-e.css
+===================================================================
+--- /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/components/dom/lane-e.css
++++ /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/components/dom/lane-e.css
+@@ -233,19 +233,22 @@
+   transform-origin: 0 50%;
+   background: var(--eyeq-lamp-amber);
+ }
+ 
+-/* Skip-film control: sticky bottom-centre during dark act only */
++/* Skip-film control: sticky bottom-centre during dark act only.
++ * V3-MPAGE: transparent over the film (no band behind it) — legibility from
++ * a text-shadow, never a lighter backdrop. */
+ .eyeq-skipfilm {
+   position: fixed;
+   left: 50%;
+   bottom: 28px;
+   transform: translateX(-50%);
+   z-index: 100;
+-  background: none;
++  background: transparent;
+   border: none;
+   border-bottom: 1px solid var(--eyeq-hairline-dark-strong);
+   color: var(--eyeq-bone-dim);
++  text-shadow: 0 1px 12px rgba(0, 0, 0, 0.8);
+   font-size: 12px;
+   font-weight: 500;
+   letter-spacing: 0.18em;
+   text-transform: uppercase;
+
+[0m
+[0m← [0mEdit src/components/dom/Scrims.tsx
+Index: /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/components/dom/Scrims.tsx
+===================================================================
+--- /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/components/dom/Scrims.tsx
++++ /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/components/dom/Scrims.tsx
+@@ -1,7 +1,9 @@
+ // Lane E — local contrast scrims (PLAN-MASTER §6, anti-slop A1/A2).
+ // ONLY permitted scrim shapes: 120px gradient behind film copy, and the
+-// mobile bottom-40% rgba(5,6,7,.55). Never a full-page blanket, never blur.
++// mobile bottom-40% band. V3-MPAGE: pure-black (never #050607) so no lighter
++// seam over the film's pure-black frames; bottom band fades to transparent
++// so its top edge never reads as a seam.
+ export function CopyScrim() {
+   return <div className="eyeq-chapter__copy" aria-hidden="true" />;
+ }
+ 
+@@ -12,9 +14,9 @@
+       style={{
+         position: 'absolute',
+         inset: 'auto 0 0 0',
+         height: '40%',
+-        background: 'rgba(5,6,7,.55)',
++        background: 'linear-gradient(to top, rgba(0,0,0,.55), rgba(0,0,0,0))',
+         pointerEvents: 'none',
+       }}
+     />
+   );
+
+[0m
+[0m← [0mEdit src/v1/v1.css
+Index: /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/v1/v1.css
+===================================================================
+--- /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/v1/v1.css
++++ /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/v1/v1.css
+@@ -4,18 +4,19 @@
+   background: var(--eyeq-void);
+   color: var(--eyeq-bone);
+ }
+ 
+-/* ---- Film: pinned canvas section, 800vh desktop / 560vh mobile ---- */
++/* ---- Film: pinned canvas section, 800vh desktop / 620vh mobile ---- */
+ .v1-film {
+   position: relative;
+   height: 800vh;
+   background: var(--eyeq-void);
+   margin: 0;
+ }
+ @media (max-width: 767px) {
++  /* V3-MPAGE: 560vh→620vh so mobile ≈5–6 screens of scrub. */
+   .v1-film {
+-    height: 560vh;
++    height: 620vh;
+   }
+ }
+ 
+ .v1-film__stage {
+
+[0m
+Code fixes applied — spinning up verification.
+[0m→ [0mRead package.json
+[91m[1mError: [0mError from provider (Console): Rate limit exceeded. Please try again later.
+EXIT 1 model=opencode/muse-spark-1.3-contributor-free

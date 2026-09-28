@@ -1,0 +1,646 @@
+{
+ "stack": {
+  "libs": {
+   "split_text_blocks": 2
+  },
+  "canvases": [],
+  "videos": [
+   {
+    "src": "https://www.apple.com/105/media/us/apple-vision-pro/2026/9ff62809-ef4b-4a85-874f-28254359e269/anim/foundation/large.mp4",
+    "autoplay": false,
+    "loop": true,
+    "muted": true,
+    "w": 1440
+   },
+   {
+    "src": "https://www.apple.com/105/media/us/apple-vision-pro/2025/fda8750c-030b-40f2-a0f7-60ba2db6b547/anim/drawer-design-innovation/large.mp4",
+    "autoplay": false,
+    "loop": false,
+    "muted": true,
+    "w": 820
+   },
+   {
+    "src": "https://www.apple.com/105/media/us/apple-vision-pro/2025/fda8750c-030b-40f2-a0f7-60ba2db6b547/anim/drawer-design-headband/large.mp4",
+    "autoplay": false,
+    "loop": true,
+    "muted": true,
+    "w": 820
+   },
+   {
+    "src": "https://www.apple.com/105/media/us/apple-vision-pro/2025/fda8750c-030b-40f2-a0f7-60ba2db6b547/anim/drawer-design-light-seal/large.mp4",
+    "autoplay": false,
+    "loop": false,
+    "muted": true,
+    "w": 820
+   },
+   {
+    "src": "https://www.apple.com/105/media/us/apple-vision-pro/2026/9ff62809-ef4b-4a85-874f-28254359e269/anim/experience-entertainment/large.mp4",
+    "autoplay": false,
+    "loop": true,
+    "muted": true,
+    "w": 1440
+   },
+   {
+    "src": "https://www.apple.com/105/media/us/apple-vision-pro/2025/fda8750c-030b-40f2-a0f7-60ba2db6b547/anim/drawer-entertainment-immersive-video/large.mp4",
+    "autoplay": false,
+    "loop": true,
+    "muted": true,
+    "w": 820
+   },
+   {
+    "src": "https://www.apple.com/105/media/us/apple-vision-pro/2025/fda8750c-030b-40f2-a0f7-60ba2db6b547/anim/drawer-entertainment-spatial-gallery/large.mp4",
+    "autoplay": false,
+    "loop": true,
+    "muted": true,
+    "w": 820
+   },
+   {
+    "src": "https://www.apple.com/105/media/us/apple-vision-pro/2025/fda8750c-030b-40f2-a0f7-60ba2db6b547/anim/drawer-entertainment-apple-arcade/large.mp4",
+    "autoplay": false,
+    "loop": true,
+    "muted": true,
+    "w": 820
+   },
+   {
+    "src": "https://www.apple.com/105/media/us/apple-vision-pro/2025/fda8750c-030b-40f2-a0f7-60ba2db6b547/anim/productivity_a/large.mp4",
+    "autoplay": false,
+    "loop": true,
+    "muted": true,
+    "w": 1440
+   },
+   {
+    "src": "https://www.apple.com/105/media/us/apple-vision-pro/2025/fda8750c-030b-40f2-a0f7-60ba2db6b547/anim/drawer-productivity-mac/large.mp4",
+    "autoplay": false,
+    "loop": true,
+    "muted": true,
+    "w": 820
+   },
+   {
+    "src": "https://www.apple.com/105/media/us/apple-vision-pro/2025/fda8750c-030b-40f2-a0f7-60ba2db6b547/anim/drawer-productivity-widgets/large.mp4",
+    "autoplay": false,
+    "loop": true,
+    "muted": true,
+    "w": 820
+   },
+   {
+    "src": "https://www.apple.com/105/media/us/apple-vision-pro/2026/9251fc5e-bf57-4fae-8994-b06bbd3bb104/anim/experience-photos-videos/large.mp4",
+    "autoplay": false,
+    "loop": true,
+    "muted": true,
+    "w": 1440
+   },
+   {
+    "src": "https://www.apple.com/105/media/us/apple-vision-pro/2025/fda8750c-030b-40f2-a0f7-60ba2db6b547/anim/drawer-photos-videos-transform-2d/large.mp4",
+    "autoplay": false,
+    "loop": true,
+    "muted": true,
+    "w": 820
+   },
+   {
+    "src": "https://www.apple.com/105/media/us/apple-vision-pro/2026/9251fc5e-bf57-4fae-8994-b06bbd3bb104/anim/drawer-photos-videos-spatial-photos/large.mp4",
+    "autoplay": false,
+    "loop": true,
+    "muted": true,
+    "w": 820
+   },
+   {
+    "src": "https://www.apple.com/105/media/us/apple-vision-pro/2025/fda8750c-030b-40f2-a0f7-60ba2db6b547/anim/drawer-photos-videos-fov/large.mp4",
+    "autoplay": false,
+    "loop": true,
+    "muted": true,
+    "w": 820
+   },
+   {
+    "src": "https://www.apple.com/105/media/us/apple-vision-pro/2025/fda8750c-030b-40f2-a0f7-60ba2db6b547/anim/experience-connection/large.mp4",
+    "autoplay": false,
+    "loop": true,
+    "muted": true,
+    "w": 1440
+   },
+   {
+    "src": "https://www.apple.com/105/media/us/apple-vision-pro/2025/fda8750c-030b-40f2-a0f7-60ba2db6b547/anim/drawer-connection-persona/large.mp4",
+    "autoplay": false,
+    "loop": true,
+    "muted": true,
+    "w": 820
+   },
+   {
+    "src": "https://www.apple.com/105/media/us/apple-vision-pro/2026/9ff62809-ef4b-4a85-874f-28254359e269/anim/experience-apps/large.mp4",
+    "autoplay": false,
+    "loop": true,
+    "muted": true,
+    "w": 1440
+   },
+   {
+    "src": "https://www.apple.com/105/media/us/apple-vision-pro/2024/6e1432b2-fe09-4113-a1af-f20987bcfeee/anim/drawer-apps-mindfulness/large.mp4",
+    "autoplay": false,
+    "loop": true,
+    "muted": true,
+    "w": 820
+   },
+   {
+    "src": "https://www.apple.com/105/media/us/apple-vision-pro/2026/9251fc5e-bf57-4fae-8994-b06bbd3bb104/anim/visionos-a/large.mp4",
+    "autoplay": false,
+    "loop": true,
+    "muted": true,
+    "w": 1440
+   },
+   {
+    "src": "https://www.apple.com/105/media/us/apple-vision-pro/2025/fda8750c-030b-40f2-a0f7-60ba2db6b547/anim/visionos/large.mp4",
+    "autoplay": false,
+    "loop": true,
+    "muted": true,
+    "w": 820
+   },
+   {
+    "src": "https://www.apple.com/105/media/us/apple-vision-pro/2026/9251fc5e-bf57-4fae-8994-b06bbd3bb104/anim/drawer-visionos-voice/large.mp4",
+    "autoplay": false,
+    "loop": true,
+    "muted": true,
+    "w": 820
+   },
+   {
+    "src": "blob:https://www.apple.com/249c339b-a0e9-43a1-a7d7-c7358059aef6",
+    "autoplay": false,
+    "loop": false,
+    "muted": true,
+    "w": 960
+   },
+   {
+    "src": "https://www.apple.com/105/media/us/apple-vision-pro/2024/6e1432b2-fe09-4113-a1af-f20987bcfeee/anim/spatial-audio/large.mp4",
+    "autoplay": false,
+    "loop": false,
+    "muted": true,
+    "w": 1440
+   },
+   {
+    "src": "https://www.apple.com/105/media/us/apple-vision-pro/2024/6e1432b2-fe09-4113-a1af-f20987bcfeee/anim/drawer-privacy-optic-id/large.mp4",
+    "autoplay": false,
+    "loop": true,
+    "muted": true,
+    "w": 820
+   },
+   {
+    "src": "https://www.apple.com/105/media/us/apple-vision-pro/2024/6e1432b2-fe09-4113-a1af-f20987bcfeee/anim/drawer-privacy-eye-input/large.mp4",
+    "autoplay": false,
+    "loop": true,
+    "muted": true,
+    "w": 400
+   }
+  ],
+  "fonts": [
+   "SF Pro Display 400 normal",
+   "SF Pro Display 600 normal",
+   "SF Pro Display 700 normal",
+   "SF Pro Text 300 normal",
+   "SF Pro Text 400 normal",
+   "SF Pro Text 400 italic",
+   "SF Pro Text 600 normal",
+   "SF Pro Text 600 italic",
+   "SF Pro Icons 300 normal",
+   "SF Pro Icons 400 normal",
+   "SF Pro Icons 600 normal"
+  ],
+  "bodyCursor": "auto",
+  "docHeight": 32772,
+  "title": "Apple Vision Pro - Apple",
+  "rafCallsSoFar": 5496,
+  "raf_calls_per_sec": 0
+ },
+ "gl_renderer": "ANGLE (Apple, ANGLE Metal Renderer: Apple M2 Pro, Unspecified Version)",
+ "phases_done": [
+  "scroll motion map",
+  "hover + cursor",
+  "pointer probe",
+  "states",
+  "page transitions",
+  "continuous scroll",
+  "crawl (5 pages)"
+ ],
+ "phases_cut": [],
+ "bundles": {
+  "keyword_hits": {
+   "Observer": 530,
+   "THREE": 141,
+   "WebGLRenderer": 3,
+   "ogl": 8,
+   "matter": 60,
+   "rive": 55,
+   "gl_FragColor": 3,
+   "Points": 68,
+   "requestAnimationFrame": 187,
+   "IntersectionObserver": 16,
+   "clip-path": 284,
+   "mix-blend-mode": 7
+  },
+  "gsap_eases": [
+   [
+    "linear",
+    6
+   ]
+  ],
+  "durations": [
+   [
+    "320",
+    311
+   ],
+   [
+    ".32",
+    82
+   ],
+   [
+    ".24",
+    78
+   ],
+   [
+    ".12",
+    56
+   ],
+   [
+    "0",
+    44
+   ],
+   [
+    "1",
+    37
+   ],
+   [
+    "380",
+    33
+   ],
+   [
+    "260",
+    27
+   ],
+   [
+    "280",
+    27
+   ],
+   [
+    "300",
+    27
+   ],
+   [
+    "340",
+    27
+   ],
+   [
+    "360",
+    27
+   ],
+   [
+    "400",
+    27
+   ],
+   [
+    ".5",
+    27
+   ],
+   [
+    ".1",
+    20
+   ]
+  ],
+  "staggers": [],
+  "scroll_starts": [
+   [
+    "t - 100vh",
+    21
+   ],
+   [
+    "a0t - 100vh",
+    15
+   ],
+   [
+    "t - 200vh",
+    12
+   ],
+   [
+    "a0b - 100vh",
+    9
+   ],
+   [
+    "a0t - 100h",
+    3
+   ],
+   [
+    "a0t - 50vh",
+    3
+   ],
+   [
+    "${e} - var(--card-height)",
+    3
+   ],
+   [
+    "a0t - 200vh",
+    3
+   ],
+   [
+    "t - var(--sticky-offset)",
+    3
+   ],
+   [
+    "${e.start} - 10a0h",
+    3
+   ],
+   [
+    "a0b + 50vh",
+    3
+   ],
+   [
+    "t - 90vh",
+    3
+   ],
+   [
+    "a0t - 100vh + 20a0h",
+    3
+   ],
+   [
+    "a0t - 100vh + 60a0h",
+    3
+   ],
+   [
+    "t - 100vh + 40h",
+    3
+   ]
+  ],
+  "scroll_ends": [
+   [
+    "b + 100vh",
+    12
+   ],
+   [
+    "a0b",
+    9
+   ],
+   [
+    "a0t",
+    6
+   ],
+   [
+    "a0b - 10vh",
+    6
+   ],
+   [
+    "a0b - 100vh",
+    6
+   ],
+   [
+    "b - 25vh",
+    3
+   ],
+   [
+    "a0t - 49vh",
+    3
+   ],
+   [
+    "b + 100%",
+    3
+   ],
+   [
+    "a0b + 100vh",
+    3
+   ],
+   [
+    "a0t - 100vh",
+    3
+   ],
+   [
+    "a0t - 100vh + a0h",
+    3
+   ],
+   [
+    "a0t - 100vh + 60a0h",
+    3
+   ],
+   [
+    "a0t - a1h",
+    3
+   ],
+   [
+    "t - 100vh + 140h",
+    3
+   ],
+   [
+    "a0t - css(--r-localnav-height)",
+    3
+   ]
+  ],
+  "scrub_values": [],
+  "css_eases": [
+   [
+    "cubic-bezier(0.4, 0, 0.6, 1)",
+    1754
+   ],
+   [
+    "cubic-bezier(.4,0,.6,1)",
+    1054
+   ],
+   [
+    "cubic-bezier(0, 0, 0.2, 1)",
+    665
+   ],
+   [
+    "cubic-bezier(.25,.1,.3,1)",
+    169
+   ],
+   [
+    "cubic-bezier(0.28, 0.11, 0.32, 1)",
+    72
+   ],
+   [
+    "cubic-bezier(0.4, 0, 0.3, 2)",
+    35
+   ],
+   [
+    "cubic-bezier(1,.1,0,.3)",
+    17
+   ],
+   [
+    "cubic-bezier(0,0,.2,1)",
+    16
+   ],
+   [
+    "cubic-bezier(0.4, 0.1, 0.4, 1)",
+    14
+   ],
+   [
+    "cubic-bezier(1, 0.1, 0, 0.3)",
+    14
+   ],
+   [
+    "cubic-bezier(0,0,.5,1)",
+    12
+   ],
+   [
+    "cubic-bezier(0.42, 0, 0.58, 1)",
+    8
+   ],
+   [
+    "cubic-bezier(.165,.84,.44,1)",
+    8
+   ],
+   [
+    "cubic-bezier(.42,0,1,1)",
+    8
+   ],
+   [
+    "cubic-bezier(0,0,.58,1)",
+    8
+   ]
+  ],
+  "lenis_options": [],
+  "scrolltrigger_snippets": []
+ },
+ "cursor": {
+  "custom_cursor": false,
+  "css_cursor": "auto"
+ },
+ "pointer": [
+  {
+   "at": "top",
+   "reactive_cells": [],
+   "ambient_cells": [],
+   "moved_elements": []
+  },
+  {
+   "at": "mid-page",
+   "reactive_cells": [
+    "bottom-left"
+   ],
+   "ambient_cells": [
+    "top-left",
+    "top",
+    "top-right",
+    "left",
+    "center",
+    "right",
+    "bottom",
+    "bottom-right"
+   ],
+   "moved_elements": []
+  }
+ ],
+ "pages": [
+  {
+   "url": "https://www.apple.com/ca/apple-vision-pro/",
+   "slug": "ca-apple-vision-pro",
+   "title": "Apple Vision Pro - Apple (CA)",
+   "docHeight": 32674,
+   "libs": {
+    "split_text_blocks": 1
+   },
+   "canvases": 0,
+   "screenshots": 11
+  },
+  {
+   "url": "https://www.apple.com/",
+   "slug": "root",
+   "title": "Apple",
+   "docHeight": 6080,
+   "libs": {
+    "split_text_blocks": 1
+   },
+   "canvases": 0,
+   "screenshots": 8
+  },
+  {
+   "url": "https://www.apple.com/us/shop/goto/store",
+   "slug": "us-shop-goto-store",
+   "title": "Apple Store Online - Apple",
+   "docHeight": 13318,
+   "libs": {
+    "split_text_blocks": 2
+   },
+   "canvases": 0,
+   "screenshots": 11
+  },
+  {
+   "url": "https://www.apple.com/us/shop/goto/buy_mac",
+   "slug": "us-shop-goto-buy-mac",
+   "title": "Buy Mac - Apple",
+   "docHeight": 7685,
+   "libs": {
+    "split_text_blocks": 2
+   },
+   "canvases": 0,
+   "screenshots": 10
+  },
+  {
+   "url": "https://www.apple.com/us/shop/goto/buy_ipad",
+   "slug": "us-shop-goto-buy-ipad",
+   "title": "Buy iPad - Apple",
+   "docHeight": 7665,
+   "libs": {
+    "split_text_blocks": 2
+   },
+   "canvases": 0,
+   "screenshots": 10
+  }
+ ],
+ "pages_found": 473,
+ "transitions": [
+  {
+   "to": "https://www.apple.com/ca/apple-vision-pro/",
+   "client_side": true,
+   "frames": [
+    "states/transition1-100ms.jpg",
+    "states/transition1-300ms.jpg",
+    "states/transition1-600ms.jpg",
+    "states/transition1-1000ms.jpg",
+    "states/transition1-1600ms.jpg"
+   ],
+   "back": [
+    "states/transition1-back-150ms.jpg",
+    "states/transition1-back-600ms.jpg"
+   ]
+  },
+  {
+   "to": "https://www.apple.com/",
+   "client_side": true,
+   "frames": [
+    "states/transition2-100ms.jpg",
+    "states/transition2-300ms.jpg",
+    "states/transition2-600ms.jpg",
+    "states/transition2-1000ms.jpg",
+    "states/transition2-1600ms.jpg"
+   ],
+   "back": [
+    "states/transition2-back-150ms.jpg",
+    "states/transition2-back-600ms.jpg"
+   ]
+  },
+  {
+   "to": "https://www.apple.com/us/shop/goto/store",
+   "client_side": true,
+   "frames": [
+    "states/transition3-100ms.jpg",
+    "states/transition3-300ms.jpg",
+    "states/transition3-600ms.jpg",
+    "states/transition3-1000ms.jpg",
+    "states/transition3-1600ms.jpg"
+   ],
+   "back": [
+    "states/transition3-back-150ms.jpg",
+    "states/transition3-back-600ms.jpg"
+   ]
+  }
+ ],
+ "transition": {
+  "to": "https://www.apple.com/ca/apple-vision-pro/",
+  "client_side": true,
+  "frames": [
+   "states/transition1-100ms.jpg",
+   "states/transition1-300ms.jpg",
+   "states/transition1-600ms.jpg",
+   "states/transition1-1000ms.jpg",
+   "states/transition1-1600ms.jpg"
+  ],
+  "back": [
+   "states/transition1-back-150ms.jpg",
+   "states/transition1-back-600ms.jpg"
+  ]
+ },
+ "intro_ready_ms": 700,
+ "virtual_scroll": false
+}

@@ -1,0 +1,393 @@
+- generic [ref=f6e3]:
+  - link "Skip to content" [ref=f6e4] [cursor=pointer]:
+    - /url: "#content"
+  - link "Skip film" [ref=f6e5] [cursor=pointer]:
+    - /url: "#white-act"
+  - generic:
+    - banner [ref=f6e6]:
+      - link "EyeQ Vision Care — home" [ref=f6e7] [cursor=pointer]:
+        - /url: /
+      - generic [ref=f6e8]:
+        - link "Book an exam" [ref=f6e9] [cursor=pointer]:
+          - /url: http://www.deenandassociates.com/optistoreonewebex/appointmentschedule.php?LOCATION=eyeqvision1
+          - text: Book an exam
+          - generic [aria-hidden] [ref=f6e10]: →
+        - button "MENU" [ref=f6e11] [cursor=pointer]
+    - button "Skip film ↓" [ref=f6e13] [cursor=pointer]
+    - dialog [aria-hidden]:
+      - button: ✕
+      - navigation:
+        - list:
+          - listitem:
+            - link:
+              - /url: /
+              - text: Home
+          - listitem:
+            - link:
+              - /url: /services
+              - text: Services
+          - listitem:
+            - link:
+              - /url: /contact
+              - text: Contact
+          - listitem:
+            - link:
+              - /url: /frames
+              - text: Browse frames
+          - listitem:
+            - link:
+              - /url: /search
+              - text: Search
+          - listitem:
+            - link:
+              - /url: http://www.deenandassociates.com/optistoreonewebex/appointmentschedule.php?LOCATION=eyeqvision1
+              - text: Book an eye exam
+      - generic:
+        - link:
+          - /url: /policies/refund-policy
+          - text: Refund policy
+        - link:
+          - /url: /policies/privacy-policy
+          - text: Privacy policy
+        - link:
+          - /url: /policies/terms-of-service
+          - text: Terms of service
+        - link:
+          - /url: tel:+19054970227
+          - text: 905-497-0227
+        - generic: 2-227 Vodden St East, Brampton, ON
+        - generic: Mon–Fri 11:00 am–6:30 pm · Sat 11:00 am–5:00 pm · Sun 11:00 am–4:00 pm
+      - link:
+        - /url: http://www.deenandassociates.com/optistoreonewebex/appointmentschedule.php?LOCATION=eyeqvision1
+        - text: BOOK AN EYE EXAM
+  - generic [ref=f6e14]:
+    - paragraph [ref=f6e15]: LANE E HARNESS — film progress scrubber
+    - slider "Film progress" [ref=f6e16]: "0.62"
+    - generic [ref=f6e17]:
+      - button "0.050" [ref=f6e18] [cursor=pointer]
+      - button "0.170" [ref=f6e19] [cursor=pointer]
+      - button "0.320" [ref=f6e20] [cursor=pointer]
+      - button "0.470" [ref=f6e21] [cursor=pointer]
+      - button "0.620" [ref=f6e22] [cursor=pointer]
+      - button "0.770" [ref=f6e23] [cursor=pointer]
+      - button "0.885" [ref=f6e24] [cursor=pointer]
+      - button "0.945" [ref=f6e25] [cursor=pointer]
+      - button "0.985" [ref=f6e26] [cursor=pointer]
+    - generic [ref=f6e27]:
+      - generic [ref=f6e28]:
+        - checkbox "header light" [ref=f6e29]
+        - text: header light
+      - generic [ref=f6e30]:
+        - checkbox "stacked (RM static)" [ref=f6e31]
+        - text: stacked (RM static)
+      - generic [ref=f6e32]: p = 0.620
+  - region "Film chapter B5" [ref=f6e35]:
+    - paragraph [ref=f6e36]:
+      - generic [ref=f6e37]:
+        - generic [ref=f6e38]: "05"
+        - generic [ref=f6e41]: —
+        - generic [ref=f6e44]: Lenses
+      - text: DRAFT
+    - heading "Glass with a prescription. DRAFT" [level=2] [ref=f6e47]:
+      - generic [ref=f6e48]:
+        - generic [ref=f6e49]: Glass
+        - generic [ref=f6e52]: with
+        - generic [ref=f6e55]: a
+        - generic [ref=f6e58]: prescription.
+      - text: DRAFT
+    - heading "High-definition lenses named in this chapter" [level=3] [ref=f6e61]
+    - list [ref=f6e62]:
+      - listitem [ref=f6e63]: Varilux® Physio Extensee™
+      - listitem [ref=f6e64]: Distinctive® Superior
+      - listitem [ref=f6e65]: Distinctive® Enhanced
+      - listitem [ref=f6e66]: Distinctive® SV Lenses
+      - listitem [ref=f6e67]: Essilor Stellest® 2.0 Lenses
+      - listitem [ref=f6e68]: Transitions® Lenses
+      - listitem [ref=f6e69]: Xperio® Lenses
+  - generic [ref=f6e70]:
+    - region "EyeQ Vision Care — visit information" [ref=f6e72]:
+      - generic [ref=f6e74]:
+        - paragraph [ref=f6e75]: EYEQ VISION CARE
+        - img "EyeQ Vision Care" [ref=f6e76]
+        - heading "FROM EYE EXAMS TO EVERYDAY STYLE." [level=1] [ref=f6e77]
+        - link "BOOK YOUR EYE EXAM TODAY!" [ref=f6e79] [cursor=pointer]:
+          - /url: http://www.deenandassociates.com/optistoreonewebex/appointmentschedule.php?LOCATION=eyeqvision1
+          - generic [aria-hidden] [ref=f6e80]:
+            - generic [ref=f6e81]: BOOK YOUR EYE EXAM TODAY!
+            - generic [ref=f6e82]: BOOK YOUR EYE EXAM TODAY!
+          - generic [aria-hidden] [ref=f6e84]: →
+        - list "Store information" [ref=f6e85]:
+          - listitem [ref=f6e86]:
+            - generic [ref=f6e87]: Address
+            - generic [ref=f6e88]: 2-227 Vodden St East, Brampton, ON
+          - listitem [ref=f6e89]:
+            - generic [ref=f6e90]: Phone
+            - link "905-497-0227" [ref=f6e92] [cursor=pointer]:
+              - /url: tel:+19054970227
+          - listitem [ref=f6e93]:
+            - generic [ref=f6e94]: Email
+            - link "eyeshine2020@gmail.com" [ref=f6e96] [cursor=pointer]:
+              - /url: mailto:eyeshine2020@gmail.com
+          - listitem [ref=f6e97]:
+            - generic [ref=f6e98]: Mon–Fri
+            - generic [ref=f6e99]: 11:00 am–6:30 pm
+          - listitem [ref=f6e100]:
+            - generic [ref=f6e101]: Sat
+            - generic [ref=f6e102]: 11:00 am–5:00 pm
+          - listitem [ref=f6e103]:
+            - generic [ref=f6e104]: Sun
+            - generic [ref=f6e105]: 11:00 am–4:00 pm
+        - generic [ref=f6e107]:
+          - button "Load map — 2-227 Vodden St East, Brampton, ON" [ref=f6e109] [cursor=pointer]:
+            - generic [aria-hidden] [ref=f6e110]: ◈
+            - generic [ref=f6e111]: Load map
+            - generic [ref=f6e112]: 2-227 Vodden St East, Brampton, ON · loads Google Maps on click
+          - link "Get directions →" [ref=f6e113] [cursor=pointer]:
+            - /url: https://www.google.com/maps/dir/?api=1&destination=2-227+Vodden+St+East%2C+Brampton%2C+ON
+    - list "Featured brands and accepted insurance plans" [ref=f6e115]:
+      - listitem "Maui Jim" [ref=f6e116]:
+        - img "Maui Jim" [ref=f6e118]
+      - listitem "Ray-Ban" [ref=f6e120]:
+        - img "Ray-Ban" [ref=f6e122]
+      - listitem "Prada" [ref=f6e124]:
+        - img "Prada" [ref=f6e126]
+      - listitem "Miu Miu" [ref=f6e128]:
+        - img "Miu Miu" [ref=f6e130]
+      - listitem "Persol" [ref=f6e132]:
+        - img "Persol" [ref=f6e134]
+      - listitem "Oakley" [ref=f6e136]:
+        - img "Oakley" [ref=f6e138]
+      - listitem "Tiffany & Co." [ref=f6e140]:
+        - img "Tiffany & Co." [ref=f6e142]
+      - listitem "Versace" [ref=f6e144]:
+        - img "Versace" [ref=f6e146]
+      - listitem "Sun Life" [ref=f6e148]:
+        - img "Sun Life" [ref=f6e150]
+      - listitem "Medavie Blue Cross" [ref=f6e152]:
+        - img "Medavie Blue Cross" [ref=f6e154]
+      - listitem "Manulife" [ref=f6e156]:
+        - img "Manulife" [ref=f6e158]
+      - listitem "GreenShield" [ref=f6e160]:
+        - img "GreenShield" [ref=f6e162]
+      - listitem "Canada Life" [ref=f6e164]:
+        - img "Canada Life" [ref=f6e166]
+      - listitem "Desjardins" [ref=f6e168]:
+        - img "Desjardins" [ref=f6e170]
+      - listitem "IA Financial Group" [ref=f6e172]:
+        - img "IA Financial Group" [ref=f6e174]
+      - listitem "Empire Life" [ref=f6e176]:
+        - img "Empire Life" [ref=f6e178]
+    - list "Featured eyewear brands" [ref=f6e180]:
+      - listitem [ref=f6e181]: Maui Jim
+      - listitem [ref=f6e182]: Ray-Ban
+      - listitem [ref=f6e183]: Prada
+      - listitem [ref=f6e184]: Miu Miu
+      - listitem [ref=f6e185]: Persol
+      - listitem [ref=f6e186]: Oakley
+      - listitem [ref=f6e187]: Tiffany & Co.
+      - listitem [ref=f6e188]: Versace
+    - list "Accepted insurance plans" [ref=f6e189]:
+      - listitem [ref=f6e190]: Sun Life
+      - listitem [ref=f6e191]: Medavie Blue Cross
+      - listitem [ref=f6e192]: Manulife
+      - listitem [ref=f6e193]: GreenShield
+      - listitem [ref=f6e194]: Canada Life
+      - listitem [ref=f6e195]: Desjardins
+      - listitem [ref=f6e196]: IA Financial Group
+      - listitem [ref=f6e197]: Empire Life
+  - paragraph [ref=f6e199]: STANDALONE RAIL PAIR (LOOP QA)
+  - list "Featured brands and accepted insurance plans" [ref=f6e201]:
+    - listitem "Maui Jim" [ref=f6e202]:
+      - img "Maui Jim" [ref=f6e204]
+    - listitem "Ray-Ban" [ref=f6e206]:
+      - img "Ray-Ban" [ref=f6e208]
+    - listitem "Prada" [ref=f6e210]:
+      - img "Prada" [ref=f6e212]
+    - listitem "Miu Miu" [ref=f6e214]:
+      - img "Miu Miu" [ref=f6e216]
+    - listitem "Persol" [ref=f6e218]:
+      - img "Persol" [ref=f6e220]
+    - listitem "Oakley" [ref=f6e222]:
+      - img "Oakley" [ref=f6e224]
+    - listitem "Tiffany & Co." [ref=f6e226]:
+      - img "Tiffany & Co." [ref=f6e228]
+    - listitem "Versace" [ref=f6e230]:
+      - img "Versace" [ref=f6e232]
+    - listitem "Sun Life" [ref=f6e234]:
+      - img "Sun Life" [ref=f6e236]
+    - listitem "Medavie Blue Cross" [ref=f6e238]:
+      - img "Medavie Blue Cross" [ref=f6e240]
+    - listitem "Manulife" [ref=f6e242]:
+      - img "Manulife" [ref=f6e244]
+    - listitem "GreenShield" [ref=f6e246]:
+      - img "GreenShield" [ref=f6e248]
+    - listitem "Canada Life" [ref=f6e250]:
+      - img "Canada Life" [ref=f6e252]
+    - listitem "Desjardins" [ref=f6e254]:
+      - img "Desjardins" [ref=f6e256]
+    - listitem "IA Financial Group" [ref=f6e258]:
+      - img "IA Financial Group" [ref=f6e260]
+    - listitem "Empire Life" [ref=f6e262]:
+      - img "Empire Life" [ref=f6e264]
+  - generic [ref=f6e266]:
+    - region [ref=f6e267]:
+      - generic [ref=f6e268]:
+        - generic [ref=f6e269]:
+          - heading "ABOUT US" [level=2] [ref=f6e270]:
+            - generic [ref=f6e271]: ABOUT
+            - generic [ref=f6e274]: US
+          - button "PLAY VIDEO — Interior view of the EyeQ practice and eyewear displays. (description draft)" [ref=f6e279] [cursor=pointer]: ▷ PLAY VIDEO
+        - generic [ref=f6e280]:
+          - paragraph [ref=f6e282]: Welcome to EyeQ Vision Care. Since opening our doors in 2018, we have proudly served the Burlington, Ontario community as a Canadian privately owned vision care practice.
+          - paragraph [ref=f6e284]: At EyeQ Vision Care, our patients are at the heart of everything we do. We are committed to providing exceptional eye care in a welcoming and comfortable environment with a focus on personalized service and lasting relationships. Whether you are visiting for a comprehensive eye exam or searching for the perfect pair of glasses, our experienced team is dedicated to helping you see your best while ensuring every visit exceeds your expectations.
+          - paragraph [ref=f6e286]: We take pride in providing outstanding customer service, quality eye care, and premium eyewear to individuals and families throughout Burlington. Thank you for trusting us with your vision. We look forward to welcoming you to EyeQ Vision Care.
+          - generic [ref=f6e288]:
+            - paragraph [ref=f6e289]: Visit us at our new Brampton store.DRAFT
+            - generic [ref=f6e290]:
+              - text: 2-227 Vodden St East, Brampton, ON ·
+              - link "905-497-0227" [ref=f6e291] [cursor=pointer]:
+                - /url: tel:+19054970227
+    - region [ref=f6e292]:
+      - generic [ref=f6e293]:
+        - heading "Services" [level=2] [ref=f6e295]
+        - generic [ref=f6e299]:
+          - list [ref=f6e300]:
+            - listitem [ref=f6e301]:
+              - generic [aria-hidden] [ref=f6e302]: "01"
+              - generic [ref=f6e303]:
+                - heading "Comprehensive Eye Exams" [level=3] [ref=f6e304]
+                - paragraph [ref=f6e305]: A complete assessment of your vision and eye health, including prescription testing and screening for common eye conditions.
+            - listitem [ref=f6e306]:
+              - generic [aria-hidden] [ref=f6e307]: "02"
+              - generic [ref=f6e308]:
+                - heading "Accurate Prescription Fittings" [level=3] [ref=f6e309]
+                - paragraph [ref=f6e310]: Accurate prescription fitting to ensure clear, comfortable vision tailored to your needs.
+            - listitem [ref=f6e311]:
+              - generic [aria-hidden] [ref=f6e312]: "03"
+              - heading "children's eye exams" [level=3] [ref=f6e314]
+            - listitem [ref=f6e315]:
+              - generic [aria-hidden] [ref=f6e316]: "04"
+              - heading "contact lens fittings" [level=3] [ref=f6e318]
+          - generic [ref=f6e319]:
+            - paragraph [ref=f6e320]: Looking for a trusted optometrist in Burlington? At Eye Q Optical, we're committed to helping you achieve clear, healthy vision through comprehensive eye care. Our services include comprehensive eye exams, children's eye exams, and contact lens fittings tailored to your individual needs.
+            - link "Services →" [ref=f6e321] [cursor=pointer]:
+              - /url: /services
+    - region [ref=f6e322]:
+      - generic [ref=f6e323]:
+        - heading "Our Popular High-Definition Lenses" [level=2] [ref=f6e324]:
+          - generic [ref=f6e325]: Our
+          - generic [ref=f6e328]: Popular
+          - generic [ref=f6e331]: High-Definition
+          - generic [ref=f6e334]: Lenses
+        - list [ref=f6e337]:
+          - listitem [ref=f6e338]:
+            - heading "Varilux® Physio Extensee™" [level=3] [ref=f6e339]
+          - listitem [ref=f6e340]:
+            - heading "Distinctive® Superior" [level=3] [ref=f6e341]
+          - listitem [ref=f6e342]:
+            - heading "Distinctive® Enhanced" [level=3] [ref=f6e343]
+          - listitem [ref=f6e344]:
+            - heading "Distinctive® SV Lenses" [level=3] [ref=f6e345]
+          - listitem [ref=f6e346]:
+            - heading "Essilor Stellest® 2.0 Lenses" [level=3] [ref=f6e347]
+            - paragraph [ref=f6e348]: Innovative myopia-management lenses designed to help slow the progression of myopia in children while providing clear, comfortable vision.
+          - listitem [ref=f6e349]:
+            - heading "Transitions® Lenses" [level=3] [ref=f6e350]
+            - paragraph [ref=f6e351]: Experience comfortable vision in changing light with Transitions® lenses.
+          - listitem [ref=f6e352]:
+            - heading "Xperio® Lenses" [level=3] [ref=f6e353]
+            - paragraph [ref=f6e354]: Xperio® polarized lenses are designed to provide clear, comfortable vision outdoors while reducing glare from reflective surfaces.
+        - link "Read more →" [ref=f6e356] [cursor=pointer]:
+          - /url: /services
+    - region [ref=f6e357]:
+      - paragraph [ref=f6e359]: WHAT OUR CUSTOMERS SAY
+      - heading "Real reviews from real customers" [level=2] [ref=f6e360]:
+        - generic [ref=f6e361]: Real
+        - generic [ref=f6e364]: reviews
+        - generic [ref=f6e367]: from
+        - generic [ref=f6e370]: real
+        - generic [ref=f6e373]: customers
+      - generic [ref=f6e377]:
+        - generic [ref=f6e378]: "4.9"
+        - generic [ref=f6e379]: (208 reviews)
+      - generic [ref=f6e380]:
+        - figure "Review by SW" [ref=f6e382]:
+          - generic [aria-hidden] [ref=f6e383]: SW
+          - blockquote [ref=f6e384]: “Anees was very helpful and delightful to work with on my choices. He is knowledgeable and as always I am extremely happy with the service and after service care I get from EyeQ”
+        - figure "Review by H" [ref=f6e387]:
+          - generic [aria-hidden] [ref=f6e388]: H
+          - blockquote [ref=f6e389]: “Excellent customer service was provided by Hosna”
+        - figure "Review by NZ" [ref=f6e392]:
+          - generic [aria-hidden] [ref=f6e393]: NZ
+          - blockquote [ref=f6e394]: “Professional, knowledgeable, and genuinely kind. Mojo always takes the time to make sure his customers are happy and goes above and beyond to provide excellent service. I always trust him with my glasses and sunglasses because I know I'm in great hands. Highly recommend!”
+        - figure "Review by AH" [ref=f6e397]:
+          - generic [aria-hidden] [ref=f6e398]: AH
+          - blockquote [ref=f6e399]: “WOW!!!! I just had outstanding service from Mojo at EyeQ. I've been to a few places but this by far is the most thoughtful, informative, honest, and helpful customer service I've received. I didn't feel pressured with being pushed on certain products. Mojo took the time to explain how my lenses work and what to expect. I would highly recommend EyeQ to anyone.”
+        - figure "Review by LL" [ref=f6e402]:
+          - generic [aria-hidden] [ref=f6e403]: LL
+          - blockquote [ref=f6e404]: “I came in to buy a pair of glasses and had an excellent experience. Anees and Honsa were incredibly professional, knowledgeable, and patient throughout the entire process. They took the time to explain all my options, helped me find the perfect pair of glasses, and made sure I was completely comfortable with my choice. Their customer service was outstanding, and they made the whole experience easy and enjoyable. It's rare to find people who genuinely care about helping customers, and Anees and Honsa went above and beyond. I highly recommend them to anyone looking for quality eyewear and exceptional service. Thank you both for the amazing experience!”
+        - figure "Review by EP" [ref=f6e407]:
+          - generic [aria-hidden] [ref=f6e408]: EP
+          - blockquote [ref=f6e409]: “Very professional, knowledgeable and kind staff. Have been a client for many years now, I can only recommend, excellent service.”
+    - region [ref=f6e411]:
+      - paragraph [ref=f6e413]: VISIT OUR STORE
+      - heading "Visit our store" [level=2] [ref=f6e414]:
+        - generic [ref=f6e415]: Visit
+        - generic [ref=f6e418]: our
+        - generic [ref=f6e421]: store
+      - generic [ref=f6e424]:
+        - list "Hours, address and phone" [ref=f6e426]:
+          - listitem [ref=f6e427]:
+            - generic [ref=f6e428]: Mon–Fri
+            - generic [ref=f6e429]: 11:00 am–6:30 pm
+          - listitem [ref=f6e430]:
+            - generic [ref=f6e431]: Sat
+            - generic [ref=f6e432]: 11:00 am–5:00 pm
+          - listitem [ref=f6e433]:
+            - generic [ref=f6e434]: Sun
+            - generic [ref=f6e435]: 11:00 am–4:00 pm
+          - listitem [ref=f6e436]:
+            - generic [ref=f6e437]: Address
+            - generic [ref=f6e438]: 2-227 Vodden St East, Brampton, ON
+          - listitem [ref=f6e439]:
+            - generic [ref=f6e440]: Phone
+            - link "905-497-0227" [ref=f6e442] [cursor=pointer]:
+              - /url: tel:+19054970227
+        - generic [ref=f6e444]:
+          - link "BOOK YOUR EYE EXAM TODAY!" [ref=f6e445] [cursor=pointer]:
+            - /url: http://www.deenandassociates.com/optistoreonewebex/appointmentschedule.php?LOCATION=eyeqvision1
+            - generic [aria-hidden] [ref=f6e446]:
+              - generic [ref=f6e447]: BOOK YOUR EYE EXAM TODAY!
+              - generic [ref=f6e448]: BOOK YOUR EYE EXAM TODAY!
+            - generic [aria-hidden] [ref=f6e450]: →
+          - paragraph [ref=f6e451]:
+            - link "eyeshine2020@gmail.com" [ref=f6e452] [cursor=pointer]:
+              - /url: mailto:eyeshine2020@gmail.com
+      - generic [ref=f6e455]:
+        - button "Load map — 2-227 Vodden St East, Brampton, ON" [ref=f6e457] [cursor=pointer]:
+          - generic [aria-hidden] [ref=f6e458]: ◈
+          - generic [ref=f6e459]: Load map
+          - generic [ref=f6e460]: 2-227 Vodden St East, Brampton, ON · loads Google Maps on click
+        - link "Get directions →" [ref=f6e461] [cursor=pointer]:
+          - /url: https://www.google.com/maps/dir/?api=1&destination=2-227+Vodden+St+East%2C+Brampton%2C+ON
+  - contentinfo [ref=f6e462]:
+    - generic [ref=f6e463]:
+      - generic [ref=f6e464]:
+        - paragraph [ref=f6e465]: VISIT OUR STORE
+        - generic [ref=f6e466]:
+          - text: 2-227 Vodden St East, Brampton, ON
+          - link "Get directions" [ref=f6e467] [cursor=pointer]:
+            - /url: https://www.google.com/maps/dir/?api=1&destination=2-227+Vodden+St+East%2C+Brampton%2C+ON
+          - link "905-497-0227" [ref=f6e468] [cursor=pointer]:
+            - /url: tel:+19054970227
+          - link "eyeshine2020@gmail.com" [ref=f6e469] [cursor=pointer]:
+            - /url: mailto:eyeshine2020@gmail.com
+          - text: Mon–Fri 11:00 am–6:30 pm · Sat 11:00 am–5:00 pm · Sun 11:00 am–4:00 pm
+        - group [ref=f6e470]:
+          - generic "Terms and Policies" [ref=f6e471] [cursor=pointer]
+      - navigation "Footer" [ref=f6e472]:
+        - link "Browse frames" [ref=f6e473] [cursor=pointer]:
+          - /url: /frames
+        - button "Replay film" [ref=f6e474] [cursor=pointer]
+        - button "Back to top" [ref=f6e475] [cursor=pointer]
+    - generic [ref=f6e476]: © 2026 EyeQ Vision Care

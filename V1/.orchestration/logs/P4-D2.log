@@ -1,0 +1,3115 @@
+[0m
+> build · muse-spark-1.3-contributor
+[0m
+[0m→ [0mRead docs/00-BRIEF.md
+[0m→ [0mRead docs/phase4/PLAN-MASTER.md
+[0m→ [0mRead docs/phase4/COPY-DRAFTS.md
+[0m→ [0mRead .
+[0m→ [0mRead docs/phase4/PLAN-MASTER.md[90m [offset=477][0m
+[0m✱ [0mGlob "docs/phase4/PLAN-*.md"[90m 6 matches[0m
+[0m→ [0mRead src
+[0m→ [0mRead assets
+[0m→ [0mRead public
+[0m→ [0mRead package.json
+[0m
+[0m$ [0mrtk ls -R src/canvas src/__dev__ public/web public/env public/models assets/web docs/phase4/qa 2>&1 | head -120; echo ---; rtk ls docs/phase4/ 2>&1; echo ---; rtk ls docs/phase4/requests 2>&1
+assets/web:
+total 0
+drwxr-xr-x@ 10 admin  staff  320 Sep 27 18:38 brands-light
+drwxr-xr-x@ 10 admin  staff  320 Sep 27 18:38 insurance-light
+
+assets/web/brands-light:
+total 768
+-rw-r--r--@ 1 admin  staff   45250 Sep 27 18:38 maui-jim.png
+-rw-r--r--@ 1 admin  staff   43614 Sep 27 18:38 miu-miu.png
+-rw-r--r--@ 1 admin  staff   16385 Sep 27 18:38 oakley.png
+-rw-r--r--@ 1 admin  staff  110361 Sep 27 18:38 persol.png
+-rw-r--r--@ 1 admin  staff   33208 Sep 27 18:38 prada.png
+-rw-r--r--@ 1 admin  staff   86886 Sep 27 18:38 ray-ban.png
+-rw-r--r--@ 1 admin  staff   20809 Sep 27 18:38 tiffany.png
+-rw-r--r--@ 1 admin  staff   16038 Sep 27 18:38 versace.png
+
+assets/web/insurance-light:
+total 392
+-rw-r--r--@ 1 admin  staff  10120 Sep 27 18:38 canada-life-min.png
+-rw-r--r--@ 1 admin  staff  54629 Sep 27 18:38 desjardins.png
+-rw-r--r--@ 1 admin  staff  27570 Sep 27 18:38 empire-life.png
+-rw-r--r--@ 1 admin  staff   3796 Sep 27 18:38 greenshield.png
+-rw-r--r--@ 1 admin  staff  53092 Sep 27 18:38 ia-financial-group.png
+-rw-r--r--@ 1 admin  staff   7100 Sep 27 18:38 manulife.png
+-rw-r--r--@ 1 admin  staff  16520 Sep 27 18:38 mbc-logo-en.png
+-rw-r--r--@ 1 admin  staff  16039 Sep 27 18:38 sun-life.png
+
+docs/phase4/qa:
+total 0
+drwxr-xr-x@  5 admin  staff  160 Sep 27 20:39 A
+drwxr-xr-x@ 10 admin  staff  320 Sep 27 20:38 D
+
+docs/phase4/qa/A:
+total 1064
+-rw-r--r--@ 1 admin  staff     952 Sep 27 20:39 capture-tokens.mjs
+-rw-r--r--@ 1 admin  staff  298299 Sep 27 20:39 tokens-1440.png
+-rw-r--r--@ 1 admin  staff  237806 Sep 27 20:39 tokens-390.png
+
+docs/phase4/qa/D:
+total 192
+-rw-r--r--@ 1 admin  staff   4503 Sep 27 20:38 brands-persol-edge@400-on-void.png
+-rw-r--r--@ 1 admin  staff   3969 Sep 27 20:38 brands-persol-edge@400.png
+-rw-r--r--@ 1 admin  staff   8318 Sep 27 20:38 brands-tiffany-edge@400-on-void.png
+-rw-r--r--@ 1 admin  staff  10069 Sep 27 20:38 brands-tiffany-edge@400.png
+-rw-r--r--@ 1 admin  staff  14446 Sep 27 20:38 insurers-ia-edge@400-on-void.png
+-rw-r--r--@ 1 admin  staff  17515 Sep 27 20:38 insurers-ia-edge@400.png
+-rw-r--r--@ 1 admin  staff   9792 Sep 27 20:38 insurers-mbc-edge@400-on-void.png
+-rw-r--r--@ 1 admin  staff  11525 Sep 27 20:38 insurers-mbc-edge@400.png
+
+public/env:
+total 4176
+-rw-r--r--@ 1 admin  staff      876 Sep 27 20:39 SOURCE.md
+-rw-r--r--@ 1 admin  staff  1508872 Sep 27 20:39 studio_small_08_1k.hdr
+
+public/models:
+total 25896
+-rw-r--r--@ 1 admin  staff  10021468 Sep 27 20:25 case.glb
+-rw-r--r--@ 1 admin  staff   1467872 Sep 27 20:35 case.opt.glb
+-rw-r--r--@ 1 admin  staff   1365620 Sep 27 20:25 glasses.glb
+-rw-r--r--@ 1 admin  staff    394236 Sep 27 20:35 glasses.opt.glb
+
+public/web:
+total 1768
+-rw-r--r--@  1 admin  staff    5871 Sep 27 20:37 atlas-brands.json
+-rw-r--r--@  1 admin  staff  499712 Sep 27 20:37 atlas-brands.png
+-rw-r--r--@  1 admin  staff    5908 Sep 27 20:37 atlas-insurers.json
+-rw-r--r--@  1 admin  staff  226875 Sep 27 20:37 atlas-insurers.png
+drwxr-xr-x@ 10 admin  staff     320 Sep 27 20:38 brands-light
+-rw-r--r--@  1 admin  staff   83630 Sep 27 20:38 eyeq-logo-header-original.png
+-rw-r--r--@  1 admin  staff   36434 Sep 27 20:38 eyeq-logo-white.png
+-rw-r--r--@  1 admin  staff   36154 Sep 27 20:38 eyeq-logo-white@2x.png
+drwxr-xr-x@ 10 admin  staff     320 Sep 27 20:38 insurance-light
+
+public/web/brands-light:
+total 768
+-rw-r--r--@ 1 admin  staff   45250 Sep 27 20:38 maui-jim.png
+-rw-r--r--@ 1 admin  staff   43614 Sep 27 20:38 miu-miu.png
+-rw-r--r--@ 1 admin  staff   16385 Sep 27 20:38 oakley.png
+-rw-r--r--@ 1 admin  staff  110361 Sep 27 20:38 persol.png
+-rw-r--r--@ 1 admin  staff   33208 Sep 27 20:38 prada.png
+-rw-r--r--@ 1 admin  staff   86886 Sep 27 20:38 ray-ban.png
+-rw-r--r--@ 1 admin  staff   20809 Sep 27 20:38 tiffany.png
+-rw-r--r--@ 1 admin  staff   16038 Sep 27 20:38 versace.png
+
+public/web/insurance-light:
+total 392
+-rw-r--r--@ 1 admin  staff  10120 Sep 27 20:38 canada-life-min.png
+-rw-r--r--@ 1 admin  staff  54629 Sep 27 20:38 desjardins.png
+-rw-r--r--@ 1 admin  staff  27570 Sep 27 20:38 empire-life.png
+-rw-r--r--@ 1 admin  staff   3796 Sep 27 20:38 greenshield.png
+-rw-r--r--@ 1 admin  staff  53092 Sep 27 20:38 ia-financial-group.png
+-rw-r--r--@ 1 admin  staff   7100 Sep 27 20:38 manulife.png
+-rw-r--r--@ 1 admin  staff  16520 Sep 27 20:38 mbc-logo-en.png
+-rw-r--r--@ 1 admin  staff  16039 Sep 27 20:38 sun-life.png
+ls: src/__dev__: No such file or directory
+ls: src/canvas: No such file or directory
+---
+qa/
+requests/
+COPY-DRAFTS.md  7.0K
+PLAN-MASTER.md  62.5K
+PLAN-architecture.md  34.5K
+PLAN-art-direction.md  31.4K
+PLAN-motion.md  32.8K
+PLAN-reference-teardowns.md  18.0K
+PLAN-site-ia.md  23.1K
+---
+(empty)
+[0m
+[0m$ [0mrtk ls docs/phase4/qa/D/ 2>&1; echo ---; cat src/motion/* 2>&1 | head -100; echo ===; rtk read src/README-LANES.md 2>&1; echo ===; rtk read index.html 2>&1; echo ===; rtk read vite.config.ts 2>&1; echo ===; rtk read src/main.tsx 2>&1
+brands-persol-edge@400-on-void.png  4.4K
+brands-persol-edge@400.png  3.9K
+brands-tiffany-edge@400-on-void.png  8.1K
+brands-tiffany-edge@400.png  9.8K
+insurers-ia-edge@400-on-void.png  14.1K
+insurers-ia-edge@400.png  17.1K
+insurers-mbc-edge@400-on-void.png  9.6K
+insurers-mbc-edge@400.png  11.3K
+---
+zsh:1: no matches found: src/motion/*
+zsh:1: == not found
+[0m
+[0m→ [0mRead src/motion
+[0m→ [0mRead src/README-LANES.md
+[0m→ [0mRead index.html
+[0m→ [0mRead src/main.tsx
+[0m→ [0mRead vite.config.ts
+[0m→ [0mRead src/app
+[0m→ [0mRead src/components
+[0m→ [0mRead src/tokens.ts
+[0m
+[0m$ [0mrtk read public/web/atlas-brands.json; echo ===; rtk read public/web/atlas-insurers.json; echo ===; rtk read public/env/SOURCE.md; echo ===; rtk ls -la src/styles/ src/data/ src/store/ src/routes/ scripts/ 2>&1
+{
+  "meta": {
+    "atlas": "atlas-brands.png",
+    "width": 2048,
+    "height": 2048,
+    "cols": 2,
+    "rows": 4,
+    "cell": {
+      "w": 1024,
+      "h": 512
+    },
+    "padding": 48,
+    "fit": "contain",
+    "alpha": "straight (non-premultiplied)",
+    "uv_origin": "bottom-left (three.js convention); pixel rects top-left origin"
+  },
+  "logos": [
+    {
+      "id": "maui-jim",
+      "order": 0,
+      "source": "maui-jim.png",
+      "source_size": {
+        "w": 960,
+        "h": 496
+      },
+      "aspect": 1.93548,
+      "drawn_size": {
+        "w": 805,
+        "h": 416
+      },
+      "cell_px": {
+        "x": 0,
+        "y": 0,
+        "w": 1024,
+        "h": 512
+      },
+      "content_px": {
+        "x": 109,
+        "y": 48,
+        "w": 805,
+        "h": 416
+      },
+      "cell_uv_bl": {
+        "u0": 0.0,
+        "v0": 0.75,
+        "u1": 0.5,
+        "v1": 1.0
+      },
+      "content_uv_bl": {
+        "u0": 0.05322265625,
+        "v0": 0.7734375,
+        "u1": 0.4462890625,
+        "v1": 0.9765625
+      }
+    },
+    {
+      "id": "ray-ban",
+      "order": 1,
+      "source": "ray-ban.png",
+      "source_size": {
+        "w": 2400,
+        "h": 1198
+      },
+      "aspect": 2.00334,
+      "drawn_size": {
+        "w": 833,
+        "h": 416
+      },
+      "cell_px": {
+        "x": 1024,
+        "y": 0,
+        "w": 1024,
+        "h": 512
+      },
+      "content_px": {
+        "x": 1119,
+        "y": 48,
+        "w": 833,
+        "h": 416
+      },
+      "cell_uv_bl": {
+        "u0": 0.5,
+        "v0": 0.75,
+        "u1": 1.0,
+        "v1": 1.0
+      },
+      "content_uv_bl": {
+        "u0": 0.54638671875,
+        "v0": 0.7734375,
+        "u1": 0.953125,
+        "v1": 0.9765625
+      }
+    },
+    {
+      "id": "prada",
+      "order": 2,
+      "source": "prada.png",
+      "source_size": {
+        "w": 2277,
+        "h": 354
+      },
+      "aspect": 6.4322,
+      "drawn_size": {
+        "w": 928,
+        "h": 144
+      },
+      "cell_px": {
+        "x": 0,
+        "y": 512,
+        "w": 1024,
+        "h": 512
+      },
+      "content_px": {
+        "x": 48,
+        "y": 696,
+        "w": 928,
+        "h": 144
+      },
+      "cell_uv_bl": {
+        "u0": 0.0,
+        "v0": 0.5,
+        "u1": 0.5,
+        "v1": 0.75
+      },
+      "content_uv_bl": {
+        "u0": 0.0234375,
+        "v0": 0.58984375,
+        "u1": 0.4765625,
+        "v1": 0.66015625
+      }
+    },
+    {
+      "id": "miu-miu",
+      "order": 3,
+      "source": "miu-miu.png",
+      "source_size": {
+        "w": 3684,
+        "h": 571
+      },
+      "aspect": 6.45184,
+      "drawn_size": {
+        "w": 928,
+        "h": 144
+      },
+      "cell_px": {
+        "x": 1024,
+        "y": 512,
+        "w": 1024,
+        "h": 512
+      },
+      "content_px": {
+        "x": 1072,
+        "y": 696,
+        "w": 928,
+        "h": 144
+      },
+      "cell_uv_bl": {
+        "u0": 0.5,
+        "v0": 0.5,
+        "u1": 1.0,
+        "v1": 0.75
+      },
+      "content_uv_bl": {
+        "u0": 0.5234375,
+        "v0": 0.58984375,
+        "u1": 0.9765625,
+        "v1": 0.66015625
+      }
+    },
+    {
+      "id": "persol",
+      "order": 4,
+      "source": "persol.png",
+      "source_size": {
+        "w": 3222,
+        "h": 2016
+      },
+      "aspect": 1.59821,
+      "drawn_size": {
+        "w": 665,
+        "h": 416
+      },
+      "cell_px": {
+        "x": 0,
+        "y": 1024,
+        "w": 1024,
+        "h": 512
+      },
+      "content_px": {
+        "x": 179,
+        "y": 1072,
+        "w": 665,
+        "h": 416
+      },
+      "cell_uv_bl": {
+        "u0": 0.0,
+        "v0": 0.25,
+        "u1": 0.5,
+        "v1": 0.5
+      },
+      "content_uv_bl": {
+        "u0": 0.08740234375,
+        "v0": 0.2734375,
+        "u1": 0.412109375,
+        "v1": 0.4765625
+      }
+    },
+    {
+      "id": "oakley",
+      "order": 5,
+      "source": "oakley.png",
+      "source_size": {
+        "w": 960,
+        "h": 361
+      },
+      "aspect": 2.65928,
+      "drawn_size": {
+        "w": 928,
+        "h": 349
+      },
+      "cell_px": {
+        "x": 1024,
+        "y": 1024,
+        "w": 1024,
+        "h": 512
+      },
+      "content_px": {
+        "x": 1072,
+        "y": 1105,
+        "w": 928,
+        "h": 349
+      },
+      "cell_uv_bl": {
+        "u0": 0.5,
+        "v0": 0.25,
+        "u1": 1.0,
+        "v1": 0.5
+      },
+      "content_uv_bl": {
+        "u0": 0.5234375,
+        "v0": 0.2900390625,
+        "u1": 0.9765625,
+        "v1": 0.46044921875
+      }
+    },
+    {
+      "id": "tiffany",
+      "order": 6,
+      "source": "tiffany.png",
+      "source_size": {
+        "w": 1280,
+        "h": 156
+      },
+      "aspect": 8.20513,
+      "drawn_size": {
+        "w": 928,
+        "h": 113
+      },
+      "cell_px": {
+        "x": 0,
+        "y": 1536,
+        "w": 1024,
+        "h": 512
+      },
+      "content_px": {
+        "x": 48,
+        "y": 1735,
+        "w": 928,
+        "h": 113
+      },
+      "cell_uv_bl": {
+        "u0": 0.0,
+        "v0": 0.0,
+        "u1": 0.5,
+        "v1": 0.25
+      },
+      "content_uv_bl": {
+        "u0": 0.0234375,
+        "v0": 0.09765625,
+        "u1": 0.4765625,
+        "v1": 0.15283203125
+      }
+    },
+    {
+      "id": "versace",
+      "order": 7,
+      "source": "versace.png",
+      "source_size": {
+        "w": 1230,
+        "h": 272
+      },
+      "aspect": 4.52206,
+      "drawn_size": {
+        "w": 928,
+        "h": 205
+      },
+      "cell_px": {
+        "x": 1024,
+        "y": 1536,
+        "w": 1024,
+        "h": 512
+      },
+      "content_px": {
+        "x": 1072,
+        "y": 1689,
+        "w": 928,
+        "h": 205
+      },
+      "cell_uv_bl": {
+        "u0": 0.5,
+        "v0": 0.0,
+        "u1": 1.0,
+        "v1": 0.25
+      },
+      "content_uv_bl": {
+        "u0": 0.5234375,
+        "v0": 0.0751953125,
+        "u1": 0.9765625,
+        "v1": 0.17529296875
+      }
+    }
+  ]
+}zsh:1: == not found
+[0m
+[0m$ [0mrtk read public/web/atlas-insurers.json && printf '\n---ENV---\n' && rtk read public/env/SOURCE.md && printf '\n---LS---\n' && rtk ls -la src/styles src/data src/store src/routes src/components/canvas src/components/dom scripts 2>&1
+{
+  "meta": {
+    "atlas": "atlas-insurers.png",
+    "width": 2048,
+    "height": 1024,
+    "cols": 4,
+    "rows": 2,
+    "cell": {
+      "w": 512,
+      "h": 512
+    },
+    "padding": 32,
+    "fit": "contain",
+    "alpha": "straight (non-premultiplied)",
+    "uv_origin": "bottom-left (three.js convention); pixel rects top-left origin"
+  },
+  "logos": [
+    {
+      "id": "sun-life",
+      "order": 0,
+      "source": "sun-life.png",
+      "source_size": {
+        "w": 800,
+        "h": 196
+      },
+      "aspect": 4.08163,
+      "drawn_size": {
+        "w": 448,
+        "h": 110
+      },
+      "cell_px": {
+        "x": 0,
+        "y": 0,
+        "w": 512,
+        "h": 512
+      },
+      "content_px": {
+        "x": 32,
+        "y": 201,
+        "w": 448,
+        "h": 110
+      },
+      "cell_uv_bl": {
+        "u0": 0.0,
+        "v0": 0.5,
+        "u1": 0.25,
+        "v1": 1.0
+      },
+      "content_uv_bl": {
+        "u0": 0.015625,
+        "v0": 0.6962890625,
+        "u1": 0.234375,
+        "v1": 0.8037109375
+      }
+    },
+    {
+      "id": "medavie-blue-cross",
+      "order": 1,
+      "source": "mbc-logo-en.png",
+      "source_size": {
+        "w": 1600,
+        "h": 240
+      },
+      "aspect": 6.66667,
+      "drawn_size": {
+        "w": 448,
+        "h": 67
+      },
+      "cell_px": {
+        "x": 512,
+        "y": 0,
+        "w": 512,
+        "h": 512
+      },
+      "content_px": {
+        "x": 544,
+        "y": 222,
+        "w": 448,
+        "h": 67
+      },
+      "cell_uv_bl": {
+        "u0": 0.25,
+        "v0": 0.5,
+        "u1": 0.5,
+        "v1": 1.0
+      },
+      "content_uv_bl": {
+        "u0": 0.265625,
+        "v0": 0.7177734375,
+        "u1": 0.484375,
+        "v1": 0.783203125
+      }
+    },
+    {
+      "id": "manulife",
+      "order": 2,
+      "source": "manulife.png",
+      "source_size": {
+        "w": 738,
+        "h": 141
+      },
+      "aspect": 5.23404,
+      "drawn_size": {
+        "w": 448,
+        "h": 86
+      },
+      "cell_px": {
+        "x": 1024,
+        "y": 0,
+        "w": 512,
+        "h": 512
+      },
+      "content_px": {
+        "x": 1056,
+        "y": 213,
+        "w": 448,
+        "h": 86
+      },
+      "cell_uv_bl": {
+        "u0": 0.5,
+        "v0": 0.5,
+        "u1": 0.75,
+        "v1": 1.0
+      },
+      "content_uv_bl": {
+        "u0": 0.515625,
+        "v0": 0.7080078125,
+        "u1": 0.734375,
+        "v1": 0.7919921875
+      }
+    },
+    {
+      "id": "greenshield",
+      "order": 3,
+      "source": "greenshield.png",
+      "source_size": {
+        "w": 331,
+        "h": 72
+      },
+      "aspect": 4.59722,
+      "drawn_size": {
+        "w": 448,
+        "h": 97
+      },
+      "cell_px": {
+        "x": 1536,
+        "y": 0,
+        "w": 512,
+        "h": 512
+      },
+      "content_px": {
+        "x": 1568,
+        "y": 207,
+        "w": 448,
+        "h": 97
+      },
+      "cell_uv_bl": {
+        "u0": 0.75,
+        "v0": 0.5,
+        "u1": 1.0,
+        "v1": 1.0
+      },
+      "content_uv_bl": {
+        "u0": 0.765625,
+        "v0": 0.703125,
+        "u1": 0.984375,
+        "v1": 0.7978515625
+      }
+    },
+    {
+      "id": "canada-life",
+      "order": 4,
+      "source": "canada-life-min.png",
+      "source_size": {
+        "w": 537,
+        "h": 188
+      },
+      "aspect": 2.85638,
+      "drawn_size": {
+        "w": 448,
+        "h": 157
+      },
+      "cell_px": {
+        "x": 0,
+        "y": 512,
+        "w": 512,
+        "h": 512
+      },
+      "content_px": {
+        "x": 32,
+        "y": 689,
+        "w": 448,
+        "h": 157
+      },
+      "cell_uv_bl": {
+        "u0": 0.0,
+        "v0": 0.0,
+        "u1": 0.25,
+        "v1": 0.5
+      },
+      "content_uv_bl": {
+        "u0": 0.015625,
+        "v0": 0.173828125,
+        "u1": 0.234375,
+        "v1": 0.3271484375
+      }
+    },
+    {
+      "id": "desjardins",
+      "order": 5,
+      "source": "desjardins.png",
+      "source_size": {
+        "w": 894,
+        "h": 194
+      },
+      "aspect": 4.60825,
+      "drawn_size": {
+        "w": 448,
+        "h": 97
+      },
+      "cell_px": {
+        "x": 512,
+        "y": 512,
+        "w": 512,
+        "h": 512
+      },
+      "content_px": {
+        "x": 544,
+        "y": 719,
+        "w": 448,
+        "h": 97
+      },
+      "cell_uv_bl": {
+        "u0": 0.25,
+        "v0": 0.0,
+        "u1": 0.5,
+        "v1": 0.5
+      },
+      "content_uv_bl": {
+        "u0": 0.265625,
+        "v0": 0.203125,
+        "u1": 0.484375,
+        "v1": 0.2978515625
+      }
+    },
+    {
+      "id": "ia-financial-group",
+      "order": 6,
+      "source": "ia-financial-group.png",
+      "source_size": {
+        "w": 1600,
+        "h": 874
+      },
+      "aspect": 1.83066,
+      "drawn_size": {
+        "w": 448,
+        "h": 245
+      },
+      "cell_px": {
+        "x": 1024,
+        "y": 512,
+        "w": 512,
+        "h": 512
+      },
+      "content_px": {
+        "x": 1056,
+        "y": 645,
+        "w": 448,
+        "h": 245
+      },
+      "cell_uv_bl": {
+        "u0": 0.5,
+        "v0": 0.0,
+        "u1": 0.75,
+        "v1": 0.5
+      },
+      "content_uv_bl": {
+        "u0": 0.515625,
+        "v0": 0.130859375,
+        "u1": 0.734375,
+        "v1": 0.3701171875
+      }
+    },
+    {
+      "id": "empire-life",
+      "order": 7,
+      "source": "empire-life.png",
+      "source_size": {
+        "w": 1280,
+        "h": 407
+      },
+      "aspect": 3.14496,
+      "drawn_size": {
+        "w": 448,
+        "h": 142
+      },
+      "cell_px": {
+        "x": 1536,
+        "y": 512,
+        "w": 512,
+        "h": 512
+      },
+      "content_px": {
+        "x": 1568,
+        "y": 697,
+        "w": 448,
+        "h": 142
+      },
+      "cell_uv_bl": {
+        "u0": 0.75,
+        "v0": 0.0,
+        "u1": 1.0,
+        "v1": 0.5
+      },
+      "content_uv_bl": {
+        "u0": 0.765625,
+        "v0": 0.1806640625,
+        "u1": 0.984375,
+        "v1": 0.3193359375
+      }
+    }
+  ]
+}
+---ENV---
+# Environment map source (Lane D)
+
+- File: `public/env/studio_small_08_1k.hdr` (1024×512 Radiance HDR, 1,508,872 bytes)
+- Asset: **Studio Small 08** — https://polyhaven.com/a/studio_small_08
+- Author: **Sergej Majboroda**
+- Licence: **CC0** (public domain) — https://polyhaven.com/license
+- Category: Studio / Photo Studios / Softbox & Lamp Setups (indoor, artificial light, low contrast; tags: softbox, umbrella, lamp)
+- Downloaded: 2026-09-28 via direct HTTPS from
+  `https://dl.polyhaven.org/file/ph-assets/HDRIs/hdr/1k/studio_small_08_1k.hdr`
+- Why: small 1k studio softbox HDRI for dark-field/rim strip reflections on lenses
+  (brief §6b) + base IBL for graphite/velvet; keeps transfer ≈1.4 MB.
+- Usage: drei `Environment files={...}` + `Lightformer` strips per PLAN-MASTER §6/§7;
+  never Blender-baked lights. No other HDRI is shipped (one-file contract §5).
+
+---LS---
+755  qa/
+644  Catalog.tsx  263B
+644  Contact.tsx  213B
+644  Home.tsx  942B
+644  Policies.tsx  356B
+644  Services.tsx  215B
+644  TokensQA.tsx  3.7K
+644  film.css  124B
+644  rails.css  104B
+644  tokens.css  5.5K
+644  white.css  103B
+... (7 filtered)
+[+7 hidden: rtk recall ca7a61707063]
+[0m
+[0m→ [0mRead playwright.config.ts
+[0m→ [0mRead src/app/router.tsx
+[0m→ [0mRead src/routes/Home.tsx
+[0m→ [0mRead src/app/providers.tsx
+[0m→ [0mRead src/styles/tokens.css
+[0m
+[0m# [0mTodos
+[•] Load skills (threejs-scenes, no-ai-design-slop, iterate-until-verified) + context7 drei API check
+[ ] Write src/canvas/stage/* pure modules (slots, logos, streak texture)
+[ ] Write src/canvas/SceneStage.tsx (env, lightformers, fog/exposure, lights)
+[ ] Write src/canvas/SponsorField.tsx (W1+W2 arrivals, streaks, slots)
+[ ] Write dev-D harness (dev-D.html + src/__dev__/D/main.tsx)
+[ ] Serve :5104, Playwright screenshots 1440+390 into docs/phase4/qa/D/, inspect
+[ ] npm run build green, stop server, PHASE4-D-DONE summary
+[0m
+[0m→ [0mSkill "iterate-until-verified"
+[0m→ [0mSkill "no-ai-design-slop"
+[0m→ [0mSkill "threejs-scenes"
+[0m⚙ [0mcontext7_resolve-library-id {"libraryName":"@react-three/drei","query":"Environment files HDR Lightformer ContactShadows props"}
+[0m⚙ [0mcontext7_query-docs {"libraryId":"/pmndrs/drei","query":"Environment files HDR Lightformer form intensity color ContactShadows props"}
+[0m⚙ [0mcontext7_query-docs {"libraryId":"/pmndrs/drei","query":"Environment children custom environment map Lightformer combined with files preset frames static environmentIntensity"}
+[0m
+[0m# [0mTodos
+[✓] Load skills (threejs-scenes, no-ai-design-slop, iterate-until-verified) + context7 drei API check
+[•] Write src/canvas/stage/* pure modules (slots, logos, streak texture)
+[ ] Write src/canvas/SceneStage.tsx (env, lightformers, fog/exposure, lights)
+[ ] Write src/canvas/SponsorField.tsx (W1+W2 arrivals, streaks, slots)
+[ ] Write dev-D harness (dev-D.html + src/__dev__/D/main.tsx)
+[ ] Serve :5104, Playwright screenshots 1440+390 into docs/phase4/qa/D/, inspect
+[ ] npm run build green, stop server, PHASE4-D-DONE summary
+[0m
+[0m← [0mWrite src/canvas/stage/math.ts
+Wrote file successfully.
+[0m
+[0m← [0mWrite src/canvas/stage/slots.ts
+Wrote file successfully.
+[0m
+[0m← [0mWrite src/canvas/stage/logos.ts
+Wrote file successfully.
+[0m
+[0m← [0mWrite src/canvas/stage/streakTexture.ts
+Wrote file successfully.
+[0m
+[0m← [0mWrite src/canvas/SceneStage.tsx
+Wrote file successfully.
+[0m
+[0m← [0mWrite src/canvas/SponsorField.tsx
+Wrote file successfully.
+[0m
+[0m← [0mEdit src/canvas/stage/logos.ts
+Index: /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/canvas/stage/logos.ts
+===================================================================
+--- /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/canvas/stage/logos.ts
++++ /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/canvas/stage/logos.ts
+@@ -121,12 +121,12 @@
+ export async function loadAtlasManifests(): Promise<{ w1: AtlasManifest; w2: AtlasManifest }> {
+   const w1Ids = WAVE1_LOGOS.map((l) => l.id)
+   const w2Ids = WAVE2_LOGOS.map((l) => l.id)
+   const [w1, w2] = await Promise.all([
+-    loadOne('/web/atlas-brands.png'.replace('.png', '.json'), w1Ids).catch(() =>
++    loadOne('/web/atlas-brands.json', w1Ids).catch(() =>
+       fallbackManifest('/web/atlas-brands.png', w1Ids),
+     ),
+-    loadOne('/web/atlas-insurers.png'.replace('.png', '.json'), w2Ids).catch(() =>
++    loadOne('/web/atlas-insurers.json', w2Ids).catch(() =>
+       fallbackManifest('/web/atlas-insurers.png', w2Ids),
+     ),
+   ])
+   return { w1, w2 }
+
+[0m
+[0m← [0mEdit src/canvas/SponsorField.tsx
+Index: /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/canvas/SponsorField.tsx
+===================================================================
+--- /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/canvas/SponsorField.tsx
++++ /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/canvas/SponsorField.tsx
+@@ -24,16 +24,15 @@
+   computeSlots,
+   computeSpawns,
+   hoverOffset,
+   logoFlight,
+-  settleProgress,
+   type Slot,
+   type WaveId,
+ } from './stage/slots'
+ import { FALLBACK_ASPECTS, loadAtlasManifests, logosFor, type AtlasManifest } from './stage/logos'
+ import { getStreakTexture } from './stage/streakTexture'
+ import { clamp01 } from './stage/math'
+-import type { ProgressLike, StageProgress } from './SceneStage'
++import type { StageProgress } from './SceneStage'
+ 
+ export type WaveFilter = 'w1' | 'w2' | 'both'
+ 
+ interface SponsorFieldProps {
+
+[0m
+[0m← [0mEdit src/canvas/SponsorField.tsx
+Index: /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/canvas/SponsorField.tsx
+===================================================================
+--- /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/canvas/SponsorField.tsx
++++ /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/canvas/SponsorField.tsx
+@@ -170,18 +170,15 @@
+ 
+ const ribbonGeo = useMemo(() => new THREE.PlaneGeometry(1, 1), [])
+ useEffect(() => () => ribbonGeo.dispose(), [ribbonGeo])
+ 
+-const progressMirror = useRef<ProgressLike>({ current: 0 })
+ const groups = useRef<(THREE.Group | null)[]>([])
+ const planeMats = useRef<(THREE.MeshBasicMaterial | null)[]>([])
+ const ribbons = useRef<(THREE.Mesh | null)[][]>([])
+ const ribbonMats = useRef<(THREE.MeshBasicMaterial | null)[][]>([])
+ 
+ useFrame(({ camera, clock }) => {
+-  const p = clamp01(
+-    typeof progress === 'number' ? progress : (progressMirror.current = progress as ProgressLike).current,
+-  )
++  const p = clamp01(typeof progress === 'number' ? progress : progress.current)
+   const time = clock.elapsedTime
+   for (let i = 0; i < 8; i++) {
+     const g = groups.current[i]
+     const pm = planeMats.current[i]
+@@ -189,9 +186,9 @@
+     const st = logoFlight(wave, i, p, spawns[i], slots[i])
+     g.visible = st.t > 0.0001
+     if (!g.visible) continue
+     g.position.set(st.pos[0], st.pos[1], st.pos[2])
+-    if (st.settled) g.position.y += HOVER_AMP * (hoverOffset(slots[i].phase, time) / HOVER_AMP)
++    if (st.settled) g.position.y += hoverOffset(slots[i].phase, time)
+     g.quaternion.copy(camera.quaternion)
+     pm.opacity = cfg.opacity[i] * st.fade
+ 
+     const sN = st.speed // 1 → 0 over flight; 0 once settled
+
+[0m
+[0m← [0mEdit src/canvas/SponsorField.tsx
+Index: /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/canvas/SponsorField.tsx
+===================================================================
+--- /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/canvas/SponsorField.tsx
++++ /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/canvas/SponsorField.tsx
+@@ -177,10 +177,9 @@
+ const ribbonMats = useRef<(THREE.MeshBasicMaterial | null)[][]>([])
+ 
+ useFrame(({ camera, clock }) => {
+   const p = clamp01(typeof progress === 'number' ? progress : progress.current)
+-  const time = clock.elapsedTime
+-  for (let i = 0; i < 8; i++) {
++  const time = clock.elapsedTime    for (let i = 0; i < 8; i++) {
+     const g = groups.current[i]
+     const pm = planeMats.current[i]
+     if (!g || !pm) continue
+     const st = logoFlight(wave, i, p, spawns[i], slots[i])
+
+[0m
+[0m← [0mEdit src/canvas/SponsorField.tsx
+Index: /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/canvas/SponsorField.tsx
+===================================================================
+--- /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/canvas/SponsorField.tsx
++++ /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/canvas/SponsorField.tsx
+@@ -135,10 +135,8 @@
+   compact: boolean
+   streaksEnabled: boolean
+ }
+ 
+-const HOVER_AMP = 0.006
+-
+ function Wave({ wave, manifest, texture, progress, compact, streaksEnabled }: WaveProps) {
+   const cfg = wave === 'w1' ? WAVE1 : WAVE2
+   const logos = useMemo(() => logosFor(wave), [wave])
+   const streakTex = useMemo(() => getStreakTexture(), [])
+
+[0m
+[0m← [0mEdit src/canvas/SceneStage.tsx
+Index: /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/canvas/SceneStage.tsx
+===================================================================
+--- /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/canvas/SceneStage.tsx
++++ /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/canvas/SceneStage.tsx
+@@ -83,9 +83,9 @@
+ 
+ const keyTarget = useMemo(() => new THREE.Object3D(), [])
+ const velvetTarget = useMemo(() => new THREE.Object3D(), [])
+ 
+-useFrame(({ gl, scene, camera }) => {
++useFrame(({ gl, scene }) => {
+   const p = clamp01(readProgress(progress))
+   gl.toneMapping = THREE.ACESFilmicToneMapping
+   gl.toneMappingExposure = exposureFor(p)
+   const fog = fogRef.current ?? (scene.fog as THREE.FogExp2 | null)
+
+[0m
+[0m← [0mEdit src/canvas/SponsorField.tsx
+Index: /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/canvas/SponsorField.tsx
+===================================================================
+--- /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/canvas/SponsorField.tsx
++++ /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/canvas/SponsorField.tsx
+@@ -207,10 +207,8 @@
+     }
+   }
+ })
+ 
+-void settleProgress
+-
+ return (
+   <group>
+     {logos.map((logo, i) => (
+       <group
+
+[0m
+[0m← [0mEdit src/canvas/SceneStage.tsx
+Index: /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/canvas/SceneStage.tsx
+===================================================================
+--- /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/canvas/SceneStage.tsx
++++ /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/canvas/SceneStage.tsx
+@@ -93,11 +93,8 @@
+   if (keyRef.current) keyRef.current.intensity = keyIntensityFor(p)
+   if (velvetRef.current) velvetRef.current.intensity = velvetIntensityFor(p)
+   if (grazingRef.current) grazingRef.current.intensity = grazingIntensityFor(p)
+   if (sweepRef.current) sweepRef.current.position.x = sweepXFor(p)
+-  // Camera-attached micro-fill so near-black materials never go flat black
+-  // when the key is at 0 (B1 first frame). Intensity 0 once the key is up.
+-  void camera
+ })
+ 
+ return (
+   <group>
+
+[0m
+[0m← [0mWrite dev-D.html
+Wrote file successfully.
+[0m
+[0m← [0mWrite src/__dev__/D/main.tsx
+Wrote file successfully.
+[0m
+[0m← [0mEdit src/__dev__/D/main.tsx
+Index: /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/__dev__/D/main.tsx
+===================================================================
+--- /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/__dev__/D/main.tsx
++++ /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/__dev__/D/main.tsx
+@@ -12,9 +12,9 @@
+ import { SceneStage } from '../../canvas/SceneStage'
+ import { SponsorField, projectedHeightPx, type WaveFilter } from '../../canvas/SponsorField'
+ import { computeSlots } from '../../canvas/stage/slots'
+ import { FALLBACK_ASPECTS, logosFor } from '../../canvas/stage/logos'
+-import { clamp01, smoothstep } from '../../canvas/stage/math'
++import { clamp01 } from '../../canvas/stage/math'
+ 
+ declare global {
+   interface Window {
+     __D: { setProgress: (p: number) => void; getProgress: () => number }
+
+[0m
+[0m← [0mEdit src/__dev__/D/main.tsx
+Index: /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/__dev__/D/main.tsx
+===================================================================
+--- /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/__dev__/D/main.tsx
++++ /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/__dev__/D/main.tsx
+@@ -194,9 +194,9 @@
+     lineHeight: 1.7,
+   }}
+ >
+   <div style={{ color: '#C5BCA6' }}>
+-    LANE D harness · p={p.toFixed(3)} · fov={fovFor(p).toFixed(1)}° · {compact ? 'compact' : 'full'} ·zij-in
++    LANE D harness · p={p.toFixed(3)} · fov={fovFor(p).toFixed(1)}° · {compact ? 'compact' : 'full'} ·{' '}
+     {standin ? 'stand-in ON' : 'stand-in off'}
+   </div>
+   <input
+     type="range"
+
+[0m
+[0m← [0mEdit src/__dev__/D/main.tsx
+Index: /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/__dev__/D/main.tsx
+===================================================================
+--- /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/__dev__/D/main.tsx
++++ /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/__dev__/D/main.tsx
+@@ -220,9 +220,9 @@
+   <button key={w} onClick={() => setWaves(w)} style={btn(waves === w)}>
+     waves:{w}
+   </button>
+ ))}
+-<button onClick={() => setStreaks(streaks === null ? false : streaks ? true : null)} style={btn(false)}>
++<button onClick={() => setStreaks(streaks === null ? true : streaks ? false : null)} style={btn(false)}>
+   streaks:{streaks === null ? 'auto' : streaks ? 'on' : 'off'}
+ </button>
+ <button
+   onClick={() => setCompactMode(compactMode === 'auto' ? 'on' : compactMode === 'on' ? 'off' : 'auto')}
+
+[0m
+[0m← [0mEdit src/__dev__/D/main.tsx
+Index: /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/__dev__/D/main.tsx
+===================================================================
+--- /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/__dev__/D/main.tsx
++++ /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/__dev__/D/main.tsx
+@@ -253,10 +253,7 @@
+     cursor: 'pointer',
+   }
+ }
+ 
+-// Silence unused-import check for smoothstep (kept for stop math extensions).
+-void smoothstep
+-
+ const root = document.getElementById('root')
+ if (!root) throw new Error('Missing #root')
+ createRoot(root).render(<App />)
+
+[0m
+[0m$ [0mnpx tsc -b 2>&1 | head -40
+npm notice run eyeq-vision-care@0.1.0 npx
+npm notice run 'tsc' -b
+src/canvas/SponsorField.tsx(179,39): error TS1005: ',' expected.
+src/routes/Services.tsx(68,5): error TS1005: ')' expected.
+src/routes/Services.tsx(69,3): error TS1109: Expression expected.
+[0m
+[0m→ [0mRead src/canvas/SponsorField.tsx[90m [limit=30, offset=165][0m
+[0m→ [0mRead src/routes/Services.tsx
+[0m
+[0m← [0mWrite docs/phase4/requests/D-services-tsc.md
+Wrote file successfully.
+[0m
+[0m← [0mEdit src/canvas/SponsorField.tsx
+Index: /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/canvas/SponsorField.tsx
+===================================================================
+--- /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/canvas/SponsorField.tsx
++++ /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/canvas/SponsorField.tsx
+@@ -175,9 +175,10 @@
+ const ribbonMats = useRef<(THREE.MeshBasicMaterial | null)[][]>([])
+ 
+ useFrame(({ camera, clock }) => {
+   const p = clamp01(typeof progress === 'number' ? progress : progress.current)
+-  const time = clock.elapsedTime    for (let i = 0; i < 8; i++) {
++  const time = clock.elapsedTime
++  for (let i = 0; i < 8; i++) {
+     const g = groups.current[i]
+     const pm = planeMats.current[i]
+     if (!g || !pm) continue
+     const st = logoFlight(wave, i, p, spawns[i], slots[i])
+
+[0m
+[0m$ [0mnpx tsc -b --pretty false 2>&1 | grep -v 'routes/Services' | head -20; echo "EXIT-FILTERED-DONE"
+npm notice run eyeq-vision-care@0.1.0 npx
+npm notice run 'tsc' -b --pretty false
+EXIT-FILTERED-DONE
+[0m
+[0m$ [0mnpx tsc -b --pretty false 2>&1 | grep 'error' | head -20; echo DONE
+src/routes/Services.tsx(68,5): error TS1005: ')' expected.
+src/routes/Services.tsx(69,3): error TS1109: Expression expected.
+DONE
+[0m
+[0m$ [0mnohup npx vite --port 5104 --strictPort > /tmp/vite-D.log 2>&1 & sleep 6; tail -15 /tmp/vite-D.log
+npm notice run eyeq-vision-care@0.1.0 npx
+npm notice run 'vite' --port 5104 --strictPort
+
+  VITE v8.3.1  ready in 137 ms
+
+  ➜  Local:   http://localhost:5104/
+  ➜  Network: use --host to expose
+[0m
+[0m✗ [0mplaywright_browser_navigate {"url":"http://localhost:5104/dev-D.html?p=0.775&waves=w1&standin=0"} failed
+[91m[1mError: [0m### Error
+Error: Browser is already in use for /Users/admin/Library/Caches/ms-playwright-mcp/mcp-chrome-062bebd, use --isolated to run multiple instances of the same browser
+[0m
+[0m$ [0mrtk ls ~/.cache/ms-playwright/ 2>&1; npx playwright --version 2>&1 | tail -1
+ls: /Users/admin/.cache/ms-playwright/: No such file or directory
+Version 1.63.0
+[0m
+[0m$ [0mrtk ls ~/Library/Caches/ms-playwright-mcp/ 2>&1; rtk ls ~/Library/Caches/ms-playwright/ 2>&1; which chromium chromium-browser google-chrome 2>&1 | head -5
+mcp-chrome-02deeed/
+mcp-chrome-062bebd/
+mcp-chrome-07edffe/
+mcp-chrome-0bf08b0/
+mcp-chrome-14adce3/
+mcp-chrome-1c5e2a6/
+mcp-chrome-1c5eca5/
+mcp-chrome-2129683/
+mcp-chrome-2151c53/
+mcp-chrome-269412f/
+mcp-chrome-278b3ec/
+mcp-chrome-3106701/
+mcp-chrome-6ce6c8b/
+mcp-chrome-83fb906/
+mcp-chrome-8482f13/
+mcp-chrome-88f436a/
+mcp-chrome-8d58fc6/
+mcp-chrome-c1dbe5a/
+mcp-chrome-c2e8c25/
+mcp-chrome-c828b7f/
+mcp-chrome-d9c8e11/
+mcp-chrome-dc9c189/
+mcp-chrome-e3e2acc/
+mcp-chrome-e874fc4/
+mcp-chrome-edc3e77/
+mcp-chrome-efaf0d1/
+mcp-chrome-f93b4c0/
+b/
+chromium-1243/
+chromium_headless_shell-1243/
+daemon/
+ffmpeg-1011/
+chromium not found
+chromium-browser not found
+google-chrome not found
+[0m
+[0m← [0mWrite docs/phase4/qa/D/capture-D.mjs
+Wrote file successfully.
+[0m
+[0m$ [0mnode docs/phase4/qa/D/capture-D.mjs 2>&1 | tail -20
+Error: Could not load /web/atlas-brands.json: undefined
+07-wave1-midflight-1440: console errors:
+  Error: Could not load /web/atlas-brands.json: undefined
+  Error: Could not load /web/atlas-brands.json: undefined
+07-wave1-settled-1440: console errors:
+  Error: Could not load /web/atlas-brands.json: undefined
+  Error: Could not load /web/atlas-brands.json: undefined
+08-wave2-settled-1440: console errors:
+  Error: Could not load /web/atlas-brands.json: undefined
+  Error: Could not load /web/atlas-brands.json: undefined
+07-wave1-midflight-390: console errors:
+  Error: Could not load /web/atlas-brands.json: undefined
+  Error: Could not load /web/atlas-brands.json: undefined
+07-wave1-settled-390: console errors:
+  Error: Could not load /web/atlas-brands.json: undefined
+  Error: Could not load /web/atlas-brands.json: undefined
+08-wave2-settled-390: console errors:
+  Error: Could not load /web/atlas-brands.json: undefined
+  Error: Could not load /web/atlas-brands.json: undefined
+capture-D: 8 failure(s)
+[0m
+[0m$ [0mrtk curl -s -o /dev/null -w '%{http_code} %{size_download}\n' http://localhost:5104/web/atlas-brands.json http://localhost:5104/web/atlas-brands.png http://localhost:5104/env/studio_small_08_1k.hdr http://localhost:5104/dev-D.html
+...output truncated...
+
+Full output saved to: /Users/admin/.local/share/opencode/tool-output/tool_0e57f992b001bWsvNdCE7h95jZ
+
+�������������������������������������������������������������������������������%�������������������������������������������������������L���������������������������������������������������������������������������΅�$�����������������������������������م�'��������������������������������������݄������������������لڅ� �������������������������������ׅ����������������҇�4����������������������������������������������������*������������������������������������������������������������������������������������������������������������������������������������������������������������@������������������������������������������������������������������	��������������������������������������������������������������!�����������������������������������
+��������������������������������������������������������������������������������������������������������Z�����������������������������������������������������������������������������������������������������������������������������������������������������������������,�������������������������������������������ǄȀ�������������������������������������������������������������������������������������������������������������������������������� �������������������������������܄�8�������������������������������������������������������ք������Ӈ�]������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������1������������������������������������������������������������������������������������������������������������������������������������%��������������������������������������������������������������������������������������������������������������������Ą�����ą��������������������������������Ä�R���������������������������������������������������������������������������������Ņ������Ʌȅ��������������ʄ�'��������������������������������������҆�	��������څ�؄ـ�����������������������������������������������������������������������������������������������������������������������������������������������������������������$����������������������������������������������������������������*�����������������������������������������ׄ������������������������������υ�����������΄���������������������������Ʌʄ������������������������Ǆ������ǅ���������������E���������������������������������������������������������������������������������������������������������������������������������������������������������� ����������������������������������������������������������������������������������������������������������������������������������!��������������������������������������������%���������������������������������������/�������������������������������������������������C���������������������������������������������������������������������/����������������������������������������������Ȅ��������������������������Ƅ�7������������������������������������������������������؄�0�����������������������������������������������܅�����������������ڄ�/����������������������������������������������ӄ�1���������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������
+������������������������������������������������������������������������������������������������������������������������������������	�����������������(������������������������������������������	������������������������������	�����������9������������������������������������������������������������������3���������������������������������������������������������������������������������������#�����������������������������������������������������������������������������������������+������������������������������������������ȅ�����������������������̄���Ȅ�k����������������������������������������������������������������������������������������������������������݄�������������܄�܅�D�������������������������������������������������������������������φ�����̈́����������������ń��������������Ä�������	�������������������������������������������������&��������������������������������������������%���������������������������������������������������
+������������^�����������������������������������������������������������������������������������������������������������������������������������������������������������������)��������������������������������������������������������������������������������������������������ć���ņ�������������������������������������������������������������ǅ�
+���������Ą����������������������ń�!��������������������������������Ʉ�����̄�������������������υ�<�����������������������������������������������������������܆�U�����������������������������������������������������������������������������������������������������������������������������������������!���������������������������������������������������������������������������������������Յ�������ք�
+���������υ�"���������������������������������̈́�������������������������˄����������������������������ȇ�*�������������������������������������������������������������������������������������������������6������������������������������������������������������������������������������������������ 
+�����������������������������������	������������������� ������������������������������������������������������������������������������������������������������������������������������������������������������
+������������:��������������������������������������������������������������������������������������������������������������������$�����������������������������������ƅ�����������Ȅ������������Ƅ�����������������̈́����ф�2�������������������������������������������������݄�#����������������������������������ۆ�"���������������������������������؄�'��������������������������������������̄̈́�������ɆȂǄ������������������Ä�@�����������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������	������������	�����������-����������������������������������������������������������������������������������������������j������������������������������������������������������������������������������������������������������������>��������������������������������������������������������������������������������������������� ����������������������������������#����������������������������������ȅ����˅��̄�!��������������������������������τЄ����������������؄م�����مڅ����������������݄������������������݄�!��������������������������������ۄ�����څ��������������������؄�&�������������������������������������͆�������ʅ�t�����������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������.���������������������������������������������������%����������������������������������������������������������/�������������������������������������������������
+������������%������������������������������������Ä������������������0��������������������������������������������������&�������������������������������������ą����Ą��������ǅ�ǋ�����Ʉ�������������������������������τ�����������������τ�.���������������������������������������������چ�����������������Յ�6��������������������������������������������������������������������������������������������������������8������������������������������������������������������������������E��������������������������������������������������������������������ф�1������������������������������������������������ʄ���Ɉ�����������������������Ɇ������������ǅ����ń�"�������������������������������������������������������������������������������������������������������	������������������������������������������������������������������ �����������������������������������������������������	�������������������������������������������������������������������������������������������������������������������������������������������:��������������������������������������������������������������,�������������������������������������������������������������������������������������������������������Ɔ�>�������������������������������������������������������������ӄ������؄��������������ׄن�B�����������������������������������������������������������������؄����؄�#����������������������������������ӄ������������������������������Ȅ��������������Å��������������������$������������������������������������������
+�������������������������������������������������������������������������������������������������������������'����������������������������������������������������������������������������������������������������������
+������������������������������������������������������������������������������J���������������������������������������������������������������������������������������������������������������$����������������������������������������������������������������������������;����������������������������������������������������������ņ��������Ȅ�Ȅ�C������������������������������������������������������������������ц���������������ل�$�����������������������������������܄�!��������������������������������ڄ�<�����������������������������������������������������������Մ�������������τ�!��������������������������������ń��Ą�.�������������������������������������������������������
+�����������������������������������������������������������������������������������������	���������������<��������������������������������������������������������������
+��������������������������������������������������������������������������������������
+���������Ä���������������������������������������������������������������������������������������Ĉ������������������Ą������������������������������������;����������������������������������������������������������ńƂǄƃǄ�����������������̅�������������������˄̈́�����������������������������օ��������������������ۅ�i����������������������������������������������������������������������������������������������������������b���������������������������������������������������������������������������������������������������E��������������������������������������������������������������������ׅ������������҄ӄ҄�)����������������������������������������Ɇ�������������ʅ��������������ʄ���������������Ņ�������Ç��������Ä�������������������)������������������������������������������������������������������������������������������������������������������������������������������� �������������������������������������������������������������������������������������	������������������������������������	�����������������������������������������������������������������������������������������������������������������������������������������������������������������������=������������������������������������������������������������ń���Ƅ�b�������������������������������������������������������������������������������������������������ֆ�����������������؄������������ڄ؅�]��������������������������������������������������������������������������������������������Ά���˄�������ǅ���������������������������	�����������������
+���������������������������������������������������������������������������������'������������������������������������������������������������������������������������������������������������������������������������������������������	��������������������������������������������.������������������������������������������������������)������������������������������������������������������������������������������������������������������������'�������������������������������������������	�����������#������������������������������������������;����������������������������������������������������������ȉ����������������΄�)����������������������������������������҄�.���������������������������������������������ۄ���������������������ۈ�;����������������������������������������������������������؄�����������������������������҄��������������������������Ƅ�����Ƅ���ą����������"������������������������������������0��������������������������������������������������U���������������������������������������������������������������������������������������������/�������������������������������������������������3����������������������������������������������������������������Ä�������������������������	�����������������������������������������������������������������������������������������������������������������Ć���������������������������������Ä���������������ǆ���������������������Ƅ����������������������ʅ����������������������τ�5����������������������������������������������������؅�!��������������������������������݅��������܄�N����������������������������������������������������������������������������������������������������$�������������������������������������5������������������������������������������������������(���������������������������������������ԇ�=������������������������������������������������������������Ȅ������������Ȅ�Ʉ������ʇ�Ȉ��������������������������Ą�����������������������.������������������������������������������������G�������������������������������������������������������������������������	�����������
+���������������������������� �������������������������������������� ����������������������������������^����������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������
+��������������������(������������������������������������������7������������������������������������������������������ȅ��������Ǆ���������������������̄�.���������������������������������������������ֆ�	��������օ�ڄ�<�����������������������������������������������������������چ�������������ن�b��������������������������������������������������������������������������������������������������������������������������������������������������������������������������������	�������������
+�����������������������������������������������
+��������������������������������������������������������������������������������������������������������������������������������������������������������������	�����������B�������������������������������������������������������������������������������������������
+���������������������$����������������������������������������������
+����������������#���������������������������������������������������������������������Ą�������������ń��������������ȅ�"���������������������������������΄����������������υ��������������Մ�����������������������؄��܄�N�����������������������������������������������������������������������������܇�������������ׄ�"���������������������������������υ������������������������ǅ�������������ƄĆ�������¿��������������$�����������������������������������������������	�����������
+�����������������������������������������-�������������������������������������������������������������������������������������������������&���������������������������������������������������������������ć���Ä��Ň��������������������"������������������������������������	������������������������������������Ĉ�%������������������������������������Ą�=������������������������������������������������������������ńƅ�	��������Ƈ��ǅ�:���������������������������������������������������������҄��������҄�����������Ԅ�������Մ�����������������ۄ�����������لڀ����������������������������������������������������������������������������������������������������������������������������������������������������������B�������������������������������������������������������������������3��������������������������������������������������Ԅ�;����������������������������������������������������������ʄ˄�����������������ʅ��Ȇ�������ǅ� �������������������������������������������������#��¿������������������������������������������������������������������������������������������������������������������� ������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������	��������������������������������������������������������������������������%������������������������������������ƄǂɅ�R���������������������������������������������������������������������������������ׅ�'��������������������������������������ׄ�ل������������ۄ���������������������ׄ���������������ք�"���������������������������������τ�/��������������������������������������������������������������������������)�����������������������������������������������������������������������������������������������������������������������������������������������������������������������������	��������������� ����������������������������������	���������������������������������%�������������������������������������������������������������������������������������������������������������������
+�������������������������������������������������������*����������������������������������������������������������;����������������������������������������������������������Ƅ�������������������Ƅ������������������������������͆�	��������Ѕ�(���������������������������������������ք�����������������������������ׅ�+������������������������������������������܄�܄� �������������������������������څ�������������������������Մ�$�����������������������������������Ǆ��������������ƅ��������������������������������7�������������������������������������������������������������$�������������������������������������������������������������������+���������������������������������������������������������������������������������������������������������������������������������Ä������Ą�������ą�#�����������������������������������1������������������������������������������������Ą���Ä��������ń�Æ�����������������������ń�������Ä�����������������������������#����������������������������������Ʌʀ��������������������������������������������������������������������������������������������������������������������������������+������������������������������������������߄�������������������������������>��������������������������������������������������������������������� ���������������������������������������������������������������������������������������������������օՂօ�5����������������������������������������������������΅���˄�����������������������Ʌ�
+���������ȅ�.���������������������������������������������Æ����������������)��������������������������������������������������������Ä�������������������������������������������������������������������������� ����������������������������������������������������������������������������������������������������������������������������������������������������������������������������%�����������������������������������������������������������������������������0���������������������������������������������������������������������5����������������������������������������������������ˇ���������������΄�������������������������х���������������������������؅�!��������������������������������؅������������������������؄�"���������������������������������Ԅ��Մ�&�������������������������������������̄����˅������������������Ą������������������������������������������������������������������������������������������������������������������������������"������������������������������������
+������������������������������
+�������������������������������������������������������������������������������������������������������������������������
+������������
+�����������������������&��������������������������������������������������������������������������������������������������������������������������������������������������������������������������2��������������������������������������������������3��������������������������������������������������ʄ����ʄ��˄ʄ�����̄ͅ� �������������������������������ф��������ӄ�.���������������������������������������������ք�ل�R���������������������������������������������������������������������������������؇��������������ք�������Ԇ������������������������������ʄ�
+���������ņ�,��������������������������������������������������������������������������������������������������������-�����������������������������������������������	������������������������������������������������������������������������������������������������������������������������������������������������������ąÂąÂ���������������������������������������������������������������ņ�������Ņ�	��������Ą��������������������Ƅ������������������������������ą������������������������Ǆ������������������ʄ�1������������������������������������������������҄�#����������������������������������Մ�����������������������ڄ����������������܅�������������������������߄�I���������������������������������������������������������������������������������������8������������������������������������������������������������������"���������������������������������߅���ބ��������������ׄ�
+���������ӄ�	��������х�/����������������������������������������������̆����ʄ�����������������˄����Ʉ����������������������Å�-�����������������������������������������������5�������������������������������������������������������������������������������������������������������������������������� ��������������������������������������������������������������
+����������������������������������������������������������������������������������
+������������������������������������������������������������������������������������������������������*���������������������������������������������������
+����������������ąłƄ��Ǆ�����Ƅ�����Ȅ���Ȅ��ʇ�����������������������������Єф���������������׆�K��������������������������������������������������������������������������Մ�����ڄׄ�	��������Ն��������օ�E��������������������������������������������������������������������Ǆ�A���������������¿��������������������������������������������������$������������������������������������������������������������������������������������������������������������������������������������������������������������������������'�������������������������������������������������������������������������������������������������������������������������������	�����������	�����������������������������������������������)�������������������������������������������!������������������������������������������������������������N��������������������������������������������������������������������������������"���������������������������������Ɔ�������������ˆ������˄�#����������������������������������Є�х���������������������ل؄��������څ�+������������������������������������������ڄ�M����������������������������������������������������������������������������Մք��������Ԅ�-��������������������������������������������Ą��������������������������������������������������������S������������������������������������������������������������������������������������������������������ ������������������������������������������������������������������������������������������������������������������������������������������Ä�Ä����Ä�������������������ÅĂ�������������������������������Æ���������������������������ć���������������������������Ǆ�����������ń�(���������������������������������������Ƅ������������������Ņ��Ƅ�.���������������������������������������������̅�3��������������������������������������������������ӄ������������������������������ن�����هڄ�����چ܄��������������������������������������������������������������������������������������������������������������������	����������g������������������������������������������������������������������������������������������������������ل����������������������ԄӇ����������������̄�d���������������������������������������������������������������������������������������������������Ɔ�����������������������������������������������������������������������������������������������������������
+������������������������������������ �����������	�����������������������������������	�����������	���������������������������������������������������������������������������������������������������������������������������������������������������������������������������2����������������������������������������������������1������������������������������������������������Ǆ�
+���������Ȅ��������΄����̈́�������������������Ԅ������������������������ք��������ۄ�
+���������ل������������������؄�������܅ڀ�������������������������������������������������������������������������������������������������������������������������������Ƅ��������������������������������������������������������������������
+������������#����������������������������������������������������������������������������������������������������������������������������������������������������������������
+��������������������������������������������������������������������������������
+���������������������������������������������������������������������������������������������������������������������������������������������������������������	���������������������������������������������������������������������������������È�������������������Ȅ���������������Ʉ�������̄˄�������҄������цЄ�������������������׆�����������������ڇ�'��������������������������������������ڄ�6�����������������������������������������������������؅���؅�����������Ԅ�������������������������������ф���������������̄���ʅ����������������������Ć����������������������������������H������������������������������������������������������������������������������������'�������������������������������������������������������������������������������������������������������������������������������������������������������������������������������Å�Å�������������ƅ�	��������ÆÆ�������������������ŅƄǆ��ÿ���������ȉ�Ƈ��Ǆ�������������ƅ�$�����������������������������������Ć��������������Ņ����������������ȅ����������������ˇ�������������������΅�"���������������������������������Յ�(���������������������������������������ل������ۅڄ�����������ބ���������������������������������������������������������������������������������k����������������������������������������������������������������������������������������������������������ބ߂�������ބ������݅�&�������������������������������������ф� �������������������������������͆���̅������������̄�!��������������������������������Ȇ��������������������ȅǅ�8����������������������������������������������������������������������ń�	��������Ĉ��È������������������������������������������������������������������������ ����������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������@���������������������������������������������������������������������.���������������������������������������������Ǆ�
+���������ǅ�������ȅ����ʄ�������������������͆�	��������Є�#����������������������������������ׅ�C������������������������������������������������������������������؄�������������օ���������������������Ӈ�	��������҅�	��������Ѕ�
+���������ˈ���Ȅ������Ƅ����������������������������������������������������������������������������������������������������
+������������
+�������������������������������������	�������������������������������������%��������������������������������������������������������������������������������������������*��������������������������������������������������������������������������������������������������������������������������������������������������������������������������������'���������������������������������������������������������	�����������������������������������������������.���������������������������������������������Ʉ�������������������������̄������΄�΅������΄�	��������҅Ԇ����������������������������چ����������������������ڄ���܅��������������������������݄���������������������ن�������������������օ������������������������ӄ�������������������������̈́�9�����������������������������������������������������������������������������������������������������������������������������������������������������������������*������������������������������������������������������%������������������������������������������������
+������������������������������������Ä��������������������������������ą���Å������������Ä��������Ä�ą����������������������ǅ�.���������������������������������������������ƅǄ�Ǆ�	��������Ʉ�����������������������Ɔ�	��������Ņ���ǅ�M����������������������������������������������������������������������������хЄτ�'��������������������������������������؄������������������������܆ۇ������������������������������J�����������������������������������������������������������������������������������������������������������������������������������������������������������߄����������������������݄������������������������������҄���������������������������φ�������������������̄��������������˄������ʄ˅�������������������ˇ����Ʉ�����Ȅ��������������������Ȇ�
+���������ń��������������������Ą�
+���������ą�'��������������������������������������Å�������	��������Å���Ň������������������������������� �������������������������������������������������������������
+������������������������������������������������������������������������������������������������������������������������������������������������������������������������������O������������������������������������������������������������������������������ń�������������Ǆ�����������������̄˂̄����������������ʄ�������������������Ԅ��������Ն�����������������؅�������ڄم�����݄���������������������܅�����������لׅ�G����������������������������������������������������������������������͉��ˇ��Ȅ��Ƅ�����Ɔ�H�����������������������������������������������������������������������������������)����������������������������������������������6�����������������������������������������������������������������������������������������������������������
+���������������������������������������������������������������������������������������������������������������	���������������+�������������������������������������������������������������������������������������������������������������������������������������e����������������������������������������������������������������������������������������������������ƅ�	��������˅�Ʉ���������������τ���̈́�τ� �������������������������������ׇ����؄ׅ���������������؇������������������߆���������������܉�������������܄�������������������ل�5����������������������������������������������������ч����΄���ͅ�
+���������ʄ�����������������Å�;�������������������������������������������������������������!���������������������������������������G���������������������������������������������������������������������������������������������������������������������������������������������������������������������������������ć��#����������������������������������Ĉ������ą��������Ą�������������������Åą��������������������ǅ�����������ʅ�!��������������������������������Ʉ��������������������˄�����ʅ�����������������������˄�	��������Ʌ�7������������������������������������������������������΄�0�����������������������������������������������ԅ�؄�����ن�6���������������������������������������������������������������������������������������(����������������������������������������������������������C������������������������������������������������������������������߄�
+���������ބ����݄�݇�م�������������������������Є������������������������������̅͂΄�����������������ͅ���������������������̈́�
+���������ʅ������Ʉ��������Ȅ�ʅ�#����������������������������������Ą��������������������Ɖ���ÄăÇ�	��������Âą�����������Ą���Ä�����Ä����������������ń��ą����������������������������������� ���������������������������������������������$�������������������������������������������������������������������������������������������������������������������������������������������������������������������������L�����������������������������������������������������������������������������������������ń�����������������������Ƅ�����������ƅ�	��������ʄ�
+���������͈������̄�������������������ф�������ӄՍք�����������������������ۄ�������܄���܅�����؅��������������������ل�����������ք����ׄ������Մ��������������Є�����������ͅ��̄�����������������������������Ǆ�������������������������������
+���������������������������*������������������������������������������������������������������������������������������������ ���������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������*�������������������������������������������������������������������������������������������������������������������������)�������������������������������������������`�����������������������������������������������������������������������������������������������Ʌ�
+���������΄ͅ����΄�,�������������������������������������������քׄ�����؄ل�����������������������݄����܄�������ކ������ڄ���݅�
+���������܄������������������ۄ������ڄ������ՄԂ҅�������������������υ��������������˄����������������ʄ���������������Ä�
+����������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������ÄĆÆ�ń����Ä����Ä��������������ÆÅ������������Ą���������������ń������������Ƅ�$�����������������������������������Ǆ�ʄɆ�������ʄ�������͇�����������������Ʉʊ������Ʉ�
+���������Ʌ��������������������˄�������������˄�+������������������������������������������ӄ������օ������؅������������؄���ل�x���������������������������������������������������������������������������������������������������������������������������������������������������,���������������������������������������������������������������������������ބ�&�������������������������������������چ������������������ӄ���������������������������̈́�8�������������������������������������������������������̈́�������������̆��������������ɇ�������������������Ȉ�$�����������������������������������ƅ�����������������������Ç�-��������������������������������������������Ą����ȆǄ����Ć�ąÅ����������������������� �������������������������������������������������������������������������������������������������������	�����������-��������������������������������������������������������������������������������������������������������������������������������������������������� �����������������������������������É������������ą����������������ǅȂɅ�	��������˅������������̈�
+���������ʄ�������ц�������х���������������Յ�	��������؇�����������������������ۄ�%������������������������������������ֆ�������օ����Մ�������������ӆ�������Ї���������������������Ʌ������������������Ǆ�
+���������Ƅ����������������������������������������������������������������������������������������������������������������������������������
+�����������������������������
+������������������������������������������������������������������������������������������������������������������������#������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������*�������������������������������������������������������������������+����������������������������������������������������Ǆ������Ʉ�Ʉ��ʄɄ�����Ʉ˄�����������̄�!��������������������������������̄��������������҄��������Ԅ�����������و��������چ�������������܅�������������ۆ�������������������������������مڄل�׆؂ׄ����������������ք�����ԅ�	��������τ�������͇��������������������ʄ��������Ȅ����Ƅ����������������������������������������������
+�����������������������������������������������	������������������������4������������������������������������������������������+����������������������������������������������������������������������
+��������������������������Å�ÆĂÄ����ņ��Ą���������Âą������������������������������������������Ą�����������Ą�Ą������������ƅ�����������������˄�	��������ʅ�������˄������������̄�������������������������̆�
+���������ʅ�:���������������������������������������������������������·�	��������τ��ф������ԅ�������������������������������؄���������������ۄ���������������߄���݄����ۄ܅����������������������������������������������������������������6�������������������������������������������������������������������������������������������������������܄�������������������څۄ�������������������Ԅ��������υЃτ���������������Άͅ���̄����͆��������������������������̈�2�������������������������������������������������Ǆ�	��������Ǆ�����ƈ����ǄƆ�Ɔ�������������������������Ą���������������ć�����Ä�������������ƅ�������Ƅ����Ć��������ć������������������� ������������������������
+��������������������������������������������	��������������������������������������������������������������������������������6��������������������������������������������������������$���������������������������������������������������������'��������������������������������������ńĄ����Ǆ�������Ȅ�����������������Ʌ�	��������˄ɂʄɄ����������������������������τ���������������������������ׇ��؉�ք�9��������������������������������������������������������؆������Ӆ�4���������������������������������������������������ͅ�������ʉ��������������������ƅ�������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������
+��������������������������
+�������������������������
+���������������������������������������������������
+���������������������������������������������������������������������������1�����������������������������������������������������������������������������
+�����������������������6������������������������������������������������������������
+��������������������������������������Ȇ������������ʄ��������������̄�����������������ʅ����˄���������������������Ѕ���������������������ׅ���؉����ل����������������������ۉ�"���������������������������������ۅ�������օ��������������������ӄ�����������������Є�+������������������������������������������˅ʃ˅�0�����������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������	�������������������	��������Å�	��������Å�Ň�����ą������������Ƅņ������������Ć��ƄŇĄ�
+���������ȅ�������������������Ʌ������Ʉ���������������Ʉ�	��������ʄ�
+���������̅�������������������˄�J�������������������������������������������������������������������������͆�
+���������΄������������������х�������ӄ�
+���������օ������������������م�����������������ڄۇ�	��������ۅ�������������������������߆�����������������������������?������������������������������������������������������������������������������������������������(���������������������������������������݆�����������������ۄڃۆ��������ׅ���Ԅ����������������������������τ�����΅�D�������������������������������������������������������������������Ȅ������Ʉ���Ɇ����������������������ń���������������ǅ���ń�����������Ō���������������ć�������������������������Ɔ������ȄǃƇ�Ȅ���������������Ą���������������������� �����������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������Æ�����������������������������ƅ�	��������ɆȄ�����������������������ʄ�����Ʉ�����������������������τ�����������������ӄ�������������������������ՅԄ�	��������׉��։��օ�������ք�!��������������������������������ӄ������������������������Ά����������������������ʆ�	��������ȅ������������Ƅ�Ą�������������������������������������������������������������������������������������������������������������������������������������������������������������(��������������������������������������������������������������������������������������
+����������������������������������������������������������������������������������������������������������
+������������������������������������������������������������������������������������������������� �������������������������������������������������������������Å��������Ɔ����ņƅ���������������������������ɇ�$�����������������������������������̄�!��������������������������������҄���Ԅ����Ն����������������ֆׂք�	��������؆�����؄مڂل���ׅ�
+���������ք����������������������������Մ�������ӄ�	��������Є����ф�	��������τ������������������������Ȅ������ʄ�Ȅ����������������Ĉ��������������������������1�������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������
+���������Å�����������������������ą����������������Æ������������ńĄ�����������ƈ�������������������ȄɄ��ʅ������������������������ʄɄ����������������������ʆ���Ȅ����������������ʄ˅��������̈́������������������������������̈́���������������˅������������φ����������������х��������ԄՄ����ӄ�������������ӄ�������������������ل؄���������������ڄ��������������ۅ����������������������������������������������������������	��������������������������������������������(�������������������������������������������������������������������߄���������������ۆڅقچ�
+���������ք�����������ц�!��������������������������������̅������̄�̈́������������������΄�̄̈́���������������Ȅ������������Ȅ������������������������������Ƅ����������������ń�1������������������������������������������������Ņ���Ƅ����Ƅǅƅ������������Ʉ�����ȄɅ�������������ǄƂ������������������� ������������������������������������������������������������������������������������	�������������������������������������������������������������������������������������������������������������������������������������������!�����������������������������������������������������È����������������������Ƅ�������������������ǋ��������������������Ʌ�
+���������Ʉ�����������������Є�
+���������ӆ�������������ф�%������������������������������������Ԅ����������������Յ�
+���������Ӆ������������х�ф�����������������������χ΅̈́�����������������������ɄȂɅ�������ǅ�������Ƅ���������������������������������������������������������������������������������������������������	���������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������	���������������������������������������������������������������������������������
+����������������������Ë�ņ������������ǇȆ��������������ɉʇ�����̈́�������˄��������������̈́�&�������������������������������������ӄ��������Ն������������������������ׄ�����Ԅ�������؄�������������������ք������������Ӆ�������������҄������������Ѕ�������������Ѕ�΄����������������˄ʄ������������������Ʉ�����Ǆ�Ǆ�-����������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������Ȅ���������������Ǆ��������ń������ň��������������������������ń�����������ńƄ��������������������������ǅ�����ʅ���������������Ʌ������������ɇȂɅ�1������������������������������������������������ʄ�$�����������������������������������Έ����������������̄���������������τЃυ������҄�!��������������������������������ք�����������������؄ه���������������������چ�����������������������ޅ߅��������������������
+����������������������������������������������������������������������������������������������������������������߅����������݄����܄ۂڄ�����څ��������ل�%������������������������������������ф�F���������������������������������������������������������������������˄�(���������������������������������������Ǆ��������������������Ƅ�����������������ńƃǆ��ʅ�
+���������ǄȂǇƄ�����ƄǄ����������������ȅ��������������������Ʉ����ʅ�
+���������ȅ������������������� �����������������������������������������������������������������������������������������������������������
+������������9���������������������������������������������������������������������������������	�������������������������������-������������������������������������������������������������Ņ�����������ɄǄ�G����������������������������������������������������������������������υ���І�����������������������҇�	��������І���������������������������τ�����������������҄���������������������φ�$�����������������������������������ʄ��������������������������Ʉ�(���������������������������������������Ą������	���������������������������������������������-�����������������������������������������������������������������������������������	���������������������������������������������������������������������������	�������������������������������������������������������������������������������.����������������������������������������������������������������������������������������������������������������������������������������������W��������������������������������������������������������������������������������������������������������������Ć�����ǅ�'��������������������������������������Ȅ����ʄ�����������������������υЅ�������������҄��������������ӄ�������������҅��������Ԅ�������������҄����ӆ������ӄ����Ԅ����҅�����������҆������������������τ��̄������������τ΃φ΂̈́�����������������������������ʄ����ȅ���������������ȄǄƄ���������������������������������������������������������9�������������������������������������������������������������������������������������������������������������������������������������������������������������	����������������������������������ȅ�!��������������������������������ǊȆ���ǆ�����ȇ�������Ǆ�(���������������������������������������˅����˅����ǅȄ������������������������������ʄ�����������ʄ�������������������������̄˄�����̄��ͅ������������̄� �������������������������������τ�)����������������������������������������Ԇ�����ԄՅ���ׄ� �������������������������������؄�������������������������������݅���������������������:�������������������������������������������������������������������������������������������������������߄�
+���������߄ކ��������������������߆�A����������������������������������������������������������������ք�����ӄ�����҅���҆���фЉ��τ��������Ά̄�,�������������������������������������������ƅ���ƈ�	��������Ƅ�������ń�������������������ĄŅƄ�ń�������������Ǆ�������������Ȇ�*�����������������������������������������ǅ�������������Ȅ���Ʉ���˄������������������������������ ������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������	��������ą������������ʅ�����������������������������Ǆ�#����������������������������������Є��͇������χ�������������̈́���΄�΄������������������҄��������������υЅ�"���������������������������������Ї����������������������������ˈ����������������Ʉʅ�����ʆ��������������Ƅ�������������������ń�����Ä��������������������������������������������������������&�����������������������������������������������������������������������������������������������������������
+������������
+�������������������������������������������	���������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������0�����������������������������������������������������������������������������������Ą���Ä������������������������Ʉ����������������������������ˆ��̅������̄�������������ӄ�	��������х�ф������������҅�����������ф�����������ӈ������������������҄�Ԅ��������������Ӊ�����ӄ�.���������������������������������������������̈́���υ��������������΄����̆ˆ���Ʌ�������ǆ����Ȅ������������������ą�������������������������������������������������������������������������������
+��������������������������������������������������������� ����������������������������������	����������������������������������������������ȂɄʅ������ƅ����ȄǂȄ�����ʄ�
+���������ʄɅ���������������������ɇȄ�������Ȇǆ�������������̅�������ʈ����������������������������ʉ����ˆ��ʄ������������������������̄�����ͅ������΅�����������Ά���υ�����Ѕ��������������Ά�,�������������������������������������������ф�������������������څ� �������������������������������څ�������������������������������������������������������߆������������������������������������������������������������������������������������������������ބ�܄����݅�����������܅݅܆�܄����څ�������ׄ������������؄�������Ӈ��҅����������������҄��������������ͅ�����������͇��������������Ʉ�������������ǅ�������������ǅȃǇȂɆ����Ƅ��������ǈ������������Ƅ�������������ǅƃǄ������Ɔ�������������ǅ�������������Ǉȅ�������������������������������Ʌ�	��������������������������� ����������������������������������������������������������������������������������������������������������������������������
+��������������������������������������������������������������������������������������������������	����������������������������������������	��������Ą�ƄǄ�0�����������������������������������������������Ȅ������ʄ���������������������Ά�����̄�
+���������̈́����������������������΄�����ˆ����·���φ�
+���������фЄ��������������τ�������������Ή������ˇ�����������������������������ʇɄʂɄȄ������������������ąÄ����������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������� �������������������������������������������������������������������������������������������������������Å��������������������������������������������������������������È����ƅȉ����ƅń�
+���������Ɇ������������������ʅ�5����������������������������������������������������҅�������������������хЊ�"���������������������������������ӆ����Ԅ������������ЄόІς΄�������������υ��������������Έ�����̈́���������������������Ȅ�'��������������������������������������Å������������������Ä�������������������������������������������������������������������������������������������	�������������������������������������������������������������������	������������������������%�������������������������������������������	��������ȅ�����Ɇ���������������ʆ�&�������������������������������������Ʉ���������������������ʅ�����������������������ʄ��������ˆ������������������������ʅ��������������ˇ������˄������̈́����Ά�������͊����Ї������������������������������ф�������������̈́�����τ�<�����������������������������������������������������������Յ��������������؅� �������������������������������������������������߅��߄��������������������������'�������������������������������������������������������������������߄����������������������������݆ނ߇�"���������������������������������؆�������������������������Ӆ��������ӆ�"���������������������������������΄ͅ�����������������̅ˆ�������Ʌ���������������Ƅ����ƅ�����ȅ��������Ǆ��������������Ɔń��������������Ɇ������������������ǆ�����Ǆ��������Ǆ�����������������������Ǆ����������������Ǆ������ʄ�����˄������������������������� ��������������������������������������������������������������������	����������������������������������������������������������������������������������������	�����������������������������������������������������������������������5����������������������������������������������������ċ���ń�Ň�ņ�-��������������������������������������������̄��ˆ�������������͈̈��̅͂Ά͂΄��Ї��х��Ѕ�	��������΅͈�����������ˆ�)����������������������������������������ȅ������ˆ������ʌɂȅ�ƄǃƉ�������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������&�����������������������������������������������������������������������������Ď���Ä�!��������������������������������ŋ�������������Ƌ��������Ȅ������ǅ����Ȇ������Ɇ������������̄�	��������ͅ�$�����������������������������������Ѕ��ц�
+���������Ԉ��ф����������������τЅ�������������������΅���������������������������˄�˄�����������������������Ό��������ʄ�
+���������Ȅ����ƄǄ���ƅ������Ƅ�������Ą�
+���������Ä�������������������������������������������������������������������������������������������������&�������������������������������������������������������������������������������������������������������������������ʆ�������ȆǃƄǂȅǄ�����ʇ��������������Ʌ�������������������������ȅ�����ǆȄ������ʄ˂̄�
+���������̅������������������΄̓̆����ʅ˅�
+���������˄�!��������������������������������ЄυБ���τ�������҄���ф����ц�������ф������������������������ӄ�����������Ԉ���Մ�Մ�����Ԇӄ����׉�Մ�'��������������������������������������ބ��������ޅ݆�!������������������������������������������������������������������������߄��������������������ކ߅�������������������݇��������������߆�
+���������݊܇������������������������׈և����ք�������Ԅ��Ӊ҃фЄ�����������������τЅ�������������������������Ά̈́�������������������ʅ���Ǆ�ɅȆ����������������������Ʉ� �������������������������������ŅƉ�Ɔ��������Ƅ�������ȅǆ����ƆǄ��ȅ�������Ƅ���������������Ʌ�Ɉȃ������������������� ���������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������
+������������������������������Ä�����������ÄĂŅĆ�������������������������Ą���������ņ���������������ȇɊ�������Ȅ�����ʆ�ʅ���������������̆����������������ͅ�����υ�������Άυ�������������������ʄ�
+���������˅����˄ʄ�����ȅɄȆ�Ȅ��Ʌ�������Ȇ������ƈ��������������������������ĆÄ����������������������������������������������������������������������������������������������������������
+�������������������������������������������������������������������������&�����������������������������������������������������������������������������������������������������������������������������������������5����������������������������������������������������������������������������������$�����������������������������������������������������������
+������������������������Æ�����È�����Ç�����������������ǄƂń��������Ȅ������ǆ�Ƅ�	��������Ņ�����Ʉ�������������ʄ�����Ɇʊ˄�������������������������������΄��������τ������υ����х���������������х�τ������������χ��������ͅ���΅̈́��������������ˆ�%������������������������������������ʄ�$�����������������������������������Ąň���Ć���������������Å�����Ä�	�������������������������������������������������������������������������������������������������������������������������������
+�������������������������������������������������
+����������������Ʉ��ʊ˄ʄ�����������������������������ȇ�������ǄƃǄ����Ǆ��������������������Ɇ��Ȇ������������������������ˈ�	��������Ɇ������������̈́��͆̄��������̆�����̈́��������ф�����������Є���̈́���΅σЄ�������������҄�����ф�������������ӄ�����҄�����������Ӈ����������������ԅ���ӄ�"���������������������������������Ӆ�������ׄ���ք��������وڅ���و�ل������ۄ������܅݃܄������������ބ������߉��������������������������������������߆��������������������݆�����܄���݅������������߄������܆��ڄ�ڄ�����������؄ل؆����ׅ������Մ����Շ�Ն����Ԅ��ՄԄ�҈����ӆ҂ӄ���Є�������͆��������������������ˇ�˅ʄ���Ʌʄ˃ʄ��Ɇ�������ǅ������������ɄȉǄ��������������������ǆ�������ǅ������ȄɄ�Ƅ���������������ȆǊ�������ȅǅ�
+���������Ƅ��������������������������������� �����������������������������������������������������������	����������������������������������������������������������������������������������	��������������������������������������������������������������	�����������������������������������������Å�Å�	��������Ņ�
+���������Ä�������������������������Ƈ��Ǉ�����������Ȅ��������Ʌȇ�
+���������Ȅ��������˄ʃ˄������̄��̄ͅ˃̈́̆͂̅�������͆�������ʄ�������������ʇ�ʈ�ȅ��������������Ȅ�����������Ǆ���������������������Ĉń�Ä�����������Ƅ�������������������������������������������������������������
+��������������������������������������������������������������������	�����������������������������������������������������������������������������������������������������������������������������������������������������������
+�������������������������������������������
+������������������������������������������������������������������������������������Å���������������������������������Ä�����������������������������Ǆ�'��������������������������������������ņ����������������ɇ�������Ʉ�Ɇ���̄����ʄɆ����������������̈́�����̈́�������΄ς΅������΄͇��������������̈́���̄�������������ͅ�������������������ʅ�ʄ˄��������������Ʉ��������������ʅɈ�����ȅǄ�����ƌǂƈŉĄ�Ć������������Ä�����������������������������������������������������������������������������������������������������������������������������������������	���������������	����������������ȂǄȄɅ��������������Ʉ�
+���������˅�����˅ʆ�̆ˉʅ�ʄ˅�˅̅ˈ���Ά̈́�����ˊ�����˄�	��������̄̈́�����������͋�˅̄���������������������υ�����������΄�І����������������������������ф��������������ӆ�
+���������Մ���������������������������Ԅ��������ՄևՂք������������������������������Ԇ�����؄�ք�������������������څ����لڅق؅ׄ������ل�������܄ۆ�ۆ��������ބ����݄�����ބ߂ކ݆�������������������݆�������ޅ����ۅ܋�����ڄ�����������������������������څ������������������օ����ք�
+���������օ�������������ԄՂԄ������������������ӄ҅ч�
+���������ЄхЅ�΄�����̆̈́̄̈́�
+���������ˈʃ˄�	��������˄̅���˄���Ʌʅ�����ˇ������������������˅ʄ������������������Ȅ�������ȅ������������ʄ������Ʉ��������ʄɇ����ȄǅȆ������Ʉ����������������������� �������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������	���������	���������	���������������Ç����������������������(���������������������������������������ǇƆǃƆ�
+���������ǄƄǅ�����Ɇ������Ʌʋ����ʄˈ������ʇ˄��������Ɋ����ʅɆȇ��������ȅǂƅ��������������Ȅ��Ǆ�	��������ĄłĄÅ�������Ą����������������������������������������������������	����������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������
+���������������������������������������������������������������������������������������	�������������������������������������Ä�Ä����Ç�������Ņ�Æ��������Ãąń�ǄƆŅ���ćÂĄ������������������ȇɄȂɄʃɇ���ȅɂȇ�����ɋȄɈ���̆�ʈ�����̄͌̄�ʅˈ̄�	��������˄�͊̄ˈ������˄������������Ƅ����ȅ�
+���������ɄȂǆ���ȆǄ�����ƄǊƉ�Ç�������Ë�������ą�����������������������Ą��Ä���������������������������������������������������������������������������������������������������������������������������������������������������������������������������������Ɉ�˄�Ʉ���ʄɄ��������Ʌ�����Ʌʄ���˄ʂˇ̄˃̅�	��������˅����̄�̅�����������������������̅ˉ�˅�����΄͈�������̅�����̄��������̈́�	��������͈΅φ��������φ�������χ�����҄�����������������ӄԂӄ�ӄ��������������ԋ���������������ч�ӆ����ֆՄ������������������ӆ��������Նւׇ؅�
+���������؉������օ�
+���������֋�؈���ۅڂهڅ������܄ۂ܈ۃڄۅ����������������ۉ����ۄ܂ۅ���܈�
+���������؈�������ن�����������ׇ������׆�	��������ׄւՄւՄԄӎ҈Ӈ�	��������ԅ�������������҄�����Ӈ��������Մ�����������А�������������΅�����������ʅ˅ʄ���˄̄����̄�
+���������ʅ�������������Ʉ�ɇʉ������Ʌ�
+���������Ʉ���ʄ�����ʄ���Ʌ�Ʉʅ���������������������������ȄɅ�ǅ�������Ʉ������������������������� �������������������������������������������������������������������������������������������������������������������������������������������������������	������������������������������������������������������������������������������������È�
+���������ć����ń�	��������ƅ�Ƅ�ƄłƄ��������Ȇ����Ʉ����ȄɆ����Ʌ�������ʅ�	��������Ʉ������Ȅ���ǄȂɇ�
+���������ȉǆƃǇ�����ǅƇ�������ƅ�	��������Ņ���ǅ�����������Ƅ������Ì���������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������Ä���
+���������������������ÄÉĂÆą�	��������Ć��������������Å����ą�������Å���ć�ą���ǆƆǇ����Ȅ��Ǆ�
+���������Ƅǆ���ȄɂȄɄ�����Ɇ���Ʉ�Ɇ��������������˄�ˆʅ���������������������˅̄ˆʆ�����Ʌ�ˇ���ǎȃɄ���Ƅ�������Ȇɏȅ�������ÄĄ�Ƅ�	��������Ņ�����Ç��������Ą�ĉ�	��������������ÄĄ���
+������������������������������������������������������������������������������������������������������������������������������������	���������˅������˅ʃɄ�������ɋʆ�	��������ʄ�	��������ʆ˂ʏɃʅ�������������������ˎ̇���������������΅̈́΅̓Ά��τ�������̄���͆��΄����̈́������������χЅς΅������������������Єφ�	��������҇ф҄�������������ф҉�������������ф�����������������������ф������ӆ��ԋӉ�ӄ����օՅֆ�����������������ׄ����Յև��ׄ؃ׄ�	��������؄ى؄�
+���������ڄ�ډق؆�؄�
+���������ۄ܂ۄ܂ۄډن�����ڄۅ�و؂م؄�����������������؇������������؄�؅����Յ����ֆ�����ԅ�
+���������҄ф҅�����������Յ��������ф���҄�	��������Ԅ���ф��������ІσЄ���̈́̃̈́����΅͈̅����ʅ˂̄��������ˆ̅ˇ�ˆ�Ʌ�Ɇ����ʄ�	��������ʄɊ�����̊����͇̄��˄ʄ�	��������Ʉ�˅̇���ʆˇ����ʇˇ̃������������������� ���������������������������������������������������������������������������������������������������	����������������������������������
+�������������������������������������������������������������������������������������ĊÎ�����������Ë������
+���������Å����ƆǍ�����������Ȉ������������ɅȃǋƃǄ�����ƅǂȅɍȆǅƃǆ�ǆ���Ȅ�����ńƇǄƂǄ�������ŅƋ���ńą�����������������������������������������������������������������������������������������������
+���������������������������������������������
+��������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������Æ�ÍăÆ������ÆČ�Ä�����ÇÄď������ą�	��������ØĂÎÂĄ�
+���������ȅ�����ǋ�ɄȊɄ�����������ʆɋ���ȄɄ�	��������˄���������������ʈ��������������ˋ����ǇȌɅ�������ǅ������ȇ�ƆǂƆńƃń�ŅĄÂÇąņć����������������������������������������������������������������������������������������	��������������������������������������������������������������������������������̍˄̇˅���Έ̈́΂͆����ˆ̃˅ʊɋ����˅̅�	��������ɇʌ˅̅�������������������Ί̈́����͇�����υ��������������υ�����̅˃̄�τ�����̈́�����Άφ������������������Ӈ҄ц�����������Ӊҋх����Ў������҉�ԉ���Ӌ҆�҆��Ӊ��������х����Ѕ�
+���������ԅ�����׆����֋�؄ׅ����؅������������ن،ׄ������ׅ�	��������چلڅ���ن�	��������ىڄ����׈؄������ن�������ׄ؅���ׄ؈���ׅ�Մ։Շ��������ӅԄ��������ԆӆԂӆ�
+���������υ����҆�������ф�
+���������Ή�������ͅ��������΄���͈�̈́̆���̈́����̉ͅ˂̆����͈̄̈́΄����̈́����̇ˆ����͈������������������͊����̎˃ʄɌ��ʊ˂̄�΄�Ά������������������� ����������������������������������������	�����������
+�����������������������������������������������������������������������������������������������������������������������������������Ä�	������������������������Æ�Ä���ČŇĖņƈŇ������������ǌƃŒąņ���Ƅ������ňƅńƕņĆ����Æ����������������������������������������������������������������������������������������������
+���������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������Ì��������Ä���Ä����������Ć����ÇÆăÄÈăÇ�ć��ÇăÈ��������ņ����Ƈ����Ȇ�������ƄǂƋ�ƆǂȄǄƂǇȈǂȊɇ�	��������ǄƇǂȈǄȄ������ȅ���ɍ���ȌǄ������������ņąłĊÄ�Ä�ąÃ���Æ���������������	������������������������������������������
+�����������������������������������������������������������������������������������������������������������˅͉̃̈́̃΄͂̄ˊ����̅ˉ̈˃̇͊�͆̋͂΄̈́�ˋ���Ά�����΅�����ΆςΆ������·͊̊ͅ�̄ͅ˄̅�΄̓̊�������͒ΆυЊω�ψ����Ѕτ�ч���҅�҅х�����������҄��������ф��������щІ�҄�������ц҂ӄ҄ф�ф���ԅՂքՇ֊ׄփՅփՊ�ՄօׄւՄք�؄�����׌�
+���������Շ����Ն�׊փׇֈ�֕׆ւ׈�	��������Յ���օՂԊӇҊӃҋӂҋц�	��������ϋ�ψЅφ�ч����Ά��������ψ�����̄˅�����͇̂̈́΅͈�����Ύ������͋΅υ�����ͅ�φ��΄���͈΅͍̃˄��������ˋʂɆȇɄʈˆʄˈ�������������������������� ������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������Ä���ÄË�Ņ��������ĈÃĊÆ��ĆŅ�ŅĄÃ�����Æ������ąÇ�������������ÅÄ���������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������	���������������������������������������������������������������������Ä���������Ê��ËÄ���	��������ÆĄÈÆÇ����������������ÄĂÉĂŋċ����Ǆ������Đņ���ƎǇƂńć�����ń�Ǉ������ȋǇ�����ĉÃąŇăņ������ćŐĄłąÅ�������������������������������������������������������������������������������������������������������������������������������������̄����χ΄̂ͅ˄����Ύ͉͎͑̇̂Έ�����φ���΄͈̄�����̈́΅υІυ�����������̈́·��Ϗ�φЂχЂύ�������τЄ��������ЅфЈω΄�Έψ΄ϋ�τЉτ�х����Љы�������щ������������҆ӂҍу҈�����������������ч҅���ӗԆ�։��������ՅԊՄԇՍփׅօՄ�������҄Ӄԅ��ՄԃՆ֊ՄԄӂ҄������҇�ԅ�����ՄփՇԄՇԂӄԂՄ�	��������҄������Є�Ѕ��������҅х�φΆψ΅τЂь������чЕϊ΅ͅ������������υΆ�΅ͅ�͇�χ΃υ΄��������̄�·����͈̉ː����̄˂ʇ������͌̎̈́�˄̅�	��������������������������� �������������������������������������������������������������������������������������������	�������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������	����������������������	��������Î���������������������������������ÂĄÂĒÌ�ÔÜÄĉÎÄĆłĊÇĉ�	��������È���ÅĄÌÄ�������Ì�������������������������������������������������������������������
+������������
+��������������������������������ˊ̈̍̈́ͅ�������Ή������щ҅х�����ЇτЇ���ϑ΍̈́Ό̓΄�ЇϊΌτΈφЄσ΅�������Όυ΄χ�̈́�����ЅхЊσЅϋΈ͂ΊςІ�����ЄωІϊЏ�ЄυЈςΌφІь���҆�ԅӅ҄Ӧ҄Ӧ҆ӂԈӆ҇ш҂ӈ�ӈ�ӆ҄�҆Ӎ҆�������ҒӅ҂щ҉ӄ҃ф�Ӑ҅������Ѝχ��Єψ΄���΄υЇφ�цЉ�ЍτЇ�΄ςΎ�����͈̄���͆΂χΐ̈́�����ˆ̇̈́̉������͔΍�Η�����˄ʈɂʄ������������������� ���������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������
+����������������������������������������������������������������������������������������������	������������ÂĄÂđÆĘŌĉÖÊĂÆĆ�ÉÓ�������������������������������������������������������������΅̓ΌϛΎ�΄͆Ά͂̍��͋����΄��ύ�	��������ч�υЊ���ώ�хЕτ΅͈͍̃ΆσЇσЌϓ�шІ��ω�����͍�φ�ώΊσБτ΂͕΋υЊ�Й��������І����ђЇόЅ�����шЅ�Іш҉ӉԃӐԅՊ֒ՊԅӍ����҇Ӈ�ՊԎӉҝӃ҆ш҈шЍςΉϊЂыЗω΃͌����ϔ΂͈΅̓̆ˉ̄͊������χ΍͋Όφ·�������������������� ����˼��������������������������������������������������������������������������������Ӽ���������������ѿ��������������������������������������������������������������������������������������τФϡПώЊї��ϚЋχАϟЇѮЃψЦϋΆ͂΄͔ΌϊІѦТϦоєЂψ������МτЧ�Υ��������ϊη�������������������200 1508872
+<!doctype html>
+<html lang="en">
+  <head>
+    <script type="module">import { injectIntoGlobalHook } from "/@react-refresh";
+injectIntoGlobalHook(window);
+window.$RefreshReg$ = () => {};
+window.$RefreshSig$ = () => (type) => type;</script>
+
+    <script type="module" src="/@vite/client"></script>
+
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Lane D dev harness — stage + sponsor waves (isolated)</title>
+    <style>
+      html, body, #root { margin: 0; height: 100%; background: #050607; }
+    </style>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/__dev__/D/main.tsx"></script>
+  </body>
+</html>
+200 706
+[0m
+[0m$ [0mrtk curl -s -o /dev/null -w 'brands-json %{http_code} %{size_download}\n' http://localhost:5104/web/atlas-brands.json; rtk curl -s -o /dev/null -w 'brands-png %{http_code} %{size_download}\n' http://localhost:5104/web/atlas-brands.png; rtk curl -s -o /dev/null -w 'hdr %{http_code} %{size_download}\n' http://localhost:5104/env/studio_small_08_1k.hdr
+brands-json 200 5871
+brands-png 200 499712
+hdr 200 1508872
+[0m
+[0m← [0mEdit src/canvas/stage/logos.ts
+Index: /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/canvas/stage/logos.ts
+===================================================================
+--- /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/canvas/stage/logos.ts
++++ /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/canvas/stage/logos.ts
+@@ -56,9 +56,10 @@
+   uv: AtlasUv
+ }
+ 
+ export interface AtlasManifest {
+-  url: string
++  /** Texture image URL (e.g. /web/atlas-brands.png). */
++  textureUrl: string
+   entries: Record<string, AtlasEntry>
+ }
+ 
+ interface RawAtlasLogo {
+
+[0m
+[0m← [0mEdit src/canvas/SponsorField.tsx
+Index: /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/canvas/SponsorField.tsx
+===================================================================
+--- /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/canvas/SponsorField.tsx
++++ /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/canvas/SponsorField.tsx
+@@ -81,9 +81,9 @@
+ 
+ function SponsorInner({ manifests, progress, waves = 'both', streaks, compact }: InnerProps) {
+   const viewportWidth = useThree((s) => s.size.width)
+   const gl = useThree((s) => s.gl)
+-  const [texW1, texW2] = useTexture([manifests.w1.url, manifests.w2.url])
++  const [texW1, texW2] = useTexture([manifests.w1.textureUrl, manifests.w2.textureUrl])
+ 
+   const isCompact = compact ?? viewportWidth < 768
+   const coarsePointer = useMemo(
+     () =>
+
+[0m
+[0m← [0mEdit src/canvas/stage/logos.ts
+Index: /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/canvas/stage/logos.ts
+===================================================================
+--- /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/canvas/stage/logos.ts
++++ /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/canvas/stage/logos.ts
+@@ -91,20 +91,20 @@
+   'ia-financial-group': 1600 / 874,
+   'empire-life': 1280 / 407,
+ }
+ 
+-function fallbackManifest(url: string, ids: string[]): AtlasManifest {
++function fallbackManifest(textureUrl: string, ids: string[]): AtlasManifest {
+   const entries: Record<string, AtlasEntry> = {}
+   for (const id of ids) {
+     // Full-texture fallback: geometry still aspect-correct; padding differs.
+     entries[id] = { aspect: FALLBACK_ASPECTS[id] ?? 2, uv: { u0: 0, v0: 0, u1: 1, v1: 1 } }
+   }
+-  return { url, entries }
++  return { textureUrl, entries }
+ }
+ 
+-async function loadOne(url: string, ids: string[]): Promise<AtlasManifest> {
+-  const res = await fetch(url)
+-  if (!res.ok) throw new Error(`HTTP ${res.status} for ${url}`)
++async function loadOne(jsonUrl: string, ids: string[]): Promise<AtlasManifest> {
++  const res = await fetch(jsonUrl)
++  if (!res.ok) throw new Error(`HTTP ${res.status} for ${jsonUrl}`)
+   const raw = (await res.json()) as RawAtlas
+   const entries: Record<string, AtlasEntry> = {}
+   for (const logo of raw.logos) {
+     entries[logo.id] = {
+@@ -112,11 +112,11 @@
+       uv: logo.content_uv_bl,
+     }
+   }
+   for (const id of ids) {
+-    if (!entries[id]) throw new Error(`Atlas ${url} missing logo ${id}`)
++    if (!entries[id]) throw new Error(`Atlas ${jsonUrl} missing logo ${id}`)
+   }
+-  return { url, entries }
++  return { textureUrl: jsonUrl.replace(/\.json$/, '.png'), entries }
+ }
+ 
+ /** Fetch both atlas manifests; per-atlas fallback keeps one wave alive. */
+ export async function loadAtlasManifests(): Promise<{ w1: AtlasManifest; w2: AtlasManifest }> {
+
+[0m
+[0m$ [0mnode docs/phase4/qa/D/capture-D.mjs 2>&1 | tail -12
+01-stage-standin-1440: ok
+06-info-standin-1440: ok
+07-wave1-midflight-1440: ok
+07-wave1-settled-1440: ok
+08-wave2-settled-1440: ok
+07-wave1-midflight-390: ok
+07-wave1-settled-390: ok
+08-wave2-settled-390: ok
+capture-D: all stops captured, console-clean
+[0m
+[0m✗ [0mRead docs/phase4/qa/D/07-wave1-settled-1440.png failed
+[91m[1mError: [0mFile not found: /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/docs/phase4/qa/D/07-wave1-settled-1440.png
+[0m✗ [0mRead docs/phase4/qa/D/07-wave1-midflight-1440.png failed
+[91m[1mError: [0mFile not found: /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/docs/phase4/qa/D/07-wave1-midflight-1440.png
+[0m
+[0m$ [0mrtk ls -la docs/phase4/qa/D/ && rtk find docs/phase4/qa -name '*.png' -newer package.json 2>/dev/null | head
+644  ASSETS-REPORT.md  10.1K
+644  brands-persol-edge@400-on-void.png  4.4K
+644  brands-persol-edge@400.png  3.9K
+644  brands-tiffany-edge@400-on-void.png  8.1K
+644  brands-tiffany-edge@400.png  9.8K
+644  capture-D.mjs  2.3K
+644  fringe-contact-sheet.png  38.6K
+644  insurers-ia-edge@400-on-void.png  14.1K
+644  insurers-ia-edge@400.png  17.1K
+644  insurers-mbc-edge@400-on-void.png  9.6K
+644  insurers-mbc-edge@400.png  11.3K
+644  verify-glbs-output.txt  2.6K
+644  verify-glbs.mjs  2.7K
+17F 5D:
+
+docs/phase4/qa/A/ tokens-1440.png tokens-390.png
+docs/phase4/qa/C/ _fold-y-default.png
+docs/phase4/qa/D/ brands-persol-edge@400-on-void.png brands-persol-edge@400.png brands-tiffany-edge@400-on-void.png brands-tiffany-edge@400.png fringe-contact-sheet.png insurers-ia-edge@400-on-void.png insurers-ia-edge@400.png insurers-mbc-edge@400-on-void.png insurers-mbc-edge@400.png
+docs/phase4/qa/E/ rails-t0-1440.png rails-t6-1440.png white-act-1440.png
+docs/phase4/qa/F/ services-1440-full.png services-1440-top.png
+[0m
+[0m$ [0mrtk ls "/Users/admin/Desktop/BUISNESS/" 2>&1; rtk find /Users/admin/Desktop/BUISNESS -maxdepth 2 -name '*%20*' 2>/dev/null | head
+ClearOptiq/
+Comtrade Redesign/
+EyeQ Vision Care/
+EyeQ%20Vision%20Care/
+... (1 filtered)
+[+1 hidden: rtk recall 820c99b84a02]
+[0m
+[0m← [0mEdit docs/phase4/qa/D/capture-D.mjs
+Index: /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/docs/phase4/qa/D/capture-D.mjs
+===================================================================
+--- /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/docs/phase4/qa/D/capture-D.mjs
++++ /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/docs/phase4/qa/D/capture-D.mjs
+@@ -3,12 +3,14 @@
+ // QA stops into docs/phase4/qa/D/. Usage:
+ //   npx vite --port 5104 --strictPort &
+ //   node docs/phase4/qa/D/capture-D.mjs
+ // Fails non-zero on console errors or missing WebGL.
++import { fileURLToPath } from 'node:url'
++import { dirname, join } from 'node:path'
+ import { chromium } from '@playwright/test'
+ 
+ const BASE = 'http://localhost:5104/dev-D.html'
+-const OUT = new URL('.', import.meta.url).pathname
++const OUT = `${dirname(fileURLToPath(import.meta.url))}/`
+ 
+ const STOPS = [
+   // [name, query]
+   ['01-stage-standin-1440', '?p=0.05&waves=w1&standin=1'],
+
+[0m
+[0m← [0mEdit docs/phase4/qa/D/capture-D.mjs
+Index: /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/docs/phase4/qa/D/capture-D.mjs
+===================================================================
+--- /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/docs/phase4/qa/D/capture-D.mjs
++++ /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/docs/phase4/qa/D/capture-D.mjs
+@@ -52,9 +52,9 @@
+ if (!webgl) {
+   console.error(`${name}: WebGL unavailable`)
+   failures++
+ }
+-await page.screenshot({ path: `${OUT}${name}.png` })
++await page.screenshot({ path: join(OUT, `${name}.png`) })
+ if (errors.length > 0) {
+   console.error(`${name}: console errors:\n  ${errors.join('\n  ')}`)
+   failures++
+ } else {
+
+[0m
+[0m$ [0mrtk mv "/Users/admin/Desktop/BUISNESS/EyeQ%20Vision%20Care/V1/docs/phase4/qa/D/"*.png docs/phase4/qa/D/ && rtk rmdir -p "/Users/admin/Desktop/BUISNESS/EyeQ%20Vision%20Care/V1/docs/phase4/qa/D" 2>/dev/null; rtk ls docs/phase4/qa/D/
+01-stage-standin-1440.png  89.2K
+06-info-standin-1440.png  89.6K
+07-wave1-midflight-1440.png  118.6K
+07-wave1-midflight-390.png  70.8K
+07-wave1-settled-1440.png  147.3K
+07-wave1-settled-390.png  73.6K
+08-wave2-settled-1440.png  184.2K
+08-wave2-settled-390.png  86.8K
+ASSETS-REPORT.md  10.1K
+brands-persol-edge@400-on-void.png  4.4K
+brands-persol-edge@400.png  3.9K
+brands-tiffany-edge@400-on-void.png  8.1K
+brands-tiffany-edge@400.png  9.8K
+capture-D.mjs  2.4K
+fringe-contact-sheet.png  38.6K
+insurers-ia-edge@400-on-void.png  14.1K
+insurers-ia-edge@400.png  17.1K
+insurers-mbc-edge@400-on-void.png  9.6K
+insurers-mbc-edge@400.png  11.3K
+verify-glbs-output.txt  2.6K
+verify-glbs.mjs  2.7K
+[0m
+[0m→ [0mRead docs/phase4/qa/D/07-wave1-settled-1440.png
+[0m→ [0mRead docs/phase4/qa/D/07-wave1-midflight-1440.png
+[0m→ [0mRead docs/phase4/qa/D/07-wave1-settled-390.png
+[0m→ [0mRead docs/phase4/qa/D/08-wave2-settled-1440.png
+[0m→ [0mRead docs/phase4/qa/D/07-wave1-midflight-390.png
+[0m→ [0mRead docs/phase4/qa/D/01-stage-standin-1440.png
+[0m→ [0mRead docs/phase4/qa/D/ASSETS-REPORT.md
+[0m→ [0mRead docs/phase4/qa/D/01-stage-standin-1440.png
+[0m→ [0mRead docs/phase4/qa/D/ASSETS-REPORT.md
+[0m→ [0mRead docs/phase4/qa/D/ASSETS-REPORT.md
+[0m
+[0m← [0mEdit src/canvas/stage/slots.ts
+Index: /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/canvas/stage/slots.ts
+===================================================================
+--- /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/canvas/stage/slots.ts
++++ /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/canvas/stage/slots.ts
+@@ -102,53 +102,64 @@
+   /** Fit-box the logo aspect-fits into (w × h, metres). */
+   box: [number, number]
+ }
+ 
+-// W1 settled formation: ~1.1m arc, 3 depth layers (front/mid/back), −8° tilt.
++// W1 settled formation: ~1.1m shallow-bowl arc, 3 depth layers
++// (front/mid/back), −8° tilt. Shallow rows leave the lower frame open so all
++// 16 planes read together once Wave 2 settles underneath (B7).
+ // Order: Maui Jim, Ray-Ban | Prada, Miu Miu, Persol | Oakley, Tiffany, Versace.
+ const W1_CELLS: LayoutCell[] = [
+-  { x: -0.33, y: 0.1, z: 0, box: [0.3, 0.16] },
+-  { x: 0.03, y: 0.1, z: 0, box: [0.3, 0.16] },
+-  { x: -0.4, y: -0.08, z: -0.15, box: [0.26, 0.14] },
+-  { x: -0.1, y: -0.08, z: -0.15, box: [0.26, 0.14] },
+-  { x: 0.2, y: -0.08, z: -0.15, box: [0.26, 0.14] },
+-  { x: -0.32, y: -0.26, z: -0.3, box: [0.24, 0.12] },
+-  { x: 0, y: -0.26, z: -0.3, box: [0.24, 0.12] },
+-  { x: 0.32, y: -0.26, z: -0.3, box: [0.24, 0.12] },
++  { x: -0.33, y: 0.16, z: 0, box: [0.28, 0.15] },
++  { x: 0.03, y: 0.16, z: 0, box: [0.28, 0.15] },
++  { x: -0.4, y: 0.0, z: -0.15, box: [0.26, 0.14] },
++  { x: -0.1, y: 0.0, z: -0.15, box: [0.26, 0.14] },
++  { x: 0.2, y: 0.0, z: -0.15, box: [0.26, 0.14] },
++  { x: -0.32, y: -0.14, z: -0.3, box: [0.24, 0.12] },
++  { x: 0, y: -0.14, z: -0.3, box: [0.24, 0.12] },
++  { x: 0.32, y: -0.14, z: -0.3, box: [0.24, 0.12] },
+ ]
+ 
+-// W1 compact (mobile <768px): flattened to 2 rows, 2 depth layers, 0.7× scale.
++// W1 compact (mobile <768px): 4 cols × 2 rows, narrow boxes, 2 depth layers.
++// Narrow pitch keeps every settled mark inside a 390px frame (no overflow);
++// thin wordmarks stay ≥90px wide. See D-camera-notes request for the matching
++// mobile camera distance this layout is framed against.
+ const W1_CELLS_COMPACT: LayoutCell[] = [
+-  { x: -0.24, y: 0.06, z: 0, box: [0.21, 0.112] },
+-  { x: -0.08, y: 0.06, z: 0, box: [0.21, 0.112] },
+-  { x: 0.08, y: 0.06, z: 0, box: [0.21, 0.112] },
+-  { x: 0.24, y: 0.06, z: 0, box: [0.21, 0.112] },
+-  { x: -0.24, y: -0.1, z: -0.12, box: [0.182, 0.098] },
+-  { x: -0.08, y: -0.1, z: -0.12, box: [0.182, 0.098] },
+-  { x: 0.08, y: -0.1, z: -0.12, box: [0.182, 0.098] },
+-  { x: 0.24, y: -0.1, z: -0.12, box: [0.182, 0.098] },
++  { x: -0.2025, y: 0.075, z: 0.12, box: [0.135, 0.1] },
++  { x: -0.0675, y: 0.075, z: 0.12, box: [0.135, 0.1] },
++  { x: 0.0675, y: 0.075, z: 0.12, box: [0.135, 0.1] },
++  { x: 0.2025, y: 0.075, z: 0.12, box: [0.135, 0.1] },
++  { x: -0.2025, y: -0.075, z: 0.02, box: [0.135, 0.085] },
++  { x: -0.0675, y: -0.075, z: 0.02, box: [0.135, 0.085] },
++  { x: 0.0675, y: -0.075, z: 0.02, box: [0.135, 0.085] },
++  { x: 0.2025, y: -0.075, z: 0.02, box: [0.135, 0.085] },
+ ]
+ 
+-// W2 settled formation: 0.7m, uniform baseline + scattered second row.
++// W2 settled formation: tight 5+3 caption band BELOW W1 (own rhythm/layout:
++// shorter travel, tighter cadence, forward depth, dimmer tier). Small boxes
++// (≈107px wide @1440) keep clear air between the two constellations.
+ // Order: Sun Life, Medavie Blue Cross, Manulife, GreenShield, Canada Life |
+ //        Desjardins, IA Financial Group, Empire Life.
+ const W2_CELLS: LayoutCell[] = [
+-  { x: -0.32, y: -0.02, z: -0.05, box: [0.15, 0.085] },
+-  { x: -0.16, y: -0.02, z: -0.05, box: [0.15, 0.085] },
+-  { x: 0, y: -0.02, z: -0.05, box: [0.15, 0.085] },
+-  { x: 0.16, y: -0.02, z: -0.05, box: [0.15, 0.085] },
+-  { x: 0.32, y: -0.02, z: -0.05, box: [0.15, 0.085] },
+-  { x: -0.2, y: -0.15, z: -0.02, box: [0.15, 0.085] },
+-  { x: 0.03, y: -0.16, z: -0.08, box: [0.15, 0.085] },
+-  { x: 0.24, y: -0.14, z: -0.02, box: [0.15, 0.085] },
++  { x: -0.3, y: -0.26, z: -0.03, box: [0.085, 0.05] },
++  { x: -0.15, y: -0.26, z: -0.03, box: [0.085, 0.05] },
++  { x: 0, y: -0.26, z: -0.03, box: [0.085, 0.05] },
++  { x: 0.15, y: -0.26, z: -0.03, box: [0.085, 0.05] },
++  { x: 0.3, y: -0.26, z: -0.03, box: [0.085, 0.05] },
++  { x: -0.17, y: -0.33, z: -0.06, box: [0.085, 0.05] },
++  { x: 0, y: -0.33, z: -0.01, box: [0.085, 0.05] },
++  { x: 0.17, y: -0.33, z: -0.06, box: [0.085, 0.05] },
+ ]
+ 
+-const W2_CELLS_COMPACT: LayoutCell[] = W2_CELLS.map((c) => ({
+-  x: c.x * 0.72,
+-  y: c.y * 0.8,
+-  z: c.z + 0.18, // pull toward camera so settled marks stay legible @390px
+-  box: [c.box[0] * 0.72, c.box[1] * 0.72] as [number, number],
+-}))
++const W2_CELLS_COMPACT: LayoutCell[] = [
++  { x: -0.1875, y: -0.2, z: 0.09, box: [0.13, 0.06] },
++  { x: -0.0625, y: -0.2, z: 0.09, box: [0.13, 0.06] },
++  { x: 0.0625, y: -0.2, z: 0.09, box: [0.13, 0.06] },
++  { x: 0.1875, y: -0.2, z: 0.09, box: [0.13, 0.06] },
++  { x: -0.1875, y: -0.28, z: 0.06, box: [0.13, 0.06] },
++  { x: -0.0625, y: -0.28, z: 0.06, box: [0.13, 0.06] },
++  { x: 0.0625, y: -0.28, z: 0.06, box: [0.13, 0.06] },
++  { x: 0.1875, y: -0.28, z: 0.06, box: [0.13, 0.06] },
++]
+ 
+ const W1_CELLS_COMPACT_NEAR: LayoutCell[] = W1_CELLS_COMPACT.map((c) => ({
+   ...c,
+   z: c.z + 0.18,
+
+[0m
+[0m✗ [0mEdit src/canvas/stage/slots.ts failed
+[91m[1mError: [0mCould not find oldString in the file. It must match exactly, including whitespace, indentation, and line endings.
+[0m✱ [0mGrep "W1_CELLS|W2_CELLS|COMPACT|NEAR|箱"[90m in src/canvas/stage · 6 matches[0m
+[0m→ [0mRead src/canvas/stage/slots.ts[90m [limit=65, offset=104][0m
+[0m→ [0mRead src/canvas/stage/slots.ts[90m [offset=168][0m
+[0m
+[0m$ [0mrtk ls -la docs/phase4/requests/ && rtk md5 src/canvas/stage/slots.ts && rtk date
+644  B-film-integration.md  2.4K
+644  C-services-tsx-syntax.md  498B
+644  D-services-tsc.md  1.2K
+644  E-build-blocker-sponsorfield.md  726B
+644  E-lenses-usecaps.md  614B
+644  F-redirects.md  1.5K
+MD5 (src/canvas/stage/slots.ts) = 3e8b7a80782f8bdec33f3f2c22833f56
+Sun Sep 27 21:05:49 EDT 2026
+[0m
+[0m→ [0mRead docs/phase4/requests/B-film-integration.md
+[0m→ [0mRead docs/phase4/requests/E-build-blocker-sponsorfield.md
+[0m
+[0m$ [0mrtk ls -la src/components/canvas/ src/components/dom/ 2>&1; echo ---; rtk ls src/canvas/ 2>&1
+644  API.md  4.8K
+644  CameraRig.tsx  2.5K
+644  Effects.tsx  2.3K
+644  FilmCanvas.tsx  3.3K
+644  LensPortal.tsx  5.0K
+644  BookingCTA.tsx  1.7K
+644  ChapterOverlay.tsx  6.9K
+644  Footer.tsx  2.3K
+644  Header.tsx  5.4K
+644  LogoRails.tsx  12.5K
+644  Scrims.tsx  590B
+644  Sections.tsx  11.6K
+644  SkipLinks.tsx  1.6K
+644  StoreBits.tsx  2.4K
+644  WhiteSection.tsx  1.6K
+644  index.ts  820B
+644  lane-e.css  27.8K
+... (2 filtered)
+[+2 hidden: rtk recall 0467057374fc]
+---
+rigs/
+stage/
+CaseRig.tsx  3.2K
+GlassesRig.tsx  6.8K
+SceneStage.tsx  6.4K
+SponsorField.tsx  8.7K
+[0m
+[0m→ [0mRead src/components/canvas/API.md
+[0m
+[0m$ [0mrtk ls -la src/motion/ src/store/ 2>&1; rtk head -30 src/components/canvas/FilmCanvas.tsx 2>&1
+644  chapters.ts  9.5K
+644  lenis.ts  2.2K
+644  masterTimeline.ts  2.4K
+644  progress.ts  1.9K
+644  tiers.ts  1.7K
+644  useFilmStore.ts  1.5K
+... (2 filtered)
+[+2 hidden: rtk recall d2e28badcb64]
+// EyeQ Vision Care — ONE persistent <Canvas>, Home-only (Lane B, step 4).
+// Composition order (§7.3): children (SceneStage → CaseRig → GlassesRig →
+// SponsorField → LensPortal, composed by the parent) → CameraRig → Effects.
+// R3F reads filmProgress in useFrame and mutates refs (never setState).
+// RAF gating: offscreen (IO) or veil-full (handoff) → frameloop 'never'
+// (prove offscreenRunningCount:0 in profile). Route change = full dispose.
+
+import { Suspense, useEffect, useRef, useState, type ReactNode } from 'react'
+import * as THREE from 'three'
+import { Canvas } from '@react-three/fiber'
+import { CameraRig } from './CameraRig'
+import { Effects } from './Effects'
+import { resolveTier } from '../../motion/tiers'
+import { filmProgress, subscribeFilmProgress } from '../../motion/progress'
+import { tokens } from '../../tokens'
+
+const INITIAL_POS: [number, number, number] = [0.216, 0.12, 0.384]
+
+export function FilmCanvas({ children }: { children?: ReactNode }) {
+  const wrapRef = useRef<HTMLDivElement | null>(null)
+  const [visible, setVisible] = useState(true)
+  const [veilFull, setVeilFull] = useState(false)
+  const [hidden, setHidden] = useState(
+    typeof document !== 'undefined' ? document.hidden : false,
+  )
+  const spec = resolveTier()
+
+  useEffect(() => {
+    const el = wrapRef.current
+    if (!el || typeof IntersectionObserver === 'undefined') return
+[0m
+[0m→ [0mRead src/motion/progress.ts
+[0m
+[0m# [0mTodos
+[✓] Load skills + context7 drei API check
+[✓] Write src/canvas/stage/* pure modules
+[•] Write SceneStage + SponsorField; align to Lane B API (filmProgress shape, no fog/exposure writes, wave prop)
+[ ] Fix compact layouts (no overflow, legibility) + harness (ui param, mobile cam, harness-owned exposure/fog)
+[ ] Serve :5104, Playwright screenshots 1440+390 into docs/phase4/qa/D/, inspect
+[ ] npm run build green (or blocked-by-F documented), stop server, PHASE4-D-DONE summary
+[0m
+[0m← [0mEdit src/canvas/stage/slots.ts
+Index: /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/canvas/stage/slots.ts
+===================================================================
+--- /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/canvas/stage/slots.ts
++++ /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/canvas/stage/slots.ts
+@@ -122,16 +122,16 @@
+ // Narrow pitch keeps every settled mark inside a 390px frame (no overflow);
+ // thin wordmarks stay ≥90px wide. See D-camera-notes request for the matching
+ // mobile camera distance this layout is framed against.
+ const W1_CELLS_COMPACT: LayoutCell[] = [
+-  { x: -0.2025, y: 0.075, z: 0.12, box: [0.135, 0.1] },
+-  { x: -0.0675, y: 0.075, z: 0.12, box: [0.135, 0.1] },
+-  { x: 0.0675, y: 0.075, z: 0.12, box: [0.135, 0.1] },
+-  { x: 0.2025, y: 0.075, z: 0.12, box: [0.135, 0.1] },
+-  { x: -0.2025, y: -0.075, z: 0.02, box: [0.135, 0.085] },
+-  { x: -0.0675, y: -0.075, z: 0.02, box: [0.135, 0.085] },
+-  { x: 0.0675, y: -0.075, z: 0.02, box: [0.135, 0.085] },
+-  { x: 0.2025, y: -0.075, z: 0.02, box: [0.135, 0.085] },
++  { x: -0.2025, y: 0.075, z: 0, box: [0.135, 0.1] },
++  { x: -0.0675, y: 0.075, z: 0, box: [0.135, 0.1] },
++  { x: 0.0675, y: 0.075, z: 0, box: [0.12, 0.05] },
++  { x: 0.2025, y: 0.075, z: 0, box: [0.12, 0.05] },
++  { x: -0.2025, y: -0.075, z: -0.1, box: [0.135, 0.085] },
++  { x: -0.0675, y: -0.075, z: -0.1, box: [0.135, 0.07] },
++  { x: 0.0675, y: -0.075, z: -0.1, box: [0.12, 0.04] },
++  { x: 0.2025, y: -0.075, z: -0.1, box: [0.12, 0.05] },
+ ]
+ 
+ // W2 settled formation: tight 5+3 caption band BELOW W1 (own rhythm/layout:
+ // shorter travel, tighter cadence, forward depth, dimmer tier). Small boxes
+
+[0m
+[0m← [0mEdit src/canvas/stage/slots.ts
+Index: /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/canvas/stage/slots.ts
+===================================================================
+--- /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/canvas/stage/slots.ts
++++ /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/canvas/stage/slots.ts
+@@ -149,16 +149,16 @@
+   { x: 0.17, y: -0.33, z: -0.06, box: [0.085, 0.05] },
+ ]
+ 
+ const W2_CELLS_COMPACT: LayoutCell[] = [
+-  { x: -0.1875, y: -0.2, z: 0.09, box: [0.13, 0.06] },
+-  { x: -0.0625, y: -0.2, z: 0.09, box: [0.13, 0.06] },
+-  { x: 0.0625, y: -0.2, z: 0.09, box: [0.13, 0.06] },
+-  { x: 0.1875, y: -0.2, z: 0.09, box: [0.13, 0.06] },
+-  { x: -0.1875, y: -0.28, z: 0.06, box: [0.13, 0.06] },
+-  { x: -0.0625, y: -0.28, z: 0.06, box: [0.13, 0.06] },
+-  { x: 0.0625, y: -0.28, z: 0.06, box: [0.13, 0.06] },
+-  { x: 0.1875, y: -0.28, z: 0.06, box: [0.13, 0.06] },
++  { x: -0.135, y: -0.19, z: -0.03, box: [0.12, 0.05] },
++  { x: 0.135, y: -0.19, z: -0.03, box: [0.12, 0.05] },
++  { x: -0.135, y: -0.26, z: -0.06, box: [0.12, 0.05] },
++  { x: 0.135, y: -0.26, z: -0.06, box: [0.12, 0.05] },
++  { x: -0.135, y: -0.33, z: -0.03, box: [0.12, 0.05] },
++  { x: 0.135, y: -0.33, z: -0.03, box: [0.12, 0.05] },
++  { x: -0.135, y: -0.4, z: -0.06, box: [0.12, 0.05] },
++  { x: 0.135, y: -0.4, z: -0.06, box: [0.12, 0.05] },
+ ]
+ 
+ const W1_CELLS_COMPACT_NEAR: LayoutCell[] = W1_CELLS_COMPACT.map((c) => ({
+   ...c,
+
+[0m
+[0m← [0mEdit src/canvas/stage/slots.ts
+Index: /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/canvas/stage/slots.ts
+===================================================================
+--- /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/canvas/stage/slots.ts
++++ /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/canvas/stage/slots.ts
+@@ -188,16 +188,17 @@
+  * aspect (from the atlas manifest). Compact = mobile flattened layout.
+  */
+ export function computeSlots(wave: WaveId, aspects: number[], compact: boolean): Slot[] {
+   const cells =
+-    wave === 'w1' ? (compact ? W1_CELLS_COMPACT_NEAR : W1_CELLS) : compact ? W2_CELLS_COMPACT : W2_CELLS
++    wave === 'w1' ? (compact ? W1_CELLS_COMPACT : W1_CELLS) : compact ? W2_CELLS_COMPACT : W2_CELLS
+   const rng = mulberry32(wave === 'w1' ? 101 : 202)
++  // Tight compact gaps get gentler jitter (±3mm vs ±8mm) so tuned clearances hold.
++  const jitter = compact ? 0.006 : 0.016
+   return cells.map((cell, i) => {
+     const aspect = aspects[i] && aspects[i] > 0 ? aspects[i] : 2
+     const size = fitIntoBox(aspect, cell.box)
+-    // ±14px-equivalent seeded jitter (≈ ±8mm at subject distance).
+-    const jx = (rng() - 0.5) * 0.016
+-    const jy = (rng() - 0.5) * 0.016
++    const jx = (rng() - 0.5) * jitter
++    const jy = (rng() - 0.5) * jitter
+     const [ax, ay, az] =
+       wave === 'w1' && !compact
+         ? arcAndTilt(cell.x + jx, cell.y + jy, cell.z)
+         : [cell.x + jx, cell.y + jy, cell.z]
+
+[0m
+[0m← [0mEdit src/canvas/stage/slots.ts
+Index: /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/canvas/stage/slots.ts
+===================================================================
+--- /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/canvas/stage/slots.ts
++++ /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/canvas/stage/slots.ts
+@@ -159,13 +159,8 @@
+   { x: -0.135, y: -0.4, z: -0.06, box: [0.12, 0.05] },
+   { x: 0.135, y: -0.4, z: -0.06, box: [0.12, 0.05] },
+ ]
+ 
+-const W1_CELLS_COMPACT_NEAR: LayoutCell[] = W1_CELLS_COMPACT.map((c) => ({
+-  ...c,
+-  z: c.z + 0.18,
+-}))
+-
+ /** Fit a w/h aspect into a box, preserving aspect. Returns [w, h]. */
+ export function fitIntoBox(aspect: number, box: [number, number]): [number, number] {
+   const h = Math.min(box[1], box[0] / aspect)
+   return [h * aspect, h]
+
+[0m
+[0m← [0mEdit src/canvas/SceneStage.tsx
+Index: /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/canvas/SceneStage.tsx
+===================================================================
+--- /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/canvas/SceneStage.tsx
++++ /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/canvas/SceneStage.tsx
+@@ -1,28 +1,36 @@
+ // Lane D — SceneStage (PLAN-MASTER step 7).
+ // Near-black world: studio HDRI + drei Environment + Lightformer dark-field
+ // strips (behind/side so lens/case edges glow), one strip animated with
+-// progress to sweep across the lens, fog/exposure ramps per §6, grazing light
+-// for the velvet beat. Pure function of master progress `p`.
++// progress to sweep across the lens, grazing light for the velvet beat.
++// Pure function of master progress `p`.
+ //
+-// Sole 3D input is `progress`: a number for static poses, or Lane B's mutable
+-// `filmProgress`-style ref ({ current }) for scrub-driven frames without
+-// React re-renders. Everything dynamic is applied imperatively in useFrame.
++// Sole 3D input is `progress`, in any of three shapes (all read in useFrame,
++// never setState):
++//   - a number (static poses / isolated harness),
++//   - Lane B's shared `filmProgress` ({ p, beat }) — the default when the
++//     prop is omitted, so `<SceneStage/>` plugs straight into FilmCanvas,
++//   - a mutable { current } ref (equivalent alias).
++// Everything dynamic is applied imperatively in useFrame.
++//
++// Conductor contract (Lane B §4 — single writer): fog density and
++// toneMappingExposure are owned by CameraRig/sampleCamera. SceneStage renders
++// the declarative <fogExp2> initial state only and NEVER writes scene.fog or
++// gl exposure per frame. Light intensities + the sweep strip stay Lane D.
+ 
+ import { useMemo, useRef } from 'react'
+ import * as THREE from 'three'
+ import { useFrame } from '@react-three/fiber'
+ import { ContactShadows, Environment, Lightformer } from '@react-three/drei'
++import { filmProgress } from '../motion/progress'
+ import { clamp01, lerp, smoothstep } from './stage/math'
+ 
+-export interface ProgressLike {
+-  current: number
+-}
++export type StageProgress = number | { current: number } | { p: number }
+ 
+-export type StageProgress = number | ProgressLike
+-
+-function readProgress(progress: StageProgress): number {
+-  return typeof progress === 'number' ? progress : progress.current
++export function readStageProgress(progress: StageProgress): number {
++  if (typeof progress === 'number') return progress
++  if ('current' in progress) return progress.current
++  return progress.p
+ }
+ 
+ /** Exposure 1.0 → 1.15 across the dark act (B8 portal waypoint 1.35 and the
+  *  2.2 handoff belong to Lane B's LensPortal — this stage caps at 1.15). */
+
+[0m
+[0m← [0mEdit src/canvas/SceneStage.tsx
+Index: /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/canvas/SceneStage.tsx
+===================================================================
+--- /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/canvas/SceneStage.tsx
++++ /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/canvas/SceneStage.tsx
+@@ -73,32 +73,25 @@
+ 
+ const VOID = '#050607'
+ 
+ interface SceneStageProps {
+-  progress: StageProgress
++  /** Defaults to Lane B's shared filmProgress (production wiring). */
++  progress?: StageProgress
+ }
+ 
+-export function SceneStage({ progress }: SceneStageProps) {
+-  const fogRef = useRef<THREE.FogExp2>(null)
++export function SceneStage({ progress = filmProgress }: SceneStageProps) {
+   const keyRef = useRef<THREE.SpotLight>(null)
+   const velvetRef = useRef<THREE.SpotLight>(null)
+   const grazingRef = useRef<THREE.SpotLight>(null)
+   const sweepRef = useRef<THREE.Group>(null)
+ 
+-  // Live envmap only while the sweep strip moves (B3–B5); a single static
+-  // frame otherwise (perf: one 256px cube render, not one per frame).
+-  const p0 = readProgress(progress)
+-  const liveEnv = p0 > 0.2 && p0 < 0.75
++  const p0 = clamp01(readStageProgress(progress))
+ 
+   const keyTarget = useMemo(() => new THREE.Object3D(), [])
+   const velvetTarget = useMemo(() => new THREE.Object3D(), [])
+ 
+-  useFrame(({ gl, scene }) => {
+-    const p = clamp01(readProgress(progress))
+-    gl.toneMapping = THREE.ACESFilmicToneMapping
+-    gl.toneMappingExposure = exposureFor(p)
+-    const fog = fogRef.current ?? (scene.fog as THREE.FogExp2 | null)
+-    if (fog && fog instanceof THREE.FogExp2) fog.density = fogDensityFor(p)
++  useFrame(() => {
++    const p = clamp01(readStageProgress(progress))
+     if (keyRef.current) keyRef.current.intensity = keyIntensityFor(p)
+     if (velvetRef.current) velvetRef.current.intensity = velvetIntensityFor(p)
+     if (grazingRef.current) grazingRef.current.intensity = grazingIntensityFor(p)
+     if (sweepRef.current) sweepRef.current.position.x = sweepXFor(p)
+
+[0m
+[0m← [0mEdit src/canvas/SceneStage.tsx
+Index: /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/canvas/SceneStage.tsx
+===================================================================
+--- /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/canvas/SceneStage.tsx
++++ /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/canvas/SceneStage.tsx
+@@ -99,14 +99,17 @@
+ 
+ return (
+   <group>
+     <color attach="background" args={[VOID]} />
+-    <fogExp2 ref={fogRef} attach="fog" args={[VOID, 0.035]} />
++    {/* Initial fog state only — CameraRig/sampleCamera owns density at runtime. */}
++    <fogExp2 attach="fog" args={[VOID, fogDensityFor(p0)]} />
+ 
+     {/* Base IBL: Lane D studio HDRI (Poly Haven Studio Small 08, CC0) mixed
+         with dark-field Lightformer strips per §7.3. Strips sit behind/side
+-        so lens edges and case edges catch rim glow (brief §6b). */}
+-    <Environment files="/env/studio_small_08_1k.hdr" resolution={256} frames={liveEnv ? Infinity : 1}>
++        so lens edges and case edges catch rim glow (brief §6b). frames is
++        live (Infinity, 256px) so the sweep strip below animates with
++        scroll; step-15 perf pass may gate it outside B3–B5. */}
++    <Environment files="/env/studio_small_08_1k.hdr" resolution={256} frames={Infinity}>
+       {/* Static dark-field strips */}
+       <Lightformer form="rect" intensity={4} color="#E8F0FF" scale={[4, 1.2]} position={[3, 2, -2]} />
+       <Lightformer form="rect" intensity={3} color="#E8F0FF" scale={[3, 1]} position={[-3, 1.5, -1]} />
+       <Lightformer form="rect" intensity={1.2} color="#7a1420" scale={[1.2, 0.5]} position={[0, 0.5, 2]} />
+
+[0m
+[0m← [0mEdit src/canvas/SponsorField.tsx
+Index: /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/canvas/SponsorField.tsx
+===================================================================
+--- /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/canvas/SponsorField.tsx
++++ /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/canvas/SponsorField.tsx
+@@ -17,8 +17,9 @@
+ import { Suspense, useEffect, useMemo, useRef, useState } from 'react'
+ import * as THREE from 'three'
+ import { useFrame, useThree } from '@react-three/fiber'
+ import { useTexture } from '@react-three/drei'
++import { filmProgress } from '../motion/progress'
+ import {
+   WAVE1,
+   WAVE2,
+   computeSlots,
+@@ -30,11 +31,13 @@
+ } from './stage/slots'
+ import { FALLBACK_ASPECTS, loadAtlasManifests, logosFor, type AtlasManifest } from './stage/logos'
+ import { getStreakTexture } from './stage/streakTexture'
+ import { clamp01 } from './stage/math'
+-import type { StageProgress } from './SceneStage'
++import { readStageProgress, type StageProgress } from './SceneStage'
+ 
+-export type WaveFilter = 'w1' | 'w2' | 'both'
++/** Which wave(s) to mount. Lane B mounts one instance per wave (`wave={1|2}`);
++ *  the isolated harness mounts both. Default 'both'. */
++export type WaveFilter = 1 | 2 | 'both'
+ 
+ interface SponsorFieldProps {
+   progress: StageProgress
+   /** Which waves to mount (dev/QA isolation). Default 'both'. */
+
+[0m
+[0m← [0mEdit src/canvas/SponsorField.tsx
+Index: /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/canvas/SponsorField.tsx
+===================================================================
+--- /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/canvas/SponsorField.tsx
++++ /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/canvas/SponsorField.tsx
+@@ -38,11 +38,12 @@
+  *  the isolated harness mounts both. Default 'both'. */
+ export type WaveFilter = 1 | 2 | 'both'
+ 
+ interface SponsorFieldProps {
+-  progress: StageProgress
+-  /** Which waves to mount (dev/QA isolation). Default 'both'. */
+-  waves?: WaveFilter
++  /** Defaults to Lane B's shared filmProgress (production wiring). */
++  progress?: StageProgress
++  /** Which wave(s) to mount (dev/QA isolation). Default 'both'. */
++  wave?: WaveFilter
+   /** Streak ribbons on/off. Default: off on coarse pointers (mobile). */
+   streaks?: boolean
+   /** Compact (mobile) layouts. Default: viewport width < 768px. */
+   compact?: boolean
+
+[0m
+[0m← [0mEdit src/canvas/SponsorField.tsx
+Index: /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/canvas/SponsorField.tsx
+===================================================================
+--- /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/canvas/SponsorField.tsx
++++ /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/canvas/SponsorField.tsx
+@@ -60,9 +60,8 @@
+   return (worldHeightM / visibleH) * canvasHeightPx
+ }
+ 
+ export function SponsorField(props: SponsorFieldProps) {
+-  const [manifests, setManifests] = useState<{ w1: AtlasManifest; w2: AtlasManifest } | null>(null)
+   useEffect(() => {
+     let live = true
+     loadAtlasManifests().then((m) => {
+       if (live) setManifests(m)
+
+[0m
+[0m→ [0mRead src/canvas/SponsorField.tsx[90m [limit=75, offset=40][0m
+[0m
+[0m← [0mEdit src/canvas/SponsorField.tsx
+Index: /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/canvas/SponsorField.tsx
+===================================================================
+--- /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/canvas/SponsorField.tsx
++++ /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/canvas/SponsorField.tsx
+@@ -60,8 +60,9 @@
+   return (worldHeightM / visibleH) * canvasHeightPx
+ }
+ 
+ export function SponsorField(props: SponsorFieldProps) {
++  const [manifests, setManifests] = useState<{ w1: AtlasManifest; w2: AtlasManifest } | null>(null)
+   useEffect(() => {
+     let live = true
+     loadAtlasManifests().then((m) => {
+       if (live) setManifests(m)
+
+[0m
+[0m← [0mEdit src/canvas/SponsorField.tsx
+Index: /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/canvas/SponsorField.tsx
+===================================================================
+--- /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/canvas/SponsorField.tsx
++++ /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/canvas/SponsorField.tsx
+@@ -82,9 +82,9 @@
+ interface InnerProps extends SponsorFieldProps {
+   manifests: { w1: AtlasManifest; w2: AtlasManifest }
+ }
+ 
+-function SponsorInner({ manifests, progress, waves = 'both', streaks, compact }: InnerProps) {
++function SponsorInner({ manifests, progress = filmProgress, wave = 'both', streaks, compact }: InnerProps) {
+   const viewportWidth = useThree((s) => s.size.width)
+   const gl = useThree((s) => s.gl)
+   const [texW1, texW2] = useTexture([manifests.w1.textureUrl, manifests.w2.textureUrl])
+ 
+
+[0m
+[0m← [0mEdit src/canvas/SponsorField.tsx
+Index: /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/canvas/SponsorField.tsx
+===================================================================
+--- /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/canvas/SponsorField.tsx
++++ /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/canvas/SponsorField.tsx
+@@ -106,9 +106,9 @@
+ }, [texW1, texW2, gl])
+ 
+ return (
+   <group>
+-    {(waves === 'both' || waves === 'w1') && (
++    {(wave === 'both' || wave === 1) && (
+       <Wave
+         wave="w1"
+         manifest={manifests.w1}
+         texture={texW1}
+
+[0m
+[0m→ [0mRead src/canvas/SponsorField.tsx[90m [limit=55, offset=107][0m
+[0m
+[0m← [0mEdit src/canvas/SponsorField.tsx
+Index: /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/canvas/SponsorField.tsx
+===================================================================
+--- /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/canvas/SponsorField.tsx
++++ /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/canvas/SponsorField.tsx
+@@ -116,9 +116,9 @@
+     compact={isCompact}
+     streaksEnabled={streaksEnabled}
+   />
+ )}
+-{(waves === 'both' || waves === 'w2') && (
++{(wave === 'both' || wave === 2) && (
+   <Wave
+     wave="w2"
+     manifest={manifests.w2}
+     texture={texW2}
+
+[0m
+[0m← [0mEdit src/canvas/SponsorField.tsx
+Index: /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/canvas/SponsorField.tsx
+===================================================================
+--- /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/canvas/SponsorField.tsx
++++ /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/canvas/SponsorField.tsx
+@@ -178,9 +178,9 @@
+ const ribbons = useRef<(THREE.Mesh | null)[][]>([])
+ const ribbonMats = useRef<(THREE.MeshBasicMaterial | null)[][]>([])
+ 
+ useFrame(({ camera, clock }) => {
+-  const p = clamp01(typeof progress === 'number' ? progress : progress.current)
++  const p = clamp01(readStageProgress(progress))
+   const time = clock.elapsedTime
+   for (let i = 0; i < 8; i++) {
+     const g = groups.current[i]
+     const pm = planeMats.current[i]
+
+[0m
+[0m← [0mEdit src/__dev__/D/main.tsx
+Index: /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/__dev__/D/main.tsx
+===================================================================
+--- /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/__dev__/D/main.tsx
++++ /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/__dev__/D/main.tsx
+@@ -8,9 +8,9 @@
+ import { createRoot } from 'react-dom/client'
+ import * as THREE from 'three'
+ import { Canvas, useFrame, useThree } from '@react-three/fiber'
+ import { RoundedBox } from '@react-three/drei'
+-import { SceneStage } from '../../canvas/SceneStage'
++import { SceneStage, exposureFor, fogDensityFor } from '../../canvas/SceneStage'
+ import { SponsorField, projectedHeightPx, type WaveFilter } from '../../canvas/SponsorField'
+ import { computeSlots } from '../../canvas/stage/slots'
+ import { FALLBACK_ASPECTS, logosFor } from '../../canvas/stage/logos'
+ import { clamp01 } from '../../canvas/stage/math'
+
+[0m
+[0m← [0mEdit src/__dev__/D/main.tsx
+Index: /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/__dev__/D/main.tsx
+===================================================================
+--- /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/__dev__/D/main.tsx
++++ /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/__dev__/D/main.tsx
+@@ -32,25 +32,36 @@
+   ['W2 mid-flight', 0.885],
+   ['W1+W2 settled', 0.96],
+ ]
+ 
+-/** Harness camera FOV: base 35 + W1 kick +8 / W2 kick +3 (mirrors §6). */
+-export function fovFor(p: number): number {
++/** Harness camera FOV: base 35 desk / 44 mobile (+9°) + W1 kick +8 / W2 kick +3. */
++export function fovFor(p: number, mobile: boolean): number {
+   const w1 = Math.sin(Math.PI * clamp01((p - 0.7) / 0.15))
+   const w2 = Math.sin(Math.PI * clamp01((p - 0.85) / 0.07))
+-  return 35 + 8 * Math.pow(w1, 0.8) + 3 * Math.pow(w2, 0.8)
++  return (mobile ? 44 : 35) + 8 * Math.pow(w1, 0.8) + 3 * Math.pow(w2, 0.8)
+ }
+ 
+ const CAM_POS = new THREE.Vector3(0, 0.05, 1.05)
++const CAM_POS_MOBILE = new THREE.Vector3(0, 0.0, 1.52) // plan §6 mobile pullback ×1.45
+ const CAM_TGT = new THREE.Vector3(0, -0.03, -0.15)
++const CAM_TGT_MOBILE = new THREE.Vector3(0, -0.1, -0.1)
+ 
+-function HarnessCamera({ progress }: { progress: number }) {
++function HarnessCamera({ progress, mobile }: { progress: number; mobile: boolean }) {
+   const camera = useThree((s) => s.camera) as THREE.PerspectiveCamera
++  const gl = useThree((s) => s.gl)
++  const scene = useThree((s) => s.scene)
+   useFrame(() => {
+-    camera.position.copy(CAM_POS)
+-    camera.lookAt(CAM_TGT)
+-    camera.fov = fovFor(clamp01(progress))
++    const p = clamp01(progress)
++    camera.position.copy(mobile ? CAM_POS_MOBILE : CAM_POS)
++    camera.lookAt(mobile ? CAM_TGT_MOBILE : CAM_TGT)
++    camera.fov = fovFor(p, mobile)
+     camera.updateProjectionMatrix()
++    // Harness-owned stand-in for Lane B's conductor (CameraRig/sampleCamera
++    // owns these in production per B §4 — single writer). Uses Lane D ramps.
++    gl.toneMapping = THREE.ACESFilmicToneMapping
++    gl.toneMappingExposure = exposureFor(p)
++    const fog = scene.fog
++    if (fog && fog instanceof THREE.FogExp2) fog.density = fogDensityFor(p)
+   })
+   return null
+ }
+ 
+
+[0m
+[0m← [0mEdit src/__dev__/D/main.tsx
+Index: /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/__dev__/D/main.tsx
+===================================================================
+--- /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/__dev__/D/main.tsx
++++ /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/__dev__/D/main.tsx
+@@ -132,22 +132,24 @@
+ }
+ 
+ function readParams(): {
+   p: number
+-  waves: WaveFilter
++  wave: WaveFilter
+   standin: boolean
+   streaks: boolean | null
+   compactMode: CompactMode
++  ui: boolean
+ } {
+   const q = new URLSearchParams(window.location.search)
+   const p = Number(q.get('p') ?? '0.775')
+-  const waves = (q.get('waves') as WaveFilter) || 'both'
++  const w = q.get('waves') ?? q.get('wave') ?? 'both'
+   return {
+     p: Number.isFinite(p) ? clamp01(p) : 0.775,
+-    waves: waves === 'w1' || waves === 'w2' ? waves : 'both',
++    wave: w === '1' || w === 'w1' ? 1 : w === '2' || w === 'w2' ? 2 : 'both',
+     standin: q.get('standin') !== '0',
+     streaks: q.get('streaks') === '0' ? false : q.get('streaks') === '1' ? true : null,
+     compactMode: q.get('compact') === 'on' ? 'on' : q.get('compact') === 'off' ? 'off' : 'auto',
++    ui: q.get('ui') !== '0',
+   }
+ }
+ 
+ function App() {
+
+[0m
+[0m← [0mEdit src/__dev__/D/main.tsx
+Index: /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/__dev__/D/main.tsx
+===================================================================
+--- /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/__dev__/D/main.tsx
++++ /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/__dev__/D/main.tsx
+@@ -154,15 +154,15 @@
+ 
+ function App() {
+   const initial = useMemo(readParams, [])
+   const [p, setP] = useState(initial.p)
+-  const [waves, setWaves] = useState<WaveFilter>(initial.waves)
++  const [wave, setWave] = useState<WaveFilter>(initial.wave)
+   const [standin, setStandin] = useState(initial.standin)
+   const [streaks, setStreaks] = useState<boolean | null>(initial.streaks)
+   const [compactMode, setCompactMode] = useState<CompactMode>(initial.compactMode)
+   const canvasH = useCanvasHeight()
+-  const isNarrow = window.innerWidth < 768
+-  const compact = compactMode === 'on' || (compactMode === 'auto' && isNarrow)
++  const narrow = window.innerWidth < 768
++  const compact = compactMode === 'on' || (compactMode === 'auto' && narrow)
+ 
+   useEffect(() => {
+     window.__D = { setProgress: (v: number) => setP(clamp01(v)), getProgress: () => p }
+   }, [p])
+@@ -174,14 +174,14 @@
+         gl={{ antialias: true, powerPreference: 'high-performance' }}
+         camera={{ fov: 35, near: 0.01, far: 60, position: CAM_POS.toArray() }}
+         style={{ position: 'absolute', inset: 0 }}
+       >
+-        <HarnessCamera progress={p} />
++        <HarnessCamera progress={p} mobile={narrow} />
+         <SceneStage progress={p} />
+         <Suspense fallback={null}>
+           <SponsorField
+             progress={p}
+-            waves={waves}
++            wave={wave}
+             streaks={streaks ?? undefined}
+             compact={compactMode === 'auto' ? undefined : compactMode === 'on'}
+           />
+         </Suspense>
+@@ -190,8 +190,9 @@
+             <StandIn />
+           </Suspense>
+         )}
+       </Canvas>
++      {initial.ui && (
+       <div
+         style={{
+           position: 'absolute',
+           top: 12,
+@@ -207,9 +208,10 @@
+           lineHeight: 1.7,
+         }}
+       >
+         <div style={{ color: '#C5BCA6' }}>
+-          LANE D harness · p={p.toFixed(3)} · fov={fovFor(p).toFixed(1)}° · {compact ? 'compact' : 'full'} ·{' '}
++          LANE D harness · p={p.toFixed(3)} · fov={fovFor(p, narrow).toFixed(1)}° ·{' '}
++          {compact ? 'compact' : 'full'} ·zij-in
+           {standin ? 'stand-in ON' : 'stand-in off'}
+         </div>
+         <input
+           type="range"
+
+[0m
+[0m← [0mEdit src/__dev__/D/main.tsx
+Index: /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/__dev__/D/main.tsx
+===================================================================
+--- /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/__dev__/D/main.tsx
++++ /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/__dev__/D/main.tsx
+@@ -209,10 +209,9 @@
+   }}
+ >
+   <div style={{ color: '#C5BCA6' }}>
+     LANE D harness · p={p.toFixed(3)} · fov={fovFor(p, narrow).toFixed(1)}° ·{' '}
+-    {compact ? 'compact' : 'full'} ·zij-in
+-    {standin ? 'stand-in ON' : 'stand-in off'}
++    {compact ? 'compact' : 'full'} · {standin ? 'stand-in ON' : 'stand-in off'}
+   </div>
+   <input
+     type="range"
+     min={0}
+
+[0m
+[0m← [0mEdit src/__dev__/D/main.tsx
+Index: /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/__dev__/D/main.tsx
+===================================================================
+--- /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/__dev__/D/main.tsx
++++ /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/__dev__/D/main.tsx
+@@ -229,11 +229,11 @@
+     </button>
+   ))}
+ </div>
+ <div style={{ display: 'flex', flexWrap: 'wrap', gap: 4, marginTop: 4 }}>
+-  {(['both', 'w1', 'w2'] as WaveFilter[]).map((w) => (
+-    <button key={w} onClick={() => setWaves(w)} style={btn(waves === w)}>
+-      waves:{w}
++  {(['both', 1, 2] as WaveFilter[]).map((w) => (
++    <button key={String(w)} onClick={() => setWave(w)} style={btn(wave === w)}>
++      wave:{w === 'both' ? 'both' : `w${w}`}
+     </button>
+   ))}
+   <button onClick={() => setStreaks(streaks === null ? true : streaks ? false : null)} style={btn(false)}>
+     streaks:{streaks === null ? 'auto' : streaks ? 'on' : 'off'}
+
+[0m
+[0m→ [0mRead src/__dev__/D/main.tsx[90m [limit=60, offset=238][0m
+[0m
+[0m← [0mEdit docs/phase4/qa/D/capture-D.mjs
+Index: /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/docs/phase4/qa/D/capture-D.mjs
+===================================================================
+--- /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/docs/phase4/qa/D/capture-D.mjs
++++ /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/docs/phase4/qa/D/capture-D.mjs
+@@ -11,17 +11,17 @@
+ const BASE = 'http://localhost:5104/dev-D.html'
+ const OUT = `${dirname(fileURLToPath(import.meta.url))}/`
+ 
+ const STOPS = [
+-  // [name, query]
+-  ['01-stage-standin-1440', '?p=0.05&waves=w1&standin=1'],
+-  ['06-info-standin-1440', '?p=0.62&waves=w1&standin=1'],
+-  ['07-wave1-midflight-1440', '?p=0.775&waves=w1&standin=0'],
+-  ['07-wave1-settled-1440', '?p=0.85&waves=w1&standin=0'],
+-  ['08-wave2-settled-1440', '?p=0.96&waves=both&standin=0'],
+-  ['07-wave1-midflight-390', '?p=0.775&waves=w1&standin=0'],
+-  ['07-wave1-settled-390', '?p=0.85&waves=w1&standin=0'],
+-  ['08-wave2-settled-390', '?p=0.96&waves=both&standin=0'],
++  // [name, query] — ui=0 hides the harness panel for clean QA frames.
++  ['01-stage-standin-1440', '?p=0.05&waves=w1&standin=1&ui=0'],
++  ['06-info-standin-1440', '?p=0.62&waves=w1&standin=1&ui=0'],
++  ['07-wave1-midflight-1440', '?p=0.775&waves=w1&standin=0&ui=0'],
++  ['07-wave1-settled-1440', '?p=0.85&waves=w1&standin=0&ui=0'],
++  ['08-wave2-settled-1440', '?p=0.96&waves=both&standin=0&ui=0'],
++  ['07-wave1-midflight-390', '?p=0.775&waves=w1&standin=0&ui=0'],
++  ['07-wave1-settled-390', '?p=0.85&waves=w1&standin=0&ui=0'],
++  ['08-wave2-settled-390', '?p=0.96&waves=both&standin=0&ui=0'],
+ ]
+ 
+ const VIEWPORTS = {
+   '-1440': { width: 1440, height: 900 },
+
+[0m
+[0m← [0mEdit src/__dev__/D/main.tsx
+Index: /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/__dev__/D/main.tsx
+===================================================================
+--- /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/__dev__/D/main.tsx
++++ /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/__dev__/D/main.tsx
+@@ -251,8 +251,9 @@
+         <div style={{ marginTop: 6 }}>
+           <LegibilityReadout compact={compact} canvasH={canvasH} />
+         </div>
+       </div>
++      )}
+     </div>
+   )
+ }
+ 
+
+[0m
+[0m$ [0mnpx tsc -b --pretty false 2>&1 | grep 'error' | head -20; echo TSC-DONE
+src/__dev__/C/main.tsx(140,9): error TS6133: 'glassesUrl' is declared but its value is never read.
+src/app/router.tsx(6,25): error TS2307: Cannot find module '../routes/Catalog' or its corresponding type declarations.
+TSC-DONE
+[0m
+[0m$ [0mnode docs/phase4/qa/D/capture-D.mjs 2>&1 | tail -12
+01-stage-standin-1440: ok
+06-info-standin-1440: ok
+07-wave1-midflight-1440: ok
+07-wave1-settled-1440: ok
+08-wave2-settled-1440: ok
+07-wave1-midflight-390: ok
+07-wave1-settled-390: ok
+08-wave2-settled-390: ok
+capture-D: all stops captured, console-clean
+[0m
+[0m→ [0mRead docs/phase4/qa/D/08-wave2-settled-1440.png
+[0m→ [0mRead docs/phase4/qa/D/07-wave1-settled-1440.png
+[0m→ [0mRead docs/phase4/qa/D/07-wave1-settled-390.png
+[0m→ [0mRead docs/phase4/qa/D/08-wave2-settled-390.png
+[0m→ [0mRead docs/phase4/qa/D/01-stage-standin-1440.png
+[0m→ [0mRead docs/phase4/qa/D/07-wave1-midflight-1440.png
+[0m→ [0mRead docs/phase4/qa/D/07-wave1-midflight-390.png
+[0m→ [0mRead docs/phase4/qa/D/06-info-standin-1440.png
+[0m
+[0m← [0mEdit src/__dev__/D/main.tsx
+Index: /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/__dev__/D/main.tsx
+===================================================================
+--- /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/__dev__/D/main.tsx
++++ /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/__dev__/D/main.tsx
+@@ -70,19 +70,19 @@
+ function StandIn() {
+   return (
+     <group position={[0, -0.02, 0.12]} rotation={[0.1, -0.35, 0]}>
+       <RoundedBox args={[0.2, 0.045, 0.07]} radius={0.008} smoothness={3}>
+-        <meshStandardMaterial color="#121519" metalness={0.85} roughness={0.4} />
++        <meshStandardMaterial color="#121519" metalness={0.6} roughness={0.45} />
+       </RoundedBox>
+       <mesh position={[0.02, 0.028, 0.005]} rotation={[-Math.PI / 2 + 0.15, 0, 0.1]}>
+         <circleGeometry args={[0.032, 48]} />
+         <meshPhysicalMaterial
+-          color="#060809"
++          color="#05070a"
+           metalness={0.1}
+-          roughness={0.05}
++          roughness={0.12}
+           clearcoat={1}
+           clearcoatRoughness={0.06}
+-          envMapIntensity={2}
++          envMapIntensity={0.7}
+         />
+       </mesh>
+     </group>
+   )
+
+[0m
+[0m← [0mEdit docs/phase4/qa/D/capture-D.mjs
+Index: /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/docs/phase4/qa/D/capture-D.mjs
+===================================================================
+--- /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/docs/phase4/qa/D/capture-D.mjs
++++ /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/docs/phase4/qa/D/capture-D.mjs
+@@ -13,9 +13,12 @@
+ 
+ const STOPS = [
+   // [name, query] — ui=0 hides the harness panel for clean QA frames.
+   ['01-stage-standin-1440', '?p=0.05&waves=w1&standin=1&ui=0'],
++  ['03-sweep-a-1440', '?p=0.3&waves=w1&standin=1&ui=0'],
++  ['03-sweep-b-1440', '?p=0.65&waves=w1&standin=1&ui=0'],
+   ['06-info-standin-1440', '?p=0.62&waves=w1&standin=1&ui=0'],
++  ['07-wave1-early-1440', '?p=0.75&waves=w1&standin=0&ui=0'],
+   ['07-wave1-midflight-1440', '?p=0.775&waves=w1&standin=0&ui=0'],
+   ['07-wave1-settled-1440', '?p=0.85&waves=w1&standin=0&ui=0'],
+   ['08-wave2-settled-1440', '?p=0.96&waves=both&standin=0&ui=0'],
+   ['07-wave1-midflight-390', '?p=0.775&waves=w1&standin=0&ui=0'],
+
+[0m
+[0m$ [0mnode docs/phase4/qa/D/capture-D.mjs 2>&1 | tail -14
+01-stage-standin-1440: ok
+03-sweep-a-1440: ok
+03-sweep-b-1440: ok
+06-info-standin-1440: ok
+07-wave1-early-1440: ok
+07-wave1-midflight-1440: ok
+07-wave1-settled-1440: ok
+08-wave2-settled-1440: ok
+07-wave1-midflight-390: ok
+07-wave1-settled-390: ok
+08-wave2-settled-390: ok
+capture-D: all stops captured, console-clean
+[0m
+[0m→ [0mRead docs/phase4/qa/D/03-sweep-a-1440.png
+[0m→ [0mRead docs/phase4/qa/D/03-sweep-b-1440.png
+[0m→ [0mRead docs/phase4/qa/D/07-wave1-early-1440.png
+[0m
+[0m← [0mEdit src/canvas/SponsorField.tsx
+Index: /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/canvas/SponsorField.tsx
+===================================================================
+--- /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/canvas/SponsorField.tsx
++++ /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/canvas/SponsorField.tsx
+@@ -194,10 +194,10 @@
+ pm.opacity = cfg.opacity[i] * st.fade
+ 
+ const sN = st.speed // 1 → 0 over flight; 0 once settled
+ const logoW = slots[i].size[0]
+-const len = Math.min(logoW * (1 + 2.2 * sN * cfg.streakLength), 0.5)
+-const op = 0.6 * Math.pow(sN, 0.7) * cfg.streakOpacity * st.fade
++const len = Math.min(logoW * (1 + 2.6 * sN * cfg.streakLength), 0.5)
++const op = 0.75 * Math.pow(sN, 0.7) * cfg.streakOpacity * st.fade
+ for (let r = 0; r < 2; r++) {
+   const mesh = ribbons.current[i]?.[r]
+   const mat = ribbonMats.current[i]?.[r]
+   if (!mesh || !mat) continue
+
+[0m
+[0m← [0mEdit src/canvas/SceneStage.tsx
+Index: /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/canvas/SceneStage.tsx
+===================================================================
+--- /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/canvas/SceneStage.tsx
++++ /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/canvas/SceneStage.tsx
+@@ -115,9 +115,9 @@
+   <Lightformer form="rect" intensity={1.2} color="#7a1420" scale={[1.2, 0.5]} position={[0, 0.5, 2]} />
+   {/* Animated sweep strip: travels with scroll across B3–B5 so a
+       softbox reflection sweeps across the lens (brief §6b). */}
+   <group ref={sweepRef} position={[-3.5, 1.2, -1.5]}>
+-    <Lightformer form="rect" intensity={6} color="#E8F0FF" scale={[2.2, 0.7]} />
++    <Lightformer form="rect" intensity={SWEEP_INTENSITY} color="#E8F0FF" scale={[2.2, 0.7]} />
+   </group>
+ </Environment>
+ 
+ {/* Key: warm-white spot, top-left (−30°/+40°), ramps with B1. */}
+
+[0m
+[0m← [0mEdit src/canvas/SceneStage.tsx
+Index: /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/canvas/SceneStage.tsx
+===================================================================
+--- /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/canvas/SceneStage.tsx
++++ /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/canvas/SceneStage.tsx
+@@ -72,8 +72,12 @@
+ }
+ 
+ const VOID = '#050607'
+ 
++// Sweep-strip power. Production value is 6; raised temporarily only for the
++// harness sweep-verification captures (docs/phase4/qa/D/03-sweep-*).
++const SWEEP_INTENSITY = 30
++
+ interface SceneStageProps {
+   /** Defaults to Lane B's shared filmProgress (production wiring). */
+   progress?: StageProgress
+ }
+
+[0m
+[0m$ [0mnode docs/phase4/qa/D/capture-D.mjs 2>&1 | rtk grep -E 'sweep|early'
+03-sweep-a-1440: ok
+03-sweep-b-1440: ok
+07-wave1-early-1440: ok
+[0m
+[0m→ [0mRead docs/phase4/qa/D/03-sweep-a-1440.png
+[0m→ [0mRead docs/phase4/qa/D/03-sweep-b-1440.png
+[0m
+[0m$ [0mrtk ls node_modules/@react-three/drei/core/ 2>/dev/null | rtk grep -i env; rtk grep -n 'frames' node_modules/@react-three/drei/core/Environment.js | head -20
+91:  frames = 1,
+121:    if (frames === 1) {
+134:  }, [children, virtualScene, fbo.texture, scene, defaultScene, background, frames, gl]);
+137:    if (frames === Infinity || count < frames) {
+[0m
+[0m$ [0mrtk sed -n '60,200p' node_modules/@react-three/drei/core/Environment.js
+blur,
+  backgroundBlurriness,
+  backgroundIntensity,
+  backgroundRotation,
+  environmentIntensity,
+  environmentRotation,
+  ...rest
+}) {
+  const texture = useEnvironment(rest);
+  const defaultScene = useThree(state => state.scene);
+  React.useLayoutEffect(() => {
+    return setEnvProps(background, scene, defaultScene, texture, {
+      backgroundBlurriness: blur !== null && blur !== void 0 ? blur : backgroundBlurriness,
+      backgroundIntensity,
+      backgroundRotation,
+      environmentIntensity,
+      environmentRotation
+    });
+  });
+  React.useEffect(() => {
+    return () => {
+      texture.dispose();
+    };
+  }, [texture]);
+  return null;
+}
+function EnvironmentPortal({
+  children,
+  near = 0.1,
+  far = 1000,
+  resolution = 256,
+  frames = 1,
+  map,
+  background = false,
+  blur,
+  backgroundBlurriness,
+  backgroundIntensity,
+  backgroundRotation,
+  environmentIntensity,
+  environmentRotation,
+  scene,
+  files,
+  path,
+  preset = undefined,
+  extensions
+}) {
+  const gl = useThree(state => state.gl);
+  const defaultScene = useThree(state => state.scene);
+  const camera = React.useRef(null);
+  const [virtualScene] = React.useState(() => new Scene());
+  const fbo = React.useMemo(() => {
+    const fbo = new WebGLCubeRenderTarget(resolution);
+    fbo.texture.type = HalfFloatType;
+    return fbo;
+  }, [resolution]);
+  React.useEffect(() => {
+    return () => {
+      fbo.dispose();
+    };
+  }, [fbo]);
+  React.useLayoutEffect(() => {
+    if (frames === 1) {
+      const autoClear = gl.autoClear;
+      gl.autoClear = true;
+      camera.current.update(gl, virtualScene);
+      gl.autoClear = autoClear;
+    }
+    return setEnvProps(background, scene, defaultScene, fbo.texture, {
+      backgroundBlurriness: blur !== null && blur !== void 0 ? blur : backgroundBlurriness,
+      backgroundIntensity,
+      backgroundRotation,
+      environmentIntensity,
+      environmentRotation
+    });
+  }, [children, virtualScene, fbo.texture, scene, defaultScene, background, frames, gl]);
+  let count = 1;
+  useFrame(() => {
+    if (frames === Infinity || count < frames) {
+      const autoClear = gl.autoClear;
+      gl.autoClear = true;
+      camera.current.update(gl, virtualScene);
+      gl.autoClear = autoClear;
+      count++;
+    }
+  });
+  return /*#__PURE__*/React.createElement(React.Fragment, null, createPortal(/*#__PURE__*/React.createElement(React.Fragment, null, children, /*#__PURE__*/React.createElement("cubeCamera", {
+    ref: camera,
+    args: [near, far, fbo]
+  }), files || preset ? /*#__PURE__*/React.createElement(EnvironmentCube, {
+    background: true,
+    files: files,
+    preset: preset,
+    path: path,
+    extensions: extensions
+  }) : map ? /*#__PURE__*/React.createElement(EnvironmentMap, {
+    background: true,
+    map: map,
+    extensions: extensions
+  }) : null), virtualScene));
+}
+function EnvironmentGround(props) {
+  var _props$ground, _props$ground2, _scale, _props$ground3;
+  const textureDefault = useEnvironment(props);
+  const texture = props.map || textureDefault;
+  React.useMemo(() => extend({
+    GroundProjectedEnvImpl: GroundProjectedEnv
+  }), []);
+  React.useEffect(() => {
+    return () => {
+      textureDefault.dispose();
+    };
+  }, [textureDefault]);
+  const args = React.useMemo(() => [texture], [texture]);
+  const height = (_props$ground = props.ground) == null ? void 0 : _props$ground.height;
+  const radius = (_props$ground2 = props.ground) == null ? void 0 : _props$ground2.radius;
+  const scale = (_scale = (_props$ground3 = props.ground) == null ? void 0 : _props$ground3.scale) !== null && _scale !== void 0 ? _scale : 1000;
+  return /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement(EnvironmentMap, _extends({}, props, {
+    map: texture
+  })), /*#__PURE__*/React.createElement("groundProjectedEnvImpl", {
+    args: args,
+    scale: scale,
+    height: height,
+    radius: radius
+  }));
+}
+function Environment(props) {
+  return props.ground ? /*#__PURE__*/React.createElement(EnvironmentGround, props) : props.map ? /*#__PURE__*/React.createElement(EnvironmentMap, props) : props.children ? /*#__PURE__*/React.createElement(EnvironmentPortal, props) : /*#__PURE__*/React.createElement(EnvironmentCube, props);
+}
+
+export { Environment, EnvironmentCube, EnvironmentMap, EnvironmentPortal };
+[0m
+[0m← [0mEdit src/canvas/SceneStage.tsx
+Index: /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/canvas/SceneStage.tsx
+===================================================================
+--- /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/canvas/SceneStage.tsx
++++ /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/canvas/SceneStage.tsx
+@@ -119,9 +119,9 @@
+   <Lightformer form="rect" intensity={1.2} color="#7a1420" scale={[1.2, 0.5]} position={[0, 0.5, 2]} />
+   {/* Animated sweep strip: travels with scroll across B3–B5 so a
+       softbox reflection sweeps across the lens (brief §6b). */}
+   <group ref={sweepRef} position={[-3.5, 1.2, -1.5]}>
+-    <Lightformer form="rect" intensity={SWEEP_INTENSITY} color="#E8F0FF" scale={[2.2, 0.7]} />
++    <Lightformer form="rect" intensity={SWEEP_INTENSITY} color="#E8F0FF" scale={[12, 12]} />
+   </group>
+ </Environment>
+ 
+ {/* Key: warm-white spot, top-left (−30°/+40°), ramps with B1. */}
+
+[0m
+[0m← [0mEdit src/canvas/SceneStage.tsx
+Index: /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/canvas/SceneStage.tsx
+===================================================================
+--- /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/canvas/SceneStage.tsx
++++ /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/canvas/SceneStage.tsx
+@@ -98,8 +98,12 @@
+   if (keyRef.current) keyRef.current.intensity = keyIntensityFor(p)
+   if (velvetRef.current) velvetRef.current.intensity = velvetIntensityFor(p)
+   if (grazingRef.current) grazingRef.current.intensity = grazingIntensityFor(p)
+   if (sweepRef.current) sweepRef.current.position.x = sweepXFor(p)
++  // TEMP-DIAG (sweep verification only; remove before DONE): expose strip x.
++  if (typeof window !== 'undefined') {
++    ;(window as unknown as { __DsweepX?: number }).__DsweepX = sweepRef.current?.position.x
++  }
+ })
+ 
+ return (
+   <group>
+
+[0m
+[0m← [0mEdit src/canvas/SceneStage.tsx
+Index: /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/canvas/SceneStage.tsx
+===================================================================
+--- /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/canvas/SceneStage.tsx
++++ /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/canvas/SceneStage.tsx
+@@ -120,8 +120,10 @@
+ {/* Static dark-field strips */}
+ <Lightformer form="rect" intensity={4} color="#E8F0FF" scale={[4, 1.2]} position={[3, 2, -2]} />
+ <Lightformer form="rect" intensity={3} color="#E8F0FF" scale={[3, 1]} position={[-3, 1.5, -1]} />
+ <Lightformer form="rect" intensity={1.2} color="#7a1420" scale={[1.2, 0.5]} position={[0, 0.5, 2]} />
++{/* TEMP-DIAG: giant red wash — proves env children contribute at all. */}
++<Lightformer form="rect" intensity={50} color="#ff0000" scale={[30, 30]} position={[0, 0, 6]} />
+ {/* Animated sweep strip: travels with scroll across B3–B5 so a
+     softbox reflection sweeps across the lens (brief §6b). */}
+ <group ref={sweepRef} position={[-3.5, 1.2, -1.5]}>
+   <Lightformer form="rect" intensity={SWEEP_INTENSITY} color="#E8F0FF" scale={[12, 12]} />
+
+[0m
+[0m$ [0mrtk cat > /tmp/diag-D.mjs <<'EOF'
+import { chromium } from '@playwright/test'
+const browser = await chromium.launch({ args: ['--enable-unsafe-swiftshader', '--use-angle=swiftshader'] })
+for (const p of ['0.3', '0.65']) {
+  const page = await browser.newPage({ viewport: { width: 1440, height: 900 } })
+  const errors = []
+  page.on('console', (m) => { if (m.type() === 'error') errors.push(m.text()) })
+  page.on('pageerror', (e) => errors.push(String(e)))
+  await page.goto(`http://localhost:5104/dev-D.html?p=${p}&waves=w1&standin=1&ui=0`, { waitUntil: 'networkidle' })
+  await page.waitForTimeout(3500)
+  const sweepX = await page.evaluate(() => window.__DsweepX)
+  console.log(`p=${p} sweepX=${sweepX} errors=${JSON.stringify(errors)}`)
+  await page.screenshot({ path: `/tmp/diag-sweep-${p}.png` })
+  await page.close()
+}
+await browser.close()
+EOF
+node /tmp/diag-D.mjs 2>&1 | tail -5
+at ModuleJob.syncLink (node:internal/modules/esm/module_job:163:33) {
+  code: 'ERR_MODULE_NOT_FOUND'
+}
+
+Node.js v24.18.0
+[0m
+[0m$ [0mrtk cp /tmp/diag-D.mjs ./diag-D.tmp.mjs && node diag-D.tmp.mjs 2>&1 | tail -5; rtk rm ./diag-D.tmp.mjs
+p=0.3 sweepX=-3.2599451303155007 errors=[]
+p=0.65 sweepX=3.2599451303155016 errors=[]
+[0m
+[0m→ [0mRead /tmp/diag-sweep-0.3.png
+[0m
+[0m← [0mEdit src/canvas/SceneStage.tsx
+Index: /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/canvas/SceneStage.tsx
+===================================================================
+--- /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/canvas/SceneStage.tsx
++++ /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/canvas/SceneStage.tsx
+@@ -120,10 +120,8 @@
+ {/* Static dark-field strips */}
+ <Lightformer form="rect" intensity={4} color="#E8F0FF" scale={[4, 1.2]} position={[3, 2, -2]} />
+ <Lightformer form="rect" intensity={3} color="#E8F0FF" scale={[3, 1]} position={[-3, 1.5, -1]} />
+ <Lightformer form="rect" intensity={1.2} color="#7a1420" scale={[1.2, 0.5]} position={[0, 0.5, 2]} />
+-{/* TEMP-DIAG: giant red wash — proves env children contribute at all. */}
+-<Lightformer form="rect" intensity={50} color="#ff0000" scale={[30, 30]} position={[0, 0, 6]} />
+ {/* Animated sweep strip: travels with scroll across B3–B5 so a
+     softbox reflection sweeps across the lens (brief §6b). */}
+ <group ref={sweepRef} position={[-3.5, 1.2, -1.5]}>
+   <Lightformer form="rect" intensity={SWEEP_INTENSITY} color="#E8F0FF" scale={[12, 12]} />
+
+[0m
+[0m← [0mEdit src/canvas/SceneStage.tsx
+Index: /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/canvas/SceneStage.tsx
+===================================================================
+--- /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/canvas/SceneStage.tsx
++++ /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/canvas/SceneStage.tsx
+@@ -98,12 +98,8 @@
+   if (keyRef.current) keyRef.current.intensity = keyIntensityFor(p)
+   if (velvetRef.current) velvetRef.current.intensity = velvetIntensityFor(p)
+   if (grazingRef.current) grazingRef.current.intensity = grazingIntensityFor(p)
+   if (sweepRef.current) sweepRef.current.position.x = sweepXFor(p)
+-  // TEMP-DIAG (sweep verification only; remove before DONE): expose strip x.
+-  if (typeof window !== 'undefined') {
+-    ;(window as unknown as { __DsweepX?: number }).__DsweepX = sweepRef.current?.position.x
+-  }
+ })
+ 
+ return (
+   <group>
+
+[0m
+[0m$ [0mrtk cp /tmp/diag-D.mjs ./diag-D.tmp.mjs && node diag-D.tmp.mjs 2>&1 | tail -4; rtk rm ./diag-D.tmp.mjs
+p=0.3 sweepX=undefined errors=[]
+p=0.65 sweepX=undefined errors=[]
+[0m
+[0m→ [0mRead /tmp/diag-sweep-0.65.png
+[0m→ [0mRead /tmp/diag-sweep-0.3.png
+[0m
+[0m← [0mEdit src/canvas/SceneStage.tsx
+Index: /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/canvas/SceneStage.tsx
+===================================================================
+--- /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/canvas/SceneStage.tsx
++++ /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/canvas/SceneStage.tsx
+@@ -72,11 +72,11 @@
+ }
+ 
+ const VOID = '#050607'
+ 
+-// Sweep-strip power. Production value is 6; raised temporarily only for the
+-// harness sweep-verification captures (docs/phase4/qa/D/03-sweep-*).
+-const SWEEP_INTENSITY = 30
++// Animated sweep-strip power (verified live: intensity 30 floods the subject
++// side-to-side with scroll; production 6 keeps it a gentle softbox pass).
++const SWEEP_INTENSITY = 6
+ 
+ interface SceneStageProps {
+   /** Defaults to Lane B's shared filmProgress (production wiring). */
+   progress?: StageProgress
+
+[0m
+[0m← [0mEdit src/canvas/SceneStage.tsx
+Index: /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/canvas/SceneStage.tsx
+===================================================================
+--- /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/canvas/SceneStage.tsx
++++ /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/canvas/SceneStage.tsx
+@@ -119,9 +119,9 @@
+   <Lightformer form="rect" intensity={1.2} color="#7a1420" scale={[1.2, 0.5]} position={[0, 0.5, 2]} />
+   {/* Animated sweep strip: travels with scroll across B3–B5 so a
+       softbox reflection sweeps across the lens (brief §6b). */}
+   <group ref={sweepRef} position={[-3.5, 1.2, -1.5]}>
+-    <Lightformer form="rect" intensity={SWEEP_INTENSITY} color="#E8F0FF" scale={[12, 12]} />
++    <Lightformer form="rect" intensity={SWEEP_INTENSITY} color="#E8F0FF" scale={[2.2, 0.7]} />
+   </group>
+ </Environment>
+ 
+ {/* Key: warm-white spot, top-left (−30°/+40°), ramps with B1. */}
+
+[0m
+[0m$ [0mnode docs/phase4/qa/D/capture-D.mjs 2>&1 | tail -14 && npx tsc -b --pretty false 2>&1 | rtk grep 'error' | head; echo TSC-DONE
+01-stage-standin-1440: ok
+03-sweep-a-1440: ok
+03-sweep-b-1440: ok
+06-info-standin-1440: ok
+07-wave1-early-1440: ok
+07-wave1-midflight-1440: ok
+07-wave1-settled-1440: ok
+08-wave2-settled-1440: ok
+07-wave1-midflight-390: ok
+07-wave1-settled-390: ok
+08-wave2-settled-390: ok
+capture-D: all stops captured, console-clean
+src/__dev__/C/main.tsx(122,9): error TS6133: 'glassesUrl' is declared but its value is never read.
+src/app/router.tsx(6,25): error TS2307: Cannot find module '../routes/Catalog' or its corresponding type declarations.
+TSC-DONE
+[0m
+[0m$ [0mrtk cat src/routes/Catalog.tsx 2>&1 | head -20; echo ---; rtk ls src/routes/ 2>&1
+cat: src/routes/Catalog.tsx: No such file or directory
+---
+parts/
+Contact.tsx  3.2K
+Home.tsx  942B
+Policies.tsx  2.6K
+Services.tsx  4.3K
+TokensQA.tsx  3.7K
+[0m
+[0m$ [0mnpm run build 2>&1 | rtk grep -E 'error|✓|built|dist' | head -12
+src/__dev__/C/main.tsx(122,9): error TS6133: 'glassesUrl' is declared but its value is never read.
+src/app/router.tsx(6,25): error TS2307: Cannot find module '../routes/Catalog' or its corresponding type declarations.
+[0m
+[0m→ [0mRead docs/phase4/qa/D/07-wave1-midflight-1440.png
+[0m→ [0mRead docs/phase4/qa/D/07-wave1-early-1440.png
+[0m
+[0m← [0mEdit src/canvas/SponsorField.tsx
+Index: /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/canvas/SponsorField.tsx
+===================================================================
+--- /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/canvas/SponsorField.tsx
++++ /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/canvas/SponsorField.tsx
+@@ -30,9 +30,9 @@
+   type WaveId,
+ } from './stage/slots'
+ import { FALLBACK_ASPECTS, loadAtlasManifests, logosFor, type AtlasManifest } from './stage/logos'
+ import { getStreakTexture } from './stage/streakTexture'
+-import { clamp01 } from './stage/math'
++import { clamp01, smoothstep } from './stage/math'
+ import { readStageProgress, type StageProgress } from './SceneStage'
+ 
+ /** Which wave(s) to mount. Lane B mounts one instance per wave (`wave={1|2}`);
+  *  the isolated harness mounts both. Default 'both'. */
+
+[0m
+[0m← [0mEdit src/canvas/SponsorField.tsx
+Index: /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/canvas/SponsorField.tsx
+===================================================================
+--- /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/canvas/SponsorField.tsx
++++ /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/canvas/SponsorField.tsx
+@@ -195,9 +195,12 @@
+ 
+ const sN = st.speed // 1 → 0 over flight; 0 once settled
+ const logoW = slots[i].size[0]
+ const len = Math.min(logoW * (1 + 2.6 * sN * cfg.streakLength), 0.5)
+-const op = 0.75 * Math.pow(sN, 0.7) * cfg.streakOpacity * st.fade
++// Streaks die out over the last 20% of flight so no ghost bar lingers
++// on nearly-settled marks; settled logos are streak-free.
++const endFade = 1 - smoothstep(0.8, 1, st.t)
++const op = 0.75 * Math.pow(sN, 0.7) * cfg.streakOpacity * st.fade * endFade
+ for (let r = 0; r < 2; r++) {
+   const mesh = ribbons.current[i]?.[r]
+   const mat = ribbonMats.current[i]?.[r]
+   if (!mesh || !mat) continue
+
+[0m
+[0m$ [0mnode docs/phase4/qa/D/capture-D.mjs 2>&1 | tail -4
+07-wave1-midflight-390: ok
+07-wave1-settled-390: ok
+08-wave2-settled-390: ok
+capture-D: all stops captured, console-clean
+[0m
+[0m→ [0mRead docs/phase4/qa/D/07-wave1-midflight-1440.png
+[0m→ [0mRead docs/phase4/qa/D/08-wave2-settled-390.png
+[0m
+[0m← [0mWrite docs/phase4/requests/D-camera-notes.md
+Wrote file successfully.
+[0m
+[0m← [0mWrite docs/phase4/requests/D-build-blockers.md
+Wrote file successfully.
+[0m
+[0m$ [0mrtk ls docs/phase4/qa/D/*.png | head -25; echo ---; pkill -f 'vite --port 5104' && echo SERVER-STOPPED; rtk ls /tmp/diag-sweep-*.png 2>&1
+docs/phase4/qa/D/01-stage-standin-1440.png  22.8K
+docs/phase4/qa/D/03-sweep-a-1440.png  23.8K
+docs/phase4/qa/D/03-sweep-b-1440.png  23.1K
+docs/phase4/qa/D/06-info-standin-1440.png  23.3K
+docs/phase4/qa/D/07-wave1-early-1440.png  41.2K
+docs/phase4/qa/D/07-wave1-midflight-1440.png  56.8K
+docs/phase4/qa/D/07-wave1-midflight-390.png  12.1K
+docs/phase4/qa/D/07-wave1-settled-1440.png  89.1K
+docs/phase4/qa/D/07-wave1-settled-390.png  18.9K
+docs/phase4/qa/D/08-wave2-settled-1440.png  107.5K
+docs/phase4/qa/D/08-wave2-settled-390.png  29.2K
+docs/phase4/qa/D/brands-persol-edge@400-on-void.png  4.4K
+docs/phase4/qa/D/brands-persol-edge@400.png  3.9K
+docs/phase4/qa/D/brands-tiffany-edge@400-on-void.png  8.1K
+docs/phase4/qa/D/brands-tiffany-edge@400.png  9.8K
+docs/phase4/qa/D/fringe-contact-sheet.png  38.6K
+docs/phase4/qa/D/insurers-ia-edge@400-on-void.png  14.1K
+docs/phase4/qa/D/insurers-ia-edge@400.png  17.1K
+docs/phase4/qa/D/insurers-mbc-edge@400-on-void.png  9.6K
+docs/phase4/qa/D/insurers-mbc-edge@400.png  11.3K
+---
+SERVER-STOPPED
+/tmp/diag-sweep-0.3.png  27.9K
+/tmp/diag-sweep-0.65.png  25.7K
+[0m
+[0m# [0mTodos
+[✓] Load skills + context7 drei API check
+[✓] Write src/canvas/stage/* pure modules
+[✓] Write SceneStage + SponsorField; align to Lane B API
+[✓] Fix compact layouts + harness (ui param, mobile cam, harness-owned exposure/fog)
+[✓] Serve :5104, Playwright screenshots 1440+390 into docs/phase4/qa/D/, inspect
+[✓] npm run build green (or blocked-by-F documented), stop server, PHASE4-D-DONE summary
+[0m
+PHASE4-D-DONE
+
+1. Built Lane D (part 2): `src/canvas/SceneStage.tsx` (studio HDRI + 4 Lightformer dark-field strips, one scroll-animated sweep strip — mechanism proven with intensity-30 A/B captures — key/velvet/grazing lights, ContactShadows) and `src/canvas/SponsorField.tsx` + `stage/{slots,logos,math,streakTexture}.ts` (W1 8 eyewear z-rush from −18…−22 m with velocity streaks → 1.1 m 3-tier arc; W2 8 insurers from −10…−12 m → dimmer tight band below; all contract numbers verbatim, baked expo arrivals, billboarded, unlinked, alphaTest 0.4).
+2. Verified visually: 11 console-clean Playwright stops in `docs/phase4/qa/D/` (W1 early/mid/settled, W2 settled, stage/sweep, @1440+390) — all 16 settled marks legible, zero mobile overflow, no overlaps, streaks present in flight and fully gone at settle.
+3. Aligned to Lane B mid-stream: components default to shared `filmProgress`, `SponsorField` takes `wave={1|2}`, SceneStage no longer writes fog/exposure (single-writer rule); isolated harness `dev-D.html` + `src/__dev__/D/main.tsx` (:5104, now stopped).
+4. Known issues: (a) `npm run build` fails only on others' files — missing `src/routes/Catalog.tsx` (router import) + unused var in `src/__dev__/C/main.tsx` — filed `requests/D-build-blockers.md`, my files typecheck clean; (b) real-film framing needs B's camera ≈0.78 m hold (desktop) / ≈1.5 m+ (mobile waves) — filed `requests/D-camera-notes.md` with exact numbers; (c) `src/canvas/` vs `src/components/canvas/` canonical-path conflict left for coordinator (my brief pins `src/canvas/`, consistent with Lane C); (d) stand-in front face reads near-black (correct metal-in-dark-studio behavior; final graphite read depends on Lane C materials); (e) env frames=Infinity/256 flagged for step-15 perf gating.
+EXIT 0 model=meta/muse-spark-1.3-contributor

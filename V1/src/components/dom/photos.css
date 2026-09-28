@@ -1,0 +1,86 @@
+/* ==========================================================================
+ * EyeQ Vision Care — F5-PHOTOS (Lane PHOTOS owns this file + Sections.tsx).
+ * Real photography from the live site (assets/source/imagery/), optimised by
+ * scripts/photos/build.sh to responsive WebP. Editorial placement only —
+ * restrained singles, never card grids. Never touches LogoRails/Header/
+ * Scrims/StoreBits/v1.css (other agents).
+ *
+ * Reveal: masked clip feel via transform/opacity ONLY (GPU, CLS-safe).
+ * The Reveal wrapper fades/rises the figure; the inner mask keeps overflow
+ * hidden while the img settles from a small rise + settle-scale. RM users
+ * get the final state statically (matches lane-e convention).
+ * CLS: every <img> carries width/height; CSS keeps height:auto + LQIP bg.
+ * ========================================================================== */
+
+.eyeq-photo {
+  margin: 0;
+  border-radius: var(--eyeq-radius-media);
+  background-color: transparent;
+}
+
+/* Restrained editorial placements (desktop offsets collapse on mobile). */
+.eyeq-photo--about {
+  max-width: 560px;
+  margin: 40px 0 0 auto;
+}
+.eyeq-photo--services {
+  margin-top: 40px;
+}
+.eyeq-photo--lenses-wide {
+  margin-top: 48px;
+}
+.eyeq-photo--lenses-offset {
+  max-width: 520px;
+  margin-top: 32px;
+}
+@media (max-width: 900px) {
+  .eyeq-photo--about,
+  .eyeq-photo--lenses-offset {
+    max-width: none;
+    margin-left: 0;
+  }
+}
+
+.eyeq-photo__mask {
+  display: block;
+  overflow: hidden;
+  border-radius: inherit;
+  background-color: var(--eyeq-hairline-light);
+  background-size: cover;
+  background-position: center;
+}
+
+.eyeq-photo__mask > img {
+  display: block;
+  width: 100%;
+  height: auto;
+  opacity: 0;
+  transform: translateY(26px) scale(1.025);
+  transition:
+    opacity 0.9s cubic-bezier(0.16, 1, 0.3, 1),
+    transform 1.05s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: transform, opacity;
+}
+
+.eyeq-photo.is-in .eyeq-photo__mask > img {
+  opacity: 1;
+  transform: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .eyeq-photo__mask > img {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}
+
+.eyeq-photo > figcaption {
+  margin-top: 12px;
+  font-size: 13px;
+  line-height: 1.5;
+  color: var(--eyeq-ink-muted);
+}
+.eyeq-lenses .eyeq-photo > figcaption {
+  color: var(--eyeq-bone-dim);
+}

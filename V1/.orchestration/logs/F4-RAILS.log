@@ -1,0 +1,399 @@
+[0m
+> build · muse-spark-1.3-contributor
+[0m
+[0m→ [0mRead .
+[0m→ [0mRead src/v1/v1.css
+[0m→ [0mRead src/components/dom/LogoRails.tsx
+[0m→ [0mRead src/components/dom/Header.tsx
+[0m→ [0mRead src/components/dom/Scrims.tsx
+[0m✱ [0mGrep "WhiteActRails|v1-whitewrap|v1-rail|eyeq-rails|eyeq-header|eyeq-skipfilm|eyeq-rail"[90m 100 matches[0m
+[0m✱ [0mGlob "src/**/*.css"[90m 11 matches[0m
+[0m→ [0mRead src/components/dom/lane-e.css[90m [offset=700, limit=300][0m
+[0m→ [0mRead src/components/dom/lane-e.css[90m [offset=100, limit=180][0m
+[0m✱ [0mGrep "whitewrap|WhiteAct|v1\.tsx|V1Page|footer|Footer"[90m 100 matches[0m
+[0m→ [0mRead src/v1/App.tsx
+[0m→ [0mRead src/components/dom/lane-e.css[90m [offset=993, limit=380][0m
+[0m→ [0mRead package.json
+[0m→ [0mRead src/styles/tokens.css
+[0m→ [0mRead src/components/dom/Sections.tsx[90m [limit=60][0m
+[0m→ [0mRead vite.config.ts
+[0m→ [0mRead src/styles/white.css[90m [limit=80][0m
+[0m
+[0m$ [0mrtk ls docs/phase4/qa/v3/ 2>/dev/null | head -20; rtk ls docs/ 2>/dev/null | head
+F4-MAP.md  1.9K
+F4-MFILM.md  1.9K
+F4-SCROLL.md  1.8K
+MPAGE.md  4.4K
+ORCHESTRATOR-NOTES.md  2.2K
+PERF.md  4.0K
+SCROLL.md  4.8K
+mfilm-sweep-1512.webm  2.1M
+mfilm-waves-ring-gap-1512.png  15.4K
+mfilm-waves-w1-flight-1512.png  89.9K
+mfilm-waves-w1-hold-1512.png  80.5K
+mfilm-waves-w1-hold-1920.png  90.5K
+mfilm-waves-w1-hold-390.png  39.2K
+mfilm-waves-w2-flight-1512.png  81.4K
+mfilm-waves-w2-hold-1512.png  71.3K
+mfilm-waves-w2-hold-390.png  34.6K
+mfilm-words-s1-1512.png  232.8K
+mfilm-words-s1-390.png  103.6K
+mfilm-words-s100-1512.png  223.4K
+mfilm-words-s100-390.png  96.8K
+phase3/
+phase4/
+research/
+00-BRIEF.md  6.7K
+[0m
+[0m→ [0mRead docs/phase4/qa/v3/F4-SCROLL.md
+[0m✱ [0mGrep "eyeq-white\b"[90m in src/components/dom · 6 matches[0m
+[0m→ [0mRead src/components/dom/lane-e.css[90m [offset=530, limit=170][0m
+[0m
+[0m← [0mEdit src/v1/v1.css
+Index: /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/v1/v1.css
+===================================================================
+--- /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/v1/v1.css
++++ /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/v1/v1.css
+@@ -232,17 +232,54 @@
+ .v1-whitewrap > .eyeq-white {
+   min-width: 0;
+ }
+ .v1-rail {
+-  align-self: start;
+-  position: sticky;
++  /* F4-RAILS: full-length film strips — fixed at the viewport edges from the
++   * white act to the footer (the whitewrap grid is only as tall as the white
++   * act, so sticky could never run past it). The asides leave grid flow, so
++   * the auto tracks collapse and text columns keep full width — never
++   * overlapped. Visibility + the 200px footer fade are driven from
++   * LogoRails.tsx (.is-live + inline opacity/blur). */
++  position: fixed;
+   top: 0;
+-  z-index: 1;
+-  /* V3-MPAGE: strips are taller than the viewport — clamp the sticky box so
+-   * the rail can never stretch the white-act grid or cause sideways push. */
++  height: 100svh;
+   max-height: 100svh;
++  z-index: 5;
+   overflow: clip;
++  opacity: 0;
++  visibility: hidden;
++  pointer-events: none;
++  transition:
++    opacity 0.35s ease-out,
++    visibility 0.35s,
++    filter 0.35s ease-out;
+ }
++.v1-rail--left { left: 0; }
++.v1-rail--right { right: 0; }
++.v1-rail.is-live {
++  opacity: 1;
++  visibility: visible;
++  pointer-events: auto;
++}
++.v1-rail.is-fade {
++  opacity: 0;
++  visibility: hidden;
++  filter: blur(6px);
++}
++/* 768–1279px: side gutters are too narrow for edge-fixed strips — keep the
++ * original sticky-in-whitewrap rails (white act only, zero overlap). */
++@media (min-width: 768px) and (max-width: 1279px) {
++  .v1-rail {
++    align-self: start;
++    position: sticky;
++    height: auto;
++    opacity: 1;
++    visibility: visible;
++    pointer-events: auto;
++    filter: none;
++    transition: none;
++  }
++}
+ /* Mobile: vertical flank rails are hidden by lane-e.css; single strip below. */
+ .v1-mobilestrip {
+   display: none;
+   background: var(--eyeq-paper);
+
+[0m
+[0m← [0mEdit src/components/dom/LogoRails.tsx
+Index: /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/components/dom/LogoRails.tsx
+===================================================================
+--- /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/components/dom/LogoRails.tsx
++++ /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/components/dom/LogoRails.tsx
+@@ -384,10 +384,70 @@
+ 
+ // White-act flank layout (ART §4.4 desktop geometry): Lane B places
+ // <WhiteActRails side="left"> … WhiteSection … <WhiteActRails side="right">.
+ // "pair" renders both rails + pause (standalone bridge use).
++// F4-RAILS: on ≥1280px the asides are viewport-fixed (v1.css) so the strips
++// run white act → footer. This drives .is-live visibility + a 200px
++// opacity/blur fade just before the footer; hidden while the film is on
++// screen. 768–1279px / <768px are pure-CSS (sticky / hidden) — idle there.
++const RAIL_FADE_PX = 200;
++
++function useRailPlacement(wrapRef: React.RefObject<HTMLDivElement | null>) {
++  useEffect(() => {
++    const mq = window.matchMedia('(min-width: 1280px)');
++    const apply = () => {
++      const host = wrapRef.current?.closest('.v1-rail') as HTMLElement | null;
++      if (!host) return;
++      if (!mq.matches) {
++        host.classList.remove('is-live', 'is-fade');
++        host.style.opacity = '';
++        host.style.filter = '';
++        return;
++      }
++      const white = document.querySelector('#white-act');
++      const footer = document.querySelector('.eyeq-footer');
++      if (!white || !footer) return;
++      const whiteTop = (white as HTMLElement).getBoundingClientRect().top + window.scrollY;
++      const footerTop = (footer as HTMLElement).getBoundingClientRect().top + window.scrollY;
++      const pastWhite = window.scrollY + window.innerHeight * 0.5 >= whiteTop;
++      const dist = footerTop - (window.scrollY + window.innerHeight);
++      if (!pastWhite || dist <= 0) {
++        host.classList.remove('is-live');
++        host.classList.add('is-fade');
++        host.style.opacity = '';
++        host.style.filter = '';
++        return;
++      }
++      host.classList.add('is-live');
++      host.classList.remove('is-fade');
++      const fade = dist >= RAIL_FADE_PX ? 1 : Math.max(0, dist / RAIL_FADE_PX);
++      host.style.opacity = fade.toFixed(3);
++      host.style.filter = fade >= 1 ? '' : `blur(${((1 - fade) * 6).toFixed(2)}px)`;
++    };
++    let ticking = false;
++    const onScroll = () => {
++      if (ticking) return;
++      ticking = true;
++      requestAnimationFrame(() => {
++        ticking = false;
++        apply();
++      });
++    };
++    apply();
++    window.addEventListener('scroll', onScroll, { passive: true });
++    window.addEventListener('resize', onScroll);
++    mq.addEventListener?.('change', apply);
++    return () => {
++      window.removeEventListener('scroll', onScroll);
++      window.removeEventListener('resize', onScroll);
++      mq.removeEventListener?.('change', apply);
++    };
++  }, [wrapRef]);
++}
++
+ export function WhiteActRails({ side = 'pair' }: { side?: 'left' | 'right' | 'pair' }) {
+   const { rm, running, speed, paused, setPaused, wrapRef } = useRailsRunning();
++  useRailPlacement(wrapRef);
+   if (rm) {
+     if (side === 'pair') return <StaticGrid />;
+     return side === 'left' ? (
+       <StaticColumn logos={brands} label="Featured eyewear brands" />
+
+[0m
+[0m← [0mEdit src/components/dom/lane-e.css
+Index: /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/components/dom/lane-e.css
+===================================================================
+--- /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/components/dom/lane-e.css
++++ /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/components/dom/lane-e.css
+@@ -720,8 +720,22 @@
+   display: flex;
+   flex-direction: column;
+   align-items: stretch;
+ }
++/* F4-RAILS: on ≥1280px the aside is viewport-fixed — the strip runs the full
++ * viewport height (76px reserved for the pause control) so the loop reads
++ * continuously past the white act, alongside every section to the footer. */
++@media (min-width: 1280px) {
++  .v1-rail .eyeq-rail {
++    height: calc(100svh - 76px);
++  }
++  .v1-rail .eyeq-rail__body {
++    height: 100%;
++  }
++  .v1-rail .eyeq-rail__viewport {
++    height: 100%;
++  }
++}
+ /* Film grain ≤3%: static turbulence dusted over the strip (texture, not art). */
+ .eyeq-rail::after {
+   content: "";
+   position: absolute;
+
+[0m
+[0m→ [0mRead v1.html
+[0m→ [0mRead qa-v3-probe.mjs[90m [limit=60][0m
+[0m
+[0m$ [0mnpx tsc --noEmit -p tsconfig.app.json 2>&1 | head -20
+npm notice run eyeq-vision-care@0.1.0 npx
+npm notice run 'tsc' --noEmit -p tsconfig.app.json
+[0m
+[0m$ [0mnohup npx vite --port 5703 --strictPort > /tmp/vite-5703.log 2>&1 & echo "started $!"
+started 87187
+[0m
+[0m$ [0msleep 6 && rtk curl -s -o /dev/null -w "%{http_code}" http://localhost:5703/v1.html
+FAILED: curl 000
+[0m
+[0m$ [0msleep 8; rtk read /tmp/vite-5703.log --tail-lines 30
+npm notice run eyeq-vision-care@0.1.0 npx
+npm notice run 'vite' --port 5703 --strictPort
+
+  VITE v8.3.1  ready in 7529 ms
+
+  ➜  Local:   http://localhost:5703/
+  ➜  Network: use --host to expose
+[0m
+[0m← [0mWrite /tmp/f4-rails-probe.mjs
+Wrote file successfully.
+[0m
+[0m$ [0mnode /tmp/f4-rails-probe.mjs 2>&1 | tail -20
+node:internal/modules/package_json_reader:301
+  throw new ERR_MODULE_NOT_FOUND(packageName, fileURLToPath(base), null);
+        ^
+
+Error [ERR_MODULE_NOT_FOUND]: Cannot find package 'playwright' imported from /private/tmp/f4-rails-probe.mjs
+    at Object.getPackageJSONURL (node:internal/modules/package_json_reader:301:9)
+    at packageResolve (node:internal/modules/esm/resolve:768:81)
+    at moduleResolve (node:internal/modules/esm/resolve:859:18)
+    at defaultResolve (node:internal/modules/esm/resolve:992:11)
+    at #cachedDefaultResolve (node:internal/modules/esm/loader:701:20)
+    at #resolveAndMaybeBlockOnLoaderThread (node:internal/modules/esm/loader:721:38)
+    at ModuleLoader.resolveSync (node:internal/modules/esm/loader:759:56)
+    at #resolve (node:internal/modules/esm/loader:683:17)
+    at ModuleLoader.getOrCreateModuleJob (node:internal/modules/esm/loader:603:35)
+    at ModuleJob.syncLink (node:internal/modules/esm/module_job:163:33) {
+  code: 'ERR_MODULE_NOT_FOUND'
+}
+
+Node.js v24.18.0
+[0m
+[0m$ [0mcp /tmp/f4-rails-probe.mjs ./f4-rails-probe.tmp.mjs && node ./f4-rails-probe.tmp.mjs 2>&1 | tail -20
+{"whiteTop":6880,"footerTop":14127.3125,"max":13662,"secTops":[8477,9130,10110,11153,12652]}
+film {"y":0,"rails":[{"cls":"v1-rail v1-rail--left is-fade","op":"(css)","filter":"(none)","rect":{"left":0,"width":120}},{"cls":"v1-rail v1-rail--right is-fade","op":"(css)","filter":"(none)","rect":{"left":1392,"width":120}}]}
+whiteact {"y":7280,"rails":[{"cls":"v1-rail v1-rail--left is-live","op":"1","filter":"(none)","rect":{"left":0,"width":120}},{"cls":"v1-rail v1-rail--right is-live","op":"1","filter":"(none)","rect":{"left":1392,"width":120}}]}
+midpage {"y":10504,"rails":[{"cls":"v1-rail v1-rail--left is-live","op":"1","filter":"(none)","rect":{"left":0,"width":120}},{"cls":"v1-rail v1-rail--right is-live","op":"1","filter":"(none)","rect":{"left":1392,"width":120}}]}
+file:///Users/admin/Desktop/BUISNESS/EyeQ%20Vision%20Care/V1/f4-rails-probe.tmp.mjs:44
+await shot('prefade', Math.round(geo.footerTop - innerHeight - 100));
+                                                 ^
+
+ReferenceError: innerHeight is not defined
+    at file:///Users/admin/Desktop/BUISNESS/EyeQ%20Vision%20Care/V1/f4-rails-probe.tmp.mjs:44:50
+
+Node.js v24.18.0
+[0m
+[0m← [0mEdit f4-rails-probe.tmp.mjs
+Index: /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/f4-rails-probe.tmp.mjs
+===================================================================
+--- /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/f4-rails-probe.tmp.mjs
++++ /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/f4-rails-probe.tmp.mjs
+@@ -40,10 +40,10 @@
+ }
+ await shot('film', 100);
+ await shot('whiteact', Math.round(geo.whiteTop + 400));
+ await shot('midpage', Math.round((geo.whiteTop + geo.footerTop) / 2));
+-await shot('prefade', Math.round(geo.footerTop - innerHeight - 100));
+-await shot('footer', Math.round(geo.footerTop - innerHeight + 300));
++await shot('prefade', Math.round(geo.footerTop - 860 - 100));
++await shot('footer', Math.round(geo.footerTop - 860 + 300));
+ if (errs.length) console.log('ERRORS:', errs);
+ await ctx.close();
+ await browser.close();
+ console.log('DONE');
+
+[0m
+[0m$ [0mnode ./f4-rails-probe.tmp.mjs 2>&1 | tail -12
+{"whiteTop":6880,"footerTop":14127.3125,"max":13662,"secTops":[8477,9130,10110,11153,12652]}
+film {"y":0,"rails":[{"cls":"v1-rail v1-rail--left is-fade","op":"(css)","filter":"(none)","rect":{"left":0,"width":120}},{"cls":"v1-rail v1-rail--right is-fade","op":"(css)","filter":"(none)","rect":{"left":1392,"width":120}}]}
+whiteact {"y":7280,"rails":[{"cls":"v1-rail v1-rail--left is-live","op":"1","filter":"(none)","rect":{"left":0,"width":120}},{"cls":"v1-rail v1-rail--right is-live","op":"1","filter":"(none)","rect":{"left":1392,"width":120}}]}
+midpage {"y":10504,"rails":[{"cls":"v1-rail v1-rail--left is-live","op":"1","filter":"(none)","rect":{"left":0,"width":120}},{"cls":"v1-rail v1-rail--right is-live","op":"1","filter":"(none)","rect":{"left":1392,"width":120}}]}
+prefade {"y":13167,"rails":[{"cls":"v1-rail v1-rail--left is-live","op":"0.502","filter":"blur(2.99px)","rect":{"left":0,"width":120}},{"cls":"v1-rail v1-rail--right is-live","op":"0.502","filter":"blur(2.99px)","rect":{"left":1392,"width":120}}]}
+footer {"y":13567,"rails":[{"cls":"v1-rail v1-rail--left is-fade","op":"(css)","filter":"(none)","rect":{"left":0,"width":120}},{"cls":"v1-rail v1-rail--right is-fade","op":"(css)","filter":"(none)","rect":{"left":1392,"width":120}}]}
+DONE
+[0m
+[0m→ [0mRead /tmp/f4-rails-shots/midpage.png
+[0m→ [0mRead /tmp/f4-rails-shots/prefade.png
+[0m→ [0mRead /tmp/f4-rails-shots/whiteact.png
+[0m→ [0mRead /tmp/f4-rails-shots/film.png
+[0m
+[0m← [0mEdit src/v1/v1.css
+Index: /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/v1/v1.css
+===================================================================
+--- /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/v1/v1.css
++++ /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/v1/v1.css
+@@ -254,13 +254,8 @@
+     filter 0.35s ease-out;
+ }
+ .v1-rail--left { left: 0; }
+ .v1-rail--right { right: 0; }
+-.v1-rail.is-live {
+-  opacity: 1;
+-  visibility: visible;
+-  pointer-events: auto;
+-}
+ .v1-rail.is-fade {
+   opacity: 0;
+   visibility: hidden;
+   filter: blur(6px);
+
+[0m
+[0m→ [0mRead src/v1/v1.css[90m [offset=224, limit=85][0m
+[0m
+[0m← [0mEdit src/v1/v1.css
+Index: /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/v1/v1.css
+===================================================================
+--- /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/v1/v1.css
++++ /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/v1/v1.css
+@@ -254,13 +254,25 @@
+     filter 0.35s ease-out;
+ }
+ .v1-rail--left { left: 0; }
+ .v1-rail--right { right: 0; }
++.v1-rail.is-live {
++  opacity: 1;
++  visibility: visible;
++  pointer-events: auto;
++}
+ .v1-rail.is-fade {
+   opacity: 0;
+   visibility: hidden;
+   filter: blur(6px);
+ }
++@media (min-width: 1280px) {
++  /* Gutters for the fixed strips: the white act keeps the exact clearances
++   * the old flank grid gave it — ledger text never slides under the film. */
++  .v1-whitewrap > .eyeq-white {
++    margin: 0 120px;
++  }
++}
+ /* 768–1279px: side gutters are too narrow for edge-fixed strips — keep the
+  * original sticky-in-whitewrap rails (white act only, zero overlap). */
+ @media (min-width: 768px) and (max-width: 1279px) {
+   .v1-rail {
+
+[0m
+[0m← [0mWrite f4-rails-recheck.tmp.mjs
+Wrote file successfully.
+[0m
+[0m$ [0mnode ./f4-rails-recheck.tmp.mjs 2>&1 | tail -6
+whiteact2 y= 7280 {"railRight":120,"ledgerLeft":228}
+midpage2 y= 11702 {"railRight":120,"ledgerLeft":228}
+DONE
+[0m
+[0m→ [0mRead /tmp/f4-rails-shots/whiteact2.png
+[0m
+[0m$ [0mrm -f f4-rails-probe.tmp.mjs f4-rails-recheck.tmp.mjs && kill 87187 && sleep 1 && (rtk curl -s -o /dev/null -w "%{http_code}" --max-time 3 http://localhost:5703/v1.html || true)
+FAILED: curl 000
+[0m
+[0m$ [0mrtk ps -p 87187 > /dev/null 2>&1 && echo "STILL RUNNING" || echo "STOPPED"
+STOPPED
+[0m
+[0m← [0mWrite docs/phase4/qa/v3/F4-RAILS.md
+Wrote file successfully.
+[0m
+F4-RAILS-DONE
+
+Rails now run fixed at both viewport edges from the white act through all sections, fading smoothly (opacity + blur over 200px) before the footer; header/skip verified seamless over the film; no text overlap; mobile rules and 620vh pin untouched. Verified at 1512×860 with screenshots, server stopped, note at `docs/phase4/qa/v3/F4-RAILS.md`.
+EXIT 0 model=meta/muse-spark-1.3-contributor

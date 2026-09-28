@@ -1,0 +1,140 @@
+- main [ref=f1e4]:
+  - generic [ref=f1e7]:
+    - navigation "Primary" [ref=f1e8]:
+      - link "Realevate - home" [ref=f1e10] [cursor=pointer]:
+        - /url: /
+        - img "Realevate" [ref=f1e11]
+      - link "About" [ref=f1e12] [cursor=pointer]:
+        - /url: /about
+      - link "Contact" [ref=f1e14] [cursor=pointer]:
+        - /url: /contact
+    - generic [ref=f1e16]:
+      - generic [ref=f1e17]:
+        - img "Luxury infinity pool overlooking a coastal bay" [ref=f1e19]
+        - generic [aria-hidden]:
+          - generic: By The Sea
+      - heading "Seafront Apartments & Villas, and Properties within walking distance to the Beach and Marina" [level=1] [ref=f1e21]:
+        - generic [ref=f1e22]: Seafront Apartments & Villas, and Properties
+        - generic [ref=f1e23]: within walking distance to the Beach and Marina
+    - generic [ref=f1e24]: (Scroll)
+  - generic [ref=f1e28]:
+    - generic [ref=f1e29]:
+      - heading "The Enduring Appeal of Waterfront Living" [level=2] [ref=f1e31]:
+        - generic [ref=f1e32]: The Enduring
+        - generic [ref=f1e33]: Appeal of
+        - generic [ref=f1e34]: Waterfront Living
+      - paragraph [ref=f1e35]:
+        - generic [ref=f1e36]: Exceptional coastal locations offering sea
+        - generic [ref=f1e37]: views, walkable access to the waterfront, a
+        - generic [ref=f1e38]: peaceful lifestyle, and enduring demand
+        - generic [ref=f1e39]: throughout the year.
+    - generic [ref=f1e40]:
+      - generic [ref=f1e42]:
+        - generic [ref=f1e54]:
+          - img "By The Sea property 1"
+        - generic [ref=f1e55]:
+          - img "By The Sea property 2"
+        - generic [ref=f1e56]:
+          - img "By The Sea property 3"
+        - generic [ref=f1e57]:
+          - img "By The Sea property 4"
+        - generic [ref=f1e58]:
+          - img "By The Sea property 5"
+        - generic [ref=f1e59]:
+          - img "By The Sea property 6"
+        - generic [ref=f1e60]:
+          - img "By The Sea property 7"
+        - generic [ref=f1e61]:
+          - img "By The Sea property 8"
+        - generic [ref=f1e62]:
+          - img "By The Sea property 9"
+        - generic [ref=f1e63]:
+          - img "By The Sea property 10"
+        - generic [ref=f1e64]:
+          - img "By The Sea property 11"
+      - generic [ref=f1e76]:
+        - button "Previous slide" [ref=f1e77] [cursor=pointer]
+        - button "Next slide" [ref=f1e78] [cursor=pointer]
+  - generic [ref=f1e79]:
+    - generic [aria-hidden]:
+      - generic: By The Sea
+    - generic [ref=f1e80]:
+      - figure [ref=f1e81]
+      - heading "“Waterfront property continues to command a premium because supply is finite while demand remains global.”" [level=2] [ref=f1e82]:
+        - generic [ref=f1e83]: “Waterfront property
+        - generic [ref=f1e84]: continues to command a
+        - generic [ref=f1e85]: premium because supply
+        - generic [ref=f1e86]: is finite while demand
+        - generic [ref=f1e87]: remains global.”
+      - generic [ref=f1e88]:
+        - paragraph [ref=f1e89]:
+          - generic [ref=f1e90]: Knight Frank
+        - paragraph [ref=f1e91]:
+          - generic [ref=f1e92]: / Global Waterfront Report / 2019
+  - region "Coastal destination" [ref=f1e93]:
+    - img "Aerial view of coastal towers beside forest and beach" [ref=f1e95]
+  - generic [ref=f1e96]:
+    - generic [ref=f1e97]:
+      - article [ref=f1e98]:
+        - figure [ref=f1e99]:
+          - img "Silhouette sculpture by the water at dusk" [ref=f1e100]
+        - generic [ref=f1e101]:
+          - heading "High Demand" [level=3] [ref=f1e102]:
+            - generic [ref=f1e103]: High
+            - generic [ref=f1e104]: Demand
+          - paragraph [ref=f1e105]:
+            - generic [ref=f1e106]: Waterfront properties consistently
+            - generic [ref=f1e107]: outperform inland homes due to their
+            - generic [ref=f1e108]: scarcity and enduring global demand.
+      - article [ref=f1e109]:
+        - generic [ref=f1e110]:
+          - heading "Price Premiums" [level=3] [ref=f1e111]:
+            - generic [ref=f1e112]: Price
+            - generic [ref=f1e113]: Premiums
+          - paragraph [ref=f1e114]:
+            - generic [ref=f1e115]: Beachfront properties command average
+            - generic [ref=f1e116]: price premiums of 40%, with prime
+            - generic [ref=f1e117]: beachfront homes reaching premiums of
+            - generic [ref=f1e118]: up to 76%.
+        - figure [ref=f1e119]:
+          - img "Wide sandy beach and calm blue sea" [ref=f1e120]
+      - article [ref=f1e121]:
+        - figure [ref=f1e122]:
+          - img "Couple standing on a beach near the shoreline" [ref=f1e123]
+        - generic [ref=f1e124]:
+          - heading "Limited Supply" [level=3] [ref=f1e125]:
+            - generic [ref=f1e126]: Limited
+            - generic [ref=f1e127]: Supply
+          - paragraph [ref=f1e128]:
+            - generic [ref=f1e129]: Limited coastal supply supports long-term
+            - generic [ref=f1e130]: capital appreciation and market resilience.
+    - generic [ref=f1e131]:
+      - heading "“ Waterfront properties are also amongst the most liquid. Even in a depressed market, due to their position and scarcity, a front-line waterfront property will face strong demand with prospective buyers aware that their future exit strategy is also secure.”" [level=3] [ref=f1e132]:
+        - generic [ref=f1e133]:
+          - generic [ref=f1e134]: “
+          - text: Waterfront properties are also amongst the
+        - generic [ref=f1e135]: most liquid. Even in a depressed market, due to
+        - generic [ref=f1e136]: their position and scarcity, a front-line waterfront
+        - generic [ref=f1e137]: property will face strong demand with prospective
+        - generic [ref=f1e138]: buyers aware that their future exit strategy is also
+        - generic [ref=f1e139]: secure.”
+      - generic [ref=f1e140]:
+        - paragraph [ref=f1e141]:
+          - generic [ref=f1e142]: Knight Frank
+        - paragraph [ref=f1e143]:
+          - generic [ref=f1e144]: / Global Waterfront Report / 2019
+  - region "Seaside resort lifestyle" [ref=f1e145]:
+    - img "Woman walking along a seaside resort deck with lounge chairs and umbrellas" [ref=f1e147]
+  - generic [ref=f1e149]:
+    - heading "Secure Your Place By The Sea" [level=2] [ref=f1e151]:
+      - generic [ref=f1e152]: Secure Your Place
+      - generic [ref=f1e153]: By The Sea
+    - heading [level=4] [ref=f1e154]:
+      - link "Speak With Us" [ref=f1e156] [cursor=pointer]:
+        - /url: /contact
+  - 'region "Next category: Evergreen" [ref=f1e157]':
+    - link "Next Evergreen Gulf Resorts, parks & Forest Oasis" [ref=f1e161] [cursor=pointer]:
+      - /url: /evergreen
+      - generic [ref=f1e162]: Next
+      - heading "Evergreen" [level=2] [ref=f1e163]
+      - heading "Gulf Resorts, parks & Forest Oasis" [level=6] [ref=f1e165]

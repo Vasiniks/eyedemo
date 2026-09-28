@@ -1,0 +1,117 @@
+/* BrandWaves overlay — V2 WAVES lane.
+ * Pure function of film progress. GPU only (transform/opacity; blur is
+ * static depth blur + short exit rush only, never continuous).
+ * Container perspective:1100px; logos travel translateZ(-7000/-5000px) →
+ * settle, so perspective pulls far items to screen centre = depth travel.
+ * Depth: 3 layers near/mid/far = 1.0/0.72/0.5. Near ≈150–190px @1512.
+ * Wave 1 settles RIGHT (x 64–94%), wave 2 settles LEFT (x 6–36%) —
+ * never the subject's half, never centre. No text here (WORDS owns headers).
+ */
+.bw-root {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+  perspective: 1100px;
+  perspective-origin: 50% 46%;
+}
+.bw-item {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 0;
+  height: 0;
+  transform-style: preserve-3d;
+  will-change: transform, opacity;
+}
+.bw-logo {
+  position: absolute;
+  left: 0;
+  top: 0;
+  transform: translate(-50%, -50%);
+  will-change: transform;
+}
+.bw-logo img {
+  display: block;
+  width: 100%;
+  height: auto;
+  user-select: none;
+  -webkit-user-drag: none;
+  /* F4-MFILM perf: no per-logo filter (was drop-shadow ×8); far-tier
+   * softness comes from opacity 0.75 + the single far blur in TSX. */
+}
+/* Velocity streak: thin warm-white gradient trail along the travel ray,
+ * anchored at the logo, extending back toward screen centre. Length ∝ velocity.
+ * Two-stop falloff (hot head → soft tail) so the trail melts, never cuts. */
+.bw-streak {
+  position: absolute;
+  left: 0;
+  top: 50%;
+  height: 2px;
+  margin-top: -1px;
+  border-radius: 2px;
+  transform-origin: left center;
+  background: linear-gradient(90deg, rgba(240,232,214,0.9), rgba(240,232,214,0.32) 38%, rgba(240,232,214,0));
+  will-change: transform, opacity;
+  pointer-events: none;
+}
+/* Depth tiers — near 1.0 / mid 0.72 / far 0.5. Near ≈150–190px @1512.
+ * Width lives on the positioned container (img % widths don't constrain
+ * inside shrink-to-fit abspos boxes); img fills the container. */
+.bw-near { width: clamp(140px, 11.2vw, 182px); }
+.bw-mid  { width: clamp(100px, 8.1vw, 131px); }
+.bw-far  { width: clamp(70px, 5.6vw, 91px); }
+/* Depth tunnel: faint hairline rays converging on the vanishing point in
+ * the empty side + a soft core glow. Static geometry; intensity via opacity. */
+.bw-tunnel {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+.bw-tunnel-ray {
+  position: absolute;
+  height: 1px;
+  margin-top: -0.5px;
+  border-radius: 1px;
+  transform-origin: left center;
+  background: linear-gradient(90deg, rgba(240,232,214,0.85), rgba(240,232,214,0.3) 45%, rgba(240,232,214,0));
+  will-change: opacity;
+}
+.bw-tunnel-core {
+  position: absolute;
+  width: 120px;
+  height: 120px;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(240,232,214,0.28), rgba(240,232,214,0) 70%);
+  will-change: opacity;
+}
+/* Settled breathing: once a logo has landed (is-settled), its img drifts
+ * ±3px on a slow 7s loop — a barely-there hover that keeps the constellation
+ * alive while the film holds. Transform-only, linear-ish ease-in-out;
+ * runs on the img so it never fights the inline positioning transforms. */
+.bw-logo.is-settled > img {
+  animation: bw-breathe 7s ease-in-out infinite alternate;
+  will-change: transform;
+}
+@keyframes bw-breathe {
+  from { transform: translate3d(0, -2px, 0); }
+  to { transform: translate3d(0, 2.5px, 0); }
+}
+/* F5-MOBILE (ID=OVERLAY): ≤820px portrait has no empty side — logos
+ * settle as a compact 2-row constellation inside the black letterbox bands
+ * (top 0–22% for brands, bottom 70–100% for insurers; FRAME may tighten via
+ * --film-band-top / --film-band-bottom). Near ≈96px wide, never over the
+ * subject. Desktop unchanged. */
+@media (max-width: 820px) and (orientation: portrait) {
+  .bw-root { perspective-origin: 50% 42%; }
+  .bw-near { width: min(96px, 24vw); }
+  .bw-mid  { width: min(68px, 17.5vw); }
+  .bw-far  { width: min(50px, 13vw); }
+  .bw-tunnel-core { width: 80px; height: 80px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .bw-streak, .bw-tunnel { display: none; }
+  .bw-item, .bw-logo { will-change: opacity; }
+  .bw-logo.is-settled > img { animation: none; }
+}

@@ -1,0 +1,10 @@
+ID = MOTION — the master scroll choreography + site-wide motion language. Consult: `motion-designer`, `threejs-art-director` (camera), and use the gsap MCP (get_gsap_guidance / create_production_pattern) and motion MCP where useful.
+Output: `docs/phase4/PLAN-motion.md`
+1. Total scroll budget: intro length in vh (desktop and mobile) split into the brief's beats (10/15/15/15/15/15/7/5/3 of the dark act, then the white act ≈ 20% of the whole intro). Give a table: beat, start–end progress (0–1), vh, what animates, ease, and the object/camera parameters at the start and end of each beat.
+2. Camera path: keyframes (position/target/fov) per beat, interpolation (catmull-rom / damped), how scroll maps to it (scrub value, Lenis lerp/duration), inertia/damping values.
+3. Object animation: case reveal (light-driven, not pop), flap open curve (0→40°, overshoot/settle), glasses emerge (lift path out of the velvet), unfold (arm timing offset L/R, overshoot, damping), hover/rotate idle.
+4. Sponsor arrival math: start z (very far), arrival curve (e.g. exponential/expo-out with very fast mid-flight then hard deceleration), duration per logo in scroll-progress, stagger between logos, streak/motion-blur treatment tied to velocity, accumulation (where each settles, gentle hover afterwards). Wave 2 variant.
+5. Lens approach + portal: camera alignment to one lens, FOV change, refraction/distortion ramp, the pass-through moment, bloom → white, DOM handoff timing so the white act begins seamlessly.
+6. White act + rails: rail speeds (px/s), opposite directions, scroll-velocity coupling (subtle), masks; text reveal vocabulary (split-line mask reveals etc. with exact durations/staggers/eases).
+7. Rest-of-site motion vocabulary (awwwards-level but restrained): section entrances, image clip reveals, hover systems, page transitions, preloader — with exact values. One consistent easing family for the whole site.
+8. Reduced-motion + low-power fallbacks. Performance rules for motion (what runs on the GPU, no layout thrash).

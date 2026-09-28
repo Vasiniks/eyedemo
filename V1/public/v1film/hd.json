@@ -1,0 +1,10 @@
+{
+  "count": 10762,
+  "w": 1920,
+  "h": 1092,
+  "interp": 3,
+  "sourceCount": 3588,
+  "realEvery": 3,
+  "pattern": "f_%05d.webp",
+  "replaced": 2
+}

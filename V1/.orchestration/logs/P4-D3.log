@@ -1,0 +1,2237 @@
+[0m
+> build · muse-spark-1.3-contributor
+[0m
+[0m→ [0mRead docs/phase4/PLAN-MASTER.md
+[0m→ [0mRead docs/00-BRIEF.md
+[0m→ [0mRead docs/phase4/COPY-DRAFTS.md
+[0m→ [0mRead docs/phase4/feedback/D-round1.md
+[0m→ [0mRead docs/phase4/qa/D
+[0m→ [0mRead docs/phase4/PLAN-MASTER.md[90m [offset=477][0m
+[0m✱ [0mGlob "docs/phase4/PLAN-*.md"[90m 6 matches[0m
+[0m→ [0mRead docs/phase4/requests
+[0m✱ [0mGlob "src/canvas/**/*"[90m 11 matches[0m
+[0m✱ [0mGlob "src/__dev__/**/*"[90m 10 matches[0m
+[0m✱ [0mGlob "dev-D.html"[90m 1 match[0m
+[0m→ [0mRead src/canvas/SceneStage.tsx
+[0m→ [0mRead src/canvas/SponsorField.tsx
+[0m→ [0mRead src/canvas/stage/slots.ts
+[0m→ [0mRead src/canvas/stage/streakTexture.ts
+[0m→ [0mRead src/canvas/stage/logos.ts
+[0m→ [0mRead src/canvas/stage/math.ts
+[0m→ [0mRead dev-D.html
+[0m→ [0mRead src/__dev__/D/main.tsx
+[0m→ [0mRead docs/phase4/requests/D-camera-notes.md
+[0m→ [0mRead docs/phase4/requests/D-build-blockers.md
+[0m→ [0mRead docs/phase4/qa/D/08-wave2-settled-1440.png
+[0m→ [0mRead docs/phase4/qa/D/07-wave1-settled-1440.png
+[0m→ [0mRead docs/phase4/qa/D/07-wave1-midflight-1440.png
+[0m→ [0mRead docs/phase4/qa/D/01-stage-standin-1440.png
+[0m
+[0m# [0mTodos
+[•] Read brief/master/copy/feedback + lane files (done mostly)
+[ ] Load skills (threejs-scenes, iterate-until-verified) + check motion §4J-4L, capture harness, package.json
+[ ] Fix P0-1: W1 spatial constellation around hero + harness camera at real film numbers (0.78m/1.5m)
+[ ] Fix P0-2: visible speed cues (streaks, motion-stretch, FOV) + 4-frame flight sequence
+[ ] Fix P0-3: W2 own composition, legibility floor (cap-height, opacity≥0.85)
+[ ] Fix P1-4: stage lighting readability (rim/velvet grazing)
+[ ] Capture r2-* screenshots @1440+390, LOOK, write qa/D/ROUND2.md, keep build passing
+[0m
+[0m→ [0mSkill "iterate-until-verified"
+[0m→ [0mSkill "threejs-scenes"
+[0m→ [0mRead package.json
+[0m→ [0mRead docs/phase4/qa/D/capture-D.mjs
+[0m✱ [0mGrep "4J|4K|4L|hyperspace|VERY far|very far"[90m in docs/phase4/PLAN-motion.md · 13 matches[0m
+[0m→ [0mRead docs/phase4/qa/D/03-sweep-a-1440.png
+[0m→ [0mRead docs/phase4/PLAN-motion.md[90m [offset=225, limit=80][0m
+[0m
+[0m$ [0mrtk ls node_modules/.bin/ 2>/dev/null | head -5; rtk ls public/web/ 2>/dev/null; rtk ls public/env/ 2>/dev/null
+acorn -> ../acorn/bin/acorn  18B
+baseline-browser-mapping -> ../baseline-browser-mapping/dist/cli.cjs  40B
+browserslist -> ../browserslist/cli.js  22B
+cross-env -> ../cross-env/src/bin/cross-env.js  33B
+cross-env-shell -> ../cross-env/src/bin/cross-env-shell.js  39B
+brands-light/
+insurance-light/
+atlas-brands.json  5.7K
+atlas-brands.png  488.0K
+atlas-insurers.json  5.8K
+atlas-insurers.png  228.8K
+eyeq-logo-header-original.png  81.7K
+eyeq-logo-white.png  35.6K
+eyeq-logo-white@2x.png  35.3K
+SOURCE.md  876B
+studio_small_08_1k.hdr  1.4M
+[0m
+[0m$ [0mrtk read vite.config.ts 2>/dev/null; (lsof -i :5104 -sTCP:LISTEN || echo "5104 free"); rtk ls node_modules/@playwright 2>/dev/null || echo "no playwright browsers check"
+import { defineConfig } from 'vite'
+import react from '@vitejs/plugin-react'
+
+// EyeQ Vision Care cinematic homepage — Lane A scaffold.
+// Static-host SPA fallback: `public/_redirects` + postbuild copy of
+// index.html -> dist/404.html (see package.json `postbuild`).
+export default defineConfig({
+  plugins: [react()],
+})
+5104 free
+test/
+[0m
+[0m$ [0mnohup npx vite --port 5104 --strictPort > /tmp/vite-d.log 2>&1 & sleep 6; tail -5 /tmp/vite-d.log; curl -s -o /dev/null -w "%{http_code}" http://localhost:5104/dev-D.html
+VITE v8.3.1  ready in 279 ms
+
+  ➜  Local:   http://localhost:5104/
+  ➜  Network: use --host to expose
+200
+[0m
+[0m# [0mTodos
+[✓] Read brief/master/copy/feedback + lane files (done mostly)
+[✓] Load skills (threejs-scenes, iterate-until-verified) + check motion §4J-4L, capture harness, package.json
+[•] Fix P0-1: W1 spatial constellation around hero + harness camera at real film numbers (0.78m/1.5m)
+[ ] Fix P0-2: visible speed cues (streaks, motion-stretch, FOV) + 4-frame flight sequence
+[ ] Fix P0-3: W2 own composition, legibility floor (cap-height, opacity≥0.85)
+[ ] Fix P1-4: stage lighting readability (rim/velvet grazing)
+[ ] Capture r2-* screenshots @1440+390, LOOK, write qa/D/ROUND2.md, keep build passing
+[0m
+[0m← [0mEdit src/canvas/stage/slots.ts
+Index: /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/canvas/stage/slots.ts
+===================================================================
+--- /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/canvas/stage/slots.ts
++++ /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/canvas/stage/slots.ts
+@@ -61,9 +61,12 @@
+   spawnZ: [-12, -10],
+   spawnX: 4,
+   spawnY: 2,
+   seed: 21,
+-  opacity: [0.68, 0.71, 0.73, 0.76, 0.7, 0.74, 0.69, 0.75],
++  // Round-2 orchestrator floor (feedback D-round1 P0-3): settled opacity ≥ 0.85.
++  // Overrides PLAN-MASTER §1-C1's 68–76% dimmer-tier (kept as the RELATIVE
++  // ordering: front-row marks still brightest, back-row dimmest).
++  opacity: [0.9, 0.87, 0.88, 0.9, 0.86, 0.88, 0.85, 0.89],
+   streakLength: 0.3,
+   streakOpacity: 0.5,
+   fovKick: 3,
+ }
+
+[0m
+[0m← [0mEdit src/canvas/stage/slots.ts
+Index: /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/canvas/stage/slots.ts
+===================================================================
+--- /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/canvas/stage/slots.ts
++++ /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/canvas/stage/slots.ts
+@@ -105,63 +105,72 @@
+   /** Fit-box the logo aspect-fits into (w × h, metres). */
+   box: [number, number]
+ }
+ 
+-// W1 settled formation: ~1.1m shallow-bowl arc, 3 depth layers
+-// (front/mid/back), −8° tilt. Shallow rows leave the lower frame open so all
+-// 16 planes read together once Wave 2 settles underneath (B7).
++// W1 settled formation (round 2): SPATIAL constellation composed AROUND the
++// hero glasses — not a flat grid. Three depth layers with sizes varying by
++// depth (front largest, back smallest), arranged so the hero exclusion zone
++// x∈[−0.12,+0.20] / y∈[−0.10,+0.12] (glasses hover centre / drift
++// right-third, defocused) stays clear: the front pair flanks it left/right at
++// hero height, the mid trio arcs ABOVE it, the back trio sits LOW. Right-front
++// sits slightly behind the hero plane (z −0.04) so depth separates it from the
++// glasses silhouette on screen. Dimensioned for the real film hold — 0.78 m /
++// FOV 35 desktop (see requests/D-camera-notes.md) — verified in the harness
++// at those exact numbers.
+ // Order: Maui Jim, Ray-Ban | Prada, Miu Miu, Persol | Oakley, Tiffany, Versace.
+ const W1_CELLS: LayoutCell[] = [
+-  { x: -0.33, y: 0.16, z: 0, box: [0.28, 0.15] },
+-  { x: 0.03, y: 0.16, z: 0, box: [0.28, 0.15] },
+-  { x: -0.4, y: 0.0, z: -0.15, box: [0.26, 0.14] },
+-  { x: -0.1, y: 0.0, z: -0.15, box: [0.26, 0.14] },
+-  { x: 0.2, y: 0.0, z: -0.15, box: [0.26, 0.14] },
+-  { x: -0.32, y: -0.14, z: -0.3, box: [0.24, 0.12] },
+-  { x: 0, y: -0.14, z: -0.3, box: [0.24, 0.12] },
+-  { x: 0.32, y: -0.14, z: -0.3, box: [0.24, 0.12] },
++  { x: -0.26, y: 0.03, z: -0.04, box: [0.21, 0.115] },
++  { x: 0.27, y: 0.035, z: -0.04, box: [0.21, 0.115] },
++  { x: -0.28, y: 0.165, z: -0.12, box: [0.24, 0.12] },
++  { x: 0.005, y: 0.19, z: -0.12, box: [0.24, 0.12] },
++  { x: 0.29, y: 0.16, z: -0.12, box: [0.24, 0.12] },
++  { x: -0.26, y: -0.085, z: -0.26, box: [0.22, 0.105] },
++  { x: 0.005, y: -0.11, z: -0.26, box: [0.22, 0.105] },
++  { x: 0.27, y: -0.085, z: -0.26, box: [0.22, 0.105] },
+ ]
+ 
+-// W1 compact (mobile <768px): 4 cols × 2 rows, narrow boxes, 2 depth layers.
+-// Narrow pitch keeps every settled mark inside a 390px frame (no overflow);
+-// thin wordmarks stay ≥90px wide. See D-camera-notes request for the matching
+-// mobile camera distance this layout is framed against.
++// W1 compact (mobile <768px, framed at ≥1.5 m / FOV 44): 4 cols × 2 rows
++// pushed below the hero band (glasses sit top-of-frame on mobile), 2 depth
++// layers, boxes ≥0.135 m wide so thin wordmarks stay ≥90px @390.
+ const W1_CELLS_COMPACT: LayoutCell[] = [
+-  { x: -0.2025, y: 0.075, z: 0, box: [0.135, 0.1] },
+-  { x: -0.0675, y: 0.075, z: 0, box: [0.135, 0.1] },
+-  { x: 0.0675, y: 0.075, z: 0, box: [0.12, 0.05] },
+-  { x: 0.2025, y: 0.075, z: 0, box: [0.12, 0.05] },
+-  { x: -0.2025, y: -0.075, z: -0.1, box: [0.135, 0.085] },
+-  { x: -0.0675, y: -0.075, z: -0.1, box: [0.135, 0.07] },
+-  { x: 0.0675, y: -0.075, z: -0.1, box: [0.12, 0.04] },
+-  { x: 0.2025, y: -0.075, z: -0.1, box: [0.12, 0.05] },
++  { x: -0.2, y: 0.08, z: 0, box: [0.135, 0.09] },
++  { x: -0.067, y: 0.08, z: 0, box: [0.135, 0.09] },
++  { x: 0.067, y: 0.08, z: 0, box: [0.135, 0.09] },
++  { x: 0.2, y: 0.08, z: 0, box: [0.135, 0.09] },
++  { x: -0.2, y: -0.04, z: -0.08, box: [0.13, 0.08] },
++  { x: -0.067, y: -0.04, z: -0.08, box: [0.13, 0.08] },
++  { x: 0.067, y: -0.04, z: -0.08, box: [0.13, 0.08] },
++  { x: 0.2, y: -0.04, z: -0.08, box: [0.13, 0.08] },
+ ]
+ 
+-// W2 settled formation: tight 5+3 caption band BELOW W1 (own rhythm/layout:
+-// shorter travel, tighter cadence, forward depth, dimmer tier). Small boxes
+-// (≈107px wide @1440) keep clear air between the two constellations.
+-// Order: Sun Life, Medavie Blue Cross, Manulife, GreenShield, Canada Life |
+-//        Desjardins, IA Financial Group, Empire Life.
++// W2 settled formation (round 2): its own composition — a WIDE, calm 4+4 band
++// BEHIND-and-BELOW the glasses at a NEARER depth than W1's mid/back layers
++// (z −0.02/−0.05, own rhythm: shorter travel, tighter cadence). Boxes
++// 0.155 m wide (≈190px @1440) with opacity ≥0.85 meet the round-1 legibility
++// floor (settled cap-height ≥22px @1440). Outer edges stay inside the 0.78 m /
++// FOV-35 frame with margin.
++// Order: Sun Life, Medavie Blue Cross, Manulife, GreenShield |
++//        Canada Life, Desjardins, IA Financial Group, Empire Life.
+ const W2_CELLS: LayoutCell[] = [
+-  { x: -0.3, y: -0.26, z: -0.03, box: [0.085, 0.05] },
+-  { x: -0.15, y: -0.26, z: -0.03, box: [0.085, 0.05] },
+-  { x: 0, y: -0.26, z: -0.03, box: [0.085, 0.05] },
+-  { x: 0.15, y: -0.26, z: -0.03, box: [0.085, 0.05] },
+-  { x: 0.3, y: -0.26, z: -0.03, box: [0.085, 0.05] },
+-  { x: -0.17, y: -0.33, z: -0.06, box: [0.085, 0.05] },
+-  { x: 0, y: -0.33, z: -0.01, box: [0.085, 0.05] },
+-  { x: 0.17, y: -0.33, z: -0.06, box: [0.085, 0.05] },
++  { x: -0.295, y: -0.19, z: -0.02, box: [0.155, 0.055] },
++  { x: -0.098, y: -0.19, z: -0.02, box: [0.155, 0.055] },
++  { x: 0.098, y: -0.19, z: -0.02, box: [0.155, 0.055] },
++  { x: 0.295, y: -0.19, z: -0.02, box: [0.155, 0.055] },
++  { x: -0.295, y: -0.25, z: -0.05, box: [0.155, 0.055] },
++  { x: -0.098, y: -0.25, z: -0.05, box: [0.155, 0.055] },
++  { x: 0.098, y: -0.25, z: -0.05, box: [0.155, 0.055] },
++  { x: 0.295, y: -0.25, z: -0.05, box: [0.155, 0.055] },
+ ]
+ 
+ const W2_CELLS_COMPACT: LayoutCell[] = [
+-  { x: -0.135, y: -0.19, z: -0.03, box: [0.12, 0.05] },
+-  { x: 0.135, y: -0.19, z: -0.03, box: [0.12, 0.05] },
+-  { x: -0.135, y: -0.26, z: -0.06, box: [0.12, 0.05] },
+-  { x: 0.135, y: -0.26, z: -0.06, box: [0.12, 0.05] },
+-  { x: -0.135, y: -0.33, z: -0.03, box: [0.12, 0.05] },
+-  { x: 0.135, y: -0.33, z: -0.03, box: [0.12, 0.05] },
+-  { x: -0.135, y: -0.4, z: -0.06, box: [0.12, 0.05] },
+-  { x: 0.135, y: -0.4, z: -0.06, box: [0.12, 0.05] },
++  { x: -0.135, y: -0.15, z: -0.02, box: [0.16, 0.06] },
++  { x: 0.135, y: -0.15, z: -0.02, box: [0.16, 0.06] },
++  { x: -0.135, y: -0.215, z: -0.02, box: [0.16, 0.06] },
++  { x: 0.135, y: -0.215, z: -0.02, box: [0.16, 0.06] },
++  { x: -0.135, y: -0.28, z: -0.02, box: [0.16, 0.06] },
++  { x: 0.135, y: -0.28, z: -0.02, box: [0.16, 0.06] },
++  { x: -0.135, y: -0.345, z: -0.02, box: [0.16, 0.06] },
++  { x: 0.135, y: -0.345, z: -0.02, box: [0.16, 0.06] },
+ ]
+ 
+ /** Fit a w/h aspect into a box, preserving aspect. Returns [w, h]. */
+ export function fitIntoBox(aspect: number, box: [number, number]): [number, number] {
+
+[0m
+[0m← [0mEdit src/canvas/SponsorField.tsx
+Index: /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/canvas/SponsorField.tsx
+===================================================================
+--- /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/canvas/SponsorField.tsx
++++ /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/canvas/SponsorField.tsx
+@@ -193,26 +193,35 @@
+     g.quaternion.copy(camera.quaternion)
+     pm.opacity = cfg.opacity[i] * st.fade
+ 
+     const sN = st.speed // 1 → 0 over flight; 0 once settled
++    // Brief motion-stretch along travel at peak speed: the mark smears
++    // laterally while fast, relaxing to true shape as it decelerates.
++    // (Travel is camera-relative +z, so on a billboard this reads as a
++    // velocity pulse; settled marks are always undistorted.)
++    g.scale.set(1 + 0.28 * sN, 1 + 0.1 * sN, 1)
+     const logoW = slots[i].size[0]
+-    const len = Math.min(logoW * (1 + 2.6 * sN * cfg.streakLength), 0.5)
+-    // Streaks die out over the last 20% of flight so no ghost bar lingers
++    const len = Math.min(logoW * (1 + 3.4 * sN * cfg.streakLength), 0.6)
++    // Streaks die out over the last ~18% of flight so no ghost bar lingers
+     // on nearly-settled marks; settled logos are streak-free.
+-    const endFade = 1 - smoothstep(0.8, 1, st.t)
+-    const op = 0.75 * Math.pow(sN, 0.7) * cfg.streakOpacity * st.fade * endFade
+-    for (let r = 0; r < 2; r++) {
++    const endFade = 1 - smoothstep(0.82, 1, st.t)
++    const op = 0.9 * Math.pow(sN, 0.6) * cfg.streakOpacity * st.fade * endFade
++    for (let r = 0; r < 3; r++) {
+       const mesh = ribbons.current[i]?.[r]
+       const mat = ribbonMats.current[i]?.[r]
+       if (!mesh || !mat) continue
+-      const h = r === 0 ? 0.008 : 0.013
++      const h = r === 0 ? 0.01 : r === 1 ? 0.016 : 0.022
+       mesh.visible = streaksEnabled && op > 0.004
+       if (!mesh.visible) continue
+       // Lateral comet-smear: ribbons centred on the mark, width tied to
+       // velocity, slight vertical/asymmetric offsets per ribbon.
+       mesh.scale.set(len, h, 1)
+-      mesh.position.set(r === 0 ? 0.012 * sN : -0.016 * sN, r === 0 ? 0.012 : -0.014, -0.001 - r * 0.001)
+-      mat.opacity = (r === 0 ? op : op * 0.7)
++      mesh.position.set(
++        (r === 0 ? 0.012 : r === 1 ? -0.016 : 0.004) * sN,
++        r === 0 ? 0.012 : r === 1 ? -0.014 : 0.002,
++        -0.001 - r * 0.001,
++      )
++      mat.opacity = r === 0 ? op : r === 1 ? op * 0.7 : op * 0.45
+     }
+   }
+ })
+ 
+
+[0m
+[0m← [0mEdit src/canvas/SponsorField.tsx
+Index: /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/canvas/SponsorField.tsx
+===================================================================
+--- /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/canvas/SponsorField.tsx
++++ /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/canvas/SponsorField.tsx
+@@ -247,9 +247,9 @@
+     toneMapped={false}
+     opacity={0}
+   />
+ </mesh>
+-{[0, 1].map((r) => (
++{[0, 1, 2].map((r) => (
+   <mesh
+     key={r}
+     geometry={ribbonGeo}
+     renderOrder={3}
+
+[0m
+[0m← [0mEdit src/__dev__/D/main.tsx
+Index: /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/__dev__/D/main.tsx
+===================================================================
+--- /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/__dev__/D/main.tsx
++++ /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/__dev__/D/main.tsx
+@@ -39,11 +39,14 @@
+   const w2 = Math.sin(Math.PI * clamp01((p - 0.85) / 0.07))
+   return (mobile ? 44 : 35) + 8 * Math.pow(w1, 0.8) + 3 * Math.pow(w2, 0.8)
+ }
+ 
+-const CAM_POS = new THREE.Vector3(0, 0.05, 1.05)
+-const CAM_POS_MOBILE = new THREE.Vector3(0, 0.0, 1.52) // plan §6 mobile pullback ×1.45
+-const CAM_TGT = new THREE.Vector3(0, -0.03, -0.15)
++// Round 2: harness frames with the REAL film numbers (feedback D-round1 P0-1,
++// requests/D-camera-notes.md) so QA matches the film: wave-beat hold ≈0.78 m
++// desktop, ≥1.5 m mobile. Do NOT "improve" these for prettier captures.
++const CAM_POS = new THREE.Vector3(0, 0.02, 0.78)
++const CAM_POS_MOBILE = new THREE.Vector3(0, 0.0, 1.52)
++const CAM_TGT = new THREE.Vector3(0, -0.02, -0.12)
+ const CAM_TGT_MOBILE = new THREE.Vector3(0, -0.1, -0.1)
+ 
+ function HarnessCamera({ progress, mobile }: { progress: number; mobile: boolean }) {
+   const camera = useThree((s) => s.camera) as THREE.PerspectiveCamera
+
+[0m
+[0m← [0mEdit src/__dev__/D/main.tsx
+Index: /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/__dev__/D/main.tsx
+===================================================================
+--- /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/__dev__/D/main.tsx
++++ /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/__dev__/D/main.tsx
+@@ -26,11 +26,16 @@
+ const STOPS: [string, number][] = [
+   ['B1 case', 0.05],
+   ['B2 velvet', 0.17],
+   ['B5 info', 0.62],
+-  ['W1 mid-flight', 0.775],
++  // Round-2 flight sequence: Prada (W1 i=2, start 0.722, flight 0.060) —
++  // tiny → rush → decel → settled.
++  ['W1 seq tiny', 0.7255],
++  ['W1 seq rush', 0.729],
++  ['W1 seq decel', 0.742],
++  ['W1 seq settled', 0.79],
+   ['W1 settled', 0.85],
+-  ['W2 mid-flight', 0.885],
++  ['W2 flight', 0.87],
+   ['W1+W2 settled', 0.96],
+ ]
+ 
+ /** Harness camera FOV: base 35 desk / 44 mobile (+9°) + W1 kick +8 / W2 kick +3. */
+
+[0m
+[0m← [0mEdit src/canvas/SceneStage.tsx
+Index: /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/canvas/SceneStage.tsx
+===================================================================
+--- /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/canvas/SceneStage.tsx
++++ /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/canvas/SceneStage.tsx
+@@ -46,11 +46,13 @@
+   const dip = smoothstep(0.7, 0.78, p) * (1 - smoothstep(0.86, 0.92, p))
+   return lerp(0.035, 0.015, dip)
+ }
+ 
+-/** Key SpotLight intensity (#FFF2E2 top-left): 0→2.5 ramp, hold, −15% in W2. */
++/** Key SpotLight intensity (#FFF2E2 top-left): 0→2.5 ramp, hold, −15% in W2.
++ *  Round 2: ramp completes by p=0.07 so the graphite shell reads at the B1
++ *  capture stop (feedback D-round1 P1-4). */
+ export function keyIntensityFor(p: number): number {
+-  const base = 2.5 * smoothstep(0, 0.1, p)
++  const base = 2.5 * smoothstep(0, 0.07, p)
+   const w2Dip = 1 - 0.15 * smoothstep(0.85, 0.885, p) * (1 - smoothstep(0.92, 0.96, p))
+   return base * w2Dip
+ }
+ 
+
+[0m
+[0m← [0mEdit src/canvas/SceneStage.tsx
+Index: /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/canvas/SceneStage.tsx
+===================================================================
+--- /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/canvas/SceneStage.tsx
++++ /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/canvas/SceneStage.tsx
+@@ -60,11 +60,13 @@
+ export function velvetIntensityFor(p: number): number {
+   return 6 * smoothstep(0.1, 0.25, p) * (1 - smoothstep(0.4, 0.55, p))
+ }
+ 
+-/** Grazing light for the velvet beat: low-angle warm catch, B2–B3 only. */
++/** Grazing light for the velvet beat: low-angle warm catch, B2–B3 only.
++ *  Round 2: 3→3.5 so the velvet/open beat keeps a grazing highlight
++ *  (feedback D-round1 P1-4). */
+ export function grazingIntensityFor(p: number): number {
+-  return 3 * smoothstep(0.1, 0.2, p) * (1 - smoothstep(0.4, 0.6, p))
++  return 3.5 * smoothstep(0.1, 0.2, p) * (1 - smoothstep(0.4, 0.6, p))
+ }
+ 
+ /** Sweep-strip x position: rests left, sweeps across during B3–B5, rests right. */
+ export function sweepXFor(p: number): number {
+
+[0m
+[0m← [0mEdit src/canvas/SceneStage.tsx
+Index: /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/canvas/SceneStage.tsx
+===================================================================
+--- /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/canvas/SceneStage.tsx
++++ /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/canvas/SceneStage.tsx
+@@ -116,10 +116,11 @@
+     so lens edges and case edges catch rim glow (brief §6b). frames is
+     live (Infinity, 256px) so the sweep strip below animates with
+     scroll; step-15 perf pass may gate it outside B3–B5. */}
+ <Environment files="/env/studio_small_08_1k.hdr" resolution={256} frames={Infinity}>
+-  {/* Static dark-field strips */}
+-  <Lightformer form="rect" intensity={4} color="#E8F0FF" scale={[4, 1.2]} position={[3, 2, -2]} />
++  {/* Static dark-field strips (round 2: key-side strip 4→4.5 for a
++      readable graphite silhouette at the B1 stop, feedback P1-4) */}
++  <Lightformer form="rect" intensity={4.5} color="#E8F0FF" scale={[4, 1.2]} position={[3, 2, -2]} />
+   <Lightformer form="rect" intensity={3} color="#E8F0FF" scale={[3, 1]} position={[-3, 1.5, -1]} />
+   <Lightformer form="rect" intensity={1.2} color="#7a1420" scale={[1.2, 0.5]} position={[0, 0.5, 2]} />
+   {/* Animated sweep strip: travels with scroll across B3–B5 so a
+       softbox reflection sweeps across the lens (brief §6b). */}
+
+[0m
+[0m← [0mEdit docs/phase4/qa/D/capture-D.mjs
+Index: /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/docs/phase4/qa/D/capture-D.mjs
+===================================================================
+--- /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/docs/phase4/qa/D/capture-D.mjs
++++ /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/docs/phase4/qa/D/capture-D.mjs
+@@ -10,21 +10,26 @@
+ 
+ const BASE = 'http://localhost:5104/dev-D.html'
+ const OUT = `${dirname(fileURLToPath(import.meta.url))}/`
+ 
++// Round-2 stops (prefix r2-). Prada (W1 i=2: start 0.722, flight 0.060) is
++// the tracked mark for the 4-frame flight sequence; Manulife (W2 i=2: start
++// 0.866, flight 0.045) for the W2 flight frame. [name, query] — ui=0 hides
++// the harness panel for clean QA frames; standin=1 keeps the hero reference.
+ const STOPS = [
+-  // [name, query] — ui=0 hides the harness panel for clean QA frames.
+-  ['01-stage-standin-1440', '?p=0.05&waves=w1&standin=1&ui=0'],
+-  ['03-sweep-a-1440', '?p=0.3&waves=w1&standin=1&ui=0'],
+-  ['03-sweep-b-1440', '?p=0.65&waves=w1&standin=1&ui=0'],
+-  ['06-info-standin-1440', '?p=0.62&waves=w1&standin=1&ui=0'],
+-  ['07-wave1-early-1440', '?p=0.75&waves=w1&standin=0&ui=0'],
+-  ['07-wave1-midflight-1440', '?p=0.775&waves=w1&standin=0&ui=0'],
+-  ['07-wave1-settled-1440', '?p=0.85&waves=w1&standin=0&ui=0'],
+-  ['08-wave2-settled-1440', '?p=0.96&waves=both&standin=0&ui=0'],
+-  ['07-wave1-midflight-390', '?p=0.775&waves=w1&standin=0&ui=0'],
+-  ['07-wave1-settled-390', '?p=0.85&waves=w1&standin=0&ui=0'],
+-  ['08-wave2-settled-390', '?p=0.96&waves=both&standin=0&ui=0'],
++  ['r2-01-stage-1440', '?p=0.05&waves=w1&standin=1&ui=0'],
++  ['r2-03-sweep-1440', '?p=0.3&waves=w1&standin=1&ui=0'],
++  ['r2-w1-seq-tiny-1440', '?p=0.7255&waves=1&standin=1&ui=0'],
++  ['r2-w1-seq-rush-1440', '?p=0.729&waves=1&standin=1&ui=0'],
++  ['r2-w1-seq-decel-1440', '?p=0.742&waves=1&standin=1&ui=0'],
++  ['r2-w1-seq-settled-1440', '?p=0.79&waves=1&standin=1&ui=0'],
++  ['r2-w1-settled-1440', '?p=0.85&waves=1&standin=1&ui=0'],
++  ['r2-w1-settled-390', '?p=0.85&waves=1&standin=1&ui=0'],
++  ['r2-w2-flight-1440', '?p=0.87&waves=2&standin=1&ui=0'],
++  ['r2-w2-settled-1440', '?p=0.96&waves=both&standin=1&ui=0'],
++  ['r2-w2-settled-390', '?p=0.96&waves=both&standin=1&ui=0'],
++  ['r2-both-1440', '?p=0.905&waves=both&standin=1&ui=0'],
++  ['r2-both-390', '?p=0.905&waves=both&standin=1&ui=0'],
+ ]
+ 
+ const VIEWPORTS = {
+   '-1440': { width: 1440, height: 900 },
+
+[0m
+[0m$ [0mnpx tsc -b 2>&1 | head -20; echo "---tsc-exit:$?"
+npm notice run eyeq-vision-care@0.1.0 npx
+npm notice run 'tsc' -b
+src/app/router.tsx(6,25): error TS2307: Cannot find module '../routes/Catalog' or its corresponding type declarations.
+---tsc-exit:0
+[0m
+[0m$ [0mnode docs/phase4/qa/D/capture-D.mjs 2>&1 | tail -20
+r2-01-stage-1440: ok
+r2-03-sweep-1440: ok
+r2-w1-seq-tiny-1440: ok
+r2-w1-seq-rush-1440: ok
+r2-w1-seq-decel-1440: ok
+r2-w1-seq-settled-1440: ok
+r2-w1-settled-1440: ok
+r2-w1-settled-390: ok
+r2-w2-flight-1440: ok
+r2-w2-settled-1440: ok
+r2-w2-settled-390: ok
+r2-both-1440: ok
+r2-both-390: ok
+capture-D: all stops captured, console-clean
+[0m
+[0m→ [0mRead docs/phase4/qa/D/r2-w1-seq-tiny-1440.png
+[0m→ [0mRead docs/phase4/qa/D/r2-w1-seq-rush-1440.png
+[0m
+[0m← [0mEdit src/__dev__/D/main.tsx
+Index: /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/__dev__/D/main.tsx
+===================================================================
+--- /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/__dev__/D/main.tsx
++++ /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/__dev__/D/main.tsx
+@@ -73,12 +73,22 @@
+   return null
+ }
+ 
+ /** Graphite stand-in so stage lighting reads without Lane C heroes.
+- *  HARNESS ONLY — never ships; Lane C owns the real case + glasses. */
+-function StandIn() {
++ *  HARNESS ONLY — never ships; Lane C owns the real case + glasses.
++ *  Round 2: two poses from master progress — centre-close for B1–B5, then a
++ *  drift to right-third for B6+ (PLAN-MASTER §6 B6: "glasses drift
++ *  right-third"), so wave captures prove the hero exclusion zone. */
++function StandIn({ progress }: { progress: number }) {
++  const p = clamp01(progress)
++  const drift = smoothstep01((p - 0.7) / 0.05)
++  const pos: [number, number, number] = [
++    0 + 0.14 * drift,
++    -0.02 + -0.02 * drift,
++    0.12 + -0.17 * drift,
++  ]
+   return (
+-    <group position={[0, -0.02, 0.12]} rotation={[0.1, -0.35, 0]}>
++    <group position={pos} rotation={[0.1, -0.35, 0]}>
+       <RoundedBox args={[0.2, 0.045, 0.07]} radius={0.008} smoothness={3}>
+         <meshStandardMaterial color="#121519" metalness={0.6} roughness={0.45} />
+       </RoundedBox>
+       <mesh position={[0.02, 0.028, 0.005]} rotation={[-Math.PI / 2 + 0.15, 0, 0.1]}>
+
+[0m
+[0m← [0mEdit src/__dev__/D/main.tsx
+Index: /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/__dev__/D/main.tsx
+===================================================================
+--- /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/__dev__/D/main.tsx
++++ /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/__dev__/D/main.tsx
+@@ -79,9 +79,9 @@
+  *  drift to right-third for B6+ (PLAN-MASTER §6 B6: "glasses drift
+  *  right-third"), so wave captures prove the hero exclusion zone. */
+ function StandIn({ progress }: { progress: number }) {
+   const p = clamp01(progress)
+-  const drift = smoothstep01((p - 0.7) / 0.05)
++  const drift = smoothstep(0.7, 0.75, p)
+   const pos: [number, number, number] = [
+     0 + 0.14 * drift,
+     -0.02 + -0.02 * drift,
+     0.12 + -0.17 * drift,
+
+[0m
+[0m← [0mEdit src/__dev__/D/main.tsx
+Index: /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/__dev__/D/main.tsx
+===================================================================
+--- /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/__dev__/D/main.tsx
++++ /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/__dev__/D/main.tsx
+@@ -12,9 +12,9 @@
+ import { SceneStage, exposureFor, fogDensityFor } from '../../canvas/SceneStage'
+ import { SponsorField, projectedHeightPx, type WaveFilter } from '../../canvas/SponsorField'
+ import { computeSlots } from '../../canvas/stage/slots'
+ import { FALLBACK_ASPECTS, logosFor } from '../../canvas/stage/logos'
+-import { clamp01 } from '../../canvas/stage/math'
++import { clamp01, smoothstep } from '../../canvas/stage/math'
+ 
+ declare global {
+   interface Window {
+     __D: { setProgress: (p: number) => void; getProgress: () => number }
+
+[0m
+[0m← [0mEdit src/__dev__/D/main.tsx
+Index: /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/__dev__/D/main.tsx
+===================================================================
+--- /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/__dev__/D/main.tsx
++++ /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/__dev__/D/main.tsx
+@@ -204,9 +204,9 @@
+     />
+   </Suspense>
+   {standin && (
+     <Suspense fallback={null}>
+-      <StandIn />
++      <StandIn progress={p} />
+     </Suspense>
+   )}
+ </Canvas>
+ {initial.ui && (
+
+[0m
+[0m← [0mEdit src/canvas/SponsorField.tsx
+Index: /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/canvas/SponsorField.tsx
+===================================================================
+--- /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/canvas/SponsorField.tsx
++++ /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/canvas/SponsorField.tsx
+@@ -197,20 +197,23 @@
+ // Brief motion-stretch along travel at peak speed: the mark smears
+ // laterally while fast, relaxing to true shape as it decelerates.
+ // (Travel is camera-relative +z, so on a billboard this reads as a
+ // velocity pulse; settled marks are always undistorted.)
+-g.scale.set(1 + 0.28 * sN, 1 + 0.1 * sN, 1)
++g.scale.set(1 + 0.35 * sN, 1 + 0.12 * sN, 1)
+ const logoW = slots[i].size[0]
+-const len = Math.min(logoW * (1 + 3.4 * sN * cfg.streakLength), 0.6)
+-// Streaks die out over the last ~18% of flight so no ghost bar lingers
++// Round 2: ribbons stay long enough to read at flight distances (a
++// settled-size ribbon on a 30px logo is sub-pixel). Length floor keeps
++// a visible comet even when the mark itself is still small.
++const len = Math.min(Math.max(logoW * (1 + 3.4 * sN * cfg.streakLength), 0.22 * sN), 0.8)
++// Streaks die out over the last ~15% of flight so no ghost bar lingers
+ // on nearly-settled marks; settled logos are streak-free.
+-const endFade = 1 - smoothstep(0.82, 1, st.t)
+-const op = 0.9 * Math.pow(sN, 0.6) * cfg.streakOpacity * st.fade * endFade
++const endFade = 1 - smoothstep(0.85, 1, st.t)
++const op = Math.pow(sN, 0.5) * cfg.streakOpacity * st.fade * endFade
+ for (let r = 0; r < 3; r++) {
+   const mesh = ribbons.current[i]?.[r]
+   const mat = ribbonMats.current[i]?.[r]
+   if (!mesh || !mat) continue
+-  const h = r === 0 ? 0.01 : r === 1 ? 0.016 : 0.022
++  const h = r === 0 ? 0.014 : r === 1 ? 0.022 : 0.03
+   mesh.visible = streaksEnabled && op > 0.004
+   if (!mesh.visible) continue
+   // Lateral comet-smear: ribbons centred on the mark, width tied to
+   // velocity, slight vertical/asymmetric offsets per ribbon.
+
+[0m
+[0m← [0mEdit docs/phase4/qa/D/capture-D.mjs
+Index: /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/docs/phase4/qa/D/capture-D.mjs
+===================================================================
+--- /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/docs/phase4/qa/D/capture-D.mjs
++++ /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/docs/phase4/qa/D/capture-D.mjs
+@@ -10,22 +10,23 @@
+ 
+ const BASE = 'http://localhost:5104/dev-D.html'
+ const OUT = `${dirname(fileURLToPath(import.meta.url))}/`
+ 
+-// Round-2 stops (prefix r2-). Prada (W1 i=2: start 0.722, flight 0.060) is
+-// the tracked mark for the 4-frame flight sequence; Manulife (W2 i=2: start
+-// 0.866, flight 0.045) for the W2 flight frame. [name, query] — ui=0 hides
+-// the harness panel for clean QA frames; standin=1 keeps the hero reference.
++// Round-2 stops (prefix r2-). Persol (W1 i=4: start 0.744, flight 0.060) is
++// the tracked mark for the 4-frame flight sequence (logos 0–3 already
++// settling behind it); Canada Life (W2 i=4: start 0.882, flight 0.045) for
++// the W2 flight frame. [name, query] — ui=0 hides the harness panel for
++// clean QA frames; standin=1 keeps the hero reference.
+ const STOPS = [
+   ['r2-01-stage-1440', '?p=0.05&waves=w1&standin=1&ui=0'],
+   ['r2-03-sweep-1440', '?p=0.3&waves=w1&standin=1&ui=0'],
+-  ['r2-w1-seq-tiny-1440', '?p=0.7255&waves=1&standin=1&ui=0'],
+-  ['r2-w1-seq-rush-1440', '?p=0.729&waves=1&standin=1&ui=0'],
+-  ['r2-w1-seq-decel-1440', '?p=0.742&waves=1&standin=1&ui=0'],
+-  ['r2-w1-seq-settled-1440', '?p=0.79&waves=1&standin=1&ui=0'],
++  ['r2-w1-seq-tiny-1440', '?p=0.747&waves=1&standin=1&ui=0'],
++  ['r2-w1-seq-rush-1440', '?p=0.751&waves=1&standin=1&ui=0'],
++  ['r2-w1-seq-decel-1440', '?p=0.764&waves=1&standin=1&ui=0'],
++  ['r2-w1-seq-settled-1440', '?p=0.81&waves=1&standin=1&ui=0'],
+   ['r2-w1-settled-1440', '?p=0.85&waves=1&standin=1&ui=0'],
+   ['r2-w1-settled-390', '?p=0.85&waves=1&standin=1&ui=0'],
+-  ['r2-w2-flight-1440', '?p=0.87&waves=2&standin=1&ui=0'],
++  ['r2-w2-flight-1440', '?p=0.886&waves=2&standin=1&ui=0'],
+   ['r2-w2-settled-1440', '?p=0.96&waves=both&standin=1&ui=0'],
+   ['r2-w2-settled-390', '?p=0.96&waves=both&standin=1&ui=0'],
+   ['r2-both-1440', '?p=0.905&waves=both&standin=1&ui=0'],
+   ['r2-both-390', '?p=0.905&waves=both&standin=1&ui=0'],
+
+[0m
+[0m← [0mEdit src/__dev__/D/main.tsx
+Index: /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/__dev__/D/main.tsx
+===================================================================
+--- /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/__dev__/D/main.tsx
++++ /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/__dev__/D/main.tsx
+@@ -26,14 +26,14 @@
+ const STOPS: [string, number][] = [
+   ['B1 case', 0.05],
+   ['B2 velvet', 0.17],
+   ['B5 info', 0.62],
+-  // Round-2 flight sequence: Prada (W1 i=2, start 0.722, flight 0.060) —
++  // Round-2 flight sequence: Persol (W1 i=4, start 0.744, flight 0.060) —
+   // tiny → rush → decel → settled.
+-  ['W1 seq tiny', 0.7255],
+-  ['W1 seq rush', 0.729],
+-  ['W1 seq decel', 0.742],
+-  ['W1 seq settled', 0.79],
++  ['W1 seq tiny', 0.747],
++  ['W1 seq rush', 0.751],
++  ['W1 seq decel', 0.764],
++  ['W1 seq settled', 0.81],
+   ['W1 settled', 0.85],
+   ['W2 flight', 0.87],
+   ['W1+W2 settled', 0.96],
+ ]
+
+[0m
+[0m$ [0mnode docs/phase4/qa/D/capture-D.mjs 2>&1 | tail -16
+r2-01-stage-1440: ok
+r2-03-sweep-1440: ok
+r2-w1-seq-tiny-1440: ok
+r2-w1-seq-rush-1440: ok
+r2-w1-seq-decel-1440: console errors:
+  You are calling ReactDOMClient.createRoot() on a container that has already been passed to createRoot() before. Instead, call root.render() on the existing root instead if you want to update it.
+r2-w1-seq-settled-1440: console errors:
+  You are calling ReactDOMClient.createRoot() on a container that has already been passed to createRoot() before. Instead, call root.render() on the existing root instead if you want to update it.
+r2-w1-settled-1440: ok
+r2-w1-settled-390: ok
+r2-w2-flight-1440: ok
+r2-w2-settled-1440: ok
+r2-w2-settled-390: ok
+r2-both-1440: ok
+r2-both-390: ok
+capture-D: 2 failure(s)
+[0m
+[0m$ [0mnode -e "
+import('playwright-core').catch(()=>{});
+" 2>/dev/null; cat > /tmp/recap-r2.mjs <<'EOF'
+import { chromium } from '@playwright/test'
+const BASE = 'http://localhost:5104/dev-D.html'
+const OUT = '/Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/docs/phase4/qa/D/'
+const STOPS = [
+  ['r2-w1-seq-decel-1440', '?p=0.764&waves=1&standin=1&ui=0', { width: 1440, height: 900 }],
+  ['r2-w1-seq-settled-1440', '?p=0.81&waves=1&standin=1&ui=0', { width: 1440, height: 900 }],
+]
+const browser = await chromium.launch({ args: ['--enable-unsafe-swiftshader', '--use-angle=swiftshader'] })
+let failures = 0
+for (const [name, query, viewport] of STOPS) {
+  const page = await browser.newPage({ viewport })
+  const errors = []
+  page.on('console', (msg) => { if (msg.type() === 'error') errors.push(msg.text()) })
+  page.on('pageerror', (err) => errors.push(String(err)))
+  await page.goto(BASE + query, { waitUntil: 'networkidle' })
+  await page.waitForTimeout(3500)
+  await page.screenshot({ path: OUT + name + '.png' })
+  if (errors.length) { console.error(name + ': console errors:\n  ' + errors.join('\n  ')); failures++ }
+  else console.log(name + ': ok')
+  await page.close()
+}
+await browser.close()
+process.exit(failures ? 1 : 0)
+EOF
+node /tmp/recap-r2.mjs 2>&1 | tail -5
+at ModuleJob.syncLink (node:internal/modules/esm/module_job:163:33) {
+  code: 'ERR_MODULE_NOT_FOUND'
+}
+
+Node.js v24.18.0
+[0m
+[0m$ [0mcp /tmp/recap-r2.mjs ./docs/phase4/qa/D/recap-r2.tmp.mjs && node ./docs/phase4/qa/D/recap-r2.tmp.mjs 2>&1 | tail -5; rm -f ./docs/phase4/qa/D/recap-r2.tmp.mjs
+r2-w1-seq-decel-1440: ok
+r2-w1-seq-settled-1440: ok
+[0m
+[0m→ [0mRead docs/phase4/qa/D/r2-w1-seq-rush-1440.png
+[0m→ [0mRead docs/phase4/qa/D/r2-w1-seq-tiny-1440.png
+[0m
+[0m$ [0mcurl -s "http://localhost:5104/src/__dev__/D/main.tsx" | grep -o "0\.78\|1\.05\|0\.02, -0\.12\|0\.05, 1\.05\|smoothstep(0\.7" | sort | uniq -c; echo "---slots---"; curl -s "http://localhost:5104/src/canvas/stage/slots.ts" | grep -o "x: -0\.26, y: 0\.03\|x: -0\.33, y: 0\.16\|0\.85, 0\.87\|0\.68, 0\.71" | sort | uniq -c
+1 0.78
+---slots---
+[0m
+[0m$ [0mcurl -s "http://localhost:5104/src/canvas/stage/slots.ts" | grep -o "\-0\.26\|\-0\.33\|0\.85, 0\.87\|0\.68, 0\.71\|W1 settled formation (round 2)\|shallow-bowl arc" | sort | uniq -c
+1 W1 settled formation (round 2)
+[0m
+[0m$ [0mpython3 -c "
+from PIL import Image
+import numpy as np
+for f in ['r2-w1-seq-rush-1440','r2-w1-settled-1440','r2-w2-settled-1440','r2-both-1440']:
+    img = np.array(Image.open(f'docs/phase4/qa/D/{f}.png').convert('L'))
+    ys, xs = np.where(img > 20)
+    print(f, img.shape, 'content x:', xs.min(), xs.max(), 'y:', ys.min(), ys.max())
+"
+r2-w1-seq-rush-1440 (900, 1440) content x: 222 1152 y: 305 530
+r2-w1-settled-1440 (900, 1440) content x: 105 1332 y: 97 617
+r2-w2-settled-1440 (900, 1440) content x: 60 1354 y: 97 898
+r2-both-1440 (900, 1440) content x: 99 1295 y: 118 755
+[0m
+[0m→ [0mRead docs/phase4/qa/D/r2-w2-settled-1440.png
+[0m→ [0mRead docs/phase4/qa/D/r2-w1-settled-1440.png
+[0m
+[0m← [0mEdit src/__dev__/D/main.tsx
+Index: /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/__dev__/D/main.tsx
+===================================================================
+--- /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/__dev__/D/main.tsx
++++ /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/__dev__/D/main.tsx
+@@ -80,15 +80,15 @@
+  *  right-third"), so wave captures prove the hero exclusion zone. */
+ function StandIn({ progress }: { progress: number }) {
+   const p = clamp01(progress)
+   const drift = smoothstep(0.7, 0.75, p)
+-  const pos: [number, number, number] = [
+-    0 + 0.14 * drift,
+-    -0.02 + -0.02 * drift,
+-    0.12 + -0.17 * drift,
+-  ]
++  // Wave beats: shrink to glasses-scale (~110 mm ≈ the real rimless width)
++  // and park centre-right-low, mimicking the B6 "glasses drift right-third"
++  // hover over the soft case — so captures prove logo/hero non-overlap.
++  const pos: [number, number, number] = [0 + 0.1 * drift, -0.02 + -0.01 * drift, 0.12 + -0.14 * drift]
++  const s = 1 - 0.45 * drift
+   return (
+-    <group position={pos} rotation={[0.1, -0.35, 0]}>
++    <group position={pos} scale={s} rotation={[0.1, -0.35, 0]}>
+       <RoundedBox args={[0.2, 0.045, 0.07]} radius={0.008} smoothness={3}>
+         <meshStandardMaterial color="#121519" metalness={0.6} roughness={0.45} />
+       </RoundedBox>
+       <mesh position={[0.02, 0.028, 0.005]} rotation={[-Math.PI / 2 + 0.15, 0, 0.1]}>
+
+[0m
+[0m← [0mEdit src/canvas/stage/slots.ts
+Index: /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/canvas/stage/slots.ts
+===================================================================
+--- /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/canvas/stage/slots.ts
++++ /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/canvas/stage/slots.ts
+@@ -117,16 +117,16 @@
+ // FOV 35 desktop (see requests/D-camera-notes.md) — verified in the harness
+ // at those exact numbers.
+ // Order: Maui Jim, Ray-Ban | Prada, Miu Miu, Persol | Oakley, Tiffany, Versace.
+ const W1_CELLS: LayoutCell[] = [
+-  { x: -0.26, y: 0.03, z: -0.04, box: [0.21, 0.115] },
+-  { x: 0.27, y: 0.035, z: -0.04, box: [0.21, 0.115] },
+-  { x: -0.28, y: 0.165, z: -0.12, box: [0.24, 0.12] },
+-  { x: 0.005, y: 0.19, z: -0.12, box: [0.24, 0.12] },
+-  { x: 0.29, y: 0.16, z: -0.12, box: [0.24, 0.12] },
+-  { x: -0.26, y: -0.085, z: -0.26, box: [0.22, 0.105] },
+-  { x: 0.005, y: -0.11, z: -0.26, box: [0.22, 0.105] },
+-  { x: 0.27, y: -0.085, z: -0.26, box: [0.22, 0.105] },
++  { x: -0.26, y: 0.03, z: -0.04, box: [0.24, 0.13] },
++  { x: 0.29, y: 0.05, z: -0.04, box: [0.24, 0.13] },
++  { x: -0.3, y: 0.19, z: -0.12, box: [0.22, 0.115] },
++  { x: 0.01, y: 0.23, z: -0.12, box: [0.22, 0.115] },
++  { x: 0.31, y: 0.18, z: -0.12, box: [0.22, 0.115] },
++  { x: -0.27, y: -0.1, z: -0.26, box: [0.18, 0.095] },
++  { x: 0.01, y: -0.13, z: -0.26, box: [0.18, 0.095] },
++  { x: 0.28, y: -0.1, z: -0.26, box: [0.18, 0.095] },
+ ]
+ 
+ // W1 compact (mobile <768px, framed at ≥1.5 m / FOV 44): 4 cols × 2 rows
+ // pushed below the hero band (glasses sit top-of-frame on mobile), 2 depth
+
+[0m
+[0m← [0mEdit src/canvas/stage/slots.ts
+Index: /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/canvas/stage/slots.ts
+===================================================================
+--- /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/canvas/stage/slots.ts
++++ /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/canvas/stage/slots.ts
+@@ -117,13 +117,13 @@
+ // FOV 35 desktop (see requests/D-camera-notes.md) — verified in the harness
+ // at those exact numbers.
+ // Order: Maui Jim, Ray-Ban | Prada, Miu Miu, Persol | Oakley, Tiffany, Versace.
+ const W1_CELLS: LayoutCell[] = [
+-  { x: -0.26, y: 0.03, z: -0.04, box: [0.24, 0.13] },
+-  { x: 0.29, y: 0.05, z: -0.04, box: [0.24, 0.13] },
+-  { x: -0.3, y: 0.19, z: -0.12, box: [0.22, 0.115] },
+-  { x: 0.01, y: 0.23, z: -0.12, box: [0.22, 0.115] },
+-  { x: 0.31, y: 0.18, z: -0.12, box: [0.22, 0.115] },
++  { x: -0.26, y: 0.03, z: -0.04, box: [0.2, 0.11] },
++  { x: 0.27, y: 0.05, z: -0.04, box: [0.2, 0.11] },
++  { x: -0.3, y: 0.175, z: -0.12, box: [0.22, 0.115] },
++  { x: 0.01, y: 0.2, z: -0.12, box: [0.22, 0.115] },
++  { x: 0.3, y: 0.17, z: -0.12, box: [0.22, 0.115] },
+   { x: -0.27, y: -0.1, z: -0.26, box: [0.18, 0.095] },
+   { x: 0.01, y: -0.13, z: -0.26, box: [0.18, 0.095] },
+   { x: 0.28, y: -0.1, z: -0.26, box: [0.18, 0.095] },
+ ]
+
+[0m
+[0m← [0mEdit src/canvas/stage/slots.ts
+Index: /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/canvas/stage/slots.ts
+===================================================================
+--- /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/canvas/stage/slots.ts
++++ /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/canvas/stage/slots.ts
+@@ -154,12 +154,12 @@
+   { x: -0.295, y: -0.19, z: -0.02, box: [0.155, 0.055] },
+   { x: -0.098, y: -0.19, z: -0.02, box: [0.155, 0.055] },
+   { x: 0.098, y: -0.19, z: -0.02, box: [0.155, 0.055] },
+   { x: 0.295, y: -0.19, z: -0.02, box: [0.155, 0.055] },
+-  { x: -0.295, y: -0.25, z: -0.05, box: [0.155, 0.055] },
+-  { x: -0.098, y: -0.25, z: -0.05, box: [0.155, 0.055] },
+-  { x: 0.098, y: -0.25, z: -0.05, box: [0.155, 0.055] },
+-  { x: 0.295, y: -0.25, z: -0.05, box: [0.155, 0.055] },
++  { x: -0.295, y: -0.242, z: -0.05, box: [0.155, 0.055] },
++  { x: -0.098, y: -0.242, z: -0.05, box: [0.155, 0.055] },
++  { x: 0.098, y: -0.242, z: -0.05, box: [0.155, 0.055] },
++  { x: 0.295, y: -0.242, z: -0.05, box: [0.155, 0.055] },
+ ]
+ 
+ const W2_CELLS_COMPACT: LayoutCell[] = [
+   { x: -0.135, y: -0.15, z: -0.02, box: [0.16, 0.06] },
+
+[0m
+[0m$ [0mnode docs/phase4/qa/D/capture-D.mjs 2>&1 | tail -16
+r2-01-stage-1440: ok
+r2-03-sweep-1440: ok
+r2-w1-seq-tiny-1440: ok
+r2-w1-seq-rush-1440: ok
+r2-w1-seq-decel-1440: ok
+r2-w1-seq-settled-1440: ok
+r2-w1-settled-1440: ok
+r2-w1-settled-390: ok
+r2-w2-flight-1440: ok
+r2-w2-settled-1440: ok
+r2-w2-settled-390: ok
+r2-both-1440: ok
+r2-both-390: ok
+capture-D: all stops captured, console-clean
+[0m
+[0m→ [0mRead docs/phase4/qa/D/r2-w1-seq-rush-1440.png
+[0m→ [0mRead docs/phase4/qa/D/r2-w1-settled-1440.png
+[0m
+[0m$ [0mpython3 -c "
+from PIL import Image
+import numpy as np
+from scipy import ndimage
+" 2>/dev/null || pip list 2>/dev/null | rtk grep -i scipy; python3 -c "
+from PIL import Image
+import numpy as np
+img = np.array(Image.open('docs/phase4/qa/D/r2-w1-seq-tiny-1440.png').convert('L'))
+mask = img > 30
+print('bright px:', mask.sum())
+# column profile: where is bright stuff
+cols = np.where(mask.any(axis=0))[0]
+print('bright columns runs:', __import__('itertools'))
+"
+bright px: 14070
+bright columns runs: <module 'itertools' (built-in)>
+[0m
+[0m$ [0mpython3 -c "
+from PIL import Image
+import numpy as np
+img = np.array(Image.open('docs/phase4/qa/D/r2-w1-seq-tiny-1440.png').convert('L'))
+mask = img > 30
+cols_any = mask.any(axis=0)
+# find contiguous runs
+runs = []
+s = None
+for i, v in enumerate(cols_any):
+    if v and s is None: s = i
+    if not v and s is not None: runs.append((s, i)); s = None
+if s is not None: runs.append((s, len(cols_any)))
+for a, b in runs:
+    sub = mask[:, a:b]
+    ys = np.where(sub.any(axis=1))[0]
+    print(f'x {a}-{b} (w {b-a}), y {ys.min()}-{ys.max()}, bright {sub.sum()}')
+"
+x 229-531 (w 302), y 316-444, bright 6193
+x 535-557 (w 22), y 352-370, bright 149
+x 561-581 (w 20), y 352-370, bright 228
+x 584-606 (w 22), y 352-370, bright 147
+x 780-1022 (w 242), y 329-497, bright 5819
+x 1027-1038 (w 11), y 359-367, bright 77
+x 1044-1120 (w 76), y 310-385, bright 1457
+[0m
+[0m$ [0mpython3 -c "
+import math
+def mulberry32(seed):
+    s = seed & 0xFFFFFFFF
+    def rnd():
+        nonlocal s
+        s = (s + 0x6D2B79F5) & 0xFFFFFFFF
+        t = (s ^ (s >> 15)) * (1 + s) & 0xFFFFFFFF
+        t = (t + ((t ^ (t >> 7)) * (61 + t) & 0xFFFFFFFF)) & 0xFFFFFFFF
+        t ^= t >> 14
+        return (t & 0xFFFFFFFF) / 4294967296
+    return rnd
+def clamp01(x): return max(0, min(1, x))
+def expo(t): return 1 - 2**(-10*clamp01(t))
+def lerp(a,b,t): return a+(b-a)*t
+# W1 config
+start, flight, stagger = 0.7, 0.06, 0.011
+spawnZ, spawnX, spawnY, seed = (-22,-18), 6, 3, 7
+rng = mulberry32(seed)
+spawns = [((rng()-0.5)*2*spawnX, (rng()-0.5)*2*spawnY, lerp(spawnZ[0],spawnZ[1],rng())) for _ in range(8)]
+names = ['MJ','RB','PR','MM','PE','OA','TI','VE']
+slots = [(-0.26,0.03,-0.04),(0.27,0.05,-0.04),(-0.30,0.175,-0.12),(0.01,0.20,-0.12),(0.30,0.17,-0.12),(-0.27,-0.10,-0.26),(0.01,-0.13,-0.26),(0.28,-0.10,-0.26)]
+# note: arcAndTilt not applied here (approx)
+for p in [0.747, 0.751, 0.764, 0.81]:
+    fov = 35 + 8*(math.sin(math.pi*clamp01((p-0.7)/0.15)))**0.8
+    tan = math.tan(math.radians(fov/2))
+    print(f'--- p={p} FOV={fov:.1f} ---')
+    for i in range(8):
+        t = clamp01((p-(start+i*stagger))/flight)
+        e = expo(t)
+        x = lerp(spawns[i][0], slots[i][0], e)
+        y = lerp(spawns[i][1], slots[i][1], e)
+        z = lerp(spawns[i][2], slots[i][2], e)
+        d = 0.78 - z
+        sx = 720 + (x-0)/(d*tan*1.6)*720
+        sy = 450 - (y+0.02)/(d*tan)*450
+        print(f'  {names[i]} t={t:.2f} e={e:.2f} sN={2**(-10*t):.2f} pos=({x:.2f},{y:.2f},{z:.2f}) screen=({sx:.0f},{sy:.0f})')
+"
+--- p=0.747 FOV=41.9 ---
+  MJ t=0.78 e=1.00 sN=0.00 pos=(-0.26,0.04,-0.13) screen=(379,369)
+  RB t=0.60 e=0.98 sN=0.02 pos=(0.34,0.02,-0.35) screen=(1077,411)
+  PR t=0.42 e=0.94 sN=0.06 pos=(-0.27,0.29,-1.18) screen=(555,264)
+  MM t=0.23 e=0.80 sN=0.20 pos=(-0.23,0.18,-3.94) screen=(663,400)
+  PE t=0.05 e=0.29 sN=0.71 pos=(-0.96,-1.30,-14.46) screen=(646,549)
+  OA t=0.00 e=0.00 sN=1.00 pos=(-0.25,-2.86,-20.98) screen=(706,604)
+  TI t=0.00 e=0.00 sN=1.00 pos=(4.70,-0.82,-20.63) screen=(978,494)
+  VE t=0.00 e=0.00 sN=1.00 pos=(-3.75,-0.01,-21.32) screen=(520,450)
+--- p=0.751 FOV=42.2 ---
+  MJ t=0.85 e=1.00 sN=0.00 pos=(-0.26,0.04,-0.10) screen=(370,373)
+  RB t=0.67 e=0.99 sN=0.01 pos=(0.32,0.03,-0.23) screen=(1083,393)
+  PR t=0.48 e=0.96 sN=0.04 pos=(-0.28,0.25,-0.79) screen=(509,251)
+  MM t=0.30 e=0.88 sN=0.12 pos=(-0.14,0.19,-2.53) screen=(670,377)
+  PE t=0.12 e=0.55 sN=0.45 pos=(-0.50,-0.76,-9.15) screen=(662,537)
+  OA t=0.00 e=0.00 sN=1.00 pos=(-0.25,-2.86,-20.98) screen=(706,602)
+  TI t=0.00 e=0.00 sN=1.00 pos=(4.70,-0.82,-20.63) screen=(976,493)
+  VE t=0.00 e=0.00 sN=1.00 pos=(-3.75,-0.01,-21.32) screen=(522,450)
+--- p=0.764 FOV=42.8 ---
+  MJ t=1.00 e=1.00 sN=0.00 pos=(-0.26,0.03,-0.06) screen=(364,378)
+  RB t=0.88 e=1.00 sN=0.00 pos=(0.28,0.05,-0.08) screen=(1092,363)
+  PR t=0.70 e=0.99 sN=0.01 pos=(-0.30,0.19,-0.27) screen=(396,219)
+  MM t=0.52 e=0.97 sN=0.03 pos=(-0.02,0.20,-0.66) screen=(701,276)
+  PE t=0.33 e=0.90 sN=0.10 pos=(0.12,-0.04,-2.13) screen=(768,457)
+  OA t=0.15 e=0.65 sN=0.35 pos=(-0.26,-1.08,-7.59) screen=(684,595)
+  TI t=0.00 e=0.00 sN=1.00 pos=(4.70,-0.82,-20.63) screen=(972,493)
+  VE t=0.00 e=0.00 sN=1.00 pos=(-3.75,-0.01,-21.32) screen=(525,450)
+--- p=0.81 FOV=41.3 ---
+  MJ t=1.00 e=1.00 sN=0.00 pos=(-0.26,0.03,-0.06) screen=(349,375)
+  RB t=1.00 e=1.00 sN=0.00 pos=(0.27,0.05,-0.06) screen=(1110,353)
+  PR t=1.00 e=1.00 sN=0.00 pos=(-0.30,0.18,-0.14) screen=(331,194)
+  MM t=1.00 e=1.00 sN=0.00 pos=(0.01,0.20,-0.14) screen=(731,164)
+  PE t=1.00 e=1.00 sN=0.00 pos=(0.30,0.17,-0.14) screen=(1107,206)
+  OA t=0.92 e=1.00 sN=0.00 pos=(-0.27,-0.10,-0.30) screen=(420,544)
+  TI t=0.73 e=0.99 sN=0.01 pos=(0.04,-0.13,-0.39) screen=(760,567)
+  VE t=0.55 e=0.98 sN=0.02 pos=(0.19,-0.10,-0.73) screen=(871,512)
+[0m
+[0m← [0mEdit src/canvas/SponsorField.tsx
+Index: /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/canvas/SponsorField.tsx
+===================================================================
+--- /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/canvas/SponsorField.tsx
++++ /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/canvas/SponsorField.tsx
+@@ -177,11 +177,13 @@
+ const planeMats = useRef<(THREE.MeshBasicMaterial | null)[]>([])
+ const ribbons = useRef<(THREE.Mesh | null)[][]>([])
+ const ribbonMats = useRef<(THREE.MeshBasicMaterial | null)[][]>([])
+ 
+-useFrame(({ camera, clock }) => {
++useFrame(({ camera, clock, size }) => {
+   const p = clamp01(readStageProgress(progress))
+   const time = clock.elapsedTime
++  const persp = camera as THREE.PerspectiveCamera
++  const tanHalf = Math.tan(THREE.MathUtils.degToRad(persp.fov * 0.5))
+   for (let i = 0; i < 8; i++) {
+     const g = groups.current[i]
+     const pm = planeMats.current[i]
+     if (!g || !pm) continue
+@@ -191,37 +193,47 @@
+     g.position.set(st.pos[0], st.pos[1], st.pos[2])
+     if (st.settled) g.position.y += hoverOffset(slots[i].phase, time)
+     g.quaternion.copy(camera.quaternion)
+     pm.opacity = cfg.opacity[i] * st.fade
++    // Round 2: distant thin wordmarks erode under minified mipmaps +
++    // alphaTest 0.4 (they pop in only when close). Relax the cutout while
++    // far so the mark reads as a tiny bright point from spawn, hardening
++    // to the crisp cutout as it arrives.
++    pm.alphaTest = lerp(0.12, 0.4, smoothstep(0.15, 0.35, st.t))
+ 
+     const sN = st.speed // 1 → 0 over flight; 0 once settled
+     // Brief motion-stretch along travel at peak speed: the mark smears
+     // laterally while fast, relaxing to true shape as it decelerates.
+     // (Travel is camera-relative +z, so on a billboard this reads as a
+     // velocity pulse; settled marks are always undistorted.)
+     g.scale.set(1 + 0.35 * sN, 1 + 0.12 * sN, 1)
+-    const logoW = slots[i].size[0]
+-    // Round 2: ribbons stay long enough to read at flight distances (a
+-    // settled-size ribbon on a 30px logo is sub-pixel). Length floor keeps
+-    // a visible comet even when the mark itself is still small.
+-    const len = Math.min(Math.max(logoW * (1 + 3.4 * sN * cfg.streakLength), 0.22 * sN), 0.8)
++    // Round 2: streaks are sized in SCREEN pixels, not world metres — a
++    // world-size ribbon on a 30px-distant logo is sub-pixel and invisible
++    // (round-1 finding). World length = pixel length × metres-per-pixel at
++    // the logo's depth, so the comet reads at every distance.
++    const dist = camera.position.distanceTo(g.position)
++    const px = (2 * dist * tanHalf) / Math.max(1, size.height)
++    const lenPx = Math.min(26 + 150 * sN * cfg.streakLength, 200)
++    const len = lenPx * px
+     // Streaks die out over the last ~15% of flight so no ghost bar lingers
+     // on nearly-settled marks; settled logos are streak-free.
+     const endFade = 1 - smoothstep(0.85, 1, st.t)
+     const op = Math.pow(sN, 0.5) * cfg.streakOpacity * st.fade * endFade
++    // Trail side: the lateral direction the mark came from (spawn − slot).
++    const trailDir = spawns[i][0] >= slots[i].pos[0] ? 1 : -1
+     for (let r = 0; r < 3; r++) {
+       const mesh = ribbons.current[i]?.[r]
+       const mat = ribbonMats.current[i]?.[r]
+       if (!mesh || !mat) continue
+-      const h = r === 0 ? 0.014 : r === 1 ? 0.022 : 0.03
++      const h = (r === 0 ? 3.5 : r === 1 ? 5.5 : 8) * px
+       mesh.visible = streaksEnabled && op > 0.004
+       if (!mesh.visible) continue
+-      // Lateral comet-smear: ribbons centred on the mark, width tied to
+-      // velocity, slight vertical/asymmetric offsets per ribbon.
++      // Lateral comet-smear: head overlaps the mark, tail extends
++      // spawn-ward; slight vertical/asymmetric offsets per ribbon.
+       mesh.scale.set(len, h, 1)
+       mesh.position.set(
+-        (r === 0 ? 0.012 : r === 1 ? -0.016 : 0.004) * sN,
+-        r === 0 ? 0.012 : r === 1 ? -0.014 : 0.002,
++        trailDir * len * 0.32 + (r === 0 ? 0.012 : r === 1 ? -0.016 : 0.004) * sN,
++        (r === 0 ? 0.012 : r === 1 ? -0.014 : 0.002) * (0.4 + 0.6 * sN) + (r - 1) * h * 0.55,
+         -0.001 - r * 0.001,
+       )
+       mat.opacity = r === 0 ? op : r === 1 ? op * 0.7 : op * 0.45
+     }
+
+[0m
+[0m← [0mEdit src/canvas/SponsorField.tsx
+Index: /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/canvas/SponsorField.tsx
+===================================================================
+--- /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/canvas/SponsorField.tsx
++++ /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/canvas/SponsorField.tsx
+@@ -30,9 +30,9 @@
+   type WaveId,
+ } from './stage/slots'
+ import { FALLBACK_ASPECTS, loadAtlasManifests, logosFor, type AtlasManifest } from './stage/logos'
+ import { getStreakTexture } from './stage/streakTexture'
+-import { clamp01, smoothstep } from './stage/math'
++import { clamp01, lerp, smoothstep } from './stage/math'
+ import { readStageProgress, type StageProgress } from './SceneStage'
+ 
+ /** Which wave(s) to mount. Lane B mounts one instance per wave (`wave={1|2}`);
+  *  the isolated harness mounts both. Default 'both'. */
+
+[0m
+[0m← [0mEdit src/canvas/stage/slots.ts
+Index: /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/canvas/stage/slots.ts
+===================================================================
+--- /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/canvas/stage/slots.ts
++++ /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/canvas/stage/slots.ts
+@@ -117,16 +117,16 @@
+ // FOV 35 desktop (see requests/D-camera-notes.md) — verified in the harness
+ // at those exact numbers.
+ // Order: Maui Jim, Ray-Ban | Prada, Miu Miu, Persol | Oakley, Tiffany, Versace.
+ const W1_CELLS: LayoutCell[] = [
+-  { x: -0.26, y: 0.03, z: -0.04, box: [0.2, 0.11] },
+-  { x: 0.27, y: 0.05, z: -0.04, box: [0.2, 0.11] },
+-  { x: -0.3, y: 0.175, z: -0.12, box: [0.22, 0.115] },
+-  { x: 0.01, y: 0.2, z: -0.12, box: [0.22, 0.115] },
+-  { x: 0.3, y: 0.17, z: -0.12, box: [0.22, 0.115] },
+-  { x: -0.27, y: -0.1, z: -0.26, box: [0.18, 0.095] },
+-  { x: 0.01, y: -0.13, z: -0.26, box: [0.18, 0.095] },
+-  { x: 0.28, y: -0.1, z: -0.26, box: [0.18, 0.095] },
++  { x: -0.28, y: 0.02, z: -0.04, box: [0.19, 0.105] },
++  { x: 0.28, y: 0.05, z: -0.04, box: [0.19, 0.105] },
++  { x: -0.3, y: 0.175, z: -0.12, box: [0.21, 0.11] },
++  { x: 0.01, y: 0.2, z: -0.12, box: [0.21, 0.11] },
++  { x: 0.3, y: 0.17, z: -0.12, box: [0.21, 0.11] },
++  { x: -0.27, y: -0.1, z: -0.26, box: [0.15, 0.08] },
++  { x: 0.01, y: -0.13, z: -0.26, box: [0.15, 0.08] },
++  { x: 0.28, y: -0.1, z: -0.26, box: [0.15, 0.08] },
+ ]
+ 
+ // W1 compact (mobile <768px, framed at ≥1.5 m / FOV 44): 4 cols × 2 rows
+ // pushed below the hero band (glasses sit top-of-frame on mobile), 2 depth
+
+[0m
+[0m$ [0mnpx tsc -b 2>&1 | grep -v "router.tsx\|Catalog" | head -5; echo OK; node docs/phase4/qa/D/capture-D.mjs 2>&1 | tail -16
+npm notice run eyeq-vision-care@0.1.0 npx
+npm notice run 'tsc' -b
+OK
+r2-01-stage-1440: ok
+r2-03-sweep-1440: ok
+r2-w1-seq-tiny-1440: console errors:
+  You are calling ReactDOMClient.createRoot() on a container that has already been passed to createRoot() before. Instead, call root.render() on the existing root instead if you want to update it.
+r2-w1-seq-rush-1440: ok
+r2-w1-seq-decel-1440: console errors:
+  You are calling ReactDOMClient.createRoot() on a container that has already been passed to createRoot() before. Instead, call root.render() on the existing root instead if you want to update it.
+r2-w1-seq-settled-1440: ok
+r2-w1-settled-1440: ok
+r2-w1-settled-390: ok
+r2-w2-flight-1440: ok
+r2-w2-settled-1440: ok
+r2-w2-settled-390: ok
+r2-both-1440: ok
+r2-both-390: ok
+capture-D: 2 failure(s)
+[0m
+[0m$ [0msleep 12; cp /tmp/recap-r2.mjs ./docs/phase4/qa/D/recap-r2.tmp.mjs && sed -i '' "s/r2-w1-seq-decel-1440.*/['r2-w1-seq-tiny-1440', '?p=0.747\&waves=1\&standin=1\&ui=0', { width: 1440, height: 900 }],/; s/\['r2-w1-seq-settled-1440'.*/['r2-w1-seq-decel-1440', '?p=0.764\&waves=1\&standin=1\&ui=0', { width: 1440, height: 900 }],/" ./docs/phase4/qa/D/recap-r2.tmp.mjs && node ./docs/phase4/qa/D/recap-r2.tmp.mjs 2>&1 | tail -4; rm -f ./docs/phase4/qa/D/recap-r2.tmp.mjs
+at node:internal/modules/esm/loader:632:32
+    at TracingChannel.tracePromise (node:diagnostics_channel:362:14)
+
+Node.js v24.18.0
+[0m
+[0m← [0mWrite docs/phase4/qa/D/recap-r2.tmp.mjs
+Wrote file successfully.
+[0m
+[0m$ [0mnode ./docs/phase4/qa/D/recap-r2.tmp.mjs 2>&1 | tail -4; rm -f ./docs/phase4/qa/D/recap-r2.tmp.mjs
+r2-w1-seq-tiny-1440: ok
+r2-w1-seq-decel-1440: ok
+[0m
+[0m→ [0mRead docs/phase4/qa/D/r2-w1-seq-rush-1440.png
+[0m→ [0mRead docs/phase4/qa/D/r2-w1-seq-tiny-1440.png
+[0m
+[0m← [0mEdit src/canvas/stage/slots.ts
+Index: /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/canvas/stage/slots.ts
+===================================================================
+--- /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/canvas/stage/slots.ts
++++ /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/canvas/stage/slots.ts
+@@ -117,16 +117,16 @@
+ // FOV 35 desktop (see requests/D-camera-notes.md) — verified in the harness
+ // at those exact numbers.
+ // Order: Maui Jim, Ray-Ban | Prada, Miu Miu, Persol | Oakley, Tiffany, Versace.
+ const W1_CELLS: LayoutCell[] = [
+-  { x: -0.28, y: 0.02, z: -0.04, box: [0.19, 0.105] },
++  { x: -0.29, y: -0.04, z: -0.04, box: [0.18, 0.1] },
+   { x: 0.28, y: 0.05, z: -0.04, box: [0.19, 0.105] },
+-  { x: -0.3, y: 0.175, z: -0.12, box: [0.21, 0.11] },
++  { x: -0.22, y: 0.2, z: -0.12, box: [0.16, 0.1] },
+   { x: 0.01, y: 0.2, z: -0.12, box: [0.21, 0.11] },
+-  { x: 0.3, y: 0.17, z: -0.12, box: [0.21, 0.11] },
+-  { x: -0.27, y: -0.1, z: -0.26, box: [0.15, 0.08] },
++  { x: 0.3, y: 0.185, z: -0.12, box: [0.21, 0.11] },
++  { x: -0.3, y: -0.145, z: -0.26, box: [0.14, 0.075] },
+   { x: 0.01, y: -0.13, z: -0.26, box: [0.15, 0.08] },
+-  { x: 0.28, y: -0.1, z: -0.26, box: [0.15, 0.08] },
++  { x: 0.29, y: -0.1, z: -0.26, box: [0.15, 0.08] },
+ ]
+ 
+ // W1 compact (mobile <768px, framed at ≥1.5 m / FOV 44): 4 cols × 2 rows
+ // pushed below the hero band (glasses sit top-of-frame on mobile), 2 depth
+
+[0m
+[0m← [0mEdit docs/phase4/qa/D/capture-D.mjs
+Index: /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/docs/phase4/qa/D/capture-D.mjs
+===================================================================
+--- /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/docs/phase4/qa/D/capture-D.mjs
++++ /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/docs/phase4/qa/D/capture-D.mjs
+@@ -10,20 +10,20 @@
+ 
+ const BASE = 'http://localhost:5104/dev-D.html'
+ const OUT = `${dirname(fileURLToPath(import.meta.url))}/`
+ 
+-// Round-2 stops (prefix r2-). Persol (W1 i=4: start 0.744, flight 0.060) is
+-// the tracked mark for the 4-frame flight sequence (logos 0–3 already
+-// settling behind it); Canada Life (W2 i=4: start 0.882, flight 0.045) for
+-// the W2 flight frame. [name, query] — ui=0 hides the harness panel for
++// Round-2 stops (prefix r2-). Miu Miu (W1 i=3: start 0.733, flight 0.060)
++// is the tracked mark for the 4-frame flight sequence (visible small-to-far
++// in every early frame); Canada Life (W2 i=4: start 0.882, flight 0.045)
++// for the W2 flight frame. [name, query] — ui=0 hides the harness panel for
+ // clean QA frames; standin=1 keeps the hero reference.
+ const STOPS = [
+   ['r2-01-stage-1440', '?p=0.05&waves=w1&standin=1&ui=0'],
+   ['r2-03-sweep-1440', '?p=0.3&waves=w1&standin=1&ui=0'],
+-  ['r2-w1-seq-tiny-1440', '?p=0.747&waves=1&standin=1&ui=0'],
+-  ['r2-w1-seq-rush-1440', '?p=0.751&waves=1&standin=1&ui=0'],
+-  ['r2-w1-seq-decel-1440', '?p=0.764&waves=1&standin=1&ui=0'],
+-  ['r2-w1-seq-settled-1440', '?p=0.81&waves=1&standin=1&ui=0'],
++  ['r2-w1-seq-tiny-1440', '?p=0.741&waves=1&standin=1&ui=0'],
++  ['r2-w1-seq-rush-1440', '?p=0.745&waves=1&standin=1&ui=0'],
++  ['r2-w1-seq-decel-1440', '?p=0.752&waves=1&standin=1&ui=0'],
++  ['r2-w1-seq-settled-1440', '?p=0.8&waves=1&standin=1&ui=0'],
+   ['r2-w1-settled-1440', '?p=0.85&waves=1&standin=1&ui=0'],
+   ['r2-w1-settled-390', '?p=0.85&waves=1&standin=1&ui=0'],
+   ['r2-w2-flight-1440', '?p=0.886&waves=2&standin=1&ui=0'],
+   ['r2-w2-settled-1440', '?p=0.96&waves=both&standin=1&ui=0'],
+
+[0m
+[0m← [0mEdit src/__dev__/D/main.tsx
+Index: /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/__dev__/D/main.tsx
+===================================================================
+--- /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/__dev__/D/main.tsx
++++ /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/__dev__/D/main.tsx
+@@ -26,14 +26,14 @@
+ const STOPS: [string, number][] = [
+   ['B1 case', 0.05],
+   ['B2 velvet', 0.17],
+   ['B5 info', 0.62],
+-  // Round-2 flight sequence: Persol (W1 i=4, start 0.744, flight 0.060) —
++  // Round-2 flight sequence: Miu Miu (W1 i=3, start 0.733, flight 0.060) —
+   // tiny → rush → decel → settled.
+-  ['W1 seq tiny', 0.747],
+-  ['W1 seq rush', 0.751],
+-  ['W1 seq decel', 0.764],
+-  ['W1 seq settled', 0.81],
++  ['W1 seq tiny', 0.741],
++  ['W1 seq rush', 0.745],
++  ['W1 seq decel', 0.752],
++  ['W1 seq settled', 0.8],
+   ['W1 settled', 0.85],
+   ['W2 flight', 0.87],
+   ['W1+W2 settled', 0.96],
+ ]
+
+[0m
+[0m$ [0msleep 8; node docs/phase4/qa/D/capture-D.mjs 2>&1 | tail -16
+r2-01-stage-1440: ok
+r2-03-sweep-1440: ok
+r2-w1-seq-tiny-1440: ok
+r2-w1-seq-rush-1440: ok
+r2-w1-seq-decel-1440: ok
+r2-w1-seq-settled-1440: ok
+r2-w1-settled-1440: ok
+r2-w1-settled-390: ok
+r2-w2-flight-1440: ok
+r2-w2-settled-1440: ok
+r2-w2-settled-390: ok
+r2-both-1440: ok
+r2-both-390: ok
+capture-D: all stops captured, console-clean
+[0m
+[0m→ [0mRead docs/phase4/qa/D/r2-w1-seq-rush-1440.png
+[0m→ [0mRead docs/phase4/qa/D/r2-w1-settled-1440.png
+[0m
+[0m← [0mEdit src/canvas/SponsorField.tsx
+Index: /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/canvas/SponsorField.tsx
+===================================================================
+--- /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/canvas/SponsorField.tsx
++++ /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/canvas/SponsorField.tsx
+@@ -46,8 +46,11 @@
+   /** Streak ribbons on/off. Default: off on coarse pointers (mobile). */
+   streaks?: boolean
+   /** Compact (mobile) layouts. Default: viewport width < 768px. */
+   compact?: boolean
++  /** HARNESS ONLY — render a single logo index 0–7 of the mounted wave(s),
++   *  hiding its siblings (flight-sequence QA). Never set in production. */
++  solo?: number
+ }
+ 
+ /** Estimated on-screen height of a settled logo (px) — harness legibility math. */
+ export function projectedHeightPx(
+
+[0m
+[0m← [0mEdit src/canvas/SponsorField.tsx
+Index: /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/canvas/SponsorField.tsx
+===================================================================
+--- /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/canvas/SponsorField.tsx
++++ /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/canvas/SponsorField.tsx
+@@ -85,9 +85,9 @@
+ interface InnerProps extends SponsorFieldProps {
+   manifests: { w1: AtlasManifest; w2: AtlasManifest }
+ }
+ 
+-function SponsorInner({ manifests, progress = filmProgress, wave = 'both', streaks, compact }: InnerProps) {
++function SponsorInner({ manifests, progress = filmProgress, wave = 'both', streaks, compact, solo }: InnerProps) {
+   const viewportWidth = useThree((s) => s.size.width)
+   const gl = useThree((s) => s.gl)
+   const [texW1, texW2] = useTexture([manifests.w1.textureUrl, manifests.w2.textureUrl])
+ 
+
+[0m
+[0m← [0mEdit src/canvas/SponsorField.tsx
+Index: /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/canvas/SponsorField.tsx
+===================================================================
+--- /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/canvas/SponsorField.tsx
++++ /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/canvas/SponsorField.tsx
+@@ -117,8 +117,9 @@
+         texture={texW1}
+         progress={progress}
+         compact={isCompact}
+         streaksEnabled={streaksEnabled}
++        solo={solo}
+       />
+     )}
+     {(wave === 'both' || wave === 2) && (
+       <Wave
+@@ -127,8 +128,9 @@
+         texture={texW2}
+         progress={progress}
+         compact={isCompact}
+         streaksEnabled={streaksEnabled}
++        solo={solo}
+       />
+     )}
+   </group>
+ )
+
+[0m
+[0m← [0mEdit src/canvas/SponsorField.tsx
+Index: /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/canvas/SponsorField.tsx
+===================================================================
+--- /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/canvas/SponsorField.tsx
++++ /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/canvas/SponsorField.tsx
+@@ -142,11 +142,12 @@
+   texture: THREE.Texture
+   progress: StageProgress
+   compact: boolean
+   streaksEnabled: boolean
++  solo?: number
+ }
+ 
+-function Wave({ wave, manifest, texture, progress, compact, streaksEnabled }: WaveProps) {
++function Wave({ wave, manifest, texture, progress, compact, streaksEnabled, solo }: WaveProps) {
+   const cfg = wave === 'w1' ? WAVE1 : WAVE2
+   const logos = useMemo(() => logosFor(wave), [wave])
+   const streakTex = useMemo(() => getStreakTexture(), [])
+ 
+
+[0m
+[0m← [0mEdit src/canvas/SponsorField.tsx
+Index: /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/canvas/SponsorField.tsx
+===================================================================
+--- /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/canvas/SponsorField.tsx
++++ /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/canvas/SponsorField.tsx
+@@ -193,9 +193,9 @@
+ const g = groups.current[i]
+ const pm = planeMats.current[i]
+ if (!g || !pm) continue
+ const st = logoFlight(wave, i, p, spawns[i], slots[i])
+-g.visible = st.t > 0.0001
++g.visible = st.t > 0.0001 && (solo === undefined || solo === i)
+ if (!g.visible) continue
+ g.position.set(st.pos[0], st.pos[1], st.pos[2])
+ if (st.settled) g.position.y += hoverOffset(slots[i].phase, time)
+ g.quaternion.copy(camera.quaternion)
+
+[0m
+[0m← [0mEdit src/__dev__/D/main.tsx
+Index: /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/__dev__/D/main.tsx
+===================================================================
+--- /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/__dev__/D/main.tsx
++++ /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/__dev__/D/main.tsx
+@@ -155,19 +155,22 @@
+   standin: boolean
+   streaks: boolean | null
+   compactMode: CompactMode
+   ui: boolean
++  solo: number | undefined
+ } {
+   const q = new URLSearchParams(window.location.search)
+   const p = Number(q.get('p') ?? '0.775')
+   const w = q.get('waves') ?? q.get('wave') ?? 'both'
++  const soloRaw = Number(q.get('solo') ?? '')
+   return {
+     p: Number.isFinite(p) ? clamp01(p) : 0.775,
+     wave: w === '1' || w === 'w1' ? 1 : w === '2' || w === 'w2' ? 2 : 'both',
+     standin: q.get('standin') !== '0',
+     streaks: q.get('streaks') === '0' ? false : q.get('streaks') === '1' ? true : null,
+     compactMode: q.get('compact') === 'on' ? 'on' : q.get('compact') === 'off' ? 'off' : 'auto',
+     ui: q.get('ui') !== '0',
++    solo: q.get('solo') === null || !Number.isInteger(soloRaw) || soloRaw < 0 || soloRaw > 7 ? undefined : soloRaw,
+   }
+ }
+ 
+ function App() {
+
+[0m
+[0m← [0mEdit src/__dev__/D/main.tsx
+Index: /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/__dev__/D/main.tsx
+===================================================================
+--- /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/__dev__/D/main.tsx
++++ /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/__dev__/D/main.tsx
+@@ -203,8 +203,9 @@
+     progress={p}
+     wave={wave}
+     streaks={streaks ?? undefined}
+     compact={compactMode === 'auto' ? undefined : compactMode === 'on'}
++    solo={initial.solo}
+   />
+ </Suspense>
+ {standin && (
+   <Suspense fallback={null}>
+
+[0m
+[0m← [0mEdit docs/phase4/qa/D/capture-D.mjs
+Index: /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/docs/phase4/qa/D/capture-D.mjs
+===================================================================
+--- /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/docs/phase4/qa/D/capture-D.mjs
++++ /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/docs/phase4/qa/D/capture-D.mjs
+@@ -22,8 +22,12 @@
+ ['r2-w1-seq-tiny-1440', '?p=0.741&waves=1&standin=1&ui=0'],
+ ['r2-w1-seq-rush-1440', '?p=0.745&waves=1&standin=1&ui=0'],
+ ['r2-w1-seq-decel-1440', '?p=0.752&waves=1&standin=1&ui=0'],
+ ['r2-w1-seq-settled-1440', '?p=0.8&waves=1&standin=1&ui=0'],
++['r2-w1-seq-solo-tiny-1440', '?p=0.741&waves=1&standin=0&ui=0&solo=3'],
++['r2-w1-seq-solo-rush-1440', '?p=0.745&waves=1&standin=0&ui=0&solo=3'],
++['r2-w1-seq-solo-decel-1440', '?p=0.752&waves=1&standin=0&ui=0&solo=3'],
++['r2-w1-seq-solo-settled-1440', '?p=0.8&waves=1&standin=0&ui=0&solo=3'],
+ ['r2-w1-settled-1440', '?p=0.85&waves=1&standin=1&ui=0'],
+ ['r2-w1-settled-390', '?p=0.85&waves=1&standin=1&ui=0'],
+ ['r2-w2-flight-1440', '?p=0.886&waves=2&standin=1&ui=0'],
+ ['r2-w2-settled-1440', '?p=0.96&waves=both&standin=1&ui=0'],
+
+[0m
+[0m$ [0msleep 8; node docs/phase4/qa/D/capture-D.mjs 2>&1 | tail -20
+r2-01-stage-1440: ok
+r2-03-sweep-1440: ok
+r2-w1-seq-tiny-1440: ok
+r2-w1-seq-rush-1440: ok
+r2-w1-seq-decel-1440: ok
+r2-w1-seq-settled-1440: ok
+r2-w1-seq-solo-tiny-1440: ok
+r2-w1-seq-solo-rush-1440: ok
+r2-w1-seq-solo-decel-1440: ok
+r2-w1-seq-solo-settled-1440: ok
+r2-w1-settled-1440: ok
+r2-w1-settled-390: ok
+r2-w2-flight-1440: ok
+r2-w2-settled-1440: ok
+r2-w2-settled-390: ok
+r2-both-1440: ok
+r2-both-390: ok
+capture-D: all stops captured, console-clean
+[0m
+[0m→ [0mRead docs/phase4/qa/D/r2-w1-seq-solo-tiny-1440.png
+[0m→ [0mRead docs/phase4/qa/D/r2-w1-seq-solo-rush-1440.png
+[0m
+[0m$ [0mpython3 -c "
+from PIL import Image
+import numpy as np
+for f in ['r2-w1-seq-solo-tiny-1440','r2-w1-seq-solo-rush-1440','r2-w1-seq-solo-decel-1440','r2-w1-seq-solo-settled-1440']:
+    img = np.array(Image.open(f'docs/phase4/qa/D/{f}.png').convert('L'))
+    print(f, 'max:', img.max(), 'mean>5:', img[img>5].mean() if (img>5).any() else 0, 'px>40:', (img>40).sum())
+    ys, xs = np.where(img > 40)
+    if len(xs): print('   bbox x:', xs.min(), xs.max(), 'y:', ys.min(), ys.max())
+"
+r2-w1-seq-solo-tiny-1440 max: 218 mean>5: 6.023648919753087 px>40: 312
+   bbox x: 841 903 y: 451 460
+r2-w1-seq-solo-rush-1440 max: 191 mean>5: 6.021466820987654 px>40: 233
+   bbox x: 830 877 y: 435 444
+r2-w1-seq-solo-decel-1440 max: 198 mean>5: 6.049087191358025 px>40: 416
+   bbox x: 792 866 y: 394 404
+r2-w1-seq-solo-settled-1440 max: 199 mean>5: 6.625201388888889 px>40: 4467
+   bbox x: 603 851 y: 166 203
+[0m
+[0m← [0mEdit src/canvas/SponsorField.tsx
+Index: /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/canvas/SponsorField.tsx
+===================================================================
+--- /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/canvas/SponsorField.tsx
++++ /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/canvas/SponsorField.tsx
+@@ -217,14 +217,20 @@
+ // (round-1 finding). World length = pixel length × metres-per-pixel at
+ // the logo's depth, so the comet reads at every distance.
+ const dist = camera.position.distanceTo(g.position)
+ const px = (2 * dist * tanHalf) / Math.max(1, size.height)
+-const lenPx = Math.min(26 + 150 * sN * cfg.streakLength, 200)
++// Round 2b: streaks decay SLOWER than the arrival curve (2^(−4t) vs
++// 2^(−10t)): the expo flight parks the logo while it is still visibly
++// moving, so a fast-decaying tail vanishes before the eye registers
++// it. The slow tail reads as a dissipating comet through decel;
++// endFade still guarantees streak-free settled marks.
++const sNslow = st.t >= 1 ? 0 : Math.pow(2, -4 * st.t)
++const lenPx = Math.min(26 + 150 * sNslow * cfg.streakLength, 200)
+ const len = lenPx * px
+ // Streaks die out over the last ~15% of flight so no ghost bar lingers
+ // on nearly-settled marks; settled logos are streak-free.
+ const endFade = 1 - smoothstep(0.85, 1, st.t)
+-const op = Math.pow(sN, 0.5) * cfg.streakOpacity * st.fade * endFade
++const op = Math.pow(sNslow, 0.5) * cfg.streakOpacity * st.fade * endFade
+ // Trail side: the lateral direction the mark came from (spawn − slot).
+ const trailDir = spawns[i][0] >= slots[i].pos[0] ? 1 : -1
+ for (let r = 0; r < 3; r++) {
+   const mesh = ribbons.current[i]?.[r]
+
+[0m
+[0m← [0mEdit src/canvas/stage/streakTexture.ts
+Index: /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/canvas/stage/streakTexture.ts
+===================================================================
+--- /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/canvas/stage/streakTexture.ts
++++ /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/canvas/stage/streakTexture.ts
+@@ -27,9 +27,11 @@
+ const v = y / (h - 1) // 0 top → 1 bottom
+ const edge = Math.sin(Math.PI * v) ** 1.5 // soft top/bottom
+ for (let x = 0; x < w; x++) {
+   const u = x / (w - 1) // 0 head (logo) → 1 tail
+-  const tail = (1 - u) ** 1.8
++  // Round 2b: fuller comet (was 1.8 — only the head pixels cleared the
++  // visible threshold, so tails read as stubs). Still head-bright.
++  const tail = (1 - u) ** 1.2
+   const a = Math.round(255 * edge * tail)
+   const o = (y * w + x) * 4
+   img.data[o] = r
+   img.data[o + 1] = g
+
+[0m
+[0m$ [0msleep 8; node docs/phase4/qa/D/capture-D.mjs 2>&1 | tail -20
+r2-01-stage-1440: ok
+r2-03-sweep-1440: ok
+r2-w1-seq-tiny-1440: ok
+r2-w1-seq-rush-1440: ok
+r2-w1-seq-decel-1440: console errors:
+  You are calling ReactDOMClient.createRoot() on a container that has already been passed to createRoot() before. Instead, call root.render() on the existing root instead if you want to update it.
+r2-w1-seq-settled-1440: ok
+r2-w1-seq-solo-tiny-1440: ok
+r2-w1-seq-solo-rush-1440: ok
+r2-w1-seq-solo-decel-1440: ok
+r2-w1-seq-solo-settled-1440: ok
+r2-w1-settled-1440: ok
+r2-w1-settled-390: ok
+r2-w2-flight-1440: ok
+r2-w2-settled-1440: ok
+r2-w2-settled-390: ok
+r2-both-1440: ok
+r2-both-390: ok
+capture-D: 1 failure(s)
+[0m
+[0m← [0mWrite docs/phase4/qa/D/recap-r2.tmp.mjs
+Wrote file successfully.
+[0m
+[0m$ [0msleep 5; node ./docs/phase4/qa/D/recap-r2.tmp.mjs 2>&1 | tail -3; rm -f ./docs/phase4/qa/D/recap-r2.tmp.mjs
+r2-w1-seq-decel-1440: console errors:
+  You are calling ReactDOMClient.createRoot() on a container that has already been passed to createRoot() before. Instead, call root.render() on the existing root instead if you want to update it.
+[0m
+[0m← [0mEdit docs/phase4/qa/D/capture-D.mjs
+Index: /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/docs/phase4/qa/D/capture-D.mjs
+===================================================================
+--- /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/docs/phase4/qa/D/capture-D.mjs
++++ /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/docs/phase4/qa/D/capture-D.mjs
+@@ -45,9 +45,12 @@
+ const browser = await chromium.launch({
+   args: ['--enable-unsafe-swiftshader', '--use-angle=swiftshader'],
+ })
+ 
+-for (const [name, query] of STOPS) {
++// Round 2b: one retry per stop. Vite HMR can re-execute the harness module
++// while a page sits in its settle wait (double-createRoot console error) if
++// files were saved shortly before the run — the retry loads a settled build.
++async function captureOnce(name, query) {
+   const suffix = name.endsWith('-1440') ? '-1440' : '-390'
+   const viewport = VIEWPORTS[suffix]
+   const page = await browser.newPage({ viewport })
+   const errors = []
+@@ -61,20 +64,27 @@
+   const webgl = await page.evaluate(() => {
+     const c = document.createElement('canvas')
+     return !!(c.getContext('webgl2') || c.getContext('webgl'))
+   })
+-  if (!webgl) {
+-    console.error(`${name}: WebGL unavailable`)
+-    failures++
+-  }
++  if (!webgl) errors.push('WebGL unavailable')
+   await page.screenshot({ path: join(OUT, `${name}.png`) })
++  await page.close()
++  return errors
++}
++
++for (const [name, query] of STOPS) {
++  let errors = await captureOnce(name, query)
+   if (errors.length > 0) {
++    console.log(`${name}: retrying after first-pass errors`)
++    await new Promise((r) => setTimeout(r, 4000))
++    errors = await captureOnce(name, query)
++  }
++  if (errors.length > 0) {
+     console.error(`${name}: console errors:\n  ${errors.join('\n  ')}`)
+     failures++
+   } else {
+     console.log(`${name}: ok`)
+   }
+-  await page.close()
+ }
+ await browser.close()
+ if (failures > 0) {
+   console.error(`capture-D: ${failures} failure(s)`)
+
+[0m
+[0m→ [0mRead docs/phase4/qa/D/r2-w1-seq-solo-decel-1440.png
+[0m→ [0mRead docs/phase4/qa/D/r2-w1-seq-solo-rush-1440.png
+[0m
+[0m$ [0mpython3 -c "
+from PIL import Image
+import numpy as np
+for f in ['r2-w1-seq-solo-rush-1440','r2-w1-seq-solo-decel-1440']:
+    img = np.array(Image.open(f'docs/phase4/qa/D/{f}.png').convert('L'))
+    print(f, 'max:', img.max(), 'px>40:', (img>40).sum(), 'px>100:', (img>100).sum())
+    ys, xs = np.where(img > 100)
+    if len(xs): print('   core bbox x:', xs.min(), xs.max(), 'y:', ys.min(), ys.max())
+"
+r2-w1-seq-solo-rush-1440 max: 248 px>40: 592 px>100: 156
+   core bbox x: 828 897 y: 439 443
+r2-w1-seq-solo-decel-1440 max: 198 px>40: 639 px>100: 389
+   core bbox x: 792 866 y: 394 404
+[0m
+[0m→ [0mRead docs/phase4/qa/D/r2-w2-flight-1440.png
+[0m→ [0mRead docs/phase4/qa/D/r2-both-1440.png
+[0m
+[0m$ [0mpython3 -c "
+from PIL import Image
+import numpy as np
+img = np.array(Image.open('docs/phase4/qa/D/r2-w2-settled-1440.png').convert('L'))
+mask = img > 30
+rows = mask.sum(axis=1)
+# print occupied bands
+inb = False
+for y in range(0, 900, 5):
+    v = rows[y:y+5].sum()
+    mark = 'X' if v > 50 else '.'
+    if v > 50: print(y, v)
+"
+75 71
+80 82
+85 95
+90 403
+95 1284
+100 1429
+105 1339
+110 1402
+115 1419
+120 1431
+125 1668
+130 1122
+135 522
+140 517
+145 570
+150 546
+155 509
+160 479
+165 462
+170 549
+175 569
+180 468
+185 408
+190 293
+195 309
+200 308
+205 257
+210 235
+215 240
+220 206
+255 110
+260 98
+265 101
+270 103
+275 108
+280 142
+285 311
+290 345
+295 282
+300 298
+305 369
+310 452
+315 515
+320 500
+325 443
+330 415
+335 388
+340 347
+345 384
+350 378
+355 417
+360 379
+365 283
+370 196
+375 218
+380 227
+385 208
+390 146
+395 63
+400 69
+405 143
+410 226
+415 238
+420 264
+425 257
+430 293
+435 282
+440 525
+445 930
+450 1320
+455 1191
+460 1155
+465 1374
+470 701
+475 458
+480 542
+485 489
+490 402
+495 356
+500 304
+505 212
+510 109
+515 97
+520 92
+525 85
+530 70
+535 51
+540 52
+565 495
+570 367
+575 342
+580 421
+585 462
+590 366
+595 370
+600 535
+605 201
+610 334
+615 468
+620 380
+625 239
+630 239
+635 242
+640 245
+645 260
+650 233
+660 162
+665 369
+670 377
+675 402
+710 71
+720 158
+725 262
+730 202
+735 605
+740 1263
+745 1095
+750 2155
+755 2335
+760 2464
+765 2113
+770 1309
+775 578
+780 407
+785 525
+790 705
+795 1059
+800 1076
+805 1648
+810 1844
+815 2043
+820 2000
+825 2541
+830 2081
+835 2011
+840 1796
+845 1363
+850 1239
+855 815
+860 878
+865 754
+870 754
+875 265
+[0m
+[0m← [0mEdit src/canvas/stage/slots.ts
+Index: /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/canvas/stage/slots.ts
+===================================================================
+--- /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/canvas/stage/slots.ts
++++ /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/canvas/stage/slots.ts
+@@ -236,8 +236,15 @@
+   /** Fade-in 0→1 over the first 10% of flight (no popping at spawn). */
+   fade: number
+ }
+ 
++/** Approach dip (metres, mid-flight only): in-flight marks swing slightly
++ *  UNDER the settled formation so arrivals stream beneath parked logos —
++ *  and beneath the hero — instead of plastering over them (round-2 finding
++ *  in the p≈0.905 both-waves frame). Zero at both ends (sin window), so
++ *  spawn and settle poses are untouched. */
++const APPROACH_DIP: Record<WaveId, number> = { w1: 0.08, w2: 0.18 }
++
+ /** Position of logo `index` of `wave` at master progress `p`. */
+ export function logoFlight(
+   wave: WaveId,
+   index: number,
+@@ -247,12 +254,13 @@
+ ): LogoFlightState {
+   const c = WAVES[wave]
+   const t = clamp01((p - (c.start + index * c.stagger)) / c.flight)
+   const e = expoArrival(t)
++  const dip = APPROACH_DIP[wave] * Math.sin(Math.PI * t)
+   return {
+     pos: [
+       lerp(spawn[0], slot.pos[0], e),
+-      lerp(spawn[1], slot.pos[1], e),
++      lerp(spawn[1], slot.pos[1], e) - dip,
+       lerp(spawn[2], slot.pos[2], e),
+     ],
+     t,
+     speed: t >= 1 ? 0 : flightSpeed(t),
+
+[0m
+[0m$ [0msleep 8; node docs/phase4/qa/D/capture-D.mjs 2>&1 | tail -20
+r2-01-stage-1440: ok
+r2-03-sweep-1440: ok
+r2-w1-seq-tiny-1440: ok
+r2-w1-seq-rush-1440: ok
+r2-w1-seq-decel-1440: ok
+r2-w1-seq-settled-1440: ok
+r2-w1-seq-solo-tiny-1440: ok
+r2-w1-seq-solo-rush-1440: ok
+r2-w1-seq-solo-decel-1440: ok
+r2-w1-seq-solo-settled-1440: ok
+r2-w1-settled-1440: ok
+r2-w1-settled-390: ok
+r2-w2-flight-1440: ok
+r2-w2-settled-1440: ok
+r2-w2-settled-390: ok
+r2-both-1440: ok
+r2-both-390: ok
+capture-D: all stops captured, console-clean
+[0m
+[0m→ [0mRead docs/phase4/qa/D/r2-w1-settled-390.png
+[0m→ [0mRead docs/phase4/qa/D/r2-both-1440.png
+[0m
+[0m← [0mEdit src/canvas/stage/slots.ts
+Index: /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/canvas/stage/slots.ts
+===================================================================
+--- /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/canvas/stage/slots.ts
++++ /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/canvas/stage/slots.ts
+@@ -127,20 +127,22 @@
+   { x: 0.01, y: -0.13, z: -0.26, box: [0.15, 0.08] },
+   { x: 0.29, y: -0.1, z: -0.26, box: [0.15, 0.08] },
+ ]
+ 
+-// W1 compact (mobile <768px, framed at ≥1.5 m / FOV 44): 4 cols × 2 rows
+-// pushed below the hero band (glasses sit top-of-frame on mobile), 2 depth
+-// layers, boxes ≥0.135 m wide so thin wordmarks stay ≥90px @390.
++// W1 compact (mobile <768px, framed at ≥1.5 m / FOV 44): 2 cols × 4 rows
++// cascading front-to-back BELOW the hero band (on mobile the glasses sit
++// top-of-frame per PLAN-MASTER §6, copy bottom-sheet). Column pitch 0.21 m
++// vs ≤0.17 m boxes leaves real gutters (round-2 finding: 4-col pitch
++// overlapped); boxes ≥0.145 m fitted so thin wordmarks stay ≥90px @390.
+ const W1_CELLS_COMPACT: LayoutCell[] = [
+-  { x: -0.2, y: 0.08, z: 0, box: [0.135, 0.09] },
+-  { x: -0.067, y: 0.08, z: 0, box: [0.135, 0.09] },
+-  { x: 0.067, y: 0.08, z: 0, box: [0.135, 0.09] },
+-  { x: 0.2, y: 0.08, z: 0, box: [0.135, 0.09] },
+-  { x: -0.2, y: -0.04, z: -0.08, box: [0.13, 0.08] },
+-  { x: -0.067, y: -0.04, z: -0.08, box: [0.13, 0.08] },
+-  { x: 0.067, y: -0.04, z: -0.08, box: [0.13, 0.08] },
+-  { x: 0.2, y: -0.04, z: -0.08, box: [0.13, 0.08] },
++  { x: -0.105, y: 0.1, z: 0, box: [0.17, 0.075] },
++  { x: 0.105, y: 0.1, z: 0, box: [0.17, 0.075] },
++  { x: -0.105, y: 0.0, z: -0.04, box: [0.17, 0.075] },
++  { x: 0.105, y: 0.0, z: -0.04, box: [0.17, 0.075] },
++  { x: -0.105, y: -0.1, z: -0.08, box: [0.17, 0.075] },
++  { x: 0.105, y: -0.1, z: -0.08, box: [0.17, 0.075] },
++  { x: -0.105, y: -0.2, z: -0.12, box: [0.17, 0.075] },
++  { x: 0.105, y: -0.2, z: -0.12, box: [0.17, 0.075] },
+ ]
+ 
+ // W2 settled formation (round 2): its own composition — a WIDE, calm 4+4 band
+ // BEHIND-and-BELOW the glasses at a NEARER depth than W1's mid/back layers
+
+[0m
+[0m← [0mEdit src/canvas/stage/slots.ts
+Index: /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/canvas/stage/slots.ts
+===================================================================
+--- /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/canvas/stage/slots.ts
++++ /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/canvas/stage/slots.ts
+@@ -163,16 +163,16 @@
+   { x: 0.295, y: -0.242, z: -0.05, box: [0.155, 0.055] },
+ ]
+ 
+ const W2_CELLS_COMPACT: LayoutCell[] = [
+-  { x: -0.135, y: -0.15, z: -0.02, box: [0.16, 0.06] },
+-  { x: 0.135, y: -0.15, z: -0.02, box: [0.16, 0.06] },
+-  { x: -0.135, y: -0.215, z: -0.02, box: [0.16, 0.06] },
+-  { x: 0.135, y: -0.215, z: -0.02, box: [0.16, 0.06] },
+-  { x: -0.135, y: -0.28, z: -0.02, box: [0.16, 0.06] },
+-  { x: 0.135, y: -0.28, z: -0.02, box: [0.16, 0.06] },
+-  { x: -0.135, y: -0.345, z: -0.02, box: [0.16, 0.06] },
+-  { x: 0.135, y: -0.345, z: -0.02, box: [0.16, 0.06] },
++  { x: -0.105, y: -0.3, z: -0.02, box: [0.16, 0.06] },
++  { x: 0.105, y: -0.3, z: -0.02, box: [0.16, 0.06] },
++  { x: -0.105, y: -0.375, z: -0.02, box: [0.16, 0.06] },
++  { x: 0.105, y: -0.375, z: -0.02, box: [0.16, 0.06] },
++  { x: -0.105, y: -0.45, z: -0.02, box: [0.16, 0.06] },
++  { x: 0.105, y: -0.45, z: -0.02, box: [0.16, 0.06] },
++  { x: -0.105, y: -0.525, z: -0.02, box: [0.16, 0.06] },
++  { x: 0.105, y: -0.525, z: -0.02, box: [0.16, 0.06] },
+ ]
+ 
+ /** Fit a w/h aspect into a box, preserving aspect. Returns [w, h]. */
+ export function fitIntoBox(aspect: number, box: [number, number]): [number, number] {
+
+[0m
+[0m← [0mEdit src/__dev__/D/main.tsx
+Index: /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/__dev__/D/main.tsx
+===================================================================
+--- /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/__dev__/D/main.tsx
++++ /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/__dev__/D/main.tsx
+@@ -77,16 +77,19 @@
+  *  HARNESS ONLY — never ships; Lane C owns the real case + glasses.
+  *  Round 2: two poses from master progress — centre-close for B1–B5, then a
+  *  drift to right-third for B6+ (PLAN-MASTER §6 B6: "glasses drift
+  *  right-third"), so wave captures prove the hero exclusion zone. */
+-function StandIn({ progress }: { progress: number }) {
++function StandIn({ progress, mobile }: { progress: number; mobile: boolean }) {
+   const p = clamp01(progress)
+   const drift = smoothstep(0.7, 0.75, p)
+-  // Wave beats: shrink to glasses-scale (~110 mm ≈ the real rimless width)
+-  // and park centre-right-low, mimicking the B6 "glasses drift right-third"
+-  // hover over the soft case — so captures prove logo/hero non-overlap.
+-  const pos: [number, number, number] = [0 + 0.1 * drift, -0.02 + -0.01 * drift, 0.12 + -0.14 * drift]
+-  const s = 1 - 0.45 * drift
++  // Wave beats: shrink to glasses-scale (~110 mm ≈ the real rimless width).
++  // Desktop parks centre-right-low (B6 "glasses drift right-third"); mobile
++  // parks top-left (PLAN-MASTER §6: object top-of-frame, copy bottom-sheet),
++  // leaving the lower frame to the logo bands. Captures prove non-overlap.
++  const pos: [number, number, number] = mobile
++    ? [0 - 0.06 * drift, -0.02 + 0.19 * drift, 0.12 + -0.14 * drift]
++    : [0 + 0.1 * drift, -0.02 + -0.01 * drift, 0.12 + -0.14 * drift]
++  const s = 1 - (mobile ? 0.5 : 0.45) * drift
+   return (
+     <group position={pos} scale={s} rotation={[0.1, -0.35, 0]}>
+       <RoundedBox args={[0.2, 0.045, 0.07]} radius={0.008} smoothness={3}>
+         <meshStandardMaterial color="#121519" metalness={0.6} roughness={0.45} />
+
+[0m
+[0m← [0mEdit src/__dev__/D/main.tsx
+Index: /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/__dev__/D/main.tsx
+===================================================================
+--- /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/__dev__/D/main.tsx
++++ /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/__dev__/D/main.tsx
+@@ -211,9 +211,9 @@
+     />
+   </Suspense>
+   {standin && (
+     <Suspense fallback={null}>
+-      <StandIn progress={p} />
++      <StandIn progress={p} mobile={narrow} />
+     </Suspense>
+   )}
+ </Canvas>
+ {initial.ui && (
+
+[0m
+[0m$ [0msleep 8; node docs/phase4/qa/D/capture-D.mjs 2>&1 | tail -20
+r2-01-stage-1440: ok
+r2-03-sweep-1440: ok
+r2-w1-seq-tiny-1440: ok
+r2-w1-seq-rush-1440: ok
+r2-w1-seq-decel-1440: ok
+r2-w1-seq-settled-1440: ok
+r2-w1-seq-solo-tiny-1440: ok
+r2-w1-seq-solo-rush-1440: ok
+r2-w1-seq-solo-decel-1440: ok
+r2-w1-seq-solo-settled-1440: ok
+r2-w1-settled-1440: ok
+r2-w1-settled-390: ok
+r2-w2-flight-1440: ok
+r2-w2-settled-1440: ok
+r2-w2-settled-390: ok
+r2-both-1440: ok
+r2-both-390: ok
+capture-D: all stops captured, console-clean
+[0m
+[0m→ [0mRead docs/phase4/qa/D/r2-w1-settled-390.png
+[0m→ [0mRead docs/phase4/qa/D/r2-w2-settled-390.png
+[0m→ [0mRead docs/phase4/qa/D/r2-01-stage-1440.png
+[0m→ [0mRead docs/phase4/qa/D/r2-03-sweep-1440.png
+[0m→ [0mRead docs/phase4/qa/D/r2-both-390.png
+[0m→ [0mRead docs/phase4/qa/D/r2-w2-settled-1440.png
+[0m
+[0m$ [0mpython3 -c "
+from PIL import Image
+import numpy as np
+def band(f, x0, x1, y0, y1, thr=30):
+    img = np.array(Image.open(f'docs/phase4/qa/D/{f}.png').convert('L'))
+    sub = img[y0:y1, x0:x1] > thr
+    rows = np.where(sub.any(axis=1))[0]
+    cols = np.where(sub.any(axis=0))[0]
+    return (rows.min()+y0, rows.max()+y0, rows.max()-rows.min()+1, cols.min()+x0, cols.max()+x0, cols.max()-cols.min()+1)
+print('1440 Manulife text:', band('r2-w2-settled-1440', 830, 1010, 730, 800))
+print('1440 Sun Life text:', band('r2-w2-settled-1440', 100, 330, 725, 800))
+print('1440 GreenShield text:', band('r2-w2-settled-1440', 1150, 1360, 725, 800))
+print('1440 Desjardins text:', band('r2-w2-settled-1440', 430, 660, 795, 850))
+print('1440 W1 extents:', band('r2-w1-settled-1440', 0, 1440, 0, 900))
+print('390 Manulife text:', band('r2-w2-settled-390', 60, 200, 540, 620))
+print('390 Sun Life text:', band('r2-w2-settled-390', 40, 180, 470, 550))
+print('390 content extents:', band('r2-w2-settled-390', 0, 390, 0, 844))
+"
+1440 Manulife text: (np.int64(740), np.int64(799), np.int64(60), np.int64(847), np.int64(1009), np.int64(163))
+1440 Sun Life text: (np.int64(725), np.int64(799), np.int64(75), np.int64(100), np.int64(329), np.int64(230))
+1440 GreenShield text: (np.int64(748), np.int64(799), np.int64(52), np.int64(1152), np.int64(1355), np.int64(204))
+1440 Desjardins text: (np.int64(801), np.int64(849), np.int64(49), np.int64(437), np.int64(659), np.int64(223))
+1440 W1 extents: (np.int64(72), np.int64(680), np.int64(609), np.int64(80), np.int64(1330), np.int64(1251))
+390 Manulife text: (np.int64(543), np.int64(617), np.int64(75), np.int64(70), np.int64(179), np.int64(110))
+390 Sun Life text: (np.int64(476), np.int64(549), np.int64(74), np.int64(73), np.int64(175), np.int64(103))
+390 content extents: (np.int64(229), np.int64(725), np.int64(497), np.int64(69), np.int64(318), np.int64(250))
+[0m
+[0m$ [0mpython3 -c "
+from PIL import Image
+import numpy as np
+img = np.array(Image.open('docs/phase4/qa/D/r2-w2-settled-390.png').convert('L'))
+for name, x0,x1,y0,y1 in [('Manulife-word',105,180,555,600),('SunLife-word',100,175,490,535),('BlueCross-word',150,260,505,545),('Desjardins-word',140,235,610,650)]:
+    sub = img[y0:y1, x0:x1] > 30
+    rows = np.where(sub.any(axis=1))[0]
+    print(name, 'h=', rows.max()-rows.min()+1, 'y=', rows.min()+y0, rows.max()+y0)
+"
+Traceback (most recent call last):
+  File "<string>", line 8, in <module>
+    print(name, 'h=', rows.max()-rows.min()+1, 'y=', rows.min()+y0, rows.max()+y0)
+                      ~~~~~~~~^^
+  File "/Users/admin/.pyenv/versions/3.13.11/lib/python3.13/site-packages/numpy/_core/_methods.py", line 41, in _amax
+    return umr_maximum(a, axis, None, out, keepdims, initial, where)
+ValueError: zero-size array to reduction operation maximum which has no identity
+Manulife-word h= 10 y= 555 564
+[0m
+[0m$ [0mpython3 -c "
+from PIL import Image
+import numpy as np
+img = np.array(Image.open('docs/phase4/qa/D/r2-w2-settled-390.png').convert('L'))
+for x0,x1,label in [(40,180,'left-col'),(200,330,'right-col')]:
+    rows = (img[:, x0:x1] > 30).sum(axis=1)
+    print(label)
+    y=0
+    while y < 844:
+        if rows[y] > 3:
+            y2 = y
+            while y2 < 844 and rows[y2] > 3: y2 += 1
+            print(f'  y {y}-{y2} h={y2-y} px={rows[y:y2].sum()}')
+            y = y2
+        y += 1
+"
+left-col
+  y 229-244 h=15 px=639
+  y 270-316 h=46 px=862
+  y 317-319 h=2 px=9
+  y 348-365 h=17 px=718
+  y 401-447 h=46 px=857
+  y 479-488 h=9 px=135
+  y 544-546 h=2 px=8
+  y 548-567 h=19 px=575
+  y 600-617 h=17 px=627
+  y 638-674 h=36 px=1310
+  y 687-715 h=28 px=1143
+  y 718-725 h=7 px=220
+right-col
+  y 267-315 h=48 px=940
+  y 350-366 h=16 px=822
+  y 407-432 h=25 px=724
+  y 438-448 h=10 px=428
+  y 477-499 h=22 px=936
+  y 551-567 h=16 px=635
+  y 600-620 h=20 px=509
+  y 645-665 h=20 px=583
+  y 692-725 h=33 px=1292
+[0m
+[0m← [0mEdit docs/phase4/requests/D-camera-notes.md
+Index: /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/docs/phase4/requests/D-camera-notes.md
+===================================================================
+--- /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/docs/phase4/requests/D-camera-notes.md
++++ /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/docs/phase4/requests/D-camera-notes.md
+@@ -6,22 +6,27 @@
+ integration does not clip or overflow.
+ 
+ ## 1. Formation extents (world metres, from `src/canvas/stage/slots.ts`)
+ 
+-- W1 settled: x −0.53…+0.44 (≈1.0 m wide), y −0.31…+0.24, z 0…−0.42 (arc+tilt).
+-- W2 settled: x −0.34…+0.34, y −0.36…−0.23, z −0.01…−0.06.
+-- Combined 16-plane frame @1440: needs ≈1.05 m wide × 0.62 m tall at slot depth.
++Round-2 values (constellation re-composed around the hero exclusion zone;
++harness now frames at the film numbers in §2 — verified in `qa/D/r2-*`):
+ 
++- W1 settled: x −0.38…+0.41 (≈0.8 m wide), y −0.19…+0.26, z −0.02…−0.30
++  (front pair / mid trio / back trio + arc+tilt on desktop).
++- W2 settled: x −0.37…+0.37, y −0.27…−0.16, z −0.02…−0.05.
++- Combined 16-plane frame @1440: ≈0.8 m wide × 0.53 m tall at slot depth.
++- In-flight marks swing up to 0.18 m BELOW their slot line mid-flight
++  (`APPROACH_DIP`, back to slot at settle) — keep ≥0.2 m headroom below W2.
++
+ ## 2. Desktop fit vs the §6 B6/B7 camera
+ 
+ B6/B7 camera `0.55 m ×1.26 ≈ 0.69 m`, FOV 35→43/38. At 0.69 m / FOV 43 / 16:9
+ the visible frame at slot depth (≈0.9–1.1 m out) is ≈0.97 m wide × 0.54 m tall.
+-The W1 arc (1.0 m per §1-C1/§6) fills that width edge-to-edge; with the ±8 mm
+-seeded jitter the outer marks (Maui Jim left, Versace right) will kiss the
+-frame edges, and the W2 row-1 bottom (≈−0.36) sits ~5 cm below the visible
+-bottom. Ask: ease the wave-beat hold distance to ≈0.78 m (or equivalent
+-reframe) so all 16 read together with margin. Lane D's harness proves the
+-composition at 1.05 m / FOV 35 — same angles, more margin.
++The round-2 constellation (0.8 m wide) fits that width with margin; the W2
++row-2 bottom (≈−0.27) needs the frame bottom at slot depth to reach ≈−0.30.
++Ask stands: ease the wave-beat hold distance to ≈0.78 m (or equivalent
++reframe) so all 16 read together with margin. Lane D's harness now proves
++the composition AT 0.78 m / FOV 35 desktop (same numbers, no extra margin).
+ 
+ ## 3. Mobile fit (binding: no horizontal overflow @390px)
+ 
+ Lane D compact layouts (`computeSlots(…, compact=true)`, auto below 768 px)
+
+[0m
+[0m← [0mEdit docs/phase4/requests/D-camera-notes.md
+Index: /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/docs/phase4/requests/D-camera-notes.md
+===================================================================
+--- /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/docs/phase4/requests/D-camera-notes.md
++++ /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/docs/phase4/requests/D-camera-notes.md
+@@ -39,8 +39,18 @@
+ Ask: hold ≈1.5 m+ (or FOV wider than 44) for the B6–B7 beats on mobile, or
+ instruct Lane D to shrink compacts further (legibility will drop below the
+ readable floor — not recommended).
+ 
++## 5. Round-2 overrides applied inside Lane D files (coordinator visibility)
++
++- W2 settled opacity is now 0.85–0.90 per mark (feedback D-round1 P0-3
++  legibility floor), overriding PLAN-MASTER §1-C1's 68–76% dimmer tier.
++  Relative ordering kept (front-row marks brightest). Streak (30%/50%),
++  travel (−10…−12 m), stagger (0.008p) and FOV-kick (+3°) differentiation
++  per §1-C1 is unchanged.
++- Compact (mobile) layouts are now 2 cols × 4 rows per wave below a
++  top-parked hero (verified no-overflow/no-overlap @390 in `qa/D/r2-*-390`).
++
+ ## 4. No action needed from Lane B until integration (after all lanes DONE)
+ 
+ Lane D components already read the shared `filmProgress` when no `progress`
+ prop is passed, and `SponsorField` accepts Lane B's `wave={1|2}` prop shape
+
+[0m
+[0m← [0mWrite docs/phase4/qa/D/ROUND2.md
+Wrote file successfully.
+[0m
+[0m$ [0mnpx tsc -b 2>&1 | head -10; echo "---"; rtk ls "docs/phase4/qa/D" | rtk grep "r2-" | wc -rtk
+npm notice run eyeq-vision-care@0.1.0 npx
+npm notice run 'tsc' -b
+---
+wc: illegal option -- r
+usage: wc [-Lclmw] [file ...]
+[0m
+[0m$ [0mnpx tsc -b 2>&1 | head -10; echo "---tsc done---"; ls docs/phase4/qa/D/r2-*.png | wc -l
+npm notice run eyeq-vision-care@0.1.0 npx
+npm notice run 'tsc' -b
+---tsc done---
+      17
+[0m
+[0m$ [0mrtk tsc -b; echo "exit=$?"
+TypeScript: No errors found
+exit=0
+[0m
+[0m$ [0mnpm run build 2>&1 | tail -8
+[plugin builtin:vite-reporter] 
+(!) Some chunks are larger than 500 kB after minification. Consider:
+- Using dynamic import() to code-split the application
+- Use build.rolldownOptions.output.codeSplitting to improve chunking: https://rolldown.rs/reference/OutputOptions.codeSplitting
+- Adjust chunk size limit for this warning via build.chunkSizeWarningLimit.
+✓ built in 1.34s
+npm notice run eyeq-vision-care@0.1.0 postbuild
+npm notice run cp dist/index.html dist/404.html
+[0m
+[0m$ [0mpkill -f "vite --port 5104" && sleep 2; (lsof -i :5104 -sTCP:LISTEN || echo "5104 free")
+5104 free
+[0m
+[0m# [0mTodos
+[✓] Read brief/master/copy/feedback + lane files (done mostly)
+[✓] Load skills (threejs-scenes, iterate-until-verified) + check motion §4J-4L, capture harness, package.json
+[✓] Fix P0-1: W1 spatial constellation around hero + harness camera at real film numbers (0.78m/1.5m)
+[✓] Fix P0-2: visible speed cues (streaks, motion-stretch, FOV) + 4-frame flight sequence
+[✓] Fix P0-3: W2 own composition, legibility floor (cap-height, opacity≥0.85)
+[✓] Fix P1-4: stage lighting readability (rim/velvet grazing)
+[✓] Capture r2-* screenshots @1440+390, LOOK, write qa/D/ROUND2.md, keep build passing
+[0m
+PHASE4-D-DONE
+
+Lane D round-2 fixes, all 4 feedback items closed with 17 console-clean screenshots in `docs/phase4/qa/D/r2-*` (1440 + 390), mapped per-item in `qa/D/ROUND2.md`.
+
+1. **P0-1 spatial constellation**: W1 recomposed as front-flankers / mid-arc-above / low-back-trio around a hero void, sizes stepping with depth; harness camera moved to the real film hold (0.78 m/FOV 35, 1.52 m mobile) and the stand-in drifts to the B6 hero pose — no mark touches the hero, L/R balanced.
+2. **P0-2 speed cues**: root-caused invisible streaks (world-size ribbons went sub-pixel at flight distance) → screen-pixel-sized 3-ribbon comets with slow-decay tails, spawn-ward trail offset, logo motion-stretch, FOV kick; 4-frame Miu Miu sequence captured full-field + isolated (`solo` prop).
+3. **P0-3 Wave 2**: own wide 4+4 band below/behind hero at nearer depth; measured caps 28–40 px @1440 (floor 22) and 16–20 px @390 (floor 14), opacity 0.85–0.90 (deliberate override of §1-C1's 68–76%, noted in D-camera-notes §5); approach-dip keeps arrivals from plastering settled marks.
+4. **P1-4 lighting**: earlier key ramp, stronger strip/grazing — graphite reads at B1, warm grazing in the open beat.
+
+Files touched (lane-owned only): `SponsorField.tsx`, `SceneStage.tsx`, `stage/{slots,logosarch,streakTexture}.ts`, `__dev__/D/*`, `qa/D/capture-D.mjs`, `requests/D-camera-notes.md`. `npx tsc -b` clean, `npm run build` passes. Dev server stopped.
+
+Known issues: FOV-kick/fog production ownership stays Lane B's (harness mirrors it — verify parity on 07/08); mobile Tiffany ≈ 9–13 px is an intentional W1 back-tier small; `solo`/`?solo=` is harness-only.
+EXIT 0 model=meta/muse-spark-1.3-contributor

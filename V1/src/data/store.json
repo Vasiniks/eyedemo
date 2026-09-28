@@ -1,0 +1,28 @@
+{
+  "source": "docs/00-BRIEF.md §2 (new store — use wherever the site presents location/contact). Old-store data must NOT be presented.",
+  "businessName": "EyeQ Vision Care",
+  "phone": "905-497-0227",
+  "phoneHref": "tel:+19054970227",
+  "email": "eyeshine2020@gmail.com",
+  "emailHref": "mailto:eyeshine2020@gmail.com",
+  "address": {
+    "line1": "2-227 Vodden St East",
+    "line2": "Brampton, ON",
+    "full": "2-227 Vodden St East, Brampton, ON"
+  },
+  "hours": [
+    { "days": "Mon–Fri", "time": "11:00 am–6:30 pm" },
+    { "days": "Sat", "time": "11:00 am–5:00 pm" },
+    { "days": "Sun", "time": "11:00 am–4:00 pm" }
+  ],
+  "hoursInline": "Mon–Fri 11:00 am–6:30 pm · Sat 11:00 am–5:00 pm · Sun 11:00 am–4:00 pm",
+  "booking": {
+    "labelHomepage": "BOOK YOUR EYE EXAM TODAY!",
+    "labelServices": "Book your Eye Exam today",
+    "url": "http://www.deenandassociates.com/optistoreonewebex/appointmentschedule.php?LOCATION=eyeqvision1",
+    "note": "URL kept exact per brief §6c.3 (http, not https — do not fix). Homepage opens _blank; Services page same-tab."
+  },
+  "directionsUrl": "https://www.google.com/maps/dir/?api=1&destination=2-227+Vodden+St+East%2C+Brampton%2C+ON",
+  "mapEmbedUrl": "https://maps.google.com/maps?q=2-227+Vodden+St+East%2C+Brampton%2C+ON&t=m&z=15&output=embed&iwloc=near",
+  "mapTitle": "Map — EyeQ Vision Care, 2-227 Vodden St East, Brampton"
+}

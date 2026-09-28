@@ -1,0 +1,353 @@
+[0m
+> build · muse-spark-1.3-contributor
+[0m
+[0m→ [0mSkill "verification-before-completion"
+[0m→ [0mSkill "webapp-testing"
+[0m→ [0mSkill "executing-plans"
+[0m→ [0mSkill "dispatching-parallel-agents"
+[0m
+[0m# [0mTodos
+[•] Read brief §2+§6c-6d, B-content-inventory, C-link-inventory + current router/routes
+[ ] Implement Services.tsx, Contact.tsx, Policies.tsx + router
+[ ] Verify 1512x860 + 390x844, screenshots, QA md, build, stop server
+[0m
+[0m→ [0mRead src/routes
+[0m→ [0mRead docs/00-BRIEF.md
+[0m→ [0mRead docs/research/C-link-inventory.md
+[0m→ [0mRead docs/research/B-content-inventory.md
+[0m→ [0mRead src/app/router.tsx
+[0m→ [0mRead src/routes/parts
+[0m→ [0mRead package.json
+[0m→ [0mRead src/routes/Services.tsx
+[0m→ [0mRead src/routes/Policies.tsx
+[0m→ [0mRead src/routes/Contact.tsx
+[0m→ [0mRead src/routes/Home.tsx
+[0m→ [0mRead src/routes/parts/chrome.tsx
+[0m→ [0mRead src/routes/parts/content.ts
+[0m→ [0mRead src/routes/parts/route.css
+[0m• [0mCheck tokens + assets[90m General Agent[0m
+[0m• [0mCheck QA dir + build[90m General Agent[0m
+[0m✓ [0mCheck tokens + assets[90m General Agent[0m
+[0m✓ [0mCheck QA dir + build[90m General Agent[0m
+[0m
+[0m# [0mTodos
+[✓] Read brief §2+§6c-6d, B-content-inventory, C-link-inventory + current router/routes
+[•] Implement Services.tsx, Contact.tsx, Policies.tsx + router
+[ ] Verify 1512x860 + 390x844, screenshots, QA md, build, stop server
+[0m
+[0m← [0mEdit src/routes/parts/chrome.tsx
+Index: /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/routes/parts/chrome.tsx
+===================================================================
+--- /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/routes/parts/chrome.tsx
++++ /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/routes/parts/chrome.tsx
+@@ -7,8 +7,9 @@
+ // this component is deliberately self-contained so the swap is one import.
+ // Light pages: Paper bg, Ink text, official logo files, no invented content.
+ 
+ export function RouteHeader({ current }: { current: string }) {
++  const bookingSameTab = current === 'services'
+   return (
+     <header className="f-header">
+       <a className="f-skip" href="#f-content">
+         Skip to content
+@@ -25,25 +26,24 @@
+           <Link to="/" className={current === 'home' ? 'f-nav-link is-current' : 'f-nav-link'}>
+             Home
+           </Link>
+           <Link
+-            to="/services"
++            to="/pages/services"
+             className={current === 'services' ? 'f-nav-link is-current' : 'f-nav-link'}
+           >
+             Services
+           </Link>
+           <Link
+-            to="/contact"
++            to="/pages/contact"
+             className={current === 'contact' ? 'f-nav-link is-current' : 'f-nav-link'}
+           >
+             Contact
+           </Link>
+         </nav>
+         <a
+           className="f-book-pill"
+           href={BOOKING_URL}
+-          target="_blank"
+-          rel="noopener noreferrer"
++          {...(bookingSameTab ? {} : { target: '_blank', rel: 'noopener noreferrer' })}
+         >
+           Book an exam
+         </a>
+       </div>
+
+[0m
+[0m← [0mEdit src/routes/parts/chrome.tsx
+Index: /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/routes/parts/chrome.tsx
+===================================================================
+--- /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/routes/parts/chrome.tsx
++++ /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/routes/parts/chrome.tsx
+@@ -74,11 +74,25 @@
+     <span style={{ whiteSpace: 'nowrap' }}>Sun 11:00 am–4:00 pm</span>
+   </p>
+ </div>
+ <nav className="f-footer-policies" aria-label="Terms and Policies">
+-  <p className="f-footer-heading">Terms and Policies</p>
++  <p className="f-footer-heading">Menu</p>
+   <ul>
+     <li>
++      <Link to="/">Home</Link>
++    </li>
++    <li>
++      <Link to="/pages/services">Services</Link>
++    </li>
++    <li>
++      <Link to="/pages/contact">Contact</Link>
++    </li>
++  </ul>
++  <p className="f-footer-heading" style={{ marginTop: 24 }}>
++    Terms and Policies
++  </p>
++  <ul>
++    <li>
+       <Link to="/policies/refund-policy">Refund policy</Link>
+     </li>
+     <li>
+       <Link to="/policies/privacy-policy">Privacy policy</Link>
+
+[0m
+[0m← [0mEdit src/routes/Services.tsx
+Index: /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/routes/Services.tsx
+===================================================================
+--- /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/routes/Services.tsx
++++ /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/routes/Services.tsx
+@@ -78,8 +78,13 @@
+ <RouteHeader current="services" />
+ <main id="f-content">
+   <div className="f-hero">
+     <h1 className="eyeq-h1">{SERVICES_H1}</h1>
++    <p style={{ marginTop: 24 }}>
++      <a className="f-btn" href={BOOKING_URL}>
++        Book an exam
++      </a>
++    </p>
+   </div>
+   <div className="f-body">
+     <section className="f-section">
+       <div className="f-measure">
+
+[0m
+[0m← [0mEdit src/routes/Contact.tsx
+Index: /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/routes/Contact.tsx
+===================================================================
+--- /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/routes/Contact.tsx
++++ /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/routes/Contact.tsx
+@@ -3,10 +3,11 @@
+ // exists, C §3), no fax row (old fax is OLD-STORE data, B §8).
+ // Map embed + directions rebuilt for the new address (C §5 pattern).
+ import { useEffect, useState } from 'react'
+ import './parts/route.css'
+-import { RouteFooter, RouteHeader } from './parts/chrome'
++import { RouteFooter, RouteHeader, VisitStrip } from './parts/chrome'
+ import {
++  BOOKING_URL,
+   CONTACT_LABELS,
+   DIRECTIONS_URL,
+   MAP_EMBED_URL,
+   MAP_IFRAME_TITLE,
+
+[0m
+[0m← [0mEdit src/routes/Contact.tsx
+Index: /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/routes/Contact.tsx
+===================================================================
+--- /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/routes/Contact.tsx
++++ /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/routes/Contact.tsx
+@@ -27,8 +27,18 @@
+ <RouteHeader current="contact" />
+ <main id="f-content">
+   <div className="f-hero">
+     <h1 className="eyeq-h1">Contact</h1>
++    <p style={{ marginTop: 24 }}>
++      <a
++        className="f-btn"
++        href={BOOKING_URL}
++        target="_blank"
++        rel="noopener noreferrer"
++      >
++        Book an exam
++      </a>
++    </p>
+   </div>
+   <div className="f-body">
+     <section className="f-section">
+       <ul className="f-facts">
+
+[0m
+[0m← [0mEdit src/routes/Contact.tsx
+Index: /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/routes/Contact.tsx
+===================================================================
+--- /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/routes/Contact.tsx
++++ /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/routes/Contact.tsx
+@@ -100,8 +100,10 @@
+             Call {STORE.phoneDisplay}
+           </a>
+         </div>
+       </section>
++
++      <VisitStrip bookingNewTab />
+     </div>
+   </main>
+   <RouteFooter />
+ </div>
+
+[0m
+[0m# [0mTodos
+[✓] Read brief §2+§6c-6d, B-content-inventory, C-link-inventory + current router/routes
+[✓] Implement Services.tsx, Contact.tsx, Policies.tsx + router
+[•] Verify 1512x860 + 390x844, screenshots, QA md, build, stop server
+[0m
+[0m$ [0mrtk ls docs/phase4/qa/v3/ | head -20; echo "---"; rtk ls public/web/insurance-light/; echo "---"; rtk read vite.config.ts
+F4-MAIN.md  3.8K
+F4-MAP.md  1.9K
+F4-MFILM.md  1.9K
+F4-PERF.md  3.2K
+F4-RAILS.md  2.3K
+F4-SCROLL.md  1.8K
+F5-ENCODE.md  2.4K
+F5-MOBILE.md  2.3K
+F5-PAUSE.md  3.1K
+F5-PHOTOS.md  2.9K
+MPAGE.md  4.4K
+ORCHESTRATOR-NOTES.md  2.2K
+PERF.md  4.0K
+SCROLL.md  4.8K
+caption-about.png  90.5K
+caption-lenses-offset.png  268.6K
+caption-lenses-wide.png  791.1K
+caption-services.png  179.8K
+main-desktop-full.png  342.5K
+main-desktop-top.png  357.0K
+---
+canada-life-min.png  11.8K
+desjardins.png  53.3K
+empire-life.png  26.9K
+greenshield.png  3.7K
+ia-financial-group.png  51.8K
+manulife.png  6.9K
+mbc-logo-en.png  16.1K
+sun-life.png  15.7K
+---
+import { defineConfig } from 'vite'
+import react from '@vitejs/plugin-react'
+
+// EyeQ Vision Care cinematic homepage — Lane A scaffold.
+// Static-host SPA fallback: `public/_redirects` + postbuild copy of
+// index.html -> dist/404.html (see package.json `postbuild`).
+export default defineConfig({
+  plugins: [react()],
+})
+[0m
+[0m$ [0m(PORT=5713 npm run dev -- --port 5713 --host 127.0.0.1 > /tmp/pages-5713.log 2>&1 &) && sleep 6 && tail -30 /tmp/pages-5713.log; curl -s -o /dev/null -w "%{http_code}" http://127.0.0.1:5713/; echo; curl -s -o /dev/null -w "%{http_code}" http://127.0.0.1:5713/pages/services; echo
+npm notice run eyeq-vision-care@0.1.0 dev
+npm notice run vite --port 5713 --host 127.0.0.1
+
+  VITE v8.3.1  ready in 443 ms
+
+  ➜  Local:   http://127.0.0.1:5713/
+200
+200
+[0m
+[0m← [0mWrite /tmp/pages-shots.cjs
+Wrote file successfully.
+[0m
+[0m$ [0mnode /tmp/pages-shots.cjs && rtk ls -la docs/phase4/qa/v3/PAGES-*.png
+saved docs/phase4/qa/v3/PAGES-services.png
+saved docs/phase4/qa/v3/PAGES-services-mobile.png
+saved docs/phase4/qa/v3/PAGES-contact.png
+saved docs/phase4/qa/v3/PAGES-contact-mobile.png
+644  docs/phase4/qa/v3/PAGES-contact-mobile.png  107.5K
+644  docs/phase4/qa/v3/PAGES-contact.png  613.8K
+644  docs/phase4/qa/v3/PAGES-services-mobile.png  253.5K
+644  docs/phase4/qa/v3/PAGES-services.png  321.9K
+[0m
+[0m→ [0mRead docs/phase4/qa/v3/PAGES-contact.png
+[0m→ [0mRead docs/phase4/qa/v3/PAGES-services.png
+[0m→ [0mRead docs/phase4/qa/v3/PAGES-contact-mobile.png
+[0m→ [0mRead docs/phase4/qa/v3/PAGES-services-mobile.png
+[0m
+[0m$ [0mecho "--- booking hrefs ---"; rg -o 'http://www\.deenandassociates\.com[^"]*' src/routes/ | sort -u; echo "--- tel ---"; rg -o 'tel:\+?[0-9]+' src/routes/parts/content.ts | sort -u; echo "--- form check (should be empty) ---"; rtk rg -i '<form' src/routes/ || echo "no <form> in routes"; echo "--- redirects ---"; rtk curl -s -o /dev/null -w "/services %{http_code}\n" http://127.0.0.1:5713/services; curl -s http://127.0.0.1:5713/services | rg -o 'Redirect|/pages/services' | head -5; echo "--- canonical ---"; rtk curl -s -o /dev/null -w "/pages/services %{http_code}\n" http://127.0.0.1:5713/pages/services; rtk curl -s -o /dev/null -w "/pages/contact %{http_code}\n" http://127.0.0.1:5713/pages/contact
+--- booking hrefs ---
+zsh:1: command not found: rg
+--- tel ---
+zsh:1: command not found: rg
+--- form check (should be empty) ---
+rtk: search failed: Failed to execute command: No such file or directory (os error 2)
+no <form> in routes
+--- redirects ---
+/services 200
+zsh:1: command not found: rg
+--- canonical ---
+/pages/services 200
+/pages/contact 200
+[0m
+[0m$ [0mgrep -rho 'http://www\.deenandassociates\.com[^"]*' src/routes/ | sort -u; echo "---TEL---"; grep -rho 'tel:+[0-9]*' src/routes/parts/content.ts | sort -u; echo "---FORM---"; rtk grep -ri '<form' src/routes/ || echo "no form in routes"; echo "---HEADER LINKS---"; rtk grep -n 'to="/' src/routes/parts/chrome.tsx
+http://www.deenandassociates.com/optistoreonewebex/appointmentschedule.php?LOCATION=eyeqvision1'
+---TEL---
+tel:+19054970227
+---FORM---
+no form in routes
+---HEADER LINKS---
+18:        <Link to="/" className="f-brand" aria-label="EyeQ Vision Care — home">
+26:          <Link to="/" className={current === 'home' ? 'f-nav-link is-current' : 'f-nav-link'}>
+30:            to="/pages/services"
+36:            to="/pages/contact"
+81:              <Link to="/">Home</Link>
+84:              <Link to="/pages/services">Services</Link>
+87:              <Link to="/pages/contact">Contact</Link>
+95:              <Link to="/policies/refund-policy">Refund policy</Link>
+98:              <Link to="/policies/privacy-policy">Privacy policy</Link>
+101:              <Link to="/policies/terms-of-service">Terms of service</Link>
+[0m
+[0m$ [0mnpm run build 2>&1 | tail -15
+(!) Some chunks are larger than 500 kB after minification. Consider:
+- Using dynamic import() to code-split the application
+- Use build.rolldownOptions.output.codeSplitting to improve chunking: https://rolldown.rs/reference/OutputOptions.codeSplitting
+- Adjust chunk size limit for this warning via build.chunkSizeWarningLimit.
+✓ built in 40.88s
+[33m[PLUGIN_TIMINGS] [0mJavaScript callbacks ran for 40.7s of this 40.9s build (100%).
+The slowest callbacks, timed inside each callback (the wait before a callback starts is excluded, the time it awaits is included):
+  - plugin vite:prepare-out-dir renderStart (99%, 40.5s, 1 call)
+Additional callback time came from the callbacks below and from callbacks under 1s.
+1 callback is listed without a time. Its calls overlapped, so the time inside one call includes work from other calls. To find its cost, profile the build with `node --cpu-prof`:
+  - plugin vite:css transform (13 calls)
+See https://rolldown.rs/reference/InputOptions.checks#bundlertimings for more details.
+
+npm notice run eyeq-vision-care@0.1.0 postbuild
+npm notice run cp dist/index.html dist/404.html
+[0m
+[0m→ [0mRead docs/phase4/qa/v3/F4-MAP.md[90m [limit=40][0m
+[0m
+[0m← [0mWrite docs/phase4/qa/v3/PAGES.md
+Wrote file successfully.
+[0m
+[0m$ [0mpkill -f "vite --port 5713" || pkill -f "npm run dev" || true; sleep 1; rtk curl -s -o /dev/null -w "%{http_code}" --max-time 3 http://127.0.0.1:5713/ || echo "server stopped"; rtk ls docs/phase4/qa/v3/PAGES-*.png docs/phase4/qa/v3/PAGES.md
+FAILED: curl 000
+server stopped
+docs/phase4/qa/v3/PAGES-contact-mobile.png  107.5K
+docs/phase4/qa/v3/PAGES-contact.png  613.8K
+docs/phase4/qa/v3/PAGES-services-mobile.png  253.5K
+docs/phase4/qa/v3/PAGES-services.png  321.9K
+docs/phase4/qa/v3/PAGES.md  5.5K
+[0m
+[0m# [0mTodos
+[✓] Read brief §2+§6c-6d, B-content-inventory, C-link-inventory + current router/routes
+[✓] Implement Services.tsx, Contact.tsx, Policies.tsx + router
+[✓] Verify 1512x860 + 390x844, screenshots, QA md, build, stop server
+[0m
+Using executing-plans, dispatching-parallel-agents, verification-before-completion, and webapp-testing to deliver the PAGES lane.
+
+Done: header nav → canonical `/pages/*`, header Book pill same-tab on Services, footer Menu links all three, LARGE Book CTA on both pages (Services same-tab, Contact new-tab), Contact gets VisitStrip booking + directions, no form. Verified 1512×860 + 390×844 screenshots (looked at all 4), booking URL/tel/links checked, `npm run build` passes, server stopped.
+
+Files: `docs/phase4/qa/v3/PAGES-services.png`, `PAGES-services-mobile.png`, `PAGES-contact.png`, `PAGES-contact-mobile.png`, `PAGES.md` (with full B §3–§5/§8 → where-it-appears checklist).
+
+PAGES-DONE
+EXIT 0 model=meta/muse-spark-1.3-contributor

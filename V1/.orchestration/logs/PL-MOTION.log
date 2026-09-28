@@ -1,0 +1,59 @@
+[0m
+> build · muse-spark-1.3-contributor
+[0m
+[0m→ [0mRead docs/00-BRIEF.md
+[0m→ [0mRead docs/phase4
+[0m→ [0mRead docs/research/00-PHASE2-SYNTHESIS.md
+[0m→ [0mRead docs/phase4
+[0m→ [0mRead docs/00-BRIEF.md
+[0m→ [0mRead docs/research/00-PHASE2-SYNTHESIS.md
+[0m→ [0mRead docs/research
+[0m→ [0mRead docs/research/F-3d-motion-tech.md
+[0m→ [0mRead docs/research/B-content-inventory.md
+[0m→ [0mRead docs/research/E-visual-references.md
+[0m→ [0mRead docs/research/G-glasses-model.md
+[0m
+[0m# [0mTodos
+[✓] Read brief + synthesis + research E/F/G/B
+[•] Load motion skills + gsap/motion MCP guidance
+[ ] Dispatch motion-designer + threejs-art-director subagents
+[ ] Synthesize and write docs/phase4/PLAN-motion.md
+[0m
+[0m→ [0mSkill "build-threejs-scroll-worlds"
+[0m→ [0mSkill "design-motion-principles"
+[0m→ [0mSkill "masked-reveal"
+[0m→ [0mSkill "gsap-scrolltrigger-storytelling"
+[0m→ [0mSkill "marquee-loop"
+[0m→ [0mSkill "cinematic-gsap-lenis-motion-system"
+[0m→ [0mSkill "no-ai-design-slop"
+[0m⚙ [0mgsap_get_gsap_guidance {"max_skills":2,"topic":"pin a section on scroll scrub cinematic camera timeline with Lenis smooth scroll"}
+[0m⚙ [0mmotion_search-motion-docs {"platform":"react","searchTerm":"scroll-driven pinned storytelling scrub timeline"}
+[0m• [0mConsult motion-designer[90m Motion-Designer Agent[0m
+[0m• [0mConsult 3D camera director[90m Threejs-Art-Director Agent[0m
+[0m✓ [0mConsult motion-designer[90m Motion-Designer Agent[0m
+[0m✓ [0mConsult 3D camera director[90m Threejs-Art-Director Agent[0m
+[0m
+[0m# [0mTodos
+[✓] Read brief + synthesis + research E/F/G/B
+[✓] Load motion skills + gsap/motion MCP guidance
+[✓] Dispatch motion-designer + threejs-art-director subagents
+[•] Synthesize and write docs/phase4/PLAN-motion.md
+[0m
+[0m← [0mWrite docs/phase4/PLAN-motion.md
+Wrote file successfully.
+[0m
+[0m# [0mTodos
+[✓] Read brief + synthesis + research E/F/G/B
+[✓] Load motion skills + gsap/motion MCP guidance
+[✓] Dispatch motion-designer + threejs-art-director subagents
+[✓] Synthesize and write docs/phase4/PLAN-motion.md
+[0m
+Using `cinematic-gsap-lenis-motion-system`, `build-threejs-scroll-worlds`, `gsap-scrolltrigger-storytelling`, `design-motion-principles`, `masked-reveal`, `marquee-loop`, `no-ai-design-slop` plus GSAP MCP guidance and `motion-designer` + `threejs-art-director` consults to author the plan. Plan written to `docs/phase4/PLAN-motion.md` (planning only, no code, no Blender, no invented copy — all strings from B/brief or `[COPY NEEDED]`).
+
+PHASE4-PLAN-MOTION-DONE
+1. 1000 vh desktop / 700 vh mobile intro (dark 80% + white 20%), beats mapped to brief weights 10/15/15/15/15/15/7/5/3 with p, vh, eases.
+2. Damped-segment camera path with keyframes/FOV/fog per beat; mobile pullback ×1.45; portal rail along lens normal.
+3. Light-driven objects: 40° elastic flap, staggered L/R unfold with overshoot, velocity-driven sponsor streaks (8 brands + 8 insurers, expo arrival), bloom-to-white handoff.
+4. White act: 72/44 px/s opposing DOM rails with velocity coupling; single expo/power2/linear family; masked-line text vocabulary.
+5. Reduced-motion static-chapter branch plus GPU-only, single-ticker, budgeted perf rules with Playwright/vf gates.
+EXIT 0 model=meta/muse-spark-1.3-contributor

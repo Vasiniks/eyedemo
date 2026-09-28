@@ -1,0 +1,21 @@
+- generic [ref=f1e1]:
+  - generic [ref=f1e2]:
+    - generic [aria-hidden]:
+      - generic:
+        - generic:
+          - heading [level=2]:
+            - generic: Our Popular High-Definition Lenses
+          - generic:
+            - list:
+              - listitem:
+                - generic: "01"
+                - generic: Varilux® Physio Extensee™
+              - listitem:
+                - generic: "02"
+                - generic: Distinctive® Superior
+              - listitem:
+                - generic: "03"
+                - generic: Distinctive® Enhanced
+  - generic [ref=f1e3]:
+    - strong [ref=f1e4]: p 0.300
+    - slider "Film progress" [ref=f1e5]: "300"

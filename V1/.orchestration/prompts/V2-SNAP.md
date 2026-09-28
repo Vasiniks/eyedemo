@@ -1,0 +1,6 @@
+ID=SNAP (port 5404). You own: `src/v1/lenis.ts`, `src/v1/snap.ts` (new, export `initSnap(lenis)`), `src/v1/filmCurve.ts`, `src/v1/progress.ts`. If Lenis is currently created inside FilmSequence.tsx or App.tsx, move its config into lenis.ts (export `getLenis()`), and write the one-line import change you need in FilmSequence/App to `docs/phase4/qa/v2/SNAP-integration.md` for the FILM agent (do not edit FilmSequence.tsx yourself; you may edit App.tsx only to call initSnap once).
+Client: "a bit of snapping… guide the scroll to the key frames, not leave it anywhere in between, just nudge."
+- After scroll idle (~160 ms, not during active wheel/touch), if the film position is within a capture window of the nearest key frame (≈⅓ of the gap to the neighbouring key), ease to that key frame with Lenis `scrollTo` (1.0 s, easeOutCubic). Cancel on any new input. Only inside the film section. Off for prefers-reduced-motion.
+- Map key SOURCE frames → scroll positions through filmCurve (manifest: sourceFrames 615, count 3588).
+- Lenis: lerp ≈0.075, smoothWheel, wheelMultiplier 0.9, synced to the GSAP ticker, one RAF.
+Verify with a Playwright video: scroll, stop between keys, show the nudge → `docs/phase4/qa/v2/snap-*`.

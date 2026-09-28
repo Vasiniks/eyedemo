@@ -1,0 +1,377 @@
+[0m
+> build · muse-spark-1.3-contributor
+[0m
+[0m→ [0mRead assets/source/logo
+[0m→ [0mRead assets/source/brands
+[0m→ [0mRead assets/source/insurance
+[0m→ [0mRead docs/00-BRIEF.md
+[0m→ [0mRead docs/research/D-asset-inventory.md
+[0m→ [0mSkill "no-ai-design-slop"
+[0m→ [0mRead docs/research/G-glasses-model.md
+[0m
+[0m# [0mTodos
+[•] Inspect source logo + brand/insurance assets
+[ ] Mechanical trace of EyeQ logo to SVG
+[ ] Verify IoU ≥0.985 + overlay diff
+[ ] Emit white variants + READY marker
+[ ] Light variants of brand + insurance logos
+[ ] Write trace report
+[0m
+[0m$ [0mrtk ls -la "assets/source/logo/" && python3 -c "from PIL import Image; im=Image.open('assets/source/logo/eyeq-logo-header-original.png'); print(im.size, im.mode); import numpy as np; a=np.array(im); print('shape',a.shape,'alpha_unique',len(np.unique(a[...,3])) if a.shape[2]==4 else 'n/a'); print('alpha>128 frac',(a[...,3]>128).mean())"; which potrace; potrace --version 2>&1 | head -2; python3 -c "import cv2; print('cv2',cv2.__version__)" 2>&1; python3 -c "import potrace" 2>&1 | head -2; python3 -c "import cairosvg; print('cairosvg ok')" 2>&1 | head -2; python3 -c "import resvg" 2>&1 | head -2; which rsvg-convert inkscape vtracer 2>&1
+644  eyeq-logo-header-original.png  81.7K
+(800, 373) RGBA
+shape (373, 800, 4) alpha_unique 256
+alpha>128 frac 0.18857573726541554
+potrace not found
+zsh:1: command not found: potrace
+cv2 5.0.0
+Traceback (most recent call last):
+  File "<string>", line 1, in <module>
+cairosvg ok
+Traceback (most recent call last):
+  File "<string>", line 1, in <module>
+rsvg-convert not found
+inkscape not found
+vtracer not found
+[0m
+[0m$ [0mrtk ls docs/research/ 2>&1; rtk ls .orchestration/tmp/ 2>&1 | head; python3 -c "import PIL; print('PIL',PIL.__version__)"; python3 -c "import cairosvg; print('cairosvg ok')"; rtk ls assets/source/insurance/ assets/source/brands/; python3 -c "
+from PIL import Image
+for f in ['sun-life.png','manulife.png','greenshield.png','empire-life.png','manulife.png']:
+    try:
+        im=Image.open('assets/source/insurance/'+f); print(f, im.size, im.mode, im.info.get('transparency','no-tRNS') if isinstance(im.info.get('transparency'),bytes) else im.info.get('transparency'))
+    except Exception as e: print(f,'ERR',e)
+for f in ['miu-miu.png','persol.png','ray-ban.png','oakley.png','maui-jim.png']:
+    im=Image.open('assets/source/brands/'+f); print('B:'+f, im.size, im.mode)
+"
+screens/
+A-website-audit.md  12.8K
+B-content-inventory.md  17.0K
+C-link-inventory.md  15.6K
+D-asset-inventory.md  21.3K
+E-visual-references.md  36.6K
+F-3d-motion-tech.md  55.5K
+G-glasses-model.md  13.4K
+g_analyze.py  2.2K
+g_analyze2.py  1.2K
+g_blender.py  3.4K
+g_color.py  2.3K
+g_draco.glb  7.7M
+g_full.glb  8.8M
+g_hinge.py  891B
+g_qa.py  2.6K
+PIL 12.2.0
+cairosvg ok
+maui-jim.png  140.4K
+miu-miu.png  20.6K
+oakley.png  12.2K
+persol-collection.png  50.8K
+persol.png  50.8K
+prada-collection.png  49.4K
+prada.png  49.4K
+ray-ban-collection.webp  82.2K
+ray-ban.png  75.6K
+tiffany.png  20.4K
+versace.png  22.8K
+canada-life-min.webp  56.2K
+desjardins.webp  26.1K
+empire-life.png  37.7K
+greenshield.png  3.0K
+ia-financial-group.svg  5.8K
+manulife.png  4.8K
+mbc-logo-en.svg  3.9K
+sun-life.png  9.3K
+... (2 filtered)
+[+2 hidden: rtk recall 4be72aa306b2]
+sun-life.png (800, 196) P None
+manulife.png (738, 141) P None
+greenshield.png (381, 132) P None
+empire-life.png (1280, 407) RGBA None
+manulife.png (738, 141) P None
+B:miu-miu.png (3840, 2160) P
+B:persol.png (3840, 2160) P
+B:ray-ban.png (2400, 2400) LA
+B:oakley.png (960, 361) LA
+B:maui-jim.png (960, 496) RGBA
+[0m
+[0m$ [0mpython3 -c "
+import re
+t=open('docs/research/E-visual-references.md').read()
+print('E len chars:',len(t))
+print('--- headings ---')
+for m in re.finditer(r'^#+\s.*',t,re.M):
+    print(m.group(0)[:100])
+print('--- logo mentions ---')
+for i,l in enumerate(t.splitlines()):
+    if re.search(r'logo|vector|emboss|deboss|svg|SVG',l,re.I):
+        print(i+1,':',l[:160])
+" | head -60
+E len chars: 37135
+--- headings ---
+# E — Visual / Design Reference Research (EyeQ Vision Care cinematic homepage)
+## 1. Reference table
+### 1A. Premium / luxury eyewear brand sites (all visited live, 2026-09-27 session)
+### 1B. Luxury cinematic / 3D-scroll experiences (all visited live)
+### 1C. Transitions, rails, velvet (mechanism-verified where stated)
+### 1D. Premium glasses cases — real products (all pages fetched live; prices/dims as shown at visit
+## 2. Case design language
+### Proportions (measured from verified products)
+### Materials
+### Parting lines
+### Flap types
+### Concrete recommendations for the THIN aerodynamic one-piece-flap case
+## 3. Velvet reference (what makes velvet read as velvet under light)
+## 4. Typography direction (2–3 concrete pairings, all families verified existent)
+## 5. Motion / pacing principles
+## 6. Anti-patterns to avoid (AI slop list)
+## 7. Original direction proposal for EyeQ (1 page)
+--- logo mentions ---
+50 : | E-22 | Vertical logo rails | — | — | **UNVERIFIED**: no true vertical logo rail observed on visited pages (Lindberg checked via computed styles: zero `writing
+72 : | E-37 | Jacques Marie Mage Circa Slip Case (Orange) | `https://jacquesmariemage.com/collections/small-leather-goods/products/circa-slip-case` | **$420**, batch
+103 : 4. Embossed/debossed EyeQ logo + "EyeQ Vision Care" as real geometry (brief §6), placed on the flap crown so the camera reads it at the reveal beat, then leaves
+164 : | 13 | CSS/SVG-drawn illustration standing in for product | Quality defect (playbook: 0 tolerance) | Template "eye" line-art logos | Hero is a real 3D case + gl
+175 : **The film (brief beats, with reference mechanics).** Preloader counter → curtain (Realevate E-13). Case reveal: macro drift over graphite shell, embossed EyeQ 
+179 : **Done = playbook §2 gates** (composed intro ≤1.8 s readable hero, ≥1 pinned/scrubbed sequence per page, authored entrance per section, designed hovers, real he
+[0m
+[0m$ [0mpython3 -c "
+import re
+t=open('docs/research/F-3d-motion-tech.md').read()
+for m in re.finditer(r'^#+\s.*',t,re.M):
+    print(m.group(0)[:110])
+"
+# F — 3D / Motion Technical Research
+## 1. Installed skills — what each gives us, when to use it
+## 2. Current docs (Context7, queried 2026-09-27)
+### 2a. three.js — MeshPhysicalMaterial sheen + transmission
+### 2b. @react-three/fiber — frameloop, useFrame, ScrollControls vs GSAP
+### 2c. @react-three/drei — useGLTF, useAnimations, Environment, MeshTransmissionMaterial, ScrollControls
+### 2d. @react-three/postprocessing — Bloom, DOF, motion blur
+### 2e. GSAP ScrollTrigger (gsap MCP + Context7)
+### 2f. Lenis
+### 2g. npm versions (observed via `npm view` 2026-09-27)
+## 3. Blender MCP — read-only check
+## 4. Per-effect recommendations
+### 4.1 Aerodynamic thin case (Blender curve/subd/boolean workflow)
+### 4.2 Physical emboss/deboss logo (raster→vector→extruded boolean vs displacement+normal bake; glTF survival
+### 4.3 One-piece flap opening (baked shape-key/armature vs runtime hinge rotation with slight bend)
+### 4.4 Velvet (Blender sheen + fibre detail; three.js sheen params; baked textures)
+### 4.5 Folded glasses + unfolding (hinge pivots, rig in Blender vs runtime pivot groups)
+### 4.6 Cinematic scroll camera (GSAP timeline scrubbed by ScrollTrigger with Lenis; single master timeline)
+### 4.7 Sponsor depth arrival (camera-relative z-travel from far plane, exponential easing, streak/motion-blur
+### 4.8 Lens portal (camera through lens mesh; transmission/refraction shader, fisheye/chromatic distortion pa
+### 4.9 White transition
+### 4.10 Vertical opposing logo rails (CSS/GSAP marquee with masks)
+### 4.11 Lenis + ScrollTrigger + R3F sync
+### 4.12 Performance budgets
+### 4.13 Reduced-motion fallback
+### 4.14 Accessibility of a long scroll film
+## 5. Stack recommendation — ONE choice
+### Recommended: Vite + React 19 + React Three Fiber (R3F) + drei + @react-three/postprocessing + GSAP + Lenis
+### Exact package list (versions OBSERVED via `npm view` 2026-09-27 — pin these at scaffold)
+## 6. Blender → web pipeline
+### 6.1 What is BAKED in Blender vs done at RUNTIME
+### 6.2 Export settings
+### 6.3 EEVEE-preview-now / Cycles-bake-later
+## Recommended architecture diagram (text)
+## Risks (top 10, with mitigations)
+## Sources (exact URLs observed this pass)
+[0m
+[0m$ [0mpython3 -c "
+t=open('docs/research/F-3d-motion-tech.md').read()
+i=t.find('### 4.2'); print(t[i:i+2200])
+"
+### 4.2 Physical emboss/deboss logo (raster→vector→extruded boolean vs displacement+normal bake; glTF survival)
+- Recommended: TRUE GEOMETRY boolean. Official EyeQ logo (agent B/C source, from https://eyeqoptical.ca/) → vector trace (manual redraw in Illustrator/Inkscape against the official artwork; NEVER auto-trace-and-ship without visual sign-off, never redraw as new logo) → import SVG curve → extrude 0.3–0.6mm → Boolean DIFFERENCE (deboss) or UNION proud 0.2–0.4mm (emboss) into case top + "EyeQ Vision Care" companion text as second curve object. Apply boolean, clean n-gons → quads, re-bevel lip micro-edge (0.1mm) so light catches it. glTF survival: VERIFIED — real mesh survives any exporter; exporter extension list (§2a, https://github.com/mrdoob/three.js/blob/dev/docs/pages/GLTFExporter.html) is irrelevant because no material trick is involved.
+- Alternatives: displacement + normal bake (cheaper tris, reads well at distance) — REJECTED as primary: displacement needs high subdiv at runtime or baked normal only (normal-only reads as decal under raking light, violates "physically embossed, not decal"); use ONLY as LOD2/mobile fallback mesh (UNVERIFIED bake quality until Phase 3 tests).
+- Risks: font/vector rights (use official artwork only); boolean shading artefacts (shade-smooth + weighted normals + EEVEE raking-light check); micro-geometry lost under Draco quantization (set quantization ≥14-bit position or exclude logo mesh from aggressive compression — verify in Phase 3); "floating text" look if depth wrong (keep relief shallow, lighting does the work).
+
+### 4.3 One-piece flap opening (baked shape-key/armature vs runtime hinge rotation with slight bend)
+- Recommended: RUNTIME rotation about an authored hinge line + procedural micro-bend. Model flap closed; define hinge axis object (Empty) along the long spine edge; in R3F, flap mesh (or flap bone group) rotates open driven by master-timeline progress with `expo.out`-ish easing + tiny overshoot/damping (brief: "smooth, slightly elastic, not a 90° box lid" — target ~35–55° sweep, tuned visually). Bend faked by 2-segment flap rig (root 90% rotation, tip 10% lagged flex via damped follow) or a 2-bone armature
+[0m
+[0m# [0mTodos
+[✓] Inspect source logo + brand/insurance assets
+[•] Mechanical trace of EyeQ logo to SVG
+[ ] Verify IoU ≥0.985 + overlay diff
+[ ] Emit white variants + READY marker
+[ ] Light variants of brand + insurance logos
+[ ] Write trace report
+[0m
+[0m$ [0mrtk ls -la .orchestration/ 2>&1 | head -5; rtk ls -la assets/ 2>&1 | head -10
+755  .claude/
+755  logs/
+755  prompts/
+755  tmp/
+755  run.sh  672B
+755  logo/
+755  source/
+755  web/
+[0m
+[0m← [0mWrite .orchestration/tmp/logo_trace.py
+Wrote file successfully.
+[0m
+[0m$ [0mpython3 .orchestration/tmp/logo_trace.py
+orig opaque px: 56312 (18.87%)
+ink bbox (alpha>127): (16,21)-(792,320) -> w=777 h=300
+contours found: 17
+outer contours: 13, hole contours: 4
+eps=0.4: points=5697 bytes=66590 IoU=0.986165
+WROTE /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/assets/logo/eyeq-logo.svg (66590 bytes, eps=0.4, IoU=0.986165)
+WROTE /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/docs/phase3/logo-trace-diff.png orig-only=4077 trace-only=1655 both=221171
+FINAL IoU=0.986165
+[0m
+[0m$ [0mpython3 -c "
+import sys; sys.argv=['x']
+exec(open('.orchestration/tmp/logo_trace.py').read().split('best = None')[0])
+import cairosvg
+for eps in (0.25, 0.15, 0.0):
+    svg, npts = build_svg(eps)
+    iou, _ = iou_of(svg)
+    print(f'eps={eps}: points={npts} bytes={len(svg)} IoU={iou:.6f}')
+"
+orig opaque px: 56312 (18.87%)
+ink bbox (alpha>127): (16,21)-(792,320) -> w=777 h=300
+contours found: 17
+outer contours: 13, hole contours: 4
+eps=0.25: points=8657 bytes=101050 IoU=0.986433
+eps=0.15: points=8657 bytes=101050 IoU=0.986433
+eps=0.0: points=8657 bytes=101050 IoU=0.986433
+[0m
+[0m# [0mTodos
+[✓] Inspect source logo + brand/insurance assets
+[✓] Mechanical trace of EyeQ logo to SVG
+[✓] Verify IoU ≥0.985 + overlay diff
+[•] Emit white variants + READY marker
+[ ] Light variants of brand + insurance logos
+[ ] Write trace report
+[0m
+[0m← [0mWrite .orchestration/tmp/logo_variants.py
+Wrote file successfully.
+[0m
+[0m$ [0mpython3 .orchestration/tmp/logo_variants.py && rtk ls -la assets/logo/ assets/web/brands-light/ assets/web/insurance-light/
+eyeq-logo-white.png: 800x373 RGBA, RGB=255, alpha unas bytes identicas al original (opacos=56312)
+eyeq-logo-white@2x.png: 1600x746 renderizado desde el SVG (geometria vectorial), RGB=255, alfa del trazado
+assets/logo/READY: marcador creado
+brands maui-jim.png: (960, 496) RGBA -> RGBA -> RGB#F2F0EC, trim (np.int64(0), np.int64(0), np.int64(959), np.int64(494)) +2% -> (960, 496)
+brands ray-ban.png: (2400, 2400) LA -> RGBA -> RGB#F2F0EC, trim (np.int64(35), np.int64(624), np.int64(2364), np.int64(1775)) +2% -> (2400, 1198)
+brands prada.png: (2400, 2400) RGBA -> RGBA -> RGB#F2F0EC, trim (np.int64(105), np.int64(1030), np.int64(2293), np.int64(1369)) +2% -> (2277, 354)
+brands miu-miu.png: (3840, 2160) P -> RGBA -> RGB#F2F0EC, trim (np.int64(149), np.int64(803), np.int64(3690), np.int64(1351)) +2% -> (3684, 571)
+brands persol.png: (3840, 2160) P -> RGBA -> RGB#F2F0EC, trim (np.int64(369), np.int64(109), np.int64(3466), np.int64(2046)) +2% -> (3222, 2016)
+brands oakley.png: (960, 361) LA -> RGBA -> RGB#F2F0EC, trim (np.int64(0), np.int64(0), np.int64(959), np.int64(360)) +2% -> (960, 361)
+brands tiffany.png: (1280, 156) RGBA -> RGBA -> RGB#F2F0EC, trim (np.int64(3), np.int64(1), np.int64(1276), np.int64(154)) +2% -> (1280, 156)
+brands versace.png: (1686, 756) RGBA -> RGBA -> RGB#F2F0EC, trim (np.int64(252), np.int64(247), np.int64(1433), np.int64(508)) +2% -> (1230, 272)
+insurance sun-life.png: (800, 196) P (fondo blanco -> alfa 255-minRGB) -> RGB#F2F0EC, trim (np.int64(0), np.int64(1), np.int64(799), np.int64(194)) +2% -> (800, 196)
+insurance mbc-logo-en.png: SVG -> raster (1600, 240) RGBA -> RGB#F2F0EC, trim (np.int64(0), np.int64(0), np.int64(1599), np.int64(239)) +2% -> (1600, 240)
+insurance manulife.png: (738, 141) P (fondo blanco -> alfa 255-minRGB) -> RGB#F2F0EC, trim (np.int64(3), np.int64(3), np.int64(737), np.int64(138)) +2% -> (738, 141)
+insurance greenshield.png: (381, 132) P (fondo blanco -> alfa 255-minRGB) -> RGB#F2F0EC, trim (np.int64(31), np.int64(31), np.int64(349), np.int64(100)) +2% -> (331, 72)
+insurance canada-life-min.png: (537, 188) RGBA (alfa propio) -> RGB#F2F0EC, trim (np.int64(2), np.int64(2), np.int64(533), np.int64(185)) +2% -> (537, 188)
+insurance desjardins.png: (1024, 320) RGB (fondo blanco -> alfa 255-minRGB) -> RGB#F2F0EC, trim (np.int64(82), np.int64(66), np.int64(941), np.int64(251)) +2% -> (894, 194)
+insurance ia-financial-group.png: SVG -> raster (1600, 874) RGBA -> RGB#F2F0EC, trim (np.int64(6), np.int64(6), np.int64(1593), np.int64(866)) +2% -> (1600, 874)
+insurance empire-life.png: (1280, 407) RGBA (alfa propio) -> RGB#F2F0EC, trim (np.int64(0), np.int64(1), np.int64(1279), np.int64(406)) +2% -> (1280, 407)
+644  READY  0B
+644  eyeq-logo-white.png  35.6K
+644  eyeq-logo-white@2x.png  35.3K
+644  eyeq-logo.svg  65.0K
+644  maui-jim.png  44.2K
+644  miu-miu.png  42.6K
+644  oakley.png  16.0K
+644  persol.png  107.8K
+644  prada.png  32.4K
+644  ray-ban.png  84.8K
+644  tiffany.png  20.3K
+644  versace.png  15.7K
+644  canada-life-min.png  9.9K
+644  desjardins.png  53.3K
+644  empire-life.png  26.9K
+644  greenshield.png  3.7K
+644  ia-financial-group.png  51.8K
+644  manulife.png  6.9K
+644  mbc-logo-en.png  16.1K
+644  sun-life.png  15.7K
+... (3 filtered)
+[+3 hidden: rtk recall 41a2c259bfe1]
+[0m
+[0m$ [0mpython3 -c "
+import numpy as np, xml.etree.ElementTree as ET
+from PIL import Image
+# 1. SVG well-formed, paths only, single color, tight viewBox
+t = open('assets/logo/eyeq-logo.svg').read()
+r = ET.fromstring(t)
+assert r.tag.endswith('svg'), r.tag
+paths = [e for e in r.iter() if e.tag.endswith('path')]
+print('paths:', len(paths), '| root fill:', r.get('fill'), r.get('fill-rule'), '| viewBox:', r.get('viewBox'))
+assert r.get('viewBox') == '16 21 777 300'
+assert all(p.get('d','').startswith('M') and p.get('d','').endswith('Z') for p in paths)
+bad = [e.tag for e in r.iter() if not (e.tag.endswith('svg') or e.tag.endswith('path'))]
+assert not bad, bad
+# 2. white.png: RGB==255 everywhere, alpha == original alpha
+o = np.array(Image.open('assets/source/logo/eyeq-logo-header-original.png').convert('RGBA'))
+w = np.array(Image.open('assets/logo/eyeq-logo-white.png'))
+assert w.shape == o.shape == (373,800,4)
+assert (w[...,:3]==255).all() and (w[...,3]==o[...,3]).all()
+print('white.png OK: RGB=255 todo, alfa identico, opaque px:', (w[...,3]>127).sum())
+# 3. white@2x
+w2 = np.array(Image.open('assets/logo/eyeq-logo-white@2x.png'))
+assert w2.shape == (746,1600,4) and (w2[...,:3]==255).all()
+print('white@2x OK: 1600x746 RGB=255, opaque px:', (w2[...,3]>127).sum())
+# 4. brands-light: RGB uniforme F2F0EC; alfa preservado (miu-miu green-trap check)
+L=(242,240,236)
+for n in ['maui-jim','ray-ban','prada','miu-miu','persol','oakley','tiffany','versace']:
+    b = np.array(Image.open(f'assets/web/brands-light/{n}.png'))
+    assert (b[...,:3]==L).all(), n
+    s = np.array(Image.open(f'assets/source/brands/{n}.png').convert('RGBA'))
+    # alfa del trim debe existir dentro del alfa original (bbox check en trim central)
+    assert (b[...,3]>16).any(), n
+    print(f'{n}: size={b.shape[1]}x{b.shape[0]} RGB ok, alfa-max={b[...,3].max()}')
+src_alpha = np.array(Image.open('assets/source/brands/miu-miu.png').convert('RGBA'))[...,3]
+print('miu-miu src transparent-pixel RGB sample (trap neutralized by recolor):',
+      np.array(Image.open('assets/source/brands/miu-miu.png').convert('RGBA'))[0,0,:3])
+# 5. insurance: sun-life fondo->transparente, tinta->opaca
+s = np.array(Image.open('assets/web/insurance-light/sun-life.png'))
+print('sun-life light: size', s.shape, 'corner alpha (bg):', s[2,2,3], '| center alpha (ink):', s[s.shape[0]//2, s.shape[1]//2, 3])
+d = np.array(Image.open('assets/web/insurance-light/desjardins.png'))
+print('desjardins light: size', d.shape, 'corner alpha:', d[2,2,3])
+print('ALL CHECKS PASSED')
+"
+paths: 13 | root fill: #000000 evenodd | viewBox: 16 21 777 300
+white.png OK: RGB=255 todo, alfa identico, opaque px: 56312
+white@2x OK: 1600x746 RGB=255, opaque px: 222826
+maui-jim: size=960x496 RGB ok, alfa-max=255
+ray-ban: size=2400x1198 RGB ok, alfa-max=255
+prada: size=2277x354 RGB ok, alfa-max=255
+miu-miu: size=3684x571 RGB ok, alfa-max=255
+persol: size=3222x2016 RGB ok, alfa-max=255
+oakley: size=960x361 RGB ok, alfa-max=255
+tiffany: size=1280x156 RGB ok, alfa-max=255
+versace: size=1230x272 RGB ok, alfa-max=255
+miu-miu src transparent-pixel RGB sample (trap neutralized by recolor): [ 71 112  76]
+sun-life light: size (196, 800, 4) corner alpha (bg): 0 | center alpha (ink): 255
+desjardins light: size (194, 894, 4) corner alpha: 0
+ALL CHECKS PASSED
+[0m
+[0m→ [0mRead docs/phase3/logo-trace-diff.png
+[0m
+[0m# [0mTodos
+[✓] Inspect source logo + brand/insurance assets
+[✓] Mechanical trace of EyeQ logo to SVG
+[✓] Verify IoU ≥0.985 + overlay diff
+[✓] Emit white variants + READY marker
+[✓] Light variants of brand + insurance logos
+[•] Write trace report
+[0m
+[0m← [0mWrite docs/phase3/logo-trace-report.md
+Wrote file successfully.
+[0m
+[0m# [0mTodos
+[✓] Inspect source logo + brand/insurance assets
+[✓] Mechanical trace of EyeQ logo to SVG
+[✓] Verify IoU ≥0.985 + overlay diff
+[✓] Emit white variants + READY marker
+[✓] Light variants of brand + insurance logos
+[✓] Write trace report
+[0m
+PHASE3-LOGO-DONE
+- EyeQ logo traced mechanically (4× LANCZOS + contours, 13 paths + 4 holes, no manual edits) to `assets/logo/eyeq-logo.svg` with tight viewBox.
+- Fidelity verified: IoU 0.9862 ≥ 0.985; 2× red/cyan diff at `docs/phase3/logo-trace-diff.png` shows edge-only deltas.
+- White variants emitted (`eyeq-logo-white.png` byte-identical alpha; `white@2x.png` from SVG geometry) + `assets/logo/READY` marker created.
+- 8/8 brand + 8/8 insurance light variants in `assets/web/{brands,insurance}-light/` (#F2F0EC, trimmed +2%); green-alpha trap neutralized, opaque white-bg logos converted via mechanical white→alpha.
+- Caveats recorded in `docs/phase3/logo-trace-report.md`: Maui Jim parrot + insurance color marks flattened to monochrome; greenshield output is low-res (331×72).
+EXIT 0 model=meta/muse-spark-1.3-contributor

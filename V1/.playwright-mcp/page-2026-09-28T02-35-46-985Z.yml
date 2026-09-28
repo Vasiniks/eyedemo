@@ -1,0 +1,9 @@
+- generic [ref=f5e3]:
+  - slider "film progress" [ref=f5e4]: "0.62"
+  - generic [ref=f5e5]: p=0.620
+  - button "0.42" [ref=f5e6]
+  - button "0.47" [ref=f5e7]
+  - button "0.52" [ref=f5e8]
+  - button "0.57" [ref=f5e9]
+  - button "0.62" [ref=f5e10]
+  - button "0.68" [ref=f5e11]

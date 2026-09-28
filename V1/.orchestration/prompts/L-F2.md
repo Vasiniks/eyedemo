@@ -1,0 +1,7 @@
+LANE F (round 2 — RESTART with corrected scope). Previous run was stopped by the orchestrator because the client forbids anything not on the original website (brief §6d — read it first; it overrides the rest).
+Files you own: src/routes/Services.tsx, Contact.tsx, Policies.tsx, src/routes/parts/*, dev-F.html, src/__dev__/F/*.
+1. DELETE `src/routes/Catalog.tsx`, `src/routes/parts/catalog-*.ts` and any catalog/frames/product/search code or links in your files (incl. `parts/chrome.tsx` nav: only Home · Services · Contact + Book CTA; footer: Refund · Privacy · Terms). Remove Catalog/Frames/Detail/Search from your dev harness.
+2. Audit every visible string in your routes against `docs/research/B-content-inventory.md` (verbatim) and brief §2 (new-store info). Delete anything else (no invented headings, taglines, section intros, labels that aren't needed UI chrome). Keep verbatim text verbatim (incl. "Eye Q Optical"/"Burlington" where the live text says it — client decision).
+3. Finish Services (3 services + Essilor lenses + insurance logos with "We accept most major insurance plans" + booking CTA same-tab), Contact (new store info, tel/mailto, map + directions to 2-227 Vodden St East, Brampton, ON, hours; no form), Policies (verbatim live policy texts).
+4. Write `docs/phase4/requests/F-router.md` telling Lane B exactly which routes to register/remove (remove /catalog, /frames etc.).
+5. Screenshots of each remaining route at 1440 + 390 into docs/phase4/qa/F/ (delete old catalog screenshots), LOOK at them, `npm run build` passes.

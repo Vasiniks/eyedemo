@@ -1,0 +1,1692 @@
+[0m
+> build · muse-spark-1.3-contributor
+[0m
+[0m→ [0mSkill "cinematic-gsap-lenis-motion-system"
+[0m→ [0mSkill "emil-design-eng"
+[0m→ [0mSkill "design-motion-principles"
+[0m→ [0mSkill "animation-vocabulary"
+[0m→ [0mSkill "improve-animations"
+[0m→ [0mSkill "review-animations"
+[0m→ [0mRead .
+[0m→ [0mSkill "fixing-motion-performance"
+[0m→ [0mSkill "awwwards-playbook"
+[0m→ [0mSkill "no-ai-design-slop"
+[0m→ [0mRead src/components/dom
+[0m→ [0mRead package.json
+[0m→ [0mRead v1.html
+[0m→ [0mRead docs/phase4/PLAN-MASTER.md
+[0m→ [0mRead src/components/dom/Sections.tsx
+[0m→ [0mRead src/components/dom/Footer.tsx
+[0m→ [0mRead src/components/dom/Header.tsx
+[0m→ [0mRead src/components/dom/BookingCTA.tsx
+[0m→ [0mRead src/components/dom/LogoRails.tsx
+[0m→ [0mRead src/components/dom/WhiteSection.tsx
+[0m→ [0mRead src/components/dom/StoreBits.tsx
+[0m→ [0mRead src/components/dom/Scrims.tsx
+[0m→ [0mRead src/components/dom/index.ts
+[0m→ [0mRead src/components/dom/ChapterOverlay.tsx
+[0m→ [0mRead src/components/dom/lane-e.css
+[0m✱ [0mGlob "src/v1/*"[90m 11 matches[0m
+[0m✱ [0mGlob "src/data/*"[90m 9 matches[0m
+[0m✱ [0mGlob "src/styles/*"[90m 4 matches[0m
+[0m→ [0mRead src/v1/App.tsx
+[0m→ [0mRead src/data/index.ts
+[0m→ [0mRead src/v1/main.tsx
+[0m→ [0mRead src/data/reviews.json
+[0m→ [0mRead src/v1/v1.css
+[0m→ [0mRead src/styles/tokens.css
+[0m
+[0m# [0mTodos
+[•] Polish lane-e.css: H1 lines, CTA wipe, hairlines, section variants, header hide/invert, footer, rails skew
+[ ] WhiteSection H1 masked split-line reveal + settle
+[ ] Header hide-on-down/show-on-up + smooth inversion
+[ ] Sections differentiated reveals + real counters (4.9/208)
+[ ] LogoRails velocity skew + frame tick + StoreBits/Footer/CTA polish
+[ ] Verify: vite 5301, screenshots + video to docs/phase4/qa/polish/WHITE-*, look, stop
+[0m
+[0m← [0mEdit src/components/dom/lane-e.css
+Index: /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/components/dom/lane-e.css
+===================================================================
+--- /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/components/dom/lane-e.css
++++ /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/components/dom/lane-e.css
+@@ -1351,24 +1351,426 @@
+   font-size: 13px;
+   color: var(--eyeq-bone-dim);
+ }
+ 
++/* ---- WHITE polish: masked H1 split lines + optical settle -----------------
++ * Motion language (PLAN-MASTER §8): expo.out entrances 0.6–1.1s, line stagger
++ * 0.08–0.12s, masked lines yPercent 110→0, transforms/opacity only
++ * (the font-variation settle below is the one asked-for exception), RM static.
++ */
++.eyeq-white__h1 {
++  display: block;
++}
++.eyeq-white__h1 .wline-mask {
++  display: block;
++  overflow: hidden;
++  padding-bottom: 0.09em;
++  margin-bottom: -0.09em;
++}
++.eyeq-white__h1 .wline {
++  display: block;
++  transform: translateY(110%);
++  opacity: 0;
++  will-change: transform;
++  font-variation-settings: "opsz" 72, "SOFT" 50, "WONK" 1;
++}
++.eyeq-white__h1.is-in .wline {
++  transform: translateY(0);
++  opacity: 1;
++  transition:
++    transform 1s var(--eyeq-ease-out),
++    opacity 0.7s ease-out;
++}
++/* Line stagger 0.10s (within 0.08–0.12 band). */
++.eyeq-white__h1.is-in .wline-mask:nth-child(2) .wline {
++  transition-delay: 0.1s;
++}
++.eyeq-white__h1.is-in .wline-mask:nth-child(3) .wline {
++  transition-delay: 0.2s;
++}
++.eyeq-white__h1.is-in .wline-mask:nth-child(4) .wline {
++  transition-delay: 0.3s;
++}
++/* Optical settle: once lines land, ease opsz/weight a touch (600ms). */
++.eyeq-white__h1.is-settled .wline {
++  font-variation-settings: "opsz" 60, "SOFT" 60, "WONK" 1;
++  transition:
++    transform 1s var(--eyeq-ease-out),
++    opacity 0.7s ease-out,
++    font-variation-settings 0.6s ease-out;
++}
++.eyeq-white__microcap,
++.eyeq-white__logo {
++  opacity: 0;
++  transform: translateY(18px);
++  transition:
++    opacity 0.85s var(--eyeq-ease-out),
++    transform 0.85s var(--eyeq-ease-out);
++}
++.eyeq-white-act.is-in .eyeq-white__microcap,
++.eyeq-white-act.is-in .eyeq-white__logo {
++  opacity: 1;
++  transform: none;
++}
++.eyeq-white-act.is-in .eyeq-white__logo {
++  transition-delay: 0.08s;
++}
++
++/* ---- WHITE polish: CTA fill wipe + arrow travel (fine pointer only) ------- */
++.eyeq-cta {
++  position: relative;
++  isolation: isolate;
++  overflow: hidden;
++}
++.eyeq-cta::before {
++  content: "";
++  position: absolute;
++  inset: 0;
++  z-index: 0;
++  background: #2a2b2e;
++  transform: scaleY(0);
++  transform-origin: 50% 100%;
++  transition: transform 0.4s var(--eyeq-ease-out);
++}
++.eyeq-cta--paper::before {
++  background: #e9e2d3;
++}
++.eyeq-cta__label,
++.eyeq-cta__arrows {
++  position: relative;
++  z-index: 1;
++}
++.eyeq-cta__arrows {
++  display: inline-grid;
++  overflow: hidden;
++  width: 1.2em;
++  height: 1.2em;
++  line-height: 1.2em;
++}
++.eyeq-cta__arrows > span {
++  grid-area: 1 / 1;
++  display: inline-block;
++  transition: transform 0.4s var(--eyeq-ease-out), opacity 0.3s ease-out;
++}
++.eyeq-cta__arrows > span:last-child {
++  transform: translateX(-130%);
++  opacity: 0;
++}
++@media (hover: hover) and (pointer: fine) {
++  .eyeq-cta:hover::before {
++    transform: scaleY(1);
++  }
++  .eyeq-cta:hover .eyeq-cta__arrows > span:first-child {
++    transform: translateX(130%);
++    opacity: 0;
++  }
++  .eyeq-cta:hover .eyeq-cta__arrows > span:last-child {
++    transform: none;
++    opacity: 1;
++  }
++}
++.eyeq-cta:active {
++  transform: scale(0.97);
++  transition: transform 0.16s ease-out;
++}
++
++/* ---- WHITE polish: ledger hairline draws + staggered text ----------------- */
++.eyeq-ledger-draw {
++  position: relative;
++}
++.eyeq-ledger-draw > li {
++  position: relative;
++  opacity: 0;
++  transform: translateY(14px);
++  transition:
++    opacity 0.8s var(--eyeq-ease-out),
++    transform 0.8s var(--eyeq-ease-out);
++}
++.eyeq-ledger-draw > li::after {
++  content: "";
++  position: absolute;
++  left: 0;
++  right: 0;
++  bottom: -1px;
++  height: 1px;
++  background: currentColor;
++  opacity: 0.22;
++  transform: scaleX(0);
++  transform-origin: 0 50%;
++  transition: transform 0.9s var(--eyeq-ease-out);
++}
++.eyeq-ledger-draw.is-in > li {
++  opacity: 1;
++  transform: none;
++}
++.eyeq-ledger-draw.is-in > li::after {
++  transform: scaleX(1);
++}
++.eyeq-ledger-draw.is-in > li:nth-child(2) { transition-delay: 0.08s; }
++.eyeq-ledger-draw.is-in > li:nth-child(3) { transition-delay: 0.16s; }
++.eyeq-ledger-draw.is-in > li:nth-child(4) { transition-delay: 0.24s; }
++.eyeq-ledger-draw.is-in > li:nth-child(5) { transition-delay: 0.32s; }
++.eyeq-ledger-draw.is-in > li:nth-child(6) { transition-delay: 0.4s; }
++.eyeq-ledger-draw.is-in > li:nth-child(7) { transition-delay: 0.48s; }
++.eyeq-ledger-draw.is-in > li:nth-child(2)::after { transition-delay: 0.08s; }
++.eyeq-ledger-draw.is-in > li:nth-child(3)::after { transition-delay: 0.16s; }
++.eyeq-ledger-draw.is-in > li:nth-child(4)::after { transition-delay: 0.24s; }
++.eyeq-ledger-draw.is-in > li:nth-child(5)::after { transition-delay: 0.32s; }
++.eyeq-ledger-draw.is-in > li:nth-child(6)::after { transition-delay: 0.4s; }
++.eyeq-ledger-draw.is-in > li:nth-child(7)::after { transition-delay: 0.48s; }
++/* Keep the authored borders as the resting state; the draw is the entrance. */
++.eyeq-white__ledger.eyeq-ledger-draw > li,
++.eyeq-services__rows.eyeq-ledger-draw > li,
++.eyeq-visit__rows.eyeq-ledger-draw > li {
++  border-bottom-color: transparent;
++}
++.eyeq-white__ledger.eyeq-ledger-draw.is-in > li,
++.eyeq-services__rows.eyeq-ledger-draw.is-in > li,
++.eyeq-visit__rows.eyeq-ledger-draw.is-in > li {
++  border-bottom-color: var(--eyeq-hairline-light);
++}
++
++/* ---- WHITE polish: differentiated section entrances ------------------------
++ * About = clip wipe on media · Services = hairline ledger (above) + sticky H2
++ * Lenses = row clip wipes on the inverted block · Reviews = counter + card
++ * scale + stagger · Visit = ledger + card clip · Footer = rise + hairline.
++ * All expo.out 0.6–1.1s, once, transforms/opacity/clip only.
++ */
++.eyeq-e__reveal--clip {
++  opacity: 0;
++  clip-path: inset(0 0 100% 0);
++  transform: none;
++  transition:
++    clip-path 1.1s var(--eyeq-ease-out),
++    opacity 0.6s ease-out;
++}
++.eyeq-e__reveal--clip.is-in {
++  opacity: 1;
++  clip-path: inset(0 0 0% 0);
++}
++.eyeq-e__reveal--clip img,
++.eyeq-e__reveal--clip video {
++  transform: scale(1.08);
++  transition: transform 1.2s var(--eyeq-ease-out);
++}
++.eyeq-e__reveal--clip.is-in img,
++.eyeq-e__reveal--clip.is-in video {
++  transform: scale(1);
++}
++.eyeq-e__reveal--rise {
++  opacity: 0;
++  transform: translateY(36px);
++  transition:
++    opacity 0.8s var(--eyeq-ease-out),
++    transform 0.8s var(--eyeq-ease-out);
++}
++.eyeq-e__reveal--rise.is-in {
++  opacity: 1;
++  transform: none;
++}
++.eyeq-e__reveal--scale {
++  opacity: 0;
++  transform: scale(0.96);
++  transition:
++    opacity 0.9s var(--eyeq-ease-out),
++    transform 0.9s var(--eyeq-ease-out);
++}
++.eyeq-e__reveal--scale.is-in {
++  opacity: 1;
++  transform: none;
++}
++.eyeq-e__reveal--wipe {
++  opacity: 0;
++  clip-path: inset(0 100% 0 0);
++  transition:
++    clip-path 0.9s var(--eyeq-ease-out),
++    opacity 0.5s ease-out;
++}
++.eyeq-e__reveal--wipe.is-in {
++  opacity: 1;
++  clip-path: inset(0 0% 0 0);
++}
++/* Stagger helpers for review cards / lens rows (0.08 band). */
++.eyeq-stagger.is-in > *:nth-child(2) { transition-delay: 0.08s; }
++.eyeq-stagger.is-in > *:nth-child(3) { transition-delay: 0.16s; }
++.eyeq-stagger.is-in > *:nth-child(4) { transition-delay: 0.24s; }
++.eyeq-stagger.is-in > *:nth-child(5) { transition-delay: 0.32s; }
++.eyeq-stagger.is-in > *:nth-child(6) { transition-delay: 0.4s; }
++.eyeq-stagger.is-in > *:nth-child(7) { transition-delay: 0.48s; }
++/* Real counters: tabular, no layout shift. */
++.eyeq-reviews__score,
++.eyeq-reviews__countnum {
++  font-variant-numeric: tabular-nums;
++}
++/* Sticky section headers where it helps (Services + Visit ledger). */
++.eyeq-services__sticky {
++  position: sticky;
++  top: 96px;
++}
++.eyeq-visit__sticky {
++  position: sticky;
++  top: 96px;
++}
++@media (max-width: 900px) {
++  .eyeq-services__sticky,
++  .eyeq-visit__sticky {
++    position: static;
++  }
++}
++
++/* ---- WHITE polish: header smooth inversion + hide/show -------------------- */
++.eyeq-header {
++  transition:
++    background-color 0.5s var(--eyeq-ease-out),
++    color 0.5s var(--eyeq-ease-out),
++    border-color 0.5s var(--eyeq-ease-out),
++    transform 0.45s var(--eyeq-ease-out);
++}
++.eyeq-header.is-hiddenbar {
++  transform: translateY(-100%);
++}
++.eyeq-header__brand img {
++  transition: opacity 0.5s var(--eyeq-ease-out);
++}
++.eyeq-header--swap .eyeq-header__brand img {
++  opacity: 0;
++}
++@media (hover: hover) and (pointer: fine) {
++  .eyeq-header__book {
++    position: relative;
++    overflow: hidden;
++    isolation: isolate;
++    transition:
++      transform 0.16s ease-out,
++      color 0.35s var(--eyeq-ease-out),
++      border-color 0.35s var(--eyeq-ease-out);
++  }
++  .eyeq-header__book::before {
++    content: "";
++    position: absolute;
++    inset: 0;
++    z-index: -1;
++    background: currentColor;
++    opacity: 0.14;
++    transform: scaleX(0);
++    transform-origin: 0 50%;
++    transition: transform 0.35s var(--eyeq-ease-out);
++  }
++  .eyeq-header__book:hover::before {
++    transform: scaleX(1);
++  }
++  .eyeq-header__book:hover .eyeq-arrow {
++    transform: translateX(4px);
++  }
++  .eyeq-header__book .eyeq-arrow {
++    display: inline-block;
++    transition: transform 0.35s var(--eyeq-ease-out);
++  }
++}
++/* Menu links: hairline draw instead of a plain underline (less templated). */
++.eyeq-menu__list a {
++  background-image: linear-gradient(currentColor, currentColor);
++  background-size: 0% 1px;
++  background-repeat: no-repeat;
++  background-position: 0 92%;
++  transition: background-size 0.4s var(--eyeq-ease-out);
++}
++@media (hover: hover) and (pointer: fine) {
++  .eyeq-menu__list a:hover {
++    text-decoration: none;
++    background-size: 100% 1px;
++  }
++}
++
++/* ---- WHITE polish: film rails — velocity skew + ticking numbers ------------ */
++.eyeq-rail__track,
++.eyeq-rail__track--h {
++  will-change: transform;
++}
++.eyeq-rail__num {
++  font-variant-numeric: tabular-nums;
++  transition:
++    opacity 0.4s var(--eyeq-ease-out),
++    transform 0.4s var(--eyeq-ease-out);
++}
++.eyeq-rail--hot .eyeq-rail__num {
++  opacity: 1;
++}
++/* Footer entrance: rise + hairline draw. */
++.eyeq-footer__reveal {
++  opacity: 0;
++  transform: translateY(28px);
++  transition:
++    opacity 0.9s var(--eyeq-ease-out),
++    transform 0.9s var(--eyeq-ease-out);
++}
++.eyeq-footer__reveal.is-in {
++  opacity: 1;
++  transform: none;
++}
++.eyeq-footer__base {
++  position: relative;
++}
++.eyeq-footer__base::before {
++  content: "";
++  position: absolute;
++  left: 0;
++  right: 0;
++  top: -1px;
++  height: 1px;
++  background: var(--eyeq-bone-dim);
++  opacity: 0.4;
++  transform: scaleX(0);
++  transform-origin: 0 50%;
++  transition: transform 1.1s var(--eyeq-ease-out);
++}
++.eyeq-footer.is-in .eyeq-footer__base::before {
++  transform: scaleX(1);
++}
++
+ /* ---- Reduced motion: static everywhere (mirrors JS branch) -------------- */
+ 
+ @media (prefers-reduced-motion: reduce) {
+   .eyeq-e__reveal,
+-  .eyeq-e__mask > span {
+-    opacity: 1;
+-    transform: none;
++  .eyeq-e__mask > span,
++  .eyeq-white__h1 .wline,
++  .eyeq-white__microcap,
++  .eyeq-white__logo,
++  .eyeq-e__reveal--clip,
++  .eyeq-e__reveal--rise,
++  .eyeq-e__reveal--scale,
++  .eyeq-e__reveal--wipe,
++  .eyeq-ledger-draw > li,
++  .eyeq-footer__reveal {
++    opacity: 1 !important;
++    transform: none !important;
++    clip-path: none !important;
++    transition: none !important;
++  }
++  .eyeq-ledger-draw > li::after,
++  .eyeq-footer__base::before,
++  .eyeq-cta::before {
++    transform: none !important;
++    transition: none !important;
++  }
++  .eyeq-header {
+     transition: none;
+   }
+   .eyeq-rail__track,
+   .eyeq-rail__track--h {
+     animation: none;
+   }
+-  .eyeq-cta__label > span {
+-    transition: none;
++  .eyeq-cta__label > span,
++  .eyeq-cta__arrows > span {
++    transition: none !important;
+   }
+   .eyeq-cta:hover .eyeq-cta__label > span {
+     transform: none;
+   }
++  .eyeq-cta:hover .eyeq-cta__arrows > span:first-child {
++    transform: none;
++    opacity: 1;
++  }
++  .eyeq-cta:hover .eyeq-cta__arrows > span:last-child {
++    opacity: 0;
++  }
+ }
+
+[0m
+[0m# [0mTodos
+[✓] Polish lane-e.css: H1 lines, CTA wipe, hairlines, section variants, header hide/invert, footer, rails skew
+[•] WhiteSection H1 masked split-line reveal + settle
+[ ] Header hide-on-down/show-on-up + smooth inversion
+[ ] Sections differentiated reveals + real counters (4.9/208)
+[ ] LogoRails velocity skew + frame tick + StoreBits/Footer/CTA polish
+[ ] Verify: vite 5301, screenshots + video to docs/phase4/qa/polish/WHITE-*, look, stop
+[0m
+[0m← [0mEdit src/components/dom/WhiteSection.tsx
+Index: /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/components/dom/WhiteSection.tsx
+===================================================================
+--- /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/components/dom/WhiteSection.tsx
++++ /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/components/dom/WhiteSection.tsx
+@@ -1,4 +1,5 @@
++import { useEffect, useRef } from 'react';
+ import { store } from '../../data';
+ import { BookingCTA } from './BookingCTA';
+ import { StoreLedger, MapEmbed } from './StoreBits';
+ 
+@@ -6,20 +7,62 @@
+ // Centered 560–640px column on Paper #F5F1E8 (never pure #FFF): micro-cap
+ // EYEQ VISION CARE + black logo; single <h1> FROM EYE EXAMS TO EVERYDAY
+ // STYLE.; Ink 48px CTA (scheduler, _blank); new-store ledger (brief §2);
+ // map rebuilt query + click-to-activate + directions. Old-store data NOWHERE.
++//
++// WHITE polish: H1 is a masked split-line reveal (2 authored lines, same words,
++// yPercent 110→0, 1s expo.out, 0.10s stagger) with a subtle optical settle;
++// micro-cap/logo rise first; RM = static.
++const H1_LINES = ['FROM EYE EXAMS', 'TO EVERYDAY STYLE.'];
++const H1_TEXT = 'FROM EYE EXAMS TO EVERYDAY STYLE.';
++
+ export function WhiteSection() {
++  const sectionRef = useRef<HTMLElement>(null);
++  const h1Ref = useRef<HTMLHeadingElement>(null);
++
++  useEffect(() => {
++    const section = sectionRef.current;
++    const h1 = h1Ref.current;
++    if (!section || !h1) return;
++    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
++      section.classList.add('is-in');
++      h1.classList.add('is-in', 'is-settled');
++      return;
++    }
++    let settleTimer = 0;
++    const io = new IntersectionObserver(
++      (entries) => {
++        entries.forEach((en) => {
++          if (en.isIntersecting) {
++            section.classList.add('is-in');
++            h1.classList.add('is-in');
++            // Optical-size/weight settle once the lines land (~1.2s).
++            settleTimer = window.setTimeout(() => h1.classList.add('is-settled'), 1200);
++            io.disconnect();
++          }
++        });
++      },
++      { threshold: 0.35, rootMargin: '0px 0px -10% 0px' },
++    );
++    io.observe(h1);
++    return () => {
++      io.disconnect();
++      window.clearTimeout(settleTimer);
++    };
++  }, []);
++
+   return (
+     <section
+       id="white-act"
+-      className="eyeq-e eyeq-white"
++      ref={sectionRef}
++      className="eyeq-e eyeq-white eyeq-white-act"
+       aria-label="EyeQ Vision Care — visit information"
+       tabIndex={-1}
+     >
+       <div className="eyeq-white__grid">
+         <div aria-hidden="true" />
+         <div className="eyeq-white__col">
+-          <p className="eyeq-microcap eyeq-microcap--light eyeq-e__microcap">
++          <p className="eyeq-microcap eyeq-microcap--light eyeq-e__microcap eyeq-white__microcap">
+             EYEQ VISION CARE
+           </p>
+           <img
+             className="eyeq-white__logo"
+@@ -27,10 +70,14 @@
+             alt="EyeQ Vision Care"
+             width={800}
+             height={373}
+           />
+-          <h1 className="eyeq-h1 eyeq-white__h1">
+-            FROM EYE EXAMS TO EVERYDAY STYLE.
++          <h1 ref={h1Ref} className="eyeq-h1 eyeq-white__h1" aria-label={H1_TEXT}>
++            {H1_LINES.map((line) => (
++              <span key={line} className="wline-mask" aria-hidden="true">
++                <span className="wline">{line}</span>
++              </span>
++            ))}
+           </h1>
+           <div className="eyeq-white__cta">
+             <BookingCTA label={store.booking.labelHomepage} newTab variant="ink" />
+           </div>
+
+[0m
+[0m← [0mEdit src/components/dom/Header.tsx
+Index: /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/components/dom/Header.tsx
+===================================================================
+--- /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/components/dom/Header.tsx
++++ /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/components/dom/Header.tsx
+@@ -26,8 +26,14 @@
+   onSkipFilm?: () => void;
+ }) {
+   const [scrolled, setScrolled] = useState(false);
+   const [menuOpen, setMenuOpen] = useState(false);
++  // WHITE polish: hide on scroll-down / show on scroll-up (Book pill stays
++  // mounted — the bar slides, nothing unmounts). Theme flips force a show.
++  const [barHidden, setBarHidden] = useState(false);
++  const [swapping, setSwapping] = useState(false);
++  const lastYRef = useRef(0);
++  const tickingRef = useRef(false);
+   // Feedback E-round1 P0-3: the Skip-film control must never sit over white-act
+   // (or footer) content. It shows only while the visitor is still ABOVE the
+   // white act; once the white act is reached — or passed — it fades out and
+   // stays out until they scroll back up into the film.
+
+[0m
+[0m← [0mEdit src/components/dom/Header.tsx
+Index: /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/components/dom/Header.tsx
+===================================================================
+--- /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/components/dom/Header.tsx
++++ /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/components/dom/Header.tsx
+@@ -41,22 +41,48 @@
+ const menuBtnRef = useRef<HTMLButtonElement>(null);
+ const closeBtnRef = useRef<HTMLButtonElement>(null);
+ 
+ useEffect(() => {
++  lastYRef.current = window.scrollY;
+   const onScroll = () => {
+-    setScrolled(window.scrollY > 120);
+-    const white = document.querySelector('#white-act');
+-    if (white) {
+-      const top = (white as HTMLElement).getBoundingClientRect().top + window.scrollY;
+-      setPastFilm(window.scrollY + window.innerHeight * 0.5 >= top);
+-    }
++    if (tickingRef.current) return;
++    tickingRef.current = true;
++    requestAnimationFrame(() => {
++      tickingRef.current = false;
++      const y = window.scrollY;
++      setScrolled(y > 120);
++      const dy = y - lastYRef.current;
++      lastYRef.current = y;
++      // Hide only once well into the page; any upward move (or theme/act
++      // change below) reveals. Menu open pins the bar visible.
++      if (y > 240 && dy > 6) setBarHidden(true);
++      else if (dy < -2 || y <= 240) setBarHidden(false);
++      const white = document.querySelector('#white-act');
++      if (white) {
++        const top = (white as HTMLElement).getBoundingClientRect().top + window.scrollY;
++        setPastFilm(window.scrollY + window.innerHeight * 0.5 >= top);
++      }
++    });
+   };
+   onScroll();
+   window.addEventListener('scroll', onScroll, { passive: true });
+   return () => window.removeEventListener('scroll', onScroll);
+ }, []);
+ 
++// WHITE polish: act change always reveals the bar (orientation first), and
++// the logo crossfade gets a 250ms mask so the dark↔paper swap never pops.
++const prevThemeRef = useRef(theme);
+ useEffect(() => {
++  if (prevThemeRef.current !== theme) {
++    prevThemeRef.current = theme;
++    setBarHidden(false);
++    setSwapping(true);
++    const t = window.setTimeout(() => setSwapping(false), 260);
++    return () => window.clearTimeout(t);
++  }
++}, [theme]);
++
++useEffect(() => {
+   if (!menuOpen) return;
+   closeBtnRef.current?.focus();
+   document.body.style.overflow = 'hidden';
+   const onKey = (e: KeyboardEvent) => {
+
+[0m
+[0m← [0mEdit src/components/dom/Header.tsx
+Index: /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/components/dom/Header.tsx
+===================================================================
+--- /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/components/dom/Header.tsx
++++ /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/components/dom/Header.tsx
+@@ -113,9 +113,9 @@
+ 
+ return (
+   <div className="eyeq-e">
+     <header
+-      className={`eyeq-header eyeq-header--${theme}${scrolled ? ` is-scrolled--${theme}` : ''}`}
++      className={`eyeq-header eyeq-header--${theme}${scrolled ? ` is-scrolled--${theme}` : ''}${barHidden && !menuOpen ? ' is-hiddenbar' : ''}${swapping ? ' eyeq-header--swap' : ''}`}
+     >
+       <a className="eyeq-header__brand" href="/" aria-label="EyeQ Vision Care — home">
+         <img
+           src={theme === 'dark' ? '/web/eyeq-logo-white.png' : '/web/eyeq-logo-header-original.png'}
+
+[0m
+[0m← [0mEdit src/components/dom/Sections.tsx
+Index: /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/components/dom/Sections.tsx
+===================================================================
+--- /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/components/dom/Sections.tsx
++++ /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/components/dom/Sections.tsx
+@@ -23,12 +23,25 @@
+ // (anti-slop A7): asymmetric About, ledger Services, one inverted Lenses
+ // block, 1+featured+5 Reviews, split Visit. Reveals: line-mask 0.9s expo.out
+ // via IntersectionObserver (.is-in once, top ~82%); RM = static (CSS).
+ 
+-function Reveal({ children, className = '', as: Tag = 'div' }: {
++// WHITE polish: one Reveal, four dialects (all expo.out, once, GPU-only).
++// fade = y32 rise (default) · clip = clip-path wipe + inner scale settle ·
++// rise = y36 + blur-free rise · scale = 0.96 settle · wipe = horizontal clip.
++type RevealVariant = 'fade' | 'clip' | 'rise' | 'scale' | 'wipe';
++const REVEAL_CLASS: Record<RevealVariant, string> = {
++  fade: 'eyeq-e__reveal',
++  clip: 'eyeq-e__reveal--clip',
++  rise: 'eyeq-e__reveal--rise',
++  scale: 'eyeq-e__reveal--scale',
++  wipe: 'eyeq-e__reveal--wipe',
++};
++
++function Reveal({ children, className = '', as: Tag = 'div', variant = 'fade' as RevealVariant }: {
+   children: React.ReactNode;
+   className?: string;
+-  as?: 'div' | 'li' | 'figure';
++  as?: 'div' | 'li' | 'figure' | 'ol' | 'ul';
++  variant?: RevealVariant;
+ }) {
+   const ref = useRef<HTMLDivElement>(null);
+   useEffect(() => {
+     const el = ref.current;
+@@ -52,14 +65,54 @@
+     return () => io.disconnect();
+   }, []);
+   return (
+     // @ts-expect-error dynamic tag with className/ref
+-    <Tag ref={ref} className={`eyeq-e__reveal ${className}`.trim()}>
++    <Tag ref={ref} className={`${REVEAL_CLASS[variant]} ${className}`.trim()}>
+       {children}
+     </Tag>
+   );
+ }
+ 
++// WHITE polish: counts only real numbers (4.9 / 208 from reviews.json).
++// Renders final text statically (no-JS correct), animates 0→target on entry.
++function CountUp({ target, decimals = 0, duration = 1000 }: {
++  target: number;
++  decimals?: number;
++  duration?: number;
++}) {
++  const ref = useRef<HTMLSpanElement>(null);
++  const finalText = target.toFixed(decimals);
++  useEffect(() => {
++    const el = ref.current;
++    if (!el) return;
++    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
++    let raf = 0;
++    const io = new IntersectionObserver(
++      (entries) => {
++        entries.forEach((en) => {
++          if (!en.isIntersecting) return;
++          io.disconnect();
++          const t0 = performance.now();
++          const tick = (t: number) => {
++            const raw = Math.min(1, (t - t0) / duration);
++            const eased = raw >= 1 ? 1 : 1 - Math.pow(2, -10 * raw);
++            el.textContent = (target * eased).toFixed(decimals);
++            if (raw < 1) raf = requestAnimationFrame(tick);
++          };
++          raf = requestAnimationFrame(tick);
++        });
++      },
++      { threshold: 0.6 },
++    );
++    io.observe(el);
++    return () => {
++      io.disconnect();
++      cancelAnimationFrame(raf);
++    };
++  }, [target, decimals, duration]);
++  return <span ref={ref}>{finalText}</span>;
++}
++
+ function MaskedHeadline({ text, className = '', id }: { text: string; className?: string; id?: string }) {
+   const ref = useRef<HTMLHeadingElement>(null);
+   const [shown, setShown] = useState(
+     () => typeof window !== 'undefined' && window.matchMedia('(prefers-reduced-motion: reduce)').matches,
+
+[0m
+[0m← [0mEdit src/components/dom/Sections.tsx
+Index: /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/components/dom/Sections.tsx
+===================================================================
+--- /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/components/dom/Sections.tsx
++++ /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/components/dom/Sections.tsx
+@@ -163,9 +163,9 @@
+ <section className="eyeq-e eyeq-section eyeq-about" aria-labelledby="about-h">
+   <div className="eyeq-about__grid">
+     <div>
+       <MaskedHeadline id="about-h" text={videoMeta.heading} className="eyeq-h2 eyeq-section__h2" />
+-      <Reveal>
++      <Reveal variant="clip">
+         <div className="eyeq-about__media" style={{ marginTop: 32 }}>
+           {!playing ? (
+             <button
+               type="button"
+
+[0m
+[0m← [0mEdit src/components/dom/Sections.tsx
+Index: /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/components/dom/Sections.tsx
+===================================================================
+--- /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/components/dom/Sections.tsx
++++ /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/components/dom/Sections.tsx
+@@ -226,21 +226,21 @@
+ <div className="eyeq-services__sticky">
+   <MaskedHeadline id="services-h" text="Services" className="eyeq-h2 eyeq-section__h2" />
+ </div>
+ <div>
+-  <ol className="eyeq-services__rows">
++  <Reveal as="ol" className="eyeq-services__rows eyeq-ledger-draw">
+     {servicesPrecis.map((s, i) => (
+-      <Reveal as="li" key={s.name}>
++      <li key={s.name}>
+         <span className="eyeq-services__num eyeq-numerals" aria-hidden="true">
+           {String(i + 1).padStart(2, '0')}
+         </span>
+         <span>
+           <h3 className="eyeq-services__name">{s.name}</h3>
+           {s.description && <p className="eyeq-services__desc">{s.description}</p>}
+         </span>
+-      </Reveal>
++      </li>
+     ))}
+-  </ol>
++  </Reveal>
+   <Reveal>
+     <p className="eyeq-section__lede">{servicesIntro[0]}</p>
+     <a className="eyeq-services__more" href="/services">
+       Services →
+
+[0m
+[0m← [0mEdit src/components/dom/Sections.tsx
+Index: /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/components/dom/Sections.tsx
+===================================================================
+--- /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/components/dom/Sections.tsx
++++ /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/components/dom/Sections.tsx
+@@ -267,9 +267,9 @@
+ <div className="eyeq-lenses__inner">
+   <MaskedHeadline id="lenses-h" text={lensHeading} className="eyeq-h2" />
+   <ul className="eyeq-lenses__rows">
+     {lenses.map((lens) => (
+-      <Reveal as="li" key={lens.name}>
++      <Reveal as="li" key={lens.name} variant="wipe">
+         <h3 className="eyeq-lenses__name">
+           {lens.name.split(/(®|™)/g).map((part, i) =>
+             part === '®' || part === '™' ? (
+               <span key={i} className="eyeq-reg">
+
+[0m
+[0m← [0mEdit src/components/dom/Sections.tsx
+Index: /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/components/dom/Sections.tsx
+===================================================================
+--- /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/components/dom/Sections.tsx
++++ /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/components/dom/Sections.tsx
+@@ -294,27 +294,35 @@
+   );
+ }
+ 
+ // R4 — Reviews. Aggregate only (no per-card stars); 1 featured + 5 compact.
++// Counters animate ONLY the two real numbers (4.9 score, 208 count).
+ export function ReviewsSection() {
+   const [featured, ...rest] = reviews;
++  const countMatch = reviewsAggregateSuffix.match(/\d+/);
++  const reviewCount = countMatch ? parseInt(countMatch[0], 10) : 0;
++  const score = parseFloat(reviewsAggregate);
+   return (
+     <section className="eyeq-e eyeq-section" aria-labelledby="reviews-h">
+       <Reveal>
+         <p className="eyeq-microcap eyeq-microcap--light eyeq-section__eyebrow eyeq-e__microcap">
+           {reviewsHeading}
+         </p>
+       </Reveal>
+       <MaskedHeadline id="reviews-h" text={reviewsSub} className="eyeq-h2 eyeq-section__h2" />
+-      <Reveal>
++      <Reveal variant="rise">
+         <div className="eyeq-reviews__agg">
+-          <span className="eyeq-reviews__score eyeq-numerals">{reviewsAggregate}</span>
+-          <span className="eyeq-reviews__count">{reviewsAggregateSuffix}</span>
++          <span className="eyeq-reviews__score eyeq-numerals">
++            <CountUp target={score} decimals={1} />
++          </span>
++          <span className="eyeq-reviews__count">
++            (<CountUp target={reviewCount} /> reviews)
++          </span>
+         </div>
+       </Reveal>
+       <div className="eyeq-reviews__grid">
+         {featured && (
+-          <Reveal className="eyeq-review--featured">
++          <Reveal variant="scale" className="eyeq-review--featured">
+             <figure className="eyeq-review eyeq-review--featured">
+               <span className="eyeq-review__mono" aria-hidden="true">
+                 {featured.initials}
+               </span>
+@@ -323,9 +331,9 @@
+             </figure>
+           </Reveal>
+         )}
+         {rest.map((r) => (
+-          <Reveal key={`${r.initials}-${r.text.slice(0, 12)}`}>
++          <Reveal key={`${r.initials}-${r.text.slice(0, 12)}`} variant="rise">
+             <figure className="eyeq-review">
+               <span className="eyeq-review__mono" aria-hidden="true">
+                 {r.initials}
+               </span>
+
+[0m
+[0m← [0mEdit src/components/dom/Sections.tsx
+Index: /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/components/dom/Sections.tsx
+===================================================================
+--- /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/components/dom/Sections.tsx
++++ /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/components/dom/Sections.tsx
+@@ -358,31 +358,30 @@
+   </p>
+ </Reveal>
+ <MaskedHeadline id="visit-h" text="Visit our store" className="eyeq-h2 eyeq-section__h2" />
+ <div className="eyeq-visit__grid">
+-  <Reveal>
+-    <ul className="eyeq-visit__rows" aria-label="Hours, address and phone">
+-      {store.hours.map((h) => (
+-        <li key={h.days}>
+-          <span className="eyeq-ledger__k">{h.days}</span>
+-          <span className="eyeq-numerals">{h.time}</span>
+-        </li>
+-      ))}
+-      <li>
+-        <span className="eyeq-ledger__k">Address</span>
+-        <span>
+-          {store.address.line1}, {store.address.line2}
+-        </span>
++  <Reveal as="ul" className="eyeq-visit__rows eyeq-ledger-draw">
++    <span className="eyeq-sr-only">Hours, address and phone</span>
++    {store.hours.map((h) => (
++      <li key={h.days}>
++        <span className="eyeq-ledger__k">{h.days}</span>
++        <span className="eyeq-numerals">{h.time}</span>
+       </li>
+-      <li>
+-        <span className="eyeq-ledger__k">Phone</span>
+-        <span>
+-          <a href={store.phoneHref}>{store.phone}</a>
+-        </span>
+-      </li>
+-    </ul>
++    ))}
++    <li>
++      <span className="eyeq-ledger__k">Address</span>
++      <span>
++        {store.address.line1}, {store.address.line2}
++      </span>
++    </li>
++    <li>
++      <span className="eyeq-ledger__k">Phone</span>
++      <span>
++        <a href={store.phoneHref}>{store.phone}</a>
++      </span>
++    </li>
+   </Reveal>
+-  <Reveal>
++  <Reveal variant="scale" className="eyeq-visit__sticky">
+     <div className="eyeq-visit__card">
+       <BookingCTA label={store.booking.labelHomepage} newTab variant="ink" />
+       <p>
+         <a className="eyeq-visit__email" href={store.emailHref}>
+@@ -391,9 +390,9 @@
+       </p>
+     </div>
+   </Reveal>
+ </div>
+-<Reveal>
++<Reveal variant="clip">
+   <div className="eyeq-visit__map">
+     <MapEmbed compact />
+   </div>
+ </Reveal>
+
+[0m
+[0m← [0mEdit src/components/dom/Sections.tsx
+Index: /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/components/dom/Sections.tsx
+===================================================================
+--- /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/components/dom/Sections.tsx
++++ /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/components/dom/Sections.tsx
+@@ -35,13 +35,14 @@
+   scale: 'eyeq-e__reveal--scale',
+   wipe: 'eyeq-e__reveal--wipe',
+ };
+ 
+-function Reveal({ children, className = '', as: Tag = 'div', variant = 'fade' as RevealVariant }: {
++function Reveal({ children, className = '', as: Tag = 'div', variant = 'fade' as RevealVariant, ...rest }: {
+   children: React.ReactNode;
+   className?: string;
+   as?: 'div' | 'li' | 'figure' | 'ol' | 'ul';
+   variant?: RevealVariant;
++  [key: string]: unknown;
+ }) {
+   const ref = useRef<HTMLDivElement>(null);
+   useEffect(() => {
+     const el = ref.current;
+
+[0m
+[0m← [0mEdit src/components/dom/Sections.tsx
+Index: /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/components/dom/Sections.tsx
+===================================================================
+--- /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/components/dom/Sections.tsx
++++ /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/components/dom/Sections.tsx
+@@ -66,9 +66,9 @@
+     return () => io.disconnect();
+   }, []);
+   return (
+     // @ts-expect-error dynamic tag with className/ref
+-    <Tag ref={ref} className={`${REVEAL_CLASS[variant]} ${className}`.trim()}>
++    <Tag ref={ref} className={`${REVEAL_CLASS[variant]} ${className}`.trim()} {...rest}>
+       {children}
+     </Tag>
+   );
+ }
+
+[0m
+[0m← [0mEdit src/components/dom/Sections.tsx
+Index: /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/components/dom/Sections.tsx
+===================================================================
+--- /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/components/dom/Sections.tsx
++++ /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/components/dom/Sections.tsx
+@@ -359,10 +359,9 @@
+   </p>
+ </Reveal>
+ <MaskedHeadline id="visit-h" text="Visit our store" className="eyeq-h2 eyeq-section__h2" />
+ <div className="eyeq-visit__grid">
+-  <Reveal as="ul" className="eyeq-visit__rows eyeq-ledger-draw">
+-    <span className="eyeq-sr-only">Hours, address and phone</span>
++  <Reveal as="ul" className="eyeq-visit__rows eyeq-ledger-draw" aria-label="Hours, address and phone">
+     {store.hours.map((h) => (
+       <li key={h.days}>
+         <span className="eyeq-ledger__k">{h.days}</span>
+         <span className="eyeq-numerals">{h.time}</span>
+
+[0m
+[0m# [0mTodos
+[✓] Polish lane-e.css: H1 lines, CTA wipe, hairlines, section variants, header hide/invert, footer, rails skew
+[✓] WhiteSection H1 masked split-line reveal + settle
+[✓] Header hide-on-down/show-on-up + smooth inversion
+[✓] Sections differentiated reveals + real counters (4.9/208)
+[•] LogoRails velocity skew + frame tick + StoreBits/Footer/CTA polish
+[ ] Verify: vite 5301, screenshots + video to docs/phase4/qa/polish/WHITE-*, look, stop
+[0m
+[0m← [0mEdit src/components/dom/LogoRails.tsx
+Index: /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/components/dom/LogoRails.tsx
+===================================================================
+--- /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/components/dom/LogoRails.tsx
++++ /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/components/dom/LogoRails.tsx
+@@ -60,9 +60,10 @@
+   speed: number;
+ }) {
+   const trackRef = useRef<HTMLDivElement>(null);
+   const setRef = useRef<HTMLDivElement>(null);
+-  const stateRef = useRef({ offset: 0, last: 0, vel: 1, hover: 1, target: 1 });
++  const rootRef = useRef<HTMLDivElement>(null);
++  const stateRef = useRef({ offset: 0, last: 0, vel: 1, hover: 1, target: 1, kick: 0, skew: 0 });
+   const runningRef = useRef(running);
+   const speedRef = useRef(speed);
+   useEffect(() => {
+     runningRef.current = running;
+@@ -72,18 +73,20 @@
+   useEffect(() => {
+     const track = trackRef.current;
+     const set = setRef.current;
+     if (!track || !set) return;
++    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+     const st = stateRef.current;
+     st.offset = direction === 1 ? -set.offsetHeight : 0;
+     let raf = 0;
+-    // ±15% scroll-velocity coupling, lerped over ~400ms (PLAN-MASTER §8).
++    // ±15% scroll-velocity coupling, lerped over ~400ms (PLAN-MASTER §8) +
++    // WHITE polish: skew ≤2° with scroll velocity, eased back; frame numbers
++    // tick via --rv (see lane-e.css) and the --hot glow while travelling.
+     let lastY = window.scrollY;
+     const onScroll = () => {
+       const y = window.scrollY;
+-      const v = Math.min(1.15, Math.max(0.85, 1 + Math.min(3, Math.abs(y - lastY) / 240) * 0.05));
++      st.kick = Math.max(-3, Math.min(3, (y - lastY) / 240));
+       lastY = y;
+-      st.vel += (v - st.vel) * 0.12;
+     };
+     window.addEventListener('scroll', onScroll, { passive: true });
+ 
+     const tick = (t: number) => {
+@@ -96,17 +99,25 @@
+       const dt = Math.min(0.05, (t - st.last) / 1000 || 0.016);
+       st.last = t;
+       // Hover 72→20 eased over ~400ms (PLAN-MASTER §8).
+       st.hover += (st.target - st.hover) * 0.12;
++      const vTarget = Math.min(1.15, Math.max(0.85, 1 + Math.min(3, Math.abs(st.kick)) * 0.05));
++      st.vel += (vTarget - st.vel) * 0.12;
+       const step = speedRef.current * st.vel * st.hover * dt;
+       if (direction === 1) {
+         st.offset += step;
+         if (st.offset >= 0) st.offset -= h;
+       } else {
+         st.offset -= step;
+         if (st.offset <= -h) st.offset += h;
+       }
+-      track.style.transform = `translate3d(0, ${st.offset.toFixed(1)}px, 0)`;
++      // Signed skew follows scroll velocity, decays to 0 when still.
++      const skewTarget = Math.max(-2, Math.min(2, st.kick * 0.6));
++      st.skew += (skewTarget - st.skew) * 0.12;
++      st.kick *= 0.92;
++      track.style.transform = `translate3d(0, ${st.offset.toFixed(1)}px, 0) skewY(${st.skew.toFixed(2)}deg)`;
++      track.style.setProperty('--rv', (st.skew * 0.8).toFixed(2));
++      rootRef.current?.classList.toggle('eyeq-rail--hot', Math.abs(st.kick) > 0.4);
+     };
+     st.last = performance.now();
+     raf = requestAnimationFrame(tick);
+     return () => {
+@@ -121,8 +132,9 @@
+ 
+   const copies = [0, 1];
+   return (
+     <div
++      ref={rootRef}
+       className="eyeq-rail"
+       role="presentation"
+       onMouseEnter={() => setHover(20 / 72)}
+       onMouseLeave={() => setHover(1)}
+
+[0m
+[0m← [0mEdit src/components/dom/lane-e.css
+Index: /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/components/dom/lane-e.css
+===================================================================
+--- /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/components/dom/lane-e.css
++++ /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/components/dom/lane-e.css
+@@ -1687,8 +1687,10 @@
+   will-change: transform;
+ }
+ .eyeq-rail__num {
+   font-variant-numeric: tabular-nums;
++  /* Ticking: numbers nudge with rail velocity (--rv from LogoRails rAF). */
++  transform: translateY(calc(var(--rv, 0) * 1px));
+   transition:
+     opacity 0.4s var(--eyeq-ease-out),
+     transform 0.4s var(--eyeq-ease-out);
+ }
+
+[0m
+[0m← [0mEdit src/components/dom/LogoRails.tsx
+Index: /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/components/dom/LogoRails.tsx
+===================================================================
+--- /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/components/dom/LogoRails.tsx
++++ /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/components/dom/LogoRails.tsx
+@@ -179,11 +179,22 @@
+ useEffect(() => {
+   const track = trackRef.current;
+   const set = setRef.current;
+   if (!track || !set) return;
++  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+   let raf = 0;
+   let offset = 0;
+   let last = performance.now();
++  // WHITE polish: same velocity skew as the vertical rails (skewX ≤2°).
++  let kick = 0;
++  let skew = 0;
++  let lastY = window.scrollY;
++  const onScroll = () => {
++    const y = window.scrollY;
++    kick = Math.max(-3, Math.min(3, (y - lastY) / 240));
++    lastY = y;
++  };
++  window.addEventListener('scroll', onScroll, { passive: true });
+   const tick = (t: number) => {
+     raf = requestAnimationFrame(tick);
+     const w = set.offsetWidth || 1;
+     if (!runningRef.current) {
+@@ -193,12 +204,18 @@
+     const dt = Math.min(0.05, (t - last) / 1000 || 0.016);
+     last = t;
+     offset -= speedRef.current * dt;
+     if (offset <= -w) offset += w;
+-    track.style.transform = `translate3d(${offset.toFixed(1)}px, 0, 0)`;
++    const skewTarget = Math.max(-2, Math.min(2, kick * 0.6));
++    skew += (skewTarget - skew) * 0.12;
++    kick *= 0.92;
++    track.style.transform = `translate3d(${offset.toFixed(1)}px, 0, 0) skewX(${skew.toFixed(2)}deg)`;
+   };
+   raf = requestAnimationFrame(tick);
+-  return () => cancelAnimationFrame(raf);
++  return () => {
++    cancelAnimationFrame(raf);
++    window.removeEventListener('scroll', onScroll);
++  };
+ }, []);
+ 
+ const all = [...brands, ...insurers];
+ return (
+
+[0m
+[0m← [0mEdit src/components/dom/StoreBits.tsx
+Index: /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/components/dom/StoreBits.tsx
+===================================================================
+--- /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/components/dom/StoreBits.tsx
++++ /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/components/dom/StoreBits.tsx
+@@ -1,13 +1,36 @@
+-import { useState } from 'react';
++import { useEffect, useRef, useState } from 'react';
+ import { store } from '../../data';
+ 
+ // Lane E — shared store bits used by WhiteSection (white act) and Visit (R5).
+ // All values verbatim from brief §2 via src/data/store.json.
++// WHITE polish: hairline draws (scaleX 0→1) + staggered text via .is-in.
+ 
+ export function StoreLedger({ idPrefix = 'ledger' }: { idPrefix?: string }) {
++  const ref = useRef<HTMLUListElement>(null);
++  useEffect(() => {
++    const el = ref.current;
++    if (!el) return;
++    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
++      el.classList.add('is-in');
++      return;
++    }
++    const io = new IntersectionObserver(
++      (entries) => {
++        entries.forEach((en) => {
++          if (en.isIntersecting) {
++            en.target.classList.add('is-in');
++            io.disconnect();
++          }
++        });
++      },
++      { threshold: 0.2, rootMargin: '0px 0px -12% 0px' },
++    );
++    io.observe(el);
++    return () => io.disconnect();
++  }, []);
+   return (
+-    <ul className="eyeq-white__ledger" aria-label="Store information" id={idPrefix}>
++    <ul ref={ref} className="eyeq-white__ledger eyeq-ledger-draw" aria-label="Store information" id={idPrefix}>
+       <li>
+         <span className="eyeq-ledger__k">Address</span>
+         <span className="eyeq-ledger__v">
+           {store.address.line1}, {store.address.line2}
+
+[0m
+[0m← [0mEdit src/components/dom/Footer.tsx
+Index: /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/components/dom/Footer.tsx
+===================================================================
+--- /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/components/dom/Footer.tsx
++++ /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/components/dom/Footer.tsx
+@@ -1,14 +1,39 @@
++import { useEffect, useRef } from 'react';
+ import { store } from '../../data';
+ 
+ // Lane E — Footer (PLAN-MASTER §3.1/R6, Void). Store block (new store only) →
+ // Terms and Policies expander (Refund/Privacy/Terms trio) → © year EyeQ
+ // Vision Care → Replay film, Back to top (brief §6d: NO Browse frames /
+ // catalog link — nothing not on the live site). Map embed lives in
+ // Visit, never repeated here.
++// WHITE polish: rise entrance + base hairline draw via .is-in (RM = static).
+ export function Footer({ onReplayFilm }: { onReplayFilm?: () => void }) {
+   const year = new Date().getFullYear();
++  const ref = useRef<HTMLElement>(null);
+ 
++  useEffect(() => {
++    const el = ref.current;
++    if (!el) return;
++    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
++      el.classList.add('is-in');
++      return;
++    }
++    const io = new IntersectionObserver(
++      (entries) => {
++        entries.forEach((en) => {
++          if (en.isIntersecting) {
++            en.target.classList.add('is-in');
++            io.disconnect();
++          }
++        });
++      },
++      { threshold: 0.15 },
++    );
++    io.observe(el);
++    return () => io.disconnect();
++  }, []);
++
+   const replay = () => {
+     if (onReplayFilm) {
+       onReplayFilm();
+       return;
+
+[0m
+[0m← [0mEdit src/components/dom/Footer.tsx
+Index: /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/components/dom/Footer.tsx
+===================================================================
+--- /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/components/dom/Footer.tsx
++++ /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/components/dom/Footer.tsx
+@@ -47,10 +47,10 @@
+   window.scrollTo({ top: 0, behavior: 'auto' });
+ };
+ 
+ return (
+-  <footer className="eyeq-e eyeq-footer">
+-    <div className="eyeq-footer__grid">
++  <footer ref={ref} className="eyeq-e eyeq-footer">
++    <div className="eyeq-footer__grid eyeq-footer__reveal">
+       <div className="eyeq-footer__store">
+         <p className="eyeq-microcap eyeq-microcap--dark" style={{ margin: '0 0 16px' }}>
+           VISIT OUR STORE
+         </p>
+
+[0m
+[0m← [0mEdit src/components/dom/BookingCTA.tsx
+Index: /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/components/dom/BookingCTA.tsx
+===================================================================
+--- /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/components/dom/BookingCTA.tsx
++++ /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/components/dom/BookingCTA.tsx
+@@ -46,10 +46,11 @@
+         <span>{label}</span>
+         <span>{label}</span>
+       </span>
+       <span className="eyeq-sr-only">{label}</span>
+-      <span className="eyeq-arrow" aria-hidden="true">
+-        →
++      <span className="eyeq-cta__arrows" aria-hidden="true">
++        <span className="eyeq-arrow">→</span>
++        <span className="eyeq-arrow">→</span>
+       </span>
+     </a>
+   );
+ }
+
+[0m
+[0m$ [0mnpx tsc -b 2>&1 | head -30
+npm notice run eyeq-vision-care@0.1.0 npx
+npm notice run 'tsc' -b
+[0m
+[0m$ [0mrtk lint src/components/dom --max-warnings 0 2>&1 | head -30
+ESLint: 1 errors, 0 warnings in 1 files
+Top rules:
+  react-hooks/set-state-in-effect (1x)
+
+Top files:
+  src/components/dom/Header.tsx (1 issues)
+    react-hooks/set-state-in-effect (1)
+[full output: rtk recall 3d10c66ca856]
+[0m
+[0m← [0mEdit src/components/dom/Header.tsx
+Index: /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/components/dom/Header.tsx
+===================================================================
+--- /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/components/dom/Header.tsx
++++ /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/components/dom/Header.tsx
+@@ -69,18 +69,20 @@
+ }, []);
+ 
+ // WHITE polish: act change always reveals the bar (orientation first), and
+ // the logo crossfade gets a 250ms mask so the dark↔paper swap never pops.
+-const prevThemeRef = useRef(theme);
++// Render-phase adjust (idiomatic prev-value pattern — no set-state-in-effect).
++const [prevTheme, setPrevTheme] = useState(theme);
++if (prevTheme !== theme) {
++  setPrevTheme(theme);
++  setBarHidden(false);
++  setSwapping(true);
++}
+ useEffect(() => {
+-  if (prevThemeRef.current !== theme) {
+-    prevThemeRef.current = theme;
+-    setBarHidden(false);
+-    setSwapping(true);
+-    const t = window.setTimeout(() => setSwapping(false), 260);
+-    return () => window.clearTimeout(t);
+-  }
+-}, [theme]);
++  if (!swapping) return;
++  const t = window.setTimeout(() => setSwapping(false), 260);
++  return () => window.clearTimeout(t);
++}, [swapping]);
+ 
+ useEffect(() => {
+   if (!menuOpen) return;
+   closeBtnRef.current?.focus();
+
+[0m
+[0m$ [0mrtk lint src/components/dom --max-warnings 0 2>&1 | head -20 && npx tsc -b 2>&1 | head -20
+ESLint: No issues found
+npm notice run eyeq-vision-care@0.1.0 npx
+npm notice run 'tsc' -b
+[0m
+[0m$ [0mrtk ls docs/phase4/qa/polish/ 2>/dev/null; rtk ls docs/phase4/qa/ 2>/dev/null; rtk ls /var/folders/79/kmzzxdrj3zv5njqg4n32mp0m0000gp/T/opencode 2>/dev/null | head
+CAPS-beatA-p002.png  13.5K
+CAPS-lenses-p030.png  26.9K
+CAPS-lenses-p036.png  37.0K
+CAPS-lenses-velvet.png  48.8K
+page@57a95e77a6c8d7c5183a4197184cacf9.webm  0B
+A/
+B/
+C/
+D/
+E/
+F/
+beats/
+polish/
+v1/
+cc0/
+forge-probe/
+halo-src/
+halo-test/
+p2-data/
+p2-shots/
+p2-verify/
+pw-verify/
+red-check/
+s2-pw/
+[0m
+[0m$ [0mnohup npx vite --port 5301 --strictPort > /var/folders/79/kmzzxdrj3zv5njqg4n32mp0m0000gp/T/opencode/white-5301.log 2>&1 & sleep 6 && curl -s -o /dev/null -w "%{http_code}" http://localhost:5301/v1.html
+200
+[0m
+[0m← [0mWrite white-capture.tmp.mjs
+Wrote file successfully.
+[0m
+[0m$ [0mnode white-capture.tmp.mjs
+VIDEO_SRC=/Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/docs/phase4/qa/polish/page@a93016a37a5b2c8cd06a10077ad39a42.webm
+ERRORS=[]
+[0m
+[0m$ [0mmv "docs/phase4/qa/polish/page@a93016a37a5b2c8cd06a10077ad39a42.webm" docs/phase4/qa/polish/WHITE-scroll.webm && rm white-capture.tmp.mjs && ls -la docs/phase4/qa/polish/ | rtk grep WHITE
+-rw-r--r--@  1 admin  staff    71574 Sep 27 22:43 WHITE-about.png
+-rw-r--r--@  1 admin  staff     4196 Sep 27 22:43 WHITE-cta-hover.png
+-rw-r--r--@  1 admin  staff     9855 Sep 27 22:43 WHITE-footer.png
+-rw-r--r--@  1 admin  staff   259023 Sep 27 22:43 WHITE-h1.png
+-rw-r--r--@  1 admin  staff   154509 Sep 27 22:43 WHITE-header-hidden.png
+-rw-r--r--@  1 admin  staff   201993 Sep 27 22:43 WHITE-header-shown.png
+-rw-r--r--@  1 admin  staff    24340 Sep 27 22:43 WHITE-ledger.png
+-rw-r--r--@  1 admin  staff    25721 Sep 27 22:43 WHITE-lenses.png
+-rw-r--r--@  1 admin  staff    57657 Sep 27 22:43 WHITE-reviews.png
+-rw-r--r--@  1 admin  staff  2946794 Sep 27 22:44 WHITE-scroll.webm
+-rw-r--r--@  1 admin  staff    57375 Sep 27 22:43 WHITE-services.png
+-rw-r--r--@  1 admin  staff    45109 Sep 27 22:43 WHITE-visit.png
+[0m
+[0m→ [0mRead docs/phase4/qa/polish/WHITE-footer.png
+[0m→ [0mRead docs/phase4/qa/polish/WHITE-h1.png
+[0m→ [0mRead docs/phase4/qa/polish/WHITE-header-shown.png
+[0m→ [0mRead docs/phase4/qa/polish/WHITE-header-hidden.png
+[0m→ [0mRead docs/phase4/qa/polish/WHITE-services.png
+[0m→ [0mRead docs/phase4/qa/polish/WHITE-reviews.png
+[0m
+[0m← [0mEdit src/components/dom/Footer.tsx
+Index: /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/components/dom/Footer.tsx
+===================================================================
+--- /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/components/dom/Footer.tsx
++++ /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/components/dom/Footer.tsx
+@@ -47,10 +47,10 @@
+   window.scrollTo({ top: 0, behavior: 'auto' });
+ };
+ 
+ return (
+-  <footer ref={ref} className="eyeq-e eyeq-footer">
+-    <div className="eyeq-footer__grid eyeq-footer__reveal">
++  <footer ref={ref} className="eyeq-e eyeq-footer eyeq-footer__reveal">
++    <div className="eyeq-footer__grid">
+       <div className="eyeq-footer__store">
+         <p className="eyeq-microcap eyeq-microcap--dark" style={{ margin: '0 0 16px' }}>
+           VISIT OUR STORE
+         </p>
+
+[0m
+[0m→ [0mRead docs/phase4/qa/polish/WHITE-visit.png
+[0m→ [0mRead docs/phase4/qa/polish/WHITE-lenses.png
+[0m
+[0m← [0mWrite white-recheck.tmp.mjs
+Wrote file successfully.
+[0m
+[0m$ [0mnode white-recheck.tmp.mjs; rm white-recheck.tmp.mjs
+LENSES=[
+ "eyeq-e__reveal--wipe | opacity=0 clip=inset(0px 100% 0px 0px)",
+ "eyeq-e__reveal--wipe | opacity=0 clip=inset(0px 100% 0px 0px)",
+ "eyeq-e__reveal--wipe | opacity=0 clip=inset(0px 100% 0px 0px)"
+]
+FOOTER={"cls":"eyeq-e eyeq-footer eyeq-footer__reveal is-in","opacity":"1"}
+CTA={"wipe":"matrix(1, 0, 0, 1, 0, 0)","arrow2":"none op=1"}
+HEADER_AFTER_DOWN=eyeq-header eyeq-header--light is-scrolled--light is-hiddenbar
+HEADER_AFTER_UP=eyeq-header eyeq-header--light is-scrolled--light
+ERRORS=[]
+[0m
+[0m→ [0mRead docs/phase4/qa/polish/WHITE-about.png
+[0m
+[0m← [0mEdit src/components/dom/Sections.tsx
+Index: /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/components/dom/Sections.tsx
+===================================================================
+--- /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/components/dom/Sections.tsx
++++ /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/components/dom/Sections.tsx
+@@ -43,27 +43,34 @@
+   variant?: RevealVariant;
+   [key: string]: unknown;
+ }) {
+   const ref = useRef<HTMLDivElement>(null);
++  const variantRef = useRef(variant);
++  variantRef.current = variant;
+   useEffect(() => {
+     const el = ref.current;
+     if (!el) return;
+     if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+       el.classList.add('is-in');
+       return;
+     }
++    // Clip-hidden elements have zero painted area, so IntersectionObserver
++    // never reports them as intersecting — observe the parent instead and
++    // mark the element itself. (Fade/rise/scale keep self-observation.)
++    const v = variantRef.current;
++    const target = (v === 'clip' || v === 'wipe') && el.parentElement ? el.parentElement : el;
+     const io = new IntersectionObserver(
+       (entries) => {
+         entries.forEach((en) => {
+           if (en.isIntersecting) {
+-            en.target.classList.add('is-in');
+-            io.unobserve(en.target);
++            el.classList.add('is-in');
++            io.disconnect();
+           }
+         });
+       },
+       { threshold: 0.12, rootMargin: '0px 0px -18% 0px' },
+     );
+-    io.observe(el);
++    io.observe(target);
+     return () => io.disconnect();
+   }, []);
+   return (
+     // @ts-expect-error dynamic tag with className/ref
+
+[0m
+[0m← [0mEdit src/components/dom/Sections.tsx
+Index: /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/components/dom/Sections.tsx
+===================================================================
+--- /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/components/dom/Sections.tsx
++++ /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/components/dom/Sections.tsx
+@@ -55,20 +55,25 @@
+   }
+   // Clip-hidden elements have zero painted area, so IntersectionObserver
+   // never reports them as intersecting — observe the parent instead and
+   // mark the element itself. (Fade/rise/scale keep self-observation.)
++  // The parent can be tall (a section), so gate on the ELEMENT's own
++  // viewport position with a threshold ladder for repeated callbacks.
+   const v = variantRef.current;
+-  const target = (v === 'clip' || v === 'wipe') && el.parentElement ? el.parentElement : el;
++  const clipped = v === 'clip' || v === 'wipe';
++  const target = clipped && el.parentElement ? el.parentElement : el;
+   const io = new IntersectionObserver(
+     (entries) => {
+       entries.forEach((en) => {
+-        if (en.isIntersecting) {
+-          el.classList.add('is-in');
+-          io.disconnect();
+-        }
++        if (!en.isIntersecting) return;
++        if (clipped && el.getBoundingClientRect().top > window.innerHeight * 0.85) return;
++        el.classList.add('is-in');
++        io.disconnect();
+       });
+     },
+-    { threshold: 0.12, rootMargin: '0px 0px -18% 0px' },
++    clipped
++      ? { threshold: [0, 0.12, 0.25, 0.5, 0.75, 1] }
++      : { threshold: 0.12, rootMargin: '0px 0px -18% 0px' },
+   );
+   io.observe(target);
+   return () => io.disconnect();
+ }, []);
+
+[0m
+[0m$ [0mrtk lint src/components/dom --max-warnings 0 2>&1 | head -10 && npx tsc -b 2>&1 | head -10
+ESLint: 1 errors, 0 warnings in 1 files
+Top rules:
+  react-hooks/refs (1x)
+
+Top files:
+  src/components/dom/Sections.tsx (1 issues)
+    react-hooks/refs (1)
+[full output: rtk recall 26b22c9134f6]
+npm notice run eyeq-vision-care@0.1.0 npx
+npm notice run 'tsc' -b
+src/canvas/SponsorField.tsx(149,77): error TS6133: 'solo' is declared but its value is never read.
+[0m
+[0m← [0mEdit src/components/dom/Sections.tsx
+Index: /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/components/dom/Sections.tsx
+===================================================================
+--- /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/components/dom/Sections.tsx
++++ /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/components/dom/Sections.tsx
+@@ -43,10 +43,8 @@
+   variant?: RevealVariant;
+   [key: string]: unknown;
+ }) {
+   const ref = useRef<HTMLDivElement>(null);
+-  const variantRef = useRef(variant);
+-  variantRef.current = variant;
+   useEffect(() => {
+     const el = ref.current;
+     if (!el) return;
+     if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+
+[0m
+[0m← [0mEdit src/components/dom/Sections.tsx
+Index: /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/components/dom/Sections.tsx
+===================================================================
+--- /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/components/dom/Sections.tsx
++++ /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/components/dom/Sections.tsx
+@@ -55,10 +55,9 @@
+ // never reports them as intersecting — observe the parent instead and
+ // mark the element itself. (Fade/rise/scale keep self-observation.)
+ // The parent can be tall (a section), so gate on the ELEMENT's own
+ // viewport position with a threshold ladder for repeated callbacks.
+-const v = variantRef.current;
+-const clipped = v === 'clip' || v === 'wipe';
++const clipped = variant === 'clip' || variant === 'wipe';
+ const target = clipped && el.parentElement ? el.parentElement : el;
+ const io = new IntersectionObserver(
+   (entries) => {
+     entries.forEach((en) => {
+
+[0m
+[0m← [0mEdit src/components/dom/Sections.tsx
+Index: /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/components/dom/Sections.tsx
+===================================================================
+--- /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/components/dom/Sections.tsx
++++ /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/components/dom/Sections.tsx
+@@ -72,8 +72,9 @@
+       : { threshold: 0.12, rootMargin: '0px 0px -18% 0px' },
+   );
+   io.observe(target);
+   return () => io.disconnect();
++  // eslint-disable-next-line react-hooks/exhaustive-deps
+ }, []);
+ return (
+   // @ts-expect-error dynamic tag with className/ref
+   <Tag ref={ref} className={`${REVEAL_CLASS[variant]} ${className}`.trim()} {...rest}>
+
+[0m
+[0m$ [0mrtk lint src/components/dom --max-warnings 0 2>&1 | head -12
+ESLint: No issues found
+[0m
+[0m← [0mWrite white-recheck2.tmp.mjs
+Wrote file successfully.
+[0m
+[0m$ [0mnode white-recheck2.tmp.mjs; rm white-recheck2.tmp.mjs
+ABOUT_MEDIA=["eyeq-about__media|op=1"]
+ABOUT_CLIP=eyeq-e__reveal--clip is-in
+LENSES=["eyeq-e__reveal--wipe.is-in|op=1","eyeq-e__reveal--wipe.is-in|op=1","eyeq-e__reveal--wipe.is-in|op=1"]
+VISITMAP=["eyeq-visit__map|op=1"]
+VISIT_CLIP=eyeq-e__reveal--clip is-in|op=1
+ERRORS=[]
+[0m
+[0m→ [0mRead docs/phase4/qa/polish/WHITE-lenses.png
+[0m→ [0mRead docs/phase4/qa/polish/WHITE-about.png
+[0m→ [0mRead docs/phase4/qa/polish/WHITE-cta-hover.png
+[0m→ [0mRead docs/phase4/qa/polish/WHITE-footer.png
+[0m
+[0m← [0mWrite white-video.tmp.mjs
+Wrote file successfully.
+[0m
+[0m$ [0mnode white-video.tmp.mjs && rm white-video.tmp.mjs && rm -f docs/phase4/qa/polish/WHITE-scroll.webm && rtk ls docs/phase4/qa/polish/*.webm
+VIDEO_SRC=/Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/docs/phase4/qa/polish/page@1f6311e60d69d543c6c3b70acf312b93.webm
+docs/phase4/qa/polish/CAPS-scrub.webm  173.0K
+docs/phase4/qa/polish/FILM-scroll.webm  2.4M
+docs/phase4/qa/polish/WAVES-scrub.webm  239.9K
+docs/phase4/qa/polish/page@1f6311e60d69d543c6c3b70acf312b93.webm  1006.2K
+[0m
+[0m$ [0mmv "docs/phase4/qa/polish/page@1f6311e60d69d543c6c3b70acf312b93.webm" docs/phase4/qa/polish/WHITE-scroll.webm && ls docs/phase4/qa/polish/ | rtk grep WHITE && pkill -f "vite --port 5301" && sleep 2 && (curl -s -m 3 -o /dev/null -w "%{http_code}" http://localhost:5301/v1.html || echo " SERVER_STOPPED")
+WHITE-about.png
+WHITE-cta-hover.png
+WHITE-footer.png
+WHITE-h1.png
+WHITE-header-hidden.png
+WHITE-header-shown.png
+WHITE-ledger.png
+WHITE-lenses-rows.png
+WHITE-lenses.png
+WHITE-reviews.png
+WHITE-scroll.webm
+WHITE-services.png
+WHITE-visit.png
+000 SERVER_STOPPED
+[0m
+[0m# [0mTodos
+[✓] Polish lane-e.css: H1 lines, CTA wipe, hairlines, section variants, header hide/invert, footer, rails skew
+[✓] WhiteSection H1 masked split-line reveal + settle
+[✓] Header hide-on-down/show-on-up + smooth inversion
+[✓] Sections differentiated reveals + real counters (4.9/208)
+[✓] LogoRails velocity skew + frame tick + StoreBits/Footer/CTA polish
+[✓] Verify: vite 5301, screenshots + video to docs/phase4/qa/polish/WHITE-*, look, stop
+[0m
+POLISH-WHITE-DONE
+White act now moves as one language: masked H1 lines (0.10s stagger, optical settle), wipe+arrow-travel CTA, hairline-draw ledgers, clip/wipe/rise/scale section dialects, 4.9/208 counters only, velocity-skew rails (≤2°), hide/show header, footer rise — all expo.out, GPU-only, RM-static, zero console errors.
+Fixed a real trap found in QA: clip-path-hidden rows never intersect their own observer, so clip/wipe reveals observe the parent and gate on element position; footer is-in mismatch also fixed. Screenshots + WHITE-scroll.webm in docs/phase4/qa/polish/, server stopped, lint clean.
+Note: `npx tsc -b` reports one pre-existing error in another lane's `src/canvas/SponsorField.tsx` (`solo` unused) — untouched, not mine to fix.
+Only `src/components/dom/*` edited; no content added or changed, no npm installs.
+EXIT 0 model=meta/muse-spark-1.3-contributor

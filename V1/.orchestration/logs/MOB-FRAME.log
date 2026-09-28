@@ -1,0 +1,335 @@
+[0m
+> build · muse-spark-1.3-contributor
+[0m
+[0m→ [0mRead .
+[0m→ [0mRead docs/phase4/qa/v3
+[0m→ [0mRead package.json
+[0m→ [0mRead src/v1/FilmSequence.tsx
+[0m→ [0mRead src/v1/frameLoader.ts
+[0m→ [0mRead docs/phase4/qa/v3/F5-MOBILE.md
+[0m✱ [0mGlob "src/v1/*.css"[90m 4 matches[0m
+[0m→ [0mRead vite.config.ts
+[0m✱ [0mGrep "v1-film__stage|v1-film__canvas|film-band|is-tail"[90m in src/v1 · 11 matches[0m
+[0m→ [0mRead src/v1/v1.css[90m [limit=240][0m
+[0m
+[0m# [0mTodos
+[•] Implement fit-width band layout in FilmSequence.tsx (portrait only, ≤1.35× zoom, CSS band vars)
+[ ] Start dev server :5711 and verify no errors
+[ ] Playwright verify 390×844, 360×780, 430×932 + 1512×860 regression, look at screenshots
+[ ] Write docs/phase4/qa/v3/MOB-FRAME.md, save PNGs, stop server
+[0m
+[0m# [0mTodos
+[•] Implement fit-width band layout in src/v1/FilmSequence.tsx
+[ ] Typecheck + start dev server on :5711
+[ ] Fan out Playwright captures (390x844, 360x780, 430x932, 1512x860) at 9 key frames
+[ ] LOOK at every screenshot + write docs/phase4/qa/v3/MOB-FRAME.md
+[ ] Stop server, end MOB-FRAME-DONE
+[0m
+[0m→ [0mRead src/v1/filmCurve.ts
+[0m→ [0mRead src/v1/snap.ts
+[0m→ [0mRead qa-v3-probe3.mjs[90m [limit=80][0m
+[0m✱ [0mGrep "FilmSequence|path="/""[90m in src · 7 matches[0m
+[0m→ [0mRead index.html
+[0m✱ [0mGlob "src/main.*"[90m 1 match[0m
+[0m→ [0mRead src/main.tsx
+[0m
+[0m← [0mEdit src/v1/FilmSequence.tsx
+Index: /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/v1/FilmSequence.tsx
+===================================================================
+--- /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/v1/FilmSequence.tsx
++++ /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/v1/FilmSequence.tsx
+@@ -145,8 +145,29 @@
+   }
+   return CENTRE;
+ }
+ 
++// FRAME (ID=FRAME): fit-width band zoom profile for portrait phones.
++// Pure contain (1.0) at every wide key source frame (1,70,145,215,280,368,
++// 440,600) so the subject can never be cut; mild zoom bumps (≤1.30 ≤ 1.35
++// cap) only in tight/detail or full-frame-blur regions between keys.
++// sin² pulses → C¹-smooth blends, pure arithmetic, no allocations.
++function bandPulse(src: number, a: number, b: number): number {
++  const t = (src - a) / (b - a);
++  if (t <= 0 || t >= 1) return 0;
++  const s = Math.sin(Math.PI * t);
++  return s * s;
++}
++function bandZoom(src: number): number {
++  return (
++    1 +
++    0.2 * bandPulse(src, 232, 262) +
++    0.22 * bandPulse(src, 292, 340) +
++    0.15 * bandPulse(src, 380, 405) +
++    0.3 * bandPulse(src, 452, 560)
++  );
++}
++
+ function FilmCanvas() {
+   const sectionRef = useRef<HTMLElement>(null);
+   const stageRef = useRef<HTMLDivElement>(null);
+   const canvasRef = useRef<HTMLCanvasElement>(null);
+
+[0m
+[0m← [0mEdit src/v1/FilmSequence.tsx
+Index: /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/v1/FilmSequence.tsx
+===================================================================
+--- /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/v1/FilmSequence.tsx
++++ /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/v1/FilmSequence.tsx
+@@ -204,8 +204,13 @@
+ let lastF = -1; // last drawn fractional position; -1 = nothing yet
+ let velSmooth = 0;
+ let prevTarget = 0;
+ let batchReady = false;
++// FRAME: band-rect cache for --film-band-top/--film-band-bottom (CSS px).
++// Writes only when the rect moves ≥0.5px — no per-frame style churn.
++let dprUsed = 1;
++let lastBandTop = -1;
++let lastBandBot = -1;
+ 
+ const VOID = '#000';
+ const PAPER = '#f5f1e8';
+ 
+
+[0m
+[0m← [0mEdit src/v1/FilmSequence.tsx
+Index: /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/v1/FilmSequence.tsx
+===================================================================
+--- /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/v1/FilmSequence.tsx
++++ /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/v1/FilmSequence.tsx
+@@ -213,36 +213,75 @@
+ 
+ const VOID = '#000';
+ const PAPER = '#f5f1e8';
+ 
++// FRAME: expose the band rect (image top/bottom in viewport px) on the
++// film root so overlays can use the free black space. Cached — writes
++// only on ≥0.5px change (numbers only, no allocations per frame).
++const setBandVars = (topCss: number, botCss: number) => {
++  if (Math.abs(topCss - lastBandTop) < 0.5 && Math.abs(botCss - lastBandBot) < 0.5) return;
++  lastBandTop = topCss;
++  lastBandBot = botCss;
++  stage.style.setProperty('--film-band-top', `${topCss.toFixed(1)}px`);
++  stage.style.setProperty('--film-band-bottom', `${botCss.toFixed(1)}px`);
++};
++
+ const resize = () => {
+   // F4-PERF: canvas DPR cap 1.25 desktop, 1 on mobile widths.
+   const dpr = Math.min(canvasDprCap(), window.devicePixelRatio || 1);
++  dprUsed = dpr;
+   const w = Math.max(1, Math.round(stage.clientWidth * dpr));
+   const h = Math.max(1, Math.round(stage.clientHeight * dpr));
+   if (canvas.width !== w || canvas.height !== h) {
+     canvas.width = w;
+     canvas.height = h;
+     // Redraw at the new size — never flash blank.
+     lastF = -1;
+   }
++  // FRAME: sane band defaults (pure contain) before the first draw.
++  const cssW = stage.clientWidth;
++  const cssH = stage.clientHeight;
++  if (cssW > 0 && cssH > 0) {
++    if (cssH > cssW) {
++      const dhC = fh * (cssW / Math.max(1, fw));
++      setBandVars((cssH - dhC) / 2, (cssH + dhC) / 2);
++    } else {
++      setBandVars(0, cssH);
++    }
++  }
+ };
+ 
+ // Cover-fit blit of one frame; alpha lets two neighbours cross-blend.
+-// focalX 0..1 anchors the crop horizontally (0.5 = centre). Desktop
+-// landscape stays 0.5 (no visual change); portrait phones shift the
+-// window toward the subject side so 390×844 never cuts it. Any 0..1
+-// keeps the crop inside the image for cover-fit — clamp only to 0..1.
+-const blit = (img: Frame, alpha: number, focalX = 0.5) => {
++// focalX 0..1 anchors the crop horizontally (0.5 = centre).
++// FRAME: portrait/narrow viewports use a fit-width band instead — the
++// image fills the full width (contain horizontally, scale = viewport
++// width / film aspect) and sits vertically centred in a pure-#000 field,
++// blended toward a mild zoom (≤1.35× via bandZoom) only where the subject
++// is small enough to still fit fully. At zoom 1 dx = 0 whatever the focal
++// point, so the subject is never cut. Landscape/desktop cover unchanged.
++const blit = (img: Frame, alpha: number, focalX = 0.5, src = 1) => {
+   const cw = canvas.width;
+   const ch = canvas.height;
+-  const s = Math.max(cw / fw, ch / fh);
++  if (ch <= cw) {
++    const s = Math.max(cw / fw, ch / fh);
++    const dw = fw * s;
++    const dh = fh * s;
++    const fx = focalX < 0 ? 0 : focalX > 1 ? 1 : focalX;
++    ctx.globalAlpha = alpha;
++    ctx.drawImage(img, (cw - dw) * fx, (ch - dh) / 2, dw, dh);
++    ctx.globalAlpha = 1;
++    setBandVars(0, ch / dprUsed);
++    return;
++  }
++  const z = bandZoom(src);
++  const s = (cw / fw) * z;
+   const dw = fw * s;
+   const dh = fh * s;
+   const fx = focalX < 0 ? 0 : focalX > 1 ? 1 : focalX;
+   ctx.globalAlpha = alpha;
+   ctx.drawImage(img, (cw - dw) * fx, (ch - dh) / 2, dw, dh);
+   ctx.globalAlpha = 1;
++  setBandVars((ch - dh) / 2 / dprUsed, (ch + dh) / 2 / dprUsed);
+ };
+ 
+ const drawFrac = (f: number, fast: boolean) => {
+   if (!loader) return;
+
+[0m
+[0m← [0mEdit src/v1/FilmSequence.tsx
+Index: /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/v1/FilmSequence.tsx
+===================================================================
+--- /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/v1/FilmSequence.tsx
++++ /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/v1/FilmSequence.tsx
+@@ -295,13 +295,16 @@
+   // F5-MOBILE: portrait focal follows the SUBJECT SIDE MAP via the
+   // current source frame (1-based): 1–30 centre; 30–145 RIGHT;
+   // 145–215 →LEFT; 215–325 LEFT; 325–411 centre; 411–470 RIGHT;
+   // 470–615 centre. Smooth interpolation (no jumps). Landscape 0.5.
++  // FRAME: in the portrait fit-width band the focal steers the mild
++  // zoom (bandZoom) and is a no-op at pure contain (full width fits).
+   // Pure arithmetic per frame, no allocations.
+   const portrait = ch > cw;
+   let focalX = 0.5;
++  let src = 1;
+   if (portrait) {
+-    const src = 1 + clamp01(f) * (sourceTotal - 1);
++    src = 1 + clamp01(f) * (sourceTotal - 1);
+     focalX = mobileFocalX(src);
+   }
+   if (fast) {
+     // High velocity: single drawImage (nearest), no cross-blend.
+@@ -309,9 +312,9 @@
+     const n = loader.get(ni) ?? loader.nearest(ni)?.frame ?? null;
+     if (!n) return;
+     ctx.fillStyle = clamped / maxI >= 0.978 ? PAPER : VOID;
+     ctx.fillRect(0, 0, cw, ch);
+-    blit(n, 1, focalX);
++    blit(n, 1, focalX, src);
+     return;
+   }
+   // Nearest-loaded fallback while a frame is missing — never blank.
+   const a = loader.get(i0) ?? loader.nearest(i0)?.frame ?? null;
+@@ -319,11 +322,11 @@
+   // Opaque base: clear with pure black early, Paper at the tail so any
+   // sub-pixel edge matches the incoming act (seamless handoff).
+   ctx.fillStyle = clamped / maxI >= 0.978 ? PAPER : VOID;
+   ctx.fillRect(0, 0, cw, ch);
+-  blit(a, 1, focalX);
++  blit(a, 1, focalX, src);
+   const b = i1 !== i0 ? loader.get(i1) : null;
+-  if (b && alpha > 0.001) blit(b, alpha, focalX);
++  if (b && alpha > 0.001) blit(b, alpha, focalX, src);
+ };
+ 
+ const tick = () => {
+   if (document.hidden) {
+
+[0m
+[0m$ [0mnpx tsc --noEmit 2>&1 | tail -5; echo "TSC_EXIT=$?"
+npm notice run eyeq-vision-care@0.1.0 npx
+npm notice run 'tsc' --noEmit
+TSC_EXIT=0
+[0m
+[0m# [0mTodos
+[✓] Implement fit-width band layout in src/v1/FilmSequence.tsx
+[•] Typecheck + start dev server on :5711
+[ ] Fan out Playwright captures (390x844, 360x780, 430x932, 1512x860) at 9 key frames
+[ ] LOOK at every screenshot + write docs/phase4/qa/v3/MOB-FRAME.md
+[ ] Stop server, end MOB-FRAME-DONE
+[0m
+[0m$ [0mnohup npx vite --port 5711 --strictPort > /tmp/frame-5711.log 2>&1 & echo "SERVER_PID=$!"
+SERVER_PID=22193
+[0m
+[0m$ [0msleep 6 && rtk read /tmp/frame-5711.log --tail-lines 5 && rtk curl -s -o /dev/null -w "HTTP=%{http_code}\n" http://localhost:5711/
+VITE v8.3.1  ready in 262 ms
+
+  ➜  Local:   http://localhost:5711/
+  ➜  Network: use --host to expose
+HTTP=200
+[0m
+[0m← [0mWrite /tmp/frame-capture.mjs
+Wrote file successfully.
+[0m
+[0m• [0mCapture 390x844 film frames[90m General Agent[0m
+[0m
+[0m# [0mTodos
+[✓] Implement fit-width band layout in src/v1/FilmSequence.tsx
+[✓] Typecheck + start dev server on :5711
+[•] Fan out Playwright captures (390x844, 360x780, 430x932, 1512x860) at 9 key frames
+[ ] LOOK at every screenshot + write docs/phase4/qa/v3/MOB-FRAME.md
+[ ] Stop server, end MOB-FRAME-DONE
+[0m
+[0m• [0mCapture 360x780 film frames[90m General Agent[0m
+[0m• [0mCapture 430x932 film frames[90m General Agent[0m
+[0m• [0mCapture 1512x860 regression frames[90m General Agent[0m
+[0m✓ [0mCapture 1512x860 regression frames[90m General Agent[0m
+[0m✓ [0mCapture 390x844 film frames[90m General Agent[0m
+[0m✓ [0mCapture 430x932 film frames[90m General Agent[0m
+[0m✓ [0mCapture 360x780 film frames[90m General Agent[0m
+[0m→ [0mRead docs/phase4/qa/v3/mob-FRAME-390x844-s145.png
+[0m→ [0mRead docs/phase4/qa/v3/mob-FRAME-390x844-s280.png
+[0m→ [0mRead docs/phase4/qa/v3/mob-FRAME-390x844-s070.png
+[0m→ [0mRead docs/phase4/qa/v3/mob-FRAME-390x844-s215.png
+[0m→ [0mRead docs/phase4/qa/v3/mob-FRAME-390x844-s001.png
+[0m→ [0mRead docs/phase4/qa/v3/mob-FRAME-390x844-s500.png
+[0m→ [0mRead docs/phase4/qa/v3/mob-FRAME-390x844-s368.png
+[0m→ [0mRead docs/phase4/qa/v3/mob-FRAME-390x844-s600.png
+[0m→ [0mRead docs/phase4/qa/v3/mob-FRAME-390x844-s440.png
+[0m→ [0mRead docs/phase4/qa/v3/mob-FRAME-360x780-s001.png
+[0m→ [0mRead docs/phase4/qa/v3/mob-FRAME-360x780-s215.png
+[0m→ [0mRead docs/phase4/qa/v3/mob-FRAME-360x780-s070.png
+[0m→ [0mRead docs/phase4/qa/v3/mob-FRAME-360x780-s145.png
+[0m→ [0mRead docs/phase4/qa/v3/mob-FRAME-360x780-s280.png
+[0m→ [0mRead docs/phase4/qa/v3/mob-FRAME-360x780-s368.png
+[0m→ [0mRead docs/phase4/qa/v3/mob-FRAME-360x780-s500.png
+[0m→ [0mRead docs/phase4/qa/v3/mob-FRAME-360x780-s600.png
+[0m→ [0mRead docs/phase4/qa/v3/mob-FRAME-360x780-s440.png
+[0m→ [0mRead docs/phase4/qa/v3/mob-FRAME-430x932-s001.png
+[0m→ [0mRead docs/phase4/qa/v3/mob-FRAME-430x932-s280.png
+[0m→ [0mRead docs/phase4/qa/v3/mob-FRAME-430x932-s215.png
+[0m→ [0mRead docs/phase4/qa/v3/mob-FRAME-430x932-s070.png
+[0m→ [0mRead docs/phase4/qa/v3/mob-FRAME-430x932-s145.png
+[0m→ [0mRead docs/phase4/qa/v3/mob-FRAME-430x932-s500.png
+[0m→ [0mRead docs/phase4/qa/v3/mob-FRAME-430x932-s600.png
+[0m→ [0mRead docs/phase4/qa/v3/mob-FRAME-430x932-s368.png
+[0m→ [0mRead docs/phase4/qa/v3/mob-FRAME-430x932-s440.png
+[0m→ [0mRead docs/phase4/qa/v3/mob-FRAME-1512x860-s215.png
+[0m→ [0mRead docs/phase4/qa/v3/mob-FRAME-1512x860-s280.png
+[0m→ [0mRead docs/phase4/qa/v3/mob-FRAME-1512x860-s145.png
+[0m→ [0mRead docs/phase4/qa/v3/mob-FRAME-1512x860-s001.png
+[0m→ [0mRead docs/phase4/qa/v3/mob-FRAME-1512x860-s070.png
+[0m→ [0mRead docs/phase4/qa/v3/mob-FRAME-1512x860-s600.png
+[0m→ [0mRead docs/phase4/qa/v3/mob-FRAME-1512x860-s368.png
+[0m→ [0mRead docs/phase4/qa/v3/mob-FRAME-1512x860-s500.png
+[0m→ [0mRead docs/phase4/qa/v3/mob-FRAME-1512x860-s440.png
+[0m
+[0m# [0mTodos
+[✓] Implement fit-width band layout in src/v1/FilmSequence.tsx
+[✓] Typecheck + start dev server on :5711
+[✓] Fan out Playwright captures (390x844, 360x780, 430x932, 1512x860) at 9 key frames
+[•] LOOK at every screenshot + write docs/phase4/qa/v3/MOB-FRAME.md
+[ ] Stop server, end MOB-FRAME-DONE
+[0m
+[0m← [0mWrite docs/phase4/qa/v3/MOB-FRAME.md
+Wrote file successfully.
+[0m
+[0m$ [0mkill 22193 2>/dev/null; sleep 2; (curl -s -o /dev/null -m 3 http://localhost:5711/ && echo "SERVER_STILL_UP") || echo "SERVER_STOPPED"; ls docs/phase4/qa/v3/mob-FRAME-*.png | wc -l; git diff --stat 2>/dev/null || true
+SERVER_STOPPED
+      36
+[0m
+[0m# [0mTodos
+[✓] Implement fit-width band layout in src/v1/FilmSequence.tsx
+[✓] Typecheck + start dev server on :5711
+[✓] Fan out Playwright captures (390x844, 360x780, 430x932, 1512x860) at 9 key frames
+[✓] LOOK at every screenshot + write docs/phase4/qa/v3/MOB-FRAME.md
+[✓] Stop server, end MOB-FRAME-DONE
+[0m
+MOB-FRAME-DONE
+
+Portrait fit-width band shipped in `src/v1/FilmSequence.tsx` only: cover → contain-width band on pure #000 for `ch>cw`, pure contain at all 9 key source frames (subject never cut), mild zoom ≤1.30 in tight/blur regions only, focal side-map steers the zoom, `--film-band-top/bottom` exposed on the stage with change-cached writes, zero per-frame allocations. Verified: 36/36 shots PASS across 390×844, 360×780, 430×932 (band vars match the math) + 1512×860 regression unchanged (full cover), `tsc` clean, zero console/page errors. Shots + report in `docs/phase4/qa/v3/`; server :5711 stopped.
+EXIT 0 model=meta/muse-spark-1.3-contributor

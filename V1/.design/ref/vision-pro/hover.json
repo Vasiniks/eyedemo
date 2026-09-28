@@ -1,0 +1,59 @@
+{
+ "hovers": [
+  {
+   "el": "a",
+   "text": "Continue",
+   "changes": [
+    "self background: rgb(29, 29, 31) → rgb(39, 39, 41)"
+   ]
+  },
+  {
+   "el": "a",
+   "text": "Apple",
+   "changes": [
+    "self color: rgba(0, 0, 0, 0) → rgb(0, 0, 0)",
+    "self border: rgba(0, 0, 0, 0) → rgb(0, 0, 0)",
+    "3× child span color: rgba(0, 0, 0, 0) → rgb(0, 0, 0)",
+    "3× child span border: rgba(0, 0, 0, 0) → rgb(0, 0, 0)",
+    "2× child svg color: rgba(0, 0, 0, 0) → rgb(0, 0, 0)"
+   ]
+  },
+  {
+   "el": "a",
+   "text": "Store",
+   "changes": [
+    "self color: rgba(0, 0, 0, 0) → rgb(0, 0, 0)",
+    "self border: rgba(0, 0, 0, 0) → rgb(0, 0, 0)",
+    "4× child span color: rgba(0, 0, 0, 0) → rgb(0, 0, 0)",
+    "4× child span border: rgba(0, 0, 0, 0) → rgb(0, 0, 0)",
+    "2× child svg color: rgba(0, 0, 0, 0) → rgb(0, 0, 0)"
+   ]
+  },
+  {
+   "el": "span",
+   "text": "Store",
+   "changes": [
+    "self color: rgba(0, 0, 0, 0) → rgb(0, 0, 0)",
+    "self border: rgba(0, 0, 0, 0) → rgb(0, 0, 0)",
+    "2× child span color: rgba(0, 0, 0, 0) → rgb(0, 0, 0)",
+    "2× child span border: rgba(0, 0, 0, 0) → rgb(0, 0, 0)",
+    "child svg color: rgba(0, 0, 0, 0) → rgb(0, 0, 0)"
+   ]
+  },
+  {
+   "el": "span",
+   "text": "",
+   "changes": [
+    "self color: rgba(0, 0, 0, 0) → rgb(0, 0, 0)",
+    "self border: rgba(0, 0, 0, 0) → rgb(0, 0, 0)",
+    "child svg color: rgba(0, 0, 0, 0) → rgb(0, 0, 0)",
+    "child svg border: rgba(0, 0, 0, 0) → rgb(0, 0, 0)",
+    "child path color: rgba(0, 0, 0, 0) → rgb(0, 0, 0)"
+   ]
+  }
+ ],
+ "cursor": {
+  "custom_cursor": false,
+  "css_cursor": "auto"
+ }
+}

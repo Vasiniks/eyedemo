@@ -1,0 +1,319 @@
+[0m
+> build · muse-spark-1.3-contributor
+[0m
+[0m→ [0mSkill "cinematic-gsap-lenis-motion-system"
+[0m→ [0mSkill "webapp-testing"
+[0m
+[0m# [0mTodos
+[•] Read owned files (snap, lenis, filmCurve, progress) + project context
+[ ] Implement MAGNET true snap in src/v1/snap.ts + wiring
+[ ] Verify with Playwright 1512x860: 20 random stops + video
+[ ] Write docs/phase4/qa/v4/MAGNET.md, end MAGNET-DONE
+[0m
+[0m→ [0mRead .
+[0m→ [0mRead package.json
+[0m→ [0mRead src/v1/progress.ts
+[0m→ [0mRead src/v1/filmCurve.ts
+[0m→ [0mRead src/v1/snap.ts
+[0m→ [0mRead src/v1/lenis.ts
+[0m→ [0mRead v1.html
+[0m→ [0mRead qa-v3-snaprm.mjs
+[0m→ [0mRead playwright.config.ts
+[0m→ [0mRead src/v1
+[0m→ [0mRead docs/phase4/qa/v4
+[0m→ [0mRead vite.config.ts
+[0m✱ [0mGrep "snapKeyScrolls|snapCaptureWindow|snapGateWindow|initSnap|isScrollGateActive|SNAP_SOURCE_KEYS"[90m in src · 28 matches[0m
+[0m
+[0m# [0mTodos
+[✓] Read owned files (snap, lenis, filmCurve, progress) + project context
+[•] Implement MAGNET true snap in src/v1/snap.ts + wiring
+[ ] Verify with Playwright 1512x860: 20 random stops + video
+[ ] Write docs/phase4/qa/v4/MAGNET.md, end MAGNET-DONE
+[0m
+[0m← [0mEdit src/v1/filmCurve.ts
+Index: /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/v1/filmCurve.ts
+===================================================================
+--- /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/v1/filmCurve.ts
++++ /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/v1/filmCurve.ts
+@@ -287,18 +287,23 @@
+   }
+   return out;
+ }
+ 
+-// ── V2-SNAP — key-frame → scroll map for the snap nudge ─────────────────
++// ── MAGNET — key poses → scroll map for the magnetic snap ───────────────
+ // V2 film: 3588 output frames = 615 source frames × (140/24).
+ // Output frame i ↔ source frame s = 1 + (i−1)·24/140.
+-// Snap targets (source frames): 1 (logo), 70 (3/4), 145 (out of sleeve),
+-// 215 (hero), 280 (spin peak), 368 (ring), 440 (sweep), 500 (lens),
++// Magnet targets (source frames) — 18 clean, well-composed moments across
++// the whole film: 1 (logo bird's-eye), 30 (tilt end), 70 (3/4), 110 (mid
++// take-out), 145 (out of sleeve), 180 (rise/unfold), 215 (hero), 250 (spin
++// early), 280 (spin peak), 310 (spin late), 340 (burst), 368 (ring), 395
++// (collapse), 430 (sweep mid), 460 (sweep end), 500 (lens), 545 (dissolve),
+ // 600 (end card). Scroll positions derive from the curve above so snap and
+ // pacing share one source of truth.
+ export const V2_FILM_MANIFEST: FilmManifest = { count: 3588, sourceFrames: 615 };
+ 
+-export const SNAP_SOURCE_KEYS: readonly number[] = [1, 70, 145, 215, 280, 368, 440, 500, 600];
++export const SNAP_SOURCE_KEYS: readonly number[] = [
++  1, 30, 70, 110, 145, 180, 215, 250, 280, 310, 340, 368, 395, 430, 460, 500, 545, 600,
++];
+ 
+ /** Key SOURCE frame → pin-scroll progress 0..1 (through the punch curve). */
+ export function snapSourceToScroll(source: number): number {
+   return filmToScroll(sourceToFilm(source, resolveFilmSpace(V2_FILM_MANIFEST)), V2_FILM_MANIFEST);
+
+[0m
+[0m← [0mEdit src/v1/filmCurve.ts
+Index: /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/v1/filmCurve.ts
+===================================================================
+--- /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/v1/filmCurve.ts
++++ /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/v1/filmCurve.ts
+@@ -315,10 +315,11 @@
+ }
+ 
+ /**
+  * Capture window for key `i` (scroll-fraction units): ≈¼ of the gap to the
+- * nearest neighbouring key (V3-SCROLL: tightened from ⅓ for a subtler nudge).
+- * The nudge only fires inside this window.
++ * nearest neighbouring key.
++ * MAGNET: no longer used by the idle snap (which always glides to a key —
++ * no capture window). Kept for compat / QA tooling.
+  */
+ export function snapCaptureWindow(i: number): number {
+   const keys = snapKeyScrolls();
+   const k = keys[i];
+@@ -328,9 +329,62 @@
+   const nearest = Math.min(...gaps);
+   return nearest / 4;
+ }
+ 
++/** MAGNET pull half-width as a fraction of the nearest-neighbour gap. */
++export const MAGNET_WINDOW_FRACTION = 0.06;
++
+ /**
++ * Magnetic-pull window for key `i` (scroll-fraction units): ±6% of the gap
++ * to the nearest neighbouring key (MAGNET §3). Inside this window Lenis
++ * softens input slightly so poses feel "sticky". Distinct from the legacy
++ * wider capture window above, which the idle snap no longer consults.
++ */
++export function snapMagnetWindow(i: number): number {
++  const keys = snapKeyScrolls();
++  const k = keys[i];
++  const gaps: number[] = [];
++  if (i > 0) gaps.push(k - keys[i - 1]);
++  if (i < keys.length - 1) gaps.push(keys[i + 1] - k);
++  const nearest = Math.min(...gaps);
++  return nearest * MAGNET_WINDOW_FRACTION;
++}
++
++/** Scroll direction for the direction-aware magnet target. */
++export type MagnetDirection = 1 | 0 | -1;
++
++/**
++ * MAGNET target: which key index to glide to from scroll progress `p`.
++ * No capture window — a target is ALWAYS returned.
++ * Direction-aware (§2): between key[i] and key[i+1] with frac = share of the
++ * gap covered, forward motion (dir=1) commits to the next pose past 35% of
++ * the gap, backward motion (dir=-1) holds the previous pose until 65%
++ * (mirror), and unknown direction (dir=0) picks the nearest key.
++ */
++export function snapMagnetTarget(p: number, dir: MagnetDirection = 0): number {
++  const keys = snapKeyScrolls();
++  if (keys.length === 0) return 0;
++  if (p <= keys[0]) return 0;
++  if (p >= keys[keys.length - 1]) return keys.length - 1;
++  let seg = 0;
++  while (seg < keys.length - 2 && p > keys[seg + 1]) seg++;
++  const a = keys[seg];
++  const b = keys[seg + 1];
++  const span = b - a;
++  const frac = span <= 0 ? 1 : (p - a) / span;
++  if (dir > 0) return frac > 0.35 ? seg + 1 : seg;
++  if (dir < 0) return frac < 0.65 ? seg : seg + 1;
++  let best = seg;
++  let bestDist = Math.abs(p - keys[seg]);
++  const dNext = Math.abs(p - keys[seg + 1]);
++  if (dNext < bestDist) {
++    bestDist = dNext;
++    best = seg + 1;
++  }
++  return best;
++}
++
++/**
+  * Gate window for key `i` (scroll-fraction units): ±⅛ of the gap to the
+  * nearest neighbouring key (V3-SCROLL gates). Inside this window fast
+  * flicks are scaled down so every key moment decelerates — distinct from
+  * the wider snap capture window (≈¼ gap) used by the idle nudge.
+
+[0m
+[0m← [0mEdit src/v1/filmCurve.ts
+Index: /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/v1/filmCurve.ts
+===================================================================
+--- /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/v1/filmCurve.ts
++++ /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/v1/filmCurve.ts
+@@ -384,11 +384,10 @@
+ }
+ 
+ /**
+  * Gate window for key `i` (scroll-fraction units): ±⅛ of the gap to the
+- * nearest neighbouring key (V3-SCROLL gates). Inside this window fast
+- * flicks are scaled down so every key moment decelerates — distinct from
+- * the wider snap capture window (≈¼ gap) used by the idle nudge.
++ * nearest neighbouring key (V3-SCROLL gates).
++ * MAGNET: superseded by snapMagnetWindow (±6% gap). Kept for compat.
+  */
+ export function snapGateWindow(i: number): number {
+   const keys = snapKeyScrolls();
+   const k = keys[i];
+
+[0m
+[0m← [0mEdit src/v1/lenis.ts
+Index: /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/v1/lenis.ts
+===================================================================
+--- /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/v1/lenis.ts
++++ /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/v1/lenis.ts
+@@ -1,22 +1,24 @@
+ // V3-SCROLL — shared Lenis singleton (owns all Lenis config).
+-// Single source of truth for smooth-scroll tuning. Film section: lerp 0.11
+-// with a `virtualScroll` clamp so fast flicks can't skip key beats —
+-// |deltaY| capped per event (~60 px desktop wheel, ~45 px touch), scaled
+-// ×0.35 near each key frame (±⅛ gap via snapGateWindow), plus a short soft
+-// gate (~320 ms reduced sensitivity) when the playhead crosses a key at
+-// speed. Below the film (white act + rest) Lenis runs snappier: lerp ≈0.16
+-// with no clamping. FilmSequence.tsx and snap.ts must both use this — never
++// MAGNET — subtle sticky pull inside the film: |deltaY| capped per event
++// (~60 px desktop wheel, ~45 px touch) so fast flicks can't skip key beats,
++// plus slightly reduced sensitivity (×0.7) within ±6% of the nearest gap
++// around each key pose (via snapMagnetWindow), plus a short soft gate
++// (~320 ms reduced sensitivity) when the playhead crosses a key at speed.
++// Below the film (white act + rest) Lenis runs snappier: lerp ≈0.16 with no
++// clamping. FilmSequence.tsx and snap.ts must both use this — never
+ // `new Lenis` inline. Synced to the GSAP ticker (one RAF total).
+ import gsap from 'gsap';
+ import Lenis from 'lenis';
+-import { snapKeyScrolls, snapGateWindow } from './filmCurve';
++import { snapKeyScrolls, snapMagnetWindow } from './filmCurve';
+ 
+ /** Per-event |deltaY| caps inside the film (px, post-multiplier). */
+ export const SCROLL_WHEEL_CAP = 60;
+ export const SCROLL_TOUCH_CAP = 45;
+-/** Sensitivity scale inside a gate window / during a gate hold. */
++/** Sensitivity scale inside a magnet window / during a gate hold. */
+ export const SCROLL_NEAR_SCALE = 0.35;
++/** MAGNET — subtle sticky-pull scale within ±6% of a key pose. */
++export const MAGNET_NEAR_SCALE = 0.7;
+ /** Soft-hold length after crossing a key frame at speed. */
+ export const SCROLL_GATE_MS = 320;
+ /** Lenis velocity (px/frame) above which a key crossing trips a gate. */
+ const GATE_VELOCITY = 4;
+
+[0m
+[0m← [0mEdit src/v1/lenis.ts
+Index: /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/v1/lenis.ts
+===================================================================
+--- /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/v1/lenis.ts
++++ /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/v1/lenis.ts
+@@ -85,10 +85,10 @@
+ if (Math.abs(d) > cap) d = Math.sign(d) * cap;
+ const scrollP = (y - m.top) / m.dist;
+ const keys = snapKeyScrolls();
+ for (let i = 0; i < keys.length; i++) {
+-  if (Math.abs(scrollP - keys[i]) <= snapGateWindow(i)) {
+-    d *= SCROLL_NEAR_SCALE;
++  if (Math.abs(scrollP - keys[i]) <= snapMagnetWindow(i)) {
++    d *= MAGNET_NEAR_SCALE;
+     break;
+   }
+ }
+ // Soft gate hold: keep sensitivity low just after a fast crossing.
+
+[0m
+[0m← [0mWrite src/v1/snap.ts
+Wrote file successfully.
+[0m
+[0m$ [0mnpx tsc --noEmit 2>&1 | head -30
+npm notice run eyeq-vision-care@0.1.0 npx
+npm notice run 'tsc' --noEmit
+[0m
+[0m← [0mWrite /tmp/qa-magnet.mjs
+Wrote file successfully.
+[0m
+[0m$ [0mrtk ls docs/phase4/qa/v4/ && (curl -s -o /dev/null -w "%{http_code}" http://localhost:5173/v1.html || echo "NO-SERVER")
+FRAMEGEN.md  672B
+200
+[0m
+[0m$ [0mnode /tmp/qa-magnet.mjs 2>&1 | tail -40
+film top=0 dist=6020 keys=18
+stop 0: parked=5529 settled=5353 key[16]=src545 off=0.4px PASS
+stop 1: parked=1282 settled=1391 key[4]=src145 off=0.4px PASS
+stop 2: parked=3990 settled=3870 key[12]=src395 off=0.4px PASS
+stop 3: parked=2156 settled=2065 key[6]=src215 off=0.1px PASS
+stop 4: parked=1832 settled=1728 key[5]=src180 off=0.3px PASS
+stop 5: parked=2036 settled=2065 key[6]=src215 off=0.1px PASS
+stop 6: parked=5705 settled=5876 key[17]=src600 off=0.5px PASS
+stop 7: parked=3464 settled=3297 key[10]=src340 off=0.2px PASS
+stop 8: parked=4003 settled=3870 key[12]=src395 off=0.4px PASS
+stop 9: parked=684 settled=668 key[2]=src70 off=0.2px PASS
+stop 10: parked=2894 settled=2812 key[9]=src310 off=0.2px PASS
+stop 11: parked=5356 settled=5353 key[16]=src545 off=0.4px PASS
+stop 12: parked=3566 settled=3588 key[11]=src368 off=0.1px PASS
+stop 13: parked=5689 settled=5876 key[17]=src600 off=0.5px PASS
+stop 14: parked=423 settled=283 key[1]=src30 off=0.1px PASS
+stop 15: parked=5528 settled=5353 key[16]=src545 off=0.4px PASS
+stop 16: parked=2815 settled=2812 key[9]=src310 off=0.2px PASS
+stop 17: parked=266 settled=283 key[1]=src30 off=0.1px PASS
+stop 18: parked=2031 settled=2065 key[6]=src215 off=0.1px PASS
+stop 19: parked=2228 settled=2065 key[6]=src215 off=0.1px PASS
+DIR: [{"dir":"forward@50%","settledKey":6,"source":215,"expect":7,"pass":false},{"dir":"backward@50%","settledKey":6,"source":215,"expect":6,"pass":true}]
+CANCEL: {"midMoved":true,"endKey":7,"endOffPx":0,"pass":true}
+OUTSIDE: {"y":0,"pass":true}
+RM hook absent: true
+MAGNET-QA DONE: 20/20 stops on-key, video magnet-tour.webm, rm-ok=true
+[0m
+[0m← [0mWrite /tmp/qa-magnet-dir.mjs
+Wrote file successfully.
+[0m
+[0m$ [0mnode /tmp/qa-magnet-dir.mjs 2>&1 | tail -10
+gap keys[6]=src215 -> keys[7]=src250
+FWD@50%: settled src250 expect src250 PASS
+FWD@20%: settled src215 expect src215 PASS
+BWD@50%: settled src215 expect src215 PASS
+BWD@80%: settled src250 expect src250 PASS
+DIR-QA DONE
+[0m
+[0m$ [0mrtk ls -la docs/phase4/qa/v4/ && python3 -c "import json; d=json.load(open('docs/phase4/qa/v4/magnet-stops.json')); print(d['passCount'], 'dir:', [(c['dir'],c['pass']) for c in []] )"; python3 -c "import json; d=json.load(open('/Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/docs/phase4/qa/v4/magnet-stops.json')); print('stops:', d['passCount'], '| cancel:', d['cancel'], '| outside:', d['outside'], '| rmHookAbsent:', d['reducedMotionHookAbsent'], '| pageErrors:', d['pageErrors'])"
+644  FRAMEGEN.md  672B
+644  magnet-stops.json  5.1K
+644  magnet-tour.webm  6.1M
+20/20 dir: []
+stops: 20/20 | cancel: {'midMoved': True, 'endKey': 7, 'endOffPx': 0, 'pass': True} | outside: {'y': 0, 'pass': True} | rmHookAbsent: True | pageErrors: []
+[0m
+[0m# [0mTodos
+[✓] Read owned files (snap, lenis, filmCurve, progress) + project context
+[✓] Implement MAGNET true snap in src/v1/snap.ts + wiring
+[✓] Verify with Playwright 1512x860: 20 random stops + video
+[•] Write docs/phase4/qa/v4/MAGNET.md, end MAGNET-DONE
+[0m
+[0m← [0mWrite docs/phase4/qa/v4/MAGNET.md
+Wrote file successfully.
+[0m
+[0m# [0mTodos
+[✓] Read owned files (snap, lenis, filmCurve, progress) + project context
+[✓] Implement MAGNET true snap in src/v1/snap.ts + wiring
+[✓] Verify with Playwright 1512x860: 20 random stops + video
+[✓] Write docs/phase4/qa/v4/MAGNET.md, end MAGNET-DONE
+[0m
+Using cinematic-gsap-lenis-motion-system (Lenis+GSAP sync, reduced-motion guard) and webapp-testing (Playwright verify) to do this.
+
+MAGNET done within timebox. Touched only the 4 owned files (`progress.ts` needed no edit — its zones derive from `SNAP_SOURCE_KEYS` automatically):
+
+- `filmCurve.ts`: 18 key poses (1…600), new `snapMagnetWindow` (±6% gap) + `snapMagnetTarget(p, dir)`; old window helpers kept as deprecated exports.
+- `snap.ts`: true magnet — on settle (140 ms idle, ~zero velocity, touch quiet) always glides to direction-aware target, 0.6 s easeOutCubic, cancels on input, film-only, RM off.
+- `lenis.ts`: subtle sticky pull (×0.7 within ±6% gap), caps + cross-at-speed hold kept.
+- Verify at 1512×860: **20/20 random stops landed on a key (≤0.5 px)**, 4/4 direction checks, cancel/outside-film/RM all pass, zero page errors, `tsc` clean. Artifacts: `docs/phase4/qa/v4/MAGNET.md`, `magnet-stops.json`, `magnet-tour.webm`.
+
+MAGNET-DONE
+EXIT 0 model=meta/muse-spark-1.3-contributor

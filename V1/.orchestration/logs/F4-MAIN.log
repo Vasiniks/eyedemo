@@ -1,0 +1,734 @@
+[0m
+> build · muse-spark-1.3-contributor
+[0m
+[0m# [0mTodos
+[•] Read docs/00-BRIEF.md §6d + inspect current routes/V1 mount
+[ ] Make '/' render V1 App (reuse src/v1/App.tsx)
+[ ] Remove hard-case 3D: mv canvas/components/dev harness/models to archive/hardcase, strip imports
+[ ] Prune unused 3D deps from package.json, build passes, no three.js in bundle
+[ ] Verify 1512x860 + 390 screenshots, write F4-MAIN.md, end F4-MAIN-DONE
+[0m
+[0m→ [0mRead .
+[0m→ [0mRead docs/00-BRIEF.md
+[0m→ [0mRead package.json
+[0m→ [0mRead src
+[0m→ [0mRead vite.config.ts
+[0m→ [0mRead index.html
+[0m→ [0mRead v1.html
+[0m→ [0mRead src/app
+[0m→ [0mRead src/main.tsx
+[0m→ [0mRead src/v1/App.tsx
+[0m→ [0mRead src/v1/main.tsx
+[0m→ [0mRead src/routes/Home.tsx
+[0m→ [0mRead src/canvas
+[0m→ [0mRead src/components/canvas
+[0m→ [0mRead src/__dev__
+[0m→ [0mRead src/app/providers.tsx
+[0m→ [0mRead src/app/router.tsx
+[0m→ [0mRead src/routes
+[0m→ [0mRead public
+[0m→ [0mRead src/v1
+[0m
+[0m$ [0mrtk ls -R src/__dev__ src/canvas src/components/canvas 2>&1 | head -n 120; echo ---; rtk ls public/models/ 2>&1; echo ---; rtk ls dev-*.html v1*.html 2>&1
+C/
+D/
+E/
+F/
+b/
+rigs/
+stage/
+capture.mjs  1.1K
+main.tsx  13.4K
+runVerify.mjs  1.8K
+verify.ts  9.5K
+main.tsx  11.2K
+main.tsx  4.7K
+main.tsx  2.1K
+StandIns.tsx  4.7K
+dev-b.css  1.6K
+main.tsx  3.5K
+CaseRig.tsx  3.7K
+GlassesRig.tsx  8.5K
+SceneStage.tsx  7.3K
+SponsorField.tsx  11.3K
+materialUpgrades.ts  5.7K
+modelLoader.ts  1.8K
+progressMap.ts  6.7K
+logos.ts  4.2K
+math.ts  874B
+slots.ts  10.8K
+streakTexture.ts  1.7K
+API.md  4.8K
+CameraRig.tsx  3.0K
+Effects.tsx  2.3K
+FilmCanvas.tsx  3.3K
+HeroRigs.tsx  5.5K
+LensPortal.tsx  6.2K
+... (10 filtered)
+[+10 hidden: rtk recall 6ca6c78675fe]
+---
+case.glb  9.6M
+case.opt.glb  1.4M
+glasses.glb  1.3M
+glasses.opt.glb  385.0K
+---
+dev-C.html  332B
+dev-D.html  451B
+dev-E.html  456B
+dev-F.html  462B
+dev-b.html  441B
+v1-text.html  438B
+v1-waves.html  313B
+v1-words.html  462B
+v1.html  894B
+[0m
+[0m$ [0mrtk ls -R "src/__dev__" "src/canvas" "src/components/canvas" "src/motion" "src/store" "src/routes" 2>&1; echo ===MODELS===; rtk ls -la public/models/ 2>&1; echo ===DIST===; rtk ls dist/ 2>&1 | head -n 30; echo ===VITE===; rtk read vite.config.ts
+C/
+D/
+E/
+F/
+b/
+rigs/
+stage/
+parts/
+capture.mjs  1.1K
+main.tsx  13.4K
+runVerify.mjs  1.8K
+verify.ts  9.5K
+main.tsx  11.2K
+main.tsx  4.7K
+main.tsx  2.1K
+StandIns.tsx  4.7K
+dev-b.css  1.6K
+main.tsx  3.5K
+CaseRig.tsx  3.7K
+GlassesRig.tsx  8.5K
+SceneStage.tsx  7.3K
+SponsorField.tsx  11.3K
+materialUpgrades.ts  5.7K
+modelLoader.ts  1.8K
+progressMap.ts  6.7K
+logos.ts  4.2K
+math.ts  874B
+slots.ts  10.8K
+streakTexture.ts  1.7K
+API.md  4.8K
+CameraRig.tsx  3.0K
+Effects.tsx  2.3K
+FilmCanvas.tsx  3.3K
+HeroRigs.tsx  5.5K
+LensPortal.tsx  6.2K
+chapters.ts  12.1K
+lenis.ts  2.2K
+masterTimeline.ts  2.4K
+progress.ts  2.7K
+tiers.ts  1.7K
+Contact.tsx  3.2K
+Home.tsx  4.7K
+Policies.tsx  2.6K
+Services.tsx  4.3K
+TokensQA.tsx  3.7K
+chrome.tsx  4.9K
+content.ts  5.6K
+policies-data.ts  42.6K
+route.css  13.9K
+useFilmStore.ts  1.5K
+... (14 filtered)
+[+14 hidden: rtk recall d84f7d9a1bac]
+zsh:1: ==MODELS=== not found
+[0m
+[0m✱ [0mGrep "from ['"]three['"]|from ['"]@react-three|from ['"]three-stdlib|import\(['"]three|require\(['"]three"[90m in src · 32 matches[0m
+[0m✱ [0mGrep "from ['"]maath|from ['"]postprocessing|from ['"]zustand|from ['"]@react-three|from ['"]lenis|from ['"]gsap|@gsap/react"[90m in src · 31 matches[0m
+[0m
+[0m$ [0mrtk ls -R "src/__dev__" "src/motion" "src/store" "src/routes" 2>&1; echo "---MODELS---"; rtk ls -la public/models/ 2>&1; echo "---DIST---"; rtk ls dist/ 2>&1 | head -n 30; echo "---DEVHTML---"; rtk read dev-b.html dev-C.html dev-D.html 2>&1
+C/
+D/
+E/
+F/
+b/
+parts/
+capture.mjs  1.1K
+main.tsx  13.4K
+runVerify.mjs  1.8K
+verify.ts  9.5K
+main.tsx  11.2K
+main.tsx  4.7K
+main.tsx  2.1K
+StandIns.tsx  4.7K
+dev-b.css  1.6K
+main.tsx  3.5K
+chapters.ts  12.1K
+lenis.ts  2.2K
+masterTimeline.ts  2.4K
+progress.ts  2.7K
+tiers.ts  1.7K
+Contact.tsx  3.2K
+Home.tsx  4.7K
+Policies.tsx  2.6K
+Services.tsx  4.3K
+TokensQA.tsx  3.7K
+chrome.tsx  4.9K
+content.ts  5.6K
+policies-data.ts  42.6K
+route.css  13.9K
+useFilmStore.ts  1.5K
+... (10 filtered)
+[+10 hidden: rtk recall 4c8a59f5e9e0]
+---MODELS---
+644  case.glb  9.6M
+644  case.opt.glb  1.4M
+644  glasses.glb  1.3M
+644  glasses.opt.glb  385.0K
+---DIST---
+decoders/
+fonts/
+models/
+v1film/
+web/
+_redirects  19B
+... (1 filtered)
+[+1 hidden: rtk recall ba2f5bc393e9]
+---DEVHTML---
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="EyeQ Vision Care — Lane B isolated film harness (dev only)." />
+    <title>EyeQ Vision Care — Lane B film harness</title>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/__dev__/b/main.tsx"></script>
+  </body>
+</html>
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Lane C dev harness — hero objects</title>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/__dev__/C/main.tsx"></script>
+  </body>
+</html>
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Lane D dev harness — stage + sponsor waves (isolated)</title>
+    <style>
+      html, body, #root { margin: 0; height: 100%; background: #050607; }
+    </style>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/__dev__/D/main.tsx"></script>
+  </body>
+</html>
+[0m
+[0m→ [0mRead src/routes/Services.tsx
+[0m✱ [0mGrep "three|gsap|Lenis|lenis|zustand|maath|postprocessing|@react-three|motion/|store/"[90m in src/components/dom · 1 match[0m
+[0m✱ [0mGrep "import"[90m in src/routes · 31 matches[0m
+[0m
+[0m$ [0mls -R "src/__dev__" 2>&1; echo "---tsconfig.app---"; cat tsconfig.app.json 2>&1; echo "---manifest---"; ls -la public/v1film/ 2>&1 | head; echo "---ports---"; (ss -ltnp 2>/dev/null || netstat -ltnp 2>/dev/null) | head -n 20
+b
+C
+D
+E
+F
+
+src/__dev__/b:
+dev-b.css
+main.tsx
+StandIns.tsx
+
+src/__dev__/C:
+capture.mjs
+main.tsx
+runVerify.mjs
+verify.ts
+
+src/__dev__/D:
+main.tsx
+
+src/__dev__/E:
+main.tsx
+
+src/__dev__/F:
+main.tsx
+---tsconfig.app---
+{
+  "compilerOptions": {
+    "tsBuildInfoFile": "./node_modules/.tmp/tsconfig.app.tsbuildinfo",
+    "target": "ES2022",
+    "useDefineForClassFields": true,
+    "lib": ["ES2022", "DOM", "DOM.Iterable"],
+    "module": "ESNext",
+    "skipLibCheck": true,
+    "moduleResolution": "bundler",
+    "allowImportingTsExtensions": true,
+    "verbatimModuleSyntax": true,
+    "moduleDetection": "force",
+    "noEmit": true,
+    "jsx": "react-jsx",
+    "strict": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "erasableSyntaxOnly": true,
+    "noFallthroughCasesInSwitch": true,
+    "noUncheckedSideEffectImports": true
+  },
+  "include": ["src"]
+}
+---manifest---
+total 8
+drwxr-xr-x@    6 admin  staff     192 Sep 28 10:08 .
+drwxr-xr-x@    9 admin  staff     288 Sep 27 23:48 ..
+drwxr-xr-x@ 3590 admin  staff  114880 Sep 28 10:10 full
+-rw-r--r--@    1 admin  staff     205 Sep 28 10:13 manifest.json
+drwxr-xr-x@ 3590 admin  staff  114880 Sep 28 10:13 mobile
+drwxr-xr-x@ 3590 admin  staff  114880 Sep 28 10:11 web
+---ports---
+[0m
+[0m✱ [0mGrep "@gsap/react|maath|postprocessing|__dev__|components/canvas|from ['"]\.\./canvas|from ['"]\.\./\.\./canvas|models/case|models/glasses|routes/Home"[90m in . · 100 matches[0m
+[0m→ [0mRead src/components/dom/index.ts
+[0m✱ [0mGrep "import"[90m in src/__dev__/E · 14 matches[0m
+[0m✱ [0mGrep "import"[90m in src/__dev__/F · 7 matches[0m
+[0m→ [0mRead src/motion/lenis.ts
+[0m→ [0mRead src/v1/lenis.ts
+[0m✱ [0mGrep "ensureLenis|getLenis|initSnap"[90m in src/v1 · 14 matches[0m
+[0m
+[0m# [0mTodos
+[✓] Read docs/00-BRIEF.md §6d + inspect current routes/V1 mount
+[•] Make '/' render V1 App (reuse src/v1/App.tsx)
+[•] Remove hard-case 3D: mv canvas/components/dev harness/models to archive/hardcase, strip imports
+[ ] Prune unused 3D deps from package.json, build passes, no three.js in bundle
+[ ] Verify 1512x860 + 390 screenshots, write F4-MAIN.md, end F4-MAIN-DONE
+[0m
+[0m$ [0mmkdir -p archive/hardcase/models archive/hardcase/__dev__ && mv src/canvas archive/hardcase/canvas && mv src/components/canvas archive/hardcase/components-canvas && mv "src/__dev__/b" archive/hardcase/__dev__/b && mv "src/__dev__/C" archive/hardcase/__dev__/C && mv "src/__dev__/D" archive/hardcase/__dev__/D && mv dev-b.html dev-C.html dev-D.html archive/hardcase/ && mv public/models/case.glb public/models/case.opt.glb public/models/glasses.glb public/models/glasses.opt.glb archive/hardcase/models/ && rtk ls -R archive/hardcase && echo ---SRC--- && rtk ls src src/__dev__ public/models
+__dev__/
+canvas/
+components-canvas/
+models/
+C/
+D/
+b/
+rigs/
+stage/
+dev-C.html  332B
+dev-D.html  451B
+dev-b.html  441B
+capture.mjs  1.1K
+main.tsx  13.4K
+runVerify.mjs  1.8K
+verify.ts  9.5K
+main.tsx  11.2K
+StandIns.tsx  4.7K
+dev-b.css  1.6K
+main.tsx  3.5K
+CaseRig.tsx  3.7K
+GlassesRig.tsx  8.5K
+SceneStage.tsx  7.3K
+SponsorField.tsx  11.3K
+materialUpgrades.ts  5.7K
+modelLoader.ts  1.8K
+progressMap.ts  6.7K
+logos.ts  4.2K
+math.ts  874B
+slots.ts  10.8K
+streakTexture.ts  1.7K
+API.md  4.8K
+CameraRig.tsx  3.0K
+Effects.tsx  2.3K
+FilmCanvas.tsx  3.3K
+HeroRigs.tsx  5.5K
+LensPortal.tsx  6.2K
+case.glb  9.6M
+case.opt.glb  1.4M
+glasses.glb  1.3M
+glasses.opt.glb  385.0K
+... (9 filtered)
+[+9 hidden: rtk recall e57245f3045f]
+---SRC---
+__dev__/
+app/
+components/
+data/
+motion/
+routes/
+store/
+styles/
+v1/
+E/
+F/
+README-LANES.md  3.6K
+main.tsx  798B
+tokens.ts  942B
+vite-env.d.ts  38B
+... (3 filtered)
+[+3 hidden: rtk recall 88d34a08be14]
+[0m
+[0m← [0mWrite src/routes/Home.tsx
+Wrote file successfully.
+[0m
+[0m← [0mWrite src/app/router.tsx
+Wrote file successfully.
+[0m
+[0m← [0mEdit src/main.tsx
+Index: /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/main.tsx
+===================================================================
+--- /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/main.tsx
++++ /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/main.tsx
+@@ -10,8 +10,12 @@
+ // Lane B integration: Lane E component styles (ChapterOverlay, Header,
+ // WhiteSection, LogoRails, rest-of-homepage, footer). Owned by Lane E;
+ // imported here because main.tsx is the integration entry.
+ import './components/dom/lane-e.css'
++import 'lenis/dist/lenis.css'
++// MAIN lane: '/' renders the V1 App — its lane stylesheet must load here
++// (same order as src/v1/main.tsx: globals, lane-e, lenis, then v1 last).
++import './v1/v1.css'
+ 
+ const root = document.getElementById('root')
+ if (!root) throw new Error('Missing #root element')
+ 
+
+[0m
+[0m← [0mEdit index.html
+Index: /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/index.html
+===================================================================
+--- /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/index.html
++++ /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/index.html
+@@ -3,8 +3,10 @@
+ <head>
+   <meta charset="UTF-8" />
+   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+   <meta name="description" content="EyeQ Vision Care — 2-227 Vodden St East, Brampton, ON. Eye exams, prescription fittings, high-definition lenses." />
++  <meta name="theme-color" content="#050607" />
++  <style>html{background:#050607}</style>
+   <link rel="preload" href="/fonts/fraunces-var.woff2" as="font" type="font/woff2" crossorigin />
+   <title>EyeQ Vision Care — Brampton, ON</title>
+ </head>
+ <body>
+
+[0m
+[0m← [0mWrite src/app/providers.tsx
+Wrote file successfully.
+[0m
+[0m← [0mEdit index.html
+Index: /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/index.html
+===================================================================
+--- /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/index.html
++++ /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/index.html
+@@ -6,8 +6,10 @@
+   <meta name="description" content="EyeQ Vision Care — 2-227 Vodden St East, Brampton, ON. Eye exams, prescription fittings, high-definition lenses." />
+   <meta name="theme-color" content="#050607" />
+   <style>html{background:#050607}</style>
+   <link rel="preload" href="/fonts/fraunces-var.woff2" as="font" type="font/woff2" crossorigin />
++  <!-- MAIN lane: same first-paint contract as v1.html (loader blocks on it). -->
++  <link rel="preload" href="/v1film/manifest.json" as="fetch" crossorigin />
+   <title>EyeQ Vision Care — Brampton, ON</title>
+ </head>
+ <body>
+   <div id="root"></div>
+
+[0m
+[0m← [0mEdit package.json
+Index: /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/package.json
+===================================================================
+--- /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/package.json
++++ /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/package.json
+@@ -11,21 +11,13 @@
+   "lint": "eslint src --max-warnings 0",
+   "test:e2e": "playwright test"
+ },
+ "dependencies": {
+-  "@gsap/react": "2.1.2",
+-  "@react-three/drei": "10.7.9",
+-  "@react-three/fiber": "9.8.1",
+-  "@react-three/postprocessing": "3.1.3",
+   "gsap": "3.15.0",
+   "lenis": "1.3.26",
+-  "maath": "0.10.8",
+-  "postprocessing": "6.39.5",
+   "react": "19.3.0",
+   "react-dom": "19.3.0",
+-  "react-router-dom": "7.18.4",
+-  "three": "0.186.1",
+-  "zustand": "5.0.15"
++  "react-router-dom": "7.18.4"
+ },
+ "devDependencies": {
+   "@eslint/js": "9.39.1",
+   "@gltf-transform/cli": "4.5.0",
+
+[0m
+[0m← [0mEdit package.json
+Index: /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/package.json
+===================================================================
+--- /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/package.json
++++ /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/package.json
+@@ -23,9 +23,8 @@
+ "@gltf-transform/cli": "4.5.0",
+ "@playwright/test": "1.63.0",
+ "@types/react": "19.3.0",
+ "@types/react-dom": "19.3.0",
+-"@types/three": "0.186.0",
+ "@vitejs/plugin-react": "6.1.1",
+ "eslint": "9.39.1",
+ "eslint-plugin-react-hooks": "7.0.1",
+ "eslint-plugin-react-refresh": "0.4.24",
+
+[0m
+[0m✱ [0mGrep "three|@react-three|maath|postprocessing|zustand|@gsap/react|motion/|store/useFilmStore|components/canvas|__dev__/b|__dev__/C|__dev__/D|canvas/SceneStage|canvas/SponsorField"[90m in src · 21 matches[0m
+[0m
+[0m← [0mEdit package.json
+Index: /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/package.json
+===================================================================
+--- /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/package.json
++++ /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/package.json
+@@ -15,9 +15,10 @@
+   "gsap": "3.15.0",
+   "lenis": "1.3.26",
+   "react": "19.3.0",
+   "react-dom": "19.3.0",
+-  "react-router-dom": "7.18.4"
++  "react-router-dom": "7.18.4",
++  "zustand": "5.0.15"
+ },
+ "devDependencies": {
+   "@eslint/js": "9.39.1",
+   "@gltf-transform/cli": "4.5.0",
+
+[0m
+[0m$ [0mnpm run build 2>&1 | tail -n 30
+npm notice run eyeq-vision-care@0.1.0 build
+npm notice run tsc -b && vite build
+src/v1/FilmSequence.tsx(349,7): error TS2554: Expected 2 arguments, but got 1.
+[0m
+[0m→ [0mRead src/v1/FilmSequence.tsx[90m [offset=320, limit=50][0m
+[0m✱ [0mGrep "drawFrac|const draw|function draw"[90m in src/v1/FilmSequence.tsx · 3 matches[0m
+[0m
+[0m$ [0mnpm run build 2>&1 | tail -n 30
+npm notice run eyeq-vision-care@0.1.0 build
+npm notice run tsc -b && vite build
+vite v8.3.1 building client environment for production...
+transforming...
+✓ 80 modules transformed.
+rendering chunks...
+computing gzip size...
+dist/index.html                   0.93 kB │ gzip:   0.51 kB
+dist/assets/index-BSXfjcih.css   57.84 kB │ gzip:  10.90 kB
+dist/assets/index-E05QTm4m.js   572.78 kB │ gzip: 187.62 kB
+
+[plugin builtin:vite-reporter] 
+(!) Some chunks are larger than 500 kB after minification. Consider:
+- Using dynamic import() to code-split the application
+- Use build.rolldownOptions.output.codeSplitting to improve chunking: https://rolldown.rs/reference/OutputOptions.codeSplitting
+- Adjust chunk size limit for this warning via build.chunkSizeWarningLimit.
+✓ built in 49.11s
+[33m[PLUGIN_TIMINGS] [0mJavaScript callbacks ran for 48.9s of this 49.1s build (100%).
+The slowest callbacks, timed inside each callback (the wait before a callback starts is excluded, the time it awaits is included):
+  - plugin vite:prepare-out-dir renderStart (98%, 48.2s, 1 call)
+Additional callback time came from the callbacks below and from callbacks under 1s.
+1 callback is listed without a time. Its calls overlapped, so the time inside one call includes work from other calls. To find its cost, profile the build with `node --cpu-prof`:
+  - plugin vite:css transform (12 calls)
+See https://rolldown.rs/reference/InputOptions.checks#bundlertimings for more details.
+
+npm notice run eyeq-vision-care@0.1.0 postbuild
+npm notice run cp dist/index.html dist/404.html
+[0m
+[0m$ [0mrtk ls -la dist dist/assets dist/models 2>&1; echo "---three markers---"; rtk grep -c "WebGLRenderer" dist/assets/*.js 2>&1; rtk grep -co "@react-three\|three\.module\|OrbitControls\|ContactShadows" dist/assets/*.js 2>&1; echo "---velvet assets kept---"; rtk ls dist/v1film 2>&1 | head -n 5
+755  assets/
+755  decoders/
+755  env/
+755  fonts/
+755  models/
+755  v1film/
+755  web/
+644  404.html  932B
+644  _redirects  19B
+644  index.html  932B
+644  index-BSXfjcih.css  56.5K
+644  index-E05QTm4m.js  559.4K
+... (3 filtered)
+[+3 hidden: rtk recall 80bf2824b250]
+---three markers---
+0
+0
+---velvet assets kept---
+full/
+mobile/
+web/
+manifest.json  205B
+[0m
+[0m$ [0mrtk ls -la dist/models/ 2>&1; echo "---"; rtk du -sh dist 2>&1
+(empty)
+---
+246M	dist
+[0m
+[0m# [0mTodos
+[✓] Read docs/00-BRIEF.md §6d + inspect current routes/V1 mount
+[✓] Make '/' render V1 App (reuse src/v1/App.tsx)
+[✓] Remove hard-case 3D: mv canvas/components/dev harness/models to archive/hardcase, strip imports
+[✓] Prune unused 3D deps from package.json, build passes, no three.js in bundle
+[•] Verify 1512x860 + 390 screenshots, write F4-MAIN.md, end F4-MAIN-DONE
+[0m
+[0m$ [0mnohup npx vite preview --port 5706 --strictPort > /tmp/main-preview.log 2>&1 & sleep 3; curl -s -o /dev/null -w "HTTP %{http_code}\n" http://localhost:5706/; curl -s -o /dev/null -w "services %{http_code}\n" http://localhost:5706/pages/services
+HTTP 000
+services 000
+[0m
+[0m$ [0msleep 5; rtk cat /tmp/main-preview.log 2>&1 | head -n 20; rtk curl -s -o /dev/null -w "HTTP %{http_code}\n" http://localhost:5706/
+FAILED: curl HTTP 000
+[0m
+[0m$ [0mcat /tmp/main-preview.log | head -n 20; rtk curl -s -o /dev/null -w "HTTP %{http_code}\n" http://localhost:5706/ || true; ps aux | grep -i "vite preview" | grep -v grep | head -n 5 || true
+FAILED: curl HTTP 000
+[0m
+[0m→ [0mRead /tmp/main-preview.log
+[0m
+[0m$ [0mps aux | grep vite | grep -v grep | head -n 5
+admin            87743   0.0  0.1 445717184  13392   ??  SN   10:53AM   0:03.13 node /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/node_modules/.bin/vite --port 5703 --strictPort
+admin            87187   0.0  0.0 436229056   5472   ??  SN   10:52AM   0:00.65 npm exec vite --port 5703 --strictPort     
+admin            78415   0.0  0.0 445758176   7888   ??  SN   10:44AM   0:02.98 node /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/node_modules/.bin/vite --port 5705 --strictPort --host 127.0.0.1
+admin            78366   0.0  0.0 436221408   5248   ??  SN   10:44AM   0:00.48 npm exec vite --port 5705 --strictPort --host 127.0.0.1       
+admin            69381   0.0  0.0 445713712   7696   ??  SN   10:37AM   0:02.80 node /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/node_modules/.bin/vite --port 5602 --strictPort
+[0m
+[0m$ [0mps aux | grep 5706 | grep -v grep | head -n 5; rtk ls /tmp/main-preview.log; rtk npx vite preview --port 5706 --strictPort --host 127.0.0.1 & sleep 8; echo STARTED
+admin            76052  18.1  1.1 509247808 182688   ??  SN   10:42AM   0:48.93 opencode run -m meta/muse-spark-1.3-contributor --auto --dir /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1 --title F4-MAIN URGENT 8-minute task for the EyeQ site. HARD TIME BOX 8 min. Read docs/00-BRIEF.md §6d.\012ID=MAIN (port 5706). Client: "scrap the other animation with the hard case — just use the red velvet as main."\012You own: index.html, src/main.tsx, src/app/**, src/routes/Home.tsx, src/canvas/**, src/components/canvas/**, dev-*.html/src/__dev__/** for lanes B/C/D, package.json (removal of now-unused 3D deps only).\0121. Make the red-velvet V1 experience (currently mounted by v1.html → src/v1/main.tsx → src/v1/App.tsx) the MAIN homepage at '/': the '/' route renders the V1 App (reuse src/v1/App.tsx — do NOT edit src/v1/* or src/components/dom/*; other agents are editing them right now). Keep /pages/services, /pages/contact and the /policies/* routes working with the same header/footer. v1.html may redirect to '/' or keep working.\0122. Remove the hard-case 3D film from the app: delete src/routes/Home.tsx's 3D content, and MOVE (git-free: plain mv) src/canvas/, src/components/canvas/, the lane B/C/D dev harness files, and public/models/case*.glb + glasses*.glb into archive/hardcase/ (outside src and public) so nothing 3D ships. Remove three/@react-three/* imports; if a package becomes unused, remove it from package.json dependencies (do not run npm install beyond 'npm prune' if needed).\0123. npm run build must pass; bundle must not include three.js (check dist sizes). Verify '/' at 1512×860 and 390 shows the velvet film + white act + sections (Playwright screenshots → docs/phase4/qa/v3/main-*.png), LOOK at them. Write docs/phase4/qa/v3/F4-MAIN.md. End with F4-MAIN-DONE.
+/tmp/main-preview.log  0B
+STARTED
+  ➜  Local:   http://127.0.0.1:5706/
+
+
+<shell_metadata>
+shell tool terminated command after exceeding timeout 30000 ms. If this command is expected to take longer and is not waiting for interactive input, retry with a larger timeout value in milliseconds.
+</shell_metadata>
+[0m
+[0m$ [0mmkdir -p docs/phase4/qa/v3 && npx playwright screenshot --viewport-size="1512,860" http://127.0.0.1:5706/ docs/phase4/qa/v3/main-desktop-top.png 2>&1 | tail -n 3
+Call log:
+[2m  - navigating to "http://127.0.0.1:5706/", waiting until "load"[22m
+[0m
+[0m✗ [0mRead docs/phase4/qa/v3/main-desktop-top.png failed
+[91m[1mError: [0mFile not found: /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/docs/phase4/qa/v3/main-desktop-top.png
+[0m
+[0m$ [0mnpx playwright screenshot --viewport-size="1512,860" http://127.0.0.1:5706/ docs/phase4/qa/v3/main-desktop-top.png 2>&1 | head -n 30; rtk ls docs/phase4/qa/v3/
+npm notice run eyeq-vision-care@0.1.0 npx
+npm notice run 'playwright' screenshot --viewport-size=1512,860 http://127.0.0.1:5706/ docs/phase4/qa/v3/main-desktop-top.png
+Navigating to http://127.0.0.1:5706/
+Error: net::ERR_CONNECTION_REFUSED at http://127.0.0.1:5706/
+Call log:
+[2m  - navigating to "http://127.0.0.1:5706/", waiting until "load"[22m
+
+F4-MAP.md  1.9K
+F4-MFILM.md  1.9K
+F4-SCROLL.md  1.8K
+MPAGE.md  4.4K
+ORCHESTRATOR-NOTES.md  2.2K
+PERF.md  4.0K
+SCROLL.md  4.8K
+mfilm-sweep-1512.webm  2.1M
+mfilm-waves-ring-gap-1512.png  15.4K
+mfilm-waves-w1-flight-1512.png  89.9K
+mfilm-waves-w1-hold-1512.png  80.5K
+mfilm-waves-w1-hold-1920.png  90.5K
+mfilm-waves-w1-hold-390.png  39.2K
+mfilm-waves-w2-flight-1512.png  81.4K
+mfilm-waves-w2-hold-1512.png  71.3K
+mfilm-waves-w2-hold-390.png  34.6K
+mfilm-words-s1-1512.png  232.8K
+mfilm-words-s1-390.png  103.6K
+mfilm-words-s100-1512.png  223.4K
+mfilm-words-s100-390.png  96.8K
+mfilm-words-s145-1512.png  243.2K
+mfilm-words-s185-1024.png  61.6K
+mfilm-words-s185-1512.png  90.4K
+mfilm-words-s185-1920.png  99.4K
+mfilm-words-s185-390.png  34.1K
+mfilm-words-s215-1512.png  54.9K
+mfilm-words-s280-1512.png  127.4K
+mfilm-words-s368-1512.png  107.3K
+mfilm-words-s440-1512.png  110.3K
+mfilm-words-s440-390.png  38.6K
+mfilm-words-s500-1512.png  96.8K
+mfilm-words-s600-1512.png  173.2K
+mfilm-words-s70-1512.png  237.4K
+mfilm.md  4.0K
+mpage-foot-1024.png  41.4K
+mpage-foot-1512.png  44.4K
+mpage-foot-1920.png  53.8K
+mpage-foot-390.png  42.8K
+mpage-foot-768.png  48.5K
+mpage-full-1024.png  632.8K
+mpage-full-1512.png  727.6K
+mpage-full-1920.png  1.1M
+mpage-full-390.png  349.5K
+mpage-full-768.png  620.7K
+mpage-scroll-1512.webm  2.4M
+mpage-top-1024.png  298.8K
+mpage-top-1512.png  351.1K
+mpage-top-1920.png  497.0K
+mpage-top-390.png  202.0K
+mpage-top-768.png  397.4K
+... (24 more)
+[+24 hidden: rtk recall 5ff124f423a2]
+[0m
+[0m$ [0mnohup npx vite preview --port 5706 --strictPort --host 127.0.0.1 > /tmp/main-preview.log 2>&1 & disown; sleep 6; echo ALIVE
+ALIVE
+[0m
+[0m→ [0mRead /tmp/main-preview.log
+[0m
+[0m$ [0mnpx playwright screenshot --viewport-size="1512,860" http://127.0.0.1:5706/ docs/phase4/qa/v3/main-desktop-top.png 2>&1 | head -n 10; rtk ls -la docs/phase4/qa/v3/main-*.png 2>&1
+npm notice run eyeq-vision-care@0.1.0 npx
+npm notice run 'playwright' screenshot --viewport-size=1512,860 http://127.0.0.1:5706/ docs/phase4/qa/v3/main-desktop-top.png
+Navigating to http://127.0.0.1:5706/
+Capturing screenshot into docs/phase4/qa/v3/main-desktop-top.png
+644  docs/phase4/qa/v3/main-desktop-top.png  21.2K
+[0m
+[0m→ [0mRead docs/phase4/qa/v3/main-desktop-top.png
+[0m
+[0m← [0mWrite main-shots.tmp.mjs
+Wrote file successfully.
+[0m
+[0m$ [0mnode main-shots.tmp.mjs 2>&1 | tail -n 10
+pages/services: h1="Services" header=true footer=true (want ~"Services")
+pages/contact: h1="Contact" header=true footer=true (want ~"Contact")
+policies/privacy-policy: h1="Terms and Policies" header=true footer=true (want ~"Privacy")
+SHOTS-DONE
+[0m
+[0m→ [0mRead docs/phase4/qa/v3/main-desktop-white.png
+[0m→ [0mRead docs/phase4/qa/v3/main-desktop-top.png
+[0m→ [0mRead docs/phase4/qa/v3/main-mobile-white.png
+[0m→ [0mRead docs/phase4/qa/v3/main-mobile-top.png
+[0m→ [0mRead docs/phase4/qa/v3/main-desktop-full.png
+[0m
+[0m$ [0mrm main-shots.tmp.mjs && rtk ls docs/phase4/qa/v3/main-*.png
+docs/phase4/qa/v3/main-desktop-full.png  342.5K
+docs/phase4/qa/v3/main-desktop-top.png  357.0K
+docs/phase4/qa/v3/main-desktop-white.png  228.4K
+docs/phase4/qa/v3/main-mobile-full.png  121.6K
+docs/phase4/qa/v3/main-mobile-top.png  197.0K
+docs/phase4/qa/v3/main-mobile-white.png  55.5K
+[0m
+[0m← [0mWrite docs/phase4/qa/v3/F4-MAIN.md
+Wrote file successfully.
+[0m
+[0m# [0mTodos
+[✓] Read docs/00-BRIEF.md §6d + inspect current routes/V1 mount
+[✓] Make '/' render V1 App (reuse src/v1/App.tsx)
+[✓] Remove hard-case 3D: mv canvas/components/dev harness/models to archive/hardcase, strip imports
+[✓] Prune unused 3D deps from package.json, build passes, no three.js in bundle
+[✓] Verify 1512x860 + 390 screenshots, write F4-MAIN.md, end F4-MAIN-DONE
+[0m
+F4-MAIN-DONE
+
+- `/` renders the red-velvet V1 App (`src/v1/App.tsx` untouched); `src/main.tsx` + `index.html` carry its styles/first-paint contract; Providers is passive so V1's Lenis singleton owns scroll.
+- Hard-case 3D archived to `archive/hardcase/` (canvas, components-canvas, B/C/D harnesses + dev htmls, case/glasses GLBs); `Home.tsx` is a V1 wrapper; `dist/models/` builds empty.
+- `package.json` dropped three, @react-three/*, postprocessing, maath, @gsap/react, @types/three (kept gsap/lenis/zustand); `npm run build` passes; bundle has zero three.js markers (559 KB JS).
+- Verified with looked-at screenshots: `docs/phase4/qa/v3/main-desktop-{top,white,full}.png`, `main-mobile-{top,white,full}.png` — velvet film, white act H1 + rails + CTA, sections; services/contact/policies routes healthy. Report: `docs/phase4/qa/v3/F4-MAIN.md`.
+
+One flag for orchestrator: `src/motion/*` + `src/store/*` are now unreferenced but left in place (no bundle impact) — reassign or archive as follow-up.
+EXIT 0 model=meta/muse-spark-1.3-contributor

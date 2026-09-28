@@ -1,0 +1,372 @@
+[0m
+> build · muse-spark-1.3-contributor
+[0m
+[0m→ [0mRead src/components/dom/photos.css
+[0m→ [0mRead src/components/dom/Sections.tsx
+[0m
+[0m← [0mEdit src/components/dom/Sections.tsx
+Index: /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/components/dom/Sections.tsx
+===================================================================
+--- /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/components/dom/Sections.tsx
++++ /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/components/dom/Sections.tsx
+@@ -243,9 +243,8 @@
+             decoding="async"
+             alt="Four eyeglass frames in black and tortoise stacked on a yellow background, as featured on the EyeQ homepage"
+           />
+         </span>
+-        <figcaption>Eyewear feature from the EyeQ homepage.</figcaption>
+       </Reveal>
+     </section>
+   );
+ }
+
+[0m
+[0m← [0mEdit src/components/dom/Sections.tsx
+Index: /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/components/dom/Sections.tsx
+===================================================================
+--- /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/components/dom/Sections.tsx
++++ /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/components/dom/Sections.tsx
+@@ -294,10 +294,9 @@
+               decoding="async"
+               alt="Optometrist holding a trial frame toward the camera during an eye exam"
+             />
+           </span>
+-          <figcaption>Trial frame during an eye examination.</figcaption>
+-        </Reveal>
++    </Reveal>
+       </div>
+     </div>
+   </section>
+ );
+
+[0m
+[0m← [0mEdit src/components/dom/Sections.tsx
+Index: /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/components/dom/Sections.tsx
+===================================================================
+--- /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/components/dom/Sections.tsx
++++ /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/components/dom/Sections.tsx
+@@ -351,10 +351,9 @@
+         decoding="async"
+         alt="Sunset over a lake seen through a tinted sunglass lens"
+       />
+     </span>
+-    <figcaption>Polarised-lens view, from the EyeQ services page.</figcaption>
+-  </Reveal>
++</Reveal>
+   <Reveal
+     as="figure"
+     className="eyeq-photo eyeq-photo--lenses-offset"
+   >
+
+[0m
+[0m← [0mEdit src/components/dom/Sections.tsx
+Index: /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/components/dom/Sections.tsx
+===================================================================
+--- /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/components/dom/Sections.tsx
++++ /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/src/components/dom/Sections.tsx
+@@ -368,10 +368,9 @@
+         decoding="async"
+         alt="Close-up of a man wearing round eyeglasses with a lens-technology overlay, from the EyeQ services page"
+       />
+     </span>
+-    <figcaption>Lens-technology graphic, from the EyeQ services page.</figcaption>
+-  </Reveal>
++</Reveal>
+   <Reveal>
+     <a className="eyeq-lenses__more" href="/services">
+       Read more →
+     </a>
+
+[0m
+[0m✱ [0mGrep "figcaption"[90m in src/components/dom · 7 matches[0m
+[0m
+[0m$ [0mnpm run build 2>&1 | tail -30
+(no output)
+
+<shell_metadata>
+shell tool terminated command after exceeding timeout 120000 ms. If this command is expected to take longer and is not waiting for interactive input, retry with a larger timeout value in milliseconds.
+</shell_metadata>
+[0m
+[0m$ [0mtimeout 180 npm run build 2>&1 | tail -60; echo "EXIT:$?"
+zsh:1: command not found: timeout
+EXIT:0
+[0m
+[0m$ [0mrtk npm run build
+src/components/dom/index.ts(12,60): error TS2305: Module '"./LogoRails"' has no exported member 'RailsPause'.
+src/components/dom/LogoRails.tsx(449,12): error TS2304: Cannot find name 'RailsPause'.
+src/components/dom/LogoRails.tsx(461,12): error TS2304: Cannot find name 'RailsPause'.
+src/components/dom/LogoRails.tsx(484,10): error TS2304: Cannot find name 'RailsPause'.
+[0m
+[0m→ [0mRead package.json
+[0m
+[0m$ [0mnpx tsc -b 2>&1 | head -20; echo "---DONE---"
+npm notice run eyeq-vision-care@0.1.0 npx
+npm notice run 'tsc' -b
+src/components/dom/index.ts(12,60): error TS2305: Module '"./LogoRails"' has no exported member 'RailsPause'.
+src/components/dom/LogoRails.tsx(365,31): error TS2304: Cannot find name 'paused'.
+src/components/dom/LogoRails.tsx(367,32): error TS18004: No value exists in scope for the shorthand property 'paused'. Either declare one or provide an initializer.
+src/components/dom/LogoRails.tsx(367,40): error TS18004: No value exists in scope for the shorthand property 'setPaused'. Either declare one or provide an initializer.
+src/components/dom/LogoRails.tsx(448,12): error TS2304: Cannot find name 'RailsPause'.
+src/components/dom/LogoRails.tsx(448,66): error TS7006: Parameter 'v' implicitly has an 'any' type.
+src/components/dom/LogoRails.tsx(460,12): error TS2304: Cannot find name 'RailsPause'.
+src/components/dom/LogoRails.tsx(460,66): error TS7006: Parameter 'v' implicitly has an 'any' type.
+src/components/dom/LogoRails.tsx(483,10): error TS2304: Cannot find name 'RailsPause'.
+src/components/dom/LogoRails.tsx(483,64): error TS7006: Parameter 'v' implicitly has an 'any' type.
+src/v1/FilmSequence.tsx(112,10): error TS6133: 'mobileFocalX' is declared but its value is never read.
+---DONE---
+[0m
+[0m$ [0mnpx vite build 2>&1 | tail -15; echo "---VITE-DONE---"
+[38;5;246m│[0m
+ [38;5;246m9 │[0m [38;5;249me[0m[38;5;249mx[0m[38;5;249mp[0m[38;5;249mo[0m[38;5;249mr[0m[38;5;249mt[0m[38;5;249m [0m[38;5;249m{[0m[38;5;249m [0m[38;5;249mL[0m[38;5;249mo[0m[38;5;249mg[0m[38;5;249mo[0m[38;5;249mR[0m[38;5;249ma[0m[38;5;249mi[0m[38;5;249ml[0m[38;5;249ms[0m[38;5;249m,[0m[38;5;249m [0m[38;5;249mW[0m[38;5;249mh[0m[38;5;249mi[0m[38;5;249mt[0m[38;5;249me[0m[38;5;249mA[0m[38;5;249mc[0m[38;5;249mt[0m[38;5;249mR[0m[38;5;249ma[0m[38;5;249mi[0m[38;5;249ml[0m[38;5;249ms[0m[38;5;249m,[0m[38;5;249m [0m[38;5;249mB[0m[38;5;249mr[0m[38;5;249ma[0m[38;5;249mn[0m[38;5;249md[0m[38;5;249mR[0m[38;5;249ma[0m[38;5;249mi[0m[38;5;249ml[0m[38;5;249m,[0m[38;5;249m [0m[38;5;249mI[0m[38;5;249mn[0m[38;5;249ms[0m[38;5;249mu[0m[38;5;249mr[0m[38;5;249me[0m[38;5;249mr[0m[38;5;249mR[0m[38;5;249ma[0m[38;5;249mi[0m[38;5;249ml[0m[38;5;249m,[0m[38;5;249m [0mRailsPause[38;5;249m,[0m[38;5;249m [0m[38;5;249mR[0m[38;5;249ma[0m[38;5;249mi[0m[38;5;249ml[0m[38;5;249ms[0m[38;5;249mS[0m[38;5;249mr[0m[38;5;249mL[0m[38;5;249mi[0m[38;5;249ms[0m[38;5;249mt[0m[38;5;249ms[0m[38;5;249m,[0m[38;5;249m [0m[38;5;249mR[0m[38;5;249ma[0m[38;5;249mi[0m[38;5;249ml[0m[38;5;249ms[0m[38;5;249mM[0m[38;5;249mo[0m[38;5;249mb[0m[38;5;249mi[0m[38;5;249ml[0m[38;5;249me[0m[38;5;249mS[0m[38;5;249mt[0m[38;5;249mr[0m[38;5;249mi[0m[38;5;249mp[0m[38;5;249m [0m[38;5;249m}[0m[38;5;249m [0m[38;5;249mf[0m[38;5;249mr[0m[38;5;249mo[0m[38;5;249mm[0m[38;5;249m [0m[38;5;249m"[0m[38;5;249m.[0m[38;5;249m/[0m[38;5;249mL[0m[38;5;249mo[0m[38;5;249mg[0m[38;5;249mo[0m[38;5;249mR[0m[38;5;249ma[0m[38;5;249mi[0m[38;5;249ml[0m[38;5;249ms[0m[38;5;249m"[0m[38;5;249m;[0m
+ [38;5;240m  │[0m                                                            ─────┬────  
+ [38;5;240m  │[0m                                                                 ╰────── Missing export
+[38;5;246m───╯[0m
+
+    at aggregateBindingErrorsIntoJsError (file:///Users/admin/Desktop/BUISNESS/EyeQ%20Vision%20Care/V1/node_modules/rolldown/dist/shared/error-C7pxws0W.mjs:48:18)
+    at unwrapBindingResult (file:///Users/admin/Desktop/BUISNESS/EyeQ%20Vision%20Care/V1/node_modules/rolldown/dist/shared/error-C7pxws0W.mjs:18:128)
+    at #build (file:///Users/admin/Desktop/BUISNESS/EyeQ%20Vision%20Care/V1/node_modules/rolldown/dist/shared/rolldown-CgWItHdG.mjs:133:34)
+    at async buildEnvironment (file:///Users/admin/Desktop/BUISNESS/EyeQ%20Vision%20Care/V1/node_modules/vite/dist/node/chunks/node.js:34445:66)
+    at async Object.build (file:///Users/admin/Desktop/BUISNESS/EyeQ%20Vision%20Care/V1/node_modules/vite/dist/node/chunks/node.js:34866:19)
+    at async Object.buildApp (file:///Users/admin/Desktop/BUISNESS/EyeQ%20Vision%20Care/V1/node_modules/vite/dist/node/chunks/node.js:34863:153)
+    at async CAC.<anonymous> (file:///Users/admin/Desktop/BUISNESS/EyeQ%20Vision%20Care/V1/node_modules/vite/dist/node/cli.js:780:3) {
+  errors: [Getter/Setter]
+}
+---VITE-DONE---
+[0m
+[0m$ [0mrtk ls docs/phase4/qa/v3/ 2>&1; echo "---"; rtk ls dist/ 2>&1 | head -5
+F4-MAIN.md  3.8K
+F4-MAP.md  1.9K
+F4-MFILM.md  1.9K
+F4-PERF.md  3.2K
+F4-RAILS.md  2.3K
+F4-SCROLL.md  1.8K
+F5-PHOTOS.md  2.9K
+MPAGE.md  4.4K
+ORCHESTRATOR-NOTES.md  2.2K
+PERF.md  4.0K
+SCROLL.md  4.8K
+main-desktop-full.png  342.5K
+main-desktop-top.png  357.0K
+main-desktop-white.png  228.4K
+main-mobile-full.png  121.6K
+main-mobile-top.png  197.0K
+main-mobile-white.png  55.5K
+mfilm-sweep-1512.webm  2.1M
+mfilm-waves-ring-gap-1512.png  15.4K
+mfilm-waves-w1-flight-1512.png  89.9K
+mfilm-waves-w1-hold-1512.png  80.5K
+mfilm-waves-w1-hold-1920.png  90.5K
+mfilm-waves-w1-hold-390.png  39.2K
+mfilm-waves-w2-flight-1512.png  81.4K
+mfilm-waves-w2-hold-1512.png  71.3K
+mfilm-waves-w2-hold-390.png  34.6K
+mfilm-words-s1-1512.png  232.8K
+mfilm-words-s1-390.png  103.6K
+mfilm-words-s100-1512.png  223.4K
+mfilm-words-s100-390.png  96.8K
+mfilm-words-s145-1512.png  243.2K
+mfilm-words-s185-1024.png  61.6K
+mfilm-words-s185-1512.png  90.4K
+mfilm-words-s185-1920.png  99.4K
+mfilm-words-s185-390.png  34.1K
+mfilm-words-s215-1512.png  54.9K
+mfilm-words-s280-1512.png  127.4K
+mfilm-words-s368-1512.png  107.3K
+mfilm-words-s440-1512.png  110.3K
+mfilm-words-s440-390.png  38.6K
+mfilm-words-s500-1512.png  96.8K
+mfilm-words-s600-1512.png  173.2K
+mfilm-words-s70-1512.png  237.4K
+mfilm.md  4.0K
+mpage-foot-1024.png  41.4K
+mpage-foot-1512.png  44.4K
+mpage-foot-1920.png  53.8K
+mpage-foot-390.png  42.8K
+mpage-foot-768.png  48.5K
+mpage-full-1024.png  632.8K
+... (34 more)
+[+34 hidden: rtk recall fd2691efb4e4]
+---
+decoders/
+fonts/
+models/
+v1film/
+web/
+[0m
+[0m$ [0mnohup npx vite --port 5173 > /tmp/eyeq-dev.log 2>&1 & echo "STARTED:$!"; sleep 6; tail -5 /tmp/eyeq-dev.log
+STARTED:16521
+[0m
+[0m$ [0msleep 4; rtk read /tmp/eyeq-dev.log; echo "---"; rtk curl -s -o /dev/null -w "%{http_code}" http://localhost:5173/ 2>&1
+---
+FAILED: curl 000
+[0m
+[0m→ [0mRead /tmp/eyeq-dev.log
+[0m
+[0m$ [0mps aux | grep -i vite | rtk grep -v grep; echo "---PS-DONE---"
+admin            16521   2.8  0.5 436233264  87152   ??  SN   11:19AM   0:00.27 npm exec vite --port 5173    
+admin            86231   0.3  0.3 445858528  47840   ??  S    10:38PM   1:10.87 node /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/node_modules/.bin/vite --port 5200 --strictPort --host 127.0.0.1
+admin             1647   0.0  0.0 445704912   5712   ??  SN   11:06AM   0:06.49 node /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/node_modules/.bin/vite preview --port 5706 --strictPort --host 127.0.0.1
+admin             1606   0.0  0.0 436221168   7088   ??  SN   11:06AM   0:00.37 npm exec vite preview --port 5706 --strictPort --host 127.0.0.1        
+admin            98815   0.0  0.2 445727920  25856   ??  SN   11:03AM   0:05.14 node /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/node_modules/.bin/vite --port 5708 --strictPort
+admin            78415   0.0  0.1 445758176  20304   ??  SN   10:44AM   0:03.89 node /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/node_modules/.bin/vite --port 5705 --strictPort --host 127.0.0.1
+admin            78366   0.0  0.0 436221408   4464   ??  SN   10:44AM   0:00.48 npm exec vite --port 5705 --strictPort --host 127.0.0.1       
+admin            69381   0.0  0.1 445713712  17824   ??  SN   10:37AM   0:03.66 node /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/node_modules/.bin/vite --port 5602 --strictPort
+admin            68941   0.0  0.0 436229264   4224   ??  SN   10:36AM   0:00.81 npm exec vite --port 5602 --strictPort     
+admin            44536   0.0  0.1 445735280  22000   ??  SN   10:21AM   0:30.99 node /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/node_modules/.bin/vite --port 5505 --strictPort
+admin            44489   0.0  0.0 436213552   3696   ??  SN   10:21AM   0:00.33 npm exec vite --port 5505 --strictPort     
+admin            13467   0.0  0.2 445751600  25600   ??  SN   10:11AM   0:19.51 node /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/node_modules/.bin/vite --port 5501 --strictPort
+admin            13303   0.0  0.0 436229280   3568   ??  SN   10:11AM   0:00.48 npm exec vite --port 5501 --strictPort     
+admin            78080   0.0  0.2 445724352  26064   ??  SN   10:04AM   0:12.58 node /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/node_modules/.bin/vite --port 5503 --strictPort
+admin            78049   0.0  0.0 436217056   3568   ??  SN   10:04AM   0:00.33 npm exec vite --port 5503 --strictPort     
+admin            76028   0.0  0.1 445755744  19488   ??  SN   10:03AM   0:19.20 node /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/node_modules/.bin/vite --port 5502 --strictPort
+admin            75991   0.0  0.0 436212976   3568   ??  SN   10:03AM   0:00.34 npm exec vite --port 5502 --strictPort     
+admin            86172   0.0  0.0 436229152   2800   ??  S    10:38PM   0:00.60 npm exec vite --port 5200 --strictPort --host 127.0.0.1       
+admin            86171   0.0  0.0 435310608   2160   ??  S    10:38PM   0:09.66 rtk npx vite --port 5200 --strictPort --host 127.0.0.1
+admin            86168   0.0  0.0 435312928    576   ??  Ss   10:38PM   0:00.02 /bin/zsh -c source /Users/admin/.claude/shell-snapshots/snapshot-zsh-1790546181605-8lje5b.sh 2>/dev/null || true && setopt NO_EXTENDED_GLOB NO_BARE_GLOB_QUAL 2>/dev/null || true && { \builtin unalias -- 'unsetenv'; \builtin unset -f -- 'unsetenv'; } >/dev/null 2>&1 || true && eval 'cd "/Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1" && rtk npx vite --port 5200 --strictPort --host 127.0.0.1' < /dev/null && pwd -P >| /tmp/claude-e07b-cwd
+admin            29488   0.0  0.1 445781696  14512   ??  SN    8:51PM   0:56.51 node /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/node_modules/.bin/vite --port 5106 --strictPort
+admin            29448   0.0  0.0 436220704   2784   ??  SN    8:51PM   0:00.38 npm exec vite --port 5106 --strictPort     
+admin            21413   0.0  0.1 444632576  21632   ??  SN    8:46PM   0:09.75 node ./node_modules/.bin/vite --port 8100
+admin            13495   0.0  1.2 509257264 208656   ??  SN   11:17AM   0:13.94 opencode run -m meta/muse-spark-1.3-contributor --auto --dir /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1 --title FINALQA Final QA for the EyeQ site, READ-ONLY (edit only docs/phase4/qa/v3/FINAL-QA.md + your scratch scripts). TIME BOX 10 min, fan out with the task tool. ID=FINALQA (port 5710). Serve with 'npx vite --port 5710 --strictPort' and test '/' (the homepage is now the red-velvet film).\012Priority order: (1) film scroll FLUIDITY + speed on 1512×860 (Chrome performance trace of a full scroll: frame p50/p95, long tasks, dropped frames; frames never blank; fast flick still shows every key beat ≥250 ms), (2) 390×844 mobile (subject in frame at key frames, smooth), (3) visual polish (words only in empty sides, constellations, rails down the page + fade before footer, map loaded, NO pause buttons, NO invented captions), (4) console errors, Lighthouse perf mobile+desktop.\012Other agents are finishing small fixes right now (pause buttons, photo captions, mobile crop, frame re-encode) — note their state; re-check those 4 items once at the end of your time box. Rank remaining issues P0/P1 with exact file + fix. End with FINALQA-DONE.
+---PS-DONE---
+[0m
+[0m$ [0mfor p in 5173 5200 5708 5705 5602 5505 5501 5503 5502 5106; do code=$(curl -s -o /dev/null -w "%{http_code}" --max-time 3 http://localhost:$p/); echo "$p:$code"; done; echo "---DONE---"
+5173:200
+5200:200
+5708:200
+5705:200
+5602:200
+5505:200
+5501:200
+5503:200
+5502:200
+5106:200
+---DONE---
+[0m
+[0m✗ [0mplaywright_browser_navigate {"url":"http://localhost:5173/"} failed
+[91m[1mError: [0mMCP error -32001: Request timed out
+[0m✗ [0mplaywright_browser_resize {"height":860,"width":1512} failed
+[91m[1mError: [0mMCP error -32001: Request timed out
+[0m✗ [0mplaywright_browser_navigate {"url":"http://localhost:5173/"} failed
+[91m[1mError: [0m### Error
+Error: browserBackend.callTool: net::ERR_ABORTED at http://localhost:5173/
+Call log:
+[2m  - navigating to "http://localhost:5173/", waiting until "domcontentloaded"[22m
+
+[0m
+[0m$ [0mcurl -s --max-time 5 http://localhost:5173/ | head -30; echo "---HEADERS---"; curl -sI --max-time 5 http://localhost:5173/ | head -10
+<!doctype html>
+<html lang="en">
+  <head>
+    <script type="module">import { injectIntoGlobalHook } from "/@react-refresh";
+injectIntoGlobalHook(window);
+window.$RefreshReg$ = () => {};
+window.$RefreshSig$ = () => (type) => type;</script>
+
+    <script type="module" src="/@vite/client"></script>
+
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="EyeQ Vision Care — 2-227 Vodden St East, Brampton, ON. Eye exams, prescription fittings, high-definition lenses." />
+    <meta name="theme-color" content="#050607" />
+    <style>html{background:#050607}</style>
+    <link rel="preload" href="/fonts/fraunces-var.woff2" as="font" type="font/woff2" crossorigin />
+    <!-- MAIN lane: same first-paint contract as v1.html (loader blocks on it). -->
+    <link rel="preload" href="/v1film/manifest.json" as="fetch" crossorigin />
+    <title>EyeQ Vision Care — Brampton, ON</title>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx?t=1790608876888"></script>
+  </body>
+</html>
+---HEADERS---
+HTTP/1.1 200 OK
+Vary: Origin
+Content-Type: text/html
+Cache-Control: no-cache
+Etag: W/"451-Du9zLHB3UjL2UGG3OAjLCuGdtY0"
+Date: Mon, 28 Sep 2026 15:21:25 GMT
+Connection: keep-alive
+Keep-Alive: timeout=5
+[0m
+[0m$ [0mrtk ls tests/ 2>&1; rtk ls playwright.config.* 2>&1; rtk ls ~/.cache/ms-playwright/ 2>&1 | head -5
+ls: tests/: No such file or directory
+playwright.config.ts  679B
+ls: /Users/admin/.cache/ms-playwright/: No such file or directory
+[0m
+[0m→ [0mRead playwright.config.ts
+[0m
+[0m$ [0mrtk playwright --version 2>&1; rtk ls /root/.cache/ms-playwright/ 2>/dev/null; echo "---"; which chromium chromium-browser google-chrome 2>&1 | head -3
+[RTK:PASSTHROUGH] playwright parser: All parsing tiers failed
+Version 1.63.0
+
+---
+chromium not found
+chromium-browser not found
+google-chrome not found
+[0m
+[0m$ [0mecho "BROWSERS_PATH=$PLAYWRIGHT_BROWSERS_PATH"; rtk ls /Users/admin/Library/Caches/ms-playwright/ 2>/dev/null || echo "no libcache"; rtk ls /tmp/.ms-playwright 2>/dev/null || echo "no tmp"; rtk find / -maxdepth 6 -name "headless_shell" -type f 2>/dev/null | head -3; echo "---DONE---"
+BROWSERS_PATH=
+b/
+chromium-1243/
+chromium_headless_shell-1243/
+daemon/
+ffmpeg-1011/
+no tmp
+---DONE---
+[0m
+[0m← [0mWrite /tmp/caption-shots.mjs
+Wrote file successfully.
+[0m
+[0m$ [0mnode /tmp/caption-shots.mjs 2>&1 | head -20; echo "---SCRIPT-DONE---"
+node:internal/modules/package_json_reader:301
+  throw new ERR_MODULE_NOT_FOUND(packageName, fileURLToPath(base), null);
+        ^
+
+Error [ERR_MODULE_NOT_FOUND]: Cannot find package '@playwright/test' imported from /private/tmp/caption-shots.mjs
+    at Object.getPackageJSONURL (node:internal/modules/package_json_reader:301:9)
+    at packageResolve (node:internal/modules/esm/resolve:768:81)
+    at moduleResolve (node:internal/modules/esm/resolve:859:18)
+    at defaultResolve (node:internal/modules/esm/resolve:992:11)
+    at #cachedDefaultResolve (node:internal/modules/esm/loader:701:20)
+    at #resolveAndMaybeBlockOnLoaderThread (node:internal/modules/esm/loader:721:38)
+    at ModuleLoader.resolveSync (node:internal/modules/esm/loader:759:56)
+    at #resolve (node:internal/modules/esm/loader:683:17)
+    at ModuleLoader.getOrCreateModuleJob (node:internal/modules/esm/loader:603:35)
+    at ModuleJob.syncLink (node:internal/modules/esm/module_job:163:33) {
+  code: 'ERR_MODULE_NOT_FOUND'
+}
+
+Node.js v24.18.0
+---SCRIPT-DONE---
+[0m
+[0m$ [0mcp /tmp/caption-shots.mjs ./scratch-caption-shots.mjs && node ./scratch-caption-shots.mjs 2>&1 | head -20; echo "---SCRIPT-DONE---"
+PHOTO_COUNT=4
+SHOT /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/docs/phase4/qa/v3/caption-about.png
+SHOT /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/docs/phase4/qa/v3/caption-services.png
+SHOT /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/docs/phase4/qa/v3/caption-lenses-wide.png
+SHOT /Users/admin/Desktop/BUISNESS/EyeQ Vision Care/V1/docs/phase4/qa/v3/caption-lenses-offset.png
+ERRORS=[]
+---SCRIPT-DONE---
+[0m
+[0m→ [0mRead docs/phase4/qa/v3/caption-about.png
+[0m→ [0mRead docs/phase4/qa/v3/caption-services.png
+[0m
+[0m$ [0mrm ./scratch-caption-shots.mjs && rtk ls -la docs/phase4/qa/v3/caption-*.png 2>&1
+644  docs/phase4/qa/v3/caption-about.png  90.5K
+644  docs/phase4/qa/v3/caption-lenses-offset.png  268.6K
+644  docs/phase4/qa/v3/caption-lenses-wide.png  791.1K
+644  docs/phase4/qa/v3/caption-services.png  179.8K
+[0m
+[0m→ [0mRead docs/phase4/qa/v3/caption-lenses-wide.png
+[0m→ [0mRead docs/phase4/qa/v3/caption-lenses-offset.png
+All four photos render with no visible captions. Done.
+
+**Changed (owned files only):** `src/components/dom/Sections.tsx` — removed the 4 invented visible `<figcaption>`s (about eyewear / trial-frame / polarised-lens / lens-tech). Alt attributes untouched; screen-reader-only review captions untouched. `photos.css` left as-is (dead caption rules are harmless; "change nothing else").
+
+**Screenshots (1512×860, LOOKED):** `docs/phase4/qa/v3/caption-about.png`, `caption-services.png`, `caption-lenses-wide.png`, `caption-lenses-offset.png` — all four show photo only, no caption text. Homepage loaded with zero page/console errors; all 4 `.eyeq-photo` figures present. Scratch script removed.
+
+**Build flag (pre-existing, out of scope):** `npm run build` does NOT pass — `tsc -b` fails in files I don't own (`LogoRails.tsx` missing `RailsPause` export, `index.ts`, `FilmSequence.tsx` unused var). Zero errors in `Sections.tsx`/`photos.css`. I did not touch those files per the ownership rule; the Rails lane needs to fix the missing export.
+
+F6-CAPTION-DONE
+EXIT 0 model=meta/muse-spark-1.3-contributor

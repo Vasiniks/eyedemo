@@ -1,0 +1,7 @@
+node_modules
+dist
+
+# FRAMEGEN tools (interpolator vendor + weights, gitignored per task)
+scripts/framegen/bin/
+scripts/framegen/scores.csv
+scripts/framegen/*.log

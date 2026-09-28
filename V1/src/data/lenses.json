@@ -1,0 +1,26 @@
+{
+  "source": "docs/research/B-content-inventory.md §4 — services page lens offerings, in order. Names byte-verbatim with ®/™ intact; ®/™ render at 60%, roman, never bold.",
+  "heading": "Our Popular High-Definition Lenses",
+  "note": "Essilor family. Descriptions only exist for the last three; the first four are titles only.",
+  "lenses": [
+    { "name": "Varilux® Physio Extensee™", "description": null },
+    { "name": "Distinctive® Superior", "description": null },
+    { "name": "Distinctive® Enhanced", "description": null },
+    { "name": "Distinctive® SV Lenses", "description": null },
+    {
+      "name": "Essilor Stellest® 2.0 Lenses",
+      "description": "Innovative myopia-management lenses designed to help slow the progression of myopia in children while providing clear, comfortable vision.",
+      "short": "Innovative myopia-management lenses designed to help slow the progression of myopia in children while providing clear, comfortable vision."
+    },
+    {
+      "name": "Transitions® Lenses",
+      "description": "Experience comfortable vision in changing light with Transitions® lenses. These light-adaptive lenses automatically adjust their tint based on the surrounding light, providing clear vision indoors and helping reduce glare and brightness outdoors. They offer convenient, everyday protection without the need to switch between regular glasses and sunglasses.",
+      "short": "Experience comfortable vision in changing light with Transitions® lenses."
+    },
+    {
+      "name": "Xperio® Lenses",
+      "description": "Xperio® polarized lenses are designed to provide clear, comfortable vision outdoors while reducing glare from reflective surfaces. They offer excellent visual clarity and UV protection, making them ideal for driving, outdoor activities, and everyday use in bright conditions.",
+      "short": "Xperio® polarized lenses are designed to provide clear, comfortable vision outdoors while reducing glare from reflective surfaces."
+    }
+  ]
+}

@@ -1,0 +1,15 @@
+{
+  "source": "docs/research/B-content-inventory.md §7 — homepage Google-reviews widget, verbatim. Initials exactly as shown (incl. Honsa spelling). No per-card stars (widget shows none); aggregate only.",
+  "heading": "WHAT OUR CUSTOMERS SAY",
+  "subheading": "Real reviews from real customers",
+  "aggregate": "4.9",
+  "aggregateSuffix": "(208 reviews)",
+  "reviews": [
+    { "initials": "SW", "text": "Anees was very helpful and delightful to work with on my choices. He is knowledgeable and as always I am extremely happy with the service and after service care I get from EyeQ" },
+    { "initials": "H", "text": "Excellent customer service was provided by Hosna" },
+    { "initials": "NZ", "text": "Professional, knowledgeable, and genuinely kind. Mojo always takes the time to make sure his customers are happy and goes above and beyond to provide excellent service. I always trust him with my glasses and sunglasses because I know I'm in great hands. Highly recommend!" },
+    { "initials": "AH", "text": "WOW!!!! I just had outstanding service from Mojo at EyeQ. I've been to a few places but this by far is the most thoughtful, informative, honest, and helpful customer service I've received. I didn't feel pressured with being pushed on certain products. Mojo took the time to explain how my lenses work and what to expect. I would highly recommend EyeQ to anyone." },
+    { "initials": "LL", "text": "I came in to buy a pair of glasses and had an excellent experience. Anees and Honsa were incredibly professional, knowledgeable, and patient throughout the entire process. They took the time to explain all my options, helped me find the perfect pair of glasses, and made sure I was completely comfortable with my choice. Their customer service was outstanding, and they made the whole experience easy and enjoyable. It's rare to find people who genuinely care about helping customers, and Anees and Honsa went above and beyond. I highly recommend them to anyone looking for quality eyewear and exceptional service. Thank you both for the amazing experience!" },
+    { "initials": "EP", "text": "Very professional, knowledgeable and kind staff. Have been a client for many years now, I can only recommend, excellent service." }
+  ]
+}
