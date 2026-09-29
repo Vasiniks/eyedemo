@@ -15,7 +15,8 @@ function prefixRootUrls(): Plugin {
     transform(code, id) {
       if (base === '/' || !/\/src\/.*\.(tsx?|json)$/.test(id)) return
       return code
-        .replace(/(["'`(])\/(v1film|env|fonts|web)\//g, `$1${base}$2/`)
+        // Quote/paren start, or a later srcSet candidate after ", ".
+        .replace(/(["'`(]|,\s+)\/(v1film|env|fonts|web)\//g, `$1${base}$2/`)
         .replace(/href=(["'])\/(?!\/)/g, `href=$1${base}`)
     },
   }
