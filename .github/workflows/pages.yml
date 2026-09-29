@@ -20,11 +20,31 @@ jobs:
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
+    defaults:
+      run:
+        working-directory: V1
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
+
       - uses: actions/configure-pages@v5
-      - uses: actions/upload-pages-artifact@v3
+        id: pages
+
+      - uses: actions/setup-node@v5
         with:
-          path: .
+          node-version: 22
+          cache: npm
+          cache-dependency-path: V1/package-lock.json
+
+      - run: npm ci
+
+      # Serve from https://<user>.github.io/<repo>/ so asset URLs and routes resolve
+      - run: npm run build -- --base="${{ steps.pages.outputs.base_path }}/"
+
+      - run: touch dist/.nojekyll
+
+      - uses: actions/upload-pages-artifact@v4
+        with:
+          path: V1/dist
+
       - id: deployment
         uses: actions/deploy-pages@v4

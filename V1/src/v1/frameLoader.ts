@@ -63,7 +63,7 @@ export const HD_INTERP = 3;
 /** Narrow window (hd indices) for in-between fill near the playhead. */
 export const HD_NEAR = 30;
 
-export const MAX_CONCURRENT = 4;
+export const MAX_CONCURRENT = 6;
 /** Decoded-bitmap caps: 240 desktop tiers, 120 mobile, 300 hd (LOADER envelope). */
 export const LRU_CAP: Record<TierName, number> = { full: 240, web: 240, mobile: 120, hd: 300 };
 const FIRST_BATCH_N = 60;
@@ -165,11 +165,16 @@ export function pickTierWithHd(hdAvailable: boolean): TierName {
     const conn = (navigator as Navigator & { connection?: { saveData?: boolean; effectiveType?: string } }).connection;
     const saveData = !!conn?.saveData;
     const slow = /^(slow-2g|2g|3g)$/.test(conn?.effectiveType || '');
-    if (w <= 820 || saveData || slow) return 'mobile';
-    if (hdAvailable) return 'hd';
+    const nav = navigator as Navigator & { deviceMemory?: number };
+    const mem = nav.deviceMemory ?? 8;
+    const cores = nav.hardwareConcurrency || 8;
+    if (w <= 820 || saveData || slow || mem <= 2) return 'mobile';
+    // hd is ~3x the frames/bytes of web: only for capable devices on fast links.
+    const fast = !conn?.effectiveType || conn.effectiveType === '4g';
+    if (hdAvailable && fast && mem >= 8 && cores >= 8 && w >= 1280) return 'hd';
     return 'web';
   }
-  return hdAvailable ? 'hd' : 'web';
+  return 'web';
 }
 
 /** Canvas DPR cap: 1.25 desktop, 1 on mobile widths (F4-PERF envelope, LOADER keeps). */
